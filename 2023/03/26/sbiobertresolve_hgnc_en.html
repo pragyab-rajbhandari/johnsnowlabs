@@ -459,6 +459,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
   <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
@@ -482,12 +483,14 @@
   <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span>\
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
   <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"ner"</span><span class="p">])</span>\
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">'GENE'</span><span class="p">])</span>
 
-<span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
+<span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
 
 <span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span>\
   <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
@@ -510,45 +513,48 @@
 <span class="n">results</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()\</span>
-  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)\</span>
+
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
 
-<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))\</span>
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))\</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
 
-<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))\</span>
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
 
 
-<span class="k">val</span> <span class="nv">clinical_ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_human_phenotype_gene_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))\</span>
+<span class="k">val</span> <span class="nv">clinical_ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_human_phenotype_gene_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="ss">'GEN</span><span class="n">E</span><span class="o">'))</span>
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"GENE"</span><span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">chunk2doc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Chunk2Doc</span><span class="o">().</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">chunk2doc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Chunk2Doc</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nc">BertSentenceEmbeddings</span><span class="o">\</span>
-  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">))\</span>
+<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nc">BertSentenceEmbeddings</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">resolver</span> <span class="k">=</span> <span class="nc">SentenceEntityResolverModel</span><span class="o">\</span>
-  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_hgnc"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> <span class="o">\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"sbert_embeddings"</span><span class="o">))</span> <span class="o">\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"resolution"</span><span class="o">)\</span>
+<span class="k">val</span> <span class="nv">resolver</span> <span class="k">=</span> <span class="nc">SentenceEntityResolverModel</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_hgnc"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> 
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"sbert_embeddings"</span><span class="o">))</span> 
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"resolution"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">sentence_detector</span><span class="o">,</span> <span class="n">tokenizer</span><span class="o">,</span> <span class="n">word_embeddings</span><span class="o">,</span> <span class="n">clinical_ner</span><span class="o">,</span> <span class="n">ner_converter</span><span class="o">,</span> <span class="n">chunk2doc</span><span class="o">,</span> <span class="n">sbert_embedder</span><span class="o">,</span> <span class="n">resolver</span><span class="o">))</span>
@@ -562,173 +568,11 @@
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span>
-layout: model
-title: Sentence Entity Resolver <span class="k">for </span>HGNC
-author: John Snow Labs
-name: sbiobertresolve_hgnc
-<span class="nb">date</span>: 2023-03-26
-tags: <span class="o">[</span>hgnc, entity_resolution, clinical, en, licensed]
-task: Entity Resolution
-language: en
-edition: Healthcare NLP 4.3.2
-spark_version: 3.0
-supported: <span class="nb">true
-</span>annotator: SentenceEntityResolverModel
-article_header:
-  <span class="nb">type</span>: cover
-use_language_switcher: <span class="s2">"Python-Scala-Java"</span>
-<span class="nt">---</span>
-
-<span class="c">## Description</span>
-
-This model maps extracted gene names and their short-form abbreviations to HGNC codes using <span class="sb">`</span>sbiobert_base_cased_mli<span class="sb">`</span> Sentence Bert Embeddings. Also, it returns the locus <span class="nb">groups </span>and locus types of the genes as aux labels separated by <span class="o">||</span> under the metadata.
-
-<span class="c">## Predicted Entities</span>
-
-<span class="sb">`</span>HGNC Codes<span class="sb">`</span>, <span class="sb">`</span>Locus Group<span class="sb">`</span>, <span class="sb">`</span>Locus Type<span class="sb">`</span>
-
-<span class="o">{</span>:.btn-box<span class="o">}</span>
-&lt;button <span class="nv">class</span><span class="o">=</span><span class="s2">"button button-orange"</span> disabled&gt;Live Demo&lt;/button&gt;
-<span class="o">[</span>Open <span class="k">in </span>Colab]<span class="o">(</span>https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb<span class="o">){</span>:.button.button-orange.button-orange-trans.co.button-icon<span class="o">}</span>
-<span class="o">[</span>Download]<span class="o">(</span>https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_hgnc_en_4.3.2_3.0_1679847290330.zip<span class="o">){</span>:.button.button-orange<span class="o">}</span>
-<span class="o">[</span>Copy S3 URI]<span class="o">(</span>s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_hgnc_en_4.3.2_3.0_1679847290330.zip<span class="o">){</span>:.button.button-orange.button-orange-trans.button-icon.button-copy-s3<span class="o">}</span>
-
-<span class="c">## How to use</span>
-
-
-
-&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">"tabs-box"</span> <span class="nv">markdown</span><span class="o">=</span><span class="s2">"1"</span><span class="o">&gt;</span>
-&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">"tabs-model-aproach-head"</span><span class="o">&gt;</span>&lt;button <span class="nv">class</span><span class="o">=</span><span class="s2">"tab-li-model-aproach tabheader_active"</span><span class="o">&gt;</span>Python&lt;/button&gt;&lt;button <span class="nv">class</span><span class="o">=</span><span class="s2">"tab-li-model-aproach"</span><span class="o">&gt;</span>Scala&lt;/button&gt;&lt;button <span class="nv">class</span><span class="o">=</span><span class="s2">"tab-li-model-aproach"</span><span class="o">&gt;</span>NLU&lt;/button&gt;&lt;/div&gt;
-<span class="sb">```</span>python
-document_assembler <span class="o">=</span> DocumentAssembler<span class="o">()</span><span class="se">\</span>
-  .setInputCol<span class="o">(</span><span class="s2">"text"</span><span class="o">)</span><span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"document"</span><span class="o">)</span>
-
-
-sentence_detector <span class="o">=</span> SentenceDetectorDLModel.pretrained<span class="o">(</span><span class="s2">"sentence_detector_dl_healthcare"</span>,<span class="s2">"en"</span>,<span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"document"</span><span class="o">])</span><span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"sentence"</span><span class="o">)</span>
-
-tokenizer <span class="o">=</span> Tokenizer<span class="o">()</span><span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"sentence"</span><span class="o">])</span><span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"token"</span><span class="o">)</span>
-
-
-word_embeddings <span class="o">=</span> WordEmbeddingsModel.pretrained<span class="o">(</span><span class="s2">"embeddings_clinical"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"sentence"</span>,<span class="s2">"token"</span><span class="o">])</span><span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"embeddings"</span><span class="o">)</span>
-
-
-clinical_ner <span class="o">=</span> MedicalNerModel.pretrained<span class="o">(</span><span class="s2">"ner_human_phenotype_gene_clinical"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"sentence"</span>,<span class="s2">"token"</span>,<span class="s2">"embeddings"</span><span class="o">])</span><span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"ner"</span><span class="o">)</span>
-
-ner_converter <span class="o">=</span> NerConverter<span class="o">()</span><span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"sentence"</span>,<span class="s2">"token"</span>,<span class="s2">"ner"</span><span class="o">])</span><span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"ner_chunk"</span><span class="o">)</span><span class="se">\</span>
-  .setWhiteList<span class="o">([</span><span class="s1">'GENE'</span><span class="o">])</span>
-
-chunk2doc <span class="o">=</span> Chunk2Doc<span class="o">()</span>.setInputCols<span class="o">(</span><span class="s2">"ner_chunk"</span><span class="o">)</span>.setOutputCol<span class="o">(</span><span class="s2">"ner_chunk_doc"</span><span class="o">)</span>
-
-sbert_embedder <span class="o">=</span> BertSentenceEmbeddings<span class="se">\</span>
-  .pretrained<span class="o">(</span><span class="s2">"sbiobert_base_cased_mli"</span>,<span class="s2">"en"</span>,<span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"ner_chunk_doc"</span><span class="o">])</span><span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"sbert_embeddings"</span><span class="o">)</span>
-
-resolver <span class="o">=</span> SentenceEntityResolverModel<span class="se">\</span>
-  .pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_hgnc"</span>,<span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"resolution"</span><span class="o">)</span><span class="se">\</span>
-  .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
-
-nlpPipeline <span class="o">=</span> Pipeline<span class="o">(</span><span class="nv">stages</span><span class="o">=[</span>document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, resolver]<span class="o">)</span>
-
-
-clinical_note <span class="o">=</span> <span class="o">[</span><span class="s2">"Recent studies have suggested a potential link between the double homeobox 4 like 20 (pseudogene), also known as DUX4L20, and FBXO48 and RNA guanine-7 methyltransferase "</span><span class="o">]</span>
-
-
-<span class="nv">data</span><span class="o">=</span> spark.createDataFrame<span class="o">([</span>clinical_note]<span class="o">)</span>.toDF<span class="o">(</span><span class="s1">'text'</span><span class="o">)</span>
-results <span class="o">=</span> nlpPipeline.fit<span class="o">(</span>data<span class="o">)</span>.transform<span class="o">(</span>data<span class="o">)</span>
-
-</code></pre></div></div>
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()\</span>
-  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-
-
-<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-
-
-<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
-
-
-<span class="k">val</span> <span class="nv">clinical_ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_human_phenotype_gene_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="ss">'GEN</span><span class="n">E</span><span class="o">'))</span>
-
-<span class="k">val</span> <span class="nv">chunk2doc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Chunk2Doc</span><span class="o">().</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nc">BertSentenceEmbeddings</span><span class="o">\</span>
-  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">))\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">resolver</span> <span class="k">=</span> <span class="nc">SentenceEntityResolverModel</span><span class="o">\</span>
-  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_hgnc"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> <span class="o">\</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"sbert_embeddings"</span><span class="o">))</span> <span class="o">\</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"resolution"</span><span class="o">)\</span>
-  <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">sentence_detector</span><span class="o">,</span> <span class="n">tokenizer</span><span class="o">,</span> <span class="n">word_embeddings</span><span class="o">,</span> <span class="n">clinical_ner</span><span class="o">,</span> <span class="n">ner_converter</span><span class="o">,</span> <span class="n">chunk2doc</span><span class="o">,</span> <span class="n">sbert_embedder</span><span class="o">,</span> <span class="n">resolver</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with an acute hepatitis and obesity with a body mass index (BMI) of 33.5 kg/m2"</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-
-</code></pre></div></div>
-<p>&lt;/div&gt;</p>
-
-<h2 id="results-1">Results</h2>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|   sent_id | ner_chunk   | entity   | HGNC Code    | all_codes                                                               | resolutions                                                                                                                    | AUX                                                                                                                             |
 |----------:|:------------|:---------|:-------------|:------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|
-|         0 | DUX4L20     | GENE     | HGNC:50801   | <span class="o">[</span><span class="s1">'HGNC:50801'</span>, <span class="s1">'HGNC:31982'</span>, <span class="s1">'HGNC:42423'</span>, <span class="s1">'HGNC:39776'</span>, <span class="s1">'HGNC:42023'</span>...| <span class="o">[</span><span class="s1">'DUX4L20 [double homeobox 4 like 20 (pseudogene)]'</span>, <span class="s1">'ANKRD20A4P [ankyrin repeat domain 20 family member A4, pseudogene]'</span>, <span class="s1">'...| [pseudogene :: pseudogene, pseudogene :: pseudogene, non-coding RNA :: RNA, long non-coding, pseudogene :: pseudogene...|
-|         0 | FBXO48      | GENE     | HGNC:33857   | ['</span>HGNC:33857<span class="s1">', '</span>HGNC:4930<span class="s1">', '</span>HGNC:16653<span class="s1">', '</span>HGNC:13114<span class="s1">', '</span>HGNC:23535<span class="s1">' ...| ['</span>FBXO48 <span class="o">[</span>F-box protein 48]<span class="s1">', '</span>ZBTB48 <span class="o">[</span>zinc finger and BTB domain containing 48]<span class="s1">', '</span>MRPL48 <span class="o">[</span>mitochondrial ribosomal protein ...| <span class="o">[</span>protein-coding gene :: gene with protein product, protein-coding gene :: gene with protein product, protein-coding gene...|
-<span class="s1">'''
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|sbiobertresolve_hgnc|
-|Compatibility:|Healthcare NLP 4.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence_embeddings]|
-|Output Labels:|[hgnc_code]|
-|Language:|en|
-|Size:|251.9 MB|
-|Case sensitive:|false|
-
-## References
-
-https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/
-</span></code></pre></div></div>
+|         0 | DUX4L20     | GENE     | HGNC:50801   | <span class="o">[</span><span class="s1">'HGNC:50801'</span>, <span class="s1">'HGNC:31982'</span>, <span class="s1">'HGNC:42423'</span>, <span class="s1">'HGNC:39776'</span>, <span class="s1">'HGNC:42023'</span>...| <span class="o">[</span><span class="s1">'DUX4L20 [double homeobox 4 like 20 (pseudogene)]'</span>, <span class="s1">'ANKRD20A4P [ankyrin repeat domain 20 family member A4, pseudogene]'</span>, ...| <span class="o">[</span>pseudogene :: pseudogene, pseudogene :: pseudogene, non-coding RNA :: RNA, long non-coding, pseudogene :: pseudogene...|
+|         0 | FBXO48      | GENE     | HGNC:33857   | <span class="o">[</span><span class="s1">'HGNC:33857'</span>, <span class="s1">'HGNC:4930'</span>, <span class="s1">'HGNC:16653'</span>, <span class="s1">'HGNC:13114'</span>, <span class="s1">'HGNC:23535'</span> ...| <span class="o">[</span><span class="s1">'FBXO48 [F-box protein 48]'</span>, <span class="s1">'ZBTB48 [zinc finger and BTB domain containing 48]'</span>, <span class="s1">'MRPL48 [mitochondrial ribosomal protein'</span> ...| <span class="o">[</span>protein-coding gene :: gene with protein product, protein-coding gene :: gene with protein product, protein-coding gene...|
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
