@@ -557,7 +557,7 @@
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>johnsnowlabs
 </code></pre></div>    </div>
 
-    <p>This installs <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/quickstart">Spark-NLP</a>, <a href="https://nlu.johnsnowlabs.com/">NLU</a>
+    <p>This installs <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/quickstart">Spark-NLP</a>, <a href="https://nlp.johnsnowlabs.com/">NLU</a>
 , <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/display">Spark-NLP-Display</a>
 , <a href="https://spark.apache.org/docs/latest/api/python/">Pyspark</a> and other open
 source <a href="https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/setup.py">sub-dependencies</a>.</p>
@@ -596,7 +596,7 @@ This will enable the installation and use of all licensed products for which you
 
     <ul>
       <li>Make sure you have <code class="language-plaintext highlighter-rouge">Java 8</code> installed, for setup instructions
-see <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#get-prerequisites-java-8">How to install Java 8 for Windows/Linux/Mac?</a></li>
+see <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#get-prerequisites-java-8">How to install Java 8 for Windows/Linux/Mac?</a></li>
       <li>Windows Users must additionally follow every step precisely defined
 in <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#windows-support">How to correctly install Spark NLP for Windows?</a></li>
     </ul>
@@ -636,7 +636,7 @@ calling <code class="language-plaintext highlighter-rouge">nlp.start()</code> an
 Only 1 licenses can be provided and will be cached during authorization flows.         <br />
 If you have multiple licenses you can re-run an authorization method and use the <code class="language-plaintext highlighter-rouge">local_license_number</code> and <code class="language-plaintext highlighter-rouge">remote_license_number</code> parameter choose
 between licenses you have access to.    <br />
-Licenses are locally numbered in order they have been provided, for more info see <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#storage-of-license-data-and-license-search-behaviour">License Caching</a>.</p>
+Licenses are locally numbered in order they have been provided, for more info see <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#storage-of-license-data-and-license-search-behaviour">License Caching</a>.</p>
 
     <table>
       <thead>
@@ -659,22 +659,22 @@ Licenses are locally numbered in order they have been provided, for more info se
         </tr>
         <tr>
           <td>Access Token</td>
-          <td>Vist <a href="https://my.johnsnowlabs.com/">my.johnsnowlabs.com</a> to extract a token which you can provide to enable license access. See <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#via-access-token">Access Token Example</a> for more details</td>
+          <td>Vist <a href="https://my.johnsnowlabs.com/">my.johnsnowlabs.com</a> to extract a token which you can provide to enable license access. See <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#via-access-token">Access Token Example</a> for more details</td>
           <td><code class="language-plaintext highlighter-rouge">nlp.install(access_token=my_token)</code></td>
         </tr>
         <tr>
           <td>License JSON file path</td>
-          <td>Define JSON license file with keys  defined by <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Overview</a> and provide file path</td>
+          <td>Define JSON license file with keys  defined by <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Overview</a> and provide file path</td>
           <td><code class="language-plaintext highlighter-rouge">nlp.install(json_license_path=path)</code></td>
         </tr>
         <tr>
           <td><strong>Auto-Detect</strong> License JSON file from <code class="language-plaintext highlighter-rouge">os.getcwd()</code></td>
-          <td><code class="language-plaintext highlighter-rouge">os.getcwd()</code> directory is scanned for a <code class="language-plaintext highlighter-rouge">.json</code> file containing license keys defined by <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Overview</a></td>
+          <td><code class="language-plaintext highlighter-rouge">os.getcwd()</code> directory is scanned for a <code class="language-plaintext highlighter-rouge">.json</code> file containing license keys defined by <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Overview</a></td>
           <td><code class="language-plaintext highlighter-rouge">nlp.install()</code></td>
         </tr>
         <tr>
           <td><strong>Auto-Detect</strong> OS Environment Variables</td>
-          <td>Environment Variables are scanned for license variables defined by <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Overview</a></td>
+          <td>Environment Variables are scanned for license variables defined by <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Overview</a></td>
           <td><code class="language-plaintext highlighter-rouge">nlp.install()</code></td>
         </tr>
         <tr>
@@ -684,7 +684,7 @@ Licenses are locally numbered in order they have been provided, for more info se
         </tr>
         <tr>
           <td>Manually specify license data</td>
-          <td>Set each license value as python parameter, defined by  <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Overview</a></td>
+          <td>Set each license value as python parameter, defined by  <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Overview</a></td>
           <td><code class="language-plaintext highlighter-rouge">nlp.install(hc_license=hc_license enterprise_nlp_secret=enterprise_nlp_secret ocr_secret=ocr_secret ocr_license=ocr_license aws_access_key=aws_access_key aws_key_id=aws_key_id)</code></td>
         </tr>
       </tbody>
@@ -761,7 +761,7 @@ Licenses are locally numbered in order they have been provided, for more info se
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">Install to Databricks</code> with access Token</td>
-          <td>See <a href="https://docs.databricks.com/dev-tools/api/latest/authentication.html">Databricks Documentation</a> for  extracting a token which you can provide to databricks access, see <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#automatic-databricks-installation">Databricks Install Section</a> for more details.</td>
+          <td>See <a href="https://docs.databricks.com/dev-tools/api/latest/authentication.html">Databricks Documentation</a> for  extracting a token which you can provide to databricks access, see <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#automatic-databricks-installation">Databricks Install Section</a> for more details.</td>
         </tr>
       </tbody>
     </table>
@@ -823,7 +823,7 @@ Licenses are locally numbered in order they have been provided, for more info se
 
     <p>Use any of the databricks auth flows to enable the <code class="language-plaintext highlighter-rouge">johnsnowlabs</code> library to automatically install <br />
 all open source and licensed features into a Databricks cluster. <br />
-You additionally must use one of the <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview">John Snow Labs License Authorization Flows</a> to give access to your John Snow
+You additionally must use one of the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview">John Snow Labs License Authorization Flows</a> to give access to your John Snow
 Labs license,which will be installed to your Databricks cluster.      <br />
 A John Snow Labs Home directory is constructed in the distributed Databricks File System<code class="language-plaintext highlighter-rouge">/dbfs/johnsnowlabs</code> which has
 all Jars, Wheels and License Information to run all features in a Databricks cluster.</p>
@@ -839,7 +839,7 @@ all Jars, Wheels and License Information to run all features in a Databricks clu
       <tbody>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">Access Token</code></td>
-          <td>See <a href="https://docs.databricks.com/dev-tools/api/latest/authentication.html">Databricks Documentation</a> for  extracting a token which you can provide to databricks access, see <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#automatic-databricks-installation">Databricks Install Section</a> for details</td>
+          <td>See <a href="https://docs.databricks.com/dev-tools/api/latest/authentication.html">Databricks Documentation</a> for  extracting a token which you can provide to databricks access, see <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#automatic-databricks-installation">Databricks Install Section</a> for details</td>
           <td><code class="language-plaintext highlighter-rouge">nlp.install(databricks_cluster_id=my_cluster_id, databricks_host=my_databricks_host, databricks_token=my_access_databricks_token)</code></td>
         </tr>
       </tbody>
@@ -993,7 +993,7 @@ In Google Colab, a clickable button will appear, which will make a window pop up
   <div class="h3-box">
     <h3 id="via-json-secrets-file">Via Json Secrets file</h3>
 
-    <p>Path to a JSON containing secrets, see <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Names</a> for more details.</p>
+    <p>Path to a JSON containing secrets, see <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Names</a> for more details.</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">install</span><span class="p">(</span><span class="n">json_file_path</span><span class="o">=</span><span class="s">'my/secret.json'</span><span class="p">)</span>
 </code></pre></div>    </div>
@@ -1002,7 +1002,7 @@ In Google Colab, a clickable button will appear, which will make a window pop up
   <div class="h3-box">
     <h3 id="via-manually-defining-secrets">Via Manually defining Secrets</h3>
 
-    <p>Manually specify all secrets. Some of these can be omitted, see <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Names</a> for more details.</p>
+    <p>Manually specify all secrets. Some of these can be omitted, see <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Names</a> for more details.</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">install</span><span class="p">(</span>
     <span class="n">hc_license</span><span class="o">=</span><span class="s">'Your HC License'</span><span class="p">,</span>
@@ -1193,7 +1193,7 @@ Name of the json file does not matter, file just needs to end with .json.</p>
     <p><strong>Step 1:</strong> Upgrade the johnsnowlabs library.</p>
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>johnsnowlabs <span class="nt">--upgrade</span>
 </code></pre></div>    </div>
-    <p><strong>Step 2:</strong> Run install again, while using one <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview">Authorization Flows</a>.</p>
+    <p><strong>Step 2:</strong> Run install again, while using one <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview">Authorization Flows</a>.</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">install</span><span class="p">()</span>
 </code></pre></div>    </div>
 
@@ -1201,7 +1201,7 @@ Name of the json file does not matter, file just needs to end with .json.</p>
 Simply run <code class="language-plaintext highlighter-rouge">pip install johnsnowlabs --upgrade</code> to get the latest open <strong>source libraries</strong> updated.
 Once the johnsnowlabs library is upgraded, it will detect any out-dated libraries any inform you
 that you can upgrade them by running <code class="language-plaintext highlighter-rouge">nlp.install()</code> again.
-You must run one of the <a href="https://nlu.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview">Authorization Flows</a> again,
+You must run one of the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview">Authorization Flows</a> again,
 to gian access to the latest enterprise libraries.</p>
 
     <h2 class="h2-select" id="next-steps--frequently-asked-questions">Next Steps &amp; Frequently Asked Questions</h2>
@@ -1240,7 +1240,7 @@ Detailed information about Johnsnowlabs Libraries APIs, concepts, components and
       <li><a href="import-structure">John Snow Labs Library usage and import Overview</a></li>
       <li><a href="load_api">The NLU load function</a></li>
       <li><a href="predict_api">The NLU predict function</a></li>
-      <li><a href="https://nlu.johnsnowlabs.com/docs/en/jsl/namespace">The NLU components spellbook</a></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/namespace">The NLU components spellbook</a></li>
       <li><a href="notebooks">NLU Notebooks</a></li>
     </ul>
 
