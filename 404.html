@@ -50,6 +50,7 @@
 <link rel="stylesheet" href="/static/models.css" /><!-- start custom head snippets -->
  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"> 
 <!-- end custom head snippets -->
 <script>(function() {
   window.isArray = function(val) {
@@ -461,10 +462,10 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>Pipeline to Detect Risk Factors</title><meta property="og:title" content=""/>
+</script><title>Legal Criticality Prediction Classifier in French</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_risk_factors model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_risk_factors_pipeline", "en", "clinical/models")text = '''HISTORY OF PRESENT ILLN...">
-<link rel="canonical" href="/2023/03/15/ner_risk_factors_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis is a Binary classification model which identifies two criticality labels(critical, non-critical) in French-based Court Cases.Predicted Entitiescritical, non-criticalLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  documentAssembler = nlp.DocumentAssembler() \    .setInputCol("text...">
+<link rel="canonical" href="/2023/03/28/legclf_critical_prediction_french_fr.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -484,6 +485,7 @@
 <link rel="stylesheet" href="/static/models.css" /><!-- start custom head snippets -->
  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"> 
 <!-- end custom head snippets -->
 <script>(function() {
   window.isArray = function(val) {
@@ -860,75 +862,71 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Cabir40/2023-03-15-ner_risk_factors_pipeline_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Mary-Sci/2023-03-28-legclf_critical_prediction_french_fr.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 15, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-03-15T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Pipeline to Detect Risk Factors</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline to Detect Risk Factors"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>ner</li><li>clinical</li><li>licensed</li><li>en</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-03-15T00:00:00+00:00">
-    <meta itemprop="keywords" content="ner,clinical,licensed,en"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 28, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-03-28T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Legal Criticality Prediction Classifier in French</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Legal Criticality Prediction Classifier in French"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>fr</li><li>licensed</li><li>classification</li><li>legal</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-03-28T00:00:00+00:00">
+    <meta itemprop="keywords" content="fr,licensed,classification,legal,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained pipeline is built on the top of <a href="https://nlp.johnsnowlabs.com/2021/03/31/ner_risk_factors_en.html">ner_risk_factors</a> model.</p>
+<p>This is a Binary classification model which identifies two criticality labels(critical, non-critical) in French-based Court Cases.</p>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">critical</code>, <code class="language-plaintext highlighter-rouge">non-critical</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_risk_factors_pipeline_en_4.3.0_3.2_1678865692535.zip" class="button button-orange">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_risk_factors_pipeline_en_4.3.0_3.2_1678865692535.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_critical_prediction_french_fr_1.0.0_3.0_1680044769752.zip" class="button button-orange">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/legal/models/legclf_critical_prediction_french_fr_1.0.0_3.0_1680044769752.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_risk_factors_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''HISTORY OF PRESENT ILLNESS: The patient is a 40-year-old white male who presents with a chief complaint of "chest pain". The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that his chest pain started yesterday evening and has been somewhat intermittent. The severity of the pain has progressively increased. He describes the pain as a sharp and heavy pain which radiates to his neck &amp; left arm. He ranks the pain a 7 on a scale of 1-10. He admits some shortness of breath &amp; diaphoresis. He states that he has had nausea &amp; 3 episodes of vomiting tonight. He denies any fever or chills. He admits prior episodes of similar pain prior to his PTCA in 1995. He states the pain is somewhat worse with walking and seems to be relieved with rest. There is no change in pain with positioning. He states that he took 3 nitroglycerin tablets sublingually over the past 1 hour, which he states has partially relieved his pain. The patient ranks his present pain a 4 on a scale of 1-10. The most recent episode of pain has lasted one-hour. The patient denies any history of recent surgery, head trauma, recent stroke, abnormal bleeding such as blood in urine or stool or nosebleed.
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-REVIEW OF SYSTEMS: All other systems reviewed &amp; are negative.
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">RoBertaForSequenceClassification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legclf_critical_prediction_french"</span><span class="p">,</span> <span class="s">"fr"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"class"</span><span class="p">)</span>
 
-PAST MEDICAL HISTORY: Diabetes mellitus type II, hypertension, coronary artery disease, atrial fibrillation, status post PTCA in 1995 by Dr. ABC.
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
+      <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">documentAssembler</span><span class="p">,</span>
+                <span class="n">tokenizer</span><span class="p">,</span>
+                <span class="n">classifier</span><span class="p">])</span>
+     
+<span class="c1"># Example text
+</span><span class="n">example</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Par ces motifs, le Tribunal fédéral prononce : 1. Le recours est rejeté dans la mesure où il est recevable. 2. Les frais judiciaires, arrêtés à 2'000 fr., sont mis à la charge du recourant. 3. Le présent arrêt est communiqué au recourant, à la Commission du barreau ainsi qu'à la I e Cour administrative du Tribunal cantonal de l'Etat de Fribourg. Lausanne, le 19 janvier 2016 Au nom de la IIe Cour de droit public du Tribunal fédéral suisse Le Président : Zünd Le Greffier : Chatton"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-SOCIAL HISTORY: Denies alcohol or drugs. Smokes 2 packs of cigarettes per day. Works as a banker.
+<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
 
-FAMILY HISTORY: Positive for coronary artery disease (father &amp; brother).'''</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="c1"># result is a DataFrame
+</span><span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="s">"class.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_risk_factors_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"HISTORY OF PRESENT ILLNESS: The patient is a 40-year-old white male who presents with a chief complaint of "</span><span class="n">chest</span> <span class="n">pain</span><span class="s">". The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that his chest pain started yesterday evening and has been somewhat intermittent. The severity of the pain has progressively increased. He describes the pain as a sharp and heavy pain which radiates to his neck &amp; left arm. He ranks the pain a 7 on a scale of 1-10. He admits some shortness of breath &amp; diaphoresis. He states that he has had nausea &amp; 3 episodes of vomiting tonight. He denies any fever or chills. He admits prior episodes of similar pain prior to his PTCA in 1995. He states the pain is somewhat worse with walking and seems to be relieved with rest. There is no change in pain with positioning. He states that he took 3 nitroglycerin tablets sublingually over the past 1 hour, which he states has partially relieved his pain. The patient ranks his present pain a 4 on a scale of 1-10. The most recent episode of pain has lasted one-hour. The patient denies any history of recent surgery, head trauma, recent stroke, abnormal bleeding such as blood in urine or stool or nosebleed.
-
-REVIEW OF SYSTEMS: All other systems reviewed &amp; are negative.
-
-PAST MEDICAL HISTORY: Diabetes mellitus type II, hypertension, coronary artery disease, atrial fibrillation, status post PTCA in 1995 by Dr. ABC.
-
-SOCIAL HISTORY: Denies alcohol or drugs. Smokes 2 packs of cigarettes per day. Works as a banker.
-
-FAMILY HISTORY: Positive for coronary artery disease (father &amp; brother)."</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | ner_chunk                            |   begin |   end | ner_label    |   confidence |
-|---:|:-------------------------------------|--------:|------:|:-------------|-------------:|
-|  0 | diabetic                             |     136 |   143 | DIABETES     |     0.9992   |
-|  1 | coronary artery disease              |     172 |   194 | CAD          |     0.689667 |
-|  2 | Diabetes mellitus <span class="nb">type </span>II            |    1315 |  1339 | DIABETES     |     0.73075  |
-|  3 | hypertension                         |    1342 |  1353 | HYPERTENSION |     0.986    |
-|  4 | coronary artery disease              |    1356 |  1378 | CAD          |     0.882567 |
-|  5 | 1995                                 |    1422 |  1425 | PHI          |     0.9999   |
-|  6 | ABC                                  |    1434 |  1436 | PHI          |     0.9999   |
-|  7 | Smokes 2 packs of cigarettes per day |    1481 |  1516 | SMOKER       |     0.634257 |
-|  8 | banker                               |    1530 |  1535 | PHI          |     0.9779   |
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+--------------+
+|                                                                                                text|        result|
++----------------------------------------------------------------------------------------------------+--------------+
+|Par ces motifs, le Tribunal fédéral prononce : 1. Le recours est rejeté dans la mesure où il est ...|[non_critical]|
++----------------------------------------------------------------------------------------------------+--------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -937,15 +935,11 @@ FAMILY HISTORY: Positive for coronary artery disease (father &amp; brother)."</s
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>ner_risk_factors_pipeline</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>legclf_critical_prediction_french</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 4.3.0+</td>
+      <td>Legal NLP 1.0.0+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -956,27 +950,46 @@ FAMILY HISTORY: Positive for coronary artery disease (father &amp; brother)."</s
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[document, token]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[class]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
-      <td>en</td>
+      <td>fr</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.7 GB</td>
+      <td>415.9 MB</td>
+    </tr>
+    <tr>
+      <td>Case sensitive:</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>Max sentence length:</td>
+      <td>512</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="included-models">Included Models</h2>
+<h2 id="references">References</h2>
 
-<ul>
-  <li>DocumentAssembler</li>
-  <li>SentenceDetectorDLModel</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-</ul>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-03-15T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>Train dataset available <a href="https://huggingface.co/datasets/rcds/legal_criticality_prediction">here</a></p>
+
+<h2 id="benchmarking">Benchmarking</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>label         precision  recall  f1-score  support 
+critical      0.74       0.74    0.74      117     
+non_critical  0.81       0.81    0.81      161     
+accuracy      -          -       0.78      278     
+macro-avg     0.77       0.77    0.77      278     
+weighted-avg  0.78       0.78    0.78      278     
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-03-28T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -1083,6 +1096,13 @@ tabs({
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
     activeClass: 'tabheader_active'
 });
+tabs({
+    tabsWrapperSelector: '.tabs-wrapper', 
+    tabsParentSelector: '.tabs-python-scala-head', 
+    tabsSelector: '.tab-python-scala-li', 
+    tabsContentSelector: '.tabs-item', 
+    activeClass: 'tabheader_active'
+});
 
 </script>
 
@@ -1134,7 +1154,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/03/15/ner_radiology_pipeline_en.html">Pipeline to Detect Radiology Related Entities</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/03/27/finner_broker_reports_specific_sm_en.html">Broker Reports Financial NER (Specific, sm)</a></div></div></div>
 
 </div>
 </div>
@@ -1811,6 +1831,13 @@ tabs({
     tabsParentSelector: '.tabs-model-aproach-head', 
     tabsSelector: '.tab-li-model-aproach', 
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
+    activeClass: 'tabheader_active'
+});
+tabs({
+    tabsWrapperSelector: '.tabs-wrapper', 
+    tabsParentSelector: '.tabs-python-scala-head', 
+    tabsSelector: '.tab-python-scala-li', 
+    tabsContentSelector: '.tabs-item', 
     activeClass: 'tabheader_active'
 });
 

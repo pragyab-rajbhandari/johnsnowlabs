@@ -50,6 +50,7 @@
 <link rel="stylesheet" href="/static/models.css" /><!-- start custom head snippets -->
  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"> 
 <!-- end custom head snippets -->
 <script>(function() {
   window.isArray = function(val) {
@@ -733,6 +734,13 @@ tabs({
     tabsParentSelector: '.tabs-model-aproach-head', 
     tabsSelector: '.tab-li-model-aproach', 
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
+    activeClass: 'tabheader_active'
+});
+tabs({
+    tabsWrapperSelector: '.tabs-wrapper', 
+    tabsParentSelector: '.tabs-python-scala-head', 
+    tabsSelector: '.tab-python-scala-li', 
+    tabsContentSelector: '.tabs-item', 
     activeClass: 'tabheader_active'
 });
 
