@@ -28,7 +28,7 @@
 
 </script><title>Medical Question Answering (biogpt)</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model has been trained with medical documents and can generate two types of answers, short and long.Types of questions are supported: "short" (producing yes/no/maybe) answers and "full" (long answers).Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  document_asse...">
+<meta name="description" content="DescriptionThis model is directly ported from the  official BioGPT implementation  that is trained on Pubmed abstracts and then finetuned with PubmedQA dataset. It is the baseline version called BioGPT-QA-PubMedQA-BioGPT.It can generate two types of answers, short and long. Types of questions are supported: "short"(...">
 <link rel="canonical" href="/2023/03/09/medical_qa_biogpt_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
@@ -437,13 +437,13 @@
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model has been trained with medical documents and can generate two types of answers, short and long.
-Types of questions are supported: <code class="language-plaintext highlighter-rouge">"short"</code> (producing yes/no/maybe) answers and <code class="language-plaintext highlighter-rouge">"full"</code> (long answers).</p>
+<p>This model is directly ported from the  official BioGPT <a href="https://github.com/microsoft/BioGPT">implementation</a>  that is trained on Pubmed abstracts and then finetuned with PubmedQA dataset. It is the baseline version called <a href="https://msramllasc.blob.core.windows.net/modelrelease/BioGPT/checkpoints/QA-PubMedQA-BioGPT.tgz">BioGPT-QA-PubMedQA-BioGPT</a>.
+It can generate two types of answers, short and long. Types of questions are supported: <code class="language-plaintext highlighter-rouge">"short"</code>(producing yes/no/maybe) answers and <code class="language-plaintext highlighter-rouge">"full"</code> (long answers).</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/BIOGPT_MEDICAL_QUESTION_ANSWERING/" class="button button-orange" target="_blank">Live Demo</a>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb" class="button button-orange button-orange-trans co button-icon" target="_blank">Open in Colab</a>
 <a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medical_qa_biogpt_en_4.3.1_3.0_1678355315206.zip" class="button button-orange">Download</a>
 <a href="s3://auxdata.johnsnowlabs.com/clinical/models/medical_qa_biogpt_en_4.3.1_3.0_1678355315206.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
@@ -451,7 +451,8 @@ Types of questions are supported: <code class="language-plaintext highlighter-ro
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCols</span><span class="p">(</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">)</span>
 
@@ -465,7 +466,8 @@ Types of questions are supported: <code class="language-plaintext highlighter-ro
 </span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_qa</span><span class="p">])</span>
 
-<span class="n">paper_abstract</span> <span class="o">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65-97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene."</span>
+<span class="n">paper_abstract</span> <span class="o">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+
 <span class="n">long_question</span> <span class="o">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
 <span class="n">yes_no_question</span> <span class="o">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
 
@@ -489,8 +491,8 @@ Types of questions are supported: <code class="language-plaintext highlighter-ro
     <span class="o">.</span><span class="py">setOutputCols</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">med_qa</span> <span class="k">=</span> <span class="nc">MedicalQuestionAnswering</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medical_qa_biogpt"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">((</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medical_qa_biogpt"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"answer"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">30</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setTopK</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
@@ -498,7 +500,8 @@ Types of questions are supported: <code class="language-plaintext highlighter-ro
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_qa</span><span class="o">))</span>
 
-<span class="n">paper_abstract</span> <span class="k">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65-97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene."</span>
+<span class="n">paper_abstract</span> <span class="k">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+
 <span class="n">long_question</span> <span class="k">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
 <span class="n">yes_no_question</span> <span class="k">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
 
@@ -719,7 +722,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/03/09/biogpt_pubmed_qa_en.html">Medical Question Answering (biogpt_pubmed_qa)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/03/09/ner_clinical_bert_pipeline_ro.html">Pipeline to Detect Clinical Entities in Romanian (Bert, Base, Cased)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/03/08/legmulticlf_unfair_tos_en.html">Legal Multilabel Classification on Terms of Service (UNFAIR-ToS)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/03/09/ner_clinical_bert_pipeline_ro.html">Pipeline to Detect Clinical Entities in Romanian (Bert, Base, Cased)</a></div></div></div>
 
 </div>
 </div>
