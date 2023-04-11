@@ -3222,6 +3222,189 @@ The language references must be <a href="https://en.wikipedia.org/wiki/List_of_I
   </div>
   <div class="h3-box">
 
+    <h2 id="automatic-speech-recognition-asr-with-hubert">Automatic Speech Recognition (ASR) with HuBERT</h2>
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb">ASR Demo Notebook</a>     <br />
+Recognize speech in Audio files with <a href="https://arxiv.org/abs/2106.07447">HuBERT</a></p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Let's download an audio file 
+</span><span class="err">!</span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">auxdata</span><span class="p">.</span><span class="n">johnsnowlabs</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">audio</span><span class="o">/</span><span class="n">samples</span><span class="o">/</span><span class="n">wavs</span><span class="o">/</span><span class="n">ngm_12484_01067234848</span><span class="p">.</span><span class="n">wav</span>
+<span class="n">FILE_PATH</span> <span class="o">=</span> <span class="s">"ngm_12484_01067234848.wav"</span>
+
+<span class="n">asr_df</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.speech2text.hubert'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'ngm_12484_01067234848.wav'</span><span class="p">)</span>
+<span class="n">asr_df</span>
+
+</code></pre></div>    </div>
+
+    <table class="table-model-big mb0">
+      <thead>
+        <tr>
+          <th>text</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PEOPLE WHO DIED WHILE LIVING IN OTHER PLACES</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="h3-box">
+
+    <h2 id="automatic-speech-recognition-asr-with-wav2vec2">Automatic Speech Recognition (ASR) with Wav2Vec2</h2>
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb">ASR Tutorial Notebook</a>     <br />
+Recognize speech in Audio files with <a href="https://arxiv.org/abs/2106.07447">HuBERT</a></p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Let's download an audio file 
+</span><span class="err">!</span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">auxdata</span><span class="p">.</span><span class="n">johnsnowlabs</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">audio</span><span class="o">/</span><span class="n">samples</span><span class="o">/</span><span class="n">wavs</span><span class="o">/</span><span class="n">ngm_12484_01067234848</span><span class="p">.</span><span class="n">wav</span>
+<span class="n">FILE_PATH</span> <span class="o">=</span> <span class="s">"ngm_12484_01067234848.wav"</span>
+
+<span class="n">asr_df</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.speech2text.wav2vec2.v2_base_960h'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'ngm_12484_01067234848.wav'</span><span class="p">)</span>
+<span class="n">asr_df</span>
+
+</code></pre></div>    </div>
+
+    <table class="table-model-big mb0">
+      <thead>
+        <tr>
+          <th>text</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PEOPLE WHO DIED WHILE LIVING IN OTHER PLACES</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="h3-box">
+
+    <h2 id="table-question-answering-tapas">Table Question Answering (TAPAS)</h2>
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb">TAPS Tutorial Notebook</a></p>
+
+    <p>Table Question Answering on Pandas DataFrames powered by <a href="https://aclanthology.org/2020.acl-main.398.pdf">TAPAS: Weakly Supervised Table Parsing via Pre-training</a></p>
+
+    <p>First we need a pandas dataframe on for which we want to ask questions. The so called “context”</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span> 
+
+<span class="n">context_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s">'name'</span><span class="p">:[</span><span class="s">'Donald Trump'</span><span class="p">,</span><span class="s">'Elon Musk'</span><span class="p">],</span> 
+    <span class="s">'money'</span><span class="p">:</span> <span class="p">[</span><span class="s">'$100,000,000'</span><span class="p">,</span><span class="s">'$20,000,000,000,000'</span><span class="p">],</span> 
+    <span class="s">'married'</span><span class="p">:</span> <span class="p">[</span><span class="s">'yes'</span><span class="p">,</span><span class="s">'no'</span><span class="p">],</span> 
+    <span class="s">'age'</span> <span class="p">:</span> <span class="p">[</span><span class="s">'75'</span><span class="p">,</span><span class="s">'55'</span><span class="p">]</span> <span class="p">})</span>
+<span class="n">context_df</span>
+
+</code></pre></div>    </div>
+
+    <p>Then we create an array of questions</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">"Who earns less than 200,000,000?"</span><span class="p">,</span>
+    <span class="s">"Who earns more than 200,000,000?"</span><span class="p">,</span>
+    <span class="s">"Who earns 100,000,000?"</span><span class="p">,</span>
+    <span class="s">"How much money has Donald Trump?"</span><span class="p">,</span>
+    <span class="s">"Who is the youngest?"</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">questions</span>
+
+</code></pre></div>    </div>
+
+    <p>Now Combine the data, pass it to NLU and get answers for your questions</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="c1"># Now we combine both to a tuple and we are done! We can now pass this to the .predict() method
+</span><span class="n">tapas_data</span>  <span class="o">=</span> <span class="p">(</span><span class="n">context_df</span><span class="p">,</span> <span class="n">questions</span><span class="p">)</span>
+<span class="c1"># Lets load a TAPAS QA model and predict on (context,question). 
+# It will give us an aswer for every question in the questions array, based on the context in context_df
+</span><span class="n">answers</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.answer_question.tapas.wtq.large_finetuned'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">tapas_data</span><span class="p">)</span>
+<span class="n">answers</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">sentence</th>
+          <th style="text-align: left">tapas_qa_UNIQUE_aggregation</th>
+          <th style="text-align: left">tapas_qa_UNIQUE_answer</th>
+          <th style="text-align: left">tapas_qa_UNIQUE_cell_positions</th>
+          <th style="text-align: right">tapas_qa_UNIQUE_cell_scores</th>
+          <th style="text-align: left">tapas_qa_UNIQUE_origin_question</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">Who earns less than 200,000,000?</td>
+          <td style="text-align: left">NONE</td>
+          <td style="text-align: left">Donald Trump</td>
+          <td style="text-align: left">[0, 0]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">Who earns less than 200,000,000?</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">Who earns more than 200,000,000?</td>
+          <td style="text-align: left">NONE</td>
+          <td style="text-align: left">Elon Musk</td>
+          <td style="text-align: left">[0, 1]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">Who earns more than 200,000,000?</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">Who earns 100,000,000?</td>
+          <td style="text-align: left">NONE</td>
+          <td style="text-align: left">Donald Trump</td>
+          <td style="text-align: left">[0, 0]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">Who earns 100,000,000?</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">How much money has Donald Trump?</td>
+          <td style="text-align: left">SUM</td>
+          <td style="text-align: left">SUM($100,000,000)</td>
+          <td style="text-align: left">[1, 0]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">How much money has Donald Trump?</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">Who is the youngest?</td>
+          <td style="text-align: left">NONE</td>
+          <td style="text-align: left">Elon Musk</td>
+          <td style="text-align: left">[0, 1]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">Who is the youngest?</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="image-classification-vit">Image Classification (VIT)</h2>
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb">Image Classification Tutorial Notebook</a>      <br />
+Image Classifier Based on <a href="https://arxiv.org/abs/2010.11929">VIT</a>
+Lets download a folder of images and predict on it</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">auxdata</span><span class="p">.</span><span class="n">johnsnowlabs</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">images</span><span class="p">.</span><span class="nb">zip</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="n">shutil</span><span class="p">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s">"images.zip"</span><span class="p">,</span> <span class="s">"images"</span><span class="p">,</span> <span class="s">"zip"</span><span class="p">)</span>
+<span class="err">!</span> <span class="n">ls</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">images</span><span class="o">/</span>
+</code></pre></div>    </div>
+
+    <p>Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.classify_image.base_patch16_224'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'/content/images/images'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>TODO SCREENSHOT</p>
+
+    <h2 id="image-classification-swin">Image Classification (SWIN)</h2>
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb">Image Classification Tutorial Notebook</a>      <br />
+Image Classifier Based on <a href="https://arxiv.org/abs/2103.14030">SWIN</a>
+Lets download a folder of images and predict on it</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">auxdata</span><span class="p">.</span><span class="n">johnsnowlabs</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">images</span><span class="p">.</span><span class="nb">zip</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="n">shutil</span><span class="p">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s">"images.zip"</span><span class="p">,</span> <span class="s">"images"</span><span class="p">,</span> <span class="s">"zip"</span><span class="p">)</span>
+<span class="err">!</span> <span class="n">ls</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">images</span><span class="o">/</span>
+</code></pre></div>    </div>
+
+    <p>Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.classify_image.swin.tiny'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'/content/images/images'</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>TODO SCREENSHOT</p>
+
     <h2 id="t5">T5</h2>
     <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb">Example of every T5 task</a></p>
     <h3 id="overview-of-every-task-available-with-t5">Overview of every task available with T5</h3>
