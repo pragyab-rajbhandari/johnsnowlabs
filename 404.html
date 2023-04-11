@@ -462,10 +462,10 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>Legal Criticality Prediction Classifier in French</title><meta property="og:title" content=""/>
+</script><title>SDOH Under Treatment For Classification</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis is a Binary classification model which identifies two criticality labels(critical, non-critical) in French-based Court Cases.Predicted Entitiescritical, non-criticalLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  documentAssembler = nlp.DocumentAssembler() \    .setInputCol("text...">
-<link rel="canonical" href="/2023/03/28/legclf_critical_prediction_french_fr.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis Generic Classifier model is intended for detecting if the patient is under treatment or not. If under treatment is not mentioned in the text, it is regarded as “not under treatment”. The model is trained by using GenericClassifierApproach annotator.Under_Treatment: The patient is under treatment.Not_...">
+<link rel="canonical" href="/2023/04/10/genericclassifier_sdoh_under_treatment_sbiobert_cased_mli_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -862,71 +862,129 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Mary-Sci/2023-03-28-legclf_critical_prediction_french_fr.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/hsaglamlar/2023-04-10-genericclassifier_sdoh_under_treatment_sbiobert_cased_mli_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 28, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-03-28T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Legal Criticality Prediction Classifier in French</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Legal Criticality Prediction Classifier in French"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>fr</li><li>licensed</li><li>classification</li><li>legal</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-03-28T00:00:00+00:00">
-    <meta itemprop="keywords" content="fr,licensed,classification,legal,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Apr 10, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-04-10T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>SDOH Under Treatment For Classification</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="SDOH Under Treatment For Classification"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licenced</li><li>clinical</li><li>sdoh</li><li>generic_classifier</li><li>under_treatment</li><li>biobert</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-04-10T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,licenced,clinical,sdoh,generic_classifier,under_treatment,biobert,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This is a Binary classification model which identifies two criticality labels(critical, non-critical) in French-based Court Cases.</p>
+<p>This Generic Classifier model is intended for detecting if the patient is under treatment or not. If under treatment is not mentioned in the text, it is regarded as “not under treatment”. The model is trained by using GenericClassifierApproach annotator.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Under_Treatment</code>: The patient is under treatment.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Not_Under_Treatment_Or_Not_Mentioned</code>: The patient is not under treatment or it is not mentioned in the clinical notes.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">critical</code>, <code class="language-plaintext highlighter-rouge">non-critical</code></p>
+<p><code class="language-plaintext highlighter-rouge">Under_Treatment</code>, <code class="language-plaintext highlighter-rouge">Not_Under_Treatment_Or_Not_Mentioned</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_critical_prediction_french_fr_1.0.0_3.0_1680044769752.zip" class="button button-orange">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/legal/models/legclf_critical_prediction_french_fr_1.0.0_3.0_1680044769752.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_under_treatment_sbiobert_cased_mli_en_4.3.2_3.2_1681116067393.zip" class="button button-orange">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_under_treatment_sbiobert_cased_mli_en_4.3.2_3.2_1681116067393.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+        
+<span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span><span class="s">'clinical/models'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence_embeddings"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+<span class="n">features_asm</span> <span class="o">=</span> <span class="n">FeaturesAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"features"</span><span class="p">)</span>
 
-<span class="n">classifier</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">RoBertaForSequenceClassification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legclf_critical_prediction_french"</span><span class="p">,</span> <span class="s">"fr"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+<span class="n">generic_classifier</span> <span class="o">=</span> <span class="n">GenericClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"genericclassifier_sdoh_under_treatment_sbiobert_cased_mli"</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"class"</span><span class="p">)</span>
 
-<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
-      <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">documentAssembler</span><span class="p">,</span>
-                <span class="n">tokenizer</span><span class="p">,</span>
-                <span class="n">classifier</span><span class="p">])</span>
-     
-<span class="c1"># Example text
-</span><span class="n">example</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Par ces motifs, le Tribunal fédéral prononce : 1. Le recours est rejeté dans la mesure où il est recevable. 2. Les frais judiciaires, arrêtés à 2'000 fr., sont mis à la charge du recourant. 3. Le présent arrêt est communiqué au recourant, à la Commission du barreau ainsi qu'à la I e Cour administrative du Tribunal cantonal de l'Etat de Fribourg. Lausanne, le 19 janvier 2016 Au nom de la IIe Cour de droit public du Tribunal fédéral suisse Le Président : Zünd Le Greffier : Chatton"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">sentence_embeddings</span><span class="p">,</span>
+    <span class="n">features_asm</span><span class="p">,</span>
+    <span class="n">generic_classifier</span>    
+<span class="p">])</span>
 
-<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
+<span class="n">text_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"""Sarah, a 55-year-old woman with a history of high cholesterol and a family history of heart disease, presented to her primary care physician with complaints of chest pain and shortness of breath. After a thorough evaluation, Sarah was diagnosed with coronary artery disease (CAD), a condition that can lead to heart attacks and other serious complications.
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+To manage her CAD, Sarah was started on a treatment plan that included medication to lower her cholesterol and blood pressure, as well as aspirin to prevent blood clots. In addition to medication, Sarah was advised to make lifestyle modifications such as improving her diet, quitting smoking, and increasing physical activity.
 
-<span class="c1"># result is a DataFrame
-</span><span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="s">"class.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+Over the course of several months, Sarah's symptoms improved, and follow-up tests showed that her cholesterol and blood pressure were within the target range. However, Sarah continued to experience occasional chest pain, and her medication regimen was adjusted accordingly.
+
+With regular follow-up appointments and adherence to her treatment plan, Sarah's CAD remained under control, and she was able to resume her normal activities with improved quality of life.
+"""</span><span class="p">,</span>
+
+<span class="s">"""John, a 60-year-old man with a history of smoking and high blood pressure, presented to his primary care physician with complaints of chest pain and shortness of breath. Further tests revealed that John had a blockage in one of his coronary arteries, which required urgent intervention. However, John was hesitant to undergo treatment, citing concerns about potential complications and side effects of medications and procedures.
+
+Despite the physician's recommendations and attempts to educate John about the risks of leaving the blockage untreated, John ultimately chose not to pursue any treatment. Over the next several months, John continued to experience symptoms, which progressively worsened, and he ultimately required hospitalization for a heart attack. The medical team attempted to intervene at that point, but the damage to John's heart was severe, and his prognosis was poor.
+"""</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">text_list</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="s">"class.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+        
+<span class="k">val</span> <span class="nv">sentence_embeddings</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">features_asm</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FeaturesAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"features"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">generic_classifier</span> <span class="k">=</span> <span class="nv">GenericClassifierModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"genericclassifier_sdoh_under_treatment_sbiobert_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"features"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"class"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span>
+    <span class="n">sentence_embeddings</span><span class="o">,</span>
+    <span class="n">features_asm</span><span class="o">,</span>
+    <span class="n">generic_classifier</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"""Sarah, a 55-year-old woman with a history of high cholesterol and a family history of heart disease, presented to her primary care physician with complaints of chest pain and shortness of breath. After a thorough evaluation, Sarah was diagnosed with coronary artery disease (CAD), a condition that can lead to heart attacks and other serious complications.
+
+To manage her CAD, Sarah was started on a treatment plan that included medication to lower her cholesterol and blood pressure, as well as aspirin to prevent blood clots. In addition to medication, Sarah was advised to make lifestyle modifications such as improving her diet, quitting smoking, and increasing physical activity.
+
+Over the course of several months, Sarah's symptoms improved, and follow-up tests showed that her cholesterol and blood pressure were within the target range. However, Sarah continued to experience occasional chest pain, and her medication regimen was adjusted accordingly.
+
+With regular follow-up appointments and adherence to her treatment plan, Sarah's CAD remained under control, and she was able to resume her normal activities with improved quality of life.
+"""</span><span class="o">,</span>
+
+<span class="s">"""John, a 60-year-old man with a history of smoking and high blood pressure, presented to his primary care physician with complaints of chest pain and shortness of breath. Further tests revealed that John had a blockage in one of his coronary arteries, which required urgent intervention. However, John was hesitant to undergo treatment, citing concerns about potential complications and side effects of medications and procedures.
+
+Despite the physician's recommendations and attempts to educate John about the risks of leaving the blockage untreated, John ultimately chose not to pursue any treatment. Over the next several months, John continued to experience symptoms, which progressively worsened, and he ultimately required hospitalization for a heart attack. The medical team attempted to intervene at that point, but the damage to John's heart was severe, and his prognosis was poor.
+"""</span><span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+--------------+
-|                                                                                                text|        result|
-+----------------------------------------------------------------------------------------------------+--------------+
-|Par ces motifs, le Tribunal fédéral prononce : 1. Le recours est rejeté dans la mesure où il est ...|[non_critical]|
-+----------------------------------------------------------------------------------------------------+--------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+--------------------------------------+
+|                                                                                                text|                                result|
++----------------------------------------------------------------------------------------------------+--------------------------------------+
+|Sarah, a 55-year-old woman with a <span class="nb">history </span>of high cholesterol and a family <span class="nb">history </span>of heart disea...|                     <span class="o">[</span>Under_Treatment]|
+|John, a 60-year-old man with a <span class="nb">history </span>of smoking and high blood pressure, presented to his prima...|[Not_Under_Treatment_Or_Not_Mentioned]|
++----------------------------------------------------------------------------------------------------+--------------------------------------+
+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -935,11 +993,11 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>legclf_critical_prediction_french</td>
+      <td>genericclassifier_sdoh_under_treatment_sbiobert_cased_mli</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Legal NLP 1.0.0+</td>
+      <td>Healthcare NLP 4.3.2+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -951,45 +1009,41 @@
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[document, token]</td>
+      <td>[features]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[class]</td>
+      <td>[prediction]</td>
     </tr>
     <tr>
       <td>Language:</td>
-      <td>fr</td>
+      <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>415.9 MB</td>
+      <td>3.4 MB</td>
     </tr>
     <tr>
-      <td>Case sensitive:</td>
-      <td>true</td>
-    </tr>
-    <tr>
-      <td>Max sentence length:</td>
-      <td>512</td>
+      <td>Dependencies:</td>
+      <td>sbiobert_base_cased_mli</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="references">References</h2>
 
-<p>Train dataset available <a href="https://huggingface.co/datasets/rcds/legal_criticality_prediction">here</a></p>
+<p>Internal SDOH Project</p>
 
 <h2 id="benchmarking">Benchmarking</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>label         precision  recall  f1-score  support 
-critical      0.74       0.74    0.74      117     
-non_critical  0.81       0.81    0.81      161     
-accuracy      -          -       0.78      278     
-macro-avg     0.77       0.77    0.77      278     
-weighted-avg  0.78       0.78    0.78      278     
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                               label  precision    recall  f1-score   support
+Not_Under_Treatment_Or_Not_Mentioned       0.86      0.68      0.76       222
+                     Under_Treatment       0.86      0.94      0.90       450
+                            accuracy         -         -       0.86       672
+                           macro-avg       0.86      0.81      0.83       672
+                        weighted-avg       0.86      0.86      0.85       672
 </code></pre></div></div>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-03-28T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-04-10T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -1154,7 +1208,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/03/27/finner_broker_reports_specific_sm_en.html">Broker Reports Financial NER (Specific, sm)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/04/10/genericclassifier_sdoh_mental_health_clinical_en.html">SDOH Mental Health For Classification</a></div></div></div>
 
 </div>
 </div>

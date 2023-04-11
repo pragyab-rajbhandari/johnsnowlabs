@@ -10050,6 +10050,306 @@ For example, the default model <code class="language-plaintext highlighter-rouge
 
 <div class="tabs-model-aproach">
 
+  <h2 id="questionanswering">QuestionAnswering</h2>
+
+  <div class="tabs-model-aproach-head tac"></div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>QuestionAnswering is a GPT-based model for answering questions given a context. Unlike span-based models, it generates the answers to the questions, rather than selecting phrases from the given context. The model is capable of answering various types of questions, including yes-no or full-text ones. Types of questions are supported: <code class="language-plaintext highlighter-rouge">"short"</code> (producing yes/no/maybe) answers and <code class="language-plaintext highlighter-rouge">"long"</code> (full answers).</p>
+
+    <p>Available models can be found at the <a href="https://nlp.johnsnowlabs.com/models?annotator=MedicalQuestionAnswering">Models Hub</a>.</p>
+
+    <p>For more extended examples on the document, pre-processing see the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/23.0.Medical_Question_Answering.ipynb">Spark NLP Workshop</a>.</p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, DOCUMENT</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/qa/medical_qa/index.html#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html">MedicalQuestionAnswering</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCols</span><span class="p">(</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">)</span>
+
+<span class="n">med_qa</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">QuestionAnswering</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"medical_qa_biogpt"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"answer"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setTopK</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setQuestionType</span><span class="p">(</span><span class="s">"long"</span><span class="p">)</span> <span class="c1"># "short"
+</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_qa</span><span class="p">])</span>
+
+<span class="n">paper_abstract</span> <span class="o">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+<span class="n">long_question</span> <span class="o">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
+<span class="n">yes_no_question</span> <span class="o">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="n">long_question</span><span class="p">,</span> <span class="n">paper_abstract</span><span class="p">,</span> <span class="s">"long"</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">yes_no_question</span><span class="p">,</span> <span class="n">paper_abstract</span><span class="p">,</span> <span class="s">"short"</span><span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">,</span> <span class="s">"question_type"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="s">"question_type == 'long'"</span><span class="p">))</span>\
+    <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"answer.result"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="s">"question_type == 'short'"</span><span class="p">))</span>\
+    <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"answer.result"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCols</span><span class="p">(</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">)</span>
+
+<span class="n">med_qa</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">QuestionAnswering</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"medical_qa_biogpt"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"answer"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setTopK</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setQuestionType</span><span class="p">(</span><span class="s">"long"</span><span class="p">)</span> <span class="c1"># "short"
+</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_qa</span><span class="p">])</span>
+
+<span class="n">paper_abstract</span> <span class="o">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+<span class="n">long_question</span> <span class="o">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
+<span class="n">yes_no_question</span> <span class="o">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="n">long_question</span><span class="p">,</span> <span class="n">paper_abstract</span><span class="p">,</span> <span class="s">"long"</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">yes_no_question</span><span class="p">,</span> <span class="n">paper_abstract</span><span class="p">,</span> <span class="s">"short"</span><span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">,</span> <span class="s">"question_type"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="s">"question_type == 'long'"</span><span class="p">))</span>\
+    <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"answer.result"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="s">"question_type == 'short'"</span><span class="p">))</span>\
+    <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"answer.result"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCols</span><span class="p">(</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">)</span>
+
+<span class="n">med_qa</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">QuestionAnswering</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"medical_qa_biogpt"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"answer"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setTopK</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setQuestionType</span><span class="p">(</span><span class="s">"long"</span><span class="p">)</span> <span class="c1"># "short"
+</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_qa</span><span class="p">])</span>
+
+<span class="n">paper_abstract</span> <span class="o">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+<span class="n">long_question</span> <span class="o">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
+<span class="n">yes_no_question</span> <span class="o">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="n">long_question</span><span class="p">,</span> <span class="n">paper_abstract</span><span class="p">,</span> <span class="s">"long"</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">yes_no_question</span><span class="p">,</span> <span class="n">paper_abstract</span><span class="p">,</span> <span class="s">"short"</span><span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">,</span> <span class="s">"question_type"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="s">"question_type == 'long'"</span><span class="p">))</span>\
+    <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"answer.result"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="s">"question_type == 'short'"</span><span class="p">))</span>\
+    <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"answer.result"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+
+</span><span class="nn">val</span> <span class="n">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">MultiDocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"question"</span><span class="o">,</span> <span class="s">"context"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCols</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">med_qa</span> <span class="k">=</span> <span class="nv">medical</span><span class="o">.</span><span class="py">QuestionAnswering</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medical_qa_biogpt"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"answer"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">30</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setTopK</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setQuestionType</span><span class="o">(</span><span class="s">"long"</span><span class="o">)</span> <span class="k">#</span> <span class="s">"short"</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_qa</span><span class="o">))</span>
+
+<span class="n">paper_abstract</span> <span class="k">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+<span class="n">long_question</span> <span class="k">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
+<span class="n">yes_no_question</span> <span class="k">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
+
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+    <span class="o">(</span><span class="n">long_question</span><span class="o">,</span> <span class="n">paper_abstract</span><span class="o">,</span> <span class="s">"long"</span> <span class="o">),</span>
+    <span class="o">(</span><span class="n">yes_no_question</span><span class="o">,</span> <span class="n">paper_abstract</span><span class="o">,</span> <span class="s">"short"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"question"</span><span class="o">,</span> <span class="s">"context"</span><span class="o">,</span> <span class="s">"question_type"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+
+</span><span class="nn">val</span> <span class="n">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">MultiDocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"question"</span><span class="o">,</span> <span class="s">"context"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCols</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">med_qa</span> <span class="k">=</span> <span class="nv">finance</span><span class="o">.</span><span class="py">QuestionAnswering</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medical_qa_biogpt"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"answer"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">30</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setTopK</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setQuestionType</span><span class="o">(</span><span class="s">"long"</span><span class="o">)</span> <span class="k">#</span> <span class="s">"short"</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_qa</span><span class="o">))</span>
+
+<span class="n">paper_abstract</span> <span class="k">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+<span class="n">long_question</span> <span class="k">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
+<span class="n">yes_no_question</span> <span class="k">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
+
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+    <span class="o">(</span><span class="n">long_question</span><span class="o">,</span> <span class="n">paper_abstract</span><span class="o">,</span> <span class="s">"long"</span> <span class="o">),</span>
+    <span class="o">(</span><span class="n">yes_no_question</span><span class="o">,</span> <span class="n">paper_abstract</span><span class="o">,</span> <span class="s">"short"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"question"</span><span class="o">,</span> <span class="s">"context"</span><span class="o">,</span> <span class="s">"question_type"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+
+</span><span class="nn">val</span> <span class="n">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">MultiDocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"question"</span><span class="o">,</span> <span class="s">"context"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCols</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">med_qa</span> <span class="k">=</span> <span class="nv">legal</span><span class="o">.</span><span class="py">QuestionAnswering</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medical_qa_biogpt"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"answer"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">30</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setTopK</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setQuestionType</span><span class="o">(</span><span class="s">"long"</span><span class="o">)</span> <span class="k">#</span> <span class="s">"short"</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_qa</span><span class="o">))</span>
+
+<span class="n">paper_abstract</span> <span class="k">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+<span class="n">long_question</span> <span class="k">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
+<span class="n">yes_no_question</span> <span class="k">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
+
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+    <span class="o">(</span><span class="n">long_question</span><span class="o">,</span> <span class="n">paper_abstract</span><span class="o">,</span> <span class="s">"long"</span> <span class="o">),</span>
+    <span class="o">(</span><span class="n">yes_no_question</span><span class="o">,</span> <span class="n">paper_abstract</span><span class="o">,</span> <span class="s">"short"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"question"</span><span class="o">,</span> <span class="s">"context"</span><span class="o">,</span> <span class="s">"question_type"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
   <h2 id="renerchunksfilter">RENerChunksFilter</h2>
 
   <div class="tabs-model-aproach-head tac"></div>
@@ -12326,6 +12626,537 @@ and returns the normalized entity for a particular trained ontology / curated da
   <span class="n">sentence_embeddings</span><span class="o">,</span>
   <span class="n">resolver</span>
 <span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="summarizer">Summarizer</h2>
+
+  <div class="tabs-model-aproach-head tac"></div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>Summarizer annotator that uses a generative deep learning model to create summaries of medical texts given clinical contexts. This annotator helps to quickly summarize complex medical information.</p>
+
+    <p>Available models can be found at the <a href="https://nlp.johnsnowlabs.com/models?annotator=MedicalSummarizer">Models Hub</a>.</p>
+
+    <p>For more extended examples on document pre-processing see the <a href="...">Spark NLP Workshop</a></p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_summarizer/index.html#sparknlp_jsl.annotator.seq2seq.medical_summarizer.MedicalSummarizer">MedicalSummarizer</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/seq2seq/MedicalSummarizer.html">MedicalSummarizer</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>
+
+
+<span class="n">med_summarizer</span>  <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">Summarizer</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"summarizer-generic-jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
+   <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>\
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_summarizer</span><span class="p">])</span>
+
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Patient with hypertension, syncope, and spinal stenosis - for recheck.
+(Medical Transcription Sample Report)
+SUBJECTIVE:
+The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
+PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
+Reviewed and unchanged from the dictation on 12/03/2003.
+MEDICATIONS:
+Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
+ALLERGIES:..."""</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>
+
+
+<span class="n">med_summarizer</span>  <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">Summarizer</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"summarizer-generic-jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
+   <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>\
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_summarizer</span><span class="p">])</span>
+
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Patient with hypertension, syncope, and spinal stenosis - for recheck.
+(Medical Transcription Sample Report)
+SUBJECTIVE:
+The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
+PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
+Reviewed and unchanged from the dictation on 12/03/2003.
+MEDICATIONS:
+Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
+ALLERGIES:..."""</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>
+
+
+<span class="n">med_summarizer</span>  <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">Summarizer</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"summarizer-generic-jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
+   <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>\
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_summarizer</span><span class="p">])</span>
+
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Patient with hypertension, syncope, and spinal stenosis - for recheck.
+(Medical Transcription Sample Report)
+SUBJECTIVE:
+The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
+PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
+Reviewed and unchanged from the dictation on 12/03/2003.
+MEDICATIONS:
+Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
+ALLERGIES:..."""</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+
+</span><span class="nn">val</span> <span class="n">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">med_summarizer</span>  <span class="k">=</span> <span class="nv">medical</span><span class="o">.</span><span class="py">Summarizer</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"flat_t5_ft_caching"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_summarizer</span><span class="o">))</span>
+
+
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Patient with hypertension, syncope, and spinal stenosis - for recheck.
+(Medical Transcription Sample Report)
+SUBJECTIVE:
+The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
+PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
+Reviewed and unchanged from the dictation on 12/03/2003.
+MEDICATIONS:
+Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
+ALLERGIES:..."""</span>
+
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+
+</span><span class="nn">val</span> <span class="n">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">med_summarizer</span>  <span class="k">=</span> <span class="nv">finance</span><span class="o">.</span><span class="py">Summarizer</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"flat_t5_ft_caching"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_summarizer</span><span class="o">))</span>
+
+
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Patient with hypertension, syncope, and spinal stenosis - for recheck.
+(Medical Transcription Sample Report)
+SUBJECTIVE:
+The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
+PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
+Reviewed and unchanged from the dictation on 12/03/2003.
+MEDICATIONS:
+Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
+ALLERGIES:..."""</span>
+
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+
+</span><span class="nn">val</span> <span class="n">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">med_summarizer</span>  <span class="k">=</span> <span class="nv">legal</span><span class="o">.</span><span class="py">Summarizer</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"flat_t5_ft_caching"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_summarizer</span><span class="o">))</span>
+
+
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Patient with hypertension, syncope, and spinal stenosis - for recheck.
+(Medical Transcription Sample Report)
+SUBJECTIVE:
+The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
+PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
+Reviewed and unchanged from the dictation on 12/03/2003.
+MEDICATIONS:
+Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
+ALLERGIES:..."""</span>
+
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="textgenerator">TextGenerator</h2>
+
+  <div class="tabs-model-aproach-head tac"></div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>TextGenerator uses the basic BioGPT model to perform various tasks related to medical text abstraction. With this annotator, a user can provide a prompt and context and instruct the system to perform a specific task, such as explaining why a patient may have a particular disease or paraphrasing the context more directly. In addition, this annotator can create a clinical note for a cancer patient using the given keywords or write medical texts based on introductory sentences. The BioGPT model is trained on large volumes of medical data allowing it to identify and extract the most relevant information from the text provided.</p>
+
+    <p>Available models can be found at the <a href="https://nlp.johnsnowlabs.com/models?annotator=MedicalTextGenerator">Models Hub</a>.</p>
+
+    <p>For more extended examples on document pre-processing see the <a href="...">Spark NLP Workshop</a>.</p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="">MedicalTextGenerator</a></td>
+          <td><strong>Scala API:</strong> <a href="">MedicalTextGenerator</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>
+
+
+<span class="n">med_text_generator</span>   <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">TextGenerator</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"medical_text_generator"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDoSample</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setTopK</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRandomSeed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_text_generator</span> <span class="p">])</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s">"Covid 19 is"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The most common cause of stomach pain is"</span><span class="p">]</span>
+<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>
+
+
+<span class="n">med_text_generator</span>   <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">TextGenerator</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"medical_text_generator"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDoSample</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setTopK</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRandomSeed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_text_generator</span> <span class="p">])</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s">"Covid 19 is"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The most common cause of stomach pain is"</span><span class="p">]</span>
+<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>
+
+
+<span class="n">med_text_generator</span>   <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">TextGenerator</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"medical_text_generator"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDoSample</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setTopK</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRandomSeed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_text_generator</span> <span class="p">])</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s">"Covid 19 is"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The most common cause of stomach pain is"</span><span class="p">]</span>
+<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+
+</span><span class="nn">val</span> <span class="n">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">med_text_generator</span> <span class="k">=</span> <span class="nv">medical</span><span class="o">.</span><span class="py">TextGenerator</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medical_text_generator"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">20</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setDoSample</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setTopK</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRandomSeed</span><span class="o">(</span><span class="mi">42</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_text_generator</span> <span class="o">))</span>
+
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span> <span class="s">"Covid 19 is"</span><span class="o">,</span> <span class="s">"The most common cause of stomach pain is"</span><span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+
+</span><span class="nn">val</span> <span class="n">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">med_text_generator</span> <span class="k">=</span> <span class="nv">finance</span><span class="o">.</span><span class="py">TextGenerator</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medical_text_generator"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">20</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setDoSample</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setTopK</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRandomSeed</span><span class="o">(</span><span class="mi">42</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_text_generator</span> <span class="o">))</span>
+
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span> <span class="s">"Covid 19 is"</span><span class="o">,</span> <span class="s">"The most common cause of stomach pain is"</span><span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+
+</span><span class="nn">val</span> <span class="n">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">med_text_generator</span> <span class="k">=</span> <span class="nv">legal</span><span class="o">.</span><span class="py">TextGenerator</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medical_text_generator"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">20</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setDoSample</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setTopK</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRandomSeed</span><span class="o">(</span><span class="mi">42</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_text_generator</span> <span class="o">))</span>
+
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span> <span class="s">"Covid 19 is"</span><span class="o">,</span> <span class="s">"The most common cause of stomach pain is"</span><span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>          </div>
