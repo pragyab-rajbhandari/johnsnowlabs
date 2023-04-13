@@ -462,10 +462,10 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>SDOH Under Treatment For Classification</title><meta property="og:title" content=""/>
+</script><title>Voice of the Patients (embeddings_clinical_medium)</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis Generic Classifier model is intended for detecting if the patient is under treatment or not. If under treatment is not mentioned in the text, it is regarded as “not under treatment”. The model is trained by using GenericClassifierApproach annotator.Under_Treatment: The patient is under treatment.Not_...">
-<link rel="canonical" href="/2023/04/10/genericclassifier_sdoh_under_treatment_sbiobert_cased_mli_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model extracts healthcare-related terms from the documents transferred from the patient’s own sentences.Note: ‘wip’ suffix indicates that the model development is work-in-progress and will be finalised and the model performance will improved in the upcoming releases.Predicted EntitiesAllergen, Substa...">
+<link rel="canonical" href="/2023/04/12/ner_vop_emb_clinical_medium_wip_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -862,115 +862,101 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/hsaglamlar/2023-04-10-genericclassifier_sdoh_under_treatment_sbiobert_cased_mli_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/mauro-nievoff/2023-04-12-ner_vop_emb_clinical_medium_wip_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Apr 10, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-04-10T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>SDOH Under Treatment For Classification</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="SDOH Under Treatment For Classification"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licenced</li><li>clinical</li><li>sdoh</li><li>generic_classifier</li><li>under_treatment</li><li>biobert</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-04-10T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licenced,clinical,sdoh,generic_classifier,under_treatment,biobert,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Apr 12, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-04-12T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Voice of the Patients (embeddings_clinical_medium)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Voice of the Patients (embeddings_clinical_medium)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>clinical</li><li>en</li><li>ner</li><li>vop</li><li>patient</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-04-12T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,clinical,en,ner,vop,patient"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This Generic Classifier model is intended for detecting if the patient is under treatment or not. If under treatment is not mentioned in the text, it is regarded as “not under treatment”. The model is trained by using GenericClassifierApproach annotator.</p>
+<p>This model extracts healthcare-related terms from the documents transferred from the patient’s own sentences.</p>
 
-<p><code class="language-plaintext highlighter-rouge">Under_Treatment</code>: The patient is under treatment.</p>
-
-<p><code class="language-plaintext highlighter-rouge">Not_Under_Treatment_Or_Not_Mentioned</code>: The patient is not under treatment or it is not mentioned in the clinical notes.</p>
+<p>Note: ‘wip’ suffix indicates that the model development is work-in-progress and will be finalised and the model performance will improved in the upcoming releases.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">Under_Treatment</code>, <code class="language-plaintext highlighter-rouge">Not_Under_Treatment_Or_Not_Mentioned</code></p>
+<p><code class="language-plaintext highlighter-rouge">Allergen</code>, <code class="language-plaintext highlighter-rouge">SubstanceQuantity</code>, <code class="language-plaintext highlighter-rouge">RaceEthnicity</code>, <code class="language-plaintext highlighter-rouge">Measurements</code>, <code class="language-plaintext highlighter-rouge">InjuryOrPoisoning</code>, <code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Modifier</code>, <code class="language-plaintext highlighter-rouge">TestResult</code>, <code class="language-plaintext highlighter-rouge">MedicalDevice</code>, <code class="language-plaintext highlighter-rouge">Vaccine</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">HealthStatus</code>, <code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">RelationshipStatus</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">DateTime</code>, <code class="language-plaintext highlighter-rouge">AdmissionDischarge</code>, <code class="language-plaintext highlighter-rouge">Disease</code>, <code class="language-plaintext highlighter-rouge">Test</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Laterality</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">ClinicalDept</code>, <code class="language-plaintext highlighter-rouge">Dosage</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Drug</code>, <code class="language-plaintext highlighter-rouge">VitalTest</code>, <code class="language-plaintext highlighter-rouge">PsychologicalCondition</code>, <code class="language-plaintext highlighter-rouge">Form</code>, <code class="language-plaintext highlighter-rouge">BodyPart</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">Gender</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_under_treatment_sbiobert_cased_mli_en_4.3.2_3.2_1681116067393.zip" class="button button-orange">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_under_treatment_sbiobert_cased_mli_en_4.3.2_3.2_1681116067393.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_emb_clinical_medium_wip_en_4.4.0_3.2_1681315530573.zip" class="button button-orange">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_emb_clinical_medium_wip_en_4.4.0_3.2_1681315530573.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
-        
-<span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span><span class="s">'clinical/models'</span><span class="p">)</span>\
+
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence_embeddings"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">features_asm</span> <span class="o">=</span> <span class="n">FeaturesAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"features"</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">generic_classifier</span> <span class="o">=</span> <span class="n">GenericClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"genericclassifier_sdoh_under_treatment_sbiobert_cased_mli"</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"class"</span><span class="p">)</span>
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="n">embeddings_clinical_medium</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>                
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">sentence_embeddings</span><span class="p">,</span>
-    <span class="n">features_asm</span><span class="p">,</span>
-    <span class="n">generic_classifier</span>    
-<span class="p">])</span>
+<span class="n">ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_vop_emb_clinical_medium_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
-<span class="n">text_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"""Sarah, a 55-year-old woman with a history of high cholesterol and a family history of heart disease, presented to her primary care physician with complaints of chest pain and shortness of breath. After a thorough evaluation, Sarah was diagnosed with coronary artery disease (CAD), a condition that can lead to heart attacks and other serious complications.
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+                            <span class="n">sentence_detector</span><span class="p">,</span>
+                            <span class="n">tokenizer</span><span class="p">,</span>
+                            <span class="n">word_embeddings</span><span class="p">,</span>
+                            <span class="n">ner</span><span class="p">,</span>
+                            <span class="n">ner_converter</span><span class="p">])</span>
 
-To manage her CAD, Sarah was started on a treatment plan that included medication to lower her cholesterol and blood pressure, as well as aspirin to prevent blood clots. In addition to medication, Sarah was advised to make lifestyle modifications such as improving her diet, quitting smoking, and increasing physical activity.
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Hello,I"</span><span class="n">m</span> <span class="mi">20</span> <span class="n">year</span> <span class="n">old</span> <span class="n">girl</span><span class="p">.</span> <span class="n">I</span><span class="s">"m diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I"</span><span class="n">m</span> <span class="n">taking</span> <span class="n">weekly</span> <span class="n">supplement</span> <span class="n">of</span> <span class="n">vitamin</span> <span class="n">D</span> <span class="ow">and</span> <span class="mi">1000</span> <span class="n">mcg</span> <span class="n">b12</span> <span class="n">daily</span><span class="p">.</span> <span class="n">I</span><span class="s">"m taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I"</span><span class="n">m</span> <span class="n">facing</span> <span class="k">with</span> <span class="mi">2</span> <span class="n">new</span> <span class="n">problem</span> <span class="k">from</span> <span class="n">last</span> <span class="n">week</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">breathtaking</span> <span class="n">problem</span> <span class="ow">and</span> <span class="n">very</span> <span class="n">rapid</span> <span class="n">heartrate</span><span class="p">.</span> <span class="n">I</span> <span class="n">just</span> <span class="n">want</span> <span class="n">to</span> <span class="n">know</span> <span class="k">if</span> <span class="n">i</span> <span class="n">should</span> <span class="n">start</span> <span class="n">allopathy</span> <span class="n">medicine</span> <span class="ow">or</span> <span class="n">homeopathy</span> <span class="ow">is</span> <span class="n">okay</span><span class="err">?</span> <span class="n">Bcs</span> <span class="n">i</span> <span class="n">heard</span> <span class="n">that</span> <span class="n">thyroid</span> <span class="n">take</span> <span class="n">time</span> <span class="n">to</span> <span class="n">start</span> <span class="n">recover</span><span class="p">.</span> <span class="n">So</span> <span class="n">please</span> <span class="n">let</span> <span class="n">me</span> <span class="n">know</span> <span class="k">if</span> <span class="n">both</span> <span class="n">of</span> <span class="n">medicines</span> <span class="n">take</span> <span class="n">same</span> <span class="n">time</span><span class="p">.</span> <span class="n">Because</span> <span class="n">some</span> <span class="n">of</span> <span class="n">my</span> <span class="n">friends</span> <span class="n">advising</span> <span class="n">me</span> <span class="n">to</span> <span class="n">start</span> <span class="n">allopathy</span> <span class="ow">and</span> <span class="n">never</span> <span class="n">take</span> <span class="n">a</span> <span class="n">chance</span> <span class="k">as</span> <span class="n">i</span> <span class="n">can</span> <span class="n">develop</span> <span class="n">some</span> <span class="n">serious</span> <span class="n">problems</span><span class="p">.</span><span class="n">Sorry</span> <span class="k">for</span> <span class="n">my</span> <span class="n">poor</span> <span class="n">english</span><span class="err">😐</span><span class="n">Thank</span> <span class="n">you</span><span class="p">.</span><span class="s">"]]).toDF("</span><span class="n">text</span><span class="s">")
 
-Over the course of several months, Sarah's symptoms improved, and follow-up tests showed that her cholesterol and blood pressure were within the target range. However, Sarah continued to experience occasional chest pain, and her medication regimen was adjusted accordingly.
-
-With regular follow-up appointments and adherence to her treatment plan, Sarah's CAD remained under control, and she was able to resume her normal activities with improved quality of life.
-"""</span><span class="p">,</span>
-
-<span class="s">"""John, a 60-year-old man with a history of smoking and high blood pressure, presented to his primary care physician with complaints of chest pain and shortness of breath. Further tests revealed that John had a blockage in one of his coronary arteries, which required urgent intervention. However, John was hesitant to undergo treatment, citing concerns about potential complications and side effects of medications and procedures.
-
-Despite the physician's recommendations and attempts to educate John about the risks of leaving the blockage untreated, John ultimately chose not to pursue any treatment. Over the next several months, John continued to experience symptoms, which progressively worsened, and he ultimately required hospitalization for a heart attack. The medical team attempted to intervene at that point, but the damage to John's heart was severe, and his prognosis was poor.
-"""</span><span class="p">]</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">text_list</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="s">"class.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-</code></pre></div>  </div>
+result = pipeline.fit(data).transform(data)
+</span></code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-        
-<span class="k">val</span> <span class="nv">sentence_embeddings</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+    
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span><span class="o">().</span><span class="py">pretrained</span><span class="o">(</span><span class="n">embeddings_clinical_medium</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>                
+    
+<span class="k">val</span> <span class="nv">ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_vop_emb_clinical_medium_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+    
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">features_asm</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FeaturesAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"features"</span><span class="o">)</span>
+        
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span>
+                            <span class="n">sentence_detector</span><span class="o">,</span>
+                            <span class="n">tokenizer</span><span class="o">,</span>
+                            <span class="n">word_embeddings</span><span class="o">,</span>
+                            <span class="n">ner</span><span class="o">,</span>
+                            <span class="n">ner_converter</span><span class="o">))</span>    
 
-<span class="k">val</span> <span class="nv">generic_classifier</span> <span class="k">=</span> <span class="nv">GenericClassifierModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"genericclassifier_sdoh_under_treatment_sbiobert_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"features"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"class"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">document_assembler</span><span class="o">,</span>
-    <span class="n">sentence_embeddings</span><span class="o">,</span>
-    <span class="n">features_asm</span><span class="o">,</span>
-    <span class="n">generic_classifier</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"""Sarah, a 55-year-old woman with a history of high cholesterol and a family history of heart disease, presented to her primary care physician with complaints of chest pain and shortness of breath. After a thorough evaluation, Sarah was diagnosed with coronary artery disease (CAD), a condition that can lead to heart attacks and other serious complications.
-
-To manage her CAD, Sarah was started on a treatment plan that included medication to lower her cholesterol and blood pressure, as well as aspirin to prevent blood clots. In addition to medication, Sarah was advised to make lifestyle modifications such as improving her diet, quitting smoking, and increasing physical activity.
-
-Over the course of several months, Sarah's symptoms improved, and follow-up tests showed that her cholesterol and blood pressure were within the target range. However, Sarah continued to experience occasional chest pain, and her medication regimen was adjusted accordingly.
-
-With regular follow-up appointments and adherence to her treatment plan, Sarah's CAD remained under control, and she was able to resume her normal activities with improved quality of life.
-"""</span><span class="o">,</span>
-
-<span class="s">"""John, a 60-year-old man with a history of smoking and high blood pressure, presented to his primary care physician with complaints of chest pain and shortness of breath. Further tests revealed that John had a blockage in one of his coronary arteries, which required urgent intervention. However, John was hesitant to undergo treatment, citing concerns about potential complications and side effects of medications and procedures.
-
-Despite the physician's recommendations and attempts to educate John about the risks of leaving the blockage untreated, John ultimately chose not to pursue any treatment. Over the next several months, John continued to experience symptoms, which progressively worsened, and he ultimately required hospitalization for a heart attack. The medical team attempted to intervene at that point, but the damage to John's heart was severe, and his prognosis was poor.
-"""</span><span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"Hello,I"</span><span class="n">m</span> <span class="mi">20</span> <span class="n">year</span> <span class="n">old</span> <span class="n">girl</span><span class="o">.</span> <span class="n">I</span><span class="s">"m diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I"</span><span class="n">m</span> <span class="n">taking</span> <span class="n">weekly</span> <span class="n">supplement</span> <span class="n">of</span> <span class="n">vitamin</span> <span class="n">D</span> <span class="n">and</span> <span class="mi">1000</span> <span class="n">mcg</span> <span class="n">b12</span> <span class="n">daily</span><span class="o">.</span> <span class="n">I</span><span class="s">"m taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I"</span><span class="n">m</span> <span class="n">facing</span> <span class="k">with</span> <span class="mi">2</span> <span class="k">new</span> <span class="n">problem</span> <span class="n">from</span> <span class="n">last</span> <span class="n">week</span> <span class="n">that</span> <span class="n">is</span> <span class="n">breathtaking</span> <span class="n">problem</span> <span class="n">and</span> <span class="n">very</span> <span class="n">rapid</span> <span class="n">heartrate</span><span class="o">.</span> <span class="n">I</span> <span class="n">just</span> <span class="n">want</span> <span class="n">to</span> <span class="n">know</span> <span class="k">if</span> <span class="n">i</span> <span class="n">should</span> <span class="n">start</span> <span class="n">allopathy</span> <span class="n">medicine</span> <span class="n">or</span> <span class="n">homeopathy</span> <span class="n">is</span> <span class="n">okay</span><span class="o">?</span> <span class="nc">Bcs</span> <span class="n">i</span> <span class="n">heard</span> <span class="n">that</span> <span class="n">thyroid</span> <span class="n">take</span> <span class="n">time</span> <span class="n">to</span> <span class="n">start</span> <span class="n">recover</span><span class="o">.</span> <span class="nc">So</span> <span class="n">please</span> <span class="n">let</span> <span class="n">me</span> <span class="n">know</span> <span class="k">if</span> <span class="n">both</span> <span class="n">of</span> <span class="n">medicines</span> <span class="n">take</span> <span class="n">same</span> <span class="n">time</span><span class="o">.</span> <span class="nc">Because</span> <span class="n">some</span> <span class="n">of</span> <span class="n">my</span> <span class="n">friends</span> <span class="n">advising</span> <span class="n">me</span> <span class="n">to</span> <span class="n">start</span> <span class="n">allopathy</span> <span class="n">and</span> <span class="n">never</span> <span class="n">take</span> <span class="n">a</span> <span class="n">chance</span> <span class="n">as</span> <span class="n">i</span> <span class="n">can</span> <span class="n">develop</span> <span class="n">some</span> <span class="n">serious</span> <span class="nv">problems</span><span class="o">.</span><span class="py">Sorry</span> <span class="k">for</span> <span class="n">my</span> <span class="n">poor</span> <span class="n">english</span><span class="o">😐</span><span class="nc">Thank</span> <span class="n">you</span><span class="o">.</span><span class="s">").toDS.toDF("</span><span class="n">text</span><span class="err">"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
@@ -978,13 +964,64 @@ Despite the physician's recommendations and attempts to educate John about the r
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+--------------------------------------+
-|                                                                                                text|                                result|
-+----------------------------------------------------------------------------------------------------+--------------------------------------+
-|Sarah, a 55-year-old woman with a <span class="nb">history </span>of high cholesterol and a family <span class="nb">history </span>of heart disea...|                     <span class="o">[</span>Under_Treatment]|
-|John, a 60-year-old man with a <span class="nb">history </span>of smoking and high blood pressure, presented to his prima...|[Not_Under_Treatment_Or_Not_Mentioned]|
-+----------------------------------------------------------------------------------------------------+--------------------------------------+
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| chunk                | ner_label              |
+|:---------------------|:-----------------------|
+| 20 year old          | Age                    |
+| girl                 | Gender                 |
+| hyperthyroid         | Disease                |
+| 1 month ago          | DateTime               |
+| weak                 | Symptom                |
+| light                | Symptom                |
+| panic attacks        | PsychologicalCondition |
+| depression           | PsychologicalCondition |
+| left                 | Laterality             |
+| chest                | BodyPart               |
+| pain                 | Symptom                |
+| increased            | TestResult             |
+| heart rate           | VitalTest              |
+| rapidly              | Modifier               |
+| weight loss          | Symptom                |
+| 4 months             | Duration               |
+| hospital             | ClinicalDept           |
+| discharged           | AdmissionDischarge     |
+| hospital             | ClinicalDept           |
+| blood tests          | Test                   |
+| brain                | BodyPart               |
+| mri                  | Test                   |
+| ultrasound scan      | Test                   |
+| endoscopy            | Procedure              |
+| doctors              | Employment             |
+| homeopathy doctor    | Employment             |
+| he                   | Gender                 |
+| hyperthyroid         | Disease                |
+| TSH                  | Test                   |
+| 0.15                 | TestResult             |
+| T3                   | Test                   |
+| T4                   | Test                   |
+| normal               | TestResult             |
+| b12 deficiency       | Disease                |
+| vitamin D deficiency | Disease                |
+| weekly               | Frequency              |
+| supplement           | Drug                   |
+| vitamin D            | Drug                   |
+| 1000 mcg             | Dosage                 |
+| b12                  | Drug                   |
+| daily                | Frequency              |
+| homeopathy medicine  | Treatment              |
+| 40 days              | Duration               |
+| after 30 days        | DateTime               |
+| TSH                  | Test                   |
+| 0.5                  | TestResult             |
+| now                  | DateTime               |
+| weakness             | Symptom                |
+| depression           | PsychologicalCondition |
+| last week            | DateTime               |
+| rapid                | TestResult             |
+| heartrate            | VitalTest              |
+| allopathy medicine   | Treatment              |
+| homeopathy           | Treatment              |
+| thyroid              | BodyPart               |
+| allopathy            | Treatment              |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -993,11 +1030,11 @@ Despite the physician's recommendations and attempts to educate John about the r
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>genericclassifier_sdoh_under_treatment_sbiobert_cased_mli</td>
+      <td>ner_vop_emb_clinical_medium_wip</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 4.3.2+</td>
+      <td>Healthcare NLP 4.4.0+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -1009,11 +1046,11 @@ Despite the physician's recommendations and attempts to educate John about the r
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[features]</td>
+      <td>[sentence, token, embeddings]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[prediction]</td>
+      <td>[ner]</td>
     </tr>
     <tr>
       <td>Language:</td>
@@ -1021,29 +1058,63 @@ Despite the physician's recommendations and attempts to educate John about the r
     </tr>
     <tr>
       <td>Size:</td>
-      <td>3.4 MB</td>
+      <td>3.9 MB</td>
     </tr>
     <tr>
       <td>Dependencies:</td>
-      <td>sbiobert_base_cased_mli</td>
+      <td>embeddings_clinical_medium</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="references">References</h2>
 
-<p>Internal SDOH Project</p>
+<p>In-house annotated health-related text in colloquial language.</p>
+
+<h2 id="sample-text-from-the-training-dataset">Sample text from the training dataset</h2>
+
+<p>Hello,I”m 20 year old girl. I”m diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I”m taking weekly supplement of vitamin D and 1000 mcg b12 daily. I”m taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I”m facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you.</p>
 
 <h2 id="benchmarking">Benchmarking</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                               label  precision    recall  f1-score   support
-Not_Under_Treatment_Or_Not_Mentioned       0.86      0.68      0.76       222
-                     Under_Treatment       0.86      0.94      0.90       450
-                            accuracy         -         -       0.86       672
-                           macro-avg       0.86      0.81      0.83       672
-                        weighted-avg       0.86      0.86      0.85       672
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                 label    tp   fp   fn  total  precision  recall   f1
+              Allergen     0    1    8      8       0.00    0.00 0.00
+     SubstanceQuantity     9   14   18     27       0.39    0.33 0.36
+         RaceEthnicity     2    0    6      8       1.00    0.25 0.40
+          Measurements    41   25   33     74       0.62    0.55 0.59
+     InjuryOrPoisoning    66   37   51    117       0.64    0.56 0.60
+             Treatment    96   39   46    142       0.71    0.68 0.69
+              Modifier   642  268  271    913       0.71    0.70 0.70
+            TestResult   394  185  154    548       0.68    0.72 0.70
+         MedicalDevice   177   76   67    244       0.70    0.73 0.71
+               Vaccine    20    4   12     32       0.83    0.63 0.71
+             Frequency   456  144  187    643       0.76    0.71 0.73
+          HealthStatus    60    4   38     98       0.94    0.61 0.74
+                 Route    24    4   12     36       0.86    0.67 0.75
+    RelationshipStatus    19    3    9     28       0.86    0.68 0.76
+             Procedure   286   91   80    366       0.76    0.78 0.77
+              Duration   846  227  269   1115       0.79    0.76 0.77
+              DateTime  1813  455  391   2204       0.80    0.82 0.81
+    AdmissionDischarge    19    1    8     27       0.95    0.70 0.81
+               Disease  1247  318  256   1503       0.80    0.83 0.81
+                  Test   734  150  175    909       0.83    0.81 0.82
+             Substance   156   48   22    178       0.76    0.88 0.82
+            Laterality   440   91   78    518       0.83    0.85 0.84
+               Symptom  3069  566  630   3699       0.84    0.83 0.84
+          ClinicalDept   205   35   31    236       0.85    0.87 0.86
+                Dosage   273   42   49    322       0.87    0.85 0.86
+                   Age   294   60   29    323       0.83    0.91 0.87
+                  Drug  1035  188  100   1135       0.85    0.91 0.88
+             VitalTest   144   23   13    157       0.86    0.92 0.89
+PsychologicalCondition   284   32   30    314       0.90    0.90 0.90
+                  Form   234   32   17    251       0.88    0.93 0.91
+              BodyPart  2532  256  213   2745       0.91    0.92 0.92
+            Employment   980   65   62   1042       0.94    0.94 0.94
+                Gender  1174   27   20   1194       0.98    0.98 0.98
+             macro_avg 17771 3511 3385  21156       0.79    0.73 0.75
+             micro_avg 17771 3511 3385  21156       0.84    0.84 0.84
 </code></pre></div></div>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-04-10T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-04-12T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -1208,7 +1279,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/04/10/genericclassifier_sdoh_mental_health_clinical_en.html">SDOH Mental Health For Classification</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/04/12/ner_vop_emb_clinical_large_wip_en.html">Voice of the Patients (embeddings_clinical_large)</a></div></div></div>
 
 </div>
 </div>
