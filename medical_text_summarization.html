@@ -26,11 +26,11 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>Biomedical Research  - Biomedical NLP Demos & Notebooks</title><meta property="og:title" content="Biomedical NLP: Biomedical Research  - John Snow Labs"/>
+</script><title>Medical Text Summarization - Biomedical NLP Demos & Notebooks</title><meta property="og:title" content="Biomedical NLP: Medical Text Summarization - John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<link rel="canonical" href="/biomedical_research"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<link rel="canonical" href="/medical_text_summarization"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -426,7 +426,7 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/WebPage"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><header class="main-docs have_subtitle">
-          <div class="top-title mont">Spark NLP in Action</div><div class="top-subtitle mont">Run 300+ live demos and notebooks</div></header></div><meta itemprop="headline" content="Biomedical Research  - Biomedical NLP Demos & Notebooks"><div class="js-article-content"><div class="demomenu">
+          <div class="top-title mont">Spark NLP in Action</div><div class="top-subtitle mont">Run 300+ live demos and notebooks</div></header></div><meta itemprop="headline" content="Medical Text Summarization - Biomedical NLP Demos & Notebooks"><div class="js-article-content"><div class="demomenu">
                           <div class="subtitle">Demos Categories</div><div class="demopage-sidemenu">
     <div class="sidemenu">
       <div class="col-side">
@@ -535,13 +535,22 @@
         <ul class="acc-top"><li class="acc-top-item">Biomedical NLP<i class="fas fa-chevron-down"></i></li></ul>
         <ul class="acc-body">          
           <li      >
-            <a href="/genes_variants_phenotypes">Genes, Variants, Phenotypes</a>
+            <a href="/find_biomedical_entities">Find Biomedical Entities</a>
           </li>
           <li      >
-            <a href="/clinical_trials">Clinical Trials</a>
+            <a href="/analyze_clinical_trial_protocols">Analyze Clinical Trial Protocols</a>
+          </li>
+          <li      >
+            <a href="/analyze_biomedical_research">Analyze Biomedical Research</a>
+          </li>
+          <li      >
+            <a href="/medical_question_answering">Medical Question Answering</a>
+          </li>
+          <li      >
+            <a href="/medical_text_generation">Medical Text Generation</a>
           </li>
           <li    class="active"     >
-            <a href="/biomedical_research">Biomedical Research</a>
+            <a href="/medical_text_summarization">Medical Text Summarization</a>
           </li>
         </ul> 
         <ul class="acc-top"><li class="acc-top-item">Medical NLP: World Languages<i class="fas fa-chevron-down"></i></li></ul>
@@ -611,6 +620,12 @@
           <li      >
             <a href="/text_summarization">Text Summarization</a>
           </li>
+          <li      >
+            <a href="/financial_document_understanding_visual_nlp">Financial Document Understanding Visual NLP</a>
+          </li>
+          <li      >
+            <a href="/financial_question_answering">Finance Question Answering in Financial NLP</a>
+          </li>
         </ul>
         <ul class="acc-top"><li class="acc-top-item">Legal NLP<i class="fas fa-chevron-down"></i></li></ul>
         <ul class="acc-body"> 
@@ -638,6 +653,9 @@
           <li      >
             <a href="/long_document_splitting">Long Document Splitting</a>
           </li>
+          <li      >
+            <a href="/legal_question_answering">Legal Question Answering in Legal NLP</a>
+          </li>
         </ul>   
       </div>
     </div>
@@ -646,70 +664,30 @@
 
       <div class="">
         
-<h1 class="subtitle">Biomedical Research - Live Demos & Notebooks</h1><div class="grid--container main-big" id="panels"><div class="tab-wrapper-inner"><div class="tab-item ">
-              <div class="tab-item-inner">
-                <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
-                        <img src="/assets/images/Medical_Question_Answering_BioGPT.svg" />
-                      </figure><div class="tab-item-title">Medical Question Answering (BioGPT)</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">Automatically generate answers to questions with context in clinical documents. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="medical_question_answering_biogpt" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/BIOGPT_MEDICAL_QUESTION_ANSWERING/">Live Demo</a></li><li><a id="medical_question_answering_biogpt" class="btn button--blue_btn button--pill button--lg"
-                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb">Colab</a></li></ul></div> 
-            </div><div class="tab-item ">
-              <div class="tab-item-inner">
-                <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
-                        <img src="/assets/images/Detect_drugs_interactions.svg" />
-                      </figure><div class="tab-item-title">Detect drugs interactions</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">Detect possible interactions between drugs using out-of-the-box Relation Extraction Spark NLP model. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="detect_drugs_interactions" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/RE_DRUG_DRUG_INT/">Live Demo</a></li><li><a id="detect_drugs_interactions" class="btn button--blue_btn button--pill button--lg"
-                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/RE_DRUG_DRUG_INT.ipynb">Colab</a></li></ul></div> 
-            </div><div class="tab-item ">
-              <div class="tab-item-inner">
-                <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
-                        <img src="/assets/images/Classify-documents.svg" />
-                      </figure><div class="tab-item-title">PICO Classifier</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">This demo shows how to classify medical texts in accordance with PICO Components. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="pico_classifier" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_PICO/">Live Demo</a></li><li><a id="pico_classifier" class="btn button--blue_btn button--pill button--lg"
-                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/CLINICAL_CLASSIFICATION.ipynb">Colab</a></li></ul></div> 
-            </div><div class="tab-item ">
-              <div class="tab-item-inner">
-                <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
-                        <img src="/assets/images/Detect_relations_between_chemicals_and_proteins.svg" />
-                      </figure><div class="tab-item-title">Detect relations between chemicals and proteins</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">Automatically detect possible relationships between chemicals and proteins using a predefined Relation Extraction model. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="detect_relations_between_chemicals_and_proteins" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/RE_CHEM_PROT/">Live Demo</a></li><li><a id="detect_relations_between_chemicals_and_proteins" class="btn button--blue_btn button--pill button--lg"
-                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/RE_CHEM_PROT.ipynb">Colab</a></li></ul></div> 
-            </div><div class="tab-item ">
-              <div class="tab-item-inner">
-                <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
-                        <img src="/assets/images/Extract_relations_between_drugs_and_proteins.svg" />
-                      </figure><div class="tab-item-title">Extract relations between drugs and proteins</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">This model detects interactions between chemical compounds/drugs and genes/proteins. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="extract_relations_between_drugs_proteins" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/RE_DRUG_PROT/">Live Demo</a></li><li><a id="extract_relations_between_drugs_proteins" class="btn button--blue_btn button--pill button--lg"
-                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/RE_DRUG_PROT.ipynb">Colab</a></li></ul></div> 
-            </div><div class="tab-item ">
-              <div class="tab-item-inner">
-                <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
-                        <img src="/assets/images/DetectPathogenConcepts.svg" />
-                      </figure><div class="tab-item-title">Detect Pathogen Concepts</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">This demo automatically identifies pathogen concepts from clinical text. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="detect_pathogen_concepts" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/NER_PATHOGEN/">Live Demo</a></li><li><a id="detect_pathogen_concepts" class="btn button--blue_btn button--pill button--lg"
-                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_PATHOGEN.ipynb">Colab</a></li></ul></div> 
-            </div><div class="tab-item ">
+<h1 class="subtitle">Biomedical NLP - Live Demos & Notebooks</h1><div class="grid--container main-big" id="panels"><div class="tab-wrapper-inner"><div class="tab-item ">
               <div class="tab-item-inner">
                 <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
                         <img src="/assets/images/Detect_mentions_of_general_medical_terms.svg" />
-                      </figure><div class="tab-item-title">Detect mentions of general medical terms (coarse)</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">Extract general medical terms in text like body parts, cells, genes, symptoms, etc in text. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="detect_mentions_general_medical_terms_coarse" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/NER_MEDMENTIONS_COARSE/">Live Demo</a></li><li><a id="detect_mentions_general_medical_terms_coarse" class="btn button--blue_btn button--pill button--lg"
-                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_MEDMENTIONS_COARSE.ipynb">Colab</a></li></ul></div> 
+                      </figure><div class="tab-item-title">BioMedical Text Summarization</div>
+                  </div><div class="tab-description"><div class="tab-description-inner">This demo features a biomedical text summarization model that can effectively summarize complex medical information into concise summaries. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="biomedical_text_summarization" class="btn button--normal button--pill button--lg"
+                        href="https://demo.johnsnowlabs.com/healthcare/BIOMEDICAL_TEXT_SUMMARIZATION/">Live Demo</a></li><li><a id="biomedical_text_summarization" class="btn button--blue_btn button--pill button--lg"
+                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb">Colab</a></li></ul></div> 
             </div><div class="tab-item ">
               <div class="tab-item-inner">
                 <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
                         <img src="/assets/images/MedicalQuestionAnswerin.svg" />
-                      </figure><div class="tab-item-title">Medical Question Answering</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">Automatically generate answers to questions with context in clinical documents <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="medical_question_answering" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_QUESTION_ANSWERING/">Live Demo</a></li><li><a id="medical_question_answering" class="btn button--blue_btn button--pill button--lg"
-                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_QUESTION_ANSWERING.ipynb">Colab</a></li></ul></div> 
+                      </figure><div class="tab-item-title">Medical Text Summarization</div>
+                  </div><div class="tab-description"><div class="tab-description-inner">This demo showcases the capabilities of a specialized summarization model that has been trained specifically for medical text. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="medical_text_summarization" class="btn button--normal button--pill button--lg"
+                        href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION/">Live Demo</a></li><li><a id="medical_text_summarization" class="btn button--blue_btn button--pill button--lg"
+                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb">Colab</a></li></ul></div> 
+            </div><div class="tab-item ">
+              <div class="tab-item-inner">
+                <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
+                        <img src="/assets/images/MedicalQuestionAnswerin.svg" />
+                      </figure><div class="tab-item-title">Medical Text Summarization and Question</div>
+                  </div><div class="tab-description"><div class="tab-description-inner">This demo showcases the capabilities of a specialized Flan-T5 model that has been fine-tuned to summarize medical questions and generate related summaries and questions. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="medical_text_summarization_question" class="btn button--normal button--pill button--lg"
+                        href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION_QA/">Live Demo</a></li><li><a id="medical_text_summarization_question" class="btn button--blue_btn button--pill button--lg"
+                        href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb">Colab</a></li></ul></div> 
             </div></div></div></div> </section></div>
 </div>
 
