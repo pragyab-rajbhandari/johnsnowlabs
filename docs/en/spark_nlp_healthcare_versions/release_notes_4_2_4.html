@@ -897,8 +897,8 @@ Obfuscated text :  Fitzpatrick is a &lt;AGE&gt; y.o. patient admitted. Mr. Bowma
       <tr>
         <td>How to import</td>
         <td>You can import this module for NER and Assertion as shown here</td>
-        <td><code class="language-plaintext highlighter-rouge">from sparknlp_jsl.utils.training_log_parser import ner_log_parser</code></td>
-        <td><code class="language-plaintext highlighter-rouge">from sparknlp_jsl.utils.training_log_parser import assertion_log_parser</code></td>
+        <td><code class="language-plaintext highlighter-rouge">from sparknlp_jsl.training_log_parser import ner_log_parser</code></td>
+        <td><code class="language-plaintext highlighter-rouge">from sparknlp_jsl.training_log_parser import assertion_log_parser</code></td>
       </tr>
       <tr>
         <td><code class="language-plaintext highlighter-rouge">get_charts</code></td>
@@ -935,7 +935,7 @@ Obfuscated text :  Fitzpatrick is a &lt;AGE&gt; y.o. patient admitted. Mr. Bowma
 
   <p><em>Import</em></p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.utils.training_log_parser</span> <span class="kn">import</span> <span class="n">ner_log_parser</span><span class="p">,</span> <span class="n">assertion_log_parser</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.training_log_parser</span> <span class="kn">import</span> <span class="n">ner_log_parser</span><span class="p">,</span> <span class="n">assertion_log_parser</span>
 
 <span class="n">ner_parser</span> <span class="o">=</span> <span class="n">ner_log_parser</span><span class="p">()</span>
 <span class="n">assertion_parser</span> <span class="o">=</span> <span class="n">assertion_log_parser</span><span class="p">()</span>
