@@ -545,55 +545,75 @@
           <h1>Spark OCR release notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_4_3_3.md">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_4_4_0.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark OCR release notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.3.3</h2>
+  <h2 id="section">4.4.0</h2>
 
-  <p>Release date: 14-03-2023</p>
+  <p>Release date: 15-04-2023</p>
 
-  <p>We’re glad to announce that Visual NLP 😎 4.3.3 has been released.</p>
+  <p>We’re glad to announce that Visual NLP 😎 4.4.0 has been released.</p>
 
   <h3 id="highlights">Highlights</h3>
   <ul>
-    <li>New parameter keepOriginalEncoding in PdfToHocr.</li>
-    <li>New Yolo-based table and form detector.</li>
-    <li>Memory consumption in VisualQuestionAnswering and ImageTableDetector models has been improved.</li>
-    <li>Fixes in AlabReader</li>
-    <li>Fixes in HocrToTextTable.</li>
+    <li>Pretrained Pipelines for Visual NLP</li>
+    <li>Deprecations &amp; Changes</li>
+    <li>Improvements</li>
+    <li>New notebooks</li>
   </ul>
 
-  <h4 id="new-parameter-keeporiginalencoding-in-pdftohocr">New parameter keepOriginalEncoding in PdfToHocr</h4>
-  <p>Now you can choose to make PdfToHocr return an ASCII normalized version of the characters present in the PDF(keepOriginalEncoding=False) or to return the original Unicode character(keepOriginalEncoding=True).
-Source PDF,
-<img src="/assets/images/ocr/source.png" alt="image" /></p>
+  <h4 id="pretrained-pipelines-for-visual-nlp">Pretrained Pipelines for Visual NLP</h4>
+  <p>We are adding support for pretrained pipelines that will allow to package an entire set of models and transformations into single unit. For starters, this is the list of pretrained pipelines we are releasing today,</p>
 
-  <p>Keeping the encoding,
-<img src="/assets/images/ocr/keeping.png" alt="image" /></p>
+  <ul>
+    <li>mixed_scanned_digital_pdf: OCR pipeline to support a mix of digital and scanned documents as inputs.</li>
+    <li>mixed_scanned_digital_pdf_image_cleaner: OCR pipeline to support a mix of digital and scanned documents as inputs. The ImageTextCleaner transformer will be applied to those PDFs containing scanned images.</li>
+    <li>mixed_scanned_digital_pdf_skew_correction: OCR pipeline to support a mix of digital and scanned documents as inputs. The ImageSkewCorrector transformer will be applied to those PDFs containing scanned images.</li>
+    <li>image_handwritten_transformer_extraction: OCR on handwritten texts contained in images.</li>
+    <li>image_printed_transformer_extraction: OCR printed texts contained on images.</li>
+    <li>pdf_printed_transformer_extraction: OCR printed texts contained in PDFs.</li>
+    <li>pdf_handwritten_transformer_extraction: OCR handwritten texts contained in PDFs.</li>
+  </ul>
 
-  <p>Not keeping it,
-<img src="/assets/images/ocr/notkeeping.png" alt="image" /></p>
+  <h4 id="deprecations--changes">Deprecations &amp; Changes</h4>
+  <p>Some ImageToTextV2 models have been deprecated in favor of new optimized versions that work entirely on the JVM, and also now work in LightPipelines.</p>
 
-  <h4 id="new-yolo-based-table-and-form-detector">New Yolo-based Table and Form detector</h4>
-  <p>This new model allows to distinguish between forms and tables, so you can apply different downstream processing afterwards.</p>
+  <p>ocr_base_handwritten -&gt; ocr_base_handwritten_v2
+ocr_base_printed -&gt; ocr_base_printed_v2</p>
 
-  <p><img src="/assets/images/ocr/form_tables.jpg" alt="image" /></p>
+  <p>Also, the optimized versions are available through,
+ocr_base_printed_v2_opt
+ocr_base_handwritten_v2_opt</p>
 
-  <p>Check a full example of utilization in <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableAndFormDetection.ipynb">this notebook</a>.</p>
+  <p>Note: If you don’t upgrade, you can continue to use the same model names.</p>
 
-  <h4 id="memory-consumption-in-visualquestionanswering-and-imagetabledetector-models-has-been-improved">Memory consumption in VisualQuestionAnswering and ImageTableDetector models has been improved</h4>
-  <p>Memory utilization has been improved to make it more GC friendly. The practical result is that big jobs are more stable, and less likely to get restarted because of exhausting resources.</p>
+  <p>VisualDocumentNer: one class to rule(and load) all Visual NER models! You should replace VisualDocumentNerV2 instances with this class name, and just provide the right pretrained model name, e.g.,</p>
 
-  <h4 id="fixes-in-alabreader">Fixes in AlabReader</h4>
-  <p>AlabReader has been improved to fix some bugs, and to improve the performance.</p>
+  <p>VisualDocumentNer.pretrained(“visual_document_NER_SROIE0526”)</p>
 
-  <h4 id="fixes-in-hocrtotexttable">Fixes in HocrToTextTable</h4>
-  <p>HocrToTextTable has been improved in order to better handle some corner cases in which the last rows of tables were being missed.</p>
+  <p>or</p>
 
-  <p>This release of Visual NLP is compatible with version 4.3.1 of Spark-NLP and version 4.3.1 of Spark NLP for Healthcare.</p>
+  <p>VisualDocumentNer.pretrained(“lilt_roberta_funsd_v1”)</p>
+
+  <p>Also, LayoutLMv2 models have been deprecated in favor of Lilt based versions, e.g.,</p>
+
+  <p>layoutlmv2_funsd -&gt; lilt_roberta_funsd_v1</p>
+
+  <p>Accordingly, these changes have been reflected in sample notebook, which has been renamed,
+SparkOCRVisualDocumentNERv2.ipynb -&gt; SparkOCRVisualDocumentNer-FormParsing.ipynb</p>
+
+  <p>Finally, VisualDocumentNer fine tuning notebooks are currently deprecated until new ones are included on next release.</p>
+
+  <h4 id="improvements">Improvements</h4>
+  <p>We improved digital PDF data ingestion for documents containing ligature glyphs which are used in some fonts. Ligature glyphs are symbols that may represent two or more characters. For instance, ‘f’ and ‘i’ may be represented as one char ‘fi’. We improved our transformer to process them correctly.</p>
+
+  <h4 id="new-notebooks">New Notebooks</h4>
+  <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPretrainedPipelines.ipynb">SparkOcrPretrainedPipelines.ipynb</a>: use this notebook to learn how to use the new pretrained pipelines feature added to Visual NLP 4.4.0.</p>
+
+  <p>This release is compatible with Spark NLP 4.4.0 and Spark NLP for Healthcare 4.4.0.</p>
 
 </div>
 <div class="prev_ver h3-box">
