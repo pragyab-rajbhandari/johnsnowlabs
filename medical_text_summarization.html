@@ -272,7 +272,7 @@
       version: '2.2.4',
       sources: {
         font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
-        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        jquery: 'https://code.jquery.com/jquery-3.1.1.min.js',
         leancloud_js_sdk: '//cdn1.lncld.net/static/js/3.4.1/av-min.js',
         chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
         gitalk: {
@@ -624,7 +624,7 @@
             <a href="/text_summarization">Text Summarization</a>
           </li>
           <li      >
-            <a href="/financial_question_answering">Finance Question Answering</a>
+            <a href="/financial_question_answering">Financial Question Answering</a>
           </li>
         </ul>
         <ul class="acc-top"><li class="acc-top-item">Legal NLP<i class="fas fa-chevron-down"></i></li></ul>
@@ -667,18 +667,18 @@
 <h1 class="subtitle">Biomedical NLP - Live Demos & Notebooks</h1><div class="grid--container main-big" id="panels"><div class="tab-wrapper-inner"><div class="tab-item ">
               <div class="tab-item-inner">
                 <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
-                        <img src="/assets/images/Detect_mentions_of_general_medical_terms.svg" alt="" />
-                      </figure><div class="tab-item-title">BioMedical Text Summarization</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">This demo features a biomedical text summarization model that can effectively summarize complex medical information into concise summaries. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="biomedical_text_summarization" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/BIOMEDICAL_TEXT_SUMMARIZATION/">Live Demo</a></li><li><a id="biomedical_text_summarization" class="btn button--blue_btn button--pill button--lg"
+                        <img src="/assets/images/MedicalQuestionAnswerin.svg" alt="" />
+                      </figure><div class="tab-item-title">Clinical Text Summarization</div>
+                  </div><div class="tab-description"><div class="tab-description-inner">This demo showcases the capabilities of a specialized summarization model that has been trained specifically for medical text. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="medical_text_summarization" class="btn button--normal button--pill button--lg"
+                        href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION/">Live Demo</a></li><li><a id="medical_text_summarization" class="btn button--blue_btn button--pill button--lg"
                         href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb">Colab</a></li></ul></div> 
             </div><div class="tab-item ">
               <div class="tab-item-inner">
                 <div class="tab-item-wrapper"><div class="tab-item-top"><figure class="tab_fig_blue">
-                        <img src="/assets/images/MedicalQuestionAnswerin.svg" alt="" />
-                      </figure><div class="tab-item-title">Medical Text Summarization</div>
-                  </div><div class="tab-description"><div class="tab-description-inner">This demo showcases the capabilities of a specialized summarization model that has been trained specifically for medical text. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="medical_text_summarization" class="btn button--normal button--pill button--lg"
-                        href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION/">Live Demo</a></li><li><a id="medical_text_summarization" class="btn button--blue_btn button--pill button--lg"
+                        <img src="/assets/images/Detect_mentions_of_general_medical_terms.svg" alt="" />
+                      </figure><div class="tab-item-title">Biomedical Text Summarization</div>
+                  </div><div class="tab-description"><div class="tab-description-inner">This demo features a biomedical text summarization model that can effectively summarize complex medical information into concise summaries. <a href="#" class="show_more">(...)</a></div></div></div><ul class="tab-menu"><li><a id="biomedical_text_summarization" class="btn button--normal button--pill button--lg"
+                        href="https://demo.johnsnowlabs.com/healthcare/BIOMEDICAL_TEXT_SUMMARIZATION/">Live Demo</a></li><li><a id="biomedical_text_summarization" class="btn button--blue_btn button--pill button--lg"
                         href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb">Colab</a></li></ul></div> 
             </div><div class="tab-item ">
               <div class="tab-item-inner">
@@ -889,6 +889,22 @@ try{
 } catch(e){}
 
 document.getElementById("year").innerHTML = new Date().getFullYear();
+
+
+try {
+  let links = document.links;
+
+  for (let i = 0, linksLength = links.length; i < linksLength; i++) {
+    if (links[i].hostname != window.location.hostname) {
+        links[i].target = '_blank';
+    }
+    if ((links[i].hostname.indexOf("johnsnowlabs.com") === -1) && (links[i].hostname != window.location.hostname)) {
+      links[i].rel = 'nofollow';
+    }
+  }  
+} catch(e){}
+
+
 
 </script></div></div>
     </div><script>(function() {
