@@ -1,5 +1,485 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-04-27T11:26:30+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Legal Court Decisions Unanimity Prediction (Portuguese)</title><link href="/2023/04/14/legclf_court_decisions_unanimity_pt.html" rel="alternate" type="text/html" title="Legal Court Decisions Unanimity Prediction (Portuguese)" /><published>2023-04-14T00:00:00+00:00</published><updated>2023-04-14T00:00:00+00:00</updated><id>/2023/04/14/legclf_court_decisions_unanimity_pt</id><content type="html" xml:base="/2023/04/14/legclf_court_decisions_unanimity_pt.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-01T10:58:25+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial Finetuned FLAN-T5 Text Generation ( SEC 10k Filings )</title><link href="/2023/04/28/fingen_flant5_finetuned_sec10k_en.html" rel="alternate" type="text/html" title="Financial Finetuned FLAN-T5 Text Generation ( SEC 10k Filings )" /><published>2023-04-28T00:00:00+00:00</published><updated>2023-04-28T00:00:00+00:00</updated><id>/2023/04/28/fingen_flant5_finetuned_sec10k_en</id><content type="html" xml:base="/2023/04/28/fingen_flant5_finetuned_sec10k_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This Text Generation model has been fine-tuned on FLANT5 Using SEC filings data. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text generation tasks.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/fingen_flant5_finetuned_sec10k_en_1.0.0_3.0_1682669039071.zip&quot; class=&quot;button button-orange&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/fingen_flant5_finetuned_sec10k_en_1.0.0_3.0_1682669039071.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextGenerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fingen_flant5_finetuned_sec10k'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'en'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'finance/models'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;generated_text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxNewTokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setStopAtEos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Deferred revenue primarily consists of customer billings or payments received in advance of revenues being recognized from the company’s subscription and services contracts&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;generated_text.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[The company’s deferred revenue is recognized ratably over the term of the contract, which is generally one year or less, based on the estimated useful lives of the customer and the expected life of the customer’s subscription or services contract, and the estimated useful lives of the customer’s subscription or services contract, &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;any, &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;the company determines that the estimated useful lives of the customer’s subscription or services contract are less than the estimated useful lives of the customer’s subscription or services contract, the company recognizes revenue ratably over the term of the contract, which is generally one year or less, based on the estimated useful lives of the customer’s subscription or services contract]|
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;fingen_flant5_finetuned_sec10k&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.6 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In house annotated dataset&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="text_generation" /><category term="tensorflow" /><summary type="html">Description This Text Generation model has been fine-tuned on FLANT5 Using SEC filings data. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text generation tasks. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;question&quot;) flant5 = finance.TextGenerator.pretrained('fingen_flant5_finetuned_sec10k','en','finance/models')\ .setInputCols([&quot;question&quot;])\ .setOutputCol(&quot;generated_text&quot;) .setMaxNewTokens(150)\ .setStopAtEos(True) pipeline = nlp.Pipeline(stages=[document_assembler, flant5]) data = spark.createDataFrame([ [1, &quot;&quot;&quot;Deferred revenue primarily consists of customer billings or payments received in advance of revenues being recognized from the company’s subscription and services contracts&quot;&quot;&quot;] ]).toDF('id', 'text') results = pipeline.fit(data).transform(data) results.select(&quot;generated_text.result&quot;).show(truncate=False) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[The company’s deferred revenue is recognized ratably over the term of the contract, which is generally one year or less, based on the estimated useful lives of the customer and the expected life of the customer’s subscription or services contract, and the estimated useful lives of the customer’s subscription or services contract, if any, if the company determines that the estimated useful lives of the customer’s subscription or services contract are less than the estimated useful lives of the customer’s subscription or services contract, the company recognizes revenue ratably over the term of the contract, which is generally one year or less, based on the estimated useful lives of the customer’s subscription or services contract]| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: fingen_flant5_finetuned_sec10k Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 1.6 GB References In house annotated dataset</summary></entry><entry><title type="html">Financial Suspicious Activity Reports Pipeline</title><link href="/2023/04/27/finpipe_suspicious_activity_reports_en.html" rel="alternate" type="text/html" title="Financial Suspicious Activity Reports Pipeline" /><published>2023-04-27T00:00:00+00:00</published><updated>2023-04-27T00:00:00+00:00</updated><id>/2023/04/27/finpipe_suspicious_activity_reports_en</id><content type="html" xml:base="/2023/04/27/finpipe_suspicious_activity_reports_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This is a finance Pretrained pipeline aimed to extract entities from suspicious activity reports that are filed by financial institutions, and those associated with their business, with the Financial Crimes Enforcement Network.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORG&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ADDRESS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ROLE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SUSPICIOUS_ITEMS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PERSON_NAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SUSPICIOUS_ACTION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SUSPICIOUS_KEYWORD&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finpipe_suspicious_activity_reports_en_1.0.0_3.0_1682595607527.zip&quot; class=&quot;button button-orange&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finpipe_suspicious_activity_reports_en_1.0.0_3.0_1682595607527.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;johnsnowlabs&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sar_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finpipe_suspicious_activity_reports&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+-------------------------+------------------+
+|chunk                    |ner_label         |
++-------------------------+------------------+
+|SUSPICIOUS               |SUSPICIOUS_KEYWORD|
+|April 25, 2023           |DATE              |
+|John Doe                 |PERSON_NAME       |
+|Senior Compliance Officer|ROLE              |
+|SUSPICIOUS_ACTION        |SUSPICIOUS_KEYWORD|
+|Unusual                  |SUSPICIOUS_KEYWORD|
+|SUSPICIOUS_KEYWORD       |SUSPICIOUS_KEYWORD|
+|Money Laundering         |SUSPICIOUS_ACTION |
+|SUSPICIOUS_ITEMS         |SUSPICIOUS_KEYWORD|
+|deposits                 |SUSPICIOUS_ITEMS  |
+|cash                     |SUSPICIOUS_ITEMS  |
+|Currency                 |SUSPICIOUS_ITEMS  |
+|sums of money            |SUSPICIOUS_ITEMS  |
+|bank accounts            |SUSPICIOUS_ITEMS  |
+|tax                      |SUSPICIOUS_ITEMS  |
+|April 24, 2023           |DATE              |
+|XYZ Bank                 |ORG               |
++-------------------------+------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finpipe_suspicious_activity_reports&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.2 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;BertEmbeddings&lt;/li&gt;
+  &lt;li&gt;BertEmbeddings&lt;/li&gt;
+  &lt;li&gt;FinanceNerModel&lt;/li&gt;
+  &lt;li&gt;FinanceNerModel&lt;/li&gt;
+  &lt;li&gt;FinanceBertForTokenClassification&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="en" /><category term="licensed" /><category term="pipeline" /><summary type="html">Description This is a finance Pretrained pipeline aimed to extract entities from suspicious activity reports that are filed by financial institutions, and those associated with their business, with the Financial Crimes Enforcement Network. Predicted Entities ORG, ADDRESS, ROLE, DATE,SUSPICIOUS_ITEMS, PERSON_NAME, SUSPICIOUS_ACTION, SUSPICIOUS_KEYWORD Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from johnsnowlabs import PretrainedPipeline sar_pipeline = PretrainedPipeline(&quot;finpipe_suspicious_activity_reports&quot;, &quot;en&quot;, &quot;finance/models&quot;) Results +-------------------------+------------------+ |chunk |ner_label | +-------------------------+------------------+ |SUSPICIOUS |SUSPICIOUS_KEYWORD| |April 25, 2023 |DATE | |John Doe |PERSON_NAME | |Senior Compliance Officer|ROLE | |SUSPICIOUS_ACTION |SUSPICIOUS_KEYWORD| |Unusual |SUSPICIOUS_KEYWORD| |SUSPICIOUS_KEYWORD |SUSPICIOUS_KEYWORD| |Money Laundering |SUSPICIOUS_ACTION | |SUSPICIOUS_ITEMS |SUSPICIOUS_KEYWORD| |deposits |SUSPICIOUS_ITEMS | |cash |SUSPICIOUS_ITEMS | |Currency |SUSPICIOUS_ITEMS | |sums of money |SUSPICIOUS_ITEMS | |bank accounts |SUSPICIOUS_ITEMS | |tax |SUSPICIOUS_ITEMS | |April 24, 2023 |DATE | |XYZ Bank |ORG | +-------------------------+------------------+ Model Information Model Name: finpipe_suspicious_activity_reports Type: pipeline Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 1.2 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel TokenizerModel BertEmbeddings BertEmbeddings FinanceNerModel FinanceNerModel FinanceBertForTokenClassification NerConverterInternalModel NerConverterInternalModel NerConverterInternalModel ContextualParserModel ChunkMergeModel</summary></entry><entry><title type="html">Financial Suspicious Activity Reports NER</title><link href="/2023/04/26/finner_bert_suspicious_activity_reports_en.html" rel="alternate" type="text/html" title="Financial Suspicious Activity Reports NER" /><published>2023-04-26T00:00:00+00:00</published><updated>2023-04-26T00:00:00+00:00</updated><id>/2023/04/26/finner_bert_suspicious_activity_reports_en</id><content type="html" xml:base="/2023/04/26/finner_bert_suspicious_activity_reports_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This is a Financial BertForTokenClassification NER model aimed to extract entities from suspicious activity reports that are filed by financial institutions, and those associated with their business, with the Financial Crimes Enforcement Network.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SUSPICIOUS_ITEMS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PERSON_NAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SUSPICIOUS_ACTION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SUSPICIOUS_KEYWORD&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_bert_suspicious_activity_reports_en_1.0.0_3.0_1682502028225.zip&quot; class=&quot;button button-orange&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finner_bert_suspicious_activity_reports_en_1.0.0_3.0_1682502028225.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForTokenClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finner_bert_suspicious_activity_reports&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;p_model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]})))&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;SUSPICIOUS ACTIVITY REPORT
+
+Date: [Today's Date]
+
+To: [Financial Institution's Compliance Department]
+
+Subject: Suspicious Activity Related to Business Loan
+
+Account Holder Information:
+Name: [Name of Business]
+Address: [Business Address]
+Account Number: [Business Account Number]
+
+Description of Activity:
+On [Date], [Name of Business] submitted a loan application for a substantial amount of money. The loan officer reviewing the application noticed several indications of possible suspicious activity.&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result_df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arrays_zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;\
+                  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['0']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                          &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['1']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                          &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['2']['confidence']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;confidence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+-------------+--------------------+
+|chunk        |entity              |
++-------------+--------------------+
+|SUSPICIOUS   |B-SUSPICIOUS_KEYWORD|
+|ACTIVITY     |O                   |
+|REPORT       |O                   |
+|Date         |O                   |
+|:            |O                   |
+|[Today&lt;span class=&quot;s1&quot;&gt;'s     |O                   |
+|Date]        |O                   |
+|To           |O                   |
+|:            |O                   |
+|[Financial   |O                   |
+|Institution'&lt;/span&gt;s|O                   |
+|Compliance   |O                   |
+|Department]  |O                   |
+|Subject      |O                   |
+|:            |O                   |
+|Suspicious   |B-SUSPICIOUS_KEYWORD|
+|Activity     |O                   |
+|Related      |O                   |
+|to           |O                   |
+|Business     |B-SUSPICIOUS_ACTION |
+|Loan         |I-SUSPICIOUS_ACTION |
+|Account      |O                   |
+|Holder       |O                   |
+|Information  |O                   |
+|:            |O                   |
+|Name         |O                   |
+|:            |O                   |
+|[Name        |O                   |
+|of           |O                   |
+|Business]    |O                   |
+|Address      |O                   |
+|:            |O                   |
+|[Business    |O                   |
+|Address]     |O                   |
+|Account      |O                   |
+|Number       |O                   |
+|:            |O                   |
+|[Business    |O                   |
+|Account      |O                   |
+|Number]      |O                   |
+|Description  |O                   |
+|of           |O                   |
+|Activity     |O                   |
+|:            |O                   |
+|On           |O                   |
+|[Date]       |O                   |
+|,            |O                   |
+|[Name        |O                   |
+|of           |O                   |
+|Business]    |O                   |
+|submitted    |O                   |
+|a            |O                   |
+|loan         |B-SUSPICIOUS_ACTION |
+|application  |I-SUSPICIOUS_ACTION |
+|for          |O                   |
+|a            |O                   |
+|substantial  |O                   |
+|amount       |O                   |
+|of           |O                   |
+|money        |O                   |
+|.            |O                   |
+|The          |O                   |
+|loan         |O                   |
+|officer      |O                   |
+|reviewing    |O                   |
+|the          |O                   |
+|application  |O                   |
+|noticed      |O                   |
+|several      |O                   |
+|indications  |O                   |
+|of           |O                   |
+|possible     |O                   |
+|suspicious   |B-SUSPICIOUS_KEYWORD|
+|activity     |O                   |
+|.            |O                   |
++-------------+--------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finner_bert_suspicious_activity_reports&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[sentence, token]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[ner]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;404.2 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max sentence length:&lt;/td&gt;
+      &lt;td&gt;128&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In house annotated data&lt;/p&gt;
+
+&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+label                      precision    recall  f1-score   support
+
+  B-SUSPICIOUS_ITEMS       0.75      0.84      0.79      1079
+       B-PERSON_NAME       0.97      0.97      0.97        88
+       I-PERSON_NAME       0.98      0.99      0.98       171
+ B-SUSPICIOUS_ACTION       0.91      0.87      0.89       752
+ I-SUSPICIOUS_ACTION       0.93      0.91      0.92       814
+B-SUSPICIOUS_KEYWORD       0.91      0.97      0.94      1528
+  I-SUSPICIOUS_ITEMS       0.77      0.84      0.81       659
+           micro-avg       0.86      0.90      0.88      5091
+           macro-avg       0.89      0.91      0.90      5091
+        weighted-avg       0.86      0.90      0.88      5091
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="suspicious_activity_reports" /><category term="en" /><category term="bert" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This is a Financial BertForTokenClassification NER model aimed to extract entities from suspicious activity reports that are filed by financial institutions, and those associated with their business, with the Financial Crimes Enforcement Network. Predicted Entities SUSPICIOUS_ITEMS, PERSON_NAME, SUSPICIOUS_ACTION, SUSPICIOUS_KEYWORD Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols(&quot;document&quot;)\ .setOutputCol(&quot;token&quot;) tokenClassifier = finance.BertForTokenClassification.pretrained(&quot;finner_bert_suspicious_activity_reports&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols(&quot;token&quot;, &quot;document&quot;)\ .setOutputCol(&quot;label&quot;)\ .setCaseSensitive(True) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;document&quot;,&quot;token&quot;,&quot;label&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline(stages=[ documentAssembler, tokenizer, tokenClassifier, ner_converter ] ) import pandas as pd p_model = pipeline.fit(spark.createDataFrame(pd.DataFrame({'text': ['']}))) text = &quot;&quot;&quot;SUSPICIOUS ACTIVITY REPORT Date: [Today's Date] To: [Financial Institution's Compliance Department] Subject: Suspicious Activity Related to Business Loan Account Holder Information: Name: [Name of Business] Address: [Business Address] Account Number: [Business Account Number] Description of Activity: On [Date], [Name of Business] submitted a loan application for a substantial amount of money. The loan officer reviewing the application noticed several indications of possible suspicious activity.&quot;&quot;&quot; res = p_model.transform(spark.createDataFrame([[text]]).toDF(&quot;text&quot;)) result_df = res.select(F.explode(F.arrays_zip(res.token.result,res.label.result, res.label.metadata)).alias(&quot;cols&quot;))\ .select(F.expr(&quot;cols['0']&quot;).alias(&quot;token&quot;), F.expr(&quot;cols['1']&quot;).alias(&quot;label&quot;), F.expr(&quot;cols['2']['confidence']&quot;).alias(&quot;confidence&quot;)) result_df.show(100, truncate=100) Results +-------------+--------------------+ |chunk |entity | +-------------+--------------------+ |SUSPICIOUS |B-SUSPICIOUS_KEYWORD| |ACTIVITY |O | |REPORT |O | |Date |O | |: |O | |[Today's |O | |Date] |O | |To |O | |: |O | |[Financial |O | |Institution's|O | |Compliance |O | |Department] |O | |Subject |O | |: |O | |Suspicious |B-SUSPICIOUS_KEYWORD| |Activity |O | |Related |O | |to |O | |Business |B-SUSPICIOUS_ACTION | |Loan |I-SUSPICIOUS_ACTION | |Account |O | |Holder |O | |Information |O | |: |O | |Name |O | |: |O | |[Name |O | |of |O | |Business] |O | |Address |O | |: |O | |[Business |O | |Address] |O | |Account |O | |Number |O | |: |O | |[Business |O | |Account |O | |Number] |O | |Description |O | |of |O | |Activity |O | |: |O | |On |O | |[Date] |O | |, |O | |[Name |O | |of |O | |Business] |O | |submitted |O | |a |O | |loan |B-SUSPICIOUS_ACTION | |application |I-SUSPICIOUS_ACTION | |for |O | |a |O | |substantial |O | |amount |O | |of |O | |money |O | |. |O | |The |O | |loan |O | |officer |O | |reviewing |O | |the |O | |application |O | |noticed |O | |several |O | |indications |O | |of |O | |possible |O | |suspicious |B-SUSPICIOUS_KEYWORD| |activity |O | |. |O | +-------------+--------------------+ Model Information Model Name: finner_bert_suspicious_activity_reports Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token] Output Labels: [ner] Language: en Size: 404.2 MB Case sensitive: true Max sentence length: 128 References In house annotated data Benchmarking label precision recall f1-score support B-SUSPICIOUS_ITEMS 0.75 0.84 0.79 1079 B-PERSON_NAME 0.97 0.97 0.97 88 I-PERSON_NAME 0.98 0.99 0.98 171 B-SUSPICIOUS_ACTION 0.91 0.87 0.89 752 I-SUSPICIOUS_ACTION 0.93 0.91 0.92 814 B-SUSPICIOUS_KEYWORD 0.91 0.97 0.94 1528 I-SUSPICIOUS_ITEMS 0.77 0.84 0.81 659 micro-avg 0.86 0.90 0.88 5091 macro-avg 0.89 0.91 0.90 5091 weighted-avg 0.86 0.90 0.88 5091</summary></entry><entry><title type="html">Financial FLAN-T5 Text Generation (Base)</title><link href="/2023/04/21/fingen_flant5_base_en.html" rel="alternate" type="text/html" title="Financial FLAN-T5 Text Generation (Base)" /><published>2023-04-21T00:00:00+00:00</published><updated>2023-04-21T00:00:00+00:00</updated><id>/2023/04/21/fingen_flant5_base_en</id><content type="html" xml:base="/2023/04/21/fingen_flant5_base_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;FLAN-T5 is an enhanced version of the original T5 model and is designed to produce better quality and more coherent text generation. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs. The model can also be utilized to generate financial text.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/fingen_flant5_base_en_1.0.0_3.0_1682073956957.zip&quot; class=&quot;button button-orange&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/fingen_flant5_base_en_1.0.0_3.0_1682073956957.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextGenerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fingen_flant5_base'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'en'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'finance/models'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;summary&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxNewTokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setStopAtEos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Explain what is Sec 10-k filing &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;summary.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                              |
++--------------------------------------------------------------------------------------------------------------------+
+|[Sec 10k filing is a form of tax filing that requires a party to file jointly or several entities &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;tax purposes.]|
++--------------------------------------------------------------------------------------------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;fingen_flant5_base&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;920.9 MB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="generation" /><category term="flan_t5" /><category term="finance" /><category term="tensorflow" /><summary type="html">Description FLAN-T5 is an enhanced version of the original T5 model and is designed to produce better quality and more coherent text generation. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs. The model can also be utilized to generate financial text. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;question&quot;) flant5 = finance.TextGenerator.pretrained('fingen_flant5_base','en','finance/models')\ .setInputCols([&quot;question&quot;])\ .setOutputCol(&quot;summary&quot;) .setMaxNewTokens(150)\ .setStopAtEos(True) pipeline = nlp.Pipeline(stages=[document_assembler, flant5]) data = spark.createDataFrame([ [1, &quot;Explain what is Sec 10-k filing &quot;] ]).toDF('id', 'text') results = pipeline.fit(data).transform(data) results.select(&quot;summary.result&quot;).show(truncate=False) Results +--------------------------------------------------------------------------------------------------------------------+ |result | +--------------------------------------------------------------------------------------------------------------------+ |[Sec 10k filing is a form of tax filing that requires a party to file jointly or several entities for tax purposes.]| +--------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: fingen_flant5_base Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 920.9 MB</summary></entry><entry><title type="html">Legal Court Decisions Unanimity Prediction (Portuguese)</title><link href="/2023/04/14/legclf_court_decisions_unanimity_pt.html" rel="alternate" type="text/html" title="Legal Court Decisions Unanimity Prediction (Portuguese)" /><published>2023-04-14T00:00:00+00:00</published><updated>2023-04-14T00:00:00+00:00</updated><id>/2023/04/14/legclf_court_decisions_unanimity_pt</id><content type="html" xml:base="/2023/04/14/legclf_court_decisions_unanimity_pt.html">## Description
 
 This is a Multiclass classification model which identifies the court decisions were unanimity, not_unanimity, or  not_determined in the State Supreme Court.
 
@@ -564,797 +1044,4 @@ results.select(&quot;summary.result&quot;).show(truncate=False)
 
 ## References
 
-In house annotated dataset</content><author><name>John Snow Labs</name></author><category term="en" /><category term="summarization" /><category term="flant5" /><category term="t5" /><category term="finance" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This language model has been fine-tuned on the FLANT5 using the SEC 10K Filings data. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text summarization tasks. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;documents&quot;) flant5 = finance.Summarizer().pretrained('finsum_flant5_finetuned_sec10k','en','finance/models')\ .setInputCols([&quot;documents&quot;])\ .setOutputCol(&quot;summary&quot;)\ .setMaxNewTokens(1000) pipeline = nlp.Pipeline(stages=[document_assembler, flant5]) data = spark.createDataFrame([ [1, &quot;&quot;&quot;Intelligent process automation, or IPA, combines task automation with process automation to orchestrate coordination across systems, humans, and digital workforce in a unified workflow. According to IDC, the market for worldwide IPA software totaled $16.3 billion in 2019 and is expected to grow at a compound annual growth rate of 13% to $30.5 billion by 2024. We were included as a &quot;Leader&quot; based on the strength of our current offering, our strategy, and our market presence in The Forrester Wave Gartner Magic Quadrant for Enterprise Low-Code Application Platforms , Published 30 September 2020; Authored by: Paul Vincent, Yefim Natis, Jason Wong, Saikat Ray, et al. Gartner, Forecast: Public Cloud Services, Worldwide, 2018-2024, 4Q20 Update, Colleen Graham, Neha Gupta, et al., 21 December 2020. Gartner Forecast Analysis: Robotic Process Automation, Worldwide; Published 2 September 2020; Authored by: Fabrizio Biscotti, Cathy Tornbohm, Arthur Villa, et. al). IDC: Worldwide Intelligent Process Automation Software Forecast, 2020-2024; Published 15 July 2020; Authored by Maureen Fleming. Taken together, these current core software markets are expected to represent a combined $70.1 billion market opportunity currently and a combined $209.5 billion market opportunity in the near term. In addition to our current core software markets, we believe our platform better addresses certain needs of enterprise companies that have historically used manually-developed custom software. The global enterprise application software market is expected to reach $231 billion in 2021, according to Gartner. Based on approximately 166,000 global companies and government institutions in relevant industries and revenue-based size segments as well as our industry- and size-specific average annual recurring revenue for customers as of December 31, 2020, we internally estimate our market opportunity to have been approximately $37 billion in 2020. We determined relevant global companies and government institutions by industry and size by referencing certain independent industry data from S&amp;amp;P Global Market Intelligence. We calculated industry-and size-specific average annual recurring revenue as of December 31, 2020 by adding the aggregate annual recurring revenue from all existing customers within each industry and size segment and dividing the total by the number of our existing customers in each industry and size segment. Gartner, Forecast: Enterprise Application Software, Worldwide, 2018-2024, 4Q20 Update, Neha Gupta, Chris Pang, et al., 18 December 2020. With our platform, organizations can rapidly and easily design, build, and implement powerful, enterprise-grade custom applications through our intuitive, visual interface, with little or no coding required. We also enable organizations to easily modify and enhance applications and automatically disseminate these updates across device types to ensure all users benefit from the most up-to-date functionality. Through the speed and power of our platform, organizations can make their digital transformations happen more effectively and efficiently than could be achieved through building an application with standard programming languages. Our heritage as a BPM company provides us with a differentiated understanding and ability to automate complex processes, and we have incorporated that expertise into our platform to enable the development of powerful business software. Appian applications can leverage our complete automation capabilities, applying the right automation approach for each specific use case: At the core of our platform is an advanced engine that enables the modeling, modification, and management of complex processes. Appian combines people, technologies, and data into a single workflow to maximize resources and improve business results. Workflow can include any worker (people, RPA, AI) or any resource (data and system). Appian includes a declarative environment for defining and executing business logic or rules. These rules can be highly complex and applied within the Appian platform to many use cases, ranging from automated decision making to user experience personalization.&quot;&quot;&quot;] ]).toDF('id', 'text') results = pipeline.fit(data).transform(data) results.select(&quot;summary.result&quot;).show(truncate=False) Results +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[Appian is a BPM company that provides intelligent process automation (IPA) software to organizations to orchestrate coordination across systems, humans, and digital workforce in a unified workflow. The market for worldwide IPA software totaled $16.3 billion in 2019 and is expected to grow at a compound annual growth rate of 13% to $30.5 billion by 2024. Appian was included as a &quot;Leader&quot; based on the strength of its current offering, strategy, and market presence in The Forrester Wave Gartner Magic Quadrant for Enterprise Low-Code Application Platforms, Gartner Magic Quadrant for Public Cloud Services, Worldwide, 2018-2024, 4Q20 Update, Colleen Graham, Neha Gupta, et al., Gartner Forecast Analysis: Robotic Process Automation, Worldwide, Published 2 September 2020; Fabrizio Biscotti, Cathy Tornbohm, Arthur Villa, et. al., IDC: Worldwide Intelligent Process Automation Software Forecast, 2020-2024; Published 15 July 2020; Maureen Fleming. The global enterprise application software market is expected to reach $231 billion in 2021, and Appian internally estimates its market opportunity to have been approximately $37 billion in 2020. Appian's platform combines people, technologies, and data into a single workflow to maximize resources and improve business results. Appian includes a declarative environment for defining and executing business logic or rules.]| +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: finsum_flant5_finetuned_sec10k Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 1.6 GB References In house annotated dataset</summary></entry><entry><title type="html">Clinical QA BioGPT (JSL)</title><link href="/2023/04/12/biogpt_chat_jsl_en.html" rel="alternate" type="text/html" title="Clinical QA BioGPT (JSL)" /><published>2023-04-12T00:00:00+00:00</published><updated>2023-04-12T00:00:00+00:00</updated><id>/2023/04/12/biogpt_chat_jsl_en</id><content type="html" xml:base="/2023/04/12/biogpt_chat_jsl_en.html">## Description
-
-This model is based on BioGPT finetuned with medical conversations happening in a clinical settings and can answer clinical questions related to symptoms, drugs, tests, and diseases.
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/biogpt_chat_jsl_en_4.3.2_3.0_1681319163583.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/biogpt_chat_jsl_en_4.3.2_3.0_1681319163583.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-
-document_assembler = DocumentAssembler() \
-    .setInputCol(&quot;text&quot;) \
-    .setOutputCol(&quot;documents&quot;)
-    
-gpt_qa = MedicalTextGenerator.pretrained(&quot;biogpt_chat_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols(&quot;documents&quot;)\
-    .setOutputCol(&quot;answer&quot;)
-    
-pipeline = Pipeline().setStages([document_assembler, gpt_qa])
-
-data = spark.createDataFrame([[&quot;How to treat asthma ?&quot;]]).toDF(&quot;text&quot;)
-
-pipeline.fit(data).transform(data)
-
-```
-```scala
-
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val summarizer  = MedicalTextGenerator.pretrained(&quot;biogpt_chat_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;documents&quot;)
-    .setOutputCol(&quot;answer&quot;)
-
-val pipeline = new Pipeline().setStages(Array(document_assembler, summarizer))
-
-val text = &quot;How to treat asthma ?&quot;
-
-val data = Seq(Array(text)).toDS.toDF(&quot;text&quot;)
-
-val result = pipeline.fit(data).transform(data)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-['Asthma is itself an allergic disease due to cold or dust or pollen or grass etc. irrespective of the triggering factor. You can go for pulmonary function tests if not done. Treatment is mainly symptomatic which might require inhalation steroids, beta agonists, anticholinergics as MDI or rota haler as a regular treatment. To decrease the inflammation of bronchi and bronchioles, you might be given oral antihistamines with mast cell stabilizers (montelukast) and steroids (prednisolone) with nebulization and frequently steam inhalation. To decrease the bronchoconstriction caused by allergens, you might be given oral antihistamines with mast cell stabilizers (montelukast) and steroids (prednisolone) with nebulization and frequently steam inhalation. The best way to cure any allergy is a complete avoidance of allergen or triggering factor. Consult your pulmonologist for further advise.']
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|biogpt_chat_jsl|
-|Compatibility:|Healthcare NLP 4.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.4 GB|
-|Case sensitive:|true|</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="clinical" /><category term="text_generation" /><category term="biogpt" /><category term="tensorflow" /><summary type="html">Description This model is based on BioGPT finetuned with medical conversations happening in a clinical settings and can answer clinical questions related to symptoms, drugs, tests, and diseases. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;documents&quot;) gpt_qa = MedicalTextGenerator.pretrained(&quot;biogpt_chat_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;documents&quot;)\ .setOutputCol(&quot;answer&quot;) pipeline = Pipeline().setStages([document_assembler, gpt_qa]) data = spark.createDataFrame([[&quot;How to treat asthma ?&quot;]]).toDF(&quot;text&quot;) pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val summarizer = MedicalTextGenerator.pretrained(&quot;biogpt_chat_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;documents&quot;) .setOutputCol(&quot;answer&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, summarizer)) val text = &quot;How to treat asthma ?&quot; val data = Seq(Array(text)).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results ['Asthma is itself an allergic disease due to cold or dust or pollen or grass etc. irrespective of the triggering factor. You can go for pulmonary function tests if not done. Treatment is mainly symptomatic which might require inhalation steroids, beta agonists, anticholinergics as MDI or rota haler as a regular treatment. To decrease the inflammation of bronchi and bronchioles, you might be given oral antihistamines with mast cell stabilizers (montelukast) and steroids (prednisolone) with nebulization and frequently steam inhalation. To decrease the bronchoconstriction caused by allergens, you might be given oral antihistamines with mast cell stabilizers (montelukast) and steroids (prednisolone) with nebulization and frequently steam inhalation. The best way to cure any allergy is a complete avoidance of allergen or triggering factor. Consult your pulmonologist for further advise.'] Model Information Model Name: biogpt_chat_jsl Compatibility: Healthcare NLP 4.3.2+ License: Licensed Edition: Official Language: en Size: 1.4 GB Case sensitive: true</summary></entry><entry><title type="html">Detect Clinical Entities (clinical_large)</title><link href="/2023/04/12/ner_jsl_emb_clinical_large_en.html" rel="alternate" type="text/html" title="Detect Clinical Entities (clinical_large)" /><published>2023-04-12T00:00:00+00:00</published><updated>2023-04-12T00:00:00+00:00</updated><id>/2023/04/12/ner_jsl_emb_clinical_large_en</id><content type="html" xml:base="/2023/04/12/ner_jsl_emb_clinical_large_en.html">## Description
-
-Pretrained named entity recognition deep learning model for clinical terminology. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state-of-the-art model for NER: Chiu &amp; Nicols, Named Entity Recognition with Bidirectional LSTM-CNN. This model is the official version of jsl_ner_wip_clinical model.
-
-Definitions of Predicted Entities: 
-
-- `Injury_or_Poisoning`: Physical harm or injury caused to the body, including those caused by accidents, falls, or poisoning of a patient or someone else. 
-- `Direction`: All the information relating to the laterality of the internal and external organs. 
-- `Test`: Mentions of laboratory, pathology, and radiological tests. 
-- `Admission_Discharge`: Terms that indicate the admission and/or the discharge of a patient. 
-- `Death_Entity`: Mentions that indicate the death of a patient. 
-- `Relationship_Status`: State of patients romantic or social relationships (e.g. single, married, divorced). 
-- `Duration`: The duration of a medical treatment or medication use. 
-- `Respiration`: Number of breaths per minute. 
-- `Hyperlipidemia`: Terms that indicate hyperlipidemia with relevant subtypes and synonims.  
-- `Birth_Entity`: Mentions that indicate giving birth. 
-- `Age`: All mention of ages, past or present, related to the patient or with anybody else. 
-- `Labour_Delivery`: Extractions include stages of labor and delivery. 
-- `Family_History_Header`: identifies section headers that correspond to Family History of the patient. 
-- `BMI`: Numeric values and other text information related to Body Mass Index. 
-- `Temperature`: All mentions that refer to body temperature. 
-- `Alcohol`: Terms that indicate alcohol use, abuse or drinking issues of a patient or someone else. 
-- `Kidney_Disease`: Terms that refer to any kidney diseases (includes mentions of modifiers such as &quot;Acute&quot; or &quot;Chronic&quot;). 
-- `Oncological`: All the cancer, tumor or metastasis related extractions mentioned in the document, of the patient or someone else. 
-- `Medical_History_Header`: Identifies section headers that correspond to Past Medical History of a patient. 
-- `Cerebrovascular_Disease`: All terms that refer to cerebrovascular diseases and events.  
-- `Oxygen_Therapy`: Breathing support triggered by patient or entirely or partially by machine (e.g. ventilator, BPAP, CPAP). 
-- `O2_Saturation`: Systemic arterial, venous or peripheral oxygen saturation measurements. 
-- `Psychological_Condition`: All the Mental health diagnosis, disorders, conditions or syndromes of a patient or someone else. 
-- `Heart_Disease`: All mentions of acquired, congenital or degenerative heart diseases. 
-- `Employment`: All mentions of patient or provider occupational titles and employment status . 
-- `Obesity`: Terms related to a patient being obese (overweight and BMI are extracted as different labels). 
-- `Disease_Syndrome_Disorder`: All the diseases mentioned in the document, of the patient or someone else (excluding diseases that are extracted with their specific labels, such as &quot;Heart_Disease&quot; etc.). 
-- `Pregnancy`: All terms related to Pregnancy (excluding terms that are extracted with their specific labels, such as &quot;Labour_Delivery&quot; etc.). 
-- `ImagingFindings`: All mentions of radiographic and imagistic findings. 
-- `Procedure`: All mentions of invasive medical or surgical procedures or treatments. 
-- `Medical_Device`: All mentions related to medical devices and supplies. 
-- `Race_Ethnicity`: All terms that refer to racial and national origin of sociocultural groups. 
-- `Section_Header`: All the section headers present in the text  (Medical History, Family History, Social History, Physical Examination and Vital signs Headers are extracted separately with their specific labels). 
-- `Symptom`: All the symptoms mentioned in the document, of a patient or someone else. 
-- `Treatment`: Includes therapeutic and minimally invasive treatment and procedures (invasive treatments or procedures are extracted as &quot;Procedure&quot;). 
-- `Substance`: All mentions of substance use related to the patient or someone else (recreational drugs, illicit drugs). 
-- `Route`: Drug and medication administration routes available described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
-- `Drug_Ingredient`: Active ingredient/s found in drug products. 
-- `Blood_Pressure`: Systemic blood pressure, mean arterial pressure, systolic and/or diastolic are extracted. 
-- `Diet`: All mentions and information regarding patients dietary habits. 
-- `External_body_part_or_region`: All mentions related to external body parts or organs that can be examined by naked eye. 
-- `LDL`: All mentions related to the lab test and results for LDL (Low Density Lipoprotein). 
-- `VS_Finding`: Qualitative data (e.g. Fever, Cyanosis, Tachycardia) and any other symptoms that refers to vital signs. 
-- `Allergen`: Allergen related extractions mentioned in the document. 
-- `EKG_Findings`: All mentions of EKG readings. 
-- `Imaging_Technique`: All mentions of special radiographic views or special imaging techniques used in radiology. 
-- `Triglycerides`: All mentions terms related to specific lab test for Triglycerides. 
-- `RelativeTime`: Time references that are relative to different times or events (e.g. words such as &quot;approximately&quot;, &quot;in the morning&quot;). 
-- `Gender`: Gender-specific nouns and pronouns. 
-- `Pulse`: Peripheral heart rate, without advanced information like measurement location. 
-- `Social_History_Header`: Identifies section headers that correspond to Social History of a patient. 
-- `Substance_Quantity`: All mentions of substance quantity (quantitative information related to illicit/recreational drugs). 
-- `Diabetes`: All terms related to diabetes mellitus. 
-- `Modifier`: Terms that modify the symptoms, diseases or risk factors. If a modifier is included in ICD-10 name of a specific disease, the respective modifier is not extracted separately. 
-- `Internal_organ_or_component`: All mentions related to internal body parts or organs that can not be examined by naked eye. 
-- `Clinical_Dept`: Terms that indicate the medical and/or surgical departments. 
-- `Form`: Drug and medication forms available described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
-- `Drug_BrandName`: Commercial labeling name chosen by the labeler or the drug manufacturer for a drug containing a single or multiple drug active ingredients. 
-- `Strength`: Potency of one unit of drug (or a combination of drugs) the measurement units available are described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
-- `Fetus_NewBorn`: All terms related to fetus, infant, new born (excluding terms that are extracted with their specific labels, such as &quot;Labour_Delivery&quot;, &quot;Pregnancy&quot; etc.). 
-- `RelativeDate`: Temporal references that are relative to the date of the text or to any other specific date (e.g. &quot;approximately two years ago&quot;, &quot;about two days ago&quot;). 
-- `Height`: All mentions related to a patients height. 
-- `Test_Result`: Terms related to all the test results present in the document (clinical tests results are included). 
-- `Sexually_Active_or_Sexual_Orientation`: All terms that are related to sexuality, sexual orientations and sexual activity. 
-- `Frequency`: Frequency of administration for a dose prescribed. 
-- `Time`: Specific time references (hour and/or minutes). 
-- `Weight`: All mentions related to a patients weight. 
-- `Vaccine`: Generic and brand name of vaccines or vaccination procedure. 
-- `Vital_Signs_Header`: Identifies section headers that correspond to Vital Signs of a patient. 
-- `Communicable_Disease`: Includes all mentions of communicable diseases. 
-- `Dosage`: Quantity prescribed by the physician for an active ingredient; measurement units are available described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
-- `Overweight`: Terms related to the patient being overweight (BMI and Obesity is extracted separately). 
-- `Hypertension`: All terms related to Hypertension (quantitative data such as 150/100 is extracted as Blood_Pressure). 
-- `HDL`: Terms related to the lab test for HDL (High Density Lipoprotein). 
-- `Total_Cholesterol`: Terms related to the lab test and results for cholesterol. 
-- `Smoking`: All mentions of smoking status of a patient. 
-- `Date`: Mentions of an exact date, in any format, including day number, month and/or year.
-
-## Predicted Entities
-
-`Injury_or_Poisoning`, `Direction`, `Test`, `Admission_Discharge`, `Death_Entity`, `Relationship_Status`, `Duration`, `Respiration`, `Hyperlipidemia`, `Birth_Entity`, `Age`, `Labour_Delivery`, `Family_History_Header`, `BMI`, `Temperature`, `Alcohol`, `Kidney_Disease`, `Oncological`, `Medical_History_Header`, `Cerebrovascular_Disease`, `Oxygen_Therapy`, `O2_Saturation`, `Psychological_Condition`, `Heart_Disease`, `Employment`, `Obesity`, `Disease_Syndrome_Disorder`, `Pregnancy`, `ImagingFindings`, `Procedure`, `Medical_Device`, `Race_Ethnicity`, `Section_Header`, `Symptom`, `Treatment`, `Substance`, `Route`, `Drug_Ingredient`, `Blood_Pressure`, `Diet`, `External_body_part_or_region`, `LDL`, `VS_Finding`, `Allergen`, `EKG_Findings`, `Imaging_Technique`, `Triglycerides`, `RelativeTime`, `Gender`, `Pulse`, `Social_History_Header`, `Substance_Quantity`, `Diabetes`, `Modifier`, `Internal_organ_or_component`, `Clinical_Dept`, `Form`, `Drug_BrandName`, `Strength`, `Fetus_NewBorn`, `RelativeDate`, `Height`, `Test_Result`, `Sexually_Active_or_Sexual_Orientation`, `Frequency`, `Time`, `Weight`, `Vaccine`, `Vaccine_Name`, `Vital_Signs_Header`, `Communicable_Disease`, `Dosage`, `Overweight`, `Hypertension`, `HDL`, `Total_Cholesterol`, `Smoking`, `Date`
-
-{:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_JSL/){:.button.button-orange}
-[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_jsl_emb_clinical_large_en_4.3.2_3.0_1681313273872.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_jsl_emb_clinical_large_en_4.3.2_3.0_1681313273872.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-documentAssembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;) 
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-ner = MedicalNerModel.pretrained(&quot;ner_jsl_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-    
-ner_converter = NerConverter()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-ner_pipeline = Pipeline(stages=[
-    documentAssembler, 
-    sentenceDetector,
-    tokenizer,
-    word_embeddings,
-    ner,
-    ner_converter])
-
-
-data = spark.createDataFrame([[&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.
-&quot;&quot;&quot;]]).toDF(&quot;text&quot;)
-
-result = ner_pipeline.fit(data).transform(data)
-```
-```scala
-val documentAssembler = new DocumentAssembler()
-        .setInputCol(&quot;text&quot;)
-        .setOutputCol(&quot;document&quot;)
-
-val sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
-        .setInputCols(&quot;document&quot;) 
-        .setOutputCol(&quot;sentence&quot;)
-
-val tokenizer = new Tokenizer()
-        .setInputCols(&quot;sentence&quot;)
-        .setOutputCol(&quot;token&quot;)
-
-val embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-        .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-        .setOutputCol(&quot;embeddings&quot;)
-
-val jsl_ner = MedicalNerModel.pretrained(&quot;ner_jsl_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-        .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
-        .setOutputCol(&quot;ner&quot;)
-
-val jsl_ner_converter = new NerConverter()
-        .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-        .setOutputCol(&quot;ner_chunk&quot;)
-
-val jsl_ner_pipeline = new Pipeline().setStages(Array(
-            documentAssembler, 
-            sentenceDetector, 
-            tokenizer, 
-            embeddings, 
-            jsl_ner, 
-            jsl_ner_converter))
-
-
-val data = Seq(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = jsl_ner_pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+-----------------------------------------+-----+---+----------------------------+
-|chunk                                    |begin|end|ner_label                   |
-+-----------------------------------------+-----+---+----------------------------+
-|21-day-old                               |17   |26 |Age                         |
-|Caucasian                                |28   |36 |Race_Ethnicity              |
-|male                                     |38   |41 |Gender                      |
-|for 2 days                               |48   |57 |Duration                    |
-|congestion                               |62   |71 |Symptom                     |
-|mom                                      |75   |77 |Gender                      |
-|suctioning                               |88   |97 |Modifier                    |
-|yellow                                   |99   |104|Modifier                    |
-|discharge                                |106  |114|Symptom                     |
-|nares                                    |135  |139|External_body_part_or_region|
-|she                                      |147  |149|Gender                      |
-|mild                                     |168  |171|Modifier                    |
-|problems with his breathing while feeding|173  |213|Symptom                     |
-|perioral cyanosis                        |237  |253|Symptom                     |
-|retractions                              |258  |268|Symptom                     |
-|Influenza vaccine                        |325  |341|Vaccine_Name                |
-|One day ago                              |344  |354|RelativeDate                |
-|mom                                      |357  |359|Gender                      |
-|tactile temperature                      |376  |394|Symptom                     |
-|Tylenol                                  |417  |423|Drug_BrandName              |
-+-----------------------------------------+-----+---+----------------------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|ner_jsl_emb_clinical_large|
-|Compatibility:|Healthcare NLP 4.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, word_embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|1.2 MB|
-
-## Benchmarking
-
-```bash
-                                label  precision    recall  f1-score   support
-          Internal_organ_or_component       0.88      0.90      0.89     10419
-                  Injury_or_Poisoning       0.90      0.78      0.83       945
-                             Diabetes       0.99      0.97      0.98       146
-                      Drug_Ingredient       0.92      0.92      0.92      1988
-                            Frequency       0.91      0.91      0.91      1110
-                               Height       0.97      0.88      0.92        81
-            Disease_Syndrome_Disorder       0.83      0.90      0.86      4909
-                             Strength       0.96      0.90      0.93       848
-                                 Form       0.85      0.79      0.82       261
-                              Symptom       0.87      0.80      0.83     11966
-                                Route       0.91      0.92      0.91       976
-                            Procedure       0.88      0.88      0.88      6395
-                               Gender       0.99      0.99      0.99      5686
-                         RelativeTime       0.82      0.68      0.75       367
-                              Vaccine       0.50      0.14      0.22        14
-              Psychological_Condition       0.89      0.70      0.78       186
-                            Direction       0.89      0.92      0.90      4447
-         External_body_part_or_region       0.88      0.84      0.86      3246
-                       Section_Header       0.98      0.96      0.97      9564
-                                  Age       0.90      0.92      0.91       750
-                             Modifier       0.85      0.76      0.81      3027
-                        Heart_Disease       0.97      0.82      0.89       849
-                       Drug_BrandName       0.92      0.93      0.92      1011
-                       Hyperlipidemia       0.93      0.84      0.88        31
-                                 Test       0.89      0.83      0.86      4337
-                          Oncological       0.93      0.94      0.94       781
-                      Labour_Delivery       0.78      0.68      0.73       158
-                        Clinical_Dept       0.94      0.91      0.93      1714
-                            Treatment       0.84      0.78      0.81       347
-                       Oxygen_Therapy       0.81      0.80      0.81       120
-                             Duration       0.81      0.87      0.84       927
-                  Admission_Discharge       0.94      0.94      0.94       343
-                         RelativeDate       0.91      0.86      0.89      1403
-                         Hypertension       0.87      0.97      0.91       122
-                           Employment       0.90      0.76      0.83       369
-                               Dosage       0.87      0.84      0.85       461
-                       Medical_Device       0.88      0.92      0.90      5499
-                          Test_Result       0.85      0.78      0.81      1321
-                                 Time       0.73      0.65      0.69        34
-                                 Date       0.97      0.94      0.95       591
-                              Obesity       0.88      1.00      0.94        45
-                       Race_Ethnicity       0.99      0.99      0.99       120
-                    Imaging_Technique       0.75      0.42      0.54        91
-                      ImagingFindings       0.69      0.40      0.50       291
-              Cerebrovascular_Disease       0.85      0.65      0.74       133
-                                 Diet       0.78      0.52      0.62       114
-                        Fetus_NewBorn       0.75      0.53      0.62       180
-                       Kidney_Disease       0.95      0.94      0.94       168
-                               Weight       0.90      0.91      0.91       243
-                       Blood_Pressure       0.84      0.84      0.84       336
-                                Pulse       0.83      0.96      0.89       311
-                          Temperature       0.88      0.96      0.92       182
-                        O2_Saturation       0.90      0.64      0.75        95
-                           VS_Finding       0.72      0.74      0.73       311
-                         Death_Entity       0.79      0.66      0.72        50
-                    Total_Cholesterol       0.72      0.87      0.79        30
-                            Substance       0.94      0.89      0.92       103
-                  Relationship_Status       0.93      0.81      0.87        48
-                              Alcohol       0.92      0.87      0.90        84
-                   Vital_Signs_Header       0.93      0.99      0.96       656
-                          Respiration       0.94      0.95      0.95       156
-                Family_History_Header       0.97      0.99      0.98       224
-                            Pregnancy       0.82      0.69      0.75       203
-                              Smoking       0.98      0.98      0.98       109
-                         Vaccine_Name       0.89      0.55      0.68        31
-                         EKG_Findings       0.64      0.27      0.38       154
-                             Allergen       0.60      0.75      0.67        12
-               Medical_History_Header       0.95      0.96      0.95       411
-                Social_History_Header       0.91      0.97      0.94       213
-                           Overweight       0.83      0.83      0.83         6
-                 Communicable_Disease       0.73      0.51      0.60        47
-                         Birth_Entity       0.00      0.00      0.00         6
-                        Triglycerides       1.00      1.00      1.00         4
-                                  HDL       0.62      1.00      0.77         5
-                                  LDL       1.00      1.00      1.00         5
-                                  BMI       1.00      1.00      1.00        17
-Sexually_Active_or_Sexual_Orientation       1.00      0.57      0.73         7
-                            micro-avg       0.90      0.88      0.89     92950
-                            macro-avg       0.86      0.81      0.83     92950
-                         weighted-avg       0.90      0.88      0.89     92950
-```</content><author><name>John Snow Labs</name></author><category term="ner" /><category term="clinical_large" /><category term="en" /><category term="licensed" /><summary type="html">Description Pretrained named entity recognition deep learning model for clinical terminology. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state-of-the-art model for NER: Chiu &amp;amp; Nicols, Named Entity Recognition with Bidirectional LSTM-CNN. This model is the official version of jsl_ner_wip_clinical model. Definitions of Predicted Entities: Injury_or_Poisoning: Physical harm or injury caused to the body, including those caused by accidents, falls, or poisoning of a patient or someone else. Direction: All the information relating to the laterality of the internal and external organs. Test: Mentions of laboratory, pathology, and radiological tests. Admission_Discharge: Terms that indicate the admission and/or the discharge of a patient. Death_Entity: Mentions that indicate the death of a patient. Relationship_Status: State of patients romantic or social relationships (e.g. single, married, divorced). Duration: The duration of a medical treatment or medication use. Respiration: Number of breaths per minute. Hyperlipidemia: Terms that indicate hyperlipidemia with relevant subtypes and synonims. Birth_Entity: Mentions that indicate giving birth. Age: All mention of ages, past or present, related to the patient or with anybody else. Labour_Delivery: Extractions include stages of labor and delivery. Family_History_Header: identifies section headers that correspond to Family History of the patient. BMI: Numeric values and other text information related to Body Mass Index. Temperature: All mentions that refer to body temperature. Alcohol: Terms that indicate alcohol use, abuse or drinking issues of a patient or someone else. Kidney_Disease: Terms that refer to any kidney diseases (includes mentions of modifiers such as “Acute” or “Chronic”). Oncological: All the cancer, tumor or metastasis related extractions mentioned in the document, of the patient or someone else. Medical_History_Header: Identifies section headers that correspond to Past Medical History of a patient. Cerebrovascular_Disease: All terms that refer to cerebrovascular diseases and events. Oxygen_Therapy: Breathing support triggered by patient or entirely or partially by machine (e.g. ventilator, BPAP, CPAP). O2_Saturation: Systemic arterial, venous or peripheral oxygen saturation measurements. Psychological_Condition: All the Mental health diagnosis, disorders, conditions or syndromes of a patient or someone else. Heart_Disease: All mentions of acquired, congenital or degenerative heart diseases. Employment: All mentions of patient or provider occupational titles and employment status . Obesity: Terms related to a patient being obese (overweight and BMI are extracted as different labels). Disease_Syndrome_Disorder: All the diseases mentioned in the document, of the patient or someone else (excluding diseases that are extracted with their specific labels, such as “Heart_Disease” etc.). Pregnancy: All terms related to Pregnancy (excluding terms that are extracted with their specific labels, such as “Labour_Delivery” etc.). ImagingFindings: All mentions of radiographic and imagistic findings. Procedure: All mentions of invasive medical or surgical procedures or treatments. Medical_Device: All mentions related to medical devices and supplies. Race_Ethnicity: All terms that refer to racial and national origin of sociocultural groups. Section_Header: All the section headers present in the text (Medical History, Family History, Social History, Physical Examination and Vital signs Headers are extracted separately with their specific labels). Symptom: All the symptoms mentioned in the document, of a patient or someone else. Treatment: Includes therapeutic and minimally invasive treatment and procedures (invasive treatments or procedures are extracted as “Procedure”). Substance: All mentions of substance use related to the patient or someone else (recreational drugs, illicit drugs). Route: Drug and medication administration routes available described by FDA. Drug_Ingredient: Active ingredient/s found in drug products. Blood_Pressure: Systemic blood pressure, mean arterial pressure, systolic and/or diastolic are extracted. Diet: All mentions and information regarding patients dietary habits. External_body_part_or_region: All mentions related to external body parts or organs that can be examined by naked eye. LDL: All mentions related to the lab test and results for LDL (Low Density Lipoprotein). VS_Finding: Qualitative data (e.g. Fever, Cyanosis, Tachycardia) and any other symptoms that refers to vital signs. Allergen: Allergen related extractions mentioned in the document. EKG_Findings: All mentions of EKG readings. Imaging_Technique: All mentions of special radiographic views or special imaging techniques used in radiology. Triglycerides: All mentions terms related to specific lab test for Triglycerides. RelativeTime: Time references that are relative to different times or events (e.g. words such as “approximately”, “in the morning”). Gender: Gender-specific nouns and pronouns. Pulse: Peripheral heart rate, without advanced information like measurement location. Social_History_Header: Identifies section headers that correspond to Social History of a patient. Substance_Quantity: All mentions of substance quantity (quantitative information related to illicit/recreational drugs). Diabetes: All terms related to diabetes mellitus. Modifier: Terms that modify the symptoms, diseases or risk factors. If a modifier is included in ICD-10 name of a specific disease, the respective modifier is not extracted separately. Internal_organ_or_component: All mentions related to internal body parts or organs that can not be examined by naked eye. Clinical_Dept: Terms that indicate the medical and/or surgical departments. Form: Drug and medication forms available described by FDA. Drug_BrandName: Commercial labeling name chosen by the labeler or the drug manufacturer for a drug containing a single or multiple drug active ingredients. Strength: Potency of one unit of drug (or a combination of drugs) the measurement units available are described by FDA. Fetus_NewBorn: All terms related to fetus, infant, new born (excluding terms that are extracted with their specific labels, such as “Labour_Delivery”, “Pregnancy” etc.). RelativeDate: Temporal references that are relative to the date of the text or to any other specific date (e.g. “approximately two years ago”, “about two days ago”). Height: All mentions related to a patients height. Test_Result: Terms related to all the test results present in the document (clinical tests results are included). Sexually_Active_or_Sexual_Orientation: All terms that are related to sexuality, sexual orientations and sexual activity. Frequency: Frequency of administration for a dose prescribed. Time: Specific time references (hour and/or minutes). Weight: All mentions related to a patients weight. Vaccine: Generic and brand name of vaccines or vaccination procedure. Vital_Signs_Header: Identifies section headers that correspond to Vital Signs of a patient. Communicable_Disease: Includes all mentions of communicable diseases. Dosage: Quantity prescribed by the physician for an active ingredient; measurement units are available described by FDA. Overweight: Terms related to the patient being overweight (BMI and Obesity is extracted separately). Hypertension: All terms related to Hypertension (quantitative data such as 150/100 is extracted as Blood_Pressure). HDL: Terms related to the lab test for HDL (High Density Lipoprotein). Total_Cholesterol: Terms related to the lab test and results for cholesterol. Smoking: All mentions of smoking status of a patient. Date: Mentions of an exact date, in any format, including day number, month and/or year. Predicted Entities Injury_or_Poisoning, Direction, Test, Admission_Discharge, Death_Entity, Relationship_Status, Duration, Respiration, Hyperlipidemia, Birth_Entity, Age, Labour_Delivery, Family_History_Header, BMI, Temperature, Alcohol, Kidney_Disease, Oncological, Medical_History_Header, Cerebrovascular_Disease, Oxygen_Therapy, O2_Saturation, Psychological_Condition, Heart_Disease, Employment, Obesity, Disease_Syndrome_Disorder, Pregnancy, ImagingFindings, Procedure, Medical_Device, Race_Ethnicity, Section_Header, Symptom, Treatment, Substance, Route, Drug_Ingredient, Blood_Pressure, Diet, External_body_part_or_region, LDL, VS_Finding, Allergen, EKG_Findings, Imaging_Technique, Triglycerides, RelativeTime, Gender, Pulse, Social_History_Header, Substance_Quantity, Diabetes, Modifier, Internal_organ_or_component, Clinical_Dept, Form, Drug_BrandName, Strength, Fetus_NewBorn, RelativeDate, Height, Test_Result, Sexually_Active_or_Sexual_Orientation, Frequency, Time, Weight, Vaccine, Vaccine_Name, Vital_Signs_Header, Communicable_Disease, Dosage, Overweight, Hypertension, HDL, Total_Cholesterol, Smoking, Date Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_jsl_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) ner_pipeline = Pipeline(stages=[ documentAssembler, sentenceDetector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature. &quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = ner_pipeline.fit(data).transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val jsl_ner = MedicalNerModel.pretrained(&quot;ner_jsl_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val jsl_ner_converter = new NerConverter() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val jsl_ner_pipeline = new Pipeline().setStages(Array( documentAssembler, sentenceDetector, tokenizer, embeddings, jsl_ner, jsl_ner_converter)) val data = Seq(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val result = jsl_ner_pipeline.fit(data).transform(data) Results +-----------------------------------------+-----+---+----------------------------+ |chunk |begin|end|ner_label | +-----------------------------------------+-----+---+----------------------------+ |21-day-old |17 |26 |Age | |Caucasian |28 |36 |Race_Ethnicity | |male |38 |41 |Gender | |for 2 days |48 |57 |Duration | |congestion |62 |71 |Symptom | |mom |75 |77 |Gender | |suctioning |88 |97 |Modifier | |yellow |99 |104|Modifier | |discharge |106 |114|Symptom | |nares |135 |139|External_body_part_or_region| |she |147 |149|Gender | |mild |168 |171|Modifier | |problems with his breathing while feeding|173 |213|Symptom | |perioral cyanosis |237 |253|Symptom | |retractions |258 |268|Symptom | |Influenza vaccine |325 |341|Vaccine_Name | |One day ago |344 |354|RelativeDate | |mom |357 |359|Gender | |tactile temperature |376 |394|Symptom | |Tylenol |417 |423|Drug_BrandName | +-----------------------------------------+-----+---+----------------------------+ Model Information Model Name: ner_jsl_emb_clinical_large Compatibility: Healthcare NLP 4.3.2+ License: Licensed Edition: Official Input Labels: [sentence, token, word_embeddings] Output Labels: [ner] Language: en Size: 1.2 MB Benchmarking label precision recall f1-score support Internal_organ_or_component 0.88 0.90 0.89 10419 Injury_or_Poisoning 0.90 0.78 0.83 945 Diabetes 0.99 0.97 0.98 146 Drug_Ingredient 0.92 0.92 0.92 1988 Frequency 0.91 0.91 0.91 1110 Height 0.97 0.88 0.92 81 Disease_Syndrome_Disorder 0.83 0.90 0.86 4909 Strength 0.96 0.90 0.93 848 Form 0.85 0.79 0.82 261 Symptom 0.87 0.80 0.83 11966 Route 0.91 0.92 0.91 976 Procedure 0.88 0.88 0.88 6395 Gender 0.99 0.99 0.99 5686 RelativeTime 0.82 0.68 0.75 367 Vaccine 0.50 0.14 0.22 14 Psychological_Condition 0.89 0.70 0.78 186 Direction 0.89 0.92 0.90 4447 External_body_part_or_region 0.88 0.84 0.86 3246 Section_Header 0.98 0.96 0.97 9564 Age 0.90 0.92 0.91 750 Modifier 0.85 0.76 0.81 3027 Heart_Disease 0.97 0.82 0.89 849 Drug_BrandName 0.92 0.93 0.92 1011 Hyperlipidemia 0.93 0.84 0.88 31 Test 0.89 0.83 0.86 4337 Oncological 0.93 0.94 0.94 781 Labour_Delivery 0.78 0.68 0.73 158 Clinical_Dept 0.94 0.91 0.93 1714 Treatment 0.84 0.78 0.81 347 Oxygen_Therapy 0.81 0.80 0.81 120 Duration 0.81 0.87 0.84 927 Admission_Discharge 0.94 0.94 0.94 343 RelativeDate 0.91 0.86 0.89 1403 Hypertension 0.87 0.97 0.91 122 Employment 0.90 0.76 0.83 369 Dosage 0.87 0.84 0.85 461 Medical_Device 0.88 0.92 0.90 5499 Test_Result 0.85 0.78 0.81 1321 Time 0.73 0.65 0.69 34 Date 0.97 0.94 0.95 591 Obesity 0.88 1.00 0.94 45 Race_Ethnicity 0.99 0.99 0.99 120 Imaging_Technique 0.75 0.42 0.54 91 ImagingFindings 0.69 0.40 0.50 291 Cerebrovascular_Disease 0.85 0.65 0.74 133 Diet 0.78 0.52 0.62 114 Fetus_NewBorn 0.75 0.53 0.62 180 Kidney_Disease 0.95 0.94 0.94 168 Weight 0.90 0.91 0.91 243 Blood_Pressure 0.84 0.84 0.84 336 Pulse 0.83 0.96 0.89 311 Temperature 0.88 0.96 0.92 182 O2_Saturation 0.90 0.64 0.75 95 VS_Finding 0.72 0.74 0.73 311 Death_Entity 0.79 0.66 0.72 50 Total_Cholesterol 0.72 0.87 0.79 30 Substance 0.94 0.89 0.92 103 Relationship_Status 0.93 0.81 0.87 48 Alcohol 0.92 0.87 0.90 84 Vital_Signs_Header 0.93 0.99 0.96 656 Respiration 0.94 0.95 0.95 156 Family_History_Header 0.97 0.99 0.98 224 Pregnancy 0.82 0.69 0.75 203 Smoking 0.98 0.98 0.98 109 Vaccine_Name 0.89 0.55 0.68 31 EKG_Findings 0.64 0.27 0.38 154 Allergen 0.60 0.75 0.67 12 Medical_History_Header 0.95 0.96 0.95 411 Social_History_Header 0.91 0.97 0.94 213 Overweight 0.83 0.83 0.83 6 Communicable_Disease 0.73 0.51 0.60 47 Birth_Entity 0.00 0.00 0.00 6 Triglycerides 1.00 1.00 1.00 4 HDL 0.62 1.00 0.77 5 LDL 1.00 1.00 1.00 5 BMI 1.00 1.00 1.00 17 Sexually_Active_or_Sexual_Orientation 1.00 0.57 0.73 7 micro-avg 0.90 0.88 0.89 92950 macro-avg 0.86 0.81 0.83 92950 weighted-avg 0.90 0.88 0.89 92950</summary></entry><entry><title type="html">Detect Clinical Entities (clinical_medium)</title><link href="/2023/04/12/ner_jsl_emb_clinical_medium_en.html" rel="alternate" type="text/html" title="Detect Clinical Entities (clinical_medium)" /><published>2023-04-12T00:00:00+00:00</published><updated>2023-04-12T00:00:00+00:00</updated><id>/2023/04/12/ner_jsl_emb_clinical_medium_en</id><content type="html" xml:base="/2023/04/12/ner_jsl_emb_clinical_medium_en.html">## Description
-
-Pretrained named entity recognition deep learning model for clinical terminology. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state-of-the-art model for NER: Chiu &amp; Nicols, Named Entity Recognition with Bidirectional LSTM-CNN. This model is the official version of jsl_ner_wip_clinical model.
-
-Definitions of Predicted Entities: 
-
-- `Injury_or_Poisoning`: Physical harm or injury caused to the body, including those caused by accidents, falls, or poisoning of a patient or someone else. 
-- `Direction`: All the information relating to the laterality of the internal and external organs. 
-- `Test`: Mentions of laboratory, pathology, and radiological tests. 
-- `Admission_Discharge`: Terms that indicate the admission and/or the discharge of a patient. 
-- `Death_Entity`: Mentions that indicate the death of a patient. 
-- `Relationship_Status`: State of patients romantic or social relationships (e.g. single, married, divorced). 
-- `Duration`: The duration of a medical treatment or medication use. 
-- `Respiration`: Number of breaths per minute. 
-- `Hyperlipidemia`: Terms that indicate hyperlipidemia with relevant subtypes and synonims.  
-- `Birth_Entity`: Mentions that indicate giving birth. 
-- `Age`: All mention of ages, past or present, related to the patient or with anybody else. 
-- `Labour_Delivery`: Extractions include stages of labor and delivery. 
-- `Family_History_Header`: identifies section headers that correspond to Family History of the patient. 
-- `BMI`: Numeric values and other text information related to Body Mass Index. 
-- `Temperature`: All mentions that refer to body temperature. 
-- `Alcohol`: Terms that indicate alcohol use, abuse or drinking issues of a patient or someone else. 
-- `Kidney_Disease`: Terms that refer to any kidney diseases (includes mentions of modifiers such as &quot;Acute&quot; or &quot;Chronic&quot;). 
-- `Oncological`: All the cancer, tumor or metastasis related extractions mentioned in the document, of the patient or someone else. 
-- `Medical_History_Header`: Identifies section headers that correspond to Past Medical History of a patient. 
-- `Cerebrovascular_Disease`: All terms that refer to cerebrovascular diseases and events.  
-- `Oxygen_Therapy`: Breathing support triggered by patient or entirely or partially by machine (e.g. ventilator, BPAP, CPAP). 
-- `O2_Saturation`: Systemic arterial, venous or peripheral oxygen saturation measurements. 
-- `Psychological_Condition`: All the Mental health diagnosis, disorders, conditions or syndromes of a patient or someone else. 
-- `Heart_Disease`: All mentions of acquired, congenital or degenerative heart diseases. 
-- `Employment`: All mentions of patient or provider occupational titles and employment status . 
-- `Obesity`: Terms related to a patient being obese (overweight and BMI are extracted as different labels). 
-- `Disease_Syndrome_Disorder`: All the diseases mentioned in the document, of the patient or someone else (excluding diseases that are extracted with their specific labels, such as &quot;Heart_Disease&quot; etc.). 
-- `Pregnancy`: All terms related to Pregnancy (excluding terms that are extracted with their specific labels, such as &quot;Labour_Delivery&quot; etc.). 
-- `ImagingFindings`: All mentions of radiographic and imagistic findings. 
-- `Procedure`: All mentions of invasive medical or surgical procedures or treatments. 
-- `Medical_Device`: All mentions related to medical devices and supplies. 
-- `Race_Ethnicity`: All terms that refer to racial and national origin of sociocultural groups. 
-- `Section_Header`: All the section headers present in the text  (Medical History, Family History, Social History, Physical Examination and Vital signs Headers are extracted separately with their specific labels). 
-- `Symptom`: All the symptoms mentioned in the document, of a patient or someone else. 
-- `Treatment`: Includes therapeutic and minimally invasive treatment and procedures (invasive treatments or procedures are extracted as &quot;Procedure&quot;). 
-- `Substance`: All mentions of substance use related to the patient or someone else (recreational drugs, illicit drugs). 
-- `Route`: Drug and medication administration routes available described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
-- `Drug_Ingredient`: Active ingredient/s found in drug products. 
-- `Blood_Pressure`: Systemic blood pressure, mean arterial pressure, systolic and/or diastolic are extracted. 
-- `Diet`: All mentions and information regarding patients dietary habits. 
-- `External_body_part_or_region`: All mentions related to external body parts or organs that can be examined by naked eye. 
-- `LDL`: All mentions related to the lab test and results for LDL (Low Density Lipoprotein). 
-- `VS_Finding`: Qualitative data (e.g. Fever, Cyanosis, Tachycardia) and any other symptoms that refers to vital signs. 
-- `Allergen`: Allergen related extractions mentioned in the document. 
-- `EKG_Findings`: All mentions of EKG readings. 
-- `Imaging_Technique`: All mentions of special radiographic views or special imaging techniques used in radiology. 
-- `Triglycerides`: All mentions terms related to specific lab test for Triglycerides. 
-- `RelativeTime`: Time references that are relative to different times or events (e.g. words such as &quot;approximately&quot;, &quot;in the morning&quot;). 
-- `Gender`: Gender-specific nouns and pronouns. 
-- `Pulse`: Peripheral heart rate, without advanced information like measurement location. 
-- `Social_History_Header`: Identifies section headers that correspond to Social History of a patient. 
-- `Substance_Quantity`: All mentions of substance quantity (quantitative information related to illicit/recreational drugs). 
-- `Diabetes`: All terms related to diabetes mellitus. 
-- `Modifier`: Terms that modify the symptoms, diseases or risk factors. If a modifier is included in ICD-10 name of a specific disease, the respective modifier is not extracted separately. 
-- `Internal_organ_or_component`: All mentions related to internal body parts or organs that can not be examined by naked eye. 
-- `Clinical_Dept`: Terms that indicate the medical and/or surgical departments. 
-- `Form`: Drug and medication forms available described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
-- `Drug_BrandName`: Commercial labeling name chosen by the labeler or the drug manufacturer for a drug containing a single or multiple drug active ingredients. 
-- `Strength`: Potency of one unit of drug (or a combination of drugs) the measurement units available are described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
-- `Fetus_NewBorn`: All terms related to fetus, infant, new born (excluding terms that are extracted with their specific labels, such as &quot;Labour_Delivery&quot;, &quot;Pregnancy&quot; etc.). 
-- `RelativeDate`: Temporal references that are relative to the date of the text or to any other specific date (e.g. &quot;approximately two years ago&quot;, &quot;about two days ago&quot;). 
-- `Height`: All mentions related to a patients height. 
-- `Test_Result`: Terms related to all the test results present in the document (clinical tests results are included). 
-- `Sexually_Active_or_Sexual_Orientation`: All terms that are related to sexuality, sexual orientations and sexual activity. 
-- `Frequency`: Frequency of administration for a dose prescribed. 
-- `Time`: Specific time references (hour and/or minutes). 
-- `Weight`: All mentions related to a patients weight. 
-- `Vaccine`: Generic and brand name of vaccines or vaccination procedure. 
-- `Vital_Signs_Header`: Identifies section headers that correspond to Vital Signs of a patient. 
-- `Communicable_Disease`: Includes all mentions of communicable diseases. 
-- `Dosage`: Quantity prescribed by the physician for an active ingredient; measurement units are available described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
-- `Overweight`: Terms related to the patient being overweight (BMI and Obesity is extracted separately). 
-- `Hypertension`: All terms related to Hypertension (quantitative data such as 150/100 is extracted as Blood_Pressure). 
-- `HDL`: Terms related to the lab test for HDL (High Density Lipoprotein). 
-- `Total_Cholesterol`: Terms related to the lab test and results for cholesterol. 
-- `Smoking`: All mentions of smoking status of a patient. 
-- `Date`: Mentions of an exact date, in any format, including day number, month and/or year.
-
-## Predicted Entities
-
-`Injury_or_Poisoning`, `Direction`, `Test`, `Admission_Discharge`, `Death_Entity`, `Relationship_Status`, `Duration`, `Respiration`, `Hyperlipidemia`, `Birth_Entity`, `Age`, `Labour_Delivery`, `Family_History_Header`, `BMI`, `Temperature`, `Alcohol`, `Kidney_Disease`, `Oncological`, `Medical_History_Header`, `Cerebrovascular_Disease`, `Oxygen_Therapy`, `O2_Saturation`, `Psychological_Condition`, `Heart_Disease`, `Employment`, `Obesity`, `Disease_Syndrome_Disorder`, `Pregnancy`, `ImagingFindings`, `Procedure`, `Medical_Device`, `Race_Ethnicity`, `Section_Header`, `Symptom`, `Treatment`, `Substance`, `Route`, `Drug_Ingredient`, `Blood_Pressure`, `Diet`, `External_body_part_or_region`, `LDL`, `VS_Finding`, `Allergen`, `EKG_Findings`, `Imaging_Technique`, `Triglycerides`, `RelativeTime`, `Gender`, `Pulse`, `Social_History_Header`, `Substance_Quantity`, `Diabetes`, `Modifier`, `Internal_organ_or_component`, `Clinical_Dept`, `Form`, `Drug_BrandName`, `Strength`, `Fetus_NewBorn`, `RelativeDate`, `Height`, `Test_Result`, `Sexually_Active_or_Sexual_Orientation`, `Frequency`, `Time`, `Weight`, `Vaccine`, `Vaccine_Name`, `Vital_Signs_Header`, `Communicable_Disease`, `Dosage`, `Overweight`, `Hypertension`, `HDL`, `Total_Cholesterol`, `Smoking`, `Date`
-
-{:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_JSL/){:.button.button-orange}
-[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_jsl_emb_clinical_medium_en_4.3.2_3.0_1681306334405.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_jsl_emb_clinical_medium_en_4.3.2_3.0_1681306334405.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-documentAssembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;) 
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-ner = MedicalNerModel.pretrained(&quot;ner_jsl_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-    
-ner_converter = NerConverter()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-ner_pipeline = Pipeline(stages=[
-    documentAssembler, 
-    sentenceDetector,
-    tokenizer,
-    word_embeddings,
-    ner,
-    ner_converter])
-
-
-data = spark.createDataFrame([[&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.
-&quot;&quot;&quot;]]).toDF(&quot;text&quot;)
-
-result = ner_pipeline.fit(data).transform(data)
-```
-```scala
-val documentAssembler = new DocumentAssembler()
-        .setInputCol(&quot;text&quot;)
-        .setOutputCol(&quot;document&quot;)
-
-val sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
-        .setInputCols(&quot;document&quot;) 
-        .setOutputCol(&quot;sentence&quot;)
-
-val tokenizer = new Tokenizer()
-        .setInputCols(&quot;sentence&quot;)
-        .setOutputCol(&quot;token&quot;)
-
-val embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-        .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-        .setOutputCol(&quot;embeddings&quot;)
-
-val jsl_ner = MedicalNerModel.pretrained(&quot;ner_jsl_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-        .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
-        .setOutputCol(&quot;ner&quot;)
-
-val jsl_ner_converter = new NerConverter()
-        .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-        .setOutputCol(&quot;ner_chunk&quot;)
-
-val jsl_ner_pipeline = new Pipeline().setStages(Array(
-            documentAssembler, 
-            sentenceDetector, 
-            tokenizer, 
-            embeddings, 
-            jsl_ner, 
-            jsl_ner_converter))
-
-
-val data = Seq(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = jsl_ner_pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+-----------------------------------------+-----+---+----------------------------+
-|chunk                                    |begin|end|ner_label                   |
-+-----------------------------------------+-----+---+----------------------------+
-|21-day-old                               |17   |26 |Age                         |
-|Caucasian                                |28   |36 |Race_Ethnicity              |
-|male                                     |38   |41 |Gender                      |
-|2 days                                   |52   |57 |Duration                    |
-|congestion                               |62   |71 |Symptom                     |
-|mom                                      |75   |77 |Gender                      |
-|suctioning yellow discharge              |88   |114|Symptom                     |
-|nares                                    |135  |139|External_body_part_or_region|
-|she                                      |147  |149|Gender                      |
-|mild                                     |168  |171|Modifier                    |
-|problems with his breathing while feeding|173  |213|Symptom                     |
-|perioral cyanosis                        |237  |253|Symptom                     |
-|retractions                              |258  |268|Symptom                     |
-|Influenza vaccine                        |325  |341|Vaccine_Name                |
-|One day ago                              |344  |354|RelativeDate                |
-|mom                                      |357  |359|Gender                      |
-|tactile temperature                      |376  |394|Symptom                     |
-|Tylenol                                  |417  |423|Drug_BrandName              |
-|Baby                                     |426  |429|Age                         |
-|decreased p.o                            |449  |461|Symptom                     |
-+-----------------------------------------+-----+---+----------------------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|ner_jsl_emb_clinical_medium|
-|Compatibility:|Healthcare NLP 4.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|15.2 MB|
-
-## Benchmarking
-
-```bash
-                                label  precision    recall  f1-score   support
-                      Drug_Ingredient       0.91      0.94      0.93      1905
-            Disease_Syndrome_Disorder       0.85      0.89      0.87      4949
-                       Drug_BrandName       0.94      0.92      0.93       963
-                             Strength       0.95      0.93      0.94       759
-                                Route       0.90      0.94      0.92       943
-          Internal_organ_or_component       0.89      0.90      0.89     10310
-                               Dosage       0.95      0.78      0.86       478
-                            Frequency       0.90      0.87      0.88      1016
-                            Treatment       0.90      0.70      0.78       332
-                            Procedure       0.85      0.91      0.88      6433
-                               Gender       0.98      0.99      0.99      5586
-                         RelativeTime       0.79      0.70      0.74       306
-                            Direction       0.91      0.90      0.91      4344
-                             Modifier       0.84      0.82      0.83      2863
-                              Symptom       0.84      0.83      0.84     11599
-                                 Date       0.94      0.98      0.96       546
-         External_body_part_or_region       0.89      0.85      0.87      3270
-                       Section_Header       0.98      0.97      0.98      9320
-                                  Age       0.85      0.92      0.88       757
-                            Substance       0.91      0.85      0.88       113
-                           VS_Finding       0.86      0.60      0.70       304
-                       Medical_Device       0.87      0.93      0.90      5475
-                       Oxygen_Therapy       0.89      0.85      0.87       117
-                                 Test       0.87      0.87      0.87      4491
-                             Diabetes       0.95      0.97      0.96       149
-                             Duration       0.86      0.86      0.86      1009
-                      ImagingFindings       0.83      0.50      0.63       353
-                       Hyperlipidemia       0.80      0.87      0.84        47
-                         Hypertension       0.97      0.94      0.96       152
-                         RelativeDate       0.90      0.89      0.89      1338
-                        Clinical_Dept       0.92      0.94      0.93      1771
-                       Kidney_Disease       0.90      0.96      0.93       228
-                        Heart_Disease       0.93      0.85      0.89       967
-                                 Diet       0.67      0.62      0.65       106
-                               Weight       0.93      0.93      0.93       254
-                          Test_Result       0.79      0.81      0.80      1470
-                                 Form       0.85      0.85      0.85       254
-                                 Time       0.80      0.72      0.76        76
-              Psychological_Condition       0.81      0.76      0.79       187
-                  Injury_or_Poisoning       0.84      0.80      0.82       889
-                  Admission_Discharge       0.91      0.97      0.94       301
-                      Labour_Delivery       0.74      0.73      0.73       110
-                           Employment       0.90      0.73      0.81       389
-                              Vaccine       0.83      0.33      0.48        15
-                              Obesity       0.92      0.91      0.92        54
-                          Oncological       0.92      0.93      0.93       784
-                              Smoking       0.96      0.94      0.95       106
-                    Imaging_Technique       0.70      0.53      0.60        98
-                       Blood_Pressure       0.86      0.87      0.86       314
-                                Pulse       0.87      0.92      0.89       278
-                          Respiration       0.96      0.94      0.95       180
-                        O2_Saturation       0.86      0.77      0.81        96
-               Medical_History_Header       0.93      0.99      0.96       396
-                    Total_Cholesterol       0.88      0.37      0.52        19
-              Cerebrovascular_Disease       0.75      0.78      0.76       108
-                            Pregnancy       0.90      0.71      0.79       201
-                         Death_Entity       0.85      0.76      0.80        46
-                         EKG_Findings       0.78      0.43      0.56       186
-                       Race_Ethnicity       0.97      0.99      0.98       118
-                Family_History_Header       0.97      0.99      0.98       273
-                              Alcohol       0.84      0.95      0.89        84
-                        Fetus_NewBorn       0.75      0.54      0.63       235
-                   Vital_Signs_Header       0.96      0.94      0.95       710
-                  Relationship_Status       0.93      0.95      0.94        41
-                               Height       0.98      0.85      0.91        68
-                          Temperature       0.91      0.96      0.94       141
-                        Triglycerides       0.40      0.40      0.40        10
-                                  LDL       0.94      0.68      0.79        22
-                Social_History_Header       0.98      0.97      0.98       259
-                 Communicable_Disease       0.79      0.62      0.70        50
-                           Overweight       0.86      0.86      0.86         7
-                             Allergen       0.00      0.00      0.00        23
-                   Substance_Quantity       0.33      1.00      0.50         2
-                         Vaccine_Name       0.68      1.00      0.81        15
-                         Birth_Entity       0.00      0.00      0.00         3
-                                  BMI       1.00      0.67      0.80        15
-Sexually_Active_or_Sexual_Orientation       1.00      0.80      0.89         5
-                                  HDL       1.00      1.00      1.00         2
-                            micro-avg       0.89      0.89      0.89     92193
-                            macro-avg       0.85      0.81      0.82     92193
-                         weighted-avg       0.89      0.89      0.89     92193
-```</content><author><name>John Snow Labs</name></author><category term="ner" /><category term="licensed" /><category term="clinical" /><category term="en" /><category term="clinical_medium" /><summary type="html">Description Pretrained named entity recognition deep learning model for clinical terminology. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state-of-the-art model for NER: Chiu &amp;amp; Nicols, Named Entity Recognition with Bidirectional LSTM-CNN. This model is the official version of jsl_ner_wip_clinical model. Definitions of Predicted Entities: Injury_or_Poisoning: Physical harm or injury caused to the body, including those caused by accidents, falls, or poisoning of a patient or someone else. Direction: All the information relating to the laterality of the internal and external organs. Test: Mentions of laboratory, pathology, and radiological tests. Admission_Discharge: Terms that indicate the admission and/or the discharge of a patient. Death_Entity: Mentions that indicate the death of a patient. Relationship_Status: State of patients romantic or social relationships (e.g. single, married, divorced). Duration: The duration of a medical treatment or medication use. Respiration: Number of breaths per minute. Hyperlipidemia: Terms that indicate hyperlipidemia with relevant subtypes and synonims. Birth_Entity: Mentions that indicate giving birth. Age: All mention of ages, past or present, related to the patient or with anybody else. Labour_Delivery: Extractions include stages of labor and delivery. Family_History_Header: identifies section headers that correspond to Family History of the patient. BMI: Numeric values and other text information related to Body Mass Index. Temperature: All mentions that refer to body temperature. Alcohol: Terms that indicate alcohol use, abuse or drinking issues of a patient or someone else. Kidney_Disease: Terms that refer to any kidney diseases (includes mentions of modifiers such as “Acute” or “Chronic”). Oncological: All the cancer, tumor or metastasis related extractions mentioned in the document, of the patient or someone else. Medical_History_Header: Identifies section headers that correspond to Past Medical History of a patient. Cerebrovascular_Disease: All terms that refer to cerebrovascular diseases and events. Oxygen_Therapy: Breathing support triggered by patient or entirely or partially by machine (e.g. ventilator, BPAP, CPAP). O2_Saturation: Systemic arterial, venous or peripheral oxygen saturation measurements. Psychological_Condition: All the Mental health diagnosis, disorders, conditions or syndromes of a patient or someone else. Heart_Disease: All mentions of acquired, congenital or degenerative heart diseases. Employment: All mentions of patient or provider occupational titles and employment status . Obesity: Terms related to a patient being obese (overweight and BMI are extracted as different labels). Disease_Syndrome_Disorder: All the diseases mentioned in the document, of the patient or someone else (excluding diseases that are extracted with their specific labels, such as “Heart_Disease” etc.). Pregnancy: All terms related to Pregnancy (excluding terms that are extracted with their specific labels, such as “Labour_Delivery” etc.). ImagingFindings: All mentions of radiographic and imagistic findings. Procedure: All mentions of invasive medical or surgical procedures or treatments. Medical_Device: All mentions related to medical devices and supplies. Race_Ethnicity: All terms that refer to racial and national origin of sociocultural groups. Section_Header: All the section headers present in the text (Medical History, Family History, Social History, Physical Examination and Vital signs Headers are extracted separately with their specific labels). Symptom: All the symptoms mentioned in the document, of a patient or someone else. Treatment: Includes therapeutic and minimally invasive treatment and procedures (invasive treatments or procedures are extracted as “Procedure”). Substance: All mentions of substance use related to the patient or someone else (recreational drugs, illicit drugs). Route: Drug and medication administration routes available described by FDA. Drug_Ingredient: Active ingredient/s found in drug products. Blood_Pressure: Systemic blood pressure, mean arterial pressure, systolic and/or diastolic are extracted. Diet: All mentions and information regarding patients dietary habits. External_body_part_or_region: All mentions related to external body parts or organs that can be examined by naked eye. LDL: All mentions related to the lab test and results for LDL (Low Density Lipoprotein). VS_Finding: Qualitative data (e.g. Fever, Cyanosis, Tachycardia) and any other symptoms that refers to vital signs. Allergen: Allergen related extractions mentioned in the document. EKG_Findings: All mentions of EKG readings. Imaging_Technique: All mentions of special radiographic views or special imaging techniques used in radiology. Triglycerides: All mentions terms related to specific lab test for Triglycerides. RelativeTime: Time references that are relative to different times or events (e.g. words such as “approximately”, “in the morning”). Gender: Gender-specific nouns and pronouns. Pulse: Peripheral heart rate, without advanced information like measurement location. Social_History_Header: Identifies section headers that correspond to Social History of a patient. Substance_Quantity: All mentions of substance quantity (quantitative information related to illicit/recreational drugs). Diabetes: All terms related to diabetes mellitus. Modifier: Terms that modify the symptoms, diseases or risk factors. If a modifier is included in ICD-10 name of a specific disease, the respective modifier is not extracted separately. Internal_organ_or_component: All mentions related to internal body parts or organs that can not be examined by naked eye. Clinical_Dept: Terms that indicate the medical and/or surgical departments. Form: Drug and medication forms available described by FDA. Drug_BrandName: Commercial labeling name chosen by the labeler or the drug manufacturer for a drug containing a single or multiple drug active ingredients. Strength: Potency of one unit of drug (or a combination of drugs) the measurement units available are described by FDA. Fetus_NewBorn: All terms related to fetus, infant, new born (excluding terms that are extracted with their specific labels, such as “Labour_Delivery”, “Pregnancy” etc.). RelativeDate: Temporal references that are relative to the date of the text or to any other specific date (e.g. “approximately two years ago”, “about two days ago”). Height: All mentions related to a patients height. Test_Result: Terms related to all the test results present in the document (clinical tests results are included). Sexually_Active_or_Sexual_Orientation: All terms that are related to sexuality, sexual orientations and sexual activity. Frequency: Frequency of administration for a dose prescribed. Time: Specific time references (hour and/or minutes). Weight: All mentions related to a patients weight. Vaccine: Generic and brand name of vaccines or vaccination procedure. Vital_Signs_Header: Identifies section headers that correspond to Vital Signs of a patient. Communicable_Disease: Includes all mentions of communicable diseases. Dosage: Quantity prescribed by the physician for an active ingredient; measurement units are available described by FDA. Overweight: Terms related to the patient being overweight (BMI and Obesity is extracted separately). Hypertension: All terms related to Hypertension (quantitative data such as 150/100 is extracted as Blood_Pressure). HDL: Terms related to the lab test for HDL (High Density Lipoprotein). Total_Cholesterol: Terms related to the lab test and results for cholesterol. Smoking: All mentions of smoking status of a patient. Date: Mentions of an exact date, in any format, including day number, month and/or year. Predicted Entities Injury_or_Poisoning, Direction, Test, Admission_Discharge, Death_Entity, Relationship_Status, Duration, Respiration, Hyperlipidemia, Birth_Entity, Age, Labour_Delivery, Family_History_Header, BMI, Temperature, Alcohol, Kidney_Disease, Oncological, Medical_History_Header, Cerebrovascular_Disease, Oxygen_Therapy, O2_Saturation, Psychological_Condition, Heart_Disease, Employment, Obesity, Disease_Syndrome_Disorder, Pregnancy, ImagingFindings, Procedure, Medical_Device, Race_Ethnicity, Section_Header, Symptom, Treatment, Substance, Route, Drug_Ingredient, Blood_Pressure, Diet, External_body_part_or_region, LDL, VS_Finding, Allergen, EKG_Findings, Imaging_Technique, Triglycerides, RelativeTime, Gender, Pulse, Social_History_Header, Substance_Quantity, Diabetes, Modifier, Internal_organ_or_component, Clinical_Dept, Form, Drug_BrandName, Strength, Fetus_NewBorn, RelativeDate, Height, Test_Result, Sexually_Active_or_Sexual_Orientation, Frequency, Time, Weight, Vaccine, Vaccine_Name, Vital_Signs_Header, Communicable_Disease, Dosage, Overweight, Hypertension, HDL, Total_Cholesterol, Smoking, Date Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_jsl_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) ner_pipeline = Pipeline(stages=[ documentAssembler, sentenceDetector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature. &quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = ner_pipeline.fit(data).transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val jsl_ner = MedicalNerModel.pretrained(&quot;ner_jsl_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val jsl_ner_converter = new NerConverter() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val jsl_ner_pipeline = new Pipeline().setStages(Array( documentAssembler, sentenceDetector, tokenizer, embeddings, jsl_ner, jsl_ner_converter)) val data = Seq(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val result = jsl_ner_pipeline.fit(data).transform(data) Results +-----------------------------------------+-----+---+----------------------------+ |chunk |begin|end|ner_label | +-----------------------------------------+-----+---+----------------------------+ |21-day-old |17 |26 |Age | |Caucasian |28 |36 |Race_Ethnicity | |male |38 |41 |Gender | |2 days |52 |57 |Duration | |congestion |62 |71 |Symptom | |mom |75 |77 |Gender | |suctioning yellow discharge |88 |114|Symptom | |nares |135 |139|External_body_part_or_region| |she |147 |149|Gender | |mild |168 |171|Modifier | |problems with his breathing while feeding|173 |213|Symptom | |perioral cyanosis |237 |253|Symptom | |retractions |258 |268|Symptom | |Influenza vaccine |325 |341|Vaccine_Name | |One day ago |344 |354|RelativeDate | |mom |357 |359|Gender | |tactile temperature |376 |394|Symptom | |Tylenol |417 |423|Drug_BrandName | |Baby |426 |429|Age | |decreased p.o |449 |461|Symptom | +-----------------------------------------+-----+---+----------------------------+ Model Information Model Name: ner_jsl_emb_clinical_medium Compatibility: Healthcare NLP 4.3.2+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 15.2 MB Benchmarking label precision recall f1-score support Drug_Ingredient 0.91 0.94 0.93 1905 Disease_Syndrome_Disorder 0.85 0.89 0.87 4949 Drug_BrandName 0.94 0.92 0.93 963 Strength 0.95 0.93 0.94 759 Route 0.90 0.94 0.92 943 Internal_organ_or_component 0.89 0.90 0.89 10310 Dosage 0.95 0.78 0.86 478 Frequency 0.90 0.87 0.88 1016 Treatment 0.90 0.70 0.78 332 Procedure 0.85 0.91 0.88 6433 Gender 0.98 0.99 0.99 5586 RelativeTime 0.79 0.70 0.74 306 Direction 0.91 0.90 0.91 4344 Modifier 0.84 0.82 0.83 2863 Symptom 0.84 0.83 0.84 11599 Date 0.94 0.98 0.96 546 External_body_part_or_region 0.89 0.85 0.87 3270 Section_Header 0.98 0.97 0.98 9320 Age 0.85 0.92 0.88 757 Substance 0.91 0.85 0.88 113 VS_Finding 0.86 0.60 0.70 304 Medical_Device 0.87 0.93 0.90 5475 Oxygen_Therapy 0.89 0.85 0.87 117 Test 0.87 0.87 0.87 4491 Diabetes 0.95 0.97 0.96 149 Duration 0.86 0.86 0.86 1009 ImagingFindings 0.83 0.50 0.63 353 Hyperlipidemia 0.80 0.87 0.84 47 Hypertension 0.97 0.94 0.96 152 RelativeDate 0.90 0.89 0.89 1338 Clinical_Dept 0.92 0.94 0.93 1771 Kidney_Disease 0.90 0.96 0.93 228 Heart_Disease 0.93 0.85 0.89 967 Diet 0.67 0.62 0.65 106 Weight 0.93 0.93 0.93 254 Test_Result 0.79 0.81 0.80 1470 Form 0.85 0.85 0.85 254 Time 0.80 0.72 0.76 76 Psychological_Condition 0.81 0.76 0.79 187 Injury_or_Poisoning 0.84 0.80 0.82 889 Admission_Discharge 0.91 0.97 0.94 301 Labour_Delivery 0.74 0.73 0.73 110 Employment 0.90 0.73 0.81 389 Vaccine 0.83 0.33 0.48 15 Obesity 0.92 0.91 0.92 54 Oncological 0.92 0.93 0.93 784 Smoking 0.96 0.94 0.95 106 Imaging_Technique 0.70 0.53 0.60 98 Blood_Pressure 0.86 0.87 0.86 314 Pulse 0.87 0.92 0.89 278 Respiration 0.96 0.94 0.95 180 O2_Saturation 0.86 0.77 0.81 96 Medical_History_Header 0.93 0.99 0.96 396 Total_Cholesterol 0.88 0.37 0.52 19 Cerebrovascular_Disease 0.75 0.78 0.76 108 Pregnancy 0.90 0.71 0.79 201 Death_Entity 0.85 0.76 0.80 46 EKG_Findings 0.78 0.43 0.56 186 Race_Ethnicity 0.97 0.99 0.98 118 Family_History_Header 0.97 0.99 0.98 273 Alcohol 0.84 0.95 0.89 84 Fetus_NewBorn 0.75 0.54 0.63 235 Vital_Signs_Header 0.96 0.94 0.95 710 Relationship_Status 0.93 0.95 0.94 41 Height 0.98 0.85 0.91 68 Temperature 0.91 0.96 0.94 141 Triglycerides 0.40 0.40 0.40 10 LDL 0.94 0.68 0.79 22 Social_History_Header 0.98 0.97 0.98 259 Communicable_Disease 0.79 0.62 0.70 50 Overweight 0.86 0.86 0.86 7 Allergen 0.00 0.00 0.00 23 Substance_Quantity 0.33 1.00 0.50 2 Vaccine_Name 0.68 1.00 0.81 15 Birth_Entity 0.00 0.00 0.00 3 BMI 1.00 0.67 0.80 15 Sexually_Active_or_Sexual_Orientation 1.00 0.80 0.89 5 HDL 1.00 1.00 1.00 2 micro-avg 0.89 0.89 0.89 92193 macro-avg 0.85 0.81 0.82 92193 weighted-avg 0.89 0.89 0.89 92193</summary></entry><entry><title type="html">Legal Multilabel Classifier on Covid-19 exceptions</title><link href="/2023/04/12/legmulticlf_covid19_exceptions_english_en.html" rel="alternate" type="text/html" title="Legal Multilabel Classifier on Covid-19 exceptions" /><published>2023-04-12T00:00:00+00:00</published><updated>2023-04-12T00:00:00+00:00</updated><id>/2023/04/12/legmulticlf_covid19_exceptions_english_en</id><content type="html" xml:base="/2023/04/12/legmulticlf_covid19_exceptions_english_en.html">## Description
-
-This is the Multi-Label Text Classification model that can be used to identify up to 6 classes to facilitate analysis, discovery and comparison of legal texts related to COVID-19 exception measures. The classes are as follows:
-
-- Closures/lockdown
-- Government_oversight
-- Restrictions_of_daily_liberties       
-- Restrictions_of_fundamental_rights_and_civil_liberties       
-- State_of_Emergency       
-- Suspension_of_international_cooperation_and_commitments
-
-## Predicted Entities
-
-`Closures/lockdown`, `Government_oversight`, `Restrictions_of_daily_liberties`, `Restrictions_of_fundamental_rights_and_civil_liberties`, `State_of_Emergency`, `Suspension_of_international_cooperation_and_commitments`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_covid19_exceptions_english_en_1.0.0_3.0_1681315675753.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legmulticlf_covid19_exceptions_english_en_1.0.0_3.0_1681315675753.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-document_assembler = nlp.DocumentAssembler() \
-        .setInputCol('text')\
-        .setOutputCol('document')
-
-tokenizer = nlp.Tokenizer() \
-        .setInputCols(['document'])\
-        .setOutputCol('token')
-
-embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;, &quot;en&quot;) \
-        .setInputCols(['document', 'token'])\
-        .setOutputCol(&quot;embeddings&quot;)
-
-embeddingsSentence = nlp.SentenceEmbeddings() \
-        .setInputCols(['document', 'embeddings'])\
-        .setOutputCol('sentence_embeddings')\
-        .setPoolingStrategy('AVERAGE')
-
-classifierdl = nlp.MultiClassifierDLModel.pretrained(&quot;legmulticlf_covid19_exceptions_english&quot;, &quot;en&quot;, &quot;legal/models&quot;) \
-         .setInputCols([&quot;sentence_embeddings&quot;])\
-         .setOutputCol(&quot;class&quot;)
-  
-clf_pipeline = nlp.Pipeline(stages=[document_assembler, 
-                                    tokenizer, 
-                                    embeddings, 
-                                    embeddingsSentence, 
-                                    classifierdl])
-
-df = spark.createDataFrame([[&quot;First, we must protect the NHS’s ability to cope. We must be confident that we are able to provide sufficient critical care and specialist treatment right across the UK. The NHS staff have been incredible. We must continue to support them as much as we can.&quot;]]).toDF(&quot;text&quot;)
-
-model = clf_pipeline.fit(df)
-result = model.transform(df)
-
-result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False)
-```
-
-&lt;/div&gt;
-
-## Results
-
-```bash
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
-|text                                                                                                                                                                                                                                                             |result                |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
-|First, we must protect the NHS’s ability to cope. We must be confident that we are able to provide sufficient critical care and specialist treatment right across the UK. The NHS staff have been incredible. We must continue to support them as much as we can.|[Government_oversight]|
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|legmulticlf_covid19_exceptions_english|
-|Compatibility:|Legal NLP 1.0.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence_embeddings]|
-|Output Labels:|[class]|
-|Language:|en|
-|Size:|13.9 MB|
-
-## References
-
-Train dataset available [here](https://huggingface.co/datasets/joelito/covid19_emergency_event)
-
-## Benchmarking
-
-```bash
-label                                                    precision  recall  f1-score  support 
-Closures/lockdown                                        1.00       0.60    0.75      10      
-Government_oversight                                     0.88       1.00    0.94      22      
-Restrictions_of_daily_liberties                          0.83       0.95    0.89      21      
-Restrictions_of_fundamental_rights_and_civil_liberties   1.00       0.88    0.93      8       
-State_of_Emergency                                       1.00       0.89    0.94      28      
-Suspension_of_international_cooperation_and_commitments  1.00       1.00    1.00      2       
-micro-avg                                                0.92       0.90    0.91      91      
-macro-avg                                                0.95       0.89    0.91      91      
-weighted-avg                                             0.93       0.90    0.91      91      
-samples-avg                                              0.91       0.91    0.91      91      
-```</content><author><name>John Snow Labs</name></author><category term="lecensed" /><category term="legal" /><category term="classification" /><category term="en" /><category term="multilabel" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This is the Multi-Label Text Classification model that can be used to identify up to 6 classes to facilitate analysis, discovery and comparison of legal texts related to COVID-19 exception measures. The classes are as follows: Closures/lockdown Government_oversight Restrictions_of_daily_liberties Restrictions_of_fundamental_rights_and_civil_liberties State_of_Emergency Suspension_of_international_cooperation_and_commitments Predicted Entities Closures/lockdown, Government_oversight, Restrictions_of_daily_liberties, Restrictions_of_fundamental_rights_and_civil_liberties, State_of_Emergency, Suspension_of_international_cooperation_and_commitments Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler() \ .setInputCol('text')\ .setOutputCol('document') tokenizer = nlp.Tokenizer() \ .setInputCols(['document'])\ .setOutputCol('token') embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;, &quot;en&quot;) \ .setInputCols(['document', 'token'])\ .setOutputCol(&quot;embeddings&quot;) embeddingsSentence = nlp.SentenceEmbeddings() \ .setInputCols(['document', 'embeddings'])\ .setOutputCol('sentence_embeddings')\ .setPoolingStrategy('AVERAGE') classifierdl = nlp.MultiClassifierDLModel.pretrained(&quot;legmulticlf_covid19_exceptions_english&quot;, &quot;en&quot;, &quot;legal/models&quot;) \ .setInputCols([&quot;sentence_embeddings&quot;])\ .setOutputCol(&quot;class&quot;) clf_pipeline = nlp.Pipeline(stages=[document_assembler, tokenizer, embeddings, embeddingsSentence, classifierdl]) df = spark.createDataFrame([[&quot;First, we must protect the NHS’s ability to cope. We must be confident that we are able to provide sufficient critical care and specialist treatment right across the UK. The NHS staff have been incredible. We must continue to support them as much as we can.&quot;]]).toDF(&quot;text&quot;) model = clf_pipeline.fit(df) result = model.transform(df) result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False) Results +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+ |text |result | +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+ |First, we must protect the NHS’s ability to cope. We must be confident that we are able to provide sufficient critical care and specialist treatment right across the UK. The NHS staff have been incredible. We must continue to support them as much as we can.|[Government_oversight]| +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+ Model Information Model Name: legmulticlf_covid19_exceptions_english Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 13.9 MB References Train dataset available here Benchmarking label precision recall f1-score support Closures/lockdown 1.00 0.60 0.75 10 Government_oversight 0.88 1.00 0.94 22 Restrictions_of_daily_liberties 0.83 0.95 0.89 21 Restrictions_of_fundamental_rights_and_civil_liberties 1.00 0.88 0.93 8 State_of_Emergency 1.00 0.89 0.94 28 Suspension_of_international_cooperation_and_commitments 1.00 1.00 1.00 2 micro-avg 0.92 0.90 0.91 91 macro-avg 0.95 0.89 0.91 91 weighted-avg 0.93 0.90 0.91 91 samples-avg 0.91 0.91 0.91 91</summary></entry></feed>
+In house annotated dataset</content><author><name>John Snow Labs</name></author><category term="en" /><category term="summarization" /><category term="flant5" /><category term="t5" /><category term="finance" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This language model has been fine-tuned on the FLANT5 using the SEC 10K Filings data. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text summarization tasks. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;documents&quot;) flant5 = finance.Summarizer().pretrained('finsum_flant5_finetuned_sec10k','en','finance/models')\ .setInputCols([&quot;documents&quot;])\ .setOutputCol(&quot;summary&quot;)\ .setMaxNewTokens(1000) pipeline = nlp.Pipeline(stages=[document_assembler, flant5]) data = spark.createDataFrame([ [1, &quot;&quot;&quot;Intelligent process automation, or IPA, combines task automation with process automation to orchestrate coordination across systems, humans, and digital workforce in a unified workflow. According to IDC, the market for worldwide IPA software totaled $16.3 billion in 2019 and is expected to grow at a compound annual growth rate of 13% to $30.5 billion by 2024. We were included as a &quot;Leader&quot; based on the strength of our current offering, our strategy, and our market presence in The Forrester Wave Gartner Magic Quadrant for Enterprise Low-Code Application Platforms , Published 30 September 2020; Authored by: Paul Vincent, Yefim Natis, Jason Wong, Saikat Ray, et al. Gartner, Forecast: Public Cloud Services, Worldwide, 2018-2024, 4Q20 Update, Colleen Graham, Neha Gupta, et al., 21 December 2020. Gartner Forecast Analysis: Robotic Process Automation, Worldwide; Published 2 September 2020; Authored by: Fabrizio Biscotti, Cathy Tornbohm, Arthur Villa, et. al). IDC: Worldwide Intelligent Process Automation Software Forecast, 2020-2024; Published 15 July 2020; Authored by Maureen Fleming. Taken together, these current core software markets are expected to represent a combined $70.1 billion market opportunity currently and a combined $209.5 billion market opportunity in the near term. In addition to our current core software markets, we believe our platform better addresses certain needs of enterprise companies that have historically used manually-developed custom software. The global enterprise application software market is expected to reach $231 billion in 2021, according to Gartner. Based on approximately 166,000 global companies and government institutions in relevant industries and revenue-based size segments as well as our industry- and size-specific average annual recurring revenue for customers as of December 31, 2020, we internally estimate our market opportunity to have been approximately $37 billion in 2020. We determined relevant global companies and government institutions by industry and size by referencing certain independent industry data from S&amp;amp;P Global Market Intelligence. We calculated industry-and size-specific average annual recurring revenue as of December 31, 2020 by adding the aggregate annual recurring revenue from all existing customers within each industry and size segment and dividing the total by the number of our existing customers in each industry and size segment. Gartner, Forecast: Enterprise Application Software, Worldwide, 2018-2024, 4Q20 Update, Neha Gupta, Chris Pang, et al., 18 December 2020. With our platform, organizations can rapidly and easily design, build, and implement powerful, enterprise-grade custom applications through our intuitive, visual interface, with little or no coding required. We also enable organizations to easily modify and enhance applications and automatically disseminate these updates across device types to ensure all users benefit from the most up-to-date functionality. Through the speed and power of our platform, organizations can make their digital transformations happen more effectively and efficiently than could be achieved through building an application with standard programming languages. Our heritage as a BPM company provides us with a differentiated understanding and ability to automate complex processes, and we have incorporated that expertise into our platform to enable the development of powerful business software. Appian applications can leverage our complete automation capabilities, applying the right automation approach for each specific use case: At the core of our platform is an advanced engine that enables the modeling, modification, and management of complex processes. Appian combines people, technologies, and data into a single workflow to maximize resources and improve business results. Workflow can include any worker (people, RPA, AI) or any resource (data and system). Appian includes a declarative environment for defining and executing business logic or rules. These rules can be highly complex and applied within the Appian platform to many use cases, ranging from automated decision making to user experience personalization.&quot;&quot;&quot;] ]).toDF('id', 'text') results = pipeline.fit(data).transform(data) results.select(&quot;summary.result&quot;).show(truncate=False) Results +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[Appian is a BPM company that provides intelligent process automation (IPA) software to organizations to orchestrate coordination across systems, humans, and digital workforce in a unified workflow. The market for worldwide IPA software totaled $16.3 billion in 2019 and is expected to grow at a compound annual growth rate of 13% to $30.5 billion by 2024. Appian was included as a &quot;Leader&quot; based on the strength of its current offering, strategy, and market presence in The Forrester Wave Gartner Magic Quadrant for Enterprise Low-Code Application Platforms, Gartner Magic Quadrant for Public Cloud Services, Worldwide, 2018-2024, 4Q20 Update, Colleen Graham, Neha Gupta, et al., Gartner Forecast Analysis: Robotic Process Automation, Worldwide, Published 2 September 2020; Fabrizio Biscotti, Cathy Tornbohm, Arthur Villa, et. al., IDC: Worldwide Intelligent Process Automation Software Forecast, 2020-2024; Published 15 July 2020; Maureen Fleming. The global enterprise application software market is expected to reach $231 billion in 2021, and Appian internally estimates its market opportunity to have been approximately $37 billion in 2020. Appian's platform combines people, technologies, and data into a single workflow to maximize resources and improve business results. Appian includes a declarative environment for defining and executing business logic or rules.]| +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: finsum_flant5_finetuned_sec10k Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 1.6 GB References In house annotated dataset</summary></entry></feed>
