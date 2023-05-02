@@ -906,10 +906,8 @@ The module also includes functionality for applying Structured Deidentification 
 
 <span class="n">deid_implementor</span><span class="o">=</span> <span class="n">Deid</span><span class="p">(</span>
 <span class="c1"># required: Spark session with spark-nlp-jsl jar
-</span><span class="n">spark</span>
-<span class="p">)</span>
+</span><span class="n">spark</span><span class="p">,</span>
 
-<span class="n">res</span><span class="o">=</span> <span class="n">deid_implementor</span><span class="p">.</span><span class="n">deidentify</span><span class="p">(</span>
 <span class="c1"># required: The path of the input file. Default is None. File type must be 'csv' or 'json'.
 </span><span class="n">input_file_path</span><span class="o">=</span><span class="s">"data.csv"</span><span class="p">,</span>
 
@@ -961,6 +959,9 @@ The module also includes functionality for applying Structured Deidentification 
 <span class="c1">#optional: Date shift column name. Default is "date_shift".
 #date_shift_column_name= "date_shift"
 </span>
+<span class="c1">#optional: Json file path for multi-mode Deid. Default is NONE.
+#multi_mode_file_path= "multi_mode_file_path.json"
+</span>
 <span class="c1">#optional: The date tag. Default is "DATE".
 #date_tag="DATE"
 </span>
@@ -989,6 +990,8 @@ The module also includes functionality for applying Structured Deidentification 
 #unnormalized_mode="obfuscate"
 </span><span class="p">)</span>
 
+<span class="n">res</span><span class="o">=</span> <span class="n">deid_implementor</span><span class="p">.</span><span class="n">deidentify</span><span class="p">()</span>
+
 </code></pre></div>  </div>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---+----------------------------------------------------------------------+----------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+
@@ -1006,10 +1009,8 @@ The module also includes functionality for applying Structured Deidentification 
 
 <span class="n">deid_implementor</span><span class="o">=</span> <span class="n">Deid</span><span class="p">(</span>
 <span class="c1"># required: Spark session with spark-nlp-jsl jar
-</span><span class="n">spark</span>
-<span class="p">)</span>
+</span><span class="n">spark</span><span class="p">,</span>
 
-<span class="n">res</span><span class="o">=</span> <span class="n">deid_implementor</span><span class="p">.</span><span class="n">deidentify</span><span class="p">(</span>
 <span class="c1"># required: The path of the input file. Default is None. File type must be 'csv' or 'json'.
 </span><span class="n">input_file_path</span><span class="o">=</span><span class="s">"data.csv"</span><span class="p">,</span>
 
@@ -1025,6 +1026,9 @@ The module also includes functionality for applying Structured Deidentification 
 <span class="c1">#optional: The masking policy. Default is "entity_labels".
 </span><span class="n">masking_policy</span><span class="o">=</span><span class="s">"entity_labels"</span><span class="p">,</span>
 
+<span class="c1">#optional: Json file path for multi-mode Deid. Default is NONE.
+#multi_mode_file_path= "multi_mode_file_path.json",
+</span>
 <span class="c1">#optional: Age group obfuscation. Default is False.
 #age_group_obfuscation=True
 </span>
@@ -1044,6 +1048,8 @@ The module also includes functionality for applying Structured Deidentification 
 #unnormalized_mode="obfuscate"
 </span><span class="p">)</span>
 
+<span class="n">res</span><span class="o">=</span> <span class="n">deid_implementor</span><span class="p">.</span><span class="n">deidentify</span><span class="p">()</span>
+
 </code></pre></div>  </div>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---+----------------------------------------------------------------------+----------------------------------------------------------------------+
@@ -1059,14 +1065,11 @@ The module also includes functionality for applying Structured Deidentification 
   <h3 id="apply-structured-deidentification">Apply Structured Deidentification</h3>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">from</span> <span class="nn">sparknlp_jsl</span> <span class="kn">import</span> <span class="n">Deid</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.utils.deidentification_utils</span> <span class="kn">import</span> <span class="n">structured_deidentifier</span>
 
-<span class="n">deid_implementor</span><span class="o">=</span> <span class="n">Deid</span><span class="p">(</span>
+<span class="n">res</span><span class="o">=</span> <span class="n">structured_deidentifier</span><span class="p">(</span>
 <span class="c1"># required: Spark session with spark-nlp-jsl jar
 </span><span class="n">spark</span>
-<span class="p">)</span>
-
-<span class="n">res</span><span class="o">=</span> <span class="n">deid_implementor</span><span class="p">.</span><span class="n">structured_deidentifier</span><span class="p">(</span>
 
 <span class="c1">#required: The path of the input file. Default is None. File type must be 'csv' or 'json'.
 </span><span class="n">input_file_path</span><span class="o">=</span><span class="s">"data.csv"</span><span class="p">,</span>
