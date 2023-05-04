@@ -563,17 +563,17 @@
 
   <ul>
     <li>Adapted Spark OCR for run on Databricks.</li>
-    <li>Added rewriting positions in <a href="ocr_pipeline_components#imagetotext">ImageToText</a> when run together with PdfToText.</li>
-    <li>Added ‘positionsCol’ param to <a href="ocr_pipeline_components#imagetotext">ImageToText</a>.</li>
-    <li>Improved support Spark NLP. Changed <a href="/ocr_install#using-start-function">start</a> function.</li>
+    <li>Added rewriting positions in <a href="../ocr_pipeline_components#imagetotext">ImageToText</a> when run together with PdfToText.</li>
+    <li>Added ‘positionsCol’ param to <a href="../ocr_pipeline_components#imagetotext">ImageToText</a>.</li>
+    <li>Improved support Spark NLP. Changed <a href="../ocr_install#using-start-function">start</a> function.</li>
   </ul>
 
   <h4 id="new-features">New Features</h4>
 
   <ul>
-    <li>Added <a href="ocr_structures#showimages">showImage</a> implicit to Dataframe for display images in Scala Databricks notebooks.</li>
-    <li>Added <a href="ocr_structures#display_images">display_images</a> function for display images in Python Databricks notebooks.</li>
-    <li>Added propagation selectable pdf file in <a href="ocr_pipeline_components#texttopdf">TextToPdf</a>. Added ‘inputContent’ param to ‘TextToPdf’.</li>
+    <li>Added <a href="../ocr_structures#showimages">showImage</a> implicit to Dataframe for display images in Scala Databricks notebooks.</li>
+    <li>Added <a href="../ocr_structures#display_images">display_images</a> function for display images in Python Databricks notebooks.</li>
+    <li>Added propagation selectable pdf file in <a href="../ocr_pipeline_components#texttopdf">TextToPdf</a>. Added ‘inputContent’ param to ‘TextToPdf’.</li>
   </ul>
 
 </div>
@@ -1017,13 +1017,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

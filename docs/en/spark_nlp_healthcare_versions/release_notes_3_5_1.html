@@ -766,16 +766,16 @@ result = deid_pipeline.annotate(text)
   <ul>
     <li>Classification Models:
       <ul>
-        <li><code class="language-plaintext highlighter-rouge">rct_binary_classifier_use</code> (<a href="https://nlp.johnsnowlabs.com/2022/04/24/rct_binary_classifier_use_en_3_0.html">Models Hub page</a>)</li>
-        <li><code class="language-plaintext highlighter-rouge">rct_binary_classifier_biobert</code> (<a href="https://nlp.johnsnowlabs.com/2022/04/25/rct_binary_classifier_biobert_en_3_0.html">Models Hub page</a>)</li>
+        <li><code class="language-plaintext highlighter-rouge">rct_binary_classifier_use</code> (<a href="https://nlp.johnsnowlabs.com/2022/05/27/rct_binary_classifier_use_en_3_0.html">Models Hub page</a>)</li>
+        <li><code class="language-plaintext highlighter-rouge">rct_binary_classifier_biobert</code> (<a href="https://nlp.johnsnowlabs.com/2022/05/27/rct_binary_classifier_biobert_en_3_0.html">Models Hub page</a>)</li>
         <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_binary_rct_biobert</code> (<a href="https://nlp.johnsnowlabs.com/2022/04/25/bert_sequence_classifier_binary_rct_biobert_en_3_0.html">Models Hub page</a>)</li>
       </ul>
     </li>
     <li>Pretrained Pipelines:
       <ul>
-        <li><code class="language-plaintext highlighter-rouge">rct_binary_classifier_use_pipeline</code> (<a href="https://nlp.johnsnowlabs.com/2022/04/25/rct_binary_classifier_use_pipeline_en_3_0.html">Models Hub page</a>)</li>
-        <li><code class="language-plaintext highlighter-rouge">rct_binary_classifier_biobert_pipeline</code> (<a href="https://nlp.johnsnowlabs.com/2022/04/25/rct_binary_classifier_biobert_pipeline_en_3_0.html">Models Hub page</a>)</li>
-        <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_binary_rct_biobert_pipeline</code> (<a href="https://nlp.johnsnowlabs.com/2022/04/25/bert_sequence_classifier_binary_rct_biobert_pipeline_en_3_0.html">Models Hub page</a>)</li>
+        <li><code class="language-plaintext highlighter-rouge">rct_binary_classifier_use_pipeline</code> (<a href="https://nlp.johnsnowlabs.com/2022/06/06/rct_binary_classifier_use_pipeline_en_3_0.html">Models Hub page</a>)</li>
+        <li><code class="language-plaintext highlighter-rouge">rct_binary_classifier_biobert_pipeline</code> (<a href="https://nlp.johnsnowlabs.com/2022/06/06/rct_binary_classifier_biobert_pipeline_en_3_0.html">Models Hub page</a>)</li>
+        <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_binary_rct_biobert_pipeline</code> (<a href="https://nlp.johnsnowlabs.com/2022/06/06/bert_sequence_classifier_binary_rct_biobert_pipeline_en_3_0.html">Models Hub page</a>)</li>
       </ul>
     </li>
   </ul>
@@ -1348,13 +1348,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

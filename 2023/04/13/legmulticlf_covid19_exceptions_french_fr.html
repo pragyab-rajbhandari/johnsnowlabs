@@ -721,7 +721,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/04/12/ner_vop_emb_clinical_medium_wip_en.html">Voice of the Patients (embeddings_clinical_medium)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/04/13/finner_sec_edgar_en.html">Financial NER on EDGAR Documents</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/04/13/medication_resolver_pipeline_en.html">Pipeline to Resolve Medication Codes</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/04/13/finner_sec_edgar_en.html">Financial NER on EDGAR Documents</a></div></div></div>
 
 </div>
 </div>
@@ -939,13 +939,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

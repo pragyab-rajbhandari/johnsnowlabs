@@ -566,10 +566,10 @@
     <li><a href="/docs/en/alab/annotation#simplified-workflow">Simplified workflow</a> are now supported for simpler projects. Furthermore, overall work progress has been added on the Labeling Page.</li>
     <li><a href="/docs/en/alab/infrastructure">Infrastucture</a> used for preannotation and training can now be configured from the Annotation Lab UI.</li>
     <li>Support for <a href="/docs/en/alab/active_learning#train-german-and-spanish-models">training German and Spanish models</a>.</li>
-    <li>Some <a href="/docs/en/alab/analytics#disabled-analytics">changes in Analytics Dashboard</a> were implemented. By default, the Analytics dashboard page is now disabled. Users can request Admin to enable the Analytics page. The refresh of the charts is done manually.</li>
+    <li>Some changes in Analytics Dashboard were implemented. By default, the Analytics dashboard page is now disabled. Users can request Admin to enable the Analytics page. The refresh of the charts is done manually.</li>
     <li><a href="/docs/en/alab/models_hub#import-and-export-rules">Import &amp; Export Rules</a> from the Model Hub page.</li>
     <li><a href="/docs/en/alab/models_hub#download-of-model-dependencies">Download model dependencies</a> is now automatic.</li>
-    <li>The <a href="/docs/en/alab/settings#project-configuration-box">project configuration box</a> can now be edited in full screen mode.</li>
+    <li>The project configuration box can now be edited in full screen mode.</li>
     <li><a href="/docs/en/alab/annotation#trim-leading-and-ending-spaces-in-annotated-chunks">Trim leading and ending spaces in annotated chunks</a>.</li>
     <li><a href="/docs/en/alab/project_setup#reserved-words-cannot-be-used-in-project-names">Reserved words</a> cannot be used in project names.</li>
     <li>Task numbering now start from 1.</li>
@@ -604,13 +604,13 @@
 </div>
 <ul class="pagination">
   <li>
-      <a href="release_notes_">Version <strong id="previosver"></strong></a>
+      <a href="#">Version <strong id="previosver"></strong></a>
   </li>
   <li>
       <strong>Version <strong id="currversion"></strong></strong>
   </li>
   <li>
-      <a href="release_notes_">Version <strong id="nextver"></strong></a>
+      <a href="#">Version <strong id="nextver"></strong></a>
   </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
@@ -1044,13 +1044,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

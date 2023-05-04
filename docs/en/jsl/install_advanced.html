@@ -26,7 +26,7 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>Installation</title><meta property="og:title" content="NLU | John Snow Labs"/>
+</script><title>Installation</title><meta property="og:title" content="NLP | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
@@ -557,8 +557,8 @@
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>johnsnowlabs
 </code></pre></div>    </div>
 
-    <p>This installs <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/quickstart">Spark-NLP</a>, <a href="https://nlp.johnsnowlabs.com/">NLU</a>
-, <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/display">Spark-NLP-Display</a>
+    <p>This installs <a href="https://nlp.johnsnowlabs.com/docs/en/quickstart">Spark-NLP</a>, <a href="https://nlp.johnsnowlabs.com/">NLU</a>
+, <a href="https://nlp.johnsnowlabs.com/docs/en/display">Spark-NLP-Display</a>
 , <a href="https://spark.apache.org/docs/latest/api/python/">Pyspark</a> and other open
 source <a href="https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/setup.py">sub-dependencies</a>.</p>
 
@@ -571,8 +571,8 @@ source <a href="https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/setup.py"
 <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'emotion'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'Wow that easy!'</span><span class="p">)</span>
 </code></pre></div>    </div>
     <p>The quickest way to get access to <strong>licensed libraries</strong> like 
-<a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_install">Finance NLP, Legal NLP, Healthcare NLP</a> or
-<a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr">Visual NLP</a> is to run the following in python:</p>
+<a href="https://nlp.johnsnowlabs.com/docs/en/licensed_install">Finance NLP, Legal NLP, Healthcare NLP</a> or
+<a href="https://nlp.johnsnowlabs.com/docs/en/ocr">Visual NLP</a> is to run the following in python:</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">nlp</span><span class="p">.</span><span class="n">install</span><span class="p">()</span>
 </code></pre></div>    </div>
@@ -1232,7 +1232,7 @@ to gian access to the latest enterprise libraries.</p>
     <h2 id="where-to-go-next">Where to go next</h2>
 
     <p>If you want to get your hands dirty with any of the features check out the <a href="examples">NLU examples page</a>,
-or <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators">Licensed Annotators Overview</a>
+or <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators">Licensed Annotators Overview</a>
 Detailed information about Johnsnowlabs Libraries APIs, concepts, components and more can be found on the following pages :</p>
 
     <ul class="list4">
@@ -1641,13 +1641,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

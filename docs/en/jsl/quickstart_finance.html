@@ -652,7 +652,7 @@ phone : 78 834 854
 </code></pre></div>    </div>
 
     <h3 id="custom-pipes">Custom Pipes</h3>
-    <p>Alternatively you can compose <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators">Legal Annotators</a> &amp; <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/annotators">Open Source Annotators</a> into a pipeline which offers the highest degree of customization.</p>
+    <p>Alternatively you can compose <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators">Legal Annotators</a> &amp; <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/annotators">Open Source Annotators</a> into a pipeline which offers the highest degree of customization.</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span><span class="n">finance</span>
 <span class="n">spark</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
@@ -1125,13 +1125,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

@@ -678,7 +678,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/04/14/legsum_flant5_legal_augmented_en.html">Legal Finetuned FLAN-T5 Summarization</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/04/26/finner_bert_suspicious_activity_reports_en.html">Financial Suspicious Activity Reports NER</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/04/20/ner_vop_treatment_wip_en.html">Extract treatment entities (Voice of the Patients)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/04/21/leggen_flant5_base_en.html">Legal FLAN-T5 Text Generation (Base)</a></div></div></div>
 
 </div>
 </div>
@@ -896,13 +896,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

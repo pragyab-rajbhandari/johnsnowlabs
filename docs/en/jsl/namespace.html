@@ -26,7 +26,7 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>Spellbook</title><meta property="og:title" content="NLU | John Snow Labs"/>
+</script><title>Spellbook</title><meta property="og:title" content="NLP | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
@@ -8818,8 +8818,8 @@ wrapped inside a NLP Pipeline.</p>
             </tr>
             <tr>
               <td style="text-align: left"><a href="https://iso639-3.sil.org/code/spa">Castilian, Spanish</a></td>
-              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_300_es_3_0.html">es.med_ner.living_species.300</a></td>
-              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_300_es_3_0.html">ner_living_species_300</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/07/29/ner_living_species_300_es_3_0.html">es.med_ner.living_species.300</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/07/29/ner_living_species_300_es_3_0.html">ner_living_species_300</a></td>
             </tr>
             <tr>
               <td style="text-align: left"><a href="https://iso639-3.sil.org/code/spa">Castilian, Spanish</a></td>
@@ -10223,8 +10223,8 @@ wrapped inside a NLP Pipeline.</p>
             </tr>
             <tr>
               <td style="text-align: left"><a href="https://iso639-3.sil.org/code/deu">German</a></td>
-              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/03/31/ner_legal_de.html">de.med_ner.legal</a></td>
-              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/03/31/ner_legal_de.html">ner_legal</a></td>
+              <td style="text-align: left"><a href="https://sparknlp.org/2022/11/30/bert_token_classifier_ner_legal_de.html">de.med_ner.legal</a></td>
+              <td style="text-align: left"><a href="https://sparknlp.org/2022/11/30/bert_token_classifier_ner_legal_de.html">ner_legal</a></td>
             </tr>
             <tr>
               <td style="text-align: left"><a href="https://iso639-3.sil.org/code/deu">German</a></td>
@@ -10839,13 +10839,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

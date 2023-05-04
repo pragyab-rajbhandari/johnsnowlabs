@@ -579,15 +579,15 @@ These models grab the text directly from your input file and returns it as a Pan
       <tbody>
         <tr>
           <td>nlp.load(<code class="language-plaintext highlighter-rouge">img2text</code>)</td>
-          <td><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#imagetotext">ImageToText</a></td>
+          <td><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#imagetotext">ImageToText</a></td>
         </tr>
         <tr>
           <td>nlp.load(<code class="language-plaintext highlighter-rouge">pdf2text</code>)</td>
-          <td><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#pdftotext">PdfToText</a></td>
+          <td><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#pdftotext">PdfToText</a></td>
         </tr>
         <tr>
           <td>nlp.load(<code class="language-plaintext highlighter-rouge">doc2text</code>)</td>
-          <td><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#doctotext">DocToText</a></td>
+          <td><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#doctotext">DocToText</a></td>
         </tr>
       </tbody>
     </table>
@@ -606,15 +606,15 @@ containing Pandas DataFrame for every table detected</p>
       <tbody>
         <tr>
           <td>nlp.load(<code class="language-plaintext highlighter-rouge">pdf2table</code>)</td>
-          <td><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#pdftotexttable">PdfToTextTable</a></td>
+          <td><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#pdftotexttable">PdfToTextTable</a></td>
         </tr>
         <tr>
           <td>nlp.load(<code class="language-plaintext highlighter-rouge">ppt2table</code>)</td>
-          <td><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#ppttotexttable">PptToTextTable</a></td>
+          <td><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#ppttotexttable">PptToTextTable</a></td>
         </tr>
         <tr>
           <td>nlp.load(<code class="language-plaintext highlighter-rouge">doc2table</code>)</td>
-          <td><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#doctotexttable">DocToTextTable</a></td>
+          <td><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#doctotexttable">DocToTextTable</a></td>
         </tr>
       </tbody>
     </table>
@@ -1672,13 +1672,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

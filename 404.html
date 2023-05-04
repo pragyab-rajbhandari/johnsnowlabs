@@ -462,10 +462,10 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>Legal Finetuned FLAN-T5 Summarization</title><meta property="og:title" content=""/>
+</script><title>Detect Clinical Entities (BertForTokenClassifier)</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis language model has been fine-tuned on the FLANT5 using Legal Information. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text summarization tasks.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  documen...">
-<link rel="canonical" href="/2023/04/14/legsum_flant5_legal_augmented_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionPretrained named entity recognition deep learning model for clinical terminology. This model is trained with BertForTokenClassification method from transformers library and imported into Spark NLP.Definitions of Predicted Entities:  Injury_or_Poisoning: Physical harm or injury caused to the body, includin...">
+<link rel="canonical" href="/2023/05/01/bert_token_classifier_ner_jsl_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -862,70 +862,210 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gadde5300/2023-04-14-legsum_flant5_legal_augmented_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Damla-Gurbaz/2023-05-01-bert_token_classifier_ner_jsl_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Apr 14, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-04-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Legal Finetuned FLAN-T5 Summarization</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Legal Finetuned FLAN-T5 Summarization"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>summarization</li><li>legal</li><li>agreements</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-04-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed,summarization,legal,agreements,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>May 01, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-05-01T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Detect Clinical Entities (BertForTokenClassifier)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Detect Clinical Entities (BertForTokenClassifier)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>berfortokenclassification</li><li>ner_jsl</li><li>ner</li><li>en</li><li>licensed</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-05-01T00:00:00+00:00">
+    <meta itemprop="keywords" content="berfortokenclassification,ner_jsl,ner,en,licensed,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This language model has been fine-tuned on the FLANT5 using Legal Information. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text summarization tasks.</p>
+<p>Pretrained named entity recognition deep learning model for clinical terminology. This model is trained with BertForTokenClassification method from transformers library and imported into Spark NLP.</p>
+
+<p>Definitions of Predicted Entities:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Injury_or_Poisoning</code>: Physical harm or injury caused to the body, including those caused by accidents, falls, or poisoning of a patient or someone else.</li>
+  <li><code class="language-plaintext highlighter-rouge">Direction</code>: All the information relating to the laterality of the internal and external organs.</li>
+  <li><code class="language-plaintext highlighter-rouge">Test</code>: Mentions of laboratory, pathology, and radiological tests.</li>
+  <li><code class="language-plaintext highlighter-rouge">Admission_Discharge</code>: Terms that indicate the admission and/or the discharge of a patient.</li>
+  <li><code class="language-plaintext highlighter-rouge">Death_Entity</code>: Mentions that indicate the death of a patient.</li>
+  <li><code class="language-plaintext highlighter-rouge">Relationship_Status</code>: State of patients romantic or social relationships (e.g. single, married, divorced).</li>
+  <li><code class="language-plaintext highlighter-rouge">Duration</code>: The duration of a medical treatment or medication use.</li>
+  <li><code class="language-plaintext highlighter-rouge">Respiration</code>: Number of breaths per minute.</li>
+  <li><code class="language-plaintext highlighter-rouge">Hyperlipidemia</code>: Terms that indicate hyperlipidemia with relevant subtypes and synonims.</li>
+  <li><code class="language-plaintext highlighter-rouge">Birth_Entity</code>: Mentions that indicate giving birth.</li>
+  <li><code class="language-plaintext highlighter-rouge">Age</code>: All mention of ages, past or present, related to the patient or with anybody else.</li>
+  <li><code class="language-plaintext highlighter-rouge">Labour_Delivery</code>: Extractions include stages of labor and delivery.</li>
+  <li><code class="language-plaintext highlighter-rouge">Family_History_Header</code>: identifies section headers that correspond to Family History of the patient.</li>
+  <li><code class="language-plaintext highlighter-rouge">BMI</code>: Numeric values and other text information related to Body Mass Index.</li>
+  <li><code class="language-plaintext highlighter-rouge">Temperature</code>: All mentions that refer to body temperature.</li>
+  <li><code class="language-plaintext highlighter-rouge">Alcohol</code>: Terms that indicate alcohol use, abuse or drinking issues of a patient or someone else.</li>
+  <li><code class="language-plaintext highlighter-rouge">Kidney_Disease</code>: Terms that refer to any kidney diseases (includes mentions of modifiers such as “Acute” or “Chronic”).</li>
+  <li><code class="language-plaintext highlighter-rouge">Oncological</code>: All the cancer, tumor or metastasis related extractions mentioned in the document, of the patient or someone else.</li>
+  <li><code class="language-plaintext highlighter-rouge">Medical_History_Header</code>: Identifies section headers that correspond to Past Medical History of a patient.</li>
+  <li><code class="language-plaintext highlighter-rouge">Cerebrovascular_Disease</code>: All terms that refer to cerebrovascular diseases and events.</li>
+  <li><code class="language-plaintext highlighter-rouge">Oxygen_Therapy</code>: Breathing support triggered by patient or entirely or partially by machine (e.g. ventilator, BPAP, CPAP).</li>
+  <li><code class="language-plaintext highlighter-rouge">O2_Saturation</code>: Systemic arterial, venous or peripheral oxygen saturation measurements.</li>
+  <li><code class="language-plaintext highlighter-rouge">Psychological_Condition</code>: All the Mental health diagnosis, disorders, conditions or syndromes of a patient or someone else.</li>
+  <li><code class="language-plaintext highlighter-rouge">Heart_Disease</code>: All mentions of acquired, congenital or degenerative heart diseases.</li>
+  <li><code class="language-plaintext highlighter-rouge">Employment</code>: All mentions of patient or provider occupational titles and employment status .</li>
+  <li><code class="language-plaintext highlighter-rouge">Obesity</code>: Terms related to a patient being obese (overweight and BMI are extracted as different labels).</li>
+  <li><code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>: All the diseases mentioned in the document, of the patient or someone else (excluding diseases that are extracted with their specific labels, such as “Heart_Disease” etc.).</li>
+  <li><code class="language-plaintext highlighter-rouge">Pregnancy</code>: All terms related to Pregnancy (excluding terms that are extracted with their specific labels, such as “Labour_Delivery” etc.).</li>
+  <li><code class="language-plaintext highlighter-rouge">ImagingFindings</code>: All mentions of radiographic and imagistic findings.</li>
+  <li><code class="language-plaintext highlighter-rouge">Procedure</code>: All mentions of invasive medical or surgical procedures or treatments.</li>
+  <li><code class="language-plaintext highlighter-rouge">Medical_Device</code>: All mentions related to medical devices and supplies.</li>
+  <li><code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>: All terms that refer to racial and national origin of sociocultural groups.</li>
+  <li><code class="language-plaintext highlighter-rouge">Section_Header</code>: All the section headers present in the text  (Medical History, Family History, Social History, Physical Examination and Vital signs Headers are extracted separately with their specific labels).</li>
+  <li><code class="language-plaintext highlighter-rouge">Symptom</code>: All the symptoms mentioned in the document, of a patient or someone else.</li>
+  <li><code class="language-plaintext highlighter-rouge">Treatment</code>: Includes therapeutic and minimally invasive treatment and procedures (invasive treatments or procedures are extracted as “Procedure”).</li>
+  <li><code class="language-plaintext highlighter-rouge">Substance</code>: All mentions of substance use related to the patient or someone else (recreational drugs, illicit drugs).</li>
+  <li><code class="language-plaintext highlighter-rouge">Route</code>: Drug and medication administration routes available described by <a href="http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm">FDA</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Drug_Ingredient</code>: Active ingredient/s found in drug products.</li>
+  <li><code class="language-plaintext highlighter-rouge">Blood_Pressure</code>: Systemic blood pressure, mean arterial pressure, systolic and/or diastolic are extracted.</li>
+  <li><code class="language-plaintext highlighter-rouge">Diet</code>: All mentions and information regarding patients dietary habits.</li>
+  <li><code class="language-plaintext highlighter-rouge">External_body_part_or_region</code>: All mentions related to external body parts or organs that can be examined by naked eye.</li>
+  <li><code class="language-plaintext highlighter-rouge">LDL</code>: All mentions related to the lab test and results for LDL (Low Density Lipoprotein).</li>
+  <li><code class="language-plaintext highlighter-rouge">VS_Finding</code>: Qualitative data (e.g. Fever, Cyanosis, Tachycardia) and any other symptoms that refers to vital signs.</li>
+  <li><code class="language-plaintext highlighter-rouge">Allergen</code>: Allergen related extractions mentioned in the document.</li>
+  <li><code class="language-plaintext highlighter-rouge">EKG_Findings</code>: All mentions of EKG readings.</li>
+  <li><code class="language-plaintext highlighter-rouge">Imaging_Technique</code>: All mentions of special radiographic views or special imaging techniques used in radiology.</li>
+  <li><code class="language-plaintext highlighter-rouge">Triglycerides</code>: All mentions terms related to specific lab test for Triglycerides.</li>
+  <li><code class="language-plaintext highlighter-rouge">RelativeTime</code>: Time references that are relative to different times or events (e.g. words such as “approximately”, “in the morning”).</li>
+  <li><code class="language-plaintext highlighter-rouge">Gender</code>: Gender-specific nouns and pronouns.</li>
+  <li><code class="language-plaintext highlighter-rouge">Pulse</code>: Peripheral heart rate, without advanced information like measurement location.</li>
+  <li><code class="language-plaintext highlighter-rouge">Social_History_Header</code>: Identifies section headers that correspond to Social History of a patient.</li>
+  <li><code class="language-plaintext highlighter-rouge">Substance_Quantity</code>: All mentions of substance quantity (quantitative information related to illicit/recreational drugs).</li>
+  <li><code class="language-plaintext highlighter-rouge">Diabetes</code>: All terms related to diabetes mellitus.</li>
+  <li><code class="language-plaintext highlighter-rouge">Modifier</code>: Terms that modify the symptoms, diseases or risk factors. If a modifier is included in ICD-10 name of a specific disease, the respective modifier is not extracted separately.</li>
+  <li><code class="language-plaintext highlighter-rouge">Internal_organ_or_component</code>: All mentions related to internal body parts or organs that can not be examined by naked eye.</li>
+  <li><code class="language-plaintext highlighter-rouge">Clinical_Dept</code>: Terms that indicate the medical and/or surgical departments.</li>
+  <li><code class="language-plaintext highlighter-rouge">Form</code>: Drug and medication forms available described by <a href="http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm">FDA</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Drug_BrandName</code>: Commercial labeling name chosen by the labeler or the drug manufacturer for a drug containing a single or multiple drug active ingredients.</li>
+  <li><code class="language-plaintext highlighter-rouge">Strength</code>: Potency of one unit of drug (or a combination of drugs) the measurement units available are described by <a href="http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm">FDA</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Fetus_NewBorn</code>: All terms related to fetus, infant, new born (excluding terms that are extracted with their specific labels, such as “Labour_Delivery”, “Pregnancy” etc.).</li>
+  <li><code class="language-plaintext highlighter-rouge">RelativeDate</code>: Temporal references that are relative to the date of the text or to any other specific date (e.g. “approximately two years ago”, “about two days ago”).</li>
+  <li><code class="language-plaintext highlighter-rouge">Height</code>: All mentions related to a patients height.</li>
+  <li><code class="language-plaintext highlighter-rouge">Test_Result</code>: Terms related to all the test results present in the document (clinical tests results are included).</li>
+  <li><code class="language-plaintext highlighter-rouge">Sexually_Active_or_Sexual_Orientation</code>: All terms that are related to sexuality, sexual orientations and sexual activity.</li>
+  <li><code class="language-plaintext highlighter-rouge">Frequency</code>: Frequency of administration for a dose prescribed.</li>
+  <li><code class="language-plaintext highlighter-rouge">Time</code>: Specific time references (hour and/or minutes).</li>
+  <li><code class="language-plaintext highlighter-rouge">Weight</code>: All mentions related to a patients weight.</li>
+  <li><code class="language-plaintext highlighter-rouge">Vaccine</code>: Generic and brand name of vaccines or vaccination procedure.</li>
+  <li><code class="language-plaintext highlighter-rouge">Vital_Signs_Header</code>: Identifies section headers that correspond to Vital Signs of a patient.</li>
+  <li><code class="language-plaintext highlighter-rouge">Communicable_Disease</code>: Includes all mentions of communicable diseases.</li>
+  <li><code class="language-plaintext highlighter-rouge">Dosage</code>: Quantity prescribed by the physician for an active ingredient; measurement units are available described by <a href="http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm">FDA</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Overweight</code>: Terms related to the patient being overweight (BMI and Obesity is extracted separately).</li>
+  <li><code class="language-plaintext highlighter-rouge">Hypertension</code>: All terms related to Hypertension (quantitative data such as 150/100 is extracted as Blood_Pressure).</li>
+  <li><code class="language-plaintext highlighter-rouge">HDL</code>: Terms related to the lab test for HDL (High Density Lipoprotein).</li>
+  <li><code class="language-plaintext highlighter-rouge">Total_Cholesterol</code>: Terms related to the lab test and results for cholesterol.</li>
+  <li><code class="language-plaintext highlighter-rouge">Smoking</code>: All mentions of smoking status of a patient.</li>
+  <li><code class="language-plaintext highlighter-rouge">Date</code>: Mentions of an exact date, in any format, including day number, month and/or year.</li>
+</ul>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legsum_flant5_legal_augmented_en_1.0.0_3.0_1681502326217.zip" class="button button-orange">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/legal/models/legsum_flant5_legal_augmented_en_1.0.0_3.0_1681502326217.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<p><code class="language-plaintext highlighter-rouge">Injury_or_Poisoning</code>, <code class="language-plaintext highlighter-rouge">Direction</code>, <code class="language-plaintext highlighter-rouge">Test</code>, <code class="language-plaintext highlighter-rouge">Admission_Discharge</code>, <code class="language-plaintext highlighter-rouge">Death_Entity</code>, <code class="language-plaintext highlighter-rouge">Relationship_Status</code>, <code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">Respiration</code>, <code class="language-plaintext highlighter-rouge">Hyperlipidemia</code>, <code class="language-plaintext highlighter-rouge">Birth_Entity</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Labour_Delivery</code>, <code class="language-plaintext highlighter-rouge">Family_History_Header</code>, <code class="language-plaintext highlighter-rouge">BMI</code>, <code class="language-plaintext highlighter-rouge">Temperature</code>, <code class="language-plaintext highlighter-rouge">Alcohol</code>, <code class="language-plaintext highlighter-rouge">Kidney_Disease</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>, <code class="language-plaintext highlighter-rouge">Medical_History_Header</code>, <code class="language-plaintext highlighter-rouge">Cerebrovascular_Disease</code>, <code class="language-plaintext highlighter-rouge">Oxygen_Therapy</code>, <code class="language-plaintext highlighter-rouge">O2_Saturation</code>, <code class="language-plaintext highlighter-rouge">Psychological_Condition</code>, <code class="language-plaintext highlighter-rouge">Heart_Disease</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">Obesity</code>, <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">Pregnancy</code>, <code class="language-plaintext highlighter-rouge">ImagingFindings</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">Medical_Device</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>, <code class="language-plaintext highlighter-rouge">Section_Header</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">Drug_Ingredient</code>, <code class="language-plaintext highlighter-rouge">Blood_Pressure</code>, <code class="language-plaintext highlighter-rouge">Diet</code>, <code class="language-plaintext highlighter-rouge">External_body_part_or_region</code>, <code class="language-plaintext highlighter-rouge">LDL</code>, <code class="language-plaintext highlighter-rouge">VS_Finding</code>, <code class="language-plaintext highlighter-rouge">Allergen</code>, <code class="language-plaintext highlighter-rouge">EKG_Findings</code>, <code class="language-plaintext highlighter-rouge">Imaging_Technique</code>, <code class="language-plaintext highlighter-rouge">Triglycerides</code>, <code class="language-plaintext highlighter-rouge">RelativeTime</code>, <code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">Pulse</code>, <code class="language-plaintext highlighter-rouge">Social_History_Header</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Diabetes</code>, <code class="language-plaintext highlighter-rouge">Modifier</code>, <code class="language-plaintext highlighter-rouge">Internal_organ_or_component</code>, <code class="language-plaintext highlighter-rouge">Clinical_Dept</code>, <code class="language-plaintext highlighter-rouge">Form</code>, <code class="language-plaintext highlighter-rouge">Drug_BrandName</code>, <code class="language-plaintext highlighter-rouge">Strength</code>, <code class="language-plaintext highlighter-rouge">Fetus_NewBorn</code>, <code class="language-plaintext highlighter-rouge">RelativeDate</code>, <code class="language-plaintext highlighter-rouge">Height</code>, <code class="language-plaintext highlighter-rouge">Test_Result</code>, <code class="language-plaintext highlighter-rouge">Sexually_Active_or_Sexual_Orientation</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">Time</code>, <code class="language-plaintext highlighter-rouge">Weight</code>, <code class="language-plaintext highlighter-rouge">Vaccine</code>, <code class="language-plaintext highlighter-rouge">Vaccine_Name</code>, <code class="language-plaintext highlighter-rouge">Vital_Signs_Header</code>, <code class="language-plaintext highlighter-rouge">Communicable_Disease</code>, <code class="language-plaintext highlighter-rouge">Dosage</code>, <code class="language-plaintext highlighter-rouge">Overweight</code>, <code class="language-plaintext highlighter-rouge">Hypertension</code>, <code class="language-plaintext highlighter-rouge">HDL</code>, <code class="language-plaintext highlighter-rouge">Total_Cholesterol</code>, <code class="language-plaintext highlighter-rouge">Smoking</code>, <code class="language-plaintext highlighter-rouge">Date</code></p>
+
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/NER_JSL/" class="button button-orange">Live Demo</a>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_jsl_en_4.3.2_3.0_1682934532927.zip" class="button button-orange">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_jsl_en_4.3.2_3.0_1682934532927.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+	<span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">flant5</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">Summarizer</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'legsum_flant5_legal_augmented'</span><span class="p">,</span><span class="s">'en'</span><span class="p">,</span><span class="s">'legal/models'</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"documents"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">flant5</span><span class="p">])</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">""" 
-3.1           Organization and Authorization. ONTARIO is a corporation duly organized and validly existing and in good standing under the laws of the Ontario. ONTARIO has the full power and authority to enter into this Agreement and to consummate the transactions contemplated under this Agreement. The making and performance of this Agreement and the agreements and other instruments required to be executed by ONTARIO have been, or at the Closing will have been, duly authorized by all necessary corporate actions and will be duly executed by a person authorized by ONTARIO to do so. ONTARIO shall deliver to FOX duly approved and executed resolutions of the directors and shareholders approving ONTARIO’s execution and delivery of this Agreement and the performance of its obligations under this Agreement.
- 
-3.2           No Breach of Laws or Contracts. The consummation by ONTARIO of the transactions contemplated by this Agreement will not result in the breach of any term or provision of, or constitute a default under any applicable law or regulation, its articles of organization or operating agreement, or under any other agreement or instrument to which ONTARIO is a party, by which it is bound, or which affects the Assets.  
-3.3           Binding Obligations. When executed and delivered, this Agreement and all instruments executed and delivered by ONTARIO pursuant to this Agreement will constitute legal and binding obligations of ONTARIO and will be valid and enforceable in accordance with their respective terms.  
-3.4           Compliance with Laws. ONTARIO has not received notice from any governmental agency, of any physical or environmental condition existing on the Land or any access to the Land or created by ONTARIO or of any action or failure to act by ONTARIO which is a material violation of any applicable law, regulation or ordinance. To ONTARIO’s knowledge, there are currently no off-site improvement requirements that any governmental authority has imposed or threatened to impose on the Land.  
-3.5           No Litigation. There is no suit, action, arbitration or legal, administrative or other proceeding or governmental investigation pending or, to the knowledge of ONTARIO without inquiry, threatened against, or affecting the Assets or the ability of ONTARIO to perform its covenants and obligations under this Agreement.  
-3.6.1 Title to the Land. ONTARIO represents and warrants that ONTARIO’s title to the Assets is good and marketable and on the Closing shall be free and clear of any lien, claim or encumbrance, except the following (the “Permitted Exceptions”):  
-(a)           Liens for taxes and mortgages acknowledged by FOX on the Assets not yet due and payable or which are being contested in good faith;  
-(b)           Any items listed in the Title Commitment or any amendment or update to the Title Commitment to which FOX does not timely deliver to ONTARIO a Notice of Objection pursuant to Section 3.9.5.  
-3.6.2           Encroachments. To ONTARIOS’s knowledge, the improvements on the Land lie entirely within the boundaries of the Land and no structure of any kind encroaches on or over the Land."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'text'</span><span class="p">)</span>
+<span class="n">tokenClassifier</span> <span class="o">=</span> <span class="n">MedicalBertForTokenClassifier</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_token_classifier_ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"token"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"ner"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-<span class="n">results</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"summary.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span>  <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">documentAssembler</span><span class="p">,</span>
+		<span class="n">sentenceDetector</span><span class="p">,</span>
+		<span class="n">tokenizer</span><span class="p">,</span>
+		<span class="n">tokenClassifier</span><span class="p">,</span>
+		<span class="n">ner_converter</span><span class="p">])</span>
+						       
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby-girl also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature."""</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">sample_text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+		
+<span class="k">val</span> <span class="nv">tokenClassifier</span> <span class="k">=</span> <span class="nv">MedicalBertForTokenClassifier</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bert_token_classifier_ner_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"token"</span><span class="o">,</span> <span class="s">"sentence"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span>  <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+		<span class="n">documentAssembler</span><span class="o">,</span>
+		<span class="n">sentenceDetector</span><span class="o">,</span>
+		<span class="n">tokenizer</span><span class="o">,</span>
+		<span class="n">tokenClassifier</span><span class="o">,</span>
+		<span class="n">ner_converter</span><span class="o">))</span>
+												
+<span class="k">val</span> <span class="nv">sample_text</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby-girl also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature."""</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">sample_text</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">sample_text</span><span class="o">)</span>
+</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|result                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[Ontario is a corporation that is duly organized and validly existing and <span class="k">in </span>good standing under the laws of the Ontario. It has the full power and authority to enter into this Agreement and to consummate the transactions contemplated under this Agreement. The consummation of this Agreement will not result <span class="k">in </span>the breach of any term or provision of, or constitute a default under any applicable law or regulation, its articles of organization or operating agreement, or under any other agreement or instrument to which Ontario is a party, by which it is bound, or which affects the Assets. This Agreement and all instruments executed and delivered by Ontario pursuant to this Agreement will constitute legal and binding obligations of Ontario and will be valid and enforceable <span class="k">in </span>accordance with their respective terms. There is no suit, action, arbitration or legal, administrative or other proceeding or governmental investigation pending or, to the knowledge of Ontario, threatened against, or affecting the Assets or the ability of Ontario to perform its covenants and obligations under this Agreement. Ontario<span class="s1">'s title to the Assets is good and marketable and on the Closing shall be free and clear of any lien, claim or encumbrance, except the permitted exceptions.]|
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-</span></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----------------------------------------+----------------------------+
+|chunk                                    |ner_label                   |
++-----------------------------------------+----------------------------+
+|21-day-old                               |Age                         |
+|Caucasian                                |Race_Ethnicity              |
+|male                                     |Gender                      |
+|2 days                                   |Duration                    |
+|congestion                               |Symptom                     |
+|mom                                      |Gender                      |
+|yellow                                   |Symptom                     |
+|discharge                                |Symptom                     |
+|nares                                    |External_body_part_or_region|
+|she                                      |Gender                      |
+|mild                                     |Modifier                    |
+|problems with his breathing <span class="k">while </span>feeding|Symptom                     |
+|perioral cyanosis                        |Symptom                     |
+|retractions                              |Symptom                     |
+|One day ago                              |RelativeDate                |
+|mom                                      |Gender                      |
+|tactile temperature                      |Symptom                     |
+|Tylenol                                  |Drug_BrandName              |
+|Baby-girl                                |Age                         |
+|decreased                                |Symptom                     |
++-----------------------------------------+----------------------------+
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
@@ -933,11 +1073,11 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>legsum_flant5_legal_augmented</td>
+      <td>bert_token_classifier_ner_jsl</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Legal NLP 1.0.0+</td>
+      <td>Healthcare NLP 4.3.2+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -948,20 +1088,32 @@
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[document, token]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[ner]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.6 GB</td>
+      <td>444.2 MB</td>
+    </tr>
+    <tr>
+      <td>Case sensitive:</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>Max sentence length:</td>
+      <td>128</td>
     </tr>
   </tbody>
 </table>
-
-<h2 id="references">References</h2>
-
-<p>In house annotated dataset</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-04-14T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-05-01T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -1126,7 +1278,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/04/14/legclf_court_decisions_unanimity_pt.html">Legal Court Decisions Unanimity Prediction (Portuguese)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/04/30/legpipe_alias_en.html">Legal Alias Pipeline</a></div></div></div>
 
 </div>
 </div>
@@ -1344,13 +1496,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         
@@ -2095,13 +2247,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

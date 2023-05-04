@@ -26,7 +26,7 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>NLU release notes</title><meta property="og:title" content="NLU | John Snow Labs"/>
+</script><title>NLU release notes</title><meta property="og:title" content="NLP | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
@@ -1159,7 +1159,7 @@ If multiple datasets or tune parameters are defined , they are connected with  a
     <h4 id="nluvizpipedata">nlu.viz(pipe,data)</h4>
     <p>Visualize input data with an already configured Spark NLP pipeline,<br />
 for Algorithms of type (Ner,Assertion, Relation, Resolution, Dependency)<br />
-using <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/display">Spark NLP Display</a><br />
+using <a href="https://nlp.johnsnowlabs.com/docs/en/display">Spark NLP Display</a><br />
 Automatically infers applicable viz type and output columns to use for visualization.<br />
 Example:</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># works with Pipeline, LightPipeline, PipelineModel,PretrainedPipeline List[Annotator]
@@ -2352,11 +2352,11 @@ The following annotator classes are newly captured:</p>
         </tr>
         <tr>
           <td style="text-align: left">es</td>
-          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_300_es_3_0.html">es.med_ner.living_species.300</a></td>
-          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_300_es_3_0.html">ner_living_species_300</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/07/29/ner_living_species_300_es_3_0.html">es.med_ner.living_species.300</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/07/29/ner_living_species_300_es_3_0.html">ner_living_species_300</a></td>
           <td style="text-align: left">Named Entity Recognition</td>
           <td style="text-align: left">MedicalNerModel</td>
-          <td style="text-align: left">Named Entity Recognition<a href="https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_300_es_3_0.html">es.med_ner.living_species.300</a></td>
+          <td style="text-align: left">Named Entity Recognition<a href="https://nlp.johnsnowlabs.com/2022/07/29/ner_living_species_300_es_3_0.html">es.med_ner.living_species.300</a></td>
         </tr>
         <tr>
           <td style="text-align: left">es</td>
@@ -33468,13 +33468,13 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 
 <h2 id="nlu-version-301">NLU Version 3.0.1</h2>
 <p>We are very excited to announce NLU 3.0.1 has been released!
-This is one of the most visually appealing releases, with the integration of the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/display">Spark-NLP-Display</a> library and visualizations for <code class="language-plaintext highlighter-rouge">dependency trees</code>, <code class="language-plaintext highlighter-rouge">entity resolution</code>, <code class="language-plaintext highlighter-rouge">entity assertion</code>, <code class="language-plaintext highlighter-rouge">relationship between entities</code> and <code class="language-plaintext highlighter-rouge">named
+This is one of the most visually appealing releases, with the integration of the <a href="https://nlp.johnsnowlabs.com/docs/en/display">Spark-NLP-Display</a> library and visualizations for <code class="language-plaintext highlighter-rouge">dependency trees</code>, <code class="language-plaintext highlighter-rouge">entity resolution</code>, <code class="language-plaintext highlighter-rouge">entity assertion</code>, <code class="language-plaintext highlighter-rouge">relationship between entities</code> and <code class="language-plaintext highlighter-rouge">named
 entity recognition</code>. In addition to this, the schema of how columns are named by NLU has been reworked and all 140+ tutorial notebooks have been updated to reflect the latest changes in NLU 3.0.0+
 Finally, new multilingual models for <code class="language-plaintext highlighter-rouge">Afrikaans</code>, <code class="language-plaintext highlighter-rouge">Welsh</code>, <code class="language-plaintext highlighter-rouge">Maltese</code>, <code class="language-plaintext highlighter-rouge">Tamil</code>, and<code class="language-plaintext highlighter-rouge">Vietnamese</code> are now available.</p>
 
 <h4 id="new-features-and-enhancements">New Features and Enhancements</h4>
 <ul>
-  <li>1 line to visualization for <code class="language-plaintext highlighter-rouge">NER</code>, <code class="language-plaintext highlighter-rouge">Dependency</code>, <code class="language-plaintext highlighter-rouge">Resolution</code>, <code class="language-plaintext highlighter-rouge">Assertion</code> and <code class="language-plaintext highlighter-rouge">Relation</code> via <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/display">Spark-NLP-Display</a> integration</li>
+  <li>1 line to visualization for <code class="language-plaintext highlighter-rouge">NER</code>, <code class="language-plaintext highlighter-rouge">Dependency</code>, <code class="language-plaintext highlighter-rouge">Resolution</code>, <code class="language-plaintext highlighter-rouge">Assertion</code> and <code class="language-plaintext highlighter-rouge">Relation</code> via <a href="https://nlp.johnsnowlabs.com/docs/en/display">Spark-NLP-Display</a> integration</li>
   <li>Improved column naming schema</li>
   <li><a href="https://github.com/JohnSnowLabs/nlu/tree/master/examples">Over 140 + NLU tutorial Notebooks updated</a> and improved to reflect latest changes in NLU 3.0.0 +</li>
   <li>New multilingual models for <code class="language-plaintext highlighter-rouge">Afrikaans</code>, <code class="language-plaintext highlighter-rouge">Welsh</code>, <code class="language-plaintext highlighter-rouge">Maltese</code>, <code class="language-plaintext highlighter-rouge">Tamil</code>, and<code class="language-plaintext highlighter-rouge">Vietnamese</code></li>
@@ -37977,13 +37977,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

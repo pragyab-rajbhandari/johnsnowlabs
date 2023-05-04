@@ -26,7 +26,7 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>John Snow labs Usage & Overview</title><meta property="og:title" content="NLU | John Snow Labs"/>
+</script><title>John Snow labs Usage & Overview</title><meta property="og:title" content="NLP | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
@@ -566,10 +566,10 @@ many handy utility imports.</p>
 
     <h2 id="the-nlp-module">The <strong>nlp</strong> Module</h2>
     <hr />
-    <p><code class="language-plaintext highlighter-rouge">nlp</code> module with classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/quickstart">Spark NLP</a>  like <code class="language-plaintext highlighter-rouge">nlp.BertForSequenceClassification</code>  and <code class="language-plaintext highlighter-rouge">nlp.map_annotations()</code></p>
+    <p><code class="language-plaintext highlighter-rouge">nlp</code> module with classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/quickstart">Spark NLP</a>  like <code class="language-plaintext highlighter-rouge">nlp.BertForSequenceClassification</code>  and <code class="language-plaintext highlighter-rouge">nlp.map_annotations()</code></p>
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">nlp.AnnotatorName</code> via Spark NLP <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/annotators">Annotators</a> and <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/transformers">Transformers</a> i.e. <code class="language-plaintext highlighter-rouge">nlp.BertForSequenceClassification</code></li>
-      <li>Spark NLP <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/auxiliary">Helper Functions</a> i.e. <code class="language-plaintext highlighter-rouge">nlp.map_annotations()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">nlp.AnnotatorName</code> via Spark NLP <a href="https://nlp.johnsnowlabs.com/docs/en/annotators">Annotators</a> and <a href="https://nlp.johnsnowlabs.com/docs/en/transformers">Transformers</a> i.e. <code class="language-plaintext highlighter-rouge">nlp.BertForSequenceClassification</code></li>
+      <li>Spark NLP <a href="https://nlp.johnsnowlabs.com/docs/en/auxiliary">Helper Functions</a> i.e. <code class="language-plaintext highlighter-rouge">nlp.map_annotations()</code></li>
       <li><code class="language-plaintext highlighter-rouge">nlp.F</code> via <code class="language-plaintext highlighter-rouge">import pyspark.sql.functions as F</code> under the hood</li>
       <li><code class="language-plaintext highlighter-rouge">nlp.T</code> via <code class="language-plaintext highlighter-rouge">import pyspark.sql.types as T</code> under the hood</li>
       <li><code class="language-plaintext highlighter-rouge">nlp.SQL</code> via <code class="language-plaintext highlighter-rouge">import pyspark.sql as SQL</code> under the hood</li>
@@ -597,7 +597,7 @@ many handy utility imports.</p>
 
     <h2 id="the-viz-module">The <strong>viz</strong> Module</h2>
 
-    <p><code class="language-plaintext highlighter-rouge">viz</code> module with classes from <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/display">Spark NLP Display</a></p>
+    <p><code class="language-plaintext highlighter-rouge">viz</code> module with classes from <a href="https://nlp.johnsnowlabs.com/docs/en/display">Spark NLP Display</a></p>
     <ul>
       <li><code class="language-plaintext highlighter-rouge">viz.NerVisualizer</code> for visualizing prediction outputs of Ner based Spark Pipelines</li>
       <li><code class="language-plaintext highlighter-rouge">viz.DependencyParserVisualizer</code> for visualizing prediction outputs of DependencyParser based Spark Pipelines</li>
@@ -611,13 +611,13 @@ many handy utility imports.</p>
 
     <h2 id="the-ocr-module">The <strong>ocr</strong> Module</h2>
 
-    <p><code class="language-plaintext highlighter-rouge">ocr</code> module with annotator classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr">Spark OCR</a> like <code class="language-plaintext highlighter-rouge">ocr.VisualDocumentClassifier</code>  and `ocr.helpful_method()</p>
+    <p><code class="language-plaintext highlighter-rouge">ocr</code> module with annotator classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/ocr">Spark OCR</a> like <code class="language-plaintext highlighter-rouge">ocr.VisualDocumentClassifier</code>  and `ocr.helpful_method()</p>
     <ul>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components">Pipeline Components</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.ImageToPdf</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_table_recognition">Table Recognizers</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.ImageTableDetector</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_visual_document_understanding">Visual Document Understanding</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.VisualDocumentClassifier</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_object_detection">Object detectors</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.ImageHandwrittenDetector</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_structures">Enums, Structures and helpers</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.Color</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components">Pipeline Components</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.ImageToPdf</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_table_recognition">Table Recognizers</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.ImageTableDetector</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_visual_document_understanding">Visual Document Understanding</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.VisualDocumentClassifier</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_object_detection">Object detectors</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.ImageHandwrittenDetector</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/ocr_structures">Enums, Structures and helpers</a> i.e. <code class="language-plaintext highlighter-rouge">ocr.Color</code></li>
       <li>To see all the imports see <a href="https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/johnsnowlabs/ocr.py">the source</a></li>
     </ul>
 
@@ -626,11 +626,11 @@ many handy utility imports.</p>
 
     <h2 id="the-medical-module">The <strong>medical</strong> Module</h2>
 
-    <p><code class="language-plaintext highlighter-rouge">medical</code> module with annotator classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators">Spark NLP for Medicine</a>  like <code class="language-plaintext highlighter-rouge">medical.RelationExtractionDL</code>  and <code class="language-plaintext highlighter-rouge">medical.profile()</code></p>
+    <p><code class="language-plaintext highlighter-rouge">medical</code> module with annotator classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators">Spark NLP for Medicine</a>  like <code class="language-plaintext highlighter-rouge">medical.RelationExtractionDL</code>  and <code class="language-plaintext highlighter-rouge">medical.profile()</code></p>
     <ul>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators">Medical Annotators</a> , i.e. <code class="language-plaintext highlighter-rouge">medical.DeIdentification</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_training">Training Methods</a>  i.e. <code class="language-plaintext highlighter-rouge">medical.AnnotationToolJsonReader</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/evaluation">Evaluation Methods</a>, i.e. <code class="language-plaintext highlighter-rouge">medical.NerDLEvaluation</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators">Medical Annotators</a> , i.e. <code class="language-plaintext highlighter-rouge">medical.DeIdentification</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/licensed_training">Training Methods</a>  i.e. <code class="language-plaintext highlighter-rouge">medical.AnnotationToolJsonReader</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/evaluation">Evaluation Methods</a>, i.e. <code class="language-plaintext highlighter-rouge">medical.NerDLEvaluation</code></li>
       <li><strong>NOTE:</strong> Any class which has <code class="language-plaintext highlighter-rouge">Medical</code> in its name is available, but the <code class="language-plaintext highlighter-rouge">Medical</code> prefix has been omitted. I.e. <code class="language-plaintext highlighter-rouge">medical.NerModel</code> maps to <code class="language-plaintext highlighter-rouge">sparknlp_jsl.annotator.MedicalNerModel</code>
         <ul>
           <li>This is achieved via <code class="language-plaintext highlighter-rouge">from sparknlp_jsl.annotator import MedicalNerModel as NerModel</code> under the hood.</li>
@@ -644,11 +644,11 @@ many handy utility imports.</p>
 
     <h2 id="the-legal-module">The <strong>legal</strong> Module</h2>
 
-    <p><code class="language-plaintext highlighter-rouge">legal</code> module with annotator classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators">Spark NLP for Legal</a>  like <code class="language-plaintext highlighter-rouge">legal.RelationExtractionDL</code>  and <code class="language-plaintext highlighter-rouge">legal.profile()</code></p>
+    <p><code class="language-plaintext highlighter-rouge">legal</code> module with annotator classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators">Spark NLP for Legal</a>  like <code class="language-plaintext highlighter-rouge">legal.RelationExtractionDL</code>  and <code class="language-plaintext highlighter-rouge">legal.profile()</code></p>
     <ul>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators">Legal Annotators</a> , i.e. <code class="language-plaintext highlighter-rouge">legal.DeIdentification</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_training">Training Methods</a>  i.e. <code class="language-plaintext highlighter-rouge">legal.AnnotationToolJsonReader</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/evaluation">Evaluation Methods</a>, i.e. <code class="language-plaintext highlighter-rouge">legal.NerDLEvaluation</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators">Legal Annotators</a> , i.e. <code class="language-plaintext highlighter-rouge">legal.DeIdentification</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/licensed_training">Training Methods</a>  i.e. <code class="language-plaintext highlighter-rouge">legal.AnnotationToolJsonReader</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/evaluation">Evaluation Methods</a>, i.e. <code class="language-plaintext highlighter-rouge">legal.NerDLEvaluation</code></li>
       <li><strong>NOTE:</strong> Any class which has <code class="language-plaintext highlighter-rouge">Legal</code> in its name is available, but the <code class="language-plaintext highlighter-rouge">Legal</code> prefix has been omitted. I.e. <code class="language-plaintext highlighter-rouge">legal.NerModel</code> maps to <code class="language-plaintext highlighter-rouge">sparknlp_jsl.annotator.LegalNerModel</code>
         <ul>
           <li>This is achieved via <code class="language-plaintext highlighter-rouge">from sparknlp_jsl.annotator import LegalNerModel as NerModel</code> under the hood.</li>
@@ -662,11 +662,11 @@ many handy utility imports.</p>
 
     <h2 id="the-finance-module">The <strong>finance</strong> Module</h2>
 
-    <p><code class="language-plaintext highlighter-rouge">finance</code> module with annotator classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators">Spark NLP for Finance</a>  like <code class="language-plaintext highlighter-rouge">finance.RelationExtractionDL</code>  and <code class="language-plaintext highlighter-rouge">finance.profile()</code></p>
+    <p><code class="language-plaintext highlighter-rouge">finance</code> module with annotator classes and methods from <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators">Spark NLP for Finance</a>  like <code class="language-plaintext highlighter-rouge">finance.RelationExtractionDL</code>  and <code class="language-plaintext highlighter-rouge">finance.profile()</code></p>
     <ul>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators">Finance Annotators</a> , i.e. <code class="language-plaintext highlighter-rouge">finance.DeIdentification</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_training">Training Methods</a>  i.e. <code class="language-plaintext highlighter-rouge">finance.AnnotationToolJsonReader</code></li>
-      <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/evaluation">Evaluation Methods</a>, i.e. <code class="language-plaintext highlighter-rouge">finance.NerDLEvaluation</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators">Finance Annotators</a> , i.e. <code class="language-plaintext highlighter-rouge">finance.DeIdentification</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/licensed_training">Training Methods</a>  i.e. <code class="language-plaintext highlighter-rouge">finance.AnnotationToolJsonReader</code></li>
+      <li><a href="https://nlp.johnsnowlabs.com/docs/en/evaluation">Evaluation Methods</a>, i.e. <code class="language-plaintext highlighter-rouge">finance.NerDLEvaluation</code></li>
       <li><strong>NOTE:</strong> Any class which has <code class="language-plaintext highlighter-rouge">Finance</code> in its name is available, but the <code class="language-plaintext highlighter-rouge">Finance</code> prefix has been omitted. I.e. <code class="language-plaintext highlighter-rouge">finance.NerModel</code> maps to <code class="language-plaintext highlighter-rouge">sparknlp_jsl.annotator.FinanceNerModel</code>
         <ul>
           <li>This is achieved via <code class="language-plaintext highlighter-rouge">from sparknlp_jsl.annotator import FinanceNerModel as NerModel</code> under the hood.</li>
@@ -1072,13 +1072,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         
