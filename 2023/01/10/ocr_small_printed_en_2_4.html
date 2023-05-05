@@ -441,7 +441,7 @@
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/ocr/RECOGNIZE_PRINTED/" class="button button-orange button-orange-trans co button-icon">Live Demo</a>
 <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/tutorials/Certification_Trainings/1.3.Trasformer_based_Text_Recognition.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
 <a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/ocr_small_printed_en_3.3.3_2.4_1645007455031.zip" class="button button-orange button-orange-trans arr button-icon">Download</a></p>
 
@@ -463,30 +463,24 @@
     <span class="p">.</span><span class="n">setSizeThreshold</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setLinkThreshold</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
 
+<span class="n">draw_regions</span> <span class="o">=</span> <span class="n">ImageDrawRegions</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputRegionsCol</span><span class="p">(</span><span class="s">"text_regions"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_with_regions"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setRectColor</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">green</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setRotated</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
 <span class="n">ocr</span> <span class="o">=</span> <span class="n">ImageToTextV2</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ocr_small_printed"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"image"</span><span class="p">,</span> <span class="s">"text_regions"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"hocr"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputFormat</span><span class="p">(</span><span class="n">OcrOutputFormat</span><span class="p">.</span><span class="n">HOCR</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setGroupImages</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> 
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">HocrTokenizer</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"hocr"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span> \
-
-<span class="n">draw_annotations</span> <span class="o">=</span> <span class="n">ImageDrawAnnotations</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputChunksCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_with_annotations"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setFilledRect</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setFontSize</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setRectColor</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">)</span>
-
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
     <span class="n">binary_to_image</span><span class="p">,</span>
     <span class="n">text_detector</span><span class="p">,</span>
-    <span class="n">ocr</span><span class="p">,</span>
-    <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">draw_annotations</span>
+    <span class="n">draw_regions</span><span class="p">,</span>
+    <span class="n">ocr</span>
 <span class="p">])</span>
 
 <span class="n">image_path</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="p">.</span><span class="n">resource_filename</span><span class="p">(</span><span class="s">'sparkocr'</span><span class="p">,</span> <span class="s">'resources/ocr/images/check.jpg'</span><span class="p">)</span>
@@ -506,30 +500,24 @@
     <span class="o">.</span><span class="py">setSizeThreshold</span><span class="o">(</span><span class="mi">15</span><span class="o">)</span> 
     <span class="o">.</span><span class="py">setLinkThreshold</span><span class="o">(</span><span class="mf">0.3</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">draw_regions</span> <span class="k">=</span> <span class="nc">ImageDrawRegions</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"image"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setInputRegionsCol</span><span class="o">(</span><span class="s">"text_regions"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"image_with_regions"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setRectColor</span><span class="o">(</span><span class="nv">Color</span><span class="o">.</span><span class="py">green</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setRotated</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+    
 <span class="k">val</span> <span class="nv">ocr</span> <span class="k">=</span> <span class="nv">ImageToTextV2</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ocr_small_printed"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/ocr"</span><span class="o">)</span> 
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"image"</span><span class="o">,</span> <span class="s">"text_regions"</span><span class="o">)</span> 
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"hocr"</span><span class="o">)</span> 
     <span class="o">.</span><span class="py">setOutputFormat</span><span class="o">(</span><span class="nv">OcrOutputFormat</span><span class="o">.</span><span class="py">HOCR</span><span class="o">)</span> 
     <span class="o">.</span><span class="py">setGroupImages</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">HocrTokenizer</span><span class="o">()</span> 
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"hocr"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span> 
-
-<span class="k">val</span> <span class="nv">draw_annotations</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ImageDrawAnnotations</span><span class="o">()</span> 
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"image"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setInputChunksCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"image_with_annotations"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setFilledRect</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setFontSize</span><span class="o">(</span><span class="mi">14</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setRectColor</span><span class="o">(</span><span class="nv">Color</span><span class="o">.</span><span class="py">red</span><span class="o">)</span>
-
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
     <span class="n">binary_to_image</span><span class="o">,</span> 
     <span class="n">text_detector</span><span class="o">,</span> 
-    <span class="n">ocr</span><span class="o">,</span> 
-    <span class="n">tokenizer</span><span class="o">,</span> 
-    <span class="n">draw_annotations</span><span class="o">))</span>
+    <span class="n">draw_regions</span><span class="o">,</span>
+    <span class="n">ocr</span><span class="o">))</span>
 
 <span class="k">val</span> <span class="nv">image_path</span> <span class="k">=</span> <span class="nv">pkg_resources</span><span class="o">.</span><span class="py">resource_filename</span><span class="o">(</span><span class="s">"sparkocr"</span><span class="o">,</span> <span class="s">"resources/ocr/images/check.jpg"")
 val image_example_df = spark.read.format("</span><span class="n">binaryFile</span><span class="err">"</span><span class="o">).</span><span class="py">load</span><span class="o">(</span><span class="n">image_path</span><span class="o">)</span>
@@ -607,104 +595,27 @@ try {
 
 <h2 id="output-text">Output text</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span>?&gt;
-&lt;<span class="o">!</span>DOCTYPE html PUBLIC <span class="s2">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span class="s2">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span><span class="o">&gt;</span>
-&lt;html <span class="nv">xmlns</span><span class="o">=</span><span class="s2">"http://www.w3.org/1999/xhtml"</span> xml:lang<span class="o">=</span><span class="s2">"en"</span> <span class="nv">lang</span><span class="o">=</span><span class="s2">"en"</span><span class="o">&gt;</span>
-  &lt;<span class="nb">head</span><span class="o">&gt;</span>
-    &lt;title&gt;&lt;/title&gt;
-    &lt;meta http-equiv<span class="o">=</span><span class="s2">"Content-Type"</span> <span class="nv">content</span><span class="o">=</span><span class="s2">"text/html;charset=utf-8"</span> /&gt;
-    &lt;meta <span class="nv">name</span><span class="o">=</span><span class="s1">'ocr-system'</span> <span class="nv">content</span><span class="o">=</span><span class="s1">'Spark OCR'</span> /&gt;
-    &lt;meta <span class="nv">name</span><span class="o">=</span><span class="s1">'ocr-langs'</span> <span class="nv">content</span><span class="o">=</span><span class="s1">'en'</span> /&gt;
-    &lt;meta <span class="nv">name</span><span class="o">=</span><span class="s1">'ocr-number-of-pages'</span> <span class="nv">content</span><span class="o">=</span><span class="s1">'1'</span> /&gt;
-    &lt;meta <span class="nv">name</span><span class="o">=</span><span class="s1">'ocr-capabilities'</span> <span class="nv">content</span><span class="o">=</span><span class="s1">'ocr_page ocr_carea ocr_line ocrx_word ocrp_lang'</span>/&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_page'</span> <span class="nv">lang</span><span class="o">=</span><span class="s1">'en'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 0 0 553 715'</span><span class="o">&gt;</span>
-        &lt;div <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_carea'</span> <span class="nv">lang</span><span class="o">=</span><span class="s1">'en'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 18 29 553 715'</span><span class="o">&gt;</span>
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 139 29 437 58; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_0_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 139 29 265 56'</span><span class="o">&gt;</span>STARBUCKS&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_0_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 273 30 344 58'</span><span class="o">&gt;</span>STORE&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_0_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 353 30 437 58'</span><span class="o">&gt;</span><span class="c">#10208&lt;/span&gt;</span>
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 158 62 409 91; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_1_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 158 62 225 90'</span><span class="o">&gt;</span>11302&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_1_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 234 63 318 90'</span><span class="o">&gt;</span>EUCLID&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_1_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 326 66 409 91'</span><span class="o">&gt;</span>AVENUE&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 99 95 477 125; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_2_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 99 95 226 123'</span><span class="o">&gt;</span>CLEVELAND&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_2_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 246 97 277 123'</span><span class="o">&gt;</span>OH&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_2_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 288 96 355 125'</span><span class="o">&gt;(</span>216<span class="o">)</span>&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_2_3'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 367 97 477 124'</span><span class="o">&gt;</span>229-0749&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_3'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 219 162 358 189; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_3_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 219 162 263 188'</span><span class="o">&gt;</span>CHK&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_3_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 272 162 358 189'</span><span class="o">&gt;</span>664290&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_4'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 155 194 410 223; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_4_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 155 194 289 223'</span><span class="o">&gt;</span>12/07/2014&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_4_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 298 196 372 223'</span><span class="o">&gt;</span>06:43&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_4_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 380 196 410 222'</span><span class="o">&gt;</span>PM&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_5'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 102 226 462 258; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_5_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 102 226 198 254'</span><span class="o">&gt;</span>1912003&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_5_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 232 230 329 255'</span><span class="o">&gt;</span>DRAMER:&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_5_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 340 230 356 254'</span><span class="o">&gt;</span>2&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_5_3'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 378 231 435 258'</span><span class="o">&gt;</span>REG:&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_5_4'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 447 231 462 254'</span><span class="o">&gt;</span>2&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_6'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 60 292 489 321; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_6_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 60 294 90 319'</span><span class="o">&gt;</span>VT&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_6_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 98 294 144 321'</span><span class="o">&gt;</span>PEP&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_6_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 152 292 223 320'</span><span class="o">&gt;</span>MOCHA&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_6_3'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 433 294 489 319'</span><span class="o">&gt;</span>4.95&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_7'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 59 326 489 353; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_7_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 59 326 116 351'</span><span class="o">&gt;</span>SBUX&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_7_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 126 327 184 353'</span><span class="o">&gt;</span>CARD&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_7_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 434 328 489 353'</span><span class="o">&gt;</span>4.95&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_8'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 59 358 276 385; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_8_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 59 358 276 385'</span><span class="o">&gt;</span>XXXXXXXXXXXX3228&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_9'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 60 424 489 454; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_9_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 60 424 168 451'</span><span class="o">&gt;</span>SUBTOTAL&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_9_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 419 426 489 454'</span><span class="o">&gt;</span><span class="nv">$4</span>.95&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_10'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 60 456 489 487; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_10_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 60 456 127 484'</span><span class="o">&gt;</span>TOTAL&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_10_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 418 459 489 487'</span><span class="o">&gt;</span><span class="nv">$4</span>.95&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_11'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 19 492 553 519; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_11_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 19 492 180 519'</span><span class="o">&gt;</span>CHANGE&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_11_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 205 492 287 517'</span><span class="o">&gt;</span>DUE&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_11_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 419 492 553 518'</span><span class="o">&gt;</span><span class="nv">$0</span>.00&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_12'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 179 556 342 583; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_12_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 179 556 249 583'</span><span class="o">&gt;</span>CHECK&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_12_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 259 556 342 583'</span><span class="o">&gt;</span>CLOSED&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_13'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 154 589 410 618; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_13_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 154 589 289 618'</span><span class="o">&gt;</span>12/07/2014&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_13_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 297 591 369 617'</span><span class="o">&gt;</span>06:43&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_13_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 378 590 410 617'</span><span class="o">&gt;</span>PM&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_14'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 18 654 489 684; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_14_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 18 654 76 681'</span><span class="o">&gt;</span>SBUX&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_14_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 84 656 142 680'</span><span class="o">&gt;</span>CARD&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_14_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 153 654 223 682'</span><span class="o">&gt;</span>X3228&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_14_3'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 232 657 275 681'</span><span class="o">&gt;</span>NEW&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_14_4'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 283 657 393 684'</span><span class="o">&gt;</span>BALANCE:&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_14_5'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 418 656 489 683'</span><span class="o">&gt;</span>37.45&lt;/span&gt;
-            &lt;/span&gt;
-            &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocr_line'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'line_15'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 18 688 263 715; baseline 0 -5'</span><span class="o">&gt;</span>
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_15_0'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 18 688 76 714'</span><span class="o">&gt;</span>CARD&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_15_1'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 88 689 115 713'</span><span class="o">&gt;</span>IS&lt;/span&gt;
-                &lt;span <span class="nv">class</span><span class="o">=</span><span class="s1">'ocrx_word'</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'word_15_2'</span> <span class="nv">title</span><span class="o">=</span><span class="s1">'bbox 126 688 263 715'</span><span class="o">&gt;</span>REGISTERED&lt;/span&gt;
-            &lt;/span&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          STARBUCKS  STORE <span class="c">#10208</span>
+            11302 EUCLID AVENUE
+       CLEVELAND  OH  <span class="o">(</span>216<span class="o">)</span> 229-0749
+
+                CHK 664290
+           12/07/2014 06:43  PM
+       1912003   DRAMER:  2  REG: 2
+
+    VT PEP MOCHA                 4.95
+    SBUX CARD                    4.95
+    XXXXXXXXXXXX3228
+
+    SUBTOTAL                    <span class="nv">$4</span>.95
+    TOTAL                       <span class="nv">$4</span>.95
+ CHANGE        DUE              <span class="nv">$0</span>.00
+
+             CHECK CLOSED
+           12/07/2014 06:43  PM
+
+ SBUX CARD X3228 NEW BALANCE:   37.45
+ CARD IS REGISTERED
 </code></pre></div></div>
 <h2 id="model-information">Model Information</h2>
 
