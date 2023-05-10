@@ -822,6 +822,114 @@ running</p>
 </div>
 <div class="h3-box">
 
+  <h3 id="windows-server">Windows Server</h3>
+
+  <ol>
+    <li>
+      <p>Install JAVA 18  - https://adoptium.net/temurin/releases/?version=18</p>
+
+      <p>i) Once installed , we can check java is installed or not using following command  Open Cmd and type java –version</p>
+    </li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/56176cf8-0184-4147-9923-bb00452bcf20" alt="image" /></p>
+
+  <ol>
+    <li>
+      <p>Install Hadoop tools</p>
+
+      <p>i) Download the pre-compiled Hadoop binaries winutils.exe, hadoop.dll from winutils/hadoop-3.2.0/bin at master · cdarlint/winutils</p>
+
+      <p>ii) Copy files into a folder called C:\hadoop\bin</p>
+    </li>
+  </ol>
+
+  <p>Note: The version above is for Spark 3.1.2, which was built for Hadoop 3.2.0. You might have to change the hadoop version in the link, depending on which Spark version you are using.</p>
+
+  <ol>
+    <li>
+      <p>Install Apache Spark  and Microsoft Visual C++ 2010</p>
+
+      <p>i)  Download Apache Spark - 3.2  from https://archive.apache.org/dist/spark/spark-3.2.3/spark-3.2.3-bin-hadoop3.2.tgz<br />
+ ii) Extract the archive file to location C:\spark. (C:\spark folder should have folder bin - so it should belike C\spark\bin )<br />
+ iii)  Intsall Microsoft Visual C++ 2010 from Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package MFC Security Update</p>
+    </li>
+    <li>
+      <p>Configure Hadoop and Spark ENV variables</p>
+    </li>
+  </ol>
+
+  <p>Windows Explorer → This PC  -&gt; Right Click select properties  -&gt; Click on  Advanced system settings -&gt; Click on Environment Variables  Under system variables -&gt;  Click on new</p>
+
+  <p>Add HADOOP_HOME as below<br />
+VARIABLE Name: HADOOP_HOME VARIABLE Value: C:\hadoop</p>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/7c8eaa03-1e55-4054-9851-c30c0b8fab46" alt="image" /></p>
+
+  <p>Add SPARK_HOME as below</p>
+
+  <p>VARIABLE Name: SPARK_HOME VARIABLE Value: C:\spark</p>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/b1e8d0bf-e6ba-4062-9f77-704bc87c7226" alt="image" /></p>
+
+  <p>Include HADOOP_HOME and SPARK_HOME in Path environment variable</p>
+
+  <p>Select the Path (from variable) -&gt; Click on edit → Click on New → add %HADOOP_HOME%\bin and %SPARK_HOME%\bin</p>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/60221c6b-cbc5-4c8e-9abd-25b4563950e4" alt="image" /></p>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/0e290cef-bd57-41ce-90a9-fc354b616540" alt="image" /></p>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/48a809f2-2b26-4b82-bc75-64aac758a33b" alt="image" /></p>
+
+  <ol>
+    <li>
+      <p>Configure Conda env</p>
+
+      <p>i)   Download Miniconda for python 3.8 from https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe
+ii)  Install miniconda exe file.<br />
+iii) Under system variables -&gt; Select the Path (from variable) -&gt; Click on edit -&gt; (ADD the miniconda install location)/bin (Same steps as    above)</p>
+    </li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/331b1089-7eed-46e5-83e4-48bff30995e0" alt="image" /></p>
+
+  <ol>
+    <li>
+      <p>Configure conda env</p>
+
+      <p>i) Open cmd and execute the following commands</p>
+    </li>
+  </ol>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- conda --version
+- java --version
+- conda create -n sparknlp python=3.8 -y
+- conda activate sparknlp
+- pip install spark-nlp==4.4.1 pyspark==3.3.1
+- pip install jupyter
+- conda env config vars set PYSPARK_PYTHON=python
+- conda activate sparknlp
+- conda env config vars set PYSPARK_DRIVER_PYTHON=jupyter
+- conda activate sparknlp
+- conda env config vars set PYSPARK_DRIVER_python_OPTS=notebook
+- conda activate sparknlp
+</code></pre></div>  </div>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ii) Start the spark nlp
+</code></pre></div>  </div>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- cd C:\spark\bin
+- pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:4.4.1
+</code></pre></div>  </div>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/b4213eef-af82-4ebd-a968-4a0669807331" alt="image" /></p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iii) Jupyter notebook will be opened in default browser and you can install johnsnowlabs using following screenshot.
+</code></pre></div>  </div>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/b4383fec-2785-4a0b-b18e-88d916c80565" alt="image" /></p>
+
   <h2 id="non-johnsnowlabs-clinical-nlp-on-ubuntu">Non-johnsnowlabs Clinical NLP on Ubuntu</h2>
   <blockquote>
     <p>These instructions use non-johnsnowlabs installation syntax. For simplified installation with <code class="language-plaintext highlighter-rouge">johnsnowlabs</code> library, check first section.</p>
