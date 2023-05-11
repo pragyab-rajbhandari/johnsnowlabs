@@ -560,6 +560,9 @@
 
   <p><strong>Note</strong>: 30-day free trial are available for AWS and Azure subscriptions.</p>
 
+</div>
+<div class="h3-box">
+
   <h2 id="installation-with-johnsnowlabs">Installation with johnsnowlabs</h2>
   <p>On Oct 4th, 2022 we released <code class="language-plaintext highlighter-rouge">johnsnowlabs</code> library, which eases the installation and session starting processes in an 
 almost transparent way for the user.</p>
@@ -568,12 +571,18 @@ almost transparent way for the user.</p>
 If you are a former user of Spark NLP or Spark NLP for Healthcare, you will find this new way of deploying your Spark NLP clusters much more user-friendly!
 Clinical NLP (former Spark NLP for Healthcare) still can be run without johnsnowlabs library, although we highly recommend to install it with this new method.</p>
 
-  <p>For advanced installation options, please check <code class="language-plaintext highlighter-rouge">johnsnowlabs</code> <a href="https://nlp.johnsnowlabs.com/docs/en/install_advanced">webpage</a>.</p>
+  <p>For advanced installation options, please check <code class="language-plaintext highlighter-rouge">johnsnowlabs</code> <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced/">webpage</a>.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="installing-johnsnowlabs">1. Installing johnsnowlabs</h3>
   <p>The first step you need to carry out is installing johnsnowlabs library. This is as easy as doing:</p>
 
   <p><code class="language-plaintext highlighter-rouge">!pip install johnsnowlabs</code></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="installing-enterprise-nlp-finance-legal-clinical">2. Installing Enterprise NLP (Finance, Legal, Clinical)</h3>
 
@@ -586,6 +595,9 @@ nlp.install(force_browser=True)
 
   <p>The <code class="language-plaintext highlighter-rouge">force_browser=True</code> command gets rid of you uploading a license. It will open a popup to connect to our license server at <code class="language-plaintext highlighter-rouge">my.johnsnowlabs.com</code> retrieve the license for you, and install everything your license allows you to use!
 If you are a user of Financial NLP, you will get that installed. If you are a Legal user, then Legal NLP will be installed, or Clinical! Everything will be taken care on your behalf!</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="optional-uploading-the-license-manually">Optional: Uploading the license manually</h4>
   <p>We still have the way of downloading manually the license, in case the connection with <code class="language-plaintext highlighter-rouge">my.johnsnowlabs.com</code> is not an option for you.
@@ -607,12 +619,18 @@ license_keys = files.upload()
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nlp.install()
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h3 id="starting-an-enterprise-nlp-cluster">3. Starting an Enterprise NLP cluster</h3>
   <p>Another one-liner can be used to start your Enterprise Spark NLP cluster:</p>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spark = nlp.start()
 </code></pre></div>  </div>
   <p>It will take into account the previous steps and your license and return a Spark Session.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="ready-to-go">4. Ready to go!</h3>
   <p>And you are done! Simple, isn’t it?
@@ -624,6 +642,9 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
     <li><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/healthcare-nlp">Clinical NLP notebooks</a></li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h2 id="finance-legal-clinical-nlp-on-databricks">Finance, Legal, Clinical NLP on Databricks</h2>
 
   <ul>
@@ -631,6 +652,9 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
     <li>Recommended instance type <code class="language-plaintext highlighter-rouge">Standard_F8s_v2 (16 GB Memory, 8 Cores)</code> or higher.</li>
     <li>The installation takes around 15 minutes.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h3 id="connection-via-databricks-partner-connect">Connection via Databricks Partner connect</h3>
 
@@ -642,6 +666,9 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
     <li>Start exploring preloaded notebooks <code class="language-plaintext highlighter-rouge">Workspace -&gt; Shared -&gt; John Snow Labs</code></li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h3 id="automatic-deployment-of-john-snow-labs-nlp-libraries-from-wwwjohnsnowlabscomdatabricks">Automatic deployment of John Snow Labs NLP libraries from <a href="https://www.johnsnowlabs.com/databricks/">www.johnsnowlabs.com/databricks</a></h3>
 
   <p>Alternatively, you can automatically deploy John Snow Labs libraries on Databricks by filling in the form available <a href="https://www.johnsnowlabs.com/databricks/">here</a>. This will allow you to start a 30-day free trial with no limit on the amount of processed data. You just need to provide a Databricks Access Token that is used by our deployment script to connect to your Databricks instance and install John Snow Labs NLP libraries on a cluster of your choice.</p>
@@ -649,6 +676,9 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
   <ul>
     <li>Start exploring preloaded notebooks <code class="language-plaintext highlighter-rouge">Workspace -&gt; Shared -&gt; John Snow Labs</code></li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h3 id="automatic-deployment-via-myjohnsnowlabscom">Automatic deployment via <a href="https://my.JohnSnowLabs.com">my.JohnSnowLabs.com</a></h3>
 
@@ -660,6 +690,9 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
 
   <p><img class="image image--xl" src="/assets/images/install_form.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="automatic-deployment-or-upgrade-from-the-databricks-workspace">Automatic deployment or upgrade from the Databricks workspace</h3>
 
   <p>If you have already deployed the libraries in the past, you have a script <code class="language-plaintext highlighter-rouge">Workspace -&gt; Shared -&gt; John Snow Labs -&gt; Install JohnSnowLabs NLP</code>. If you attach it to any cluster and run it, it will reinstall the libraries on the respective cluster.</p>
@@ -667,6 +700,9 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
   <ul>
     <li>This is also the recommended way to upgrade to the latest versions of the libraries.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h3 id="manual-deployment-of-enterprise-spark-nlp">Manual deployment of Enterprise Spark NLP</h3>
   <p>Automatic deployment is the preferred option.</p>
@@ -729,6 +765,9 @@ The precedence for that location is the highest, so make sure that file is not c
     </li>
     <li>Now you can attach your notebook to the cluster and use Spark NLP!</li>
   </ol>
+
+</div>
+<div class="h3-box">
 
   <h2 id="windows-support">Windows Support</h2>
 
@@ -826,7 +865,7 @@ running</p>
 
   <ol>
     <li>
-      <p>Install JAVA 18  - https://adoptium.net/temurin/releases/?version=18</p>
+      <p>Install JAVA 18  - <a href="https://adoptium.net/temurin/releases/?version=18">https://adoptium.net/temurin/releases/?version=18</a></p>
 
       <p>i) Once installed , we can check java is installed or not using following command  Open Cmd and type java –version</p>
     </li>
@@ -850,7 +889,7 @@ running</p>
     <li>
       <p>Install Apache Spark  and Microsoft Visual C++ 2010</p>
 
-      <p>i)  Download Apache Spark - 3.2  from https://archive.apache.org/dist/spark/spark-3.2.3/spark-3.2.3-bin-hadoop3.2.tgz<br />
+      <p>i)  Download Apache Spark - 3.2  from <a href="https://archive.apache.org/dist/spark/spark-3.2.3/spark-3.2.3-bin-hadoop3.2.tgz">https://archive.apache.org/dist/spark/spark-3.2.3/spark-3.2.3-bin-hadoop3.2.tgz</a><br />
  ii) Extract the archive file to location C:\spark. (C:\spark folder should have folder bin - so it should belike C\spark\bin )<br />
  iii)  Intsall Microsoft Visual C++ 2010 from Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package MFC Security Update</p>
     </li>
@@ -886,9 +925,11 @@ VARIABLE Name: HADOOP_HOME VARIABLE Value: C:\hadoop</p>
     <li>
       <p>Configure Conda env</p>
 
-      <p>i)   Download Miniconda for python 3.8 from https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe
-ii)  Install miniconda exe file.<br />
-iii) Under system variables -&gt; Select the Path (from variable) -&gt; Click on edit -&gt; (ADD the miniconda install location)/bin (Same steps as    above)</p>
+      <p>i)   Download Miniconda for python 3.8 from <a href="https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe">https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe</a></p>
+
+      <p>ii)  Install miniconda exe file.</p>
+
+      <p>iii) Under system variables -&gt; Select the Path (from variable) -&gt; Click on edit -&gt; (ADD the miniconda install location)/bin (Same steps as    above)</p>
     </li>
   </ol>
 
