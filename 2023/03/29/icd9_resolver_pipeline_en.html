@@ -462,6 +462,11 @@
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">A</span> <span class="mi">28</span><span class="o">-</span><span class="n">year</span><span class="o">-</span><span class="n">old</span> <span class="n">female</span> <span class="k">with</span> <span class="n">a</span> <span class="n">history</span> <span class="n">of</span> <span class="n">gestational</span> <span class="n">diabetes</span> <span class="n">mellitus</span> <span class="n">diagnosed</span> <span class="n">eight</span> <span class="n">years</span> <span class="n">and</span> <span class="n">anisakiasis</span><span class="o">.</span> <span class="nc">Also</span><span class="o">,</span> <span class="n">it</span> <span class="n">was</span> <span class="n">reported</span> <span class="n">that</span> <span class="n">fetal</span> <span class="n">and</span> <span class="n">neonatal</span> <span class="n">hemorrhage</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.resolve.icd9.pipeline"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Put your text here."""</span><span class="p">)</span>
+</code></pre></div>  </div>
+
 </div>
 
 <h2 id="results">Results</h2>

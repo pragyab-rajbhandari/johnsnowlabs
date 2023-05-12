@@ -498,6 +498,11 @@
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.classify.drug_reviews"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""While it has worked for me, the sweating and chills especially at night when trying to sleep are very off putting and I am not sure if I will stick with it very much longer. My eyese no longer feel like there is something in them and my mouth is definitely not as dry as before but the side effects are too invasive for my liking."""</span><span class="p">)</span>
+</code></pre></div>  </div>
+
 </div>
 
 <h2 id="results">Results</h2>

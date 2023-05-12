@@ -476,6 +476,15 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.de_identify.clinical_slim"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""</span><span class="p">)</span>
+</code></pre></div>  </div>
+
 </div>
 
 <h2 id="results">Results</h2>

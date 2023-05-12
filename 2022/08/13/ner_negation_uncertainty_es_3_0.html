@@ -519,6 +519,11 @@ The model detects Negation Trigger (NEG), Negation Scope (NSCO), Uncertainty Tri
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"es.med_ner.negtaion_uncertainty"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Con diagnóstico probable de cirrosis hepática (no conocida previamente) y peritonitis espontanea primaria con tratamiento durante 8 dias con ceftriaxona en el primer ingreso (no se realizó paracentesis control por escasez de liquido). Lesión tumoral en hélix izquierdo de 0,5 cms. de diámetro susceptible de ca basocelular perlado."""</span><span class="p">)</span>
+</code></pre></div>  </div>
+
 </div>
 
 <h2 id="results">Results</h2>

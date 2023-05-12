@@ -511,6 +511,11 @@
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.classify.generic.sdoh_substance_binary_sbiobert_cased"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Lives in apartment with 16-year-old daughter. Denies EtOH use currently although reports occasional use in past. Utox on admission positive for opiate (on as rx) as well as cocaine. 4-6 cigarettes a day on and off for 10 years. Denies h/o illicit drug use besides marijuana although admitted to cocaine use after being found to have urine positive for cocaine."""</span><span class="p">)</span>
+</code></pre></div>  </div>
+
 </div>
 
 <h2 id="results">Results</h2>

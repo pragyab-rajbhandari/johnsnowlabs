@@ -519,6 +519,11 @@
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.classify.token_bert.jnlpba_cellular"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""The results suggest that activation of protein kinase C, but not new protein synthesis, is required for IL-2 induction of IFN-gamma and GM-CSF cytoplasmic mRNA. It also was observed that suppression of cytokine gene expression by these agents was independent of the inhibition of proliferation. These data indicate that IL-2 and IL-12 may have distinct signaling pathways leading to the induction of IFN-gammaand GM-CSFgene expression, andthatthe NK3.3 cell line may serve as a novel model for dissecting the biochemical and molecular events involved in these pathways. A functional T-cell receptor signaling pathway is required for p95vav activity. Stimulation of the T-cell antigen receptor ( TCR ) induces activation of multiple tyrosine kinases, resulting in phosphorylation of numerous intracellular substrates. One substrate is p95vav, which is expressed exclusively in hematopoietic and trophoblast cells."""</span><span class="p">)</span>
+</code></pre></div>  </div>
+
 </div>
 
 <h2 id="results">Results</h2>

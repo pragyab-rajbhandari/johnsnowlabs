@@ -487,6 +487,21 @@ Adresse : St.Johann-Straße 13 19300"</span>
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"de.deid.clinical"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Zusammenfassung : Michael Berger wird am Morgen des 12 Dezember 2018 ins St.Elisabeth Krankenhaus eingeliefert. 
+Herr Michael Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.
+
+Persönliche Daten :
+ID-Nummer: T0110053F
+Platte A-BC124
+Kontonummer: DE89370400440532013000
+SSN : 13110587M565
+Lizenznummer: B072RRE2I55
+Adresse : St.Johann-Straße 13 19300
+"""</span><span class="p">)</span>
+</code></pre></div>  </div>
+
 </div>
 
 <h2 id="results">Results</h2>

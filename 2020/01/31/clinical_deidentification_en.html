@@ -28,7 +28,7 @@
 
 </script> --><title>Clinical Deidentification</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to de-identify PHI information from medical texts. The PHI information will be obfuscated in the resulting text.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScala  from sparknlp.pretrained import PretrainedPipelinesample = """Name : Hendrickson, Ora, Record date: 20...">
+<meta name="description" content="DescriptionThis pipeline can be used to de-identify PHI information from medical texts. The PHI information will be obfuscated in the resulting text.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  from sparknlp.pretrained import PretrainedPipelinesample = """Name : Hendrickson, Ora, Record date:...">
 <link rel="canonical" href="/2020/01/31/clinical_deidentification_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
@@ -447,7 +447,7 @@
 
 <div class="tabs-box">
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
@@ -473,6 +473,15 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 <span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.de_identify.clinical_pipeline"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""</span><span class="p">)</span>
+</code></pre></div>  </div>
+
 </div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

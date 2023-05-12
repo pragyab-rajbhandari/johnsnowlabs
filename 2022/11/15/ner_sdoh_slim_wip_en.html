@@ -525,6 +525,11 @@
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">nlpPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.med_ner.sdoh_slim_wip"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">""" Mother states that he does smoke, there is a family hx of alcohol on both maternal and paternal sides of the family, maternal grandfather who died of alcohol related complications and paternal grandmother with severe alcoholism. Pts own drinking began at age 16, living in LA, had a DUI at age 17 after totaling a new car that his mother bought for him, he was married. """</span><span class="p">)</span>
+</code></pre></div>  </div>
+
 </div>
 
 <h2 id="results">Results</h2>
