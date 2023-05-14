@@ -1,5 +1,205 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-12T21:17:35+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Detect Clinical Entities (BertForTokenClassifier)</title><link href="/2023/05/01/bert_token_classifier_ner_jsl_en.html" rel="alternate" type="text/html" title="Detect Clinical Entities (BertForTokenClassifier)" /><published>2023-05-01T00:00:00+00:00</published><updated>2023-05-01T00:00:00+00:00</updated><id>/2023/05/01/bert_token_classifier_ner_jsl_en</id><content type="html" xml:base="/2023/05/01/bert_token_classifier_ner_jsl_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-14T14:26:25+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial NER on Responsibility and ESG Reports(Medium)</title><link href="/2023/05/14/finner_responsibility_reports_md_en.html" rel="alternate" type="text/html" title="Financial NER on Responsibility and ESG Reports(Medium)" /><published>2023-05-14T00:00:00+00:00</published><updated>2023-05-14T00:00:00+00:00</updated><id>/2023/05/14/finner_responsibility_reports_md_en</id><content type="html" xml:base="/2023/05/14/finner_responsibility_reports_md_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This Financial NER model can extract up to 20 quantifiable entities, including KPI, from the Responsibility and ESG Reports of companies. This &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;medium&lt;/code&gt; model has been trained with more data.&lt;/p&gt;
+
+&lt;p&gt;If you look for a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;small&lt;/code&gt; version of the model, you can find it &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/03/09/finner_responsibility_reports_en.html&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AMOUNT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTABLE_ITEM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE_PERIOD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ECONOMIC_ACTION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ECONOMIC_KPI&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENVIRONMENTAL_ACTION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENVIRONMENTAL_KPI&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENVIRONMENTAL_UNIT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ESG_ROLE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FACILITY_PLACE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ISO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PERCENTAGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSIONAL_GROUP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELATIVE_METRIC&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SOCIAL_ACTION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SOCIAL_KPI&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TARGET_GROUP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TARGET_GROUP_BUSINESS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WASTE&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_responsibility_reports_md_en_1.0.0_3.0_1684066884328.zip&quot; class=&quot;button button-orange&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finner_responsibility_reports_md_en_1.0.0_3.0_1684066884328.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+
+&lt;span class=&quot;n&quot;&gt;sentence_detector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setContextChars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;','&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;';'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;':'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'*'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'('&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;')'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'&quot;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;'&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'&amp;amp;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_embeddings_sec_bert_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxSentenceLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finner_responsibility_reports_md&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;nlpPipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sentence_detector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ner_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlpPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The company has reduced its direct GHG emissions from 12,135 million tonnes of CO2e in 2017 to 4 million tonnes of CO2e in 2021. The indirect GHG emissions (scope 2) are mainly from imported energy, including electricity, heat, steam, and cooling, and the company has reduced its scope 2 emissions from 3 million tonnes of CO2e in 2017-2018 to 4 million tonnes of CO2e in 2020-2021. The scope 3 emissions are mainly from the use of sold products, and the emissions have increased from 377 million tonnes of CO2e in 2017 to 408 million tonnes of CO2e in 2021.&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arrays_zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ner_chunk.result'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'ner_chunk.metadata'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; \
+          &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['0']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                       &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['1']['entity']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+----------------------+------------------+
+|chunk                 |label             |
++----------------------+------------------+
+|direct GHG emissions  |ENVIRONMENTAL_KPI |
+|12,135 million        |AMOUNT            |
+|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
+|2017                  |DATE_PERIOD       |
+|4 million             |AMOUNT            |
+|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
+|2021                  |DATE_PERIOD       |
+|indirect GHG emissions|ENVIRONMENTAL_KPI |
+|scope 2               |ENVIRONMENTAL_KPI |
+|imported energy       |ENVIRONMENTAL_KPI |
+|electricity           |ENVIRONMENTAL_KPI |
+|heat                  |ENVIRONMENTAL_KPI |
+|steam                 |ENVIRONMENTAL_KPI |
+|cooling               |ENVIRONMENTAL_KPI |
+|scope 2 emissions     |ENVIRONMENTAL_KPI |
+|3 million             |AMOUNT            |
+|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
+|2017-2018             |DATE_PERIOD       |
+|4 million             |AMOUNT            |
+|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
+|2020-2021             |DATE_PERIOD       |
+|scope 3 emissions     |ENVIRONMENTAL_KPI |
+|sold                  |ECONOMIC_ACTION   |
+|products              |SOCIAL_KPI        |
+|emissions             |ENVIRONMENTAL_KPI |
+|377 million           |AMOUNT            |
+|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
+|2017                  |DATE_PERIOD       |
+|408 million           |AMOUNT            |
+|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
+|2021                  |DATE_PERIOD       |
++----------------------+------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finner_responsibility_reports_md&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[sentence, token, embeddings]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[ner]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;16.4 MB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In-house annotations on Responsibility and ESG Reports&lt;/p&gt;
+
+&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label                    precision  recall  f1-score  support 
+B-AMOUNT                 0.97       0.97    0.97      1207    
+I-AMOUNT                 0.97       0.94    0.96      361     
+B-ENVIRONMENTAL_KPI      0.79       0.81    0.80      1051    
+I-ENVIRONMENTAL_KPI      0.74       0.88    0.81      716     
+B-DATE_PERIOD            0.94       0.95    0.94      980     
+I-DATE_PERIOD            0.90       0.95    0.92      498     
+B-PERCENTAGE             0.99       0.99    0.99      695     
+I-PERCENTAGE             0.99       1.00    1.00      692     
+B-SOCIAL_KPI             0.66       0.74    0.70      481     
+I-SOCIAL_KPI             0.56       0.33    0.41      43      
+B-ENVIRONMENTAL_UNIT     0.94       0.96    0.95      459     
+I-ENVIRONMENTAL_UNIT     0.91       0.86    0.88      268     
+B-PROFESSIONAL_GROUP     0.85       0.92    0.88      358     
+I-PROFESSIONAL_GROUP     0.94       0.94    0.94      32      
+B-TARGET_GROUP           0.89       0.85    0.87      337     
+I-TARGET_GROUP           0.76       0.95    0.84      59      
+B-ENVIRONMENTAL_ACTION   0.72       0.68    0.70      341     
+I-ENVIRONMENTAL_ACTION   1.00       0.56    0.71      18      
+B-SOCIAL_ACTION          0.59       0.72    0.65      241     
+B-ESG_ROLE               0.76       0.72    0.74      109     
+I-ESG_ROLE               0.81       0.84    0.83      305     
+B-ECONOMIC_KPI           0.77       0.67    0.71      219     
+I-ECONOMIC_KPI           0.47       0.70    0.56      50      
+B-RELATIVE_METRIC        0.92       0.98    0.95      147     
+I-RELATIVE_METRIC        0.89       0.99    0.94      178     
+B-FACILITY_PLACE         0.74       0.89    0.81      139     
+I-FACILITY_PLACE         0.77       0.93    0.84      89      
+B-COUNTABLE_ITEM         0.64       0.69    0.67      154     
+I-COUNTABLE_ITEM         0.25       1.00    0.40      1       
+B-WASTE                  0.84       0.64    0.73      126     
+I-WASTE                  0.91       0.51    0.65      57      
+B-ECONOMIC_ACTION        0.73       0.74    0.73      91      
+I-ECONOMIC_ACTION        0.00       0.00    0.00      1       
+B-TARGET_GROUP_BUSINESS  0.93       0.85    0.89      74      
+I-TARGET_GROUP_BUSINESS  0.00       0.00    0.00      1       
+B-AGE                    0.74       0.70    0.72      37      
+I-AGE                    0.90       0.65    0.75      40      
+B-ISO                    0.84       0.72    0.78      36      
+I-ISO                    0.91       0.80    0.85      25      
+micro avg                0.86       0.88    0.87      10716   
+macro avg                0.75       0.75    0.74      10716   
+weighted avg             0.86       0.88    0.87      10716  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="ner" /><category term="finance" /><category term="licensed" /><category term="responsibility" /><category term="reports" /><summary type="html">Description This Financial NER model can extract up to 20 quantifiable entities, including KPI, from the Responsibility and ESG Reports of companies. This medium model has been trained with more data. If you look for a small version of the model, you can find it here Predicted Entities AGE, AMOUNT, COUNTABLE_ITEM, DATE_PERIOD, ECONOMIC_ACTION, ECONOMIC_KPI, ENVIRONMENTAL_ACTION, ENVIRONMENTAL_KPI, ENVIRONMENTAL_UNIT, ESG_ROLE, FACILITY_PLACE, ISO, PERCENTAGE, PROFESSIONAL_GROUP, RELATIVE_METRIC, SOCIAL_ACTION, SOCIAL_KPI, TARGET_GROUP, TARGET_GROUP_BUSINESS, WASTE Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;)\ sentence_detector = nlp.SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;)\ tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;)\ .setContextChars(['.', ',', ';', ':', '!', '?', '*', '-', '(', ')', '&quot;', &quot;'&quot;, '%', '&amp;amp;']) embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;, &quot;en&quot;) \ .setInputCols(&quot;sentence&quot;, &quot;token&quot;) \ .setOutputCol(&quot;embeddings&quot;)\ .setMaxSentenceLength(512)\ .setCaseSensitive(True) ner_model = finance.NerModel.pretrained(&quot;finner_responsibility_reports_md&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) nlpPipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner_model, ner_converter ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = nlpPipeline.fit(empty_data) text = &quot;&quot;&quot;The company has reduced its direct GHG emissions from 12,135 million tonnes of CO2e in 2017 to 4 million tonnes of CO2e in 2021. The indirect GHG emissions (scope 2) are mainly from imported energy, including electricity, heat, steam, and cooling, and the company has reduced its scope 2 emissions from 3 million tonnes of CO2e in 2017-2018 to 4 million tonnes of CO2e in 2020-2021. The scope 3 emissions are mainly from the use of sold products, and the emissions have increased from 377 million tonnes of CO2e in 2017 to 408 million tonnes of CO2e in 2021.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model.transform(data) result.select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \ .select(F.expr(&quot;cols['0']&quot;).alias(&quot;chunk&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False) Results +----------------------+------------------+ |chunk |label | +----------------------+------------------+ |direct GHG emissions |ENVIRONMENTAL_KPI | |12,135 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2017 |DATE_PERIOD | |4 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2021 |DATE_PERIOD | |indirect GHG emissions|ENVIRONMENTAL_KPI | |scope 2 |ENVIRONMENTAL_KPI | |imported energy |ENVIRONMENTAL_KPI | |electricity |ENVIRONMENTAL_KPI | |heat |ENVIRONMENTAL_KPI | |steam |ENVIRONMENTAL_KPI | |cooling |ENVIRONMENTAL_KPI | |scope 2 emissions |ENVIRONMENTAL_KPI | |3 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2017-2018 |DATE_PERIOD | |4 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2020-2021 |DATE_PERIOD | |scope 3 emissions |ENVIRONMENTAL_KPI | |sold |ECONOMIC_ACTION | |products |SOCIAL_KPI | |emissions |ENVIRONMENTAL_KPI | |377 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2017 |DATE_PERIOD | |408 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2021 |DATE_PERIOD | +----------------------+------------------+ Model Information Model Name: finner_responsibility_reports_md Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 16.4 MB References In-house annotations on Responsibility and ESG Reports Benchmarking label precision recall f1-score support B-AMOUNT 0.97 0.97 0.97 1207 I-AMOUNT 0.97 0.94 0.96 361 B-ENVIRONMENTAL_KPI 0.79 0.81 0.80 1051 I-ENVIRONMENTAL_KPI 0.74 0.88 0.81 716 B-DATE_PERIOD 0.94 0.95 0.94 980 I-DATE_PERIOD 0.90 0.95 0.92 498 B-PERCENTAGE 0.99 0.99 0.99 695 I-PERCENTAGE 0.99 1.00 1.00 692 B-SOCIAL_KPI 0.66 0.74 0.70 481 I-SOCIAL_KPI 0.56 0.33 0.41 43 B-ENVIRONMENTAL_UNIT 0.94 0.96 0.95 459 I-ENVIRONMENTAL_UNIT 0.91 0.86 0.88 268 B-PROFESSIONAL_GROUP 0.85 0.92 0.88 358 I-PROFESSIONAL_GROUP 0.94 0.94 0.94 32 B-TARGET_GROUP 0.89 0.85 0.87 337 I-TARGET_GROUP 0.76 0.95 0.84 59 B-ENVIRONMENTAL_ACTION 0.72 0.68 0.70 341 I-ENVIRONMENTAL_ACTION 1.00 0.56 0.71 18 B-SOCIAL_ACTION 0.59 0.72 0.65 241 B-ESG_ROLE 0.76 0.72 0.74 109 I-ESG_ROLE 0.81 0.84 0.83 305 B-ECONOMIC_KPI 0.77 0.67 0.71 219 I-ECONOMIC_KPI 0.47 0.70 0.56 50 B-RELATIVE_METRIC 0.92 0.98 0.95 147 I-RELATIVE_METRIC 0.89 0.99 0.94 178 B-FACILITY_PLACE 0.74 0.89 0.81 139 I-FACILITY_PLACE 0.77 0.93 0.84 89 B-COUNTABLE_ITEM 0.64 0.69 0.67 154 I-COUNTABLE_ITEM 0.25 1.00 0.40 1 B-WASTE 0.84 0.64 0.73 126 I-WASTE 0.91 0.51 0.65 57 B-ECONOMIC_ACTION 0.73 0.74 0.73 91 I-ECONOMIC_ACTION 0.00 0.00 0.00 1 B-TARGET_GROUP_BUSINESS 0.93 0.85 0.89 74 I-TARGET_GROUP_BUSINESS 0.00 0.00 0.00 1 B-AGE 0.74 0.70 0.72 37 I-AGE 0.90 0.65 0.75 40 B-ISO 0.84 0.72 0.78 36 I-ISO 0.91 0.80 0.85 25 micro avg 0.86 0.88 0.87 10716 macro avg 0.75 0.75 0.74 10716 weighted avg 0.86 0.88 0.87 10716</summary></entry><entry><title type="html">Detect Clinical Entities (BertForTokenClassifier)</title><link href="/2023/05/01/bert_token_classifier_ner_jsl_en.html" rel="alternate" type="text/html" title="Detect Clinical Entities (BertForTokenClassifier)" /><published>2023-05-01T00:00:00+00:00</published><updated>2023-05-01T00:00:00+00:00</updated><id>/2023/05/01/bert_token_classifier_ner_jsl_en</id><content type="html" xml:base="/2023/05/01/bert_token_classifier_ner_jsl_en.html">## Description
 
 Pretrained named entity recognition deep learning model for clinical terminology. This model is trained with BertForTokenClassification method from transformers library and imported into Spark NLP. 
 
@@ -1200,116 +1400,4 @@ PERSON        0.71       0.82    0.76      56
 micro-avg     0.79       0.82    0.80      205     
 macro-avg     0.82       0.83    0.82      205     
 weighted-avg  0.79       0.82    0.80      205
-```</content><author><name>John Snow Labs</name></author><category term="ga" /><category term="licensed" /><category term="ner" /><category term="legal" /><category term="mapa" /><summary type="html">Description The dataset consists of 12 documents taken from EUR-Lex, a multilingual corpus of court decisions and legal dispositions in the 24 official languages of the European Union. This model extracts ADDRESS, AMOUNT, DATE, ORGANISATION, and PERSON entities from Irish documents. Predicted Entities ADDRESS, AMOUNT, DATE, ORGANISATION, PERSON Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) embeddings = nlp.RoBertaEmbeddings.pretrained(&quot;roberta_base_irish_legal&quot;,&quot;gle&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setMaxSentenceLength(512)\ .setCaseSensitive(True) ner_model = legal.NerModel.pretrained(&quot;legner_mapa&quot;, &quot;ga&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) nlpPipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner_model, ner_converter]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = nlpPipeline.fit(empty_data) text = [&quot;&quot;&quot;Dhiúltaigh Tribunale di Teramo ( An Chúirt Dúiche, Teramo ) an t-iarratas a rinne Bn.Grigorescu, ar bhonn teagmhasach, chun aitheantas a thabhairt san Iodáil do bhreithiúnas colscartha Tribunalul București ( An Chúirt Réigiúnach, Búcairist ) an 3 Nollaig 2012, de bhun Rialachán Uimh.&quot;&quot;&quot;] result = model.transform(spark.createDataFrame([text]).toDF(&quot;text&quot;)) Results +--------------+---------+ |chunk |ner_label| +--------------+---------+ |Teramo |ADDRESS | |Bn.Grigorescu |PERSON | |Búcairist |ADDRESS | |3 Nollaig 2012|DATE | +--------------+---------+ Model Information Model Name: legner_mapa Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: ga Size: 16.3 MB References The dataset is available here. Benchmarking label precision recall f1-score support ADDRESS 0.82 0.74 0.78 19 AMOUNT 1.00 1.00 1.00 7 DATE 0.91 0.92 0.91 75 ORGANISATION 0.65 0.67 0.66 48 PERSON 0.71 0.82 0.76 56 micro-avg 0.79 0.82 0.80 205 macro-avg 0.82 0.83 0.82 205 weighted-avg 0.79 0.82 0.80 205</summary></entry><entry><title type="html">Legal NER for MAPA(Multilingual Anonymisation for Public Administrations)</title><link href="/2023/04/28/legner_mapa_sk.html" rel="alternate" type="text/html" title="Legal NER for MAPA(Multilingual Anonymisation for Public Administrations)" /><published>2023-04-28T00:00:00+00:00</published><updated>2023-04-28T00:00:00+00:00</updated><id>/2023/04/28/legner_mapa_sk</id><content type="html" xml:base="/2023/04/28/legner_mapa_sk.html">## Description
-
-The dataset consists of 12 documents taken from EUR-Lex, a multilingual corpus of court decisions and legal dispositions in the 24 official languages of the European Union.
-
-This model extracts `ADDRESS`, `AMOUNT`, `DATE`, `ORGANISATION`, and `PERSON` entities from `Slovak` documents.
-
-## Predicted Entities
-
-`ADDRESS`, `AMOUNT`, `DATE`, `ORGANISATION`, `PERSON`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legner_mapa_sk_1.0.0_3.0_1682674803309.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legner_mapa_sk_1.0.0_3.0_1682674803309.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-
-```python
-document_assembler = nlp.DocumentAssembler()\
-        .setInputCol(&quot;text&quot;)\
-        .setOutputCol(&quot;document&quot;)
-
-sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)\
-        .setInputCols([&quot;document&quot;])\
-        .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = nlp.Tokenizer()\
-        .setInputCols([&quot;sentence&quot;])\
-        .setOutputCol(&quot;token&quot;)
-
-embeddings = nlp.RoBertaEmbeddings.pretrained(&quot;roberta_base_slovak_legal&quot;,&quot;sk&quot;)\
-        .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-        .setOutputCol(&quot;embeddings&quot;)\
-        .setMaxSentenceLength(512)\
-        .setCaseSensitive(True)
-
-ner_model = legal.NerModel.pretrained(&quot;legner_mapa&quot;, &quot;sk&quot;, &quot;legal/models&quot;)\
-        .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
-        .setOutputCol(&quot;ner&quot;)
-
-ner_converter = nlp.NerConverter()\
-        .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-        .setOutputCol(&quot;ner_chunk&quot;)
-
-nlpPipeline = nlp.Pipeline(stages=[
-        document_assembler,
-        sentence_detector,
-        tokenizer,
-        embeddings,
-        ner_model,
-        ner_converter])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-
-model = nlpPipeline.fit(empty_data)
-
-text = [&quot;&quot;&quot;Návrhom podaným 22. mája 2007 na Tribunale di Teramo ( súd v Terame, Taliansko ) požiadal pán Liberato o rozluku a o zverenie syna do svojej starostlivosti.&quot;&quot;&quot;]
-
-result = model.transform(spark.createDataFrame([text]).toDF(&quot;text&quot;))
-```
-
-&lt;/div&gt;
-
-## Results
-
-```bash
-+-------------+---------+
-|chunk        |ner_label|
-+-------------+---------+
-|22. mája 2007|DATE     |
-|Terame       |ADDRESS  |
-|Taliansko    |ADDRESS  |
-|pán Liberato |PERSON   |
-+-------------+---------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|legner_mapa|
-|Compatibility:|Legal NLP 1.0.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|sk|
-|Size:|1.4 MB|
-
-## References
-
-The dataset is available [here](https://huggingface.co/datasets/joelito/mapa).
-
-## Benchmarking
-
-```bash
-label         precision  recall  f1-score  support 
-ADDRESS       0.88       0.85    0.86      26      
-AMOUNT        1.00       1.00    1.00      4       
-DATE          0.92       0.88    0.90      50      
-ORGANISATION  0.79       0.61    0.69      31      
-PERSON        0.66       0.86    0.75      44      
-micro-avg     0.80       0.82    0.81      155     
-macro-avg     0.85       0.84    0.84      155     
-weighted-avg  0.81       0.82    0.81      155 
-```</content><author><name>John Snow Labs</name></author><category term="sk" /><category term="licensed" /><category term="ner" /><category term="legal" /><category term="mapa" /><summary type="html">Description The dataset consists of 12 documents taken from EUR-Lex, a multilingual corpus of court decisions and legal dispositions in the 24 official languages of the European Union. This model extracts ADDRESS, AMOUNT, DATE, ORGANISATION, and PERSON entities from Slovak documents. Predicted Entities ADDRESS, AMOUNT, DATE, ORGANISATION, PERSON Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) embeddings = nlp.RoBertaEmbeddings.pretrained(&quot;roberta_base_slovak_legal&quot;,&quot;sk&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setMaxSentenceLength(512)\ .setCaseSensitive(True) ner_model = legal.NerModel.pretrained(&quot;legner_mapa&quot;, &quot;sk&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) nlpPipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner_model, ner_converter]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = nlpPipeline.fit(empty_data) text = [&quot;&quot;&quot;Návrhom podaným 22. mája 2007 na Tribunale di Teramo ( súd v Terame, Taliansko ) požiadal pán Liberato o rozluku a o zverenie syna do svojej starostlivosti.&quot;&quot;&quot;] result = model.transform(spark.createDataFrame([text]).toDF(&quot;text&quot;)) Results +-------------+---------+ |chunk |ner_label| +-------------+---------+ |22. mája 2007|DATE | |Terame |ADDRESS | |Taliansko |ADDRESS | |pán Liberato |PERSON | +-------------+---------+ Model Information Model Name: legner_mapa Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: sk Size: 1.4 MB References The dataset is available here. Benchmarking label precision recall f1-score support ADDRESS 0.88 0.85 0.86 26 AMOUNT 1.00 1.00 1.00 4 DATE 0.92 0.88 0.90 50 ORGANISATION 0.79 0.61 0.69 31 PERSON 0.66 0.86 0.75 44 micro-avg 0.80 0.82 0.81 155 macro-avg 0.85 0.84 0.84 155 weighted-avg 0.81 0.82 0.81 155</summary></entry></feed>
+```</content><author><name>John Snow Labs</name></author><category term="ga" /><category term="licensed" /><category term="ner" /><category term="legal" /><category term="mapa" /><summary type="html">Description The dataset consists of 12 documents taken from EUR-Lex, a multilingual corpus of court decisions and legal dispositions in the 24 official languages of the European Union. This model extracts ADDRESS, AMOUNT, DATE, ORGANISATION, and PERSON entities from Irish documents. Predicted Entities ADDRESS, AMOUNT, DATE, ORGANISATION, PERSON Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) embeddings = nlp.RoBertaEmbeddings.pretrained(&quot;roberta_base_irish_legal&quot;,&quot;gle&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setMaxSentenceLength(512)\ .setCaseSensitive(True) ner_model = legal.NerModel.pretrained(&quot;legner_mapa&quot;, &quot;ga&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) nlpPipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner_model, ner_converter]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = nlpPipeline.fit(empty_data) text = [&quot;&quot;&quot;Dhiúltaigh Tribunale di Teramo ( An Chúirt Dúiche, Teramo ) an t-iarratas a rinne Bn.Grigorescu, ar bhonn teagmhasach, chun aitheantas a thabhairt san Iodáil do bhreithiúnas colscartha Tribunalul București ( An Chúirt Réigiúnach, Búcairist ) an 3 Nollaig 2012, de bhun Rialachán Uimh.&quot;&quot;&quot;] result = model.transform(spark.createDataFrame([text]).toDF(&quot;text&quot;)) Results +--------------+---------+ |chunk |ner_label| +--------------+---------+ |Teramo |ADDRESS | |Bn.Grigorescu |PERSON | |Búcairist |ADDRESS | |3 Nollaig 2012|DATE | +--------------+---------+ Model Information Model Name: legner_mapa Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: ga Size: 16.3 MB References The dataset is available here. Benchmarking label precision recall f1-score support ADDRESS 0.82 0.74 0.78 19 AMOUNT 1.00 1.00 1.00 7 DATE 0.91 0.92 0.91 75 ORGANISATION 0.65 0.67 0.66 48 PERSON 0.71 0.82 0.76 56 micro-avg 0.79 0.82 0.80 205 macro-avg 0.82 0.83 0.82 205 weighted-avg 0.79 0.82 0.80 205</summary></entry></feed>
