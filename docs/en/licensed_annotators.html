@@ -8184,7 +8184,7 @@ between entities.</p>
       <tbody>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/ner/ner_chunker/index.html#sparknlp_jsl.annotator.ner.ner_chunker.NerChunker">NerChunker</a></td>
-          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/NerChunker">NerChunker</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/NerChunker.html">NerChunker</a></td>
         </tr>
       </tbody>
     </table>
@@ -12671,13 +12671,17 @@ the model to learn better.</li>
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>
 
-
 <span class="n">med_summarizer</span>  <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">Summarizer</span>\
     <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"summarizer_generic_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDoSample</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineSummary</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineSummaryTargetLength</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineMaxAttempts</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineChunkSize</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
 
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_summarizer</span><span class="p">])</span>
@@ -12716,7 +12720,12 @@ ALLERGIES:..."""</span>
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
-   <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDoSample</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineSummary</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineSummaryTargetLength</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineMaxAttempts</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineChunkSize</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
 
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_summarizer</span><span class="p">])</span>
@@ -12754,8 +12763,13 @@ ALLERGIES:..."""</span>
     <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"summarizer_generic_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
-   <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDoSample</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineSummary</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineSummaryTargetLength</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineMaxAttempts</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRefineChunkSize</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
 
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_summarizer</span><span class="p">])</span>
@@ -12801,7 +12815,13 @@ ALLERGIES:..."""</span>
 <span class="k">val</span> <span class="nv">med_summarizer</span>  <span class="k">=</span> <span class="nv">medical</span><span class="o">.</span><span class="py">Summarizer</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"summarizer_generic_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxTextLength</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setDoSample</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineSummary</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineSummaryTargetLength</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineMaxAttempts</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineChunkSize</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
 
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_summarizer</span><span class="o">))</span>
@@ -12836,7 +12856,13 @@ ALLERGIES:..."""</span>
 <span class="k">val</span> <span class="nv">med_summarizer</span>  <span class="k">=</span> <span class="nv">finance</span><span class="o">.</span><span class="py">Summarizer</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"summarizer_generic_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxTextLength</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setDoSample</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineSummary</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineSummaryTargetLength</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineMaxAttempts</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineChunkSize</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
 
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_summarizer</span><span class="o">))</span>
@@ -12871,7 +12897,13 @@ ALLERGIES:..."""</span>
 <span class="k">val</span> <span class="nv">med_summarizer</span>  <span class="k">=</span> <span class="nv">legal</span><span class="o">.</span><span class="py">Summarizer</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"summarizer_generic_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"documents"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxTextLength</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setDoSample</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineSummary</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineSummaryTargetLength</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineMaxAttempts</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRefineChunkSize</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
 
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_summarizer</span><span class="o">))</span>
