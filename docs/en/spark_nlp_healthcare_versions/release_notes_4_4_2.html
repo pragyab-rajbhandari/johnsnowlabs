@@ -559,7 +559,7 @@
 
   <ul>
     <li>The medical QA models now incorporates Flan-T5 models, significantly expanding its capacity.</li>
-    <li>We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical guidelines to produce more precise descriptions when prompted.</li>
+    <li>We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical conditions to produce more precise descriptions when prompted.</li>
     <li>The brand-new medical summarizer model is designed to provide summarizations of clinical guidelines under predefined categories such as causes, symptoms, and more.</li>
     <li>Text summarization method utilizing a map-reduce approach for section-wise summarization.</li>
     <li>New chunk mapper model to map ICD10CM codes with corresponding causes and claim analysis codes according to CDC guidelines.</li>
@@ -604,9 +604,9 @@
 </div>
 <div class="h3-box">
 
-  <h4 id="introducing-a-newly-finetuned-biogpt-chat-jsl-model-based-on-clinical-guidelines">Introducing a Newly Finetuned biogpt-chat-jsl Model, based on Clinical Guidelines.</h4>
+  <h4 id="introducing-a-newly-finetuned-biogpt-chat-jsl-model-based-on-clinical-conditions">Introducing a Newly Finetuned biogpt-chat-jsl Model, based on Clinical Conditions.</h4>
 
-  <p>We are excited to present our newly fine-tuned biogpt-chat-jsl model. This model, known as biogpt_chat_jsl_conditions, is based on the robust BioGPT architecture and has been meticulously fine-tuned with questions pertaining to a wide array of medical conditions.</p>
+  <p>We are excited to present our newly fine-tuned biogpt-chat-jsl model. This model, known as <code class="language-plaintext highlighter-rouge">biogpt_chat_jsl_conditions</code>, is based on the robust BioGPT architecture and has been meticulously fine-tuned with questions pertaining to a wide array of medical conditions.</p>
 
   <p>Our team has concentrated on emphasizing the Q&amp;A aspect, making it less conversational but highly focused on delivering accurate and insightful answers. This enhanced focus on question answering ensures that users can extract critical and relevant information quickly and accurately. This strategic fine-tuning with clinical guidelines strengthens the model’s ability to provide superior results in the realm of medical NLP.</p>
 
@@ -622,9 +622,9 @@
 
   <p><em>Result</em>:</p>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Cardiovascular disease <span class="o">(</span> CVD <span class="o">)</span> is a general term <span class="k">for </span>conditions affecting the heart or blood vessels. It can be caused
-by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. Certain
-medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Cardiovascular disease <span class="o">(</span> CVD <span class="o">)</span> is a general term <span class="k">for </span>conditions affecting the heart or blood vessels. 
+It can be caused by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. 
+Certain medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
 </code></pre></div>  </div>
 
 </div>
@@ -632,7 +632,7 @@ medical conditions, such as chronic kidney disease, can also increase the risk o
 
   <h4 id="the-brand-new-medical-summarizer-model-designed-to-provide-summarizations-of-clinical-guidelines-under-predefined-categories-such-as-causes-symptoms-and-more">The Brand-New Medical Summarizer Model Designed To Provide Summarizations Of Clinical Guidelines Under Predefined Categories Such As Causes, Symptoms, And More.</h4>
 
-  <p>We are pleased to introduce the summarizer_clinical_guidelines_large model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.</p>
+  <p>We are pleased to introduce the <code class="language-plaintext highlighter-rouge">summarizer_clinical_guidelines_large</code> model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.</p>
 
   <p>One of the notable features of this model is its ability to neatly categorize summarizations into four distinct sections: Overview, Causes, Symptoms, and Treatments. This systematic segregation facilitates ease of understanding and aids in extracting specific information more efficiently.</p>
 
