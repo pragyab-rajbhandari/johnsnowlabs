@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Detect Social Determinants of Health Mentions</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis Named Entity Recognition model is intended for detecting Social Determinants of Health mentions in clinical notes and trained by using MedicalNerApproach annotator that allows to train generic NER models based on Neural Networks.Predicted Entitiessdoh_community, sdoh_economics, sdoh_education, sdoh_e...">
+<meta name="description" content="DescriptionThis Named Entity Recognition model is intended for detecting Social Determinants of Health mentions in clinical notes and trained by using MedicalNerApproach annotator that allows to train generic NER models based on Neural Networks.            Entitiy Name      Descriptions      Sample Texts      chunks...">
 <!-- <link rel="canonical" href="/2022/12/18/ner_sdoh_mentions_en.html"> -->
 <link rel="canonical" href="/2022/12/18/ner_sdoh_mentions_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -423,6 +423,61 @@
 
 <p>This Named Entity Recognition model is intended for detecting Social Determinants of Health mentions in clinical notes and trained by using MedicalNerApproach annotator that allows to train generic NER models based on Neural Networks.</p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Entitiy Name</th>
+      <th>Descriptions</th>
+      <th>Sample Texts</th>
+      <th>chunks+labels</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sdoh_community</td>
+      <td>The patient’s social<br /> and community networks, including family members,<br /> friends, and other social connections.</td>
+      <td>- He has a 27 yo son.<br /> - The patient lives with mother.<br /> - She is a widow.<br /> - Married and has two children.<br /></td>
+      <td>- (son),(sdoh_community)<br /> - (mother),(sdoh_community)<br /> - (widow),(sdoh_community)<br /> - (Married, children),(sdoh_community,sdoh_community)<br /></td>
+    </tr>
+    <tr>
+      <td>sdoh_economics</td>
+      <td>The patient’s economic<br /> status and financial resources, including their<br /> occupation, income, and employment status.</td>
+      <td>- The patient worked as an accountant.<br /> - He is a retired history professor.<br /> - She is a lawyer.<br /> - Worked in insurance, currently unemployed.<br /></td>
+      <td>- (worked),(sdoh_economics)<br /> - (retired),(sdoh_economics)<br /> - (lawyer),(sdoh_economics)<br /> - (worked, unemployed),(sdoh_economics, sdoh_economics)</td>
+    </tr>
+    <tr>
+      <td>sdoh_education</td>
+      <td>The patient’s education-related<br /> passages such as schooling, college, or degrees attained.</td>
+      <td>- She graduated from high school.<br /> - He is a fourth grade teacher in inner city.<br /> - He completed some college.<br /></td>
+      <td>- (graduated from high school),(sdoh_education)<br /> - (teacher),(sdoh_education)<br /> - (college),(sdoh_education)<br /></td>
+    </tr>
+    <tr>
+      <td>sdoh_environment</td>
+      <td>The patient’s living<br /> environment and access to housing.</td>
+      <td>- He lives at home.<br /> - Her other daughter lives in the apartment below.<br /> - The patient lives with her husband in a retirement community.<br /></td>
+      <td>- (home),(sdoh_environment)<br /> - (apartment),(sdoh_environment)<br /> - (retirement community),(sdoh_environment)<br /></td>
+    </tr>
+    <tr>
+      <td>behavior_tobacco</td>
+      <td>This entity is labeled based on any indication of<br /> the patient’s current or past tobacco<br /> use and smoking history</td>
+      <td>- She smoked one pack a day for forty years.<br /> - The patient denies tobacco use.<br /> - The patient smokes an occasional cigar.<br /></td>
+      <td>- (smoked one pack),(behavior_tobacco)<br /> - (tobacco),(behavior_tobacco)<br /> - (smokes an occasional cigar),(behavior_tobacco)<br /></td>
+    </tr>
+    <tr>
+      <td>behavior_alcohol</td>
+      <td>This entity is used to label indications of<br /> the patient’s alcohol consumption.</td>
+      <td>- She drinks alcohol.<br /> - The patient denies ethanol.<br /> - He denies ETOH.<br /></td>
+      <td>- (alcohol),(behavior_alcohol)<br /> - (ethanol),(behavior_alcohol)<br /> - (ETOH),(behavior_alcohol)<br /></td>
+    </tr>
+    <tr>
+      <td>behavior_drug</td>
+      <td>This entity is used to label any indications of<br /> the patient’s current or past drug use.</td>
+      <td>- She denies any intravenous drug abuse.<br /> - No illicit drug use including IV per family.<br /> - The patient any using recreational drugs.<br /></td>
+      <td>- (intravenous drug),(behavior_drug)<br /> - (illicit drug, IV),(behavior_drug, behavior_drug)<br /> - (recreational drugs),(behavior_drug)<br /></td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="predicted-entities">Predicted Entities</h2>
 
 <p><code class="language-plaintext highlighter-rouge">sdoh_community</code>, <code class="language-plaintext highlighter-rouge">sdoh_economics</code>, <code class="language-plaintext highlighter-rouge">sdoh_education</code>, <code class="language-plaintext highlighter-rouge">sdoh_environment</code>, <code class="language-plaintext highlighter-rouge">behavior_tobacco</code>, <code class="language-plaintext highlighter-rouge">behavior_alcohol</code>, <code class="language-plaintext highlighter-rouge">behavior_drug</code></p>
@@ -438,8 +493,8 @@
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
       
 <span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span><span class="s">"xx"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
@@ -457,7 +512,7 @@
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
     
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span>\
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
     
@@ -469,9 +524,9 @@
     <span class="n">ner_model</span><span class="p">,</span>
     <span class="n">ner_converter</span><span class="p">])</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a long standing history (20 years) diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a long standing history (20 years) diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
@@ -493,16 +548,17 @@
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
     
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
     
-<span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> 
-                                                <span class="n">sentenceDetector</span><span class="o">,</span>
-                                                <span class="n">tokenizer</span><span class="o">,</span>
-                                                <span class="n">embeddings</span><span class="o">,</span>
-                                                <span class="n">ner_model</span><span class="o">,</span>
-                                                <span class="n">ner_converter</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span> 
+    <span class="n">sentenceDetector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">embeddings</span><span class="o">,</span>
+    <span class="n">ner_model</span><span class="o">,</span>
+    <span class="n">ner_converter</span><span class="o">))</span>
 
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a long standing history (20 years) diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years."</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
@@ -578,9 +634,9 @@ behavior_tobacco       0.95      0.95      0.95       936
   sdoh_economics       0.95      0.91      0.93       363
   sdoh_education       0.69      0.65      0.67        34
 sdoh_environment       0.93      0.90      0.92       651
-       micro avg       0.95      0.94      0.94      4117
-       macro avg       0.91      0.89      0.90      4117
-    weighted avg       0.95      0.94      0.94      4117
+       micro-avg       0.95      0.94      0.94      4117
+       macro-avg       0.91      0.89      0.90      4117
+    weighted-avg       0.95      0.94      0.94      4117
 </code></pre></div></div>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-12-18T00:00:00+00:00"><!-- start custom article footer snippet -->
 
