@@ -1,5 +1,618 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-29T06:52:54+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Medical Question Answering (biogpt)</title><link href="/2023/05/17/medical_qa_biogpt_en.html" rel="alternate" type="text/html" title="Medical Question Answering (biogpt)" /><published>2023-05-17T00:00:00+00:00</published><updated>2023-05-17T00:00:00+00:00</updated><id>/2023/05/17/medical_qa_biogpt_en</id><content type="html" xml:base="/2023/05/17/medical_qa_biogpt_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-30T08:42:19+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial Finetuned FLAN-T5 Text Generation (FIQA dataset)</title><link href="/2023/05/29/fingen_flant5_finetuned_fiqa_en.html" rel="alternate" type="text/html" title="Financial Finetuned FLAN-T5 Text Generation (FIQA dataset)" /><published>2023-05-29T00:00:00+00:00</published><updated>2023-05-29T00:00:00+00:00</updated><id>/2023/05/29/fingen_flant5_finetuned_fiqa_en</id><content type="html" xml:base="/2023/05/29/fingen_flant5_finetuned_fiqa_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fingen_flant5_finetuned_fiqa&lt;/code&gt; model is the Text Generation model that has been fine-tuned on FLAN-T5 using FIQA dataset. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text-generation tasks.&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/fingen_flant5_finetuned_fiqa_en_1.0.0_3.0_1685363340017.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/fingen_flant5_finetuned_fiqa_en_1.0.0_3.0_1685363340017.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextGenerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fingen_flant5_finetuned_fiqa&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;generated&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxNewTokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setStopAtEos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setDoSample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setTopK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+ 
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;How to have a small capital investment in US if I am out of the country?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;generated.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[I would suggest a &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;broker. They have diversified funds that are diversified and have the same fees as the US market. They also offer diversified portfolios that have the lowest risk.]|
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;fingen_flant5_finetuned_fiqa&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.6 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;The dataset is available &lt;a href=&quot;https://huggingface.co/datasets/BeIR/fiqa&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="finance" /><category term="generation" /><category term="licensed" /><category term="flant5" /><category term="fiqa" /><category term="tensorflow" /><summary type="html">Description The fingen_flant5_finetuned_fiqa model is the Text Generation model that has been fine-tuned on FLAN-T5 using FIQA dataset. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text-generation tasks. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) flant5 = finance.TextGenerator.pretrained(&quot;fingen_flant5_finetuned_fiqa&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;generated&quot;)\ .setMaxNewTokens(256)\ .setStopAtEos(True)\ .setDoSample(True)\ .setTopK(3) pipeline = nlp.Pipeline(stages=[document_assembler, flant5]) data = spark.createDataFrame([ [1, &quot;How to have a small capital investment in US if I am out of the country?&quot;]]).toDF('id', 'text') results = pipeline.fit(data).transform(data) results.select(&quot;generated.result&quot;).show(truncate=False) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[I would suggest a local broker. They have diversified funds that are diversified and have the same fees as the US market. They also offer diversified portfolios that have the lowest risk.]| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: fingen_flant5_finetuned_fiqa Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 1.6 GB References The dataset is available here</summary></entry><entry><title type="html">Finance FLAN-T5 Question Answering</title><link href="/2023/05/29/finqa_flant5_finetuned_en.html" rel="alternate" type="text/html" title="Finance FLAN-T5 Question Answering" /><published>2023-05-29T00:00:00+00:00</published><updated>2023-05-29T00:00:00+00:00</updated><id>/2023/05/29/finqa_flant5_finetuned_en</id><content type="html" xml:base="/2023/05/29/finqa_flant5_finetuned_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This Question Answering model has been fine-tuned on FLANT5 using finance data. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering finance questions and delivering insightful information in the finance domain.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finqa_flant5_finetuned_en_1.0.0_3.0_1685385263205.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finqa_flant5_finetuned_en_1.0.0_3.0_1685385263205.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MultiDocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;context&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document_question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;document_context&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;fin_qa&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QuestionAnswering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finqa_flant5_finetuned&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document_question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;document_context&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCustomPrompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question: {QUESTION} context: {CONTEXT}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxNewTokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;answer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fin_qa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;In the world of finance, understanding the concept of risk and return is essential for investors. Risk refers to the uncertainty associated with an investment, while return represents the potential gain or loss. These two factors are intrinsically linked, as higher-risk investments typically offer the potential for higher returns, while lower-risk investments tend to yield lower returns.&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;What is the relationship between risk and return in the world of finance?&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;context&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                                                                                                                                                                                                                       |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[Risk refers to the uncertainty associated with an investment, &lt;span class=&quot;k&quot;&gt;while return &lt;/span&gt;represents the potential gain or loss. These two factors are intrinsically linked, as higher-risk investments typically offer the potential &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;higher returns, &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;lower-risk investments tend to yield lower returns.      &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;|
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finqa_flant5_finetuned&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;920.9 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In house annotated dataset&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="finance" /><category term="qa" /><category term="question_answering" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This Question Answering model has been fine-tuned on FLANT5 using finance data. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering finance questions and delivering insightful information in the finance domain. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.MultiDocumentAssembler()\ .setInputCols(&quot;question&quot;, &quot;context&quot;)\ .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;) fin_qa = finance.QuestionAnswering.pretrained(&quot;finqa_flant5_finetuned&quot;,&quot;en&quot;,&quot;finance/models&quot;)\ .setInputCols([&quot;document_question&quot;, &quot;document_context&quot;])\ .setCustomPrompt(&quot;question: {QUESTION} context: {CONTEXT}&quot;)\ .setMaxNewTokens(50)\ .setOutputCol(&quot;answer&quot;) pipeline = nlp.Pipeline(stages=[document_assembler, fin_qa]) context = &quot;In the world of finance, understanding the concept of risk and return is essential for investors. Risk refers to the uncertainty associated with an investment, while return represents the potential gain or loss. These two factors are intrinsically linked, as higher-risk investments typically offer the potential for higher returns, while lower-risk investments tend to yield lower returns.&quot; question = &quot;What is the relationship between risk and return in the world of finance?&quot; data = spark.createDataFrame([[question, context]]).toDF(&quot;question&quot;, &quot;context&quot;) result = pipeline.fit(data).transform(data) Results +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[Risk refers to the uncertainty associated with an investment, while return represents the potential gain or loss. These two factors are intrinsically linked, as higher-risk investments typically offer the potential for higher returns, while lower-risk investments tend to yield lower returns. ]| +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: finqa_flant5_finetuned Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 920.9 MB Case sensitive: true References In house annotated dataset</summary></entry><entry><title type="html">Financial Finetuned FLAN-T5 Text Generation ( Financial Alpaca )</title><link href="/2023/05/25/fingen_flant5_finetuned_alpaca_en.html" rel="alternate" type="text/html" title="Financial Finetuned FLAN-T5 Text Generation ( Financial Alpaca )" /><published>2023-05-25T00:00:00+00:00</published><updated>2023-05-25T00:00:00+00:00</updated><id>/2023/05/25/fingen_flant5_finetuned_alpaca_en</id><content type="html" xml:base="/2023/05/25/fingen_flant5_finetuned_alpaca_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fingen_flant5_finetuned_alpaca&lt;/code&gt; model is the Text Generation model that has been fine-tuned on FLAN-T5 using Financial Alpaca dataset. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text-generation tasks.&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/fingen_flant5_finetuned_alpaca_en_1.0.0_3.0_1685016665729.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/fingen_flant5_finetuned_alpaca_en_1.0.0_3.0_1685016665729.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextGenerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fingen_flant5_finetuned_alpaca&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;generated&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxNewTokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setStopAtEos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setDoSample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setTopK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+ 
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;What is the US Fair Tax?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;generated.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[Fair tax &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;the US is essentially an income tax. Fair taxes are tax on your income, and are not taxeable &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;any country. Fair taxes are taxed as income. If you have a net gain or &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;the loss of income from taxable activities is less &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;the fair value &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the loss&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; of your gross income &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the loss&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;you have to file an Income Report. This will give the US government an overview and give you an understanding. If your net income is less that your fair share of your gross income &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;which you are entitled&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; you have the right to claim a refund.]|
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;fingen_flant5_finetuned_alpaca&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.6 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;The dataset is available &lt;a href=&quot;https://huggingface.co/datasets/gbharti/finance-alpaca/viewer/gbharti--finance-alpaca&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="finance" /><category term="generation" /><category term="licensed" /><category term="flant5" /><category term="alpaca" /><category term="tensorflow" /><summary type="html">Description The fingen_flant5_finetuned_alpaca model is the Text Generation model that has been fine-tuned on FLAN-T5 using Financial Alpaca dataset. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text-generation tasks. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) flant5 = finance.TextGenerator.pretrained(&quot;fingen_flant5_finetuned_alpaca&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;generated&quot;)\ .setMaxNewTokens(256)\ .setStopAtEos(True)\ .setDoSample(True)\ .setTopK(3) pipeline = nlp.Pipeline(stages=[document_assembler, flant5]) data = spark.createDataFrame([ [1, &quot;What is the US Fair Tax?&quot;]]).toDF('id', 'text') results = pipeline.fit(data).transform(data) results.select(&quot;generated.result&quot;).show(truncate=False) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[Fair tax in the US is essentially an income tax. Fair taxes are tax on your income, and are not taxeable in any country. Fair taxes are taxed as income. If you have a net gain or if the loss of income from taxable activities is less then the fair value (the loss) of your gross income (the loss) then you have to file an Income Report. This will give the US government an overview and give you an understanding. If your net income is less that your fair share of your gross income (which you are entitled) you have the right to claim a refund.]| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: fingen_flant5_finetuned_alpaca Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 1.6 GB References The dataset is available here</summary></entry><entry><title type="html">Financial Twitter Texts Sentiment Analysis (Large)</title><link href="/2023/05/25/finclf_bert_twitter_financial_text_sentiment_lg_en.html" rel="alternate" type="text/html" title="Financial Twitter Texts Sentiment Analysis (Large)" /><published>2023-05-25T00:00:00+00:00</published><updated>2023-05-25T00:00:00+00:00</updated><id>/2023/05/25/finclf_bert_twitter_financial_text_sentiment_lg_en</id><content type="html" xml:base="/2023/05/25/finclf_bert_twitter_financial_text_sentiment_lg_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This model is designed to perform sentiment analysis on Twitter data, extracting three primary sentiments: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bullish&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bearish&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Neutral&lt;/code&gt;.  This model is the large version of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;finclf_bert_twitter_financial_news_sentiment&lt;/code&gt; as it is trained on a much larger dataset.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bullish&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bearish&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Neutral&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finclf_bert_twitter_financial_text_sentiment_lg_en_1.0.0_3.0_1684995427342.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finclf_bert_twitter_financial_text_sentiment_lg_en_1.0.0_3.0_1684995427342.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sequenceClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finclf_bert_twitter_financial_text_sentiment_lg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sequenceClassifier&lt;/span&gt;  
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;$GM: Deutsche Bank cuts to Hold &quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;HELSINKI (Thomson Financial)- Kemira GrowHow swung into profit in its first quarter earnings on improved sales , especially in its fertilizer business in Europe , which is normally stronger during the first quarter .&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Vianor sells tires for cars and trucks as well as a range of other car parts and provides maintenance services .&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Pharmaceuticals group Orion Corp reported a fall in its third-quarter earnings that were hit by larger expenditures on R&amp;amp;D and marketing .&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# couple of simple examples
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;class.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+|text                                                                                                                                                                                                                    |result   |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+|&lt;span class=&quot;nv&quot;&gt;$GM&lt;/span&gt;: Deutsche Bank cuts to Hold                                                                                                                                                                                         |[Bearish]|
+|HELSINKI &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Thomson Financial&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;- Kemira GrowHow swung into profit &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;its first quarter earnings on improved sales , especially &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;its fertilizer business &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;Europe , which is normally stronger during the first quarter .|[Bullish]|
+|Vianor sells tires &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;cars and trucks as well as a range of other car parts and provides maintenance services &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;                                                                                                        |[Neutral]|
+|Pharmaceuticals group Orion Corp reported a fall &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;its third-quarter earnings that were hit by larger expenditures on R&amp;amp;D and marketing &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;                                                                              |[Bearish]|
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finclf_bert_twitter_financial_text_sentiment_lg&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[document, token]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[class]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;406.4 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max sentence length:&lt;/td&gt;
+      &lt;td&gt;512&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In-house annotations on financial reports&lt;/p&gt;
+
+&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label             precision    recall  f1-score   support
+      Bearish       0.84      0.85      0.84       624
+      Bullish       0.90      0.88      0.89      1064
+      Neutral       0.94      0.94      0.94      2679
+    accuracy          -         -       0.91      4367
+    macro-avg       0.89      0.89      0.89      4367
+weighted-avg        0.91      0.91      0.91      4367
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="finance" /><category term="bert" /><category term="sentiment" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This model is designed to perform sentiment analysis on Twitter data, extracting three primary sentiments: Bullish, Bearish, and Neutral. This model is the large version of finclf_bert_twitter_financial_news_sentiment as it is trained on a much larger dataset. Predicted Entities Bullish, Bearish, Neutral Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler() \ .setInputCol('text') \ .setOutputCol('document') tokenizer = nlp.Tokenizer() \ .setInputCols(['document']) \ .setOutputCol('token') sequenceClassifier = finance.BertForSequenceClassification.pretrained(&quot;finclf_bert_twitter_financial_text_sentiment_lg&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;document&quot;,'token'])\ .setOutputCol(&quot;class&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequenceClassifier ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) data = [[&quot;&quot;&quot;$GM: Deutsche Bank cuts to Hold &quot;&quot;&quot;],[&quot;&quot;&quot;HELSINKI (Thomson Financial)- Kemira GrowHow swung into profit in its first quarter earnings on improved sales , especially in its fertilizer business in Europe , which is normally stronger during the first quarter .&quot;&quot;&quot;],[&quot;&quot;&quot;Vianor sells tires for cars and trucks as well as a range of other car parts and provides maintenance services .&quot;&quot;&quot;],[&quot;&quot;&quot;Pharmaceuticals group Orion Corp reported a fall in its third-quarter earnings that were hit by larger expenditures on R&amp;amp;D and marketing .&quot;&quot;&quot;]] # couple of simple examples example = model.transform(spark.createDataFrame(data).toDF(&quot;text&quot;)) example.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+ |text |result | +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+ |$GM: Deutsche Bank cuts to Hold |[Bearish]| |HELSINKI (Thomson Financial)- Kemira GrowHow swung into profit in its first quarter earnings on improved sales , especially in its fertilizer business in Europe , which is normally stronger during the first quarter .|[Bullish]| |Vianor sells tires for cars and trucks as well as a range of other car parts and provides maintenance services . |[Neutral]| |Pharmaceuticals group Orion Corp reported a fall in its third-quarter earnings that were hit by larger expenditures on R&amp;amp;D and marketing . |[Bearish]| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+ Model Information Model Name: finclf_bert_twitter_financial_text_sentiment_lg Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: en Size: 406.4 MB Case sensitive: true Max sentence length: 512 References In-house annotations on financial reports Benchmarking label precision recall f1-score support Bearish 0.84 0.85 0.84 624 Bullish 0.90 0.88 0.89 1064 Neutral 0.94 0.94 0.94 2679 accuracy - - 0.91 4367 macro-avg 0.89 0.89 0.89 4367 weighted-avg 0.91 0.91 0.91 4367</summary></entry><entry><title type="html">Financial Twitter News Sentiment Analysis</title><link href="/2023/05/24/finclf_bert_twitter_financial_news_sentiment_en.html" rel="alternate" type="text/html" title="Financial Twitter News Sentiment Analysis" /><published>2023-05-24T00:00:00+00:00</published><updated>2023-05-24T00:00:00+00:00</updated><id>/2023/05/24/finclf_bert_twitter_financial_news_sentiment_en</id><content type="html" xml:base="/2023/05/24/finclf_bert_twitter_financial_news_sentiment_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This model is designed to perform sentiment analysis on Twitter data, extracting three primary sentiments: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bullish&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bearish&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Neutral&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bearish&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bullish&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Neutral&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finclf_bert_twitter_financial_news_sentiment_en_1.0.0_3.0_1684923548358.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finclf_bert_twitter_financial_news_sentiment_en_1.0.0_3.0_1684923548358.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sequenceClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finclf_bert_twitter_financial_news_sentiment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sequenceClassifier&lt;/span&gt;  
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;$MPLX $MPC - MPLX cut at Credit Suisse on potential dilution from Marathon strategic review https://t.co/0BFQy4ZU6W&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Biogen stock price target raised to $392 from $320 at Instinet&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Luckin Coffee shares halted in premarket; news pending https://t.co/6Kz4NwnNFN&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;class.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+-------------------------------------------------------------------------------------------------------------------+---------+
+|text                                                                                                               |result   |
++-------------------------------------------------------------------------------------------------------------------+---------+
+|&lt;span class=&quot;nv&quot;&gt;$MPLX&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$MPC&lt;/span&gt; - MPLX &lt;span class=&quot;nb&quot;&gt;cut &lt;/span&gt;at Credit Suisse on potential dilution from Marathon strategic review https://t.co/0BFQy4ZU6W|[Bearish]|
+|Biogen stock price target raised to &lt;span class=&quot;nv&quot;&gt;$392&lt;/span&gt; from &lt;span class=&quot;nv&quot;&gt;$320&lt;/span&gt; at Instinet                                                     |[Bullish]|
+|Luckin Coffee shares halted &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;premarket&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; news pending https://t.co/6Kz4NwnNFN                                     |[Neutral]|
++-------------------------------------------------------------------------------------------------------------------+---------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finclf_bert_twitter_financial_news_sentiment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[document, token]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[class]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;406.4 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max sentence length:&lt;/td&gt;
+      &lt;td&gt;512&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In-house annotations on financial reports&lt;/p&gt;
+
+&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label              precision    recall  f1-score   support
+     Bearish       0.80      0.72      0.76       379
+     Bullish       0.82      0.78      0.80       468
+     Neutral       0.90      0.94      0.92      1540
+    accuracy                           0.87      2387
+   macro-avg       0.84      0.81      0.83      2387
+weighted-avg       0.87      0.87      0.87      2387
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="finance" /><category term="twitter" /><category term="news" /><category term="sentiment" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This model is designed to perform sentiment analysis on Twitter data, extracting three primary sentiments: Bullish, Bearish, and Neutral. Predicted Entities Bearish, Bullish, Neutral Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler() \ .setInputCol('text') \ .setOutputCol('document') tokenizer = nlp.Tokenizer() \ .setInputCols(['document']) \ .setOutputCol('token') sequenceClassifier = finance.BertForSequenceClassification.pretrained(&quot;finclf_bert_twitter_financial_news_sentiment&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;document&quot;,'token'])\ .setOutputCol(&quot;class&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequenceClassifier ]) data = [[&quot;&quot;&quot;$MPLX $MPC - MPLX cut at Credit Suisse on potential dilution from Marathon strategic review https://t.co/0BFQy4ZU6W&quot;&quot;&quot;],[&quot;&quot;&quot;Biogen stock price target raised to $392 from $320 at Instinet&quot;&quot;&quot;],[&quot;&quot;&quot;Luckin Coffee shares halted in premarket; news pending https://t.co/6Kz4NwnNFN&quot;&quot;&quot;]] empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) example = model.transform(spark.createDataFrame(data).toDF(&quot;text&quot;)) example.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False) Results +-------------------------------------------------------------------------------------------------------------------+---------+ |text |result | +-------------------------------------------------------------------------------------------------------------------+---------+ |$MPLX $MPC - MPLX cut at Credit Suisse on potential dilution from Marathon strategic review https://t.co/0BFQy4ZU6W|[Bearish]| |Biogen stock price target raised to $392 from $320 at Instinet |[Bullish]| |Luckin Coffee shares halted in premarket; news pending https://t.co/6Kz4NwnNFN |[Neutral]| +-------------------------------------------------------------------------------------------------------------------+---------+ Model Information Model Name: finclf_bert_twitter_financial_news_sentiment Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: en Size: 406.4 MB Case sensitive: true Max sentence length: 512 References In-house annotations on financial reports Benchmarking label precision recall f1-score support Bearish 0.80 0.72 0.76 379 Bullish 0.82 0.78 0.80 468 Neutral 0.90 0.94 0.92 1540 accuracy 0.87 2387 macro-avg 0.84 0.81 0.83 2387 weighted-avg 0.87 0.87 0.87 2387</summary></entry><entry><title type="html">Financial Twitter Texts Sentiment Analysis</title><link href="/2023/05/24/finclf_bert_twitter_financial_text_sentiment_en.html" rel="alternate" type="text/html" title="Financial Twitter Texts Sentiment Analysis" /><published>2023-05-24T00:00:00+00:00</published><updated>2023-05-24T00:00:00+00:00</updated><id>/2023/05/24/finclf_bert_twitter_financial_text_sentiment_en</id><content type="html" xml:base="/2023/05/24/finclf_bert_twitter_financial_text_sentiment_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This model is designed to perform sentiment analysis on Twitter data, extracting three primary sentiments: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Positive&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Negative&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Neutral&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Positive&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Negative&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Neutral&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finclf_bert_twitter_financial_text_sentiment_en_1.0.0_3.0_1684941800385.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finclf_bert_twitter_financial_text_sentiment_en_1.0.0_3.0_1684941800385.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sequenceClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finclf_bert_twitter_financial_text_sentiment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sequenceClassifier&lt;/span&gt;  
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Early Crater Lake Drill Results Return Better Than Expected Grades and Intersection Lengths â€“ 79.7 meters at 311 g/t Scandium Oxide, 0.326% Rare Earths Oxides and Yttrium --  Imperial Mining Group Ltd. (&quot;Imperial&quot;) (TSX VENTURE: IPG; OTCQB: IMPNF) is pleased to announce that it has completed its Summer 2022 exploration and definition diamond drill program on the Ta-Nb Target and the TG Zone. Early results are encouraging and give inference to grade and tonnage increases to the TG North Lobe Deposit resource (see Imperial Press release - SEP 23, 2021).&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Noranda Income Fund Provides an Update on Operational and Production Challenges and Announces a Cellhouse Maintenance Shutdown --  Noranda Income Fund (TSX:NIF.UN) (the â€œFundâ€) today provided an update regarding its previously disclosed challenges with cellhouse operating conditions and equipment fragility, which have been adversely affecting zinc production volumes and output quality.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# couple of simple examples
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;class.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+|text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |result    |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+|Early Crater Lake Drill Results Return Better Than Expected Grades and Intersection Lengths â€“ 79.7 meters at 311 g/t Scandium Oxide, 0.326% Rare Earths Oxides and Yttrium &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;  Imperial Mining Group Ltd. &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Imperial&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;TSX VENTURE: IPG&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; OTCQB: IMPNF&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; is pleased to announce that it has completed its Summer 2022 exploration and definition diamond drill program on the Ta-Nb Target and the TG Zone. Early results are encouraging and give inference to grade and tonnage increases to the TG North Lobe Deposit resource &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;see Imperial Press release - SEP 23, 2021&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.|[Positive]|
+|Noranda Income Fund Provides an Update on Operational and Production Challenges and Announces a Cellhouse Maintenance Shutdown &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;  Noranda Income Fund &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;TSX:NIF.UN&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the â€œFundâ€&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; today provided an update regarding its previously disclosed challenges with cellhouse operating conditions and equipment fragility, which have been adversely affecting zinc production volumes and output quality.                                                                                                                                                                       |[Negative]|
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finclf_bert_twitter_financial_text_sentiment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[document, token]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[class]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;406.4 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max sentence length:&lt;/td&gt;
+      &lt;td&gt;512&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In-house annotations on financial reports&lt;/p&gt;
+
+&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label              precision    recall  f1-score   support
+    Negative       0.75      0.60      0.67        15
+     Neutral       0.89      0.87      0.88       207
+    Positive       0.83      0.87      0.85       134
+    accuracy         -          -      0.86       356
+   macro-avg       0.82      0.78      0.80       356
+weighted-avg       0.86      0.86      0.86       356
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="finance" /><category term="sentiment" /><category term="bert" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This model is designed to perform sentiment analysis on Twitter data, extracting three primary sentiments: Positive, Negative, and Neutral. Predicted Entities Positive, Negative, Neutral Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler() \ .setInputCol('text') \ .setOutputCol('document') tokenizer = nlp.Tokenizer() \ .setInputCols(['document']) \ .setOutputCol('token') sequenceClassifier = finance.BertForSequenceClassification.pretrained(&quot;finclf_bert_twitter_financial_text_sentiment&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;document&quot;,'token'])\ .setOutputCol(&quot;class&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequenceClassifier ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) data = [[&quot;&quot;&quot;Early Crater Lake Drill Results Return Better Than Expected Grades and Intersection Lengths â€“ 79.7 meters at 311 g/t Scandium Oxide, 0.326% Rare Earths Oxides and Yttrium -- Imperial Mining Group Ltd. (&quot;Imperial&quot;) (TSX VENTURE: IPG; OTCQB: IMPNF) is pleased to announce that it has completed its Summer 2022 exploration and definition diamond drill program on the Ta-Nb Target and the TG Zone. Early results are encouraging and give inference to grade and tonnage increases to the TG North Lobe Deposit resource (see Imperial Press release - SEP 23, 2021).&quot;&quot;&quot;],[&quot;&quot;&quot;Noranda Income Fund Provides an Update on Operational and Production Challenges and Announces a Cellhouse Maintenance Shutdown -- Noranda Income Fund (TSX:NIF.UN) (the â€œFundâ€) today provided an update regarding its previously disclosed challenges with cellhouse operating conditions and equipment fragility, which have been adversely affecting zinc production volumes and output quality.&quot;&quot;&quot;]] # couple of simple examples example = model.transform(spark.createDataFrame(data).toDF(&quot;text&quot;)) example.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False) Results +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+ |text |result | +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+ |Early Crater Lake Drill Results Return Better Than Expected Grades and Intersection Lengths â€“ 79.7 meters at 311 g/t Scandium Oxide, 0.326% Rare Earths Oxides and Yttrium -- Imperial Mining Group Ltd. (&quot;Imperial&quot;) (TSX VENTURE: IPG; OTCQB: IMPNF) is pleased to announce that it has completed its Summer 2022 exploration and definition diamond drill program on the Ta-Nb Target and the TG Zone. Early results are encouraging and give inference to grade and tonnage increases to the TG North Lobe Deposit resource (see Imperial Press release - SEP 23, 2021).|[Positive]| |Noranda Income Fund Provides an Update on Operational and Production Challenges and Announces a Cellhouse Maintenance Shutdown -- Noranda Income Fund (TSX:NIF.UN) (the â€œFundâ€) today provided an update regarding its previously disclosed challenges with cellhouse operating conditions and equipment fragility, which have been adversely affecting zinc production volumes and output quality. |[Negative]| +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+ Model Information Model Name: finclf_bert_twitter_financial_text_sentiment Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: en Size: 406.4 MB Case sensitive: true Max sentence length: 512 References In-house annotations on financial reports Benchmarking label precision recall f1-score support Negative 0.75 0.60 0.67 15 Neutral 0.89 0.87 0.88 207 Positive 0.83 0.87 0.85 134 accuracy - - 0.86 356 macro-avg 0.82 0.78 0.80 356 weighted-avg 0.86 0.86 0.86 356</summary></entry><entry><title type="html">Medical Question Answering (biogpt)</title><link href="/2023/05/17/medical_qa_biogpt_en.html" rel="alternate" type="text/html" title="Medical Question Answering (biogpt)" /><published>2023-05-17T00:00:00+00:00</published><updated>2023-05-17T00:00:00+00:00</updated><id>/2023/05/17/medical_qa_biogpt_en</id><content type="html" xml:base="/2023/05/17/medical_qa_biogpt_en.html">## Description
 
 This model is directly ported from the  official BioGPT [implementation](https://github.com/microsoft/BioGPT)  that is trained on Pubmed abstracts and then finetuned with PubmedQA dataset. It is the baseline version called [BioGPT-QA-PubMedQA-BioGPT](https://msramllasc.blob.core.windows.net/modelrelease/BioGPT/checkpoints/QA-PubMedQA-BioGPT.tgz).
 It can generate two types of answers, short and long. Types of questions are supported: `&quot;short&quot;`(producing yes/no/maybe) answers and `&quot;full&quot;` (long answers).
@@ -463,784 +1076,4 @@ Developing_anatomical_structure       1.00      0.20      0.33         5
                       micro-avg       0.82      0.78      0.80       498
                       macro-avg       0.87      0.63      0.70       498
                    weighted-avg       0.83      0.78      0.80       498
-```</content><author><name>John Snow Labs</name></author><category term="ner" /><category term="clinical" /><category term="licensed" /><category term="en" /><category term="anatomy" /><summary type="html">Description Pretrained named entity recognition deep learning model for anatomy terms. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state of the art model for NER: Chiu &amp;amp; Nicols, Named Entity Recognition with Bidirectional LSTM-CNN. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) anatomy_ner = MedicalNerModel.pretrained('ner_anatomy_emb_clinical_large' &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;anatomy_ner&quot;) anatomy_ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;anatomy_ner&quot;]) \ .setOutputCol(&quot;anatomy_ner_chunk&quot;) posology_ner_pipeline = Pipeline(stages=[ documentAssembler, sentenceDetector, tokenizer, word_embeddings, anatomy_ner, anatomy_ner_converter]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) posology_ner_model = posology_ner_pipeline.fit(empty_data) results = posology_ner_model.transform(spark.createDataFrame([['''This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.''']]).toDF(&quot;text&quot;)) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val anatomy_ner_model = MedicalNerModel.pretrained(&quot;ner_anatomy_emb_clinical_large&quot; &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;anatomy_ner&quot;) val anatomy_ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;anatomy_ner_chunk&quot;) val posology_pipeline = new PipelineModel().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, anatomy_ner_model, anatomy_ner_converter)) val data = Seq(&quot;&quot;&quot;This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val result = model.fit(data).transform(data) Results | | chunks | begin | end | entities | |---:|:--------------------|--------:|------:|:-----------------------| | 0 | toe | 326 | 328 | Organism_subdivision | | 1 | redness | 348 | 354 | Pathological_formation | | 2 | erythema | 360 | 367 | Pathological_formation | | 3 | skin | 374 | 377 | Organ | | 4 | Extraocular muscles | 574 | 592 | Organ | | 5 | turbinates | 659 | 668 | Multi-tissue_structure | | 6 | Mucous membranes | 716 | 731 | Tissue | | 7 | Neck | 744 | 747 | Organism_subdivision | | 8 | bowel sounds | 802 | 813 | Pathological_formation | | 9 | toe | 904 | 906 | Organ | | 10 | skin | 956 | 959 | Organ | | 11 | toe | 1046 | 1048 | Organ | Model Information Model Name: ner_anatomy_emb_clinical_large Compatibility: Healthcare NLP 4.4.2+ License: Licensed Edition: Official Input Labels: [document, token, embeddings] Output Labels: [ner] Language: en Size: 2.8 MB References Trained on the Anatomical Entity Mention (AnEM) corpus with http://www.nactem.ac.uk/anatomy/ Benchmarking label precision recall f1-score support tissue_structure 0.69 0.77 0.73 130 Organ 0.95 0.81 0.88 52 Cell 0.92 0.96 0.94 118 Organism_subdivision 0.85 0.50 0.63 22 Pathological_formation 0.98 0.86 0.92 58 Cellular_component 0.54 0.50 0.52 26 Organism_substance 0.91 0.74 0.82 43 Anatomical_system 1.00 0.67 0.80 6 Immaterial_anatomical_entity 1.00 0.33 0.50 6 Tissue 0.67 0.62 0.65 32 Developing_anatomical_structure 1.00 0.20 0.33 5 micro-avg 0.82 0.78 0.80 498 macro-avg 0.87 0.63 0.70 498 weighted-avg 0.83 0.78 0.80 498</summary></entry><entry><title type="html">Detect Anatomical Regions ((embeddings_clinical_medium)</title><link href="/2023/05/15/ner_anatomy_emb_clinical_medium_en.html" rel="alternate" type="text/html" title="Detect Anatomical Regions ((embeddings_clinical_medium)" /><published>2023-05-15T00:00:00+00:00</published><updated>2023-05-15T00:00:00+00:00</updated><id>/2023/05/15/ner_anatomy_emb_clinical_medium_en</id><content type="html" xml:base="/2023/05/15/ner_anatomy_emb_clinical_medium_en.html">## Description
-
-Pretrained named entity recognition deep learning model for anatomy terms. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state of the art model for NER: Chiu &amp; Nicols, Named Entity Recognition with Bidirectional LSTM-CNN
-
-## Predicted Entities
-
-
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_anatomy_emb_clinical_medium_en_4.4.1_3.0_1684136633973.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_anatomy_emb_clinical_medium_en_4.4.1_3.0_1684136633973.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-
-```python
-documentAssembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
-    .setInputCols([&quot;document&quot;]) \
-    .setOutputCol(&quot;sentence&quot;) 
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-anatomy_ner = MedicalNerModel.pretrained('ner_anatomy_emb_clinical_medium' &quot;en&quot;, &quot;clinical/models&quot;) \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
-    .setOutputCol(&quot;anatomy_ner&quot;)
-    
-anatomy_ner_converter = NerConverterInternal() \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;anatomy_ner&quot;]) \
-    .setOutputCol(&quot;anatomy_ner_chunk&quot;)
-
-posology_ner_pipeline = Pipeline(stages=[
-    documentAssembler, 
-    sentenceDetector,
-    tokenizer,
-    word_embeddings,
-    anatomy_ner,
-    anatomy_ner_converter])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-
-posology_ner_model = posology_ner_pipeline.fit(empty_data)
-
-results = posology_ner_model.transform(spark.createDataFrame([['''This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.''']]).toDF(&quot;text&quot;))
-```
-```scala
-
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-​
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
-    .setInputCols(&quot;document&quot;)
-    .setOutputCol(&quot;sentence&quot;)
-​
-val tokenizer = new Tokenizer()
-    .setInputCols(&quot;sentence&quot;)
-    .setOutputCol(&quot;token&quot;)
-    
-val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)
-​
-val anatomy_ner_model = MedicalNerModel.pretrained(&quot;ner_anatomy_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;anatomy_ner&quot;)
-​
-val anatomy_ner_converter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-    .setOutputCol(&quot;anatomy_ner_chunk&quot;)
-​
-val posology_pipeline = new PipelineModel().setStages(Array(document_assembler, 
-                                                   sentence_detector,
-                                                   tokenizer,
-                                                   word_embeddings,
-                                                   anatomy_ner_model,
-                                                   anatomy_ner_converter))
-​
-val data = Seq(&quot;&quot;&quot; This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;)
-​
-val result = model.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-|    | chunks              |   begin |   end | entities               |
-|---:|:--------------------|--------:|------:|:-----------------------|
-|  0 | skin                |     374 |   377 | Organ                  |
-|  1 | Extraocular muscles |     574 |   592 | Multi-tissue_structure |
-|  2 | Nares               |     613 |   617 | Multi-tissue_structure |
-|  3 | turbinates          |     659 |   668 | Multi-tissue_structure |
-|  4 | Oropharynx          |     683 |   692 | Multi-tissue_structure |
-|  5 | Mucous membranes    |     716 |   731 | Cellular_component     |
-|  6 | Neck                |     744 |   747 | Organism_subdivision   |
-|  7 | bowel               |     802 |   806 | Multi-tissue_structure |
-|  8 | skin                |     956 |   959 | Organ                  |
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|ner_anatomy_emb_clinical_medium|
-|Compatibility:|Healthcare NLP 4.4.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[document, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|2.8 MB|
-
-## References
-
-Trained on the Anatomical Entity Mention (AnEM) corpus with  http://www.nactem.ac.uk/anatomy/
-
-## Benchmarking
-
-```bash
-                          label     precision  recall   f1-score    support
-               tissue_structure       0.81      0.67      0.73       130
-                          Organ       0.87      0.79      0.83        52
-                           Cell       0.89      1.00      0.94       118
-           Organism_subdivision       0.69      0.50      0.58        22
-         Pathological_formation       0.96      0.91      0.94        58
-             Cellular_component       0.65      0.65      0.65        26
-             Organism_substance       0.93      0.86      0.89        43
-              Anatomical_system       1.00      0.50      0.67         6
-   Immaterial_anatomical_entity       1.00      0.67      0.80         6
-                         Tissue       0.88      0.88      0.88        32
-Developing_anatomical_structure       1.00      0.20      0.33         5
-                      micro-avg       0.86      0.80      0.83       498
-                      macro-avg       0.88      0.69      0.75       498
-                   weighted-avg       0.86      0.80      0.82       498
-```</content><author><name>John Snow Labs</name></author><category term="ner" /><category term="clinical" /><category term="licensed" /><category term="en" /><category term="anatomy" /><summary type="html">Description Pretrained named entity recognition deep learning model for anatomy terms. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state of the art model for NER: Chiu &amp;amp; Nicols, Named Entity Recognition with Bidirectional LSTM-CNN Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) anatomy_ner = MedicalNerModel.pretrained('ner_anatomy_emb_clinical_medium' &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;anatomy_ner&quot;) anatomy_ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;anatomy_ner&quot;]) \ .setOutputCol(&quot;anatomy_ner_chunk&quot;) posology_ner_pipeline = Pipeline(stages=[ documentAssembler, sentenceDetector, tokenizer, word_embeddings, anatomy_ner, anatomy_ner_converter]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) posology_ner_model = posology_ner_pipeline.fit(empty_data) results = posology_ner_model.transform(spark.createDataFrame([['''This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.''']]).toDF(&quot;text&quot;)) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) ​ val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) ​ val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) ​ val anatomy_ner_model = MedicalNerModel.pretrained(&quot;ner_anatomy_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;anatomy_ner&quot;) ​ val anatomy_ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;anatomy_ner_chunk&quot;) ​ val posology_pipeline = new PipelineModel().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, anatomy_ner_model, anatomy_ner_converter)) ​ val data = Seq(&quot;&quot;&quot; This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) ​ val result = model.fit(data).transform(data) Results | | chunks | begin | end | entities | |---:|:--------------------|--------:|------:|:-----------------------| | 0 | skin | 374 | 377 | Organ | | 1 | Extraocular muscles | 574 | 592 | Multi-tissue_structure | | 2 | Nares | 613 | 617 | Multi-tissue_structure | | 3 | turbinates | 659 | 668 | Multi-tissue_structure | | 4 | Oropharynx | 683 | 692 | Multi-tissue_structure | | 5 | Mucous membranes | 716 | 731 | Cellular_component | | 6 | Neck | 744 | 747 | Organism_subdivision | | 7 | bowel | 802 | 806 | Multi-tissue_structure | | 8 | skin | 956 | 959 | Organ | Model Information Model Name: ner_anatomy_emb_clinical_medium Compatibility: Healthcare NLP 4.4.1+ License: Licensed Edition: Official Input Labels: [document, token, embeddings] Output Labels: [ner] Language: en Size: 2.8 MB References Trained on the Anatomical Entity Mention (AnEM) corpus with http://www.nactem.ac.uk/anatomy/ Benchmarking label precision recall f1-score support tissue_structure 0.81 0.67 0.73 130 Organ 0.87 0.79 0.83 52 Cell 0.89 1.00 0.94 118 Organism_subdivision 0.69 0.50 0.58 22 Pathological_formation 0.96 0.91 0.94 58 Cellular_component 0.65 0.65 0.65 26 Organism_substance 0.93 0.86 0.89 43 Anatomical_system 1.00 0.50 0.67 6 Immaterial_anatomical_entity 1.00 0.67 0.80 6 Tissue 0.88 0.88 0.88 32 Developing_anatomical_structure 1.00 0.20 0.33 5 micro-avg 0.86 0.80 0.83 498 macro-avg 0.88 0.69 0.75 498 weighted-avg 0.86 0.80 0.82 498</summary></entry><entry><title type="html">Financial NER on Responsibility and ESG Reports(Medium)</title><link href="/2023/05/14/finner_responsibility_reports_md_en.html" rel="alternate" type="text/html" title="Financial NER on Responsibility and ESG Reports(Medium)" /><published>2023-05-14T00:00:00+00:00</published><updated>2023-05-14T00:00:00+00:00</updated><id>/2023/05/14/finner_responsibility_reports_md_en</id><content type="html" xml:base="/2023/05/14/finner_responsibility_reports_md_en.html">## Description
-
-This Financial NER model can extract up to 20 quantifiable entities, including KPI, from the Responsibility and ESG Reports of companies. This `medium` model has been trained with more data.
-
-If you look for a `small` version of the model, you can find it [here](https://nlp.johnsnowlabs.com/2023/03/09/finner_responsibility_reports_en.html)
-
-## Predicted Entities
-
-`AGE`, `AMOUNT`, `COUNTABLE_ITEM`, `DATE_PERIOD`, `ECONOMIC_ACTION`, `ECONOMIC_KPI`, `ENVIRONMENTAL_ACTION`, `ENVIRONMENTAL_KPI`, `ENVIRONMENTAL_UNIT`, `ESG_ROLE`, `FACILITY_PLACE`, `ISO`, `PERCENTAGE`, `PROFESSIONAL_GROUP`, `RELATIVE_METRIC`, `SOCIAL_ACTION`, `SOCIAL_KPI`, `TARGET_GROUP`, `TARGET_GROUP_BUSINESS`, `WASTE`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_responsibility_reports_md_en_1.0.0_3.0_1684066884328.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_responsibility_reports_md_en_1.0.0_3.0_1684066884328.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-
-```python
-document_assembler = nlp.DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)\
-
-sentence_detector = nlp.SentenceDetector()\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)\
-
-tokenizer = nlp.Tokenizer() \
-    .setInputCols([&quot;sentence&quot;]) \
-    .setOutputCol(&quot;token&quot;)\
-    .setContextChars(['.', ',', ';', ':', '!', '?', '*', '-', '(', ')', '&quot;', &quot;'&quot;, '%', '&amp;'])
-
-embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;, &quot;en&quot;) \
-    .setInputCols(&quot;sentence&quot;, &quot;token&quot;) \
-    .setOutputCol(&quot;embeddings&quot;)\
-    .setMaxSentenceLength(512)\
-    .setCaseSensitive(True)
-
-ner_model = finance.NerModel.pretrained(&quot;finner_responsibility_reports_md&quot;, &quot;en&quot;, &quot;finance/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = nlp.NerConverter()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-nlpPipeline = nlp.Pipeline(stages=[
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    embeddings,
-    ner_model,
-    ner_converter
-])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-
-model = nlpPipeline.fit(empty_data)
-
-text = &quot;&quot;&quot;The company has reduced its direct GHG emissions from 12,135 million tonnes of CO2e in 2017 to 4 million tonnes of CO2e in 2021. The indirect GHG emissions (scope 2) are mainly from imported energy, including electricity, heat, steam, and cooling, and the company has reduced its scope 2 emissions from 3 million tonnes of CO2e in 2017-2018 to 4 million tonnes of CO2e in 2020-2021. The scope 3 emissions are mainly from the use of sold products, and the emissions have increased from 377 million tonnes of CO2e in 2017 to 408 million tonnes of CO2e in 2021.&quot;&quot;&quot;
-
-data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
-
-result = model.transform(data)
-
-result.select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \
-          .select(F.expr(&quot;cols['0']&quot;).alias(&quot;chunk&quot;),
-                       F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False)
-```
-
-&lt;/div&gt;
-
-## Results
-
-```bash
-+----------------------+------------------+
-|chunk                 |label             |
-+----------------------+------------------+
-|direct GHG emissions  |ENVIRONMENTAL_KPI |
-|12,135 million        |AMOUNT            |
-|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
-|2017                  |DATE_PERIOD       |
-|4 million             |AMOUNT            |
-|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
-|2021                  |DATE_PERIOD       |
-|indirect GHG emissions|ENVIRONMENTAL_KPI |
-|scope 2               |ENVIRONMENTAL_KPI |
-|imported energy       |ENVIRONMENTAL_KPI |
-|electricity           |ENVIRONMENTAL_KPI |
-|heat                  |ENVIRONMENTAL_KPI |
-|steam                 |ENVIRONMENTAL_KPI |
-|cooling               |ENVIRONMENTAL_KPI |
-|scope 2 emissions     |ENVIRONMENTAL_KPI |
-|3 million             |AMOUNT            |
-|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
-|2017-2018             |DATE_PERIOD       |
-|4 million             |AMOUNT            |
-|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
-|2020-2021             |DATE_PERIOD       |
-|scope 3 emissions     |ENVIRONMENTAL_KPI |
-|sold                  |ECONOMIC_ACTION   |
-|products              |SOCIAL_KPI        |
-|emissions             |ENVIRONMENTAL_KPI |
-|377 million           |AMOUNT            |
-|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
-|2017                  |DATE_PERIOD       |
-|408 million           |AMOUNT            |
-|tonnes of CO2e        |ENVIRONMENTAL_UNIT|
-|2021                  |DATE_PERIOD       |
-+----------------------+------------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|finner_responsibility_reports_md|
-|Compatibility:|Finance NLP 1.0.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|16.4 MB|
-
-## References
-
-In-house annotations on Responsibility and ESG Reports
-
-## Benchmarking
-
-```bash
-label                    precision  recall  f1-score  support 
-B-AMOUNT                 0.97       0.97    0.97      1207    
-I-AMOUNT                 0.97       0.94    0.96      361     
-B-ENVIRONMENTAL_KPI      0.79       0.81    0.80      1051    
-I-ENVIRONMENTAL_KPI      0.74       0.88    0.81      716     
-B-DATE_PERIOD            0.94       0.95    0.94      980     
-I-DATE_PERIOD            0.90       0.95    0.92      498     
-B-PERCENTAGE             0.99       0.99    0.99      695     
-I-PERCENTAGE             0.99       1.00    1.00      692     
-B-SOCIAL_KPI             0.66       0.74    0.70      481     
-I-SOCIAL_KPI             0.56       0.33    0.41      43      
-B-ENVIRONMENTAL_UNIT     0.94       0.96    0.95      459     
-I-ENVIRONMENTAL_UNIT     0.91       0.86    0.88      268     
-B-PROFESSIONAL_GROUP     0.85       0.92    0.88      358     
-I-PROFESSIONAL_GROUP     0.94       0.94    0.94      32      
-B-TARGET_GROUP           0.89       0.85    0.87      337     
-I-TARGET_GROUP           0.76       0.95    0.84      59      
-B-ENVIRONMENTAL_ACTION   0.72       0.68    0.70      341     
-I-ENVIRONMENTAL_ACTION   1.00       0.56    0.71      18      
-B-SOCIAL_ACTION          0.59       0.72    0.65      241     
-B-ESG_ROLE               0.76       0.72    0.74      109     
-I-ESG_ROLE               0.81       0.84    0.83      305     
-B-ECONOMIC_KPI           0.77       0.67    0.71      219     
-I-ECONOMIC_KPI           0.47       0.70    0.56      50      
-B-RELATIVE_METRIC        0.92       0.98    0.95      147     
-I-RELATIVE_METRIC        0.89       0.99    0.94      178     
-B-FACILITY_PLACE         0.74       0.89    0.81      139     
-I-FACILITY_PLACE         0.77       0.93    0.84      89      
-B-COUNTABLE_ITEM         0.64       0.69    0.67      154     
-I-COUNTABLE_ITEM         0.25       1.00    0.40      1       
-B-WASTE                  0.84       0.64    0.73      126     
-I-WASTE                  0.91       0.51    0.65      57      
-B-ECONOMIC_ACTION        0.73       0.74    0.73      91      
-I-ECONOMIC_ACTION        0.00       0.00    0.00      1       
-B-TARGET_GROUP_BUSINESS  0.93       0.85    0.89      74      
-I-TARGET_GROUP_BUSINESS  0.00       0.00    0.00      1       
-B-AGE                    0.74       0.70    0.72      37      
-I-AGE                    0.90       0.65    0.75      40      
-B-ISO                    0.84       0.72    0.78      36      
-I-ISO                    0.91       0.80    0.85      25      
-micro avg                0.86       0.88    0.87      10716   
-macro avg                0.75       0.75    0.74      10716   
-weighted avg             0.86       0.88    0.87      10716  
-```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="ner" /><category term="finance" /><category term="licensed" /><category term="responsibility" /><category term="reports" /><summary type="html">Description This Financial NER model can extract up to 20 quantifiable entities, including KPI, from the Responsibility and ESG Reports of companies. This medium model has been trained with more data. If you look for a small version of the model, you can find it here Predicted Entities AGE, AMOUNT, COUNTABLE_ITEM, DATE_PERIOD, ECONOMIC_ACTION, ECONOMIC_KPI, ENVIRONMENTAL_ACTION, ENVIRONMENTAL_KPI, ENVIRONMENTAL_UNIT, ESG_ROLE, FACILITY_PLACE, ISO, PERCENTAGE, PROFESSIONAL_GROUP, RELATIVE_METRIC, SOCIAL_ACTION, SOCIAL_KPI, TARGET_GROUP, TARGET_GROUP_BUSINESS, WASTE Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;)\ sentence_detector = nlp.SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;)\ tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;)\ .setContextChars(['.', ',', ';', ':', '!', '?', '*', '-', '(', ')', '&quot;', &quot;'&quot;, '%', '&amp;amp;']) embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;, &quot;en&quot;) \ .setInputCols(&quot;sentence&quot;, &quot;token&quot;) \ .setOutputCol(&quot;embeddings&quot;)\ .setMaxSentenceLength(512)\ .setCaseSensitive(True) ner_model = finance.NerModel.pretrained(&quot;finner_responsibility_reports_md&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) nlpPipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner_model, ner_converter ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = nlpPipeline.fit(empty_data) text = &quot;&quot;&quot;The company has reduced its direct GHG emissions from 12,135 million tonnes of CO2e in 2017 to 4 million tonnes of CO2e in 2021. The indirect GHG emissions (scope 2) are mainly from imported energy, including electricity, heat, steam, and cooling, and the company has reduced its scope 2 emissions from 3 million tonnes of CO2e in 2017-2018 to 4 million tonnes of CO2e in 2020-2021. The scope 3 emissions are mainly from the use of sold products, and the emissions have increased from 377 million tonnes of CO2e in 2017 to 408 million tonnes of CO2e in 2021.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model.transform(data) result.select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \ .select(F.expr(&quot;cols['0']&quot;).alias(&quot;chunk&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False) Results +----------------------+------------------+ |chunk |label | +----------------------+------------------+ |direct GHG emissions |ENVIRONMENTAL_KPI | |12,135 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2017 |DATE_PERIOD | |4 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2021 |DATE_PERIOD | |indirect GHG emissions|ENVIRONMENTAL_KPI | |scope 2 |ENVIRONMENTAL_KPI | |imported energy |ENVIRONMENTAL_KPI | |electricity |ENVIRONMENTAL_KPI | |heat |ENVIRONMENTAL_KPI | |steam |ENVIRONMENTAL_KPI | |cooling |ENVIRONMENTAL_KPI | |scope 2 emissions |ENVIRONMENTAL_KPI | |3 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2017-2018 |DATE_PERIOD | |4 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2020-2021 |DATE_PERIOD | |scope 3 emissions |ENVIRONMENTAL_KPI | |sold |ECONOMIC_ACTION | |products |SOCIAL_KPI | |emissions |ENVIRONMENTAL_KPI | |377 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2017 |DATE_PERIOD | |408 million |AMOUNT | |tonnes of CO2e |ENVIRONMENTAL_UNIT| |2021 |DATE_PERIOD | +----------------------+------------------+ Model Information Model Name: finner_responsibility_reports_md Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 16.4 MB References In-house annotations on Responsibility and ESG Reports Benchmarking label precision recall f1-score support B-AMOUNT 0.97 0.97 0.97 1207 I-AMOUNT 0.97 0.94 0.96 361 B-ENVIRONMENTAL_KPI 0.79 0.81 0.80 1051 I-ENVIRONMENTAL_KPI 0.74 0.88 0.81 716 B-DATE_PERIOD 0.94 0.95 0.94 980 I-DATE_PERIOD 0.90 0.95 0.92 498 B-PERCENTAGE 0.99 0.99 0.99 695 I-PERCENTAGE 0.99 1.00 1.00 692 B-SOCIAL_KPI 0.66 0.74 0.70 481 I-SOCIAL_KPI 0.56 0.33 0.41 43 B-ENVIRONMENTAL_UNIT 0.94 0.96 0.95 459 I-ENVIRONMENTAL_UNIT 0.91 0.86 0.88 268 B-PROFESSIONAL_GROUP 0.85 0.92 0.88 358 I-PROFESSIONAL_GROUP 0.94 0.94 0.94 32 B-TARGET_GROUP 0.89 0.85 0.87 337 I-TARGET_GROUP 0.76 0.95 0.84 59 B-ENVIRONMENTAL_ACTION 0.72 0.68 0.70 341 I-ENVIRONMENTAL_ACTION 1.00 0.56 0.71 18 B-SOCIAL_ACTION 0.59 0.72 0.65 241 B-ESG_ROLE 0.76 0.72 0.74 109 I-ESG_ROLE 0.81 0.84 0.83 305 B-ECONOMIC_KPI 0.77 0.67 0.71 219 I-ECONOMIC_KPI 0.47 0.70 0.56 50 B-RELATIVE_METRIC 0.92 0.98 0.95 147 I-RELATIVE_METRIC 0.89 0.99 0.94 178 B-FACILITY_PLACE 0.74 0.89 0.81 139 I-FACILITY_PLACE 0.77 0.93 0.84 89 B-COUNTABLE_ITEM 0.64 0.69 0.67 154 I-COUNTABLE_ITEM 0.25 1.00 0.40 1 B-WASTE 0.84 0.64 0.73 126 I-WASTE 0.91 0.51 0.65 57 B-ECONOMIC_ACTION 0.73 0.74 0.73 91 I-ECONOMIC_ACTION 0.00 0.00 0.00 1 B-TARGET_GROUP_BUSINESS 0.93 0.85 0.89 74 I-TARGET_GROUP_BUSINESS 0.00 0.00 0.00 1 B-AGE 0.74 0.70 0.72 37 I-AGE 0.90 0.65 0.75 40 B-ISO 0.84 0.72 0.78 36 I-ISO 0.91 0.80 0.85 25 micro avg 0.86 0.88 0.87 10716 macro avg 0.75 0.75 0.74 10716 weighted avg 0.86 0.88 0.87 10716</summary></entry><entry><title type="html">Spell Checker for Drug Names (Norvig)</title><link href="/2023/05/13/spellcheck_drug_norvig_en.html" rel="alternate" type="text/html" title="Spell Checker for Drug Names (Norvig)" /><published>2023-05-13T00:00:00+00:00</published><updated>2023-05-13T00:00:00+00:00</updated><id>/2023/05/13/spellcheck_drug_norvig_en</id><content type="html" xml:base="/2023/05/13/spellcheck_drug_norvig_en.html">## Description
-
-This model corrects spelling mistakes in drug names by using The Symmetric Delete spelling correction algorithm which reduces the complexity of edit candidate generation and dictionary lookup for a given Damerau-Levenshtein distance.
-
-## Predicted Entities
-
-
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/spellcheck_drug_norvig_en_4.4.0_3.0_1684020970665.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/spellcheck_drug_norvig_en_4.4.0_3.0_1684020970665.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-documentAssembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-tokenizer = Tokenizer()\
-    .setInputCols(&quot;document&quot;)\
-    .setOutputCol(&quot;token&quot;)
-
-spell = NorvigSweetingModel.pretrained(&quot;spellcheck_drug_norvig&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols(&quot;token&quot;)\
-    .setOutputCol(&quot;corrected_token&quot;)\
-
-pipeline = Pipeline(
-    stages = [
-        documentAssembler,
-        tokenizer, 
-        spell
-        ])
-
-model = pipeline.fit(spark.createDataFrame([['']]).toDF('text')) 
-
-text = &quot;You have to take Amrosia artemisiifoli, Oactra and a bit of Grastk and lastacaf&quot;
-test_df= spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
-result= model.transform(test_df)
-```
-```scala
-val documentAssembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val tokenizer = new Tokenizer()
-    .setInputCols(Array(&quot;document&quot;))
-    .setOutputCol(&quot;token&quot;)
-
-val spell= NorvigSweetingModel.pretrained(&quot;spellcheck_drug_norvig&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;token&quot;)
-    .setOutputCol(&quot;corrected_token&quot;)
-
-val pipeline =  new Pipeline().setStages(Array(documentAssembler, tokenizer, spell))
-
-val data = Seq(&quot;You have to take Amrosia artemisiifoli, Oactra and a bit of Grastk and lastacaf&quot;).toDS.toDF(&quot;text&quot;)
-val result= pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-Original Text: 
-You have to take Amrosia artemisiifoli , Oactra and a bit of Grastk and lastacaf  
-
-Corrected Text: 
-You have to take Ambrosia artemisiifolia , Odactra and a bit of Grastek and lastacaft
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|spellcheck_drug_norvig|
-|Compatibility:|Healthcare NLP 4.4.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[token]|
-|Output Labels:|[spell]|
-|Language:|en|
-|Size:|4.5 MB|
-|Case sensitive:|true|</content><author><name>John Snow Labs</name></author><category term="spellcheck" /><category term="clinical" /><category term="en" /><category term="drug" /><category term="norvig" /><category term="licensed" /><summary type="html">Description This model corrects spelling mistakes in drug names by using The Symmetric Delete spelling correction algorithm which reduces the complexity of edit candidate generation and dictionary lookup for a given Damerau-Levenshtein distance. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer()\ .setInputCols(&quot;document&quot;)\ .setOutputCol(&quot;token&quot;) spell = NorvigSweetingModel.pretrained(&quot;spellcheck_drug_norvig&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;token&quot;)\ .setOutputCol(&quot;corrected_token&quot;)\ pipeline = Pipeline( stages = [ documentAssembler, tokenizer, spell ]) model = pipeline.fit(spark.createDataFrame([['']]).toDF('text')) text = &quot;You have to take Amrosia artemisiifoli, Oactra and a bit of Grastk and lastacaf&quot; test_df= spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result= model.transform(test_df) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val spell= NorvigSweetingModel.pretrained(&quot;spellcheck_drug_norvig&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;token&quot;) .setOutputCol(&quot;corrected_token&quot;) val pipeline = new Pipeline().setStages(Array(documentAssembler, tokenizer, spell)) val data = Seq(&quot;You have to take Amrosia artemisiifoli, Oactra and a bit of Grastk and lastacaf&quot;).toDS.toDF(&quot;text&quot;) val result= pipeline.fit(data).transform(data) Results Original Text: You have to take Amrosia artemisiifoli , Oactra and a bit of Grastk and lastacaf Corrected Text: You have to take Ambrosia artemisiifolia , Odactra and a bit of Grastek and lastacaft Model Information Model Name: spellcheck_drug_norvig Compatibility: Healthcare NLP 4.4.0+ License: Licensed Edition: Official Input Labels: [token] Output Labels: [spell] Language: en Size: 4.5 MB Case sensitive: true</summary></entry><entry><title type="html">Extraction of Clinical Abbreviations and Acronyms</title><link href="/2023/05/12/ner_abbreviation_emb_clinical_large_en.html" rel="alternate" type="text/html" title="Extraction of Clinical Abbreviations and Acronyms" /><published>2023-05-12T00:00:00+00:00</published><updated>2023-05-12T00:00:00+00:00</updated><id>/2023/05/12/ner_abbreviation_emb_clinical_large_en</id><content type="html" xml:base="/2023/05/12/ner_abbreviation_emb_clinical_large_en.html">## Description
-
-This model is trained to extract clinical abbreviations and acronyms in text.
-
-## Predicted Entities
-
-`ABBR`
-
-{:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_ABBREVIATION/){:.button.button-orange}
-[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_abbreviation_emb_clinical_large_en_4.4.1_3.0_1683884760156.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_abbreviation_emb_clinical_large_en_4.4.1_3.0_1683884760156.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;en&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-clinical_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-ner_model = MedicalNerModel.pretrained(&quot;ner_abbreviation_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;,&quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal()\
-    .setInputCols(['sentence', 'token', 'ner'])\
-    .setOutputCol('ner_chunk')
-
-pipeline = Pipeline(stages=[
-    document_assembler, 
-    sentence_detector,
-    tokenizer,
-    clinical_embeddings,
-    ner_model,
-    ner_converter   
-    ])
-
-data = spark.createDataFrame([[&quot;Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.&quot;]]).toDF(&quot;text&quot;)
-
-result = pipeline.fit(data).transform(data)
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;en&quot;)
-    .setInputCols(&quot;document&quot;)
-    .setOutputCol(&quot;sentence&quot;)
-
-val tokenizer = new Tokenizer()
-    .setInputCols(&quot;sentence&quot;)
-    .setOutputCol(&quot;token&quot;)
-
-val clinical_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)
-
-val ner_model = MedicalNerModel.pretrained(&quot;ner_abbreviation_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;ner&quot;)
-
-val ner_converter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-val pipeline = new Pipeline().setStages(Array(
-    document_assembler, 
-    sentence_detector,
-    tokenizer,
-    clinical_embeddings,
-    ner_model,
-    ner_converter))
-
-val data = Seq(&quot;Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+-----+-----+---+---------+
-|chunk|begin|end|ner_label|
-+-----+-----+---+---------+
-|CBC  |126  |128|ABBR     |
-|AB   |159  |160|ABBR     |
-|VDRL |189  |192|ABBR     |
-|HIV  |247  |249|ABBR     |
-+-----+-----+---+---------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|ner_abbreviation_emb_clinical_large|
-|Compatibility:|Healthcare NLP 4.4.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|2.8 MB|
-
-## References
-
-Trained on the in-house dataset.
-
-## Benchmarking
-
-```bash
-       label  precision    recall  f1-score   support
-        ABBR       0.93      0.97      0.95       620
-   micro-avg       0.93      0.97      0.95       620
-   macro-avg       0.93      0.97      0.95       620
-weighted-avg       0.93      0.97      0.95       620
-```</content><author><name>John Snow Labs</name></author><category term="ner" /><category term="abbreviation" /><category term="acronym" /><category term="en" /><category term="clinical" /><category term="licensed" /><summary type="html">Description This model is trained to extract clinical abbreviations and acronyms in text. Predicted Entities ABBR Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;en&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) clinical_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) ner_model = MedicalNerModel.pretrained(&quot;ner_abbreviation_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;,&quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols(['sentence', 'token', 'ner'])\ .setOutputCol('ner_chunk') pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, clinical_embeddings, ner_model, ner_converter ]) data = spark.createDataFrame([[&quot;Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;en&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val clinical_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner_model = MedicalNerModel.pretrained(&quot;ner_abbreviation_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentence_detector, tokenizer, clinical_embeddings, ner_model, ner_converter)) val data = Seq(&quot;Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +-----+-----+---+---------+ |chunk|begin|end|ner_label| +-----+-----+---+---------+ |CBC |126 |128|ABBR | |AB |159 |160|ABBR | |VDRL |189 |192|ABBR | |HIV |247 |249|ABBR | +-----+-----+---+---------+ Model Information Model Name: ner_abbreviation_emb_clinical_large Compatibility: Healthcare NLP 4.4.1+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 2.8 MB References Trained on the in-house dataset. Benchmarking label precision recall f1-score support ABBR 0.93 0.97 0.95 620 micro-avg 0.93 0.97 0.95 620 macro-avg 0.93 0.97 0.95 620 weighted-avg 0.93 0.97 0.95 620</summary></entry><entry><title type="html">Extraction of Clinical Abbreviations and Acronyms</title><link href="/2023/05/12/ner_abbreviation_emb_clinical_medium_en.html" rel="alternate" type="text/html" title="Extraction of Clinical Abbreviations and Acronyms" /><published>2023-05-12T00:00:00+00:00</published><updated>2023-05-12T00:00:00+00:00</updated><id>/2023/05/12/ner_abbreviation_emb_clinical_medium_en</id><content type="html" xml:base="/2023/05/12/ner_abbreviation_emb_clinical_medium_en.html">## Description
-
-This model is trained to extract clinical abbreviations and acronyms in text.
-
-## Predicted Entities
-
-`ABBR`
-
-{:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_ABBREVIATION/){:.button.button-orange}
-[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_abbreviation_emb_clinical_medium_en_4.4.1_3.0_1683884147067.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_abbreviation_emb_clinical_medium_en_4.4.1_3.0_1683884147067.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;en&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-clinical_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-ner_model = MedicalNerModel.pretrained(&quot;ner_abbreviation_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;,&quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-pipeline = Pipeline(stages=[
-    document_assembler, 
-    sentence_detector,
-    tokenizer,
-    clinical_embeddings,
-    ner_model,
-    ner_converter   
-    ])
-
-data = spark.createDataFrame([[&quot;Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.&quot;]]).toDF(&quot;text&quot;)
-
-result = pipeline.fit(data).transform(data)
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;en&quot;)
-    .setInputCols(&quot;document&quot;)
-    .setOutputCol(&quot;sentence&quot;)
-
-val tokenizer = new Tokenizer()
-    .setInputCols(&quot;sentence&quot;)
-    .setOutputCol(&quot;token&quot;)
-
-val clinical_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)
-
-val ner_model = MedicalNerModel.pretrained(&quot;ner_abbreviation_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;,&quot;embeddings&quot;))
-    .setOutputCol(&quot;ner&quot;)
-
-val ner_converter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-val pipeline = new Pipeline().setStages(Array(
-    document_assembler, 
-    sentence_detector,
-    tokenizer,
-    clinical_embeddings,
-    ner_model,
-    ner_converter))
-
-val data = Seq(&quot;Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+-----+-----+---+---------+
-|chunk|begin|end|ner_label|
-+-----+-----+---+---------+
-|CBC  |126  |128|ABBR     |
-|AB   |159  |160|ABBR     |
-|VDRL |189  |192|ABBR     |
-|HIV  |247  |249|ABBR     |
-+-----+-----+---+---------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|ner_abbreviation_emb_clinical_medium|
-|Compatibility:|Healthcare NLP 4.4.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|2.8 MB|
-
-## References
-
-Trained on the in-house dataset.
-
-## Benchmarking
-
-```bash
-       label  precision    recall  f1-score   support
-        ABBR       0.94      0.95      0.95       620
-   micro-avg       0.94      0.95      0.95       620
-   macro-avg       0.94      0.95      0.95       620
-weighted-avg       0.94      0.95      0.95       620
-```</content><author><name>John Snow Labs</name></author><category term="ner" /><category term="abbreviation" /><category term="acronym" /><category term="en" /><category term="clinical" /><category term="licensed" /><summary type="html">Description This model is trained to extract clinical abbreviations and acronyms in text. Predicted Entities ABBR Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;en&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) clinical_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) ner_model = MedicalNerModel.pretrained(&quot;ner_abbreviation_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;,&quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, clinical_embeddings, ner_model, ner_converter ]) data = spark.createDataFrame([[&quot;Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;en&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val clinical_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner_model = MedicalNerModel.pretrained(&quot;ner_abbreviation_emb_clinical_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;,&quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentence_detector, tokenizer, clinical_embeddings, ner_model, ner_converter)) val data = Seq(&quot;Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +-----+-----+---+---------+ |chunk|begin|end|ner_label| +-----+-----+---+---------+ |CBC |126 |128|ABBR | |AB |159 |160|ABBR | |VDRL |189 |192|ABBR | |HIV |247 |249|ABBR | +-----+-----+---+---------+ Model Information Model Name: ner_abbreviation_emb_clinical_medium Compatibility: Healthcare NLP 4.4.1+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 2.8 MB References Trained on the in-house dataset. Benchmarking label precision recall f1-score support ABBR 0.94 0.95 0.95 620 micro-avg 0.94 0.95 0.95 620 macro-avg 0.94 0.95 0.95 620 weighted-avg 0.94 0.95 0.95 620</summary></entry><entry><title type="html">Legal Constitutional Judgment Court Decisions Classifier (Turkish)</title><link href="/2023/05/12/legclf_constitutional_court_judgment_decisions_tr.html" rel="alternate" type="text/html" title="Legal Constitutional Judgment Court Decisions Classifier (Turkish)" /><published>2023-05-12T00:00:00+00:00</published><updated>2023-05-12T00:00:00+00:00</updated><id>/2023/05/12/legclf_constitutional_court_judgment_decisions_tr</id><content type="html" xml:base="/2023/05/12/legclf_constitutional_court_judgment_decisions_tr.html">## Description
-
-This is a Binary classification model which identifies two constitutional judgment labels(	violation, no_violation) in Turkish-based court decisions.
-
-## Predicted Entities
-
-`violation`, `no_violation`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_constitutional_court_judgment_decisions_tr_1.0.0_3.0_1683922167296.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legclf_constitutional_court_judgment_decisions_tr_1.0.0_3.0_1683922167296.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-document_assembler = nlp.DocumentAssembler() \
-    .setInputCol('text') \
-    .setOutputCol('document')
-
-tokenizer = nlp.Tokenizer() \
-    .setInputCols(['document']) \
-    .setOutputCol('token')
-
-sequenceClassifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_constitutional_court_judgment_decisions&quot;, &quot;tr&quot;, &quot;legal/models&quot;)\
-    .setInputCols([&quot;document&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;class&quot;)
-
-pipeline = nlp.Pipeline(stages=[
-    document_assembler, 
-    tokenizer,
-    sequenceClassifier  
-])
-
-# couple of simple examples
-example = spark.createDataFrame([[&quot;başvuru formu ve eklerinde ifade edildiği şekliyle ilgili olaylar özetle şöyledir başvurucu tarihli dilekçe ile piraziz bolu çorum ve şişli asliye ceza mahkemelerinden almış olduğu cezalara ilişkin kararların kesinleşip yerine getirildiğini infaz tarihlerinin üzerinden yıla yakın bir sürenin geçtiğini ileri sürerek memnu hakların iadesi talebinde bulunmuştur bulancak asliye ceza mahkemesi tarihli kararı ile talebi reddetmiştir kararın gerekçesinin ilgili kısmı şöyledir başvuru numarası karar tarihi hükümlünün uyap kayıtlarının incelenmesinden hakkında bulancak asliye ceza mahkemesinde tarihli esas karar sayılı ilamıyla petrol kaçakçılığı suçundan yapılan yargılamada atılı suçu işlediğinin sabit olmaması nedeniyle karar verildiği dosyanın temyiz edilerek yargıtaya gönderildiği ve henüz dönmediği anlaşılmıştır yasaklanmış hakların geri verilmesini düzenleyen sayılı adli sicil maddesi ile sayılı türk ceza kanunu dışındaki kanunların belli bir suçtan dolayı veya belli bir cezaya mahkumiyete bağladığı hak yoksunluklarının giderilebilmesi için yasaklanmış hakların geri verilmesi yoluna gidilebilir bunun için türk ceza kanununun üncü maddesinin beşinci ve altıncı fıkraları saklı kalmak kaydıyla a mahkum olunan cezanın infazının tamamlandığı tarihten itibaren yıllık bir sürenin geçmiş olması b kişinin bu süre zarfında yeni bir suç işlememiş olması ve hayatını iyi halli olarak sürdürdüğü hususunda mahkemede bir kanaat oluşması gerektiği hükmü getirilmiştir yukarıda açıklandığı üzere talep eden hükümlünün yukarıda tarih ve sayıları belirtilen cezaların infaz tarihlerinden sonra yıllık süre içerisinde suç işlenmemiş ise de yıllarda hakkında soruşturma ve kovuşturma yapıldığı bu kapsamda hayatını iyi halli olarak sürdürdüğü hususunda mahkememizde yeterli kanaat oluşmadığından talep yerinde görülmeyerek aşağıdaki şekilde hüküm kurulmuştur başvurucunun anılan karara itirazı giresun ağır ceza mahkemesinin tarihli kararıyla reddedilmiştir kararın gerekçesi şöyledir dosya ve eklerinin incelenmesinden ilgilinin adli sicil kaydının bulunmaması sabıka kaydında geçen kayıtların arşiv kaydı olması sayılı kanunun maddesine göre anayasanın maddesinde belirtilen suçlar için arşiv kaydının silinmesinin mümkün olmama talep sahibinin sabıka kaydında geçen suçların anayasa maddede sayılan suçlardan olması karşısında netice olarak vardığı sonuca göre usul ve yasaya uygun ola bulancak asliye ceza mahkemesinin tarih ve diş sayılı kararına yapılan itirazın reddine karar verilmiştir ret kararı tarihinde başvurucuya tebliğ edilmiştir başvurucu tarihinde bireysel başvuruda bulunmuştur iv hukuk tarihli ve sayılı adli sicil kanununun maddesinin ilgili kısmı şöyledir sayılı türk ceza kanunu dışındaki kanunların belli bir suçtan dolayı veya belli bir cezaya mahkumiyete bağladığı hak yoksunluklarının giderilebilmesi için yasaklanmış hakların geri verilmesi yoluna gidilebilir bunun için türk ceza kanununun üncü maddesinin beşinci ve altıncı fıkraları saklı kalmak kaydıyla a mahkum olunan cezanın infazının tamamlandığı tarihten itibaren üç yıllık bü sürenin geçmiş olması b kişinin bu süre zarfında yeni bir suç işlememiş olması ve hayatını iyi halli olarak sürdürdüğü hususunda mahkemede bir kanaat oluşması gerekir il v &quot;]]).toDF(&quot;text&quot;)
-
-result = pipeline.fit(example).transform(example)
-
-# result is a DataFrame
-result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=100)
-```
-
-&lt;/div&gt;
-
-## Results
-
-```bash
-+----------------------------------------------------------------------------------------------------+-----------+
-|                                                                                                text|     result|
-+----------------------------------------------------------------------------------------------------+-----------+
-|başvuru formu ve eklerinde ifade edildiği şekliyle ilgili olaylar özetle şöyledir başvurucu tarih...|[violation]|
-+----------------------------------------------------------------------------------------------------+-----------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|legclf_constitutional_court_judgment_decisions|
-|Compatibility:|Legal NLP 1.0.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[document, token]|
-|Output Labels:|[class]|
-|Language:|tr|
-|Size:|628.3 MB|
-|Case sensitive:|true|
-|Max sentence length:|512|
-
-## Benchmarking
-
-```bash
-label         precision  recall  f1-score  support 
-no_violation  0.71       0.71    0.71      14      
-violation     0.88       0.88    0.88      34      
-accuracy      -          -       0.83      48      
-macro-avg     0.80       0.80    0.80      48      
-weighted-avg  0.83       0.83    0.83      48      
-```</content><author><name>John Snow Labs</name></author><category term="tr" /><category term="classification" /><category term="licensed" /><category term="legal" /><category term="tensorflow" /><summary type="html">Description This is a Binary classification model which identifies two constitutional judgment labels( violation, no_violation) in Turkish-based court decisions. Predicted Entities violation, no_violation Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler() \ .setInputCol('text') \ .setOutputCol('document') tokenizer = nlp.Tokenizer() \ .setInputCols(['document']) \ .setOutputCol('token') sequenceClassifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_constitutional_court_judgment_decisions&quot;, &quot;tr&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;class&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequenceClassifier ]) # couple of simple examples example = spark.createDataFrame([[&quot;başvuru formu ve eklerinde ifade edildiği şekliyle ilgili olaylar özetle şöyledir başvurucu tarihli dilekçe ile piraziz bolu çorum ve şişli asliye ceza mahkemelerinden almış olduğu cezalara ilişkin kararların kesinleşip yerine getirildiğini infaz tarihlerinin üzerinden yıla yakın bir sürenin geçtiğini ileri sürerek memnu hakların iadesi talebinde bulunmuştur bulancak asliye ceza mahkemesi tarihli kararı ile talebi reddetmiştir kararın gerekçesinin ilgili kısmı şöyledir başvuru numarası karar tarihi hükümlünün uyap kayıtlarının incelenmesinden hakkında bulancak asliye ceza mahkemesinde tarihli esas karar sayılı ilamıyla petrol kaçakçılığı suçundan yapılan yargılamada atılı suçu işlediğinin sabit olmaması nedeniyle karar verildiği dosyanın temyiz edilerek yargıtaya gönderildiği ve henüz dönmediği anlaşılmıştır yasaklanmış hakların geri verilmesini düzenleyen sayılı adli sicil maddesi ile sayılı türk ceza kanunu dışındaki kanunların belli bir suçtan dolayı veya belli bir cezaya mahkumiyete bağladığı hak yoksunluklarının giderilebilmesi için yasaklanmış hakların geri verilmesi yoluna gidilebilir bunun için türk ceza kanununun üncü maddesinin beşinci ve altıncı fıkraları saklı kalmak kaydıyla a mahkum olunan cezanın infazının tamamlandığı tarihten itibaren yıllık bir sürenin geçmiş olması b kişinin bu süre zarfında yeni bir suç işlememiş olması ve hayatını iyi halli olarak sürdürdüğü hususunda mahkemede bir kanaat oluşması gerektiği hükmü getirilmiştir yukarıda açıklandığı üzere talep eden hükümlünün yukarıda tarih ve sayıları belirtilen cezaların infaz tarihlerinden sonra yıllık süre içerisinde suç işlenmemiş ise de yıllarda hakkında soruşturma ve kovuşturma yapıldığı bu kapsamda hayatını iyi halli olarak sürdürdüğü hususunda mahkememizde yeterli kanaat oluşmadığından talep yerinde görülmeyerek aşağıdaki şekilde hüküm kurulmuştur başvurucunun anılan karara itirazı giresun ağır ceza mahkemesinin tarihli kararıyla reddedilmiştir kararın gerekçesi şöyledir dosya ve eklerinin incelenmesinden ilgilinin adli sicil kaydının bulunmaması sabıka kaydında geçen kayıtların arşiv kaydı olması sayılı kanunun maddesine göre anayasanın maddesinde belirtilen suçlar için arşiv kaydının silinmesinin mümkün olmama talep sahibinin sabıka kaydında geçen suçların anayasa maddede sayılan suçlardan olması karşısında netice olarak vardığı sonuca göre usul ve yasaya uygun ola bulancak asliye ceza mahkemesinin tarih ve diş sayılı kararına yapılan itirazın reddine karar verilmiştir ret kararı tarihinde başvurucuya tebliğ edilmiştir başvurucu tarihinde bireysel başvuruda bulunmuştur iv hukuk tarihli ve sayılı adli sicil kanununun maddesinin ilgili kısmı şöyledir sayılı türk ceza kanunu dışındaki kanunların belli bir suçtan dolayı veya belli bir cezaya mahkumiyete bağladığı hak yoksunluklarının giderilebilmesi için yasaklanmış hakların geri verilmesi yoluna gidilebilir bunun için türk ceza kanununun üncü maddesinin beşinci ve altıncı fıkraları saklı kalmak kaydıyla a mahkum olunan cezanın infazının tamamlandığı tarihten itibaren üç yıllık bü sürenin geçmiş olması b kişinin bu süre zarfında yeni bir suç işlememiş olması ve hayatını iyi halli olarak sürdürdüğü hususunda mahkemede bir kanaat oluşması gerekir il v &quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(example).transform(example) # result is a DataFrame result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=100) Results +----------------------------------------------------------------------------------------------------+-----------+ | text| result| +----------------------------------------------------------------------------------------------------+-----------+ |başvuru formu ve eklerinde ifade edildiği şekliyle ilgili olaylar özetle şöyledir başvurucu tarih...|[violation]| +----------------------------------------------------------------------------------------------------+-----------+ Model Information Model Name: legclf_constitutional_court_judgment_decisions Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: tr Size: 628.3 MB Case sensitive: true Max sentence length: 512 Benchmarking label precision recall f1-score support no_violation 0.71 0.71 0.71 14 violation 0.88 0.88 0.88 34 accuracy - - 0.83 48 macro-avg 0.80 0.80 0.80 48 weighted-avg 0.83 0.83 0.83 48</summary></entry></feed>
+```</content><author><name>John Snow Labs</name></author><category term="ner" /><category term="clinical" /><category term="licensed" /><category term="en" /><category term="anatomy" /><summary type="html">Description Pretrained named entity recognition deep learning model for anatomy terms. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state of the art model for NER: Chiu &amp;amp; Nicols, Named Entity Recognition with Bidirectional LSTM-CNN. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) anatomy_ner = MedicalNerModel.pretrained('ner_anatomy_emb_clinical_large' &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;anatomy_ner&quot;) anatomy_ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;anatomy_ner&quot;]) \ .setOutputCol(&quot;anatomy_ner_chunk&quot;) posology_ner_pipeline = Pipeline(stages=[ documentAssembler, sentenceDetector, tokenizer, word_embeddings, anatomy_ner, anatomy_ner_converter]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) posology_ner_model = posology_ner_pipeline.fit(empty_data) results = posology_ner_model.transform(spark.createDataFrame([['''This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.''']]).toDF(&quot;text&quot;)) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val anatomy_ner_model = MedicalNerModel.pretrained(&quot;ner_anatomy_emb_clinical_large&quot; &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;anatomy_ner&quot;) val anatomy_ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;anatomy_ner_chunk&quot;) val posology_pipeline = new PipelineModel().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, anatomy_ner_model, anatomy_ner_converter)) val data = Seq(&quot;&quot;&quot;This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val result = model.fit(data).transform(data) Results | | chunks | begin | end | entities | |---:|:--------------------|--------:|------:|:-----------------------| | 0 | toe | 326 | 328 | Organism_subdivision | | 1 | redness | 348 | 354 | Pathological_formation | | 2 | erythema | 360 | 367 | Pathological_formation | | 3 | skin | 374 | 377 | Organ | | 4 | Extraocular muscles | 574 | 592 | Organ | | 5 | turbinates | 659 | 668 | Multi-tissue_structure | | 6 | Mucous membranes | 716 | 731 | Tissue | | 7 | Neck | 744 | 747 | Organism_subdivision | | 8 | bowel sounds | 802 | 813 | Pathological_formation | | 9 | toe | 904 | 906 | Organ | | 10 | skin | 956 | 959 | Organ | | 11 | toe | 1046 | 1048 | Organ | Model Information Model Name: ner_anatomy_emb_clinical_large Compatibility: Healthcare NLP 4.4.2+ License: Licensed Edition: Official Input Labels: [document, token, embeddings] Output Labels: [ner] Language: en Size: 2.8 MB References Trained on the Anatomical Entity Mention (AnEM) corpus with http://www.nactem.ac.uk/anatomy/ Benchmarking label precision recall f1-score support tissue_structure 0.69 0.77 0.73 130 Organ 0.95 0.81 0.88 52 Cell 0.92 0.96 0.94 118 Organism_subdivision 0.85 0.50 0.63 22 Pathological_formation 0.98 0.86 0.92 58 Cellular_component 0.54 0.50 0.52 26 Organism_substance 0.91 0.74 0.82 43 Anatomical_system 1.00 0.67 0.80 6 Immaterial_anatomical_entity 1.00 0.33 0.50 6 Tissue 0.67 0.62 0.65 32 Developing_anatomical_structure 1.00 0.20 0.33 5 micro-avg 0.82 0.78 0.80 498 macro-avg 0.87 0.63 0.70 498 weighted-avg 0.83 0.78 0.80 498</summary></entry></feed>
