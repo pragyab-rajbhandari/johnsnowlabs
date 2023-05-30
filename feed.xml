@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-30T08:49:48+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-30T18:51:34+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
 </subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial Finetuned FLAN-T5 Text Generation (FIQA dataset)</title><link href="/2023/05/29/fingen_flant5_finetuned_fiqa_en.html" rel="alternate" type="text/html" title="Financial Finetuned FLAN-T5 Text Generation (FIQA dataset)" /><published>2023-05-29T00:00:00+00:00</published><updated>2023-05-29T00:00:00+00:00</updated><id>/2023/05/29/fingen_flant5_finetuned_fiqa_en</id><content type="html" xml:base="/2023/05/29/fingen_flant5_finetuned_fiqa_en.html">## Description
 
 The `fingen_flant5_finetuned_fiqa` model is the Text Generation model that has been fine-tuned on FLAN-T5 using FIQA dataset. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text-generation tasks.
@@ -136,94 +136,79 @@ result = pipeline.fit(data).transform(data)
 
 ## References
 
-In house annotated dataset</content><author><name>John Snow Labs</name></author><category term="en" /><category term="finance" /><category term="qa" /><category term="question_answering" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This Question Answering model has been fine-tuned on FLANT5 using finance data. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering finance questions and delivering insightful information in the finance domain. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.MultiDocumentAssembler()\ .setInputCols(&quot;question&quot;, &quot;context&quot;)\ .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;) fin_qa = finance.QuestionAnswering.pretrained(&quot;finqa_flant5_finetuned&quot;,&quot;en&quot;,&quot;finance/models&quot;)\ .setInputCols([&quot;document_question&quot;, &quot;document_context&quot;])\ .setCustomPrompt(&quot;question: {QUESTION} context: {CONTEXT}&quot;)\ .setMaxNewTokens(50)\ .setOutputCol(&quot;answer&quot;) pipeline = nlp.Pipeline(stages=[document_assembler, fin_qa]) context = &quot;In the world of finance, understanding the concept of risk and return is essential for investors. Risk refers to the uncertainty associated with an investment, while return represents the potential gain or loss. These two factors are intrinsically linked, as higher-risk investments typically offer the potential for higher returns, while lower-risk investments tend to yield lower returns.&quot; question = &quot;What is the relationship between risk and return in the world of finance?&quot; data = spark.createDataFrame([[question, context]]).toDF(&quot;question&quot;, &quot;context&quot;) result = pipeline.fit(data).transform(data) Results +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[Risk refers to the uncertainty associated with an investment, while return represents the potential gain or loss. These two factors are intrinsically linked, as higher-risk investments typically offer the potential for higher returns, while lower-risk investments tend to yield lower returns. ]| +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: finqa_flant5_finetuned Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 920.9 MB Case sensitive: true References In house annotated dataset</summary></entry><entry><title type="html">Legal FLAN-T5 Question Answering</title><link href="/2023/05/29/legqa_flant5_finetuned_en.html" rel="alternate" type="text/html" title="Legal FLAN-T5 Question Answering" /><published>2023-05-29T00:00:00+00:00</published><updated>2023-05-29T00:00:00+00:00</updated><id>/2023/05/29/legqa_flant5_finetuned_en</id><content type="html" xml:base="/2023/05/29/legqa_flant5_finetuned_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+In house annotated dataset</content><author><name>John Snow Labs</name></author><category term="en" /><category term="finance" /><category term="qa" /><category term="question_answering" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This Question Answering model has been fine-tuned on FLANT5 using finance data. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering finance questions and delivering insightful information in the finance domain. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.MultiDocumentAssembler()\ .setInputCols(&quot;question&quot;, &quot;context&quot;)\ .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;) fin_qa = finance.QuestionAnswering.pretrained(&quot;finqa_flant5_finetuned&quot;,&quot;en&quot;,&quot;finance/models&quot;)\ .setInputCols([&quot;document_question&quot;, &quot;document_context&quot;])\ .setCustomPrompt(&quot;question: {QUESTION} context: {CONTEXT}&quot;)\ .setMaxNewTokens(50)\ .setOutputCol(&quot;answer&quot;) pipeline = nlp.Pipeline(stages=[document_assembler, fin_qa]) context = &quot;In the world of finance, understanding the concept of risk and return is essential for investors. Risk refers to the uncertainty associated with an investment, while return represents the potential gain or loss. These two factors are intrinsically linked, as higher-risk investments typically offer the potential for higher returns, while lower-risk investments tend to yield lower returns.&quot; question = &quot;What is the relationship between risk and return in the world of finance?&quot; data = spark.createDataFrame([[question, context]]).toDF(&quot;question&quot;, &quot;context&quot;) result = pipeline.fit(data).transform(data) Results +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[Risk refers to the uncertainty associated with an investment, while return represents the potential gain or loss. These two factors are intrinsically linked, as higher-risk investments typically offer the potential for higher returns, while lower-risk investments tend to yield lower returns. ]| +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: finqa_flant5_finetuned Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 920.9 MB Case sensitive: true References In house annotated dataset</summary></entry><entry><title type="html">Legal FLAN-T5 Question Answering</title><link href="/2023/05/29/legqa_flant5_finetuned_en.html" rel="alternate" type="text/html" title="Legal FLAN-T5 Question Answering" /><published>2023-05-29T00:00:00+00:00</published><updated>2023-05-29T00:00:00+00:00</updated><id>/2023/05/29/legqa_flant5_finetuned_en</id><content type="html" xml:base="/2023/05/29/legqa_flant5_finetuned_en.html">## Description
 
-&lt;p&gt;This Question Answering model has been fine-tuned on FLANT5 using legal data. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering legal questions and delivering insightful information in the legal domain.&lt;/p&gt;
+This Question Answering model has been fine-tuned on FLANT5 using legal data. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering legal questions and delivering insightful information in the legal domain.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legqa_flant5_finetuned_en_1.0.0_3.0_1685371188640.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legqa_flant5_finetuned_en_1.0.0_3.0_1685371188640.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MultiDocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;context&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document_question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;document_context&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legqa_flant5_finetuned_en_1.0.0_3.0_1685371188640.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legqa_flant5_finetuned_en_1.0.0_3.0_1685371188640.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;leg_qa&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QuestionAnswering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legqa_flant5_finetuned&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document_question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;document_context&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCustomPrompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question: {QUESTION} context: {CONTEXT}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxNewTokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;answer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+## How to use
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;leg_qa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'How often will the incentive rate be reviewed?'&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'''
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document_assembler = nlp.MultiDocumentAssembler()\
+    .setInputCols(&quot;question&quot;, &quot;context&quot;)\
+    .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;)
+
+leg_qa = legal.QuestionAnswering.pretrained(&quot;legqa_flant5_finetuned&quot;,&quot;en&quot;,&quot;legal/models&quot;)\
+    .setInputCols([&quot;document_question&quot;, &quot;document_context&quot;])\
+    .setCustomPrompt(&quot;question: {QUESTION} context: {CONTEXT}&quot;)\
+    .setMaxNewTokens(50)\
+    .setOutputCol(&quot;answer&quot;)
+
+pipeline = nlp.Pipeline(stages=[document_assembler, leg_qa])
+
+question = 'How often will the incentive rate be reviewed?'
+context = '''
 
 The incentive rate shall remain in effect for a period of one year from the effective date. After the one year period, the incentive rate may be adjusted, or new incentive rates may be put in place, as determined by the governing body of Lincoln Parish, Louisiana. 
 The incentive rate shall be reviewed annually by the governing body and any changes or adjustments shall be made in accordance with the terms and conditions of this agreement. Furthermore, the incentive rate shall be adjusted to reflect any changes in the cost of production of the oil or the market price of the oil, as determined by the governing body.
-If an adjustment is necessary, the governing body shall notify the parties of such adjustment in writing.'''&lt;/span&gt;
+If an adjustment is necessary, the governing body shall notify the parties of such adjustment in writing.'''
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;question&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;context&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+data = spark.createDataFrame([[question, context]]).toDF(&quot;question&quot;, &quot;context&quot;)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+result = pipeline.fit(data).transform(data)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+```bash
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                                                                                  |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[The incentive rate shall be reviewed annually by the governing body.                                                                                                  &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;|
+|[The incentive rate shall be reviewed annually by the governing body.                                                                                                  ]|
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legqa_flant5_finetuned&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;920.9 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Case sensitive:&lt;/td&gt;
-      &lt;td&gt;true&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legqa_flant5_finetuned|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|920.9 MB|
+|Case sensitive:|true|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;In house annotated dataset&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="legal" /><category term="qa" /><category term="question_answering" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This Question Answering model has been fine-tuned on FLANT5 using legal data. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering legal questions and delivering insightful information in the legal domain. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.MultiDocumentAssembler()\ .setInputCols(&quot;question&quot;, &quot;context&quot;)\ .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;) leg_qa = legal.QuestionAnswering.pretrained(&quot;legqa_flant5_finetuned&quot;,&quot;en&quot;,&quot;legal/models&quot;)\ .setInputCols([&quot;document_question&quot;, &quot;document_context&quot;])\ .setCustomPrompt(&quot;question: {QUESTION} context: {CONTEXT}&quot;)\ .setMaxNewTokens(50)\ .setOutputCol(&quot;answer&quot;) pipeline = nlp.Pipeline(stages=[document_assembler, leg_qa]) question = 'How often will the incentive rate be reviewed?' context = ''' The incentive rate shall remain in effect for a period of one year from the effective date. After the one year period, the incentive rate may be adjusted, or new incentive rates may be put in place, as determined by the governing body of Lincoln Parish, Louisiana. The incentive rate shall be reviewed annually by the governing body and any changes or adjustments shall be made in accordance with the terms and conditions of this agreement. Furthermore, the incentive rate shall be adjusted to reflect any changes in the cost of production of the oil or the market price of the oil, as determined by the governing body. If an adjustment is necessary, the governing body shall notify the parties of such adjustment in writing.''' data = spark.createDataFrame([[question, context]]).toDF(&quot;question&quot;, &quot;context&quot;) result = pipeline.fit(data).transform(data) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[The incentive rate shall be reviewed annually by the governing body. ]| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: legqa_flant5_finetuned Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 920.9 MB Case sensitive: true References In house annotated dataset</summary></entry><entry><title type="html">Financial Finetuned FLAN-T5 Text Generation ( Financial Alpaca )</title><link href="/2023/05/25/fingen_flant5_finetuned_alpaca_en.html" rel="alternate" type="text/html" title="Financial Finetuned FLAN-T5 Text Generation ( Financial Alpaca )" /><published>2023-05-25T00:00:00+00:00</published><updated>2023-05-25T00:00:00+00:00</updated><id>/2023/05/25/fingen_flant5_finetuned_alpaca_en</id><content type="html" xml:base="/2023/05/25/fingen_flant5_finetuned_alpaca_en.html">## Description
+In house annotated dataset</content><author><name>John Snow Labs</name></author><category term="en" /><category term="legal" /><category term="qa" /><category term="question_answering" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This Question Answering model has been fine-tuned on FLANT5 using legal data. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering legal questions and delivering insightful information in the legal domain. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.MultiDocumentAssembler()\ .setInputCols(&quot;question&quot;, &quot;context&quot;)\ .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;) leg_qa = legal.QuestionAnswering.pretrained(&quot;legqa_flant5_finetuned&quot;,&quot;en&quot;,&quot;legal/models&quot;)\ .setInputCols([&quot;document_question&quot;, &quot;document_context&quot;])\ .setCustomPrompt(&quot;question: {QUESTION} context: {CONTEXT}&quot;)\ .setMaxNewTokens(50)\ .setOutputCol(&quot;answer&quot;) pipeline = nlp.Pipeline(stages=[document_assembler, leg_qa]) question = 'How often will the incentive rate be reviewed?' context = ''' The incentive rate shall remain in effect for a period of one year from the effective date. After the one year period, the incentive rate may be adjusted, or new incentive rates may be put in place, as determined by the governing body of Lincoln Parish, Louisiana. The incentive rate shall be reviewed annually by the governing body and any changes or adjustments shall be made in accordance with the terms and conditions of this agreement. Furthermore, the incentive rate shall be adjusted to reflect any changes in the cost of production of the oil or the market price of the oil, as determined by the governing body. If an adjustment is necessary, the governing body shall notify the parties of such adjustment in writing.''' data = spark.createDataFrame([[question, context]]).toDF(&quot;question&quot;, &quot;context&quot;) result = pipeline.fit(data).transform(data) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[The incentive rate shall be reviewed annually by the governing body. ]| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: legqa_flant5_finetuned Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 920.9 MB Case sensitive: true References In house annotated dataset</summary></entry><entry><title type="html">Financial Finetuned FLAN-T5 Text Generation ( Financial Alpaca )</title><link href="/2023/05/25/fingen_flant5_finetuned_alpaca_en.html" rel="alternate" type="text/html" title="Financial Finetuned FLAN-T5 Text Generation ( Financial Alpaca )" /><published>2023-05-25T00:00:00+00:00</published><updated>2023-05-25T00:00:00+00:00</updated><id>/2023/05/25/fingen_flant5_finetuned_alpaca_en</id><content type="html" xml:base="/2023/05/25/fingen_flant5_finetuned_alpaca_en.html">## Description
 
 The `fingen_flant5_finetuned_alpaca` model is the Text Generation model that has been fine-tuned on FLAN-T5 using Financial Alpaca dataset. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text-generation tasks.
 
@@ -696,253 +681,203 @@ val result = pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|en|
 |Size:|1.1 GB|
-|Case sensitive:|true|</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="clinical" /><category term="en" /><category term="biogpt" /><category term="pubmed" /><category term="question_answering" /><category term="tensorflow" /><summary type="html">Description This model is directly ported from the  official BioGPT implementation  that is trained on Pubmed abstracts and then finetuned with PubmedQA dataset. It is the baseline version called BioGPT-QA-PubMedQA-BioGPT. It can generate two types of answers, short and long. Types of questions are supported: &quot;short&quot;(producing yes/no/maybe) answers and &quot;full&quot; (long answers). Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = MultiDocumentAssembler()\ .setInputCols(&quot;question&quot;, &quot;context&quot;)\ .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;) med_qa = sparknlp_jsl.annotators.MedicalQuestionAnswering\ .pretrained(&quot;medical_qa_biogpt&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document_question&quot;, &quot;document_context&quot;])\ .setOutputCol(&quot;answer&quot;)\ .setMaxNewTokens(30)\ .setTopK(1)\ .setQuestionType(&quot;long&quot;) # &quot;short&quot; pipeline = Pipeline(stages=[document_assembler, med_qa]) paper_abstract = &quot;The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility.&quot; long_question = &quot;What is the effect of directing attention on memory?&quot; yes_no_question = &quot;Does directing attention improve memory for items?&quot; data = spark.createDataFrame( [ [long_question, paper_abstract, &quot;long&quot;], [yes_no_question, paper_abstract, &quot;short&quot;], ] ).toDF(&quot;question&quot;, &quot;context&quot;, &quot;question_type&quot;) pipeline.fit(data).transform(data.where(&quot;question_type == 'long'&quot;))\ .select(&quot;answer.result&quot;)\ .show(truncate=False) ############################### # for short ansver med_qa.setQuestionType(&quot;short&quot;) # &quot;long&quot; pipeline = Pipeline(stages=[document_assembler, med_qa]) pipeline.fit(data).transform(data.where(&quot;question_type == 'short'&quot;))\ .select(&quot;answer.result&quot;)\ .show(truncate=False) val document_assembler = new MultiDocumentAssembler() .setInputCols(&quot;question&quot;, &quot;context&quot;) .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;) val med_qa = MedicalQuestionAnswering .pretrained(&quot;medical_qa_biogpt&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document_question&quot;, &quot;document_context&quot;)) .setOutputCol(&quot;answer&quot;) .setMaxNewTokens(30) .setTopK(1) .setQuestionType(&quot;long&quot;) # &quot;short&quot; val pipeline = new Pipeline().setStages(Array(document_assembler, med_qa)) paper_abstract = &quot;The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility.&quot; long_question = &quot;What is the effect of directing attention on memory?&quot; yes_no_question = &quot;Does directing attention improve memory for items?&quot; val data = Seq( (long_question, paper_abstract,&quot;long&quot; ), (yes_no_question, paper_abstract, &quot;short&quot;)) .toDS.toDF(&quot;question&quot;, &quot;context&quot;, &quot;question_type&quot;) val result = pipeline.fit(data).transform(data) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[The effect of directing attention on memory is that it can help to improve the accuracy and recall of a document. It can help to improve the accuracy of a document by allowing the user to quickly and easily access the information they need. It can also help to improve the overall efficiency of a document by allowing the user to quickly]| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: medical_qa_biogpt Compatibility: Healthcare NLP 4.4.2+ License: Licensed Edition: Official Language: en Size: 1.1 GB Case sensitive: true</summary></entry><entry><title type="html">Understanding Restriction Level of Assignment Clauses(Bert)</title><link href="/2023/05/17/legclf_nda_assigments_bert_en.html" rel="alternate" type="text/html" title="Understanding Restriction Level of Assignment Clauses(Bert)" /><published>2023-05-17T00:00:00+00:00</published><updated>2023-05-17T00:00:00+00:00</updated><id>/2023/05/17/legclf_nda_assigments_bert_en</id><content type="html" xml:base="/2023/05/17/legclf_nda_assigments_bert_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+|Case sensitive:|true|</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="clinical" /><category term="en" /><category term="biogpt" /><category term="pubmed" /><category term="question_answering" /><category term="tensorflow" /><summary type="html">Description This model is directly ported from the  official BioGPT implementation  that is trained on Pubmed abstracts and then finetuned with PubmedQA dataset. It is the baseline version called BioGPT-QA-PubMedQA-BioGPT. It can generate two types of answers, short and long. Types of questions are supported: &quot;short&quot;(producing yes/no/maybe) answers and &quot;full&quot; (long answers). Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = MultiDocumentAssembler()\ .setInputCols(&quot;question&quot;, &quot;context&quot;)\ .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;) med_qa = sparknlp_jsl.annotators.MedicalQuestionAnswering\ .pretrained(&quot;medical_qa_biogpt&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document_question&quot;, &quot;document_context&quot;])\ .setOutputCol(&quot;answer&quot;)\ .setMaxNewTokens(30)\ .setTopK(1)\ .setQuestionType(&quot;long&quot;) # &quot;short&quot; pipeline = Pipeline(stages=[document_assembler, med_qa]) paper_abstract = &quot;The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility.&quot; long_question = &quot;What is the effect of directing attention on memory?&quot; yes_no_question = &quot;Does directing attention improve memory for items?&quot; data = spark.createDataFrame( [ [long_question, paper_abstract, &quot;long&quot;], [yes_no_question, paper_abstract, &quot;short&quot;], ] ).toDF(&quot;question&quot;, &quot;context&quot;, &quot;question_type&quot;) pipeline.fit(data).transform(data.where(&quot;question_type == 'long'&quot;))\ .select(&quot;answer.result&quot;)\ .show(truncate=False) ############################### # for short ansver med_qa.setQuestionType(&quot;short&quot;) # &quot;long&quot; pipeline = Pipeline(stages=[document_assembler, med_qa]) pipeline.fit(data).transform(data.where(&quot;question_type == 'short'&quot;))\ .select(&quot;answer.result&quot;)\ .show(truncate=False) val document_assembler = new MultiDocumentAssembler() .setInputCols(&quot;question&quot;, &quot;context&quot;) .setOutputCols(&quot;document_question&quot;, &quot;document_context&quot;) val med_qa = MedicalQuestionAnswering .pretrained(&quot;medical_qa_biogpt&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document_question&quot;, &quot;document_context&quot;)) .setOutputCol(&quot;answer&quot;) .setMaxNewTokens(30) .setTopK(1) .setQuestionType(&quot;long&quot;) # &quot;short&quot; val pipeline = new Pipeline().setStages(Array(document_assembler, med_qa)) paper_abstract = &quot;The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility.&quot; long_question = &quot;What is the effect of directing attention on memory?&quot; yes_no_question = &quot;Does directing attention improve memory for items?&quot; val data = Seq( (long_question, paper_abstract,&quot;long&quot; ), (yes_no_question, paper_abstract, &quot;short&quot;)) .toDS.toDF(&quot;question&quot;, &quot;context&quot;, &quot;question_type&quot;) val result = pipeline.fit(data).transform(data) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |result | +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[The effect of directing attention on memory is that it can help to improve the accuracy and recall of a document. It can help to improve the accuracy of a document by allowing the user to quickly and easily access the information they need. It can also help to improve the overall efficiency of a document by allowing the user to quickly]| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: medical_qa_biogpt Compatibility: Healthcare NLP 4.4.2+ License: Licensed Edition: Official Language: en Size: 1.1 GB Case sensitive: true</summary></entry><entry><title type="html">Understanding Restriction Level of Assignment Clauses(Bert)</title><link href="/2023/05/17/legclf_nda_assigments_bert_en.html" rel="alternate" type="text/html" title="Understanding Restriction Level of Assignment Clauses(Bert)" /><published>2023-05-17T00:00:00+00:00</published><updated>2023-05-17T00:00:00+00:00</updated><id>/2023/05/17/legclf_nda_assigments_bert_en</id><content type="html" xml:base="/2023/05/17/legclf_nda_assigments_bert_en.html">## Description
 
-&lt;p&gt;Given a clause classified as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ASSIGNMENT &lt;/code&gt; using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;legmulticlf_mnda_sections_paragraph_other&lt;/code&gt; classifier, you can subclassify the sentences as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PERMISSIVE_ASSIGNMENT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RESTRICTIVE_ASSIGNMENT&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OTHER&lt;/code&gt; from it using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;legclf_nda_assigments_bert&lt;/code&gt; model. It has been trained with the SOTA approach.&lt;/p&gt;
+Given a clause classified as `ASSIGNMENT ` using the `legmulticlf_mnda_sections_paragraph_other` classifier, you can subclassify the sentences as `PERMISSIVE_ASSIGNMENT`, `RESTRICTIVE_ASSIGNMENT` or `OTHER` from it using the `legclf_nda_assigments_bert` model. It has been trained with the SOTA approach.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PERMISSIVE_ASSIGNMENT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RESTRICTIVE_ASSIGNMENT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OTHER&lt;/code&gt;&lt;/p&gt;
+`PERMISSIVE_ASSIGNMENT`, `RESTRICTIVE_ASSIGNMENT`, `OTHER`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_nda_assigments_bert_en_1.0.0_3.0_1684350248553.zip&quot; class=&quot;button button-orange&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legclf_nda_assigments_bert_en_1.0.0_3.0_1684350248553.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_nda_assigments_bert_en_1.0.0_3.0_1684350248553.zip){:.button.button-orange}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legclf_nda_assigments_bert_en_1.0.0_3.0_1684350248553.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
 
-&lt;span class=&quot;n&quot;&gt;sequence_classifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legclf_nda_assigments_bert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxSentenceLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+```python
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sequence_classifier&lt;/span&gt;    
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+tokenizer = nlp.Tokenizer()\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;n&quot;&gt;empty_df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+sequence_classifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_nda_assigments_bert&quot;, &quot;en&quot;, &quot;legal/models&quot;)\
+    .setInputCols([&quot;document&quot;,&quot;token&quot;])\
+    .setOutputCol(&quot;class&quot;)\
+    .setCaseSensitive(True)\
+    .setMaxSentenceLength(512)
 
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+clf_pipeline = nlp.Pipeline(stages=[
+    document_assembler, 
+    tokenizer,
+    sequence_classifier    
+])
 
-&lt;span class=&quot;n&quot;&gt;text_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;This Agreement will be binding upon and inure to the benefit of each Party and its respective heirs, successors and assigns&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;All notices and other communications provided for in this Agreement and the other Loan Documents shall be in writing and may (subject to paragraph (b) below) be telecopied (faxed), mailed by certified mail return receipt requested, or delivered by hand or overnight courier service to the intended recipient at the addresses specified below or at such other address as shall be designated by any party listed below in a notice to the other parties listed below given in accordance with this Section.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;This Agreement is a personal contract for XCorp, and the rights and interests of XCorp hereunder may not be sold, transferred, assigned, pledged or hypothecated except as otherwise expressly permitted by the Company&quot;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+empty_df = spark.createDataFrame([['']]).toDF(&quot;text&quot;)
 
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
+model = clf_pipeline.fit(empty_df)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+text_list = [
+&quot;&quot;&quot;This Agreement will be binding upon and inure to the benefit of each Party and its respective heirs, successors and assigns&quot;&quot;&quot;,
+&quot;&quot;&quot;All notices and other communications provided for in this Agreement and the other Loan Documents shall be in writing and may (subject to paragraph (b) below) be telecopied (faxed), mailed by certified mail return receipt requested, or delivered by hand or overnight courier service to the intended recipient at the addresses specified below or at such other address as shall be designated by any party listed below in a notice to the other parties listed below given in accordance with this Section.&quot;&quot;&quot;,
+&quot;&quot;&quot;This Agreement is a personal contract for XCorp, and the rights and interests of XCorp hereunder may not be sold, transferred, assigned, pledged or hypothecated except as otherwise expressly permitted by the Company&quot;&quot;&quot;
+]
+
+df = spark.createDataFrame(pd.DataFrame({&quot;text&quot; : text_list}))
+
+result = model.transform(df)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------------------------------------------------------------------------------+----------------------+
+```bash
++--------------------------------------------------------------------------------+----------------------+
 |                                                                            text|                 class|
 +--------------------------------------------------------------------------------+----------------------+
 |This Agreement will be binding upon and inure to the benefit of each Party an...| PERMISSIVE_ASSIGNMENT|
-|All notices and other communications provided &lt;span class=&quot;k&quot;&gt;for in &lt;/span&gt;this Agreement and the o...|                 OTHER|
-|This Agreement is a personal contract &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;XCorp, and the rights and interests...|RESTRICTIVE_ASSIGNMENT|
+|All notices and other communications provided for in this Agreement and the o...|                 OTHER|
+|This Agreement is a personal contract for XCorp, and the rights and interests...|RESTRICTIVE_ASSIGNMENT|
 +--------------------------------------------------------------------------------+----------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legclf_nda_assigments_bert&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[document, token]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[class]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;406.4 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Case sensitive:&lt;/td&gt;
-      &lt;td&gt;true&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Max sentence length:&lt;/td&gt;
-      &lt;td&gt;512&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legclf_nda_assigments_bert|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document, token]|
+|Output Labels:|[class]|
+|Language:|en|
+|Size:|406.4 MB|
+|Case sensitive:|true|
+|Max sentence length:|512|
 
-&lt;h2 id=&quot;sample-text-from-the-training-dataset&quot;&gt;Sample text from the training dataset&lt;/h2&gt;
+## Sample text from the training dataset
 
-&lt;p&gt;In-house annotations on the Non-disclosure Agreements&lt;/p&gt;
+In-house annotations on the Non-disclosure Agreements
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label                   precision  recall  f1-score  support 
+```bash
+label                   precision  recall  f1-score  support 
 OTHER                   0.98       1.00    0.99      124     
 PERMISSIVE_ASSIGNMENT   1.00       0.93    0.97      15      
 RESTRICTIVE_ASSIGNMENT  1.00       0.96    0.98      25      
 accuracy                -          -       0.99      164     
 macro avg               0.99       0.96    0.98      164     
 weighted avg            0.99       0.99    0.99      164     
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="legal" /><category term="licensed" /><category term="bert" /><category term="nda" /><category term="classification" /><category term="assigments" /><category term="tensorflow" /><summary type="html">Description Given a clause classified as ASSIGNMENT using the legmulticlf_mnda_sections_paragraph_other classifier, you can subclassify the sentences as PERMISSIVE_ASSIGNMENT, RESTRICTIVE_ASSIGNMENT or OTHER from it using the legclf_nda_assigments_bert model. It has been trained with the SOTA approach. Predicted Entities PERMISSIVE_ASSIGNMENT, RESTRICTIVE_ASSIGNMENT, OTHER Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) sequence_classifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_nda_assigments_bert&quot;, &quot;en&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;document&quot;,&quot;token&quot;])\ .setOutputCol(&quot;class&quot;)\ .setCaseSensitive(True)\ .setMaxSentenceLength(512) clf_pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequence_classifier ]) empty_df = spark.createDataFrame([['']]).toDF(&quot;text&quot;) model = clf_pipeline.fit(empty_df) text_list = [ &quot;&quot;&quot;This Agreement will be binding upon and inure to the benefit of each Party and its respective heirs, successors and assigns&quot;&quot;&quot;, &quot;&quot;&quot;All notices and other communications provided for in this Agreement and the other Loan Documents shall be in writing and may (subject to paragraph (b) below) be telecopied (faxed), mailed by certified mail return receipt requested, or delivered by hand or overnight courier service to the intended recipient at the addresses specified below or at such other address as shall be designated by any party listed below in a notice to the other parties listed below given in accordance with this Section.&quot;&quot;&quot;, &quot;&quot;&quot;This Agreement is a personal contract for XCorp, and the rights and interests of XCorp hereunder may not be sold, transferred, assigned, pledged or hypothecated except as otherwise expressly permitted by the Company&quot;&quot;&quot; ] df = spark.createDataFrame(pd.DataFrame({&quot;text&quot; : text_list})) result = model.transform(df) Results +--------------------------------------------------------------------------------+----------------------+ | text| class| +--------------------------------------------------------------------------------+----------------------+ |This Agreement will be binding upon and inure to the benefit of each Party an...| PERMISSIVE_ASSIGNMENT| |All notices and other communications provided for in this Agreement and the o...| OTHER| |This Agreement is a personal contract for XCorp, and the rights and interests...|RESTRICTIVE_ASSIGNMENT| +--------------------------------------------------------------------------------+----------------------+ Model Information Model Name: legclf_nda_assigments_bert Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: en Size: 406.4 MB Case sensitive: true Max sentence length: 512 Sample text from the training dataset In-house annotations on the Non-disclosure Agreements Benchmarking label precision recall f1-score support OTHER 0.98 1.00 0.99 124 PERMISSIVE_ASSIGNMENT 1.00 0.93 0.97 15 RESTRICTIVE_ASSIGNMENT 1.00 0.96 0.98 25 accuracy - - 0.99 164 macro avg 0.99 0.96 0.98 164 weighted avg 0.99 0.99 0.99 164</summary></entry><entry><title type="html">Understanding Non-compete Items in Non-Compete Clauses (Bert)</title><link href="/2023/05/17/legclf_nda_non_compete_items_bert_en.html" rel="alternate" type="text/html" title="Understanding Non-compete Items in Non-Compete Clauses (Bert)" /><published>2023-05-17T00:00:00+00:00</published><updated>2023-05-17T00:00:00+00:00</updated><id>/2023/05/17/legclf_nda_non_compete_items_bert_en</id><content type="html" xml:base="/2023/05/17/legclf_nda_non_compete_items_bert_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="legal" /><category term="licensed" /><category term="bert" /><category term="nda" /><category term="classification" /><category term="assigments" /><category term="tensorflow" /><summary type="html">Description Given a clause classified as ASSIGNMENT using the legmulticlf_mnda_sections_paragraph_other classifier, you can subclassify the sentences as PERMISSIVE_ASSIGNMENT, RESTRICTIVE_ASSIGNMENT or OTHER from it using the legclf_nda_assigments_bert model. It has been trained with the SOTA approach. Predicted Entities PERMISSIVE_ASSIGNMENT, RESTRICTIVE_ASSIGNMENT, OTHER Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) sequence_classifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_nda_assigments_bert&quot;, &quot;en&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;document&quot;,&quot;token&quot;])\ .setOutputCol(&quot;class&quot;)\ .setCaseSensitive(True)\ .setMaxSentenceLength(512) clf_pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequence_classifier ]) empty_df = spark.createDataFrame([['']]).toDF(&quot;text&quot;) model = clf_pipeline.fit(empty_df) text_list = [ &quot;&quot;&quot;This Agreement will be binding upon and inure to the benefit of each Party and its respective heirs, successors and assigns&quot;&quot;&quot;, &quot;&quot;&quot;All notices and other communications provided for in this Agreement and the other Loan Documents shall be in writing and may (subject to paragraph (b) below) be telecopied (faxed), mailed by certified mail return receipt requested, or delivered by hand or overnight courier service to the intended recipient at the addresses specified below or at such other address as shall be designated by any party listed below in a notice to the other parties listed below given in accordance with this Section.&quot;&quot;&quot;, &quot;&quot;&quot;This Agreement is a personal contract for XCorp, and the rights and interests of XCorp hereunder may not be sold, transferred, assigned, pledged or hypothecated except as otherwise expressly permitted by the Company&quot;&quot;&quot; ] df = spark.createDataFrame(pd.DataFrame({&quot;text&quot; : text_list})) result = model.transform(df) Results +--------------------------------------------------------------------------------+----------------------+ | text| class| +--------------------------------------------------------------------------------+----------------------+ |This Agreement will be binding upon and inure to the benefit of each Party an...| PERMISSIVE_ASSIGNMENT| |All notices and other communications provided for in this Agreement and the o...| OTHER| |This Agreement is a personal contract for XCorp, and the rights and interests...|RESTRICTIVE_ASSIGNMENT| +--------------------------------------------------------------------------------+----------------------+ Model Information Model Name: legclf_nda_assigments_bert Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: en Size: 406.4 MB Case sensitive: true Max sentence length: 512 Sample text from the training dataset In-house annotations on the Non-disclosure Agreements Benchmarking label precision recall f1-score support OTHER 0.98 1.00 0.99 124 PERMISSIVE_ASSIGNMENT 1.00 0.93 0.97 15 RESTRICTIVE_ASSIGNMENT 1.00 0.96 0.98 25 accuracy - - 0.99 164 macro avg 0.99 0.96 0.98 164 weighted avg 0.99 0.99 0.99 164</summary></entry><entry><title type="html">Understanding Non-compete Items in Non-Compete Clauses (Bert)</title><link href="/2023/05/17/legclf_nda_non_compete_items_bert_en.html" rel="alternate" type="text/html" title="Understanding Non-compete Items in Non-Compete Clauses (Bert)" /><published>2023-05-17T00:00:00+00:00</published><updated>2023-05-17T00:00:00+00:00</updated><id>/2023/05/17/legclf_nda_non_compete_items_bert_en</id><content type="html" xml:base="/2023/05/17/legclf_nda_non_compete_items_bert_en.html">## Description
 
-&lt;p&gt;Given a clause classified as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NON_COMP&lt;/code&gt; using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;legmulticlf_mnda_sections_paragraph_other&lt;/code&gt; classifier, you can subclassify the sentences as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NON_COMPETE_ITEMS&lt;/code&gt;, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OTHER&lt;/code&gt; from it using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;legclf_nda_non_compete_items_bert&lt;/code&gt; model. It has been trained with the SOTA approach.&lt;/p&gt;
+Given a clause classified as `NON_COMP` using the `legmulticlf_mnda_sections_paragraph_other` classifier, you can subclassify the sentences as `NON_COMPETE_ITEMS`, or `OTHER` from it using the `legclf_nda_non_compete_items_bert` model. It has been trained with the SOTA approach.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NON_COMPETE_ITEMS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OTHER&lt;/code&gt;&lt;/p&gt;
+`NON_COMPETE_ITEMS`, `OTHER`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_nda_non_compete_items_bert_en_1.0.0_3.0_1684358961459.zip&quot; class=&quot;button button-orange&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legclf_nda_non_compete_items_bert_en_1.0.0_3.0_1684358961459.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_nda_non_compete_items_bert_en_1.0.0_3.0_1684358961459.zip){:.button.button-orange}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legclf_nda_non_compete_items_bert_en_1.0.0_3.0_1684358961459.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
 
-&lt;span class=&quot;n&quot;&gt;sequence_classifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legclf_nda_non_compete_items_bert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxSentenceLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+```python
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sequence_classifier&lt;/span&gt;    
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+tokenizer = nlp.Tokenizer()\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;n&quot;&gt;empty_df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+sequence_classifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_nda_non_compete_items_bert&quot;, &quot;en&quot;, &quot;legal/models&quot;)\
+    .setInputCols([&quot;document&quot;, &quot;token&quot;])\
+    .setOutputCol(&quot;class&quot;)\
+    .setCaseSensitive(True)\
+    .setMaxSentenceLength(512)
 
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+clf_pipeline = nlp.Pipeline(stages=[
+    document_assembler, 
+    tokenizer,
+    sequence_classifier    
+])
 
-&lt;span class=&quot;n&quot;&gt;text_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;This Agreement will be binding upon and inure to the benefit of each Party and its respective heirs, successors and assigns&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Activity that is in direct competition with the Company's business, including but not limited to developing, marketing, or selling products or services that are similar to those of the Company.&quot;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+empty_df = spark.createDataFrame([['']]).toDF(&quot;text&quot;)
 
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
+model = clf_pipeline.fit(empty_df)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+text_list = [
+&quot;&quot;&quot;This Agreement will be binding upon and inure to the benefit of each Party and its respective heirs, successors and assigns&quot;&quot;&quot;,
+&quot;&quot;&quot;Activity that is in direct competition with the Company's business, including but not limited to developing, marketing, or selling products or services that are similar to those of the Company.&quot;&quot;&quot;
+]
+
+df = spark.createDataFrame(pd.DataFrame({&quot;text&quot; : text_list}))
+
+result = model.transform(df)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------------------------------------------------------------------------------+-----------------+
+```bash
++--------------------------------------------------------------------------------+-----------------+
 |                                                                            text|            class|
 +--------------------------------------------------------------------------------+-----------------+
 |This Agreement will be binding upon and inure to the benefit of each Party an...|            OTHER|
-|Activity that is &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;direct competition with the Company&lt;span class=&quot;s1&quot;&gt;'s business, including...|NON_COMPETE_ITEMS|
+|Activity that is in direct competition with the Company's business, including...|NON_COMPETE_ITEMS|
 +--------------------------------------------------------------------------------+-----------------+
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legclf_nda_non_compete_items_bert&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[document, token]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[class]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;406.4 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Case sensitive:&lt;/td&gt;
-      &lt;td&gt;true&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Max sentence length:&lt;/td&gt;
-      &lt;td&gt;512&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legclf_nda_non_compete_items_bert|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document, token]|
+|Output Labels:|[class]|
+|Language:|en|
+|Size:|406.4 MB|
+|Case sensitive:|true|
+|Max sentence length:|512|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;In-house annotations on the Non-disclosure Agreements&lt;/p&gt;
+In-house annotations on the Non-disclosure Agreements
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label              precision  recall  f1-score  support 
+```bash
+label              precision  recall  f1-score  support 
 NON_COMPETE_ITEMS  1.00       1.00    1.00      10      
 OTHER              1.00       1.00    1.00      64      
 accuracy           -          -       1.00      74      
 macro avg          1.00       1.00    1.00      74      
 weighted avg       1.00       1.00    1.00      74  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="legal" /><category term="licensed" /><category term="bert" /><category term="classification" /><category term="nda" /><category term="non_compete" /><category term="tensorflow" /><summary type="html">Description Given a clause classified as NON_COMP using the legmulticlf_mnda_sections_paragraph_other classifier, you can subclassify the sentences as NON_COMPETE_ITEMS, or OTHER from it using the legclf_nda_non_compete_items_bert model. It has been trained with the SOTA approach. Predicted Entities NON_COMPETE_ITEMS, OTHER Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) sequence_classifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_nda_non_compete_items_bert&quot;, &quot;en&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;class&quot;)\ .setCaseSensitive(True)\ .setMaxSentenceLength(512) clf_pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequence_classifier ]) empty_df = spark.createDataFrame([['']]).toDF(&quot;text&quot;) model = clf_pipeline.fit(empty_df) text_list = [ &quot;&quot;&quot;This Agreement will be binding upon and inure to the benefit of each Party and its respective heirs, successors and assigns&quot;&quot;&quot;, &quot;&quot;&quot;Activity that is in direct competition with the Company's business, including but not limited to developing, marketing, or selling products or services that are similar to those of the Company.&quot;&quot;&quot; ] df = spark.createDataFrame(pd.DataFrame({&quot;text&quot; : text_list})) result = model.transform(df) Results +--------------------------------------------------------------------------------+-----------------+ | text| class| +--------------------------------------------------------------------------------+-----------------+ |This Agreement will be binding upon and inure to the benefit of each Party an...| OTHER| |Activity that is in direct competition with the Company's business, including...|NON_COMPETE_ITEMS| +--------------------------------------------------------------------------------+-----------------+ Model Information Model Name: legclf_nda_non_compete_items_bert Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: en Size: 406.4 MB Case sensitive: true Max sentence length: 512 References In-house annotations on the Non-disclosure Agreements Benchmarking label precision recall f1-score support NON_COMPETE_ITEMS 1.00 1.00 1.00 10 OTHER 1.00 1.00 1.00 64 accuracy - - 1.00 74 macro avg 1.00 1.00 1.00 74 weighted avg 1.00 1.00 1.00 74</summary></entry></feed>
+```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="legal" /><category term="licensed" /><category term="bert" /><category term="classification" /><category term="nda" /><category term="non_compete" /><category term="tensorflow" /><summary type="html">Description Given a clause classified as NON_COMP using the legmulticlf_mnda_sections_paragraph_other classifier, you can subclassify the sentences as NON_COMPETE_ITEMS, or OTHER from it using the legclf_nda_non_compete_items_bert model. It has been trained with the SOTA approach. Predicted Entities NON_COMPETE_ITEMS, OTHER Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) sequence_classifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_nda_non_compete_items_bert&quot;, &quot;en&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;class&quot;)\ .setCaseSensitive(True)\ .setMaxSentenceLength(512) clf_pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequence_classifier ]) empty_df = spark.createDataFrame([['']]).toDF(&quot;text&quot;) model = clf_pipeline.fit(empty_df) text_list = [ &quot;&quot;&quot;This Agreement will be binding upon and inure to the benefit of each Party and its respective heirs, successors and assigns&quot;&quot;&quot;, &quot;&quot;&quot;Activity that is in direct competition with the Company's business, including but not limited to developing, marketing, or selling products or services that are similar to those of the Company.&quot;&quot;&quot; ] df = spark.createDataFrame(pd.DataFrame({&quot;text&quot; : text_list})) result = model.transform(df) Results +--------------------------------------------------------------------------------+-----------------+ | text| class| +--------------------------------------------------------------------------------+-----------------+ |This Agreement will be binding upon and inure to the benefit of each Party an...| OTHER| |Activity that is in direct competition with the Company's business, including...|NON_COMPETE_ITEMS| +--------------------------------------------------------------------------------+-----------------+ Model Information Model Name: legclf_nda_non_compete_items_bert Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: en Size: 406.4 MB Case sensitive: true Max sentence length: 512 References In-house annotations on the Non-disclosure Agreements Benchmarking label precision recall f1-score support NON_COMPETE_ITEMS 1.00 1.00 1.00 10 OTHER 1.00 1.00 1.00 64 accuracy - - 1.00 74 macro avg 1.00 1.00 1.00 74 weighted avg 1.00 1.00 1.00 74</summary></entry></feed>

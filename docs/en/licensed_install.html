@@ -560,7 +560,7 @@ Clinical NLP (former Spark NLP for Healthcare) still can be run without johnsnow
 </div>
 <div class="h3-box">
 
-  <h3 id="installing-johnsnowlabs">1. Installing johnsnowlabs</h3>
+  <h4 id="installing-johnsnowlabs">1. Installing johnsnowlabs</h4>
   <p>The first step you need to carry out is installing johnsnowlabs library. This is as easy as doing:</p>
 
   <p><code class="language-plaintext highlighter-rouge">!pip install johnsnowlabs</code></p>
@@ -568,7 +568,7 @@ Clinical NLP (former Spark NLP for Healthcare) still can be run without johnsnow
 </div>
 <div class="h3-box">
 
-  <h3 id="installing-enterprise-nlp-finance-legal-clinical">2. Installing Enterprise NLP (Finance, Legal, Clinical)</h3>
+  <h4 id="installing-enterprise-nlp-finance-legal-clinical">2. Installing Enterprise NLP (Finance, Legal, Clinical)</h4>
 
   <p>Import <code class="language-plaintext highlighter-rouge">johnsnowlabs</code> and use our one-liner <code class="language-plaintext highlighter-rouge">nlp.install()</code> to install all the dependencies, downloading the jars (yes, Spark NLP runs on top of the Java Virtual Machine!), preparing the cluster environment variables, licenses, etc!</p>
 
@@ -606,7 +606,7 @@ license_keys = files.upload()
 </div>
 <div class="h3-box">
 
-  <h3 id="starting-an-enterprise-nlp-cluster">3. Starting an Enterprise NLP cluster</h3>
+  <h4 id="starting-an-enterprise-nlp-cluster">3. Starting an Enterprise NLP cluster</h4>
   <p>Another one-liner can be used to start your Enterprise Spark NLP cluster:</p>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spark = nlp.start()
@@ -616,7 +616,7 @@ license_keys = files.upload()
 </div>
 <div class="h3-box">
 
-  <h3 id="ready-to-go">4. Ready to go!</h3>
+  <h4 id="ready-to-go">4. Ready to go!</h4>
   <p>And you are done! Simple, isn’t it?
 Find hundreds of notebooks using johnsnowlabs library here:</p>
 
@@ -640,7 +640,7 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
 </div>
 <div class="h3-box">
 
-  <h3 id="connection-via-databricks-partner-connect">Connection via Databricks Partner connect</h3>
+  <h4 id="connection-via-databricks-partner-connect">Connection via Databricks Partner connect</h4>
 
   <p>Databricks has an integration of Spark NLP libraries via Partner Connect. If you are <a href="https://docs.databricks.com/integrations/partner-connect/index.html?#requirements-1">eligible</a>, you can <a href="https://docs.databricks.com/integrations/partner-connect/index.html?#quickstart-connect-to-a-partner-solution-using-partner-connect">connect</a> your Databricks workspace to John Snow Labs. The Partner Connect wizard  will redirect you to John Snow Labs portal. After you fill-in/validate your information a 30-day trial license will be automatically generated for you. A new Databricks cluster will also be created, and all necessary resources to run the library on your account will be installed on your new cluster. Furthermore, a set of ready to use notebooks will be copied to your workspace, so you can start experimenting on your data right away. The trial license file will also be deployed to your environment and made available to your cluster.</p>
 
@@ -653,7 +653,7 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
 </div>
 <div class="h3-box">
 
-  <h3 id="automatic-deployment-of-john-snow-labs-nlp-libraries-from-wwwjohnsnowlabscomdatabricks">Automatic deployment of John Snow Labs NLP libraries from <a href="https://www.johnsnowlabs.com/databricks/">www.johnsnowlabs.com/databricks</a></h3>
+  <h4 id="automatic-deployment-of-john-snow-labs-nlp-libraries-from-wwwjohnsnowlabscomdatabricks">Automatic deployment of John Snow Labs NLP libraries from <a href="https://www.johnsnowlabs.com/databricks/">www.johnsnowlabs.com/databricks</a></h4>
 
   <p>Alternatively, you can automatically deploy John Snow Labs libraries on Databricks by filling in the form available <a href="https://www.johnsnowlabs.com/databricks/">here</a>. This will allow you to start a 30-day free trial with no limit on the amount of processed data. You just need to provide a Databricks Access Token that is used by our deployment script to connect to your Databricks instance and install John Snow Labs NLP libraries on a cluster of your choice.</p>
 
@@ -664,7 +664,7 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
 </div>
 <div class="h3-box">
 
-  <h3 id="automatic-deployment-via-myjohnsnowlabscom">Automatic deployment via <a href="https://my.JohnSnowLabs.com">my.JohnSnowLabs.com</a></h3>
+  <h4 id="automatic-deployment-via-myjohnsnowlabscom">Automatic deployment via <a href="https://my.JohnSnowLabs.com">my.JohnSnowLabs.com</a></h4>
 
   <p>Login to your account on my.JohnSnowLabs.com, navigate to ‘My Subscriptions’ page, and identify your license for Databricks. Click on the three dots as illustrated in the image below, then select the <code class="language-plaintext highlighter-rouge">Install On Cluster</code> option.</p>
 
@@ -677,7 +677,7 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
 </div>
 <div class="h3-box">
 
-  <h3 id="automatic-deployment-or-upgrade-from-the-databricks-workspace">Automatic deployment or upgrade from the Databricks workspace</h3>
+  <h4 id="automatic-deployment-or-upgrade-from-the-databricks-workspace">Automatic deployment or upgrade from the Databricks workspace</h4>
 
   <p>If you have already deployed the libraries in the past, you have a script <code class="language-plaintext highlighter-rouge">Workspace -&gt; Shared -&gt; John Snow Labs -&gt; Install JohnSnowLabs NLP</code>. If you attach it to any cluster and run it, it will reinstall the libraries on the respective cluster.</p>
 
@@ -688,7 +688,7 @@ Find hundreds of notebooks using johnsnowlabs library here:</p>
 </div>
 <div class="h3-box">
 
-  <h3 id="manual-deployment-of-enterprise-spark-nlp">Manual deployment of Enterprise Spark NLP</h3>
+  <h4 id="manual-deployment-of-enterprise-spark-nlp">Manual deployment of Enterprise Spark NLP</h4>
   <p>Automatic deployment is the preferred option.</p>
 
   <ol>
@@ -760,7 +760,7 @@ The precedence for that location is the highest, so make sure that file is not c
 </div>
 <div class="h3-box">
 
-  <h3 id="how-to-correctly-install-spark-nlp-on-windows">How to correctly install Spark NLP on Windows</h3>
+  <h4 id="how-to-correctly-install-spark-nlp-on-windows">How to correctly install Spark NLP on Windows</h4>
 
   <p>Follow the below steps to set up Spark NLP with Spark 3.1.2:</p>
 
@@ -804,7 +804,7 @@ to change the permissions by running the following commands:
 </div>
 <div class="h3-box">
 
-  <h3 id="requisites-for-pyspark">Requisites for PySpark</h3>
+  <h4 id="requisites-for-pyspark">Requisites for PySpark</h4>
 
   <p>We recommend using <code class="language-plaintext highlighter-rouge">conda</code> to manage your python environment on Windows.</p>
 
@@ -849,54 +849,63 @@ running</p>
 
   <ol>
     <li>
-      <p>Install JAVA 18  - <a href="https://adoptium.net/temurin/releases/?version=18">https://adoptium.net/temurin/releases/?version=18</a><br />
-Install JAVA 8  - <a href="https://adoptium.net/temurin/releases/?version=8">https://adoptium.net/temurin/releases/?version=8</a></p>
+      <p>Download and Install JAVA 8</p>
 
-      <p>i) Once installed , we can check java is installed or not using following command  Open Cmd and type java –version</p>
-    </li>
-  </ol>
+      <p>i) Download and Install JAVA 8 from  <a href="https://adoptium.net/temurin/releases/?version=8">https://adoptium.net/temurin/releases/?version=8</a></p>
 
-  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/56176cf8-0184-4147-9923-bb00452bcf20" alt="image" /></p>
+      <p>ii) Once installed , We can check if java is installed by opening cmd and type <code class="language-plaintext highlighter-rouge">java -version</code> command</p>
 
-  <ol>
-    <li>
-      <p>Install Hadoop tools</p>
-
-      <p>i) Download the pre-compiled Hadoop binaries winutils.exe, hadoop.dll from winutils/hadoop-3.2.0/bin at master · cdarlint/winutils</p>
-
-      <p>ii) Copy files into a folder called C:\hadoop\bin</p>
+      <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/c262961e-4923-449a-b1b1-46d233c3b94d" alt="image-20230517-140723" /></p>
     </li>
     <li>
       <p>Install Microsoft Visual C++ 2010</p>
 
       <p>i)  Install Microsoft Visual C++ 2010 from <a href="https://www.microsoft.com/en-us/download/details.aspx?id=26999">Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package MFC Security Update</a></p>
-
-      <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/18b15859-2f44-4efa-b588-9e8128d4e11c" alt="image" /></p>
     </li>
     <li>
-      <p>Configure Hadoop and Spark ENV variables</p>
+      <p>Download the pre-compiled Hadoop binaries <code class="language-plaintext highlighter-rouge">winutils.exe</code>, <code class="language-plaintext highlighter-rouge">hadoop.dll</code></p>
 
-      <p>Windows Explorer → This PC  -&gt; Right Click select properties  -&gt; Click on  Advanced system settings -&gt; Click on Environment Variables  Under system variables -&gt;  Click on new</p>
+      <p>i) Download the pre-compiled Hadoop binaries winutils.exe, hadoop.dll from <a href="https://github.com/cdarlint/winutils/tree/master/hadoop-3.2.0/bin">winutils/hadoop-3.2.0/bin at master · cdarlint/winutils</a></p>
 
-      <p>Add HADOOP_HOME as below<br />
- VARIABLE Name: HADOOP_HOME VARIABLE Value: C:\hadoop</p>
-
-      <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/1d6b6ccf-7d6d-4d44-ac3c-b9aee77d862d" alt="image" /></p>
-
-      <p>Select the Path (from variable) -&gt; Click on edit → Click on New → add  %HADOOP_HOME%\bin</p>
-
-      <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/a30486b5-0994-4dcb-9e6a-484d97e4de61" alt="image" /></p>
-
-      <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/5a0aa693-40b8-4fbf-8487-06ab11fa5eab" alt="image" /></p>
+      <p>ii) Copy files into a folder called <code class="language-plaintext highlighter-rouge">C:\hadoop\bin </code></p>
     </li>
     <li>
-      <p>Configure Conda env</p>
+      <p>Configure Hadoop ENV variables</p>
+
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">Windows Explorer</code> → <code class="language-plaintext highlighter-rouge">This PC</code> -&gt; Right Click select <code class="language-plaintext highlighter-rouge">properties</code>  -&gt; Click on  <code class="language-plaintext highlighter-rouge">Advanced</code> system settings -&gt; Click on <code class="language-plaintext highlighter-rouge">Environment Variables</code> Under system variables</li>
+      </ul>
+
+      <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/d0c53899-5d49-4fdf-a3d4-1023e5250faa" alt="image-20230517-141616" /></p>
+
+      <ul>
+        <li>Add HADOOP_HOME as below</li>
+      </ul>
+
+      <p>Under system variables -&gt; Click on <code class="language-plaintext highlighter-rouge">new</code></p>
+
+      <p>VARIABLE Name: <code class="language-plaintext highlighter-rouge">HADOOP_HOME</code></p>
+
+      <p>VARIABLE Value: <code class="language-plaintext highlighter-rouge">C:\hadoop</code></p>
+
+      <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/062d9918-46d7-4ba1-8736-0cc33da13f9d" alt="image-20230517-141745" /></p>
+
+      <ul>
+        <li>Select the <code class="language-plaintext highlighter-rouge">Path</code> (from variable) -&gt; Click on <code class="language-plaintext highlighter-rouge">edit</code> → Click on <code class="language-plaintext highlighter-rouge">New</code> → add  <code class="language-plaintext highlighter-rouge">%HADOOP_HOME%\bin</code></li>
+      </ul>
+
+      <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/eca7f39c-e4c6-43fe-8a43-fa8c3a8af7b9" alt="image-20230517-141922" /></p>
+
+      <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/48426b70-a82f-4628-82a4-aff1bb5408b4" alt="image-20230517-141957" /></p>
+    </li>
+    <li>
+      <p>Dowload and Install Conda and set Conda ENV variables</p>
 
       <p>i)   Download Miniconda for python 3.8 from <a href="https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe">https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe</a></p>
 
       <p>ii)  Install miniconda exe file.</p>
 
-      <p>iii) Under system variables -&gt; Select the Path (from variable) -&gt; Click on edit -&gt; (ADD the miniconda install location)/bin (Same steps as above)</p>
+      <p>iii) <code class="language-plaintext highlighter-rouge">Under system variables</code> -&gt;  <code class="language-plaintext highlighter-rouge">Select the Path (from variable)</code> -&gt; <code class="language-plaintext highlighter-rouge">Click on edit</code> -&gt; <code class="language-plaintext highlighter-rouge">(ADD the miniconda install location)/bin</code> (Same steps as above)</p>
 
       <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/14fa36ea-d53b-476f-9ad8-1d0d442650d2" alt="image" /></p>
     </li>
@@ -977,7 +986,7 @@ jupyter notebook
 </div>
 <div class="h3-box">
 
-  <h3 id="instructions">Instructions</h3>
+  <h4 id="instructions">Instructions</h4>
 
   <ul>
     <li>Run the following commands to download the <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> and the <code class="language-plaintext highlighter-rouge">sparknlp_keys.txt</code> files on your local machine:
@@ -999,7 +1008,7 @@ curl <span class="nt">-o</span> sparknlp_keys.txt https://raw.githubusercontent.
 </div>
 <div class="h3-box">
 
-  <h3 id="troubleshooting">Troubleshooting</h3>
+  <h4 id="troubleshooting">Troubleshooting</h4>
 
   <ul>
     <li>Make sure docker is installed on your system.</li>
@@ -1031,7 +1040,7 @@ curl <span class="nt">-o</span> sparknlp_keys.txt https://raw.githubusercontent.
 </div>
 <div class="h3-box">
 
-  <h3 id="setup-aws-cli-credentials-for-licensed-pretrained-models">Setup AWS-CLI Credentials for licensed pretrained models</h3>
+  <h4 id="setup-aws-cli-credentials-for-licensed-pretrained-models">Setup AWS-CLI Credentials for licensed pretrained models</h4>
 
   <p>You need to first set up your AWS credentials to be able to access the private repository for John Snow Labs Pretrained Models.
 You can do this setup via Amazon AWS Command Line Interface (AWSCLI).</p>
@@ -1049,7 +1058,7 @@ You can do this setup via Amazon AWS Command Line Interface (AWSCLI).</p>
 </div>
 <div class="h3-box">
 
-  <h3 id="start-spark-nlp-session-from-python">Start Spark NLP Session from python</h3>
+  <h4 id="start-spark-nlp-session-from-python">Start Spark NLP Session from python</h4>
 
   <p>The following will initialize the spark session in case you have run the Jupyter Notebook directly. If you have started the notebook using
 pyspark this cell is just ignored.</p>
@@ -1090,7 +1099,7 @@ pyspark this cell is just ignored.</p>
 </div>
 <div class="h3-box">
 
-  <h3 id="cheatsheet">Cheatsheet</h3>
+  <h4 id="cheatsheet">Cheatsheet</h4>
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install Spark NLP from PyPI</span>
 pip <span class="nb">install </span>spark-nlp<span class="o">==</span>3.2.3
@@ -1117,7 +1126,7 @@ spark-submit <span class="nt">--packages</span> com.johnsnowlabs.nlp:spark-nlp_2
     <p>These instructions use non-johnsnowlabs installation syntax, since <code class="language-plaintext highlighter-rouge">johnsnowlabs</code> is a Python library.</p>
   </blockquote>
 
-  <h3 id="use-spark-nlp-in-spark-shell">Use Spark NLP in Spark shell</h3>
+  <h4 id="use-spark-nlp-in-spark-shell">Use Spark NLP in Spark shell</h4>
 
   <p>1.Download the fat jar for Enterprise Spark NLP</p>
 
