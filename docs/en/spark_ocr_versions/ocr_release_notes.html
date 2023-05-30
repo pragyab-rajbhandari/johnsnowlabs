@@ -535,49 +535,36 @@
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.3.3</h2>
+  <h2 id="section">4.4.2</h2>
 
-  <p>Release date: 14-03-2023</p>
+  <p>Release date: 30-05-2023</p>
 
-  <p>We’re glad to announce that Visual NLP 😎 4.3.3 has been released.</p>
+  <p>We are glad to announce that Visual NLP 😎 4.4.2 has been released. This is a small release with mostly bug fixes and minor improvements.</p>
 
-  <h3 id="highlights">Highlights</h3>
+  <h4 id="fixes">Fixes</h4>
   <ul>
-    <li>New parameter keepOriginalEncoding in PdfToHocr.</li>
-    <li>New Yolo-based table and form detector.</li>
-    <li>Memory consumption in VisualQuestionAnswering and ImageTableDetector models has been improved.</li>
-    <li>Fixes in AlabReader</li>
-    <li>Fixes in HocrToTextTable.</li>
+    <li>ImageTextDetectorV2 initialization bug happening in some cluster environments is now fixed.</li>
+    <li>PdfToText and PdfToHocr now return document dimensions using the same data type(integer).</li>
+    <li>Remaining 2 vulnerabilities from release 4.4.1 in JAR package are now gone.</li>
+    <li>Fixed the problem causing the following exception in HocrToTextTable:  java.lang.UnsupportedOperationException.</li>
   </ul>
 
-  <h4 id="new-parameter-keeporiginalencoding-in-pdftohocr">New parameter keepOriginalEncoding in PdfToHocr</h4>
-  <p>Now you can choose to make PdfToHocr return an ASCII normalized version of the characters present in the PDF(keepOriginalEncoding=False) or to return the original Unicode character(keepOriginalEncoding=True).
-Source PDF,
-<img src="/assets/images/ocr/source.png" alt="image" /></p>
+  <p>New Features</p>
+  <ul>
+    <li>Bounding boxes spawning multiple lines are now supported in PositionFinder!</li>
+  </ul>
 
-  <p>Keeping the encoding,
-<img src="/assets/images/ocr/keeping.png" alt="image" /></p>
+  <p>original:
+<img src="/assets/images/ocr/position_finder_1.png" alt="image" />
+masked:
+<img src="/assets/images/ocr/position_finder_2.png" alt="image" /></p>
 
-  <p>Not keeping it,
-<img src="/assets/images/ocr/notkeeping.png" alt="image" /></p>
+  <p>Here for “Lockheed Martin” PositionFinder will return two bounding boxes. Remember that you can still link the two bounding boxes to the original entity by using the ‘chunk index’.</p>
 
-  <h4 id="new-yolo-based-table-and-form-detector">New Yolo-based Table and Form detector</h4>
-  <p>This new model allows to distinguish between forms and tables, so you can apply different downstream processing afterwards.</p>
-
-  <p><img src="/assets/images/ocr/form_tables.jpg" alt="image" /></p>
-
-  <p>Check a full example of utilization in <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableAndFormDetection.ipynb">this notebook</a>.</p>
-
-  <h4 id="memory-consumption-in-visualquestionanswering-and-imagetabledetector-models-has-been-improved">Memory consumption in VisualQuestionAnswering and ImageTableDetector models has been improved</h4>
-  <p>Memory utilization has been improved to make it more GC friendly. The practical result is that big jobs are more stable, and less likely to get restarted because of exhausting resources.</p>
-
-  <h4 id="fixes-in-alabreader">Fixes in AlabReader</h4>
-  <p>AlabReader has been improved to fix some bugs, and to improve the performance.</p>
-
-  <h4 id="fixes-in-hocrtotexttable">Fixes in HocrToTextTable</h4>
-  <p>HocrToTextTable has been improved in order to better handle some corner cases in which the last rows of tables were being missed.</p>
-
-  <p>This release of Visual NLP is compatible with version 4.3.1 of Spark-NLP and version 4.3.1 of Spark NLP for Healthcare.</p>
+  <ul>
+    <li>Support for Spark 3.4.</li>
+    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/java/build_env_setup.md">Guidelines for building Visual NLP into a Java app.</a></li>
+  </ul>
 
 </div>
 <div class="prev_ver h3-box">
@@ -586,11 +573,14 @@ Source PDF,
 
 </div>
 <ul class="pagination owl-carousel pagination_big">
-    <li><a href="ocr_release_notes">4.3.3</a></li>
-    <li><a href="release_notes_4_3_1">4.3.1</a></li>    
+    <li><a href="ocr_release_notes">4.4.2</a></li>
+    <li><a href="release_notes_4_4_1">4.4.1</a></li>
+    <li><a href="release_notes_4_4_0">4.4.0</a></li>
+    <li><a href="release_notes_4_3_3">4.3.3</a></li>
     <li><a href="release_notes_4_3_0">4.3.0</a></li>
     <li><a href="release_notes_4_2_4">4.2.4</a></li>
     <li><a href="release_notes_4_2_1">4.2.1</a></li>
+    <li><a href="release_notes_4_2_0">4.2.0</a></li>
     <li><a href="release_notes_4_1_0">4.1.0</a></li>
     <li><a href="release_notes_4_0_2">4.0.2</a></li>
     <li><a href="release_notes_4_0_0">4.0.0</a></li>
@@ -626,7 +616,7 @@ Source PDF,
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-03-14T00:00:00+00:00">Mar 14, 2023</time>
+      <time itemprop="dateModified" datetime="2023-05-30T00:00:00+00:00">May 30, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
