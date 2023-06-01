@@ -535,100 +535,225 @@
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.4.2</h2>
+  <h2 id="section">4.4.3</h2>
 
   <h4 id="highlights">Highlights</h4>
 
-  <p>We are thrilled to unveil the latest set of upgrades and advancements for Spark NLP for Healthcare. This edition brings to the fore a host of remarkable enhancements and updates, which are as follows:</p>
+  <p>We are delighted to announce a suite of remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. This release comes with 30+ new clinical pretrained models and pipelines, and is a testament to our commitment to continuously innovate and improve, furnishing you with a more sophisticated and powerful toolkit for healthcare natural language processing.</p>
 
   <ul>
-    <li>The medical QA models now incorporates Flan-T5 models, significantly expanding its capacity.</li>
-    <li>We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical conditions to produce more precise descriptions when prompted.</li>
-    <li>The brand-new medical summarizer model is designed to provide summarizations of clinical guidelines under predefined categories such as causes, symptoms, and more.</li>
-    <li>Text summarization method utilizing a map-reduce approach for section-wise summarization.</li>
-    <li>New chunk mapper model to map ICD10CM codes with corresponding causes and claim analysis codes according to CDC guidelines.</li>
-    <li>The PHI obfuscation (De-identification module) now offers the ability to customize the casings of fake entities for each entity type.</li>
-    <li>Users now have the option to enable or disable the ‘gender awareness’ feature in the De-identification module.</li>
-    <li>A set of four new classifier models has been introduced, further broadening the scope of our toolkit.</li>
-    <li>We now offer new clinical NER models specifically designed for extracting clinical terms in the German language.</li>
-    <li>Core functionalities have been fine-tuned with numerous improvements and bug fixes.</li>
-    <li>We are introducing new and updated notebooks, and demonstrations, providing a more user-friendly experience.</li>
-    <li>We have added and updated a substantial number of new clinical models and pipelines, further solidifying our offering in the healthcare domain.</li>
+    <li>
+      <p>Newly introduced Arabic De-Identification NER models and pretrained pipelines</p>
+    </li>
+    <li>
+      <p>New medical summarizer model fine-tuned with a custom dataset to minimize clinical jargon in laymen terms</p>
+    </li>
+    <li>
+      <p>New Medical Summarizer Pretrained Pipelines that can be used in one line</p>
+    </li>
+    <li>
+      <p>Updated ICD-10-CM resolver and chunk mapper models aligning with the latest updates in the ICD-10-CM terminology to ensure unparalleled accuracy in clinical coding.</p>
+    </li>
+    <li>
+      <p>A new Voice of Patient (VOP) medical classifier model focusing on the side effect classification of treatments and procedures in patients’ own words.</p>
+    </li>
+    <li>
+      <p>Enhanced Social Determinants of Health (SDOH) classifier models for detecting patients’ situation according to certain conditions (under treatment or not, suffering from housing insecurity)</p>
+    </li>
+    <li>
+      <p>Introducing the innovative <code class="language-plaintext highlighter-rouge">NerTemplateRender</code> annotator to generate customized prompts for zero shot models.</p>
+    </li>
+    <li>
+      <p>Sentence-wise token indexes now available in MedicalNerModel annotator</p>
+    </li>
+    <li>
+      <p>We have also made fine-tuned improvements to core functionalities and corrected various bugs, enhancing the overall robustness and reliability of Spark NLP for Healthcare.</p>
+
+      <ul>
+        <li>
+          <p>Enhanced Gender Awareness feature: Our improved Gender Awareness feature now comes with an extended faker list, ensuring more comprehensive and accurate gender identification.</p>
+        </li>
+        <li>
+          <p>Expanded English Faker Name List: We’ve broadened the range of our English Faker Name list, allowing for more diverse and inclusive data generation.</p>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <p>Updated notebooks and demonstrations: We’re improving user experience with our updated notebooks and demonstrations, making Spark NLP for Healthcare easier to navigate and understand.</p>
+    </li>
+    <li>
+      <p>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain.</p>
+    </li>
   </ul>
 
-  <p>We are confident that these enhancements will elevate your Spark NLP for Healthcare experience, enabling more accurate and streamlined processing of healthcare-related natural language data.</p>
+  <p>We believe that these enhancements will elevate your experience with Spark NLP for Healthcare, enabling a more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="the-medical-qa-models-now-incorporates-flan-t5-models-significantly-expanding-its-capacity">The Medical QA Models Now Incorporates Flan-T5 Models, Significantly Expanding Its Capacity</h4>
+  <h4 id="newly-introduced-arabic-de-identification-ner-models-and-pretrained-pipelines">Newly Introduced Arabic De-Identification NER Models And Pretrained Pipelines</h4>
 
-  <p>The newly incorporated <code class="language-plaintext highlighter-rouge">flan_t5_base_jsl_qa</code> model is meticulously designed to function seamlessly with the MedicalQuestionAnswering annotator. This innovative model is engineered to offer an efficacious solution for providing accurate answers and insightful information across a broad spectrum of domains. It is important to note that this is a general model and has not yet been fine-tuned for clinical texts. However, we are planning to carry out this specialized fine-tuning in our upcoming releases, further enhancing its applicability and precision in the clinical context.</p>
+  <p>We’re thrilled to present our newly-integrated Arabic deidentification Named Entity Recognition (NER) models, featuring two diverse approaches. The first model provides granular entity recognition with 17 entities, while the other offers a more generic approach, identifying 8 entities. These models are accompanied by corresponding pretrained pipelines that can be deployed in a streamlined one-liner format.</p>
 
-  <p><em>Example</em>:</p>
+  <p>Designed explicitly for deidentification tasks in Arabic language, these models and pipelines leverage our proprietary dataset curation and specialized augmentation methods. This expansion broadens the linguistic scope of our toolset, underscoring our commitment to providing comprehensive solutions for global healthcare NLP needs.</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">med_qa</span> <span class="o">=</span> <span class="n">MedicalQuestionAnswering</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"flan_t5_base_jsl_qa"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"answer"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setCustomPrompt</span><span class="p">(</span><span class="s">"Question: {QUESTION}. Context: {DOCUMENT}"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setTopK</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    
+  <table>
+    <thead>
+      <tr>
+        <th>NER model</th>
+        <th>pipeline</th>
+        <th>description</th>
+        <th>predicted entities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/29/ner_deid_subentity_ar.html"><code class="language-plaintext highlighter-rouge">ner_deid_subentity</code></a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/ner_deid_subentity_pipeline_ar.html"><code class="language-plaintext highlighter-rouge">ner_deid_subentity_pipeline</code></a></td>
+        <td>This model/pipeline can detect protected health information (PHI) entities with 17 different labels.</td>
+        <td><code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">SEX</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">AGE</code></td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/30/ner_deid_generic_ar.html"><code class="language-plaintext highlighter-rouge">ner_deid_generic</code></a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/ner_deid_generic_pipeline_ar.html"><code class="language-plaintext highlighter-rouge">ner_deid_generic_pipeline</code></a></td>
+        <td>This model/pipeline can detect PHI entities with 8 different labels.</td>
+        <td><code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">SEX</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">AGE</code></td>
+      </tr>
+    </tbody>
+  </table>
 
-<span class="n">paper_abstract</span> <span class="o">=</span> <span class="s">"We have previously reported the feasibility of diagnostic and therapeutic peritoneoscopy including liver biopsy, gastrojejunostomy, and tubal ligation by an oral transgastric approach. We present results of per-oral transgastric splenectomy in a porcine model. The goal of this study was to determine the technical feasibility of per-oral transgastric splenectomy using a flexible endoscope. We performed acute experiments on 50-kg pigs. All animals were fed liquids for 3 days prior to procedure. The procedures were performed under general anesthesia with endotracheal intubation. The flexible endoscope was passed per orally into the stomach and puncture of the gastric wall was performed with a needle knife. The puncture was extended to create a 1.5-cm incision using a pull-type sphincterotome, and a double-channel endoscope was advanced into the peritoneal cavity. The peritoneal cavity was insufflated with air through the endoscope. The spleen was visualized. The splenic vessels were ligated with endoscopic loops and clips, and then mesentery was dissected using electrocautery. Endoscopic splenectomy was performed on six pigs. There were no complications during gastric incision and entrance into the peritoneal cavity. Visualization of the spleen and other intraperitoneal organs was very good. Ligation of the splenic vessels and mobilization of the spleen were achieved using commercially available devices and endoscopic accessories."</span>
+  <p><em>NER Model Example</em>:</p>
 
-<span class="n">question</span> <span class="o">=</span> <span class="s">"How is transgastric endoscopic performed?"</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_deid_subentity"</span><span class="p">,</span> <span class="s">"ar"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><em>Pretrained Pipeline Examle</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_deid_generic_pipeline"</span><span class="p">,</span> <span class="s">"ar"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">'''
+عالج الدكتور محمد المريض أحمد البالغ من العمر 55 سنة  في 15/05/2000  في مستشفى مدينة الرباط. رقم هاتفه هو  0610948235 وبريده الإلكتروني
+mohamedmell@gmail.com.'''</span>
+
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="s1">'Transgastric endoscopic surgery is a type of surgery that involves removing the obstructions from the heart and lungs. It involves removing the trachea, a small artery, and a small sphincter. The trachea is then removed and the sphincter is removed.'</span><span class="o">]</span>
-</code></pre></div>  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: right">chunk</th>
+        <th style="text-align: left">ner_label</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: right">محمد</td>
+        <td style="text-align: left">DOCTOR</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">55 سنة</td>
+        <td style="text-align: left">AGE</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">15/05/2000</td>
+        <td style="text-align: left">DATE</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">الرباط</td>
+        <td style="text-align: left">CITY</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">0610948235</td>
+        <td style="text-align: left">PHONE</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">mohamedmell@gmail.com</td>
+        <td style="text-align: left">EMAIL</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>You can check the  <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.1.Clinical_Multi_Language_Deidentification.ipynb">Multi Language Deidentification Notebook</a> for more examples and see the <a href="https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS_AR/">NER DEMOGRAPHICS ARABIC</a> demo.</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="introducing-a-newly-finetuned-biogpt-chat-jsl-model-based-on-clinical-conditions">Introducing a Newly Finetuned biogpt-chat-jsl Model, based on Clinical Conditions.</h4>
+  <h4 id="new-medical-summarizer-model-fine-tuned-with-a-custom-dataset-to-minimize-clinical-jargon-in-laymen-terms">New Medical Summarizer Model Fine-Tuned With A Custom Dataset To Minimize Clinical Jargon In Laymen Terms</h4>
 
-  <p>We are excited to present our newly fine-tuned biogpt-chat-jsl model. This model, known as <code class="language-plaintext highlighter-rouge">biogpt_chat_jsl_conditions</code>, is based on the robust BioGPT architecture and has been meticulously fine-tuned with questions pertaining to a wide array of medical conditions.</p>
+  <p>We are delighted to announce the release of our <a href="https://nlp.johnsnowlabs.com/2023/05/29/summarizer_clinical_laymen_en.html">summarizer_clinical_laymen</a> model, a refined variant of our Flan-T5 (LLM) based summarization model. This model has been carefully fine-tuned with a custom dataset curated by John Snow Labs, expressly designed to minimize the use of clinical terminology in the generated summaries. The summarizer_clinical_laymen model is capable of producing summaries of up to <strong>512 tokens</strong> from an input text of a maximum of 1024 tokens.</p>
 
-  <p>Our team has concentrated on emphasizing the Q&amp;A aspect, making it less conversational but highly focused on delivering accurate and insightful answers. This enhanced focus on question answering ensures that users can extract critical and relevant information quickly and accurately. This strategic fine-tuning with clinical guidelines strengthens the model’s ability to provide superior results in the realm of medical NLP.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gpt_qa</span> <span class="o">=</span> <span class="n">MedicalTextGenerator</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"biogpt_chat_jsl_conditions"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"documents"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"answer"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">199</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">"What are the potential causes and risk factors for developing cardiovascular disease?"</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Cardiovascular disease <span class="o">(</span> CVD <span class="o">)</span> is a general term <span class="k">for </span>conditions affecting the heart or blood vessels. 
-It can be caused by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. Certain medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="the-brand-new-medical-summarizer-model-designed-to-provide-summarizations-of-clinical-guidelines-under-predefined-categories-such-as-causes-symptoms-and-more">The Brand-New Medical Summarizer Model Designed To Provide Summarizations Of Clinical Guidelines Under Predefined Categories Such As Causes, Symptoms, And More.</h4>
-
-  <p>We are pleased to introduce the <code class="language-plaintext highlighter-rouge">summarizer_clinical_guidelines_large</code> model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.</p>
-
-  <p>One of the notable features of this model is its ability to neatly categorize summarizations into four distinct sections: Overview, Causes, Symptoms, and Treatments. This systematic segregation facilitates ease of understanding and aids in extracting specific information more efficiently.</p>
-
-  <p>An additional technical specification to note is the model’s context length, which stands at 768 tokens. This parameter ensures an optimal balance between detail and brevity, allowing for comprehensive yet concise summarizations.</p>
+  <p>This innovation embodies our commitment to providing user-friendly and accessible NLP solutions, making it easier for non-clinical personnel and patients to comprehend medical summaries without losing critical information.</p>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">summarizer</span> <span class="o">=</span> <span class="n">MedicalSummarizer</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"summarizer_clinical_guidelines_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">summarizer</span> <span class="o">=</span> <span class="n">MedicalSummarizer</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"summarizer_clinical_laymen"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">768</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
 
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Jennifer was seen in my office for evaluation for elective surgical weight loss on October 6, 2008. ABC is a 34-year-old female with a BMI of 43. She is 5'6" tall and weighs 267 pounds. She is motivated to attempt surgical weight loss because she has been overweight for over 20 years and wants to have more energy and improve her self-image. She is not only affected physically, but also socially by her weight. When she loses weight she always regains it and she always gains back more weight than she has lost. At one time, she lost 100 pounds and gained the weight back within a year. She has tried numerous commercial weight loss programs including Weight Watcher's for four months in 1992 with 15-pound weight loss, RS for two months in 1990 with six-pound weight loss, Slim Fast for six weeks in 2004 with eight-pound weight loss, an exercise program for two months in 2007 with a five-pound weight loss, Atkin's Diet for three months in 2008 with a ten-pound weight loss, and Dexatrim for one month in 2005 with a five-pound weight loss. She has also tried numerous fat reduction or fad diets. She was on Redux for nine months with a 100-pound weight loss.</span><span class="se">\n\n</span><span class="s">PAST MEDICAL HISTORY: She has a history of hypertension and shortness of breath.</span><span class="se">\n\n</span><span class="s">PAST SURGICAL HISTORY: Pertinent for cholecystectomy.</span><span class="se">\n\n</span><span class="s">PSYCHOLOGICAL HISTORY: Negative.</span><span class="se">\n\n</span><span class="s">SOCIAL HISTORY: She is single. She drinks alcohol once a week. She does not smoke.</span><span class="se">\n\n</span><span class="s">FAMILY HISTORY: Pertinent for obesity and hypertension.</span><span class="se">\n\n</span><span class="s">MEDICATIONS: Include Topamax 100 mg twice daily, Zoloft 100 mg twice daily, Abilify 5 mg daily, Motrin 800 mg daily, and a multivitamin.</span><span class="se">\n\n</span><span class="s">ALLERGIES: She has no known drug allergies.</span><span class="se">\n\n</span><span class="s">REVIEW OF SYSTEMS: Negative.</span><span class="se">\n\n</span><span class="s">PHYSICAL EXAM: This is a pleasant female in no acute distress. Alert and oriented x 3. HEENT: Normocephalic, atraumatic. Extraocular muscles intact, nonicteric sclerae. Chest is clear to auscultation bilaterally. Cardiovascular is normal sinus rhythm. Abdomen is obese, soft, nontender and nondistended. Extremities show no edema, clubbing or cyanosis.</span><span class="se">\n\n</span><span class="s">ASSESSMENT/PLAN: This is a 34-year-old female with a BMI of 43 who is interested in surgical weight via the gastric bypass as opposed to Lap-Band. ABC will be asking for a letter of medical necessity from Dr. XYZ. She will also see my nutritionist and social worker and have an upper endoscopy. Once this is completed, we will submit her to her insurance company for approval."""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <p><code class="language-plaintext highlighter-rouge">This is a clinical note about a 34-year-old woman who is interested in having weight loss surgery. She has been overweight for over 20 years and wants to have more energy and improve her self-image. She has tried many diets and weight loss programs, but has not been successful in keeping the weight off. She has a history of hypertension and shortness of breath, but is not allergic to any medications. She will have an upper endoscopy and will be contacted by a nutritionist and social worker. The plan is to have her weight loss surgery through the gastric bypass rather than Lap-Band.</code></p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="new-medical-summarizer-pretrained-pipelines-that-can-be-used-in-one-line">New Medical Summarizer Pretrained Pipelines That Can Be Used In One Line</h4>
+
+  <p>We are excited to announce the launch of seven new medical summarizer pretrained pipelines. These novel pipelines have been specifically developed to enable streamlined execution in a succinct one-liner format, eliminating the need to construct verbose pipelines.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>model name</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/summarizer_biomedical_pubmed_pipeline_en.html"><code class="language-plaintext highlighter-rouge">summarizer_biomedical_pubmed_pipeline</code></a></td>
+        <td>Finetuned with biomedical datasets (Pubmed abstracts) by John Snow Labs</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/summarizer_clinical_jsl_augmented_pipeline_en.html"><code class="language-plaintext highlighter-rouge">summarizer_clinical_jsl_augmented_pipeline</code></a></td>
+        <td>Finetuned with natural instructions and then finetuned with clinical notes, encounters, critical care notes, discharge notes, reports, curated  by John Snow Labs</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/summarizer_clinical_jsl_pipeline_en.html"><code class="language-plaintext highlighter-rouge">summarizer_clinical_jsl_pipeline</code></a></td>
+        <td>Summarize clinical notes, encounters, critical care notes, discharge notes, reports, etc.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/summarizer_clinical_questions_pipeline_en.html"><code class="language-plaintext highlighter-rouge">summarizer_clinical_questions_pipeline</code></a></td>
+        <td>Finetuned with medical questions exchanged in clinical mediums (clinic, email, call center etc.) by John Snow Labs.  It generates question</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/summarizer_generic_jsl_pipeline_en.html"><code class="language-plaintext highlighter-rouge">summarizer_generic_jsl_pipeline</code></a></td>
+        <td>Finetuned with additional data curated by John Snow Labs. This model is further optimized by augmenting the training methodology, and dataset.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/summarizer_radiology_pipeline_en.html"><code class="language-plaintext highlighter-rouge">summarizer_radiology_pipeline</code></a></td>
+        <td>Capable to summarizing radiology reports while preserving the important information such as imaging tests and findings.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/summarizer_clinical_guidelines_large_pipeline_en.html"><code class="language-plaintext highlighter-rouge">summarizer_clinical_guidelines_large_pipeline</code></a></td>
+        <td>Finetuned to summarize clinical guidelines (only for Asthma and Breast Cancer as of now) into four different sections: Overview, Causes, Symptoms, Treatments.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"summarizer_clinical_guidelines_large_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s">"""Clinical Guidelines for Breast Cancer:
 Breast cancer is the most common type of cancer among women. It occurs when the cells in the breast start growing abnormally, forming a lump or mass. This can result in the spread of cancerous cells to other parts of the body. Breast cancer may occur in both men and women but is more prevalent in women.
@@ -652,85 +777,103 @@ Treatment for breast cancer depends on several factors, including the stage of t
 - Chemotherapy
 - Hormone therapy
 - Targeted therapy
-Early detection is crucial for the successful treatment of breast cancer. Women are advised to routinely perform self-examinations and undergo regular mammogram testing starting at age 40. If you notice any changes in your breast tissue, consult with your healthcare provider immediately."""</span> 
+Early detection is crucial for the successful treatment of breast cancer. Women are advised to routinely perform self-examinations and undergo regular mammogram testing starting at age 40. If you notice any changes in your breast tissue, consult with your healthcare provider immediately.
+"""</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Overview of the disease: Breast cancer is the most common <span class="nb">type </span>of cancer among women, occurring when the cells <span class="k">in </span>the breast start growing abnormally, forming a lump or mass. It can result <span class="k">in </span>the spread of cancerous cells to other parts of the body. 
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Overview of the disease: Breast cancer is the most common type of cancer among women, occurring when the cells in the breast start growing abnormally, forming a lump or mass. It can result in the spread of cancerous cells to other parts of the body.
 
-Causes: The exact cause of breast cancer is unknown, but several risk factors can increase the likelihood of developing it, such as a personal or family <span class="nb">history</span>, a genetic mutation, exposure to radiation, age, early onset of menstruation or late menopause, obesity, and hormonal factors. 
+Causes: The exact cause of breast cancer is unknown, but several risk factors can increase the likelihood of developing it, such as a personal or family history, a genetic mutation, exposure to radiation, age, early onset of menstruation or late menopause, obesity, and hormonal factors.
 
-Symptoms: Symptoms of breast cancer typically manifest as the disease progresses, including a lump or thickening <span class="k">in </span>the breast or underarm area, changes <span class="k">in </span>the size or shape of the breast, nipple discharge, nipple changes <span class="k">in </span>appearance, and redness or swelling <span class="k">in </span>the breast. 
+Symptoms: Symptoms of breast cancer typically manifest as the disease progresses, including a lump or thickening in the breast or underarm area, changes in the size or shape of the breast, nipple discharge, nipple changes in appearance, and redness or swelling in the breast.
 
-Treatment recommendations: Treatment <span class="k">for </span>breast cancer depends on several factors, including the stage of the cancer, the location of the tumor, and the individual<span class="s1">'s overall health. Common treatment options include surgery, radiation therapy, chemotherapy, hormone therapy, and targeted therapy. Early detection is crucial for successful treatment of breast cancer. Women are advised to routinely perform self-examinations and undergo regular mammogram testing starting at age 40.
-</span></code></pre></div>  </div>
+Treatment recommendations: Treatment for breast cancer depends on several factors, including the stage of the cancer, the location of the tumor, and the individual's overall health. Common treatment options include surgery, radiation therapy, chemotherapy, hormone therapy, and targeted therapy. Early detection is crucial for successful treatment of breast cancer. Women are advised to routinely perform self-examinations and undergo regular mammogram testing starting at age 40.
 
-</div>
-<div class="h3-box">
-
-  <h4 id="text-summarization-method-utilizing-a-map-reduce-approach-for-section-wise-summarization">Text Summarization Method Utilizing A Map-Reduce Approach For Section-Wise Summarization.</h4>
-
-  <p>We are pleased to announce the augmentation of our <code class="language-plaintext highlighter-rouge">MedicalSummarizer</code> annotator with the integration of advanced parameters. This enhancement broadens the scope of your medical summarization activities, granting you increased flexibility and helping to navigate the constraints of token limitations.</p>
-
-  <p>These newly introduced parameters notably amplify the functionality of the annotator, equipping users with the ability to generate detailed and accurate summaries of medical documents. The MedicalSummarizer now utilizes a map-reduce approach, a method that progressively condenses separate text sections until the summary achieves the desired length.</p>
-
-  <p>We are introducing the following parameters:</p>
-
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">setRefineSummary</code>: Activate this for a more refined summarization, albeit at a slightly increased computational cost.</li>
-    <li><code class="language-plaintext highlighter-rouge">setRefineSummaryTargetLength</code>: Set your desired summary length in tokens (separated by whitespace). This feature is only operative when setRefineSummary is activated.</li>
-    <li><code class="language-plaintext highlighter-rouge">setRefineChunkSize</code>: Define the size of refined chunks according to your preference. This size should match the LLM context window size in tokens. This feature is only operative when <code class="language-plaintext highlighter-rouge">setRefineSummary</code> is enabled.</li>
-    <li><code class="language-plaintext highlighter-rouge">setRefineMaxAttempts</code>: Set the maximum number of attempts for re-summarizing chunks that exceed the <code class="language-plaintext highlighter-rouge">setRefineSummaryTargetLength</code> before discontinuation. This feature is only operative when setRefineSummary is enabled.</li>
-  </ul>
-
-  <p>These advancements in the MedicalSummarizer annotator underline our unwavering commitment to delivering cutting-edge tools that enable healthcare professionals and researchers to conduct more efficient and precise medical text analysis.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MedicalSummarizer</span><span class="p">.</span><span class="n">pretrained</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDoSample</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRefineSummary</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRefineSummaryTargetLength</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRefineMaxAttempts</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRefineChunkSize</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
-            
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""The patient is a pleasant 17-year-old gentleman who was playing basketball today in gym. Two hours prior to presentation, he started to fall and someone stepped on his ankle and kind of twisted his right ankle and he cannot bear weight on it now. It hurts to move or bear weight. No other injuries noted. He does not think he has had injuries to his ankle in the past.
-SOCIAL HISTORY: He does not drink or smoke.
-MEDICAL DECISION MAKING:
-He had an x-ray of his ankle that showed a small ossicle versus avulsion fracture of the talonavicular joint on the lateral view. He has had no pain over the metatarsals themselves. This may be a fracture based upon his exam. He does want to have me to put him in a splint. He was given Motrin here. He will be discharged home to follow up with Dr. X from Orthopedics.
-DISPOSITION: Crutches and splint were administered here. I gave him a prescription for Motrin and some Darvocet if he needs to length his sleep and if he has continued pain to follow up with Dr. X. Return if any worsening problems."""</span>
-
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="s1">'An ankle exam revealed an osteocorotony in an injured man, who had pain on both Metatatsals. The physician prescribed sprained knee walker, thigh splinting for pain and crutches, but a calconavenous joint had a fracture. A physician will consult an orthopedic specialist for relief, follow up by the doctor, follow-down based on pain.'</span><span class="o">]</span>
 </code></pre></div>  </div>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-chunk-mapper-model-to-map-icd10cm-codes-with-corresponding-causes-and-claim-analysis-codes-according-to-cdc-guidelines">New Chunk Mapper Model To Map ICD10CM Codes With Corresponding Causes and Claim Analysis Codes According To CDC Guidelines.</h4>
+  <h4 id="updated-icd-10-cm-resolver-and-chunk-mapper-models-aligning-with-the-latest-updates-in-the-icd-10-cm-terminology-to-ensure-unparalleled-accuracy-in-clinical-coding">Updated ICD-10-CM Resolver And Chunk Mapper Models Aligning With The Latest Updates In The ICD-10-CM Terminology To Ensure Unparalleled Accuracy In Clinical Coding.</h4>
 
-  <p>This model is designed to map ICD-10-CM codes and deliver corresponding causes and generate claim analysis codes for each respective ICD-10-CM code, adhering to the guidelines provided by the Centers for Disease Control and Prevention (CDC).</p>
+  <p>New and updated ICD-10-CM sentence entity resolver and chunk mapper models provide enhanced accuracy and comprehensive concept recognition for effective coding and medical condition classification. These models were trained based on the latest version of ICD-10-CM release (April 1, 2023).</p>
 
-  <p>This model efficiently interfaces with the complex structure of ICD-10-CM coding, facilitating the extraction of meaningful and contextually relevant information. In instances where an equivalent claim analysis code is not available, the model will return a None result.</p>
+  <p>Here are the updated ICD-10-CM sentence entity resolver and chunk mapper models.</p>
 
-  <p><em>Example</em>:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>model name</th>
+        <th>type</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/30/icd10cm_mapper_en.html"><code class="language-plaintext highlighter-rouge">icd10cm_mapper</code></a></td>
+        <td>chunk mapper</td>
+        <td>Maps medical entities with their corresponding ICD-10-CM codes.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/26/icd10cm_billable_hcc_mapper_en.html"><code class="language-plaintext highlighter-rouge">icd10cm_billable_hcc_mapper</code></a></td>
+        <td>chunk mapper</td>
+        <td>Maps ICD-10-CM codes with their corresponding billable and HCC scores. If there is no HCC score for the corresponding ICD-10-CM code, result will be returned as 0.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/sbiobertresolve_hcc_augmented_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_hcc_augmented</code></a></td>
+        <td>resolver</td>
+        <td>Maps medical entities to Hierarchical Condition Categories (HCC) codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/sbiobertresolve_icd10cm_augmented_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented</code></a></td>
+        <td>resolver</td>
+        <td>Maps medical entities to ICD-10-CM codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/sbiobertresolve_icd10cm_augmented_billable_hcc_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented_billable_hcc</code></a></td>
+        <td>resolver</td>
+        <td>Maps medical entities to ICD-10-CM codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings and it supports 7-digit codes with HCC status.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/sbiobertresolve_icd10cm_generalised_augmented_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_generalised_augmented</code></a></td>
+        <td>resolver</td>
+        <td>Maps medical entities to ICD-10-CM codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings. It predicts ICD-10-CM codes up to 3 characters (according to ICD-10-CM code structure the first three characters represent general type of the injury or disease).</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/sbiobertresolve_icd10cm_slim_billable_hcc_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_slim_billable_hcc</code></a></td>
+        <td>resolver</td>
+        <td>Maps medical entities to ICD-10-CM codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings and it supports 7-digit codes with HCC status. In this model, synonyms having low cosine similarity to unnormalized terms are dropped.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/sbertresolve_icd10cm_slim_billable_hcc_en.html"><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_slim_billable_hcc</code></a></td>
+        <td>resolver</td>
+        <td>Maps medical entities to ICD-10-CM codes using <code class="language-plaintext highlighter-rouge">sbert_jsl_medium_uncased</code> Sentence Bert Embeddings and it supports 7-digit codes with HCC status. In this model, synonyms having low cosine similarity to unnormalized terms are dropped.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/sbertresolve_icd10cm_augmented_billable_hcc_en.html"><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_augmented_billable_hcc</code></a></td>
+        <td>resolver</td>
+        <td>maps clinical entities and concepts to ICD-10-CM codes using <code class="language-plaintext highlighter-rouge">sbert_jsl_medium_uncased</code> sentence bert embeddings and it supports 7-digit codes with HCC status. It also returns the official resolution text within the brackets inside the metadata.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/05/31/sbertresolve_icd10cm_augmented_en.html"><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_augmented</code></a></td>
+        <td>resolver</td>
+        <td>Maps medical entities and concepts to ICD-10-CM codes using <code class="language-plaintext highlighter-rouge">sbert_jsl_medium_uncased</code> sentence bert embeddings. It also returns the official resolution text within the brackets inside the metadata.</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"icd10cm_cause_claim_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd_chunk"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"icd10cm_cause"</span><span class="p">,</span> <span class="s">"icd10cm_claim_analysis_code"</span><span class="p">])</span>
+  <p><em>Mapper Example</em>:</p>
 
-<span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s">"D69.51"</span><span class="p">,</span> <span class="s">"G43.83"</span><span class="p">,</span> <span class="s">"A18.03"</span><span class="p">]</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chunkMapper</span><span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"icd10cm_billable_hcc_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"chunk"</span><span class="p">])</span>\
+     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
+     <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"billable"</span><span class="p">,</span> <span class="s">"hcc_score"</span><span class="p">])</span> \
+     <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">setMultivaluesRelations</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
+<span class="n">sample_icd_codes</span><span class="o">=</span> <span class="p">[</span><span class="s">"D66"</span><span class="p">,</span> <span class="s">"S22.00"</span><span class="p">,</span> <span class="s">"Z3A.10"</span><span class="p">]</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
@@ -739,40 +882,92 @@ DISPOSITION: Crutches and splint were administered here. I gave him a prescripti
     <thead>
       <tr>
         <th>icd10cm_code</th>
-        <th>cause</th>
-        <th>icd10cm_claim_analysis_code</th>
+        <th>billable</th>
+        <th>hcc_score</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>D69.51</td>
-        <td>Unintentional injuries</td>
-        <td>D69.51</td>
+        <td>D66</td>
+        <td>1</td>
+        <td>46</td>
       </tr>
       <tr>
-        <td>D69.51</td>
-        <td>Adverse effects of medical treatment</td>
-        <td>D69.51</td>
+        <td>S22.00</td>
+        <td>0</td>
+        <td>0</td>
       </tr>
       <tr>
-        <td>G43.83</td>
-        <td>Headache disorders</td>
-        <td>G43.83</td>
+        <td>Z3A.10</td>
+        <td>1</td>
+        <td>0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Resolver Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">icd_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_icd10cm_augmented_billable_hcc"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"resolution"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"The patient has a gestational diabetes mellitus history and subsequent type two diabetes mellitus, associated with obesity, presented with a one-week history of poor appetite, and vomiting."</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ner_chunk</th>
+        <th>icd10cm_code</th>
+        <th>resolution</th>
+        <th>billable_status</th>
+        <th>hcc_status</th>
+        <th>hcc_score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>gestational diabetes mellitus</td>
+        <td>O24.4</td>
+        <td>gestational diabetes mellitus [gestational diabetes mellitus]</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
       </tr>
       <tr>
-        <td>G43.83</td>
-        <td>Tension-type headache</td>
-        <td>G43.83</td>
+        <td>subsequent type two diabetes mellitus</td>
+        <td>O24.11</td>
+        <td>pre-existing type 2 diabetes mellitus [pre-existing type 2 diabetes mellitus]</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
       </tr>
       <tr>
-        <td>G43.83</td>
-        <td>Migraine</td>
-        <td>G43.83</td>
+        <td>obesity</td>
+        <td>E66.9</td>
+        <td>obesity [obesity, unspecified]</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
       </tr>
       <tr>
-        <td>A18.03</td>
-        <td>Whooping cough</td>
-        <td>A18.03</td>
+        <td>poor appetite</td>
+        <td>R63.0</td>
+        <td>poor appetite [anorexia]</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>vomiting</td>
+        <td>R11.1</td>
+        <td>vomiting [vomiting]</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
       </tr>
     </tbody>
   </table>
@@ -780,235 +975,20 @@ DISPOSITION: Crutches and splint were administered here. I gave him a prescripti
 </div>
 <div class="h3-box">
 
-  <h4 id="the-phi-obfuscation-de-identification-module-now-offers-the-ability-to-customize-the-casings-of-fake-entities-for-each-entity-type">The PHI Obfuscation (De-Identification Module) Now Offers The Ability To Customize The Casings Of Fake Entities For Each Entity Type.</h4>
+  <h4 id="a-new-voice-of-patient-vop-medical-classifier-model-focusing-on-the-side-effect-classification-of-treatments-and-procedures-in-patients-own-words">A New Voice Of Patient (VOP) Medical Classifier Model Focusing On The Side Effect Classification Of Treatments And Procedures In Patients’ Own Words</h4>
 
-  <p>This update introduces the <code class="language-plaintext highlighter-rouge">entityCasingModes</code> parameter in the <code class="language-plaintext highlighter-rouge">Deidentification</code> classes, a feature that enables you to define a Json path containing a dictionary of modes for casing selections.</p>
-
-  <p>This powerful capability lets you dictate how the casing of entities or data elements should be altered during the deidentification process, providing you with greater control and flexibility over your data.</p>
-
-  <p>The <code class="language-plaintext highlighter-rouge">entityCasingModes</code> parameter offers the following casing modes:</p>
+  <p>We have a new VOP classification model that classifies the patients’ expressions in order to determine if they make any references to the side effects associated with medical treatments or procedures.</p>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">lowercase</code>: Transforms all characters to lowercase following the rules of the default locale.</li>
-    <li><code class="language-plaintext highlighter-rouge">uppercase</code>: Changes all characters to uppercase based on the default locale’s rules.</li>
-    <li><code class="language-plaintext highlighter-rouge">capitalize</code>: Adjusts the first character to uppercase and alters the remaining characters to lowercase.</li>
-    <li><code class="language-plaintext highlighter-rouge">titlecase</code>: Modifies the first character in every token (word) to uppercase and changes the remaining characters to lowercase.</li>
+    <li><a href="https://nlp.johnsnowlabs.com/2023/05/24/bert_sequence_classifier_vop_side_effect_en.html">bert_sequence_classifier_vop_side_effect</a>: This model is a <a href="https://github.com/dmis-lab/biobert">BioBERT based</a> classifier that classifies texts written by patients as True if side effects from treatments or procedures are mentioned.</li>
   </ul>
 
-  <p>With the ability to set the <code class="language-plaintext highlighter-rouge">entityCasingModes</code> parameter with the appropriate casing mode for each entity type, you now have enhanced control over the deidentification process and how it manages the casing of those elements. This update underlines our commitment to providing advanced and user-centric tools that cater to your specific needs in healthcare data processing.</p>
-
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">casing_dict</span><span class="o">=</span> <span class="p">{</span>
-    <span class="s">"lowercase"</span><span class="p">:</span> <span class="p">[</span><span class="s">"IDNUM"</span><span class="p">,</span><span class="s">"MEDICALRECORD"</span><span class="p">]</span> <span class="p">,</span>
-    <span class="s">"uppercase"</span><span class="p">:</span> <span class="p">[</span><span class="s">"city"</span><span class="p">,</span><span class="s">"street"</span><span class="p">],</span>
-    <span class="s">"capitalize"</span><span class="p">:</span> <span class="p">[</span> <span class="s">"AGE"</span><span class="p">],</span>
-    <span class="s">"titlecase"</span><span class="p">:[</span><span class="s">"DOCTOR"</span><span class="p">,</span> <span class="s">"PATIENT"</span><span class="p">,</span> <span class="s">"HOSPITAL"</span><span class="p">],</span>
-<span class="p">}</span>
-
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'entity_casing.json'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">json</span><span class="p">.</span><span class="n">dump</span><span class="p">(</span><span class="n">casing_dict</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="n">obfuscation</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_subentity_chunk"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setEntityCasingModes</span><span class="p">(</span><span class="s">"./entity_casing.json"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span><span class="s">'''
-Record date: 08-24-2007. SSN : S5067003218XYZ. Adress: Keats Street, San Francisco .
-Victoria Davis is a 61-year-old , born in Los Angeles, white female.
-Her surgery took place at Emory University Hospital on August 21, 2007.
-The right total knee replacement performed by Dr. Anderson Johnson and Dr. Amelia Martinez. 
-Davis was transfused with 2 units of autologous blood postoperatively.
-'''</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="text-align: right"> </th>
-        <th style="text-align: left">sentence</th>
-        <th style="text-align: left">mask</th>
-        <th style="text-align: left">deidentified</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: right">0</td>
-        <td style="text-align: left">Record date: 08-24-2007.</td>
-        <td style="text-align: left">Record date: &lt;DATE&gt;.</td>
-        <td style="text-align: left">Record date: 09-01-2007.</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">SSN : S5067003218XYZ.</td>
-        <td style="text-align: left">SSN : &lt;MEDICALRECORD&gt;.</td>
-        <td style="text-align: left">SSN : r7150154340vuf.</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">2</td>
-        <td style="text-align: left">Adress: Keats Street, San Francisco .</td>
-        <td style="text-align: left">Adress: &lt;CITY&gt;, &lt;STATE&gt; .</td>
-        <td style="text-align: left">Adress: HAROLD, COLORADO .</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">3</td>
-        <td style="text-align: left">Victoria Davis is a 61-year-old , born in Los Angeles, white female.</td>
-        <td style="text-align: left">&lt;PATIENT&gt; is a &lt;AGE&gt; , born in &lt;CITY&gt;, white female.</td>
-        <td style="text-align: left">Marivic Friend is a 62-year-old , born in AUSTIN, white female.</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">4</td>
-        <td style="text-align: left">Her surgery took place at Emory University Hospital on August 21, 2007.</td>
-        <td style="text-align: left">Her surgery took place at &lt;HOSPITAL&gt; on &lt;DATE&gt;.</td>
-        <td style="text-align: left">Her surgery took place at Healthsouth Rehabilitation Hospital The Woodlands on August 29, 2007.</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">5</td>
-        <td style="text-align: left">The right total knee replacement performed by Dr. Anderson Johnson and Dr. Amelia Martinez.</td>
-        <td style="text-align: left">The right total knee replacement performed by Dr. &lt;DOCTOR&gt; and Dr. &lt;DOCTOR&gt;.</td>
-        <td style="text-align: left">The right total knee replacement performed by Dr. Marland Sensor and Dr. Freada Gin.</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">6</td>
-        <td style="text-align: left">Davis was transfused with 2 units of autologous blood postoperatively.</td>
-        <td style="text-align: left">&lt;PATIENT&gt; was transfused with 2 units of autologous blood postoperatively.</td>
-        <td style="text-align: left">Zadok Phlegm was transfused with 2 units of autologous blood postoperatively.</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="users-now-have-the-option-to-enable-or-disable-the-gender-awareness-feature-in-the-de-identification-module">Users Now Have The Option To Enable Or Disable The ‘Gender Awareness’ Feature In The De-Identification Module.</h4>
-
-  <p>Users now have the ability to enable or disable the ‘Gender Awareness’ feature, providing greater control over the deidentification process. This feature is operated via the <code class="language-plaintext highlighter-rouge">setGenderAwareness</code> parameter in the Deidentification class. By setting this parameter to <code class="language-plaintext highlighter-rouge">True</code>, the deidentification algorithm will consider the gender information associated with names. This additional layer of awareness allows for a more precise and accurate process of anonymization.</p>
-
-  <p>The option to activate or deactivate ‘Gender Awareness’ provides you with increased flexibility to adapt the deidentification process to your specific needs, further enhancing the accuracy and utility of the De-Identification module.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">obfuscation</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setGenderAwareness</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
-<span class="s">'William Walker is a 62 y.o. patient admitted'</span><span class="p">,</span>
-<span class="s">'Jack Davies was seen by attending his Doctor.'</span><span class="p">,</span>
-<span class="s">'Cecilia Reyes was scheduled for assessment.'</span><span class="p">,</span>
-<span class="s">'Jessica Smith was discharged on 10/02/2022'</span><span class="p">,</span> 
-<span class="s">'Evelyn White was seen by physician'</span><span class="p">,</span> 
-<span class="s">'Riley John MD. was started on prophylaxis'</span><span class="p">,</span>   
-<span class="p">]</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="text-align: right"> </th>
-        <th style="text-align: left">sentence</th>
-        <th style="text-align: left">deid_entity_label</th>
-        <th style="text-align: left">obfuscated</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: right">0</td>
-        <td style="text-align: left">William Walker is a 62 y.o. patient admitted</td>
-        <td style="text-align: left">&lt;PATIENT&gt; is a &lt;AGE&gt; y.o. patient admitted</td>
-        <td style="text-align: left">Emillio Epps is a 77 y.o. patient admitted</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">Jack Davies was seen by attending his Doctor.</td>
-        <td style="text-align: left">&lt;PATIENT&gt; was seen by attending his Doctor.</td>
-        <td style="text-align: left">Mitsuru Hitchcock was seen by attending his Doctor.</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">2</td>
-        <td style="text-align: left">Cecilia Reyes was scheduled for assessment.</td>
-        <td style="text-align: left">&lt;PATIENT&gt; was scheduled for assessment.</td>
-        <td style="text-align: left">Celeste Pies was scheduled for assessment.</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">3</td>
-        <td style="text-align: left">Jessica Smith was discharged on 10/02/2022</td>
-        <td style="text-align: left">&lt;PATIENT&gt; was discharged on &lt;DATE&gt;</td>
-        <td style="text-align: left">Chancey Banner was discharged on 12/03/2022</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">4</td>
-        <td style="text-align: left">Evelyn White was seen by physician</td>
-        <td style="text-align: left">&lt;PATIENT&gt; was seen by physician</td>
-        <td style="text-align: left">Mistee Pipe was seen by physician</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">5</td>
-        <td style="text-align: left">Riley John MD. was started on prophylaxis</td>
-        <td style="text-align: left">&lt;DOCTOR&gt; MD. was started on prophylaxis</td>
-        <td style="text-align: left">Yandel Alvine MD. was started on prophylaxis</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="a-set-of-four-new-classifier-models-has-been-introduced-further-broadening-the-scope-of-our-toolkit">A Set Of Four New Classifier Models Has Been Introduced, Further Broadening The Scope Of Our Toolkit.</h4>
-
-  <p>We are excited to announce 4 new classification models.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>model name</th>
-        <th>annotator</th>
-        <th>predicted entities</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href=""><code class="language-plaintext highlighter-rouge">classifierml_ade</code></a></td>
-        <td>DocumentMLClassifierApproach</td>
-        <td><code class="language-plaintext highlighter-rouge">True</code>, <code class="language-plaintext highlighter-rouge">False</code></td>
-      </tr>
-      <tr>
-        <td><a href=""><code class="language-plaintext highlighter-rouge">classifier_logreg_ade</code></a></td>
-        <td>DocumentLogRegClassifierModel</td>
-        <td><code class="language-plaintext highlighter-rouge">True</code>, <code class="language-plaintext highlighter-rouge">False</code></td>
-      </tr>
-      <tr>
-        <td><a href=""><code class="language-plaintext highlighter-rouge">generic_svm_classifier_ade</code></a></td>
-        <td>GenericSVMClassifierModel</td>
-        <td><code class="language-plaintext highlighter-rouge">True</code>, <code class="language-plaintext highlighter-rouge">False</code></td>
-      </tr>
-      <tr>
-        <td><a href=""><code class="language-plaintext highlighter-rouge">generic_logreg_classifier_ade</code></a></td>
-        <td>GenericLogRegClassifierModel</td>
-        <td><code class="language-plaintext highlighter-rouge">True</code>, <code class="language-plaintext highlighter-rouge">False</code></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logreg</span> <span class="o">=</span> <span class="n">DocumentLogRegClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"classifier_logreg_ade"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sequenceClassifier</span> <span class="o">=</span> <span class="n">MedicalBertForSequenceClassification</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_sequence_classifier_vop_side_effect"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span><span class="s">'token'</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
-
-    <span class="p">[</span><span class="s">"""I feel great after taking tylenol."""</span><span class="p">],</span> 
-    <span class="p">[</span><span class="s">"""Detection of activated eosinophils in nasal polyps of an aspirin-induced asthma patient."""</span><span class="p">]</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
@@ -1022,12 +1002,12 @@ Davis was transfused with 2 units of autologous blood postoperatively.
     </thead>
     <tbody>
       <tr>
-        <td>I feel great after taking tylenol</td>
-        <td>[False]</td>
+        <td>I felt kind of dizzy after taking that medication for a month.</td>
+        <td>True</td>
       </tr>
       <tr>
-        <td>Detection of activated eosinophils in nasal polyps of an aspirin-induced asthma patient.</td>
-        <td>[True]</td>
+        <td>I had a dental procedure last week and everything went well.</td>
+        <td>False</td>
       </tr>
     </tbody>
   </table>
@@ -1035,19 +1015,23 @@ Davis was transfused with 2 units of autologous blood postoperatively.
 </div>
 <div class="h3-box">
 
-  <h4 id="we-now-offer-new-clinical-ner-models-specifically-designed-for-extracting-clinical-terms-in-the-german-language">We Now Offer New Clinical NER Models Specifically Designed For Extracting Clinical Terms In The German Language.</h4>
+  <h4 id="enhanced-social-determinants-of-health-sdoh-classifier-models-for-detecting-patients-situation-according-to-certain-conditions-under-treatment-or-not-suffering-from-housing-insecurity">Enhanced Social Determinants Of Health (SDOH) Classifier Models For Detecting Patients’ Situation According To Certain Conditions (Under Treatment Or Not, Suffering From Housing Insecurity)</h4>
 
-  <p>We are excited to announce the German <code class="language-plaintext highlighter-rouge">ner_clinical</code> models, that can detect <code class="language-plaintext highlighter-rouge">Problem</code>, <code class="language-plaintext highlighter-rouge">Test</code> and <code class="language-plaintext highlighter-rouge">Treatment</code> entities.</p>
+  <p>We have updated SDOH classification models to offer improved accuracy.</p>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_under_treatment_sbiobert_cased_mli</code>: This Generic Classifier model is intended for detecting if the patient is under treatment or not. If under treatment is not mentioned in the text, it is regarded as “Not_Under_Treatment_Or_Not_Mentioned”. The model is trained by using GenericClassifierApproach annotator. <code class="language-plaintext highlighter-rouge">Under_Treatment</code>: The patient is under treatment. <code class="language-plaintext highlighter-rouge">Not_Under_Treatment_Or_Not_Mentioned</code>: The patient is not under treatment or it is not mentioned in the clinical notes</li>
+  </ul>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_clinical"</span><span class="p">,</span> <span class="s">"de"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">generic_classifier</span> <span class="o">=</span> <span class="n">GenericClassifierModel</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"genericclassifier_sdoh_under_treatment_sbiobert_cased_mli"</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
 
-<span class="n">sample_text</span><span class="o">=</span> <span class="s">"""Verschlechterung von Schmerzen oder Schwäche in den Beinen , Verlust der Darm - oder Blasenfunktion oder andere besorgniserregende Symptome. 
-Der Patient erhielt empirisch Ampicillin , Gentamycin und Flagyl sowie Narcan zur Umkehrung von Fentanyl .
-ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bilirubin war insgesamt 12,7 ."""</span>
+<span class="n">text_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Patient is a 50-year-old male who was diagnosed with hepatitis C. He has received a treatment plan that includes medication and regular monitoring of his liver function."</span><span class="p">,</span>
+<span class="s">"Patient has been living with chronic migraines for several years. She has not pursued any specific treatment for her migraines and has been managing her condition through lifestyle modifications such as stress reduction techniques and avoiding triggers."</span><span class="p">]</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
@@ -1055,70 +1039,55 @@ ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bil
   <table>
     <thead>
       <tr>
-        <th>chunk</th>
-        <th>ner_label</th>
+        <th>text</th>
+        <th>result</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Schmerzen</td>
-        <td>PROBLEM</td>
+        <td>Patient is a 50-year-old male who was diagnosed with hepatitis C. He has received a treatment pla…</td>
+        <td>Under_Treatment</td>
       </tr>
       <tr>
-        <td>Schwäche in den Beinen</td>
-        <td>PROBLEM</td>
+        <td>Patient has been living with chronic migraines for several years. She has not pursued any specifi…</td>
+        <td>Not_Under_Treatment_Or_Not_Mentioned</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_housing_insecurity_sbiobert_cased_mli</code>: This Generic Classifier model is intended for detecting whether the patient has housing insecurity. If the clinical note includes patient housing problems, the model identifies it. If there is no housing issue or it is not mentioned in the text, it is regarded as “no housing insecurity”. The model is trained by using GenericClassifierApproach annotator. <code class="language-plaintext highlighter-rouge">Housing_Insecurity</code>: The patient has housing problems. <code class="language-plaintext highlighter-rouge">No_Housing_Insecurity_Or_Not_Mentioned</code>: The patient has no housing problems or it is not mentioned in the clinical notes.</li>
+  </ul>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">generic_classifier</span> <span class="o">=</span> <span class="n">GenericClassifierModel</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"genericclassifier_sdoh_housing_insecurity_sbiobert_cased_mli"</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
+
+<span class="n">text_list</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s">"Patient is a 50-year-old male who no has stable housing. He recently underwent a hip replacement surgery and has made a full recovery. "</span><span class="p">,</span>
+<span class="s">"Patient is a 25-year-old female who has her private housing. She presented with symptoms of a urinary tract infection and was diagnosed with the condition. Her living situation has allowed her to receive prompt medical care and treatment, and she has made a full recovery. "</span><span class="p">]</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>text</th>
+        <th>result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Patient is a 50-year-old male who no has stable housing. He recently underwent a hip replacement …</td>
+        <td>Housing_Insecurity</td>
       </tr>
       <tr>
-        <td>Verlust der Darm</td>
-        <td>PROBLEM</td>
-      </tr>
-      <tr>
-        <td>Blasenfunktion</td>
-        <td>PROBLEM</td>
-      </tr>
-      <tr>
-        <td>Symptome</td>
-        <td>PROBLEM</td>
-      </tr>
-      <tr>
-        <td>empirisch Ampicillin</td>
-        <td>TREATMENT</td>
-      </tr>
-      <tr>
-        <td>Gentamycin</td>
-        <td>TREATMENT</td>
-      </tr>
-      <tr>
-        <td>Flagyl</td>
-        <td>TREATMENT</td>
-      </tr>
-      <tr>
-        <td>Narcan</td>
-        <td>TREATMENT</td>
-      </tr>
-      <tr>
-        <td>Fentanyl</td>
-        <td>TREATMENT</td>
-      </tr>
-      <tr>
-        <td>ALT</td>
-        <td>TEST</td>
-      </tr>
-      <tr>
-        <td>AST</td>
-        <td>TEST</td>
-      </tr>
-      <tr>
-        <td>LDH</td>
-        <td>TEST</td>
-      </tr>
-      <tr>
-        <td>alkalische Phosphatase</td>
-        <td>TEST</td>
-      </tr>
-      <tr>
-        <td>Bilirubin</td>
-        <td>TEST</td>
+        <td>Patient is a 25-year-old female who has her private housing. She presented with symptoms of a uri…</td>
+        <td>No_Housing_Insecurity_Or_Not_Mentioned</td>
       </tr>
     </tbody>
   </table>
@@ -1126,25 +1095,277 @@ ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bil
 </div>
 <div class="h3-box">
 
-  <h4 id="core-functionalities-have-been-fine-tuned-with-numerous-improvements-and-bug-fixes">Core Functionalities Have Been Fine-Tuned With Numerous Improvements and Bug Fixes</h4>
+  <h4 id="introducing-the-innovative-nertemplaterender-annotator-to-generate-customized-prompts-for-zero-shot-models">Introducing The Innovative <code class="language-plaintext highlighter-rouge">Nertemplaterender</code> Annotator To Generate Customized Prompts For Zero Shot Models</h4>
+
+  <p>The New Annotator <code class="language-plaintext highlighter-rouge">NerTemplateRender</code> function is designed to render templates by permuting chunks of text when there is an excess of text available to fill the template. This annotator provides flexibility in rendering templates by permuting, combining, and resampling chunks of text based on the specified options, ensuring efficient utilization of available text resources. It provides several options for customizing the rendering process, here are the parameters:</p>
 
   <ul>
-    <li>Updated default models and documentation for <code class="language-plaintext highlighter-rouge">pretrained()</code> functions in most annotators.</li>
-    <li>Use custom signatures when saving a <code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code> model</li>
+    <li><code class="language-plaintext highlighter-rouge">setTemplates</code>: Sets The list of scope fields to consider when making entity tuples to render the templates. “ + “The scope fields are the metadata keys containing the scope index or name for each chunk. “ + “i.e. <code class="language-plaintext highlighter-rouge">sentence</code>, <code class="language-plaintext highlighter-rouge">paragraph</code>, <code class="language-plaintext highlighter-rouge">section</code> …</li>
+    <li><code class="language-plaintext highlighter-rouge">setPermuteEntities</code>: Sets True if you want to permute chunks when the text has more than enough to fill the template, generating even more outputs. Overrides <code class="language-plaintext highlighter-rouge">combineEntities</code></li>
+    <li><code class="language-plaintext highlighter-rouge">setCombineEntities</code>: “Sets True if you want to combine chunks when the text has more than enough to fill the template, generating more outputs</li>
+    <li><code class="language-plaintext highlighter-rouge">setResampleEntities</code>: Sets True if you want to resample entities from texts that do not have enough chunks to fill a template</li>
+  </ul>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">NerTemplateRender</span> <span class="o">=</span> <span class="n">NerTemplateRenderModel</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"chunk_deid"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"templates"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setTemplates</span><span class="p">([</span><span class="s">"When   ?"</span><span class="p">,</span>
+                <span class="s">"What medication did  prescribe for ?"</span><span class="p">,</span>
+                <span class="s">"Which hospital was  admitted to for ?"</span><span class="p">,</span>
+                <span class="s">"Why were  admitted to  on  by ?"</span> <span class="p">])</span>\
+    <span class="p">.</span><span class="n">setPermuteEntities</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setResampleEntities</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s">"John Smith was admitted Sep 3rd to Mayo Clinic"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Dr. David pescribed metformin 500mg for my severe headache."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Olivia was admitted to the Memorial Hospital for her colon cancer."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"27 years old Anne was admitted to clinic on Sep 1st by Dr. Jennifer for a right-sided pleural effusion for thoracentesis."</span><span class="p">]].</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>result</th>
+        <th>template</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>When John Smith admitted ?</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>What medication did David prescribe for my severe headache?</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Which hospital was Olivia admitted to for her colon cancer?</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>When Olivia admitted ?</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Which hospital was Anne admitted to for a right-sided pleural effusion?</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>What medication did Jennifer prescribe for a right-sided pleural effusion?</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Why were Anne admitted to clinic on Sep 1st by Jennifer?</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>When Anne admitted ?</td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="sentence-wise-token-indexes-are-now-avaliable-in-medicalnermodel-annotator">Sentence-Wise Token Indexes Are Now Avaliable In <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> Annotator</h4>
+
+  <p>The <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> now includes a new parameter called <code class="language-plaintext highlighter-rouge">setSentenceTokenIndex</code> which allows you to obtain the token index at the sentence level. This parameter provides a convenient way to retrieve the specific token index associated with each sentence in the medical text. By using this parameter, you can easily identify and locate tokens within a sentence, enabling more granular analysis and processing of medical text data.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_clinical"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setSentenceTokenIndex</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""He had a nonproductive cough that started last week.
+He had chest pain with a fever since yesterday."""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>token</th>
+        <th>ner_label</th>
+        <th>confidence</th>
+        <th>sentence_token_index</th>
+        <th>sentence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>He</td>
+        <td>O</td>
+        <td>0.9999</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>had</td>
+        <td>O</td>
+        <td>0.9996</td>
+        <td>1</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td>B-PROBLEM</td>
+        <td>0.9406</td>
+        <td>2</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>nonproductive</td>
+        <td>I-PROBLEM</td>
+        <td>0.9605</td>
+        <td>3</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>cough</td>
+        <td>I-PROBLEM</td>
+        <td>0.9872</td>
+        <td>4</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>that</td>
+        <td>O</td>
+        <td>0.9559</td>
+        <td>5</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>started</td>
+        <td>O</td>
+        <td>0.9945</td>
+        <td>6</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>last</td>
+        <td>O</td>
+        <td>0.9863</td>
+        <td>7</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>week</td>
+        <td>O</td>
+        <td>0.4276</td>
+        <td>8</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>.</td>
+        <td>O</td>
+        <td>0.9999</td>
+        <td>9</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>He</td>
+        <td>O</td>
+        <td>0.9998</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>had</td>
+        <td>O</td>
+        <td>0.9988</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>chest</td>
+        <td>B-PROBLEM</td>
+        <td>0.9978</td>
+        <td>2</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>pain</td>
+        <td>I-PROBLEM</td>
+        <td>0.9974</td>
+        <td>3</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>with</td>
+        <td>O</td>
+        <td>0.9998</td>
+        <td>4</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td>B-PROBLEM</td>
+        <td>0.9527</td>
+        <td>5</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>fever</td>
+        <td>I-PROBLEM</td>
+        <td>0.9907</td>
+        <td>6</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>since</td>
+        <td>O</td>
+        <td>0.9999</td>
+        <td>7</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>yesterday</td>
+        <td>O</td>
+        <td>0.9176</td>
+        <td>8</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>.</td>
+        <td>O</td>
+        <td>0.9999</td>
+        <td>9</td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="we-have-also-made-fine-tuned-improvements-to-core-functionalities-and-corrected-various-bugs-enhancing-the-overall-robustness-and-reliability-of-spark-nlp-for-healthcare">We Have Also Made Fine-Tuned Improvements To Core Functionalities And Corrected Various Bugs, Enhancing The Overall Robustness And Reliability Of Spark Nlp For Healthcare</h4>
+
+  <ul>
+    <li>Enhanced Gender Awareness feature: Our improved Gender Awareness feature now comes with an extended faker list, ensuring more comprehensive and accurate gender identification.</li>
+    <li>Expanded English Faker Name List: We’ve broadened the range of our English Faker Name list, allowing for more diverse and inclusive data generation.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="we-are-introducing-new-and-updated-notebooks-and-demonstrations-providing-a-more-user-friendly-experience">We Are Introducing New and Updated Notebooks And Demonstrations, Providing a More User-Friendly Experience.</h4>
+  <h4 id="updated-notebooks-and-demonstrations-were-improving-user-experience-with-our-updated-notebooks-and-demonstrations-making-spark-nlp-for-healthcare-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations: We’Re Improving User Experience With Our Updated Notebooks And Demonstrations, Making Spark Nlp For Healthcare Easier To Navigate And Understand</h4>
 
   <ul>
-    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.1.Porting_QA_Models_From_Text_Generator_Backbone.ipynb">Porting_QA_Models_From_Text_Generator_Backbone</a> notebook for porting QA models from Text_Generator Models.</li>
-    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.Biogpt_Chat_JSL.ipynb">Biogpt_Chat_JSL</a> notebook with latest model.</li>
-    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb">Medical_Text_Summarization</a> notebook with lastest improvement.</li>
-    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb">Medical_Question_Answering</a> norebook with latest model.</li>
-    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION_GENERIC/">SOCIAL DETERMINANT CLASSIFICATION GENERIC</a> demo</li>
-    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/CLINICAL_TEXT_SUMMARIZATION_ES/">SPANISH CLINICAL TEXT SUMMARIZATION</a> demo</li>
+    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.1.Clinical_Multi_Language_Deidentification.ipynb">Multi Language Deidentification Notebook</a> notebook for lastest models</li>
+    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_SUMMARIZATION_GUIDELINES/">MEDICAL SUMMARIZATION GUIDELINES</a> demo</li>
+    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/DEIDENTIFICATION_CONSISTENCY/">DEID CONSISTENCY</a> demo</li>
+    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS_AR/">NER DEMOGRAPHICS ARABIC</a> demo</li>
   </ul>
 
 </div>
@@ -1153,20 +1374,37 @@ ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bil
   <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">flan_t5_base_jsl_qa</code></li>
-    <li><code class="language-plaintext highlighter-rouge">biogpt_chat_jsl_conditions</code></li>
-    <li><code class="language-plaintext highlighter-rouge">summarizer_clinical_guidelines_large</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_clinical</code> -&gt; <code class="language-plaintext highlighter-rouge">de</code></li>
-    <li><code class="language-plaintext highlighter-rouge">classifier_logreg_ade</code></li>
-    <li><code class="language-plaintext highlighter-rouge">classifierml_ade</code></li>
-    <li><code class="language-plaintext highlighter-rouge">generic_svm_classifier_ade</code></li>
-    <li><code class="language-plaintext highlighter-rouge">generic_logreg_classifier_ade</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_anatomy_emb_clinical_large</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_anatomy_emb_clinical_medium</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_abbreviation_emb_clinical_large</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_abbreviation_emb_clinical_medium</code></li>
-    <li><code class="language-plaintext highlighter-rouge">icd10cm_cause_claim_mapper</code></li>
-    <li><code class="language-plaintext highlighter-rouge">spellcheck_drug_norvig</code></li>
+    <li><code class="language-plaintext highlighter-rouge">summarizer_clinical_laymen</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_vop_side_effect</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_subentity</code> -&gt; <code class="language-plaintext highlighter-rouge">ar</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_generic</code> -&gt; <code class="language-plaintext highlighter-rouge">ar</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_subentity_pipeline</code> -&gt; <code class="language-plaintext highlighter-rouge">ar</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_generic_pipeline</code> -&gt; <code class="language-plaintext highlighter-rouge">ar</code></li>
+    <li><code class="language-plaintext highlighter-rouge">summarizer_radiology_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">summarizer_generic_jsl_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">summarizer_clinical_jsl_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">summarizer_biomedical_pubmed_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">summarizer_clinical_questions_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">summarizer_clinical_jsl_augmented_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">summarizer_clinical_guidelines_large_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">icd10cm_billable_hcc_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">icd10cm_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_hcc_augmented</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented_billable_hcc</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_generalised_augmented</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_slim_billable_hcc</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_augmented</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_augmented_billable_hcc</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_slim_billable_hcc</code></li>
+    <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_under_treatment_sbiobert_cased_mli</code></li>
+    <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_housing_insecurity_sbiobert_cased_mli</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_ade_emb_clinical_large</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_ade_emb_clinical_medium</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_cellular_emb_clinical_large</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_cellular_emb_clinical_medium</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_bacterial_species_emb_clinical_large</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_bacterial_species_emb_clinical_medium</code></li>
   </ul>
 
 </div>
@@ -1191,6 +1429,7 @@ ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bil
     </li>
 </ul>
   <ul class="pagination owl-carousel pagination_big">
+    <li><a href="release_notes_4_4_3">4.4.3</a></li>
     <li><a href="release_notes_4_4_2">4.4.2</a></li>
     <li><a href="release_notes_4_4_1">4.4.1</a></li>
     <li><a href="release_notes_4_4_0">4.4.0</a></li>
@@ -1250,7 +1489,7 @@ ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bil
 </ul>
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-05-18T00:00:00+00:00">May 18, 2023</time>
+      <time itemprop="dateModified" datetime="2023-06-01T00:00:00+00:00">Jun 01, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
