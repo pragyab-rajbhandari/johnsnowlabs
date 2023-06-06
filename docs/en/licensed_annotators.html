@@ -642,6 +642,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
       <td>This Named Entity recognition annotator is a generic NER model based on Neural Networks..</td>
     </tr>
     <tr>
+      <td><a href="#questionanswering">QuestionAnswering</a></td>
+      <td>GPT-based model for answering questions given a context.</td>
+    </tr>
+    <tr>
       <td><a href="#renerchunksfilter">RENerChunksFilter</a></td>
       <td>Filters and outputs combinations of relations between extracted entities, for further processing.</td>
     </tr>
@@ -660,6 +664,18 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
     <tr>
       <td><a href="#sentenceentityresolver">SentenceEntityResolver</a></td>
       <td>Returns the normalized entity for a particular trained ontology / curated dataset (e.g. clinical ICD-10, RxNorm, SNOMED; financial SEC’s EDGAR database,  etc) based on sentence embeddings.</td>
+    </tr>
+    <tr>
+      <td><a href="#summarizer">Summarizer</a></td>
+      <td>Helps to quickly summarize complex medical information.</td>
+    </tr>
+    <tr>
+      <td><a href="#textgenerator">TextGenerator</a></td>
+      <td>Uses the basic BioGPT model to perform various tasks related to medical text abstraction.</td>
+    </tr>
+    <tr>
+      <td><a href="#tfgraphbuilder">TFGraphBuilder</a></td>
+      <td>Creates Tensorflow graphs.</td>
     </tr>
   </tbody>
 </table>
@@ -12917,6 +12933,98 @@ ALLERGIES:..."""</span>
 
   </div>
   <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="tfgraphbuilder">TFGraphBuilder</h2>
+
+  <div class="tabs-model-aproach-head tac"><button class="tab-li-model-aproach">Model</button><button class="tab-li-model-aproach tabheader_active">Approach</button></div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>This annotator creates Tensorflow graphs.</p>
+
+    <p>This class is used to build a TensorFlow graph from a given model name and a set of input columns.</p>
+
+    <blockquote>
+      <p>For more information and examples of <code class="language-plaintext highlighter-rouge">TFGraphBuilder</code> annotator, you can check the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop">Spark NLP Workshop</a>, and in special, the notebook <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/17.0.Graph_builder_for_DL_models.ipynb">17.0.Graph_builder_for_DL_models.ipynb</a>.</p>
+    </blockquote>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">The setInputCols parameter is changing based on the setModelName parameter.</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">There is no output file. The setGraphFile function creates a file with a .pb extension and saves it there.</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder">AssertionChunkConverter</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/TFGraphBuilder.html">AssertionChunkConverter</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">graph_folder</span> <span class="o">=</span> <span class="s">"graph/graphs_100d"</span>
+<span class="n">graph_name</span> <span class="o">=</span> <span class="s">"re_graph"</span>
+
+<span class="n">re_graph_builder</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">TFGraphBuilder</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setModelName</span><span class="p">(</span><span class="s">"relation_extraction"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"embeddings"</span><span class="p">,</span> <span class="s">"pos_tags"</span><span class="p">,</span> <span class="s">"train_ner_chunks"</span><span class="p">,</span> <span class="s">"dependencies"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s">"rel"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGraphFolder</span><span class="p">(</span><span class="n">graph_folder</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGraphFile</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">graph_name</span><span class="si">}</span><span class="s">.pb"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setHiddenLayers</span><span class="p">([</span><span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setHiddenAct</span><span class="p">(</span><span class="s">"relu"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setHiddenActL2</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setHiddenWeightsL2</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setBatchNorm</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+  <!--Aproach-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p><strong>Input Annotator Types:</strong> ``</p>
+
+    <p><strong>Output Annotator Type:</strong> ``</p>
+
+  </div>
+  <!--END Aproach-->
 
 </div>
 
