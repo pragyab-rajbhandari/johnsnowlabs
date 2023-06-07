@@ -536,6 +536,2023 @@
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="main-docs">
   <div class="h3-box">
 
+    <h2 id="nlu-version-421">NLU Version 4.2.1</h2>
+
+    <p>Bugfixes for saving and reloading pipelines on databricks</p>
+
+    <h2 id="nlu-version-420">NLU Version 4.2.0</h2>
+
+    <h2 id="support-for-speech2text-images-classification-tabular-data-zero-shot-ner--via-wav2vec2-tapas-vit--4000-new-models-90-languages---in-john-snow-labs--nlu-420">Support for Speech2Text, Images-Classification, Tabular Data, Zero-Shot-NER,  via Wav2Vec2, Tapas, VIT , 4000+ New Models, 90+ Languages,   in John Snow Labs  NLU 4.2.0</h2>
+
+    <p>We are incredibly excited to announce NLU 4.2.0 has been released with new 4000+ models in 90+ languages and support for new 8 Deep Learning Architectures.
+4 new tasks are included for the very first time,
+<strong>Zero-Shot-NER</strong>, <strong>Automatic Speech Recognition</strong>, <strong>Image Classification</strong> and <strong>Table Question Answering</strong> powered
+by <a href="https://arxiv.org/pdf/2006.11477.pdf">Wav2Vec 2.0</a>, <a href="https://arxiv.org/abs/2106.07447">HuBERT</a>,  <a href="https://aclanthology.org/2020.acl-main.398.pdf">TAPAS</a>, <a href="https://arxiv.org/pdf/2010.11929.pdf">VIT</a>, <a href="https://arxiv.org/abs/2103.14030">SWIN</a>, <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#zeroshotnermodel">Zero-Shot-NER</a>.</p>
+
+    <p>Additionally, <a href="https://arxiv.org/abs/1911.03894">CamemBERT</a> based architectures are available for Sequence and Token Classification powered by Spark-NLPs
+<a href="https://nlp.johnsnowlabs.com/docs/en/transformers#camembertforsequenceclassification">CamemBertForSequenceClassification</a> and <a href="https://nlp.johnsnowlabs.com/docs/en/transformers#camembertfortokenclassification">CamemBertForTokenClassification</a></p>
+
+    <h1 id="automatic-speech-recognition--asr">Automatic Speech Recognition  (ASR)</h1>
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb">Demo Notebook</a>
+<a href="https://arxiv.org/pdf/2006.11477.pdf">Wav2Vec 2.0</a> and <a href="https://arxiv.org/abs/2106.07447">HuBERT</a>  enable ASR for the very first time in NLU.
+<strong>Wav2Vec2</strong> is a transformer model for speech recognition that uses unsupervised pre-training on large amounts of unlabeled speech data to improve the accuracy of automatic speech recognition (ASR) systems. It is based on a self-supervised learning approach that learns to predict masked portions of speech signal, and has shown promising results in reducing the amount of labeled training data required for ASR tasks.</p>
+
+    <p>These Models are powered by Spark-NLP’s <a href="https://nlp.johnsnowlabs.com/docs/en/transformers#wav2vec2forctc">Wav2Vec2ForCTC Annotator</a>
+<img src="https://user-images.githubusercontent.com/5762953/192140859-f165317e-4a8f-4b32-9d11-6063db19c503.png" alt="Wav2Vec2" /></p>
+
+    <p><strong>HuBERT</strong> models match or surpass the SOTA approaches for speech representation learning for speech recognition, generation, and compression. The Hidden-Unit BERT (HuBERT) approach was proposed for self-supervised speech representation learning, which utilizes an offline clustering step to provide aligned target labels for a BERT-like prediction loss.</p>
+
+    <p>These Models is powered by Spark-NLP’s <a href="https://nlp.johnsnowlabs.com/docs/en/transformers#hubertforctc">HubertForCTC Annotator</a></p>
+
+    <p><img src="https://user-images.githubusercontent.com/5762953/217865459-375756c3-a110-4917-8319-1deecb55304d.png" alt="HUBERT" /></p>
+
+    <p><strong>Usage</strong></p>
+
+    <p>You just need an audio-file on disk and pass the path to it or a folder of audio-files.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="c1"># Let's download an audio file 
+</span><span class="err">!</span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">auxdata</span><span class="p">.</span><span class="n">johnsnowlabs</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">audio</span><span class="o">/</span><span class="n">samples</span><span class="o">/</span><span class="n">wavs</span><span class="o">/</span><span class="n">ngm_12484_01067234848</span><span class="p">.</span><span class="n">wav</span>
+<span class="c1"># Let's listen to it 
+</span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Audio</span>
+<span class="n">FILE_PATH</span> <span class="o">=</span> <span class="s">"ngm_12484_01067234848.wav"</span>
+<span class="n">asr_df</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.speech2text.wav2vec2.v2_base_960h'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'ngm_12484_01067234848.wav'</span><span class="p">)</span>
+<span class="n">asr_df</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">text</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">PEOPLE WHO DIED WHILE LIVING IN OTHER PLACES</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>To test out <strong>HuBERT</strong> you just need to update the parameter for <code class="language-plaintext highlighter-rouge">load()</code></p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">asr_df</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.speech2text.hubert'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'ngm_12484_01067234848.wav'</span><span class="p">)</span>
+<span class="n">asr_df</span>
+</code></pre></div>    </div>
+
+    <h1 id="image-classification">Image Classification</h1>
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb">Demo Notebook</a></p>
+
+    <p>For the first time ever NLU introduces state-of-the-art image classifiers based on <br />
+<a href="https://arxiv.org/pdf/2010.11929.pdf">VIT</a> and <a href="https://arxiv.org/abs/2103.14030">Swin</a> giving you access to hundreds of image classifiers for various domains.</p>
+
+    <p>Inspired by the Transformer scaling successes in NLP, the researchers experimented with applying a standard Transformer directly to images, with the fewest possible modifications. To do so, images are split into patches and the sequence of linear embeddings of these patches were provided as an input to a Transformer. Image patches were actually treated the same way as tokens (words) in an NLP application. Image classification models were trained in supervised fashion.</p>
+
+    <p>You can check <a href="https://hackernoon.com/scale-vision-transformers-vit-beyond-hugging-face">Scale Vision Transformers (ViT) Beyond Hugging Face</a> article to learn deeper how ViT works and how it is implemeted in Spark NLP.
+This is Powerd by Spark-NLP’s <a href="https://nlp.johnsnowlabs.com/docs/en/transformers#vitforimageclassification">VitForImageClassification Annotator</a></p>
+
+    <p><img src="https://camo.githubusercontent.com/b27f01b616e81636a6135573bbf37a006619ab0853f7dd55ea4fb0e9e89dd33d/68747470733a2f2f692e696d6775722e636f6d2f676e31736369742e706e67" alt="VIT" /></p>
+
+    <p>Swin is a hierarchical Transformer whose representation is computed with Shifted windows.
+The shifted windowing scheme brings greater efficiency by limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection.
+This hierarchical architecture has the flexibility to model at various scales and has linear computational complexity  with respect to image size. These qualities of Swin Transformer make it compatible with a broad range of vision tasks
+This is powerd by Spark-NLP’s <a href="https://nlp.johnsnowlabs.com/docs/en/transformers#swinforimageclassification">Swin For Image Classification</a>
+<a href="https://arxiv.org/abs/2103.14030">Swin Transformer: Hierarchical Vision Transformer using Shifted Windows</a> by Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo.</p>
+
+    <p><img src="https://user-images.githubusercontent.com/5762953/217882453-bfc4d585-f21b-4401-bdcb-14788973c159.png" alt="swin" /></p>
+
+    <p><strong>Usage:</strong></p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Download an image
+</span><span class="n">os</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="s">'wget https://raw.githubusercontent.com/JohnSnowLabs/nlu/release/4.2.0/tests/datasets/ocr/vit/ox.jpg'</span><span class="p">)</span> 
+<span class="c1"># Load VIT model and predict on image file
+</span><span class="n">vit</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.classify_image.base_patch16_224'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'ox.jpg'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>Lets download a folder of images and predict on it</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">auxdata</span><span class="p">.</span><span class="n">johnsnowlabs</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">images</span><span class="p">.</span><span class="nb">zip</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="n">shutil</span><span class="p">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s">"images.zip"</span><span class="p">,</span> <span class="s">"images"</span><span class="p">,</span> <span class="s">"zip"</span><span class="p">)</span>
+<span class="err">!</span> <span class="n">ls</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">images</span><span class="o">/</span>
+</code></pre></div>    </div>
+
+    <p>Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.classify_image.base_patch16_224'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'/content/images/images'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_2_0/image_classification.png" alt="image_classification 1.png" /></p>
+
+    <p>To use <strong>SWIN</strong> we just update the parameter to <code class="language-plaintext highlighter-rouge">load()</code></p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">'en.classify_image.swin.tiny'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'/content/images/images'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <hr />
+
+    <h1 id="visual-table-question-answering">Visual Table Question Answering</h1>
+    <p>TapasForQuestionAnswering can load TAPAS Models with a cell selection head and optional aggregation head on top for question-answering tasks on tables (linear layers on top of the hidden-states output to compute logits and optional logits_aggregation), e.g. for SQA, WTQ or WikiSQL-supervised tasks. TAPAS is a BERT-based model specifically designed (and pre-trained) for answering questions about tabular data.</p>
+
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb">Demo Notebook</a></p>
+
+    <p>Powered by <a href="https://aclanthology.org/2020.acl-main.398.pdf">TAPAS: Weakly Supervised Table Parsing via Pre-training</a>
+<img src="https://user-images.githubusercontent.com/5762953/192140733-e08a1e99-0aee-455d-af29-73af497a03ef.png" alt="TAPAS" /></p>
+
+    <p><strong>Usage:</strong></p>
+
+    <p>First we need a pandas dataframe on for which we want to ask questions. The so called “context”</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span> 
+
+<span class="n">context_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s">'name'</span><span class="p">:[</span><span class="s">'Donald Trump'</span><span class="p">,</span><span class="s">'Elon Musk'</span><span class="p">],</span> 
+    <span class="s">'money'</span><span class="p">:</span> <span class="p">[</span><span class="s">'$100,000,000'</span><span class="p">,</span><span class="s">'$20,000,000,000,000'</span><span class="p">],</span> 
+    <span class="s">'married'</span><span class="p">:</span> <span class="p">[</span><span class="s">'yes'</span><span class="p">,</span><span class="s">'no'</span><span class="p">],</span> 
+    <span class="s">'age'</span> <span class="p">:</span> <span class="p">[</span><span class="s">'75'</span><span class="p">,</span><span class="s">'55'</span><span class="p">]</span> <span class="p">})</span>
+<span class="n">context_df</span>
+
+</code></pre></div>    </div>
+
+    <p>Then we create an array of questions</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">"Who earns less than 200,000,000?"</span><span class="p">,</span>
+    <span class="s">"Who earns more than 200,000,000?"</span><span class="p">,</span>
+    <span class="s">"Who earns 100,000,000?"</span><span class="p">,</span>
+    <span class="s">"How much money has Donald Trump?"</span><span class="p">,</span>
+    <span class="s">"Who is the youngest?"</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">questions</span>
+
+</code></pre></div>    </div>
+
+    <p>Now Combine the data, pass it to NLU and get answers for your questions</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
+<span class="c1"># Now we combine both to a tuple and we are done! We can now pass this to the .predict() method
+</span><span class="n">tapas_data</span>  <span class="o">=</span> <span class="p">(</span><span class="n">context_df</span><span class="p">,</span> <span class="n">questions</span><span class="p">)</span>
+<span class="c1"># Lets load a TAPAS QA model and predict on (context,question). 
+# It will give us an aswer for every question in the questions array, based on the context in context_df
+</span><span class="n">answers</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.answer_question.tapas.wtq.large_finetuned'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">tapas_data</span><span class="p">)</span>
+<span class="n">answers</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">sentence</th>
+          <th style="text-align: left">tapas_qa_UNIQUE_aggregation</th>
+          <th style="text-align: left">tapas_qa_UNIQUE_answer</th>
+          <th style="text-align: left">tapas_qa_UNIQUE_cell_positions</th>
+          <th style="text-align: right">tapas_qa_UNIQUE_cell_scores</th>
+          <th style="text-align: left">tapas_qa_UNIQUE_origin_question</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">Who earns less than 200,000,000?</td>
+          <td style="text-align: left">NONE</td>
+          <td style="text-align: left">Donald Trump</td>
+          <td style="text-align: left">[0, 0]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">Who earns less than 200,000,000?</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">Who earns more than 200,000,000?</td>
+          <td style="text-align: left">NONE</td>
+          <td style="text-align: left">Elon Musk</td>
+          <td style="text-align: left">[0, 1]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">Who earns more than 200,000,000?</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">Who earns 100,000,000?</td>
+          <td style="text-align: left">NONE</td>
+          <td style="text-align: left">Donald Trump</td>
+          <td style="text-align: left">[0, 0]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">Who earns 100,000,000?</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">How much money has Donald Trump?</td>
+          <td style="text-align: left">SUM</td>
+          <td style="text-align: left">SUM($100,000,000)</td>
+          <td style="text-align: left">[1, 0]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">How much money has Donald Trump?</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">Who is the youngest?</td>
+          <td style="text-align: left">NONE</td>
+          <td style="text-align: left">Elon Musk</td>
+          <td style="text-align: left">[0, 1]</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: left">Who is the youngest?</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2 id="zero-shot-ner">Zero-Shot NER</h2>
+
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/zero_shot_ner.ipynb">Demo Notebook</a>
+Based on John Snow Labs Enterprise-NLP <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#zeroshotnermodel">ZeroShotNerModel</a>
+This architecture is based on <code class="language-plaintext highlighter-rouge">RoBertaForQuestionAnswering</code>.
+Zero shot models excel at generalization, meaning that the model can accurately predict entities in very different data sets without the need to fine tune the model or train from scratch for each different domain.
+Even though a model trained to solve a specific problem can achieve better accuracy than a zero-shot model in this specific task,
+it probably won’t be be useful in a different task.
+That is where zero-shot models shows its usefulness by being able to achieve good results in various domains.</p>
+
+    <p><strong>Usage:</strong></p>
+
+    <p>We just need to load the zero-shot NER model and configure a set of entity definitions.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span> 
+<span class="c1"># load zero-shot ner model
+</span><span class="n">enterprise_zero_shot_ner</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.zero_shot.ner_roberta'</span><span class="p">)</span>
+
+<span class="c1"># Configure entity definitions
+</span><span class="n">enterprise_zero_shot_ner</span><span class="p">[</span><span class="s">'zero_shot_ner'</span><span class="p">].</span><span class="n">setEntityDefinitions</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s">"PROBLEM"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s">"What is the disease?"</span><span class="p">,</span>
+            <span class="s">"What is his symptom?"</span><span class="p">,</span>
+            <span class="s">"What is her disease?"</span><span class="p">,</span>
+            <span class="s">"What is his disease?"</span><span class="p">,</span>
+            <span class="s">"What is the problem?"</span><span class="p">,</span>
+            <span class="s">"What does a patient suffer"</span><span class="p">,</span>
+            <span class="s">"What was the reason that the patient is admitted to the clinic?"</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s">"DRUG"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s">"Which drug?"</span><span class="p">,</span>
+            <span class="s">"Which is the drug?"</span><span class="p">,</span>
+            <span class="s">"What is the drug?"</span><span class="p">,</span>
+            <span class="s">"Which drug does he use?"</span><span class="p">,</span>
+            <span class="s">"Which drug does she use?"</span><span class="p">,</span>
+            <span class="s">"Which drug do I use?"</span><span class="p">,</span>
+            <span class="s">"Which drug is prescribed for a symptom?"</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s">"ADMISSION_DATE"</span><span class="p">:</span> <span class="p">[</span><span class="s">"When did patient admitted to a clinic?"</span><span class="p">],</span>
+        <span class="s">"PATIENT_AGE"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s">"How old is the patient?"</span><span class="p">,</span>
+            <span class="s">"What is the gae of the patient?"</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <p>Then we can already use this pipeline to predict labels</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Predict entities
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">enterprise_zero_shot_ner</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s">"The doctor pescribed Majezik for my severe headache."</span><span class="p">,</span>
+        <span class="s">"The patient was admitted to the hospital for his colon cancer."</span><span class="p">,</span>
+        <span class="s">"27 years old patient was admitted to clinic on Sep 1st by Dr."</span><span class="o">+</span>
+        <span class="s">"X for a right-sided pleural effusion for thoracentesis."</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">document</th>
+          <th style="text-align: left">entities_zero_shot</th>
+          <th style="text-align: left">entities_zero_shot_class</th>
+          <th style="text-align: right">entities_zero_shot_confidence</th>
+          <th style="text-align: right">entities_zero_shot_origin_chunk</th>
+          <th style="text-align: right">entities_zero_shot_origin_sentence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">The doctor pescribed Majezik for my severe headache.</td>
+          <td style="text-align: left">Majezik</td>
+          <td style="text-align: left">DRUG</td>
+          <td style="text-align: right">0.646716</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">The doctor pescribed Majezik for my severe headache.</td>
+          <td style="text-align: left">severe headache</td>
+          <td style="text-align: left">PROBLEM</td>
+          <td style="text-align: right">0.552635</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">The patient was admitted to the hospital for his colon cancer.</td>
+          <td style="text-align: left">colon cancer</td>
+          <td style="text-align: left">PROBLEM</td>
+          <td style="text-align: right">0.88985</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">27 years old patient was admitted to clinic on Sep 1st by Dr. X for a right-sided pleural effusion for thoracentesis.</td>
+          <td style="text-align: left">27 years old</td>
+          <td style="text-align: left">PATIENT_AGE</td>
+          <td style="text-align: right">0.694308</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">27 years old patient was admitted to clinic on Sep 1st by Dr. X for a right-sided pleural effusion for thoracentesis.</td>
+          <td style="text-align: left">Sep 1st</td>
+          <td style="text-align: left">ADMISSION_DATE</td>
+          <td style="text-align: right">0.956461</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">27 years old patient was admitted to clinic on Sep 1st by Dr. X for a right-sided pleural effusion for thoracentesis.</td>
+          <td style="text-align: left">a right-sided pleural effusion for thoracentesis</td>
+          <td style="text-align: left">PROBLEM</td>
+          <td style="text-align: right">0.500266</td>
+          <td style="text-align: right">2</td>
+          <td style="text-align: right">0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h1 id="new-notebooks">New Notebooks</h1>
+    <ul>
+      <li><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb">Image Classification with VIT and Swin</a></li>
+      <li><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/zero_shot_ner.ipynb">Zero-Shot-NER</a></li>
+      <li><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb">Table Question Answering with TAPAS</a></li>
+      <li><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb">Automatic Speech Recognition with Wav2Vec2 and HuBERT </a></li>
+    </ul>
+
+    <h1 id="new-models-overview">New Models Overview</h1>
+
+    <p>Supported Languages are:
+<code class="language-plaintext highlighter-rouge">ab</code>, <code class="language-plaintext highlighter-rouge">am</code>, <code class="language-plaintext highlighter-rouge">ar</code>, <code class="language-plaintext highlighter-rouge">ba</code>, <code class="language-plaintext highlighter-rouge">bem</code>, <code class="language-plaintext highlighter-rouge">bg</code>, <code class="language-plaintext highlighter-rouge">bn</code>, <code class="language-plaintext highlighter-rouge">ca</code>, <code class="language-plaintext highlighter-rouge">co</code>, <code class="language-plaintext highlighter-rouge">cs</code>, <code class="language-plaintext highlighter-rouge">da</code>, <code class="language-plaintext highlighter-rouge">de</code>, <code class="language-plaintext highlighter-rouge">dv</code>, <code class="language-plaintext highlighter-rouge">el</code>, <code class="language-plaintext highlighter-rouge">en</code>, <code class="language-plaintext highlighter-rouge">es</code>, <code class="language-plaintext highlighter-rouge">et</code>, <code class="language-plaintext highlighter-rouge">eu</code>, <code class="language-plaintext highlighter-rouge">fa</code>, <code class="language-plaintext highlighter-rouge">fi</code>, <code class="language-plaintext highlighter-rouge">fon</code>, <code class="language-plaintext highlighter-rouge">fr</code>, <code class="language-plaintext highlighter-rouge">fy</code>, <code class="language-plaintext highlighter-rouge">ga</code>, <code class="language-plaintext highlighter-rouge">gam</code>, <code class="language-plaintext highlighter-rouge">gl</code>, <code class="language-plaintext highlighter-rouge">gu</code>, <code class="language-plaintext highlighter-rouge">ha</code>, <code class="language-plaintext highlighter-rouge">he</code>, <code class="language-plaintext highlighter-rouge">hi</code>, <code class="language-plaintext highlighter-rouge">hr</code>, <code class="language-plaintext highlighter-rouge">hu</code>, <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">ig</code>, <code class="language-plaintext highlighter-rouge">is</code>, <code class="language-plaintext highlighter-rouge">it</code>, <code class="language-plaintext highlighter-rouge">ja</code>, <code class="language-plaintext highlighter-rouge">jv</code>, <code class="language-plaintext highlighter-rouge">kin</code>, <code class="language-plaintext highlighter-rouge">kn</code>, <code class="language-plaintext highlighter-rouge">ko</code>, <code class="language-plaintext highlighter-rouge">kr</code>, <code class="language-plaintext highlighter-rouge">ku</code>, <code class="language-plaintext highlighter-rouge">ky</code>, <code class="language-plaintext highlighter-rouge">la</code>, <code class="language-plaintext highlighter-rouge">lg</code>, <code class="language-plaintext highlighter-rouge">lo</code>, <code class="language-plaintext highlighter-rouge">lt</code>, <code class="language-plaintext highlighter-rouge">lu</code>, <code class="language-plaintext highlighter-rouge">luo</code>, <code class="language-plaintext highlighter-rouge">lv</code>, <code class="language-plaintext highlighter-rouge">lwt</code>, <code class="language-plaintext highlighter-rouge">ml</code>, <code class="language-plaintext highlighter-rouge">mn</code>, <code class="language-plaintext highlighter-rouge">mr</code>, <code class="language-plaintext highlighter-rouge">ms</code>, <code class="language-plaintext highlighter-rouge">mt</code>, <code class="language-plaintext highlighter-rouge">nb</code>, <code class="language-plaintext highlighter-rouge">nl</code>, <code class="language-plaintext highlighter-rouge">no</code>, <code class="language-plaintext highlighter-rouge">pcm</code>, <code class="language-plaintext highlighter-rouge">pl</code>, <code class="language-plaintext highlighter-rouge">pt</code>, <code class="language-plaintext highlighter-rouge">ro</code>, <code class="language-plaintext highlighter-rouge">ru</code>, <code class="language-plaintext highlighter-rouge">rw</code>, <code class="language-plaintext highlighter-rouge">sg</code>, <code class="language-plaintext highlighter-rouge">si</code>, <code class="language-plaintext highlighter-rouge">sk</code>, <code class="language-plaintext highlighter-rouge">sl</code>, <code class="language-plaintext highlighter-rouge">sq</code>, <code class="language-plaintext highlighter-rouge">st</code>, <code class="language-plaintext highlighter-rouge">su</code>, <code class="language-plaintext highlighter-rouge">sv</code>, <code class="language-plaintext highlighter-rouge">sw</code>, <code class="language-plaintext highlighter-rouge">swa</code>, <code class="language-plaintext highlighter-rouge">ta</code>, <code class="language-plaintext highlighter-rouge">te</code>, <code class="language-plaintext highlighter-rouge">th</code>, <code class="language-plaintext highlighter-rouge">ti</code>, <code class="language-plaintext highlighter-rouge">tl</code>, <code class="language-plaintext highlighter-rouge">tn</code>, <code class="language-plaintext highlighter-rouge">tr</code>, <code class="language-plaintext highlighter-rouge">tt</code>, <code class="language-plaintext highlighter-rouge">tw</code>, <code class="language-plaintext highlighter-rouge">uk</code>, <code class="language-plaintext highlighter-rouge">unk</code>, <code class="language-plaintext highlighter-rouge">ur</code>, <code class="language-plaintext highlighter-rouge">uz</code>, <code class="language-plaintext highlighter-rouge">vi</code>, <code class="language-plaintext highlighter-rouge">wo</code>, <code class="language-plaintext highlighter-rouge">xx</code>, <code class="language-plaintext highlighter-rouge">yo</code>, <code class="language-plaintext highlighter-rouge">yue</code>, <code class="language-plaintext highlighter-rouge">zh</code>, <code class="language-plaintext highlighter-rouge">zu</code></p>
+
+    <h1 id="automatic-speech-recognition-models-overview">Automatic Speech Recognition Models Overview</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">Language</th>
+          <th style="text-align: left">NLU Reference</th>
+          <th style="text-align: left">Spark NLP  Reference</th>
+          <th style="text-align: left">Annotator Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">ab</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_xls_r_ab_test_by_hf_test_gpu_ab.html">ab.speech2text.wav2vec_xlsr.gpu.by_hf_test</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_xls_r_ab_test_by_hf_test_gpu_ab.html">asr_xls_r_ab_test_by_hf_test_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ba</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xls_r_300m_bashkir_cv7_opt_gpu_ba.html">ba.speech2text.wav2vec_xlsr.v2_large_300m_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xls_r_300m_bashkir_cv7_opt_gpu_ba.html">asr_wav2vec2_large_xls_r_300m_bashkir_cv7_opt_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">bem</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_bemba_gpu_bem.html">bem.speech2text.wav2vec_xlsr.v2_large_gpu.by_csikasote</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_bemba_gpu_bem.html">asr_wav2vec2_large_xlsr_bemba_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">bg</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xls_r_300m_d2_gpu_bg.html">bg.speech2text.wav2vec_xlsr.v2_large_300m_d2_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xls_r_300m_d2_gpu_bg.html">asr_wav2vec2_large_xls_r_300m_d2_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ca</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_100k_voxpopuli_catala_by_ccoreilly_gpu_ca.html">ca.speech2text.wav2vec2.voxpopuli.v2_large_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_100k_voxpopuli_catala_by_ccoreilly_gpu_ca.html">asr_wav2vec2_large_100k_voxpopuli_catala_by_ccoreilly_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">cs</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_czech_cs.html">cs.speech2text.wav2vec_xlsr.v2_large.by_arampacha</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_czech_cs.html">asr_wav2vec2_large_xlsr_czech</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">da</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_alvenir_wav2vec2_base_nst_cv9_da.html">da.speech2text.wav2vec2.v2_base</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_alvenir_wav2vec2_base_nst_cv9_da.html">asr_alvenir_wav2vec2_base_nst_cv9</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">de</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_german_demo_de.html">de.speech2text.wav2vec_xlsr.v3_large.by_marcel</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_german_demo_de.html">asr_wav2vec2_large_xlsr_german_demo</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">el</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_greek_2_gpu_el.html">el.speech2text.wav2vec_xlsr.v3_large_gpu.by_skylord</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_greek_2_gpu_el.html">asr_wav2vec2_large_xlsr_greek_2_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_xlsr_training_gpu_en.html">en.speech2text.wav2vec_xlsr.v2gpu.by_bakhtullah123</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_xlsr_training_gpu_en.html">asr_xlsr_training_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">fa</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html">fa.speech2text.wav2vec2.v2_gpu_s117_exp</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html">asr_exp_w2v2t_pretraining_s117_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">fa</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s44_fa.html">fa.speech2text.wav2vec_xlsr.v2_s44_exp</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s44_fa.html">asr_exp_w2v2t_xls_r_s44</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">fi</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_fi.html">fi.speech2text.wav2vec2.voxpopuli.v2_base</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_fi.html">asr_wav2vec2_base_10k_voxpopuli</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">fi</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot_fi.html">fi.speech2text.wav2vec_xlsrby_aapot</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot_fi.html">asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">fon</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_fonxlsr_fon.html">fon.speech2text.wav2vec_xlsr</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_fonxlsr_fon.html">asr_fonxlsr</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">fr</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s800_fr.html">fr.speech2text.wav2vec_xlsr.v2_s800_exp</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s800_fr.html">asr_exp_w2v2t_xlsr_53_s800</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">gu</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_gu.html">gu.speech2text.wav2vec_xlsr.v2_large_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_gu.html">asr_wav2vec2_large_xlsr_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">hi</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_hindi_model_with_lm_vakyansh_hi.html">hi.speech2text.wav2vec2.by_harveenchadha</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_hindi_model_with_lm_vakyansh_hi.html">asr_hindi_model_with_lm_vakyansh</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">hi</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_hindi_gpu_hi.html">hi.speech2text.wav2vec_xlsr.v2_large_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_hindi_gpu_hi.html">asr_wav2vec2_large_xlsr_hindi_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">hu</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_gpu_hu.html">hu.speech2text.wav2vec2.voxpopuli.v2_base_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_gpu_hu.html">asr_wav2vec2_base_10k_voxpopuli_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">hu</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_hu.html">hu.speech2text.wav2vec_xlsr.v2_large_gpu.by_gchhablani</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_hu.html">asr_wav2vec2_large_xlsr_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">id</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s449_id.html">id.speech2text.wav2vec_xlsr.v2_s449_exp</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s449_id.html">asr_exp_w2v2t_xlsr_53_s449</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">it</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_vp_100k_s149_gpu_it.html">it.speech2text.wav2vec2.v2_gpu_s149_vp_exp</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_vp_100k_s149_gpu_it.html">asr_exp_w2v2t_vp_100k_s149_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">it</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s417_it.html">it.speech2text.wav2vec_xlsr.v2_s417_exp</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s417_it.html">asr_exp_w2v2t_xls_r_s417</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ja</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_japanese_hiragana_ja.html">ja.speech2text.wav2vec_xlsr.v2_large</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_japanese_hiragana_ja.html">asr_wav2vec2_large_xlsr_japanese_hiragana</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ko</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_korean_gpu_ko.html">ko.speech2text.wav2vec_xlsr.v2_large_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_korean_gpu_ko.html">asr_wav2vec2_large_xlsr_korean_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">kr</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_korean_senior_kr.html">kr.speech2text.wav2vec_xlsr.v2</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_korean_senior_kr.html">asr_wav2vec2_xlsr_korean_senior</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">kr</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html">kr.speech2text.wav2vec_xlsr.v2_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html">asr_wav2vec2_xlsr_korean_senior_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ku</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_xlsr_kurmanji_kurdish_gpu_ku.html">ku.speech2text.wav2vec_xlsr.gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_xlsr_kurmanji_kurdish_gpu_ku.html">asr_xlsr_kurmanji_kurdish_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ky</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_kyrgyz_ky.html">ky.speech2text.wav2vec_xlsr.v2_large</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_kyrgyz_ky.html">asr_wav2vec2_large_xlsr_53_kyrgyz</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ky</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu_ky.html">ky.speech2text.wav2vec_xlsr.v2_large_gpu.by_iarfmoose</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu_ky.html">asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">la</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_base_latin_la.html">la.speech2text.wav2vec2.v2_base</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_base_latin_la.html">asr_wav2vec2_base_latin</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">la</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_latin_gpu_la.html">la.speech2text.wav2vec2.v2_base_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_latin_gpu_la.html">asr_wav2vec2_base_latin_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">lg</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html">lg.speech2text.wav2vec_xlsr.v2_multilingual_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html">asr_wav2vec2_xlsr_multilingual_56_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">lt</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu_lt.html">lt.speech2text.wav2vec_xlsr.v2_large_gpu.by_dundar</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu_lt.html">asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">lv</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_latvian_lv.html">lv.speech2text.wav2vec_xlsr.v2_large</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_latvian_lv.html">asr_wav2vec2_large_xlsr_53_latvian</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">lv</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_latvian_gpu_lv.html">lv.speech2text.wav2vec_xlsr.v2_large_gpu.by_jimregan</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_latvian_gpu_lv.html">asr_wav2vec2_large_xlsr_latvian_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">mn</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu_mn.html">mn.speech2text.wav2vec_xlsr.v2_large_gpu.by_manandey</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu_mn.html">asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">nl</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s972_nl.html">nl.speech2text.wav2vec_xlsr.v2_s972_exp</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s972_nl.html">asr_exp_w2v2t_xlsr_53_s972</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">pt</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_bp_voxforge1_xlsr_gpu_pt.html">pt.speech2text.wav2vec_xlsr.voxforge1.gpu.by_lgris</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_bp_voxforge1_xlsr_gpu_pt.html">asr_bp_voxforge1_xlsr_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ro</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu_ro.html">ro.speech2text.wav2vec_xlsr.v2_large_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu_ro.html">asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">sg</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_swiss_german_gpu_sg.html">sg.speech2text.wav2vec_xlsr.v2_large_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_swiss_german_gpu_sg.html">asr_wav2vec2_large_xlsr_53_swiss_german_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">su</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_sundanese_gpu_su.html">su.speech2text.wav2vec_xlsr.v2_large_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_sundanese_gpu_su.html">asr_wav2vec2_large_xlsr_sundanese_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">sv</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_swedish_gpu_sv.html">sv.speech2text.wav2vec_xlsr.v2_large_gpu.by_marma</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_swedish_gpu_sv.html">asr_wav2vec2_large_xlsr_swedish_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">tt</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_W2V2_TATAR_SMALL_tt.html">tt.speech2text.wav2vec_xlsr.v2_large_small</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_W2V2_TATAR_SMALL_tt.html">asr_wav2vec2_large_xlsr_53_W2V2_TATAR_SMALL</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">tw</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2large_xlsr_akan_tw.html">tw.speech2text.wav2vec_xlsr.v2</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2large_xlsr_akan_tw.html">asr_wav2vec2large_xlsr_akan</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">uz</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_uzbek_stt_uz.html">uz.speech2text.wav2vec2</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_uzbek_stt_uz.html">asr_uzbek_stt</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">vi</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_vietnamese_by_not_tanh_gpu_vi.html">vi.speech2text.wav2vec_xlsr.v2_large_gpu.by_not_tanh</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_vietnamese_by_not_tanh_gpu_vi.html">asr_wav2vec2_large_xlsr_53_vietnamese_by_not_tanh_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">wo</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_av2vec2_xls_r_300m_wolof_lm_gpu_wo.html">wo.speech2text.wav2vec_xlsr.v2_300m_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_av2vec2_xls_r_300m_wolof_lm_gpu_wo.html">asr_av2vec2_xls_r_300m_wolof_lm_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">yue</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu_yue.html">yue.speech2text.wav2vec_xlsr.v2_large_gpu</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu_yue.html">asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu</a></td>
+          <td style="text-align: left">Wav2Vec2ForCTC</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1 id="image-classification-models-overview">Image Classification Models Overview</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">Language</th>
+          <th style="text-align: left">NLU Reference</th>
+          <th style="text-align: left">Spark NLP  Reference</th>
+          <th style="text-align: left">Annotator Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_GoodBad_Teeth_en_3_0.html">en.classify_image.Check_GoodBad_Teeth</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_GoodBad_Teeth_en_3_0.html">image_classifier_vit_Check_GoodBad_Teeth</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Gum_Teeth_en_3_0.html">en.classify_image.Check_Gum_Teeth</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Gum_Teeth_en_3_0.html">image_classifier_vit_Check_Gum_Teeth</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Missing_Teeth_en_3_0.html">en.classify_image.Check_Missing_Teeth</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Missing_Teeth_en_3_0.html">image_classifier_vit_Check_Missing_Teeth</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Infrastructures_en_3_0.html">en.classify_image.Infrastructures</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Infrastructures_en_3_0.html">image_classifier_vit_Infrastructures</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Insectodoptera_en_3_0.html">en.classify_image.Insectodoptera</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Insectodoptera_en_3_0.html">image_classifier_vit_Insectodoptera</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Tomato_Leaf_Classifier_en_3_0.html">en.classify_image.Tomato_Leaf_Classifier</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Tomato_Leaf_Classifier_en_3_0.html">image_classifier_vit_Tomato_Leaf_Classifier</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Visual_transformer_chihuahua_cookies_en_3_0.html">en.classify_image.Visual_transformer_chihuahua_cookies</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Visual_transformer_chihuahua_cookies_en_3_0.html">image_classifier_vit_Visual_transformer_chihuahua_cookies</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit__spectrogram_en_3_0.html">en.classify_image._spectrogram</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit__spectrogram_en_3_0.html">image_classifier_vit__spectrogram</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_age_classifier_en_3_0.html">en.classify_image.age_classifier</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_age_classifier_en_3_0.html">image_classifier_vit_age_classifier</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_airplanes_en_3_0.html">en.classify_image.airplanes</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_airplanes_en_3_0.html">image_classifier_vit_airplanes</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_animal_classifier_en_3_0.html">en.classify_image.animal_classifier</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_animal_classifier_en_3_0.html">image_classifier_vit_animal_classifier</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_anomaly_en_3_0.html">en.classify_image.anomaly</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_anomaly_en_3_0.html">image_classifier_vit_anomaly</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_apes_en_3_0.html">en.classify_image.apes</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_apes_en_3_0.html">image_classifier_vit_apes</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_cifar10__base_en_3_0.html">en.classify_image.autotrain_cifar10__base</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_cifar10__base_en_3_0.html">image_classifier_vit_autotrain_cifar10__base</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_dog_vs_food_en_3_0.html">en.classify_image.autotrain_dog_vs_food</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_dog_vs_food_en_3_0.html">image_classifier_vit_autotrain_dog_vs_food</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baked_goods_en_3_0.html">en.classify_image.baked_goods</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baked_goods_en_3_0.html">image_classifier_vit_baked_goods</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_beans_en_3_0.html">en.classify_image.base_beans</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_beans_en_3_0.html">image_classifier_vit_base_beans</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cats_vs_dogs_en_3_0.html">en.classify_image.base_cats_vs_dogs</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cats_vs_dogs_en_3_0.html">image_classifier_vit_base_cats_vs_dogs</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cifar10_en_3_0.html">en.classify_image.base_cifar10</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cifar10_en_3_0.html">image_classifier_vit_base_cifar10</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_food101_en_3_0.html">en.classify_image.base_food101</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_food101_en_3_0.html">image_classifier_vit_base_food101</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_movie_scenes_v1_en_3_0.html">en.classify_image.base_movie_scenes_v1</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_movie_scenes_v1_en_3_0.html">image_classifier_vit_base_movie_scenes_v1</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_mri_en_3_0.html">en.classify_image.base_mri</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_mri_en_3_0.html">image_classifier_vit_base_mri</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html">en.classify_image.base_patch16_224</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html">image_classifier_vit_base_patch16_224</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html">en.classify_image.base_patch16_224.by_google</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html">image_classifier_vit_base_patch16_224</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_cifar10_en_3_0.html">en.classify_image.base_patch16_224_cifar10</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_cifar10_en_3_0.html">image_classifier_vit_base_patch16_224_cifar10</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_eurosat_en_3_0.html">en.classify_image.base_patch16_224_finetuned_eurosat</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_eurosat_en_3_0.html">image_classifier_vit_base_patch16_224_finetuned_eurosat</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_kvasirv2_colonoscopy_en_3_0.html">en.classify_image.base_patch16_224_finetuned_kvasirv2_colonoscopy</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_kvasirv2_colonoscopy_en_3_0.html">image_classifier_vit_base_patch16_224_finetuned_kvasirv2_colonoscopy</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_snacks_en_3_0.html">en.classify_image.base_patch16_224_in21k_snacks</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_snacks_en_3_0.html">image_classifier_vit_base_patch16_224_in21k_snacks</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_ucSat_en_3_0.html">en.classify_image.base_patch16_224_in21k_ucSat</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_ucSat_en_3_0.html">image_classifier_vit_base_patch16_224_in21k_ucSat</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_recylce_ft_en_3_0.html">en.classify_image.base_patch16_224_recylce_ft</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_recylce_ft_en_3_0.html">image_classifier_vit_base_patch16_224_recylce_ft</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html">en.classify_image.base_patch16_384</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html">image_classifier_vit_base_patch16_384</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html">en.classify_image.base_patch16_384.by_google</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html">image_classifier_vit_base_patch16_384</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch32_384_en_3_0.html">en.classify_image.base_patch32_384.by_google</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch32_384_en_3_0.html">image_classifier_vit_base_patch32_384</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_xray_pneumonia_en_3_0.html">en.classify_image.base_xray_pneumonia</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_xray_pneumonia_en_3_0.html">image_classifier_vit_base_xray_pneumonia</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baseball_stadium_foods_en_3_0.html">en.classify_image.baseball_stadium_foods</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baseball_stadium_foods_en_3_0.html">image_classifier_vit_baseball_stadium_foods</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_vs_wine_en_3_0.html">en.classify_image.beer_vs_wine</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_vs_wine_en_3_0.html">image_classifier_vit_beer_vs_wine</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_whisky_wine_detection_en_3_0.html">en.classify_image.beer_whisky_wine_detection</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_whisky_wine_detection_en_3_0.html">image_classifier_vit_beer_whisky_wine_detection</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_blocks_en_3_0.html">en.classify_image.blocks</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_blocks_en_3_0.html">image_classifier_vit_blocks</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar10_en_3_0.html">en.classify_image.cifar10</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar10_en_3_0.html">image_classifier_vit_cifar10</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar_10_2_en_3_0.html">en.classify_image.cifar_10_2</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar_10_2_en_3_0.html">image_classifier_vit_cifar_10_2</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_computer_stuff_en_3_0.html">en.classify_image.computer_stuff</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_computer_stuff_en_3_0.html">image_classifier_vit_computer_stuff</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_croupier_creature_classifier_en_3_0.html">en.classify_image.croupier_creature_classifier</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_croupier_creature_classifier_en_3_0.html">image_classifier_vit_croupier_creature_classifier</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html">en.classify_image.deit_base_patch16_224</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html">image_classifier_vit_deit_base_patch16_224</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html">en.classify_image.deit_base_patch16_224.by_facebook</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html">image_classifier_vit_deit_base_patch16_224</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_flyswot_en_3_0.html">en.classify_image.deit_flyswot</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_flyswot_en_3_0.html">image_classifier_vit_deit_flyswot</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html">en.classify_image.deit_small_patch16_224</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html">image_classifier_vit_deit_small_patch16_224</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html">en.classify_image.deit_small_patch16_224.by_facebook</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html">image_classifier_vit_deit_small_patch16_224</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html">en.classify_image.deit_tiny_patch16_224</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html">image_classifier_vit_deit_tiny_patch16_224</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html">en.classify_image.deit_tiny_patch16_224.by_facebook</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html">image_classifier_vit_deit_tiny_patch16_224</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_demo_en_3_0.html">en.classify_image.demo</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_demo_en_3_0.html">image_classifier_vit_demo</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_denver_nyc_paris_en_3_0.html">en.classify_image.denver_nyc_paris</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_denver_nyc_paris_en_3_0.html">image_classifier_vit_denver_nyc_paris</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_diam_en_3_0.html">en.classify_image.diam</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_diam_en_3_0.html">image_classifier_vit_diam</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_digital_en_3_0.html">en.classify_image.digital</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_digital_en_3_0.html">image_classifier_vit_digital</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_en_3_0.html">en.classify_image.dog</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_en_3_0.html">image_classifier_vit_dog</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_breed_classifier_en_3_0.html">en.classify_image.dog_breed_classifier</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_breed_classifier_en_3_0.html">image_classifier_vit_dog_breed_classifier</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_food__base_patch16_224_in21k_en_3_0.html">en.classify_image.dog_food__base_patch16_224_in21k</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_food__base_patch16_224_in21k_en_3_0.html">image_classifier_vit_dog_food__base_patch16_224_in21k</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_races_en_3_0.html">en.classify_image.dog_races</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_races_en_3_0.html">image_classifier_vit_dog_races</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_vs_chicken_en_3_0.html">en.classify_image.dog_vs_chicken</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_vs_chicken_en_3_0.html">image_classifier_vit_dog_vs_chicken</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_doggos_lol_en_3_0.html">en.classify_image.doggos_lol</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_doggos_lol_en_3_0.html">image_classifier_vit_doggos_lol</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dogs_en_3_0.html">en.classify_image.dogs</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dogs_en_3_0.html">image_classifier_vit_dogs</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dwarf_goats_en_3_0.html">en.classify_image.dwarf_goats</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dwarf_goats_en_3_0.html">image_classifier_vit_dwarf_goats</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_2_en_3_0.html">en.classify_image.electric_2</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_2_en_3_0.html">image_classifier_vit_electric_2</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_pole_type_classification_en_3_0.html">en.classify_image.electric_pole_type_classification</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_pole_type_classification_en_3_0.html">image_classifier_vit_electric_pole_type_classification</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ex_for_evan_en_3_0.html">en.classify_image.ex_for_evan</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ex_for_evan_en_3_0.html">image_classifier_vit_ex_for_evan</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_finetuned_eurosat_kornia_en_3_0.html">en.classify_image.finetuned_eurosat_kornia</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_finetuned_eurosat_kornia_en_3_0.html">image_classifier_vit_finetuned_eurosat_kornia</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_flowers_en_3_0.html">en.classify_image.flowers</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_flowers_en_3_0.html">image_classifier_vit_flowers</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_food_en_3_0.html">en.classify_image.food</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_food_en_3_0.html">image_classifier_vit_food</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_fruits_en_3_0.html">en.classify_image.fruits</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_fruits_en_3_0.html">image_classifier_vit_fruits</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_garbage_classification_en_3_0.html">en.classify_image.garbage_classification</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_garbage_classification_en_3_0.html">image_classifier_vit_garbage_classification</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_grain_en_3_0.html">en.classify_image.grain</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_grain_en_3_0.html">image_classifier_vit_grain</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_greens_en_3_0.html">en.classify_image.greens</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_greens_en_3_0.html">image_classifier_vit_greens</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hot_dog_or_sandwich_en_3_0.html">en.classify_image.hot_dog_or_sandwich</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hot_dog_or_sandwich_en_3_0.html">image_classifier_vit_hot_dog_or_sandwich</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hotdog_not_hotdog_en_3_0.html">en.classify_image.hotdog_not_hotdog</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hotdog_not_hotdog_en_3_0.html">image_classifier_vit_hotdog_not_hotdog</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_housing_categories_en_3_0.html">en.classify_image.housing_categories</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_housing_categories_en_3_0.html">image_classifier_vit_housing_categories</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hugging_geese_en_3_0.html">en.classify_image.hugging_geese</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hugging_geese_en_3_0.html">image_classifier_vit_hugging_geese</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ice_cream_en_3_0.html">en.classify_image.ice_cream</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ice_cream_en_3_0.html">image_classifier_vit_ice_cream</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_iiif_manuscript__en_3_0.html">en.classify_image.iiif_manuscript_</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_iiif_manuscript__en_3_0.html">image_classifier_vit_iiif_manuscript_</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_indian_snacks_en_3_0.html">en.classify_image.indian_snacks</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_indian_snacks_en_3_0.html">image_classifier_vit_indian_snacks</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_koala_panda_wombat_en_3_0.html">en.classify_image.koala_panda_wombat</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_koala_panda_wombat_en_3_0.html">image_classifier_vit_koala_panda_wombat</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lawn_weeds_en_3_0.html">en.classify_image.lawn_weeds</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lawn_weeds_en_3_0.html">image_classifier_vit_lawn_weeds</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_guanaco_vicuna_en_3_0.html">en.classify_image.llama_alpaca_guanaco_vicuna</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_guanaco_vicuna_en_3_0.html">image_classifier_vit_llama_alpaca_guanaco_vicuna</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_snake_en_3_0.html">en.classify_image.llama_alpaca_snake</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_snake_en_3_0.html">image_classifier_vit_llama_alpaca_snake</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_potato_en_3_0.html">en.classify_image.llama_or_potato</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_potato_en_3_0.html">image_classifier_vit_llama_or_potato</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_what_en_3_0.html">en.classify_image.llama_or_what</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_what_en_3_0.html">image_classifier_vit_llama_or_what</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lotr_en_3_0.html">en.classify_image.lotr</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lotr_en_3_0.html">image_classifier_vit_lotr</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lucky_model_en_3_0.html">en.classify_image.lucky_model</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lucky_model_en_3_0.html">image_classifier_vit_lucky_model</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lung_cancer_en_3_0.html">en.classify_image.lung_cancer</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lung_cancer_en_3_0.html">image_classifier_vit_lung_cancer</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_mit_indoor_scenes_en_3_0.html">en.classify_image.mit_indoor_scenes</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_mit_indoor_scenes_en_3_0.html">image_classifier_vit_mit_indoor_scenes</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_modelversion01_en_3_0.html">en.classify_image.modelversion01</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_modelversion01_en_3_0.html">image_classifier_vit_modelversion01</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_my_bean_VIT_en_3_0.html">en.classify_image.my_bean_VIT</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_my_bean_VIT_en_3_0.html">image_classifier_vit_my_bean_VIT</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_new_york_tokyo_london_en_3_0.html">en.classify_image.new_york_tokyo_london</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_new_york_tokyo_london_en_3_0.html">image_classifier_vit_new_york_tokyo_london</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_occupation_prediction_en_3_0.html">en.classify_image.occupation_prediction</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_occupation_prediction_en_3_0.html">image_classifier_vit_occupation_prediction</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_opencampus_age_detection_en_3_0.html">en.classify_image.opencampus_age_detection</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_opencampus_age_detection_en_3_0.html">image_classifier_vit_opencampus_age_detection</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_orcs_and_friends_en_3_0.html">en.classify_image.orcs_and_friends</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_orcs_and_friends_en_3_0.html">image_classifier_vit_orcs_and_friends</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_oz_fauna_en_3_0.html">en.classify_image.oz_fauna</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_oz_fauna_en_3_0.html">image_classifier_vit_oz_fauna</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_pizza_ravioli_en_3_0.html">en.classify_image.pasta_pizza_ravioli</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_pizza_ravioli_en_3_0.html">image_classifier_vit_pasta_pizza_ravioli</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_shapes_en_3_0.html">en.classify_image.pasta_shapes</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_shapes_en_3_0.html">image_classifier_vit_pasta_shapes</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_places_en_3_0.html">en.classify_image.places</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_places_en_3_0.html">image_classifier_vit_places</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_airlines_en_3_0.html">en.classify_image.planes_airlines</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_airlines_en_3_0.html">image_classifier_vit_planes_airlines</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_trains_automobiles_en_3_0.html">en.classify_image.planes_trains_automobiles</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_trains_automobiles_en_3_0.html">image_classifier_vit_planes_trains_automobiles</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_puppies_classify_en_3_0.html">en.classify_image.puppies_classify</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_puppies_classify_en_3_0.html">image_classifier_vit_puppies_classify</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rare_bottle_en_3_0.html">en.classify_image.rare_bottle</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rare_bottle_en_3_0.html">image_classifier_vit_rare_bottle</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_roomclassifier_en_3_0.html">en.classify_image.roomclassifier</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_roomclassifier_en_3_0.html">image_classifier_vit_roomclassifier</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rust_image_classification_1_en_3_0.html">en.classify_image.rust_image_classification_1</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rust_image_classification_1_en_3_0.html">image_classifier_vit_rust_image_classification_1</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_skin_type_en_3_0.html">en.classify_image.skin_type</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_skin_type_en_3_0.html">image_classifier_vit_skin_type</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_snacks_en_3_0.html">en.classify_image.snacks</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_snacks_en_3_0.html">image_classifier_vit_snacks</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_south_indian_foods_en_3_0.html">en.classify_image.south_indian_foods</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_south_indian_foods_en_3_0.html">image_classifier_vit_south_indian_foods</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_string_instrument_detector_en_3_0.html">en.classify_image.string_instrument_detector</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_string_instrument_detector_en_3_0.html">image_classifier_vit_string_instrument_detector</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_vc_bantai__withoutAMBI_adunest_en_3_0.html">en.classify_image.vc_bantai__withoutAMBI_adunest</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_vc_bantai__withoutAMBI_adunest_en_3_0.html">image_classifier_vit_vc_bantai__withoutAMBI_adunest</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_trainer_rare_puppers_en_3_0.html">en.classify_image.trainer_rare_puppers</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_trainer_rare_puppers_en_3_0.html">image_classifier_vit_trainer_rare_puppers</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">en</td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_world_landmarks_en_3_0.html">en.classify_image.world_landmarks</a></td>
+          <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_world_landmarks_en_3_0.html">image_classifier_vit_world_landmarks</a></td>
+          <td style="text-align: left">ViTForImageClassification</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <hr />
+
+    <h2 id="nlu-version-410">NLU Version 4.1.0</h2>
+    <p>Approximately 1000 new state-of-the-art transformer models for Question Answering (QA)  for over 10 languages, up to 700% speedup on GPU, 100+ Embeddings such as Bert, Bert Sentence, CamemBert, DistilBert, Roberta, Roberta Sentence, Universal Sentence Encoder, Word, XLM Roberta, XLM Roberta Sentence, 40 sequence classification models, +400 token classification  odels for over 10 languages various Spark NLP helper methods and much more in 1 line of code with John Snow Labs NLU 4.1.0</p>
+
+    <hr />
+    <h4 id="nlu-410-core-overview">NLU 4.1.0 Core Overview</h4>
+
+    <ul>
+      <li>
+        <p>On the NLU core side we have over 1000 new state-of-the-art models in over 10 languages.</p>
+      </li>
+      <li>
+        <p>Additionally up to 700% speedup <strong>transformer-based Word Embeddings</strong> on <strong>GPU</strong> and up to <strong>97% speedup on CPU</strong> for <strong>tensorflow operations</strong>, support for Apple M1 chips, Pyspark 3.2 and 3.3 support.
+Ontop of this, we are now supporting Apple M1 based architectures and every Pyspark 3.X version, while deprecating support for Pyspark 2.X.</p>
+      </li>
+      <li>
+        <p>Finally, NLU-Core features various new helper methods for working with Spark NLP and embellishes now the entire universe of Annotators defined by Spark NLP.</p>
+      </li>
+    </ul>
+
+    <hr />
+
+    <h4 id="nlu-captures-every-annotator-of-spark-nlp">NLU captures every Annotator of Spark NLP</h4>
+
+    <p>The entire universe of Annotators in Spark NLP  is now embellished by NLU Components by using generalizable annotation extractors methods and configs internally to support enable the new NLU util methods.
+The following annotator classes are newly captured:</p>
+
+    <ul>
+      <li>BertEmbeddings<a href="release_notes.md">release_notes.md</a></li>
+      <li>BertForQuestionAnswering</li>
+      <li>BertForSequenceClassification</li>
+      <li>BertForTokenClassification</li>
+      <li>BertSentenceEmbeddings</li>
+      <li>CamemBertEmbeddings</li>
+      <li>ClassifierDLModel</li>
+      <li>ContextSpellCheckerModel</li>
+      <li>DistilBertEmbeddings</li>
+      <li>DistilBertForSequenceClassification</li>
+      <li>DistilBertForTokenClassification</li>
+      <li>LemmatizerModel</li>
+      <li>LongformerForTokenClassification</li>
+      <li>NerCrfModel</li>
+      <li>NerDLModel</li>
+      <li>PerceptronModel</li>
+      <li>RoBertaEmbeddings</li>
+      <li>RoBertaForQuestionAnswering</li>
+      <li>RoBertaForSequenceClassification</li>
+      <li>RoBertaForTokenClassification</li>
+      <li>RoBertaSentenceEmbeddings</li>
+      <li>SentenceDetectorDLModel</li>
+      <li>StopWordsCleaner</li>
+      <li>T5Transformer</li>
+      <li>UniversalSentenceEncoder</li>
+      <li>WordEmbeddingsModel</li>
+      <li>XlmRoBertaEmbeddings</li>
+      <li>XlmRoBertaForTokenClassification</li>
+      <li>XlmRoBertaSentenceEmbeddings</li>
+    </ul>
+
+    <hr />
+
+    <h4 id="embeddings">Embeddings</h4>
+
+    <p>Embeddings provides dense vector representations for natural language by using a deep, pre-trained neural network with the Transformer architecture. On the NLU core side we have over 150 new embeddings models. We have new BertEmbeddings, BertSentenceEmbeddings, CamemBertEmbeddings, DistilBertEmbeddings, RoBertaEmbeddings, UniversalSentenceEncoder, XlmRoBertaEmbeddings, XlmRoBertaSentenceEmbeddings for in different languages.</p>
+
+    <ul>
+      <li>German BertEmbeddings</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"de.embed.electra.base"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Ich liebe Spark NLP"""</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">token</th>
+          <th style="text-align: left">word_embedding_electra</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">Ich</td>
+          <td style="text-align: left">-0.09518987685441971, -0.016133345663547516</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">liebe</td>
+          <td style="text-align: left">-0.07025116682052612, -0.35387516021728516</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Spark</td>
+          <td style="text-align: left">-0.33390265703201294, 0.08874476701021194</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">NLP</td>
+          <td style="text-align: left">-0.2969835698604584, 0.1980721354484558</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>English BertEmbeddings</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s">"I love NLP"</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.embed_sentence.bert.pubmed'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">output_level</span><span class="o">=</span><span class="s">'token'</span><span class="p">)</span>
+<span class="n">df</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">token</th>
+          <th style="text-align: left">sentence_embedding_bert</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">I</td>
+          <td style="text-align: left">-0.06332794576883316, -0.5097940564155579</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">love</td>
+          <td style="text-align: left">-0.06332794576883316, -0.5097940564155579</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">NLP</td>
+          <td style="text-align: left">-0.06332794576883316, -0.5097940564155579</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>Japan BertEmbeddings</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"ja.embed.bert.base"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""私はSpark NLPを愛しています"""</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">token</th>
+          <th style="text-align: left">word_embedding_bert</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">私はSpark</td>
+          <td style="text-align: left">0.3989057242870331, -0.20664098858833313</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">NLPを愛しています</td>
+          <td style="text-align: left">0.05264343321323395, -0.19963961839675903</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>XLM RoBerta Embeddings MultiLanguage</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s">"I love NLP"</span><span class="p">,</span> <span class="s">"Me encanta usar SparkNLP"</span><span class="p">]</span>
+<span class="n">embeddings_df</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'xx.embed.xlmr_roberta.base_v2'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">output_level</span><span class="o">=</span><span class="s">'sentence'</span><span class="p">)</span>
+<span class="n">embeddings_df</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">sentence</th>
+          <th style="text-align: left">word_embedding_xlmr_roberta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">I love NLP</td>
+          <td style="text-align: left">-0.07450243085622787, 0.022609828040003777</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Me encanta usar SparkNLP</td>
+          <td style="text-align: left">0.0961054190993309, 0.03734250366687775</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>RoBerta Embeddings English</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s">"""I love Spark NLP"""</span><span class="p">]</span>
+<span class="n">embeddings_df</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.embed.roberta'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">output_level</span><span class="o">=</span><span class="s">'token'</span><span class="p">)</span>
+<span class="n">embeddings_df</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">token</th>
+          <th style="text-align: left">word_embedding_roberta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">I</td>
+          <td style="text-align: left">-0.06406927853822708, 0.16723069548606873</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">love</td>
+          <td style="text-align: left">-0.06369957327842712, 0.21014901995658875</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Spark</td>
+          <td style="text-align: left">-0.1004200279712677, 0.03312099352478981</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">NLP</td>
+          <td style="text-align: left">-0.09467814117670059, -0.02236207202076912</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="question-answering">Question Answering</h4>
+
+    <p>Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. On the NLU core side we have over 200+ new question answering models.</p>
+
+    <ul>
+      <li>Bert For Question Answering</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"answer_question.bert.base_uncased.by_ksabeh"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""What is my name?|||"My name is Clara and I live in Berkeley."""</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">answer_confidence</th>
+          <th style="text-align: center">context</th>
+          <th style="text-align: left">question</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">0.3143375</td>
+          <td style="text-align: center">“My name is Clara and I live in Berkeley.</td>
+          <td style="text-align: left">What is my name?</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="sequence-classification">Sequence Classification</h4>
+
+    <p>Sequence classification is the task of predicting a class label given a sequence of observations. On the NLU core side we have over 40 new sequence classification models.</p>
+
+    <ul>
+      <li>Bert For Sequence Classification</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"classify.bert.by_mrm8488"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Camera - You are awarded a SiPix Digital Camera! call 09061221066 from landline. Delivery within 28 days."""</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">classified_sequence</th>
+          <th style="text-align: center">classified_sequence_confidence</th>
+          <th style="text-align: left">sentence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">1</td>
+          <td style="text-align: center">0.89954</td>
+          <td style="text-align: left">Camera - You are awarded a SiPix Digital Camera! call 09061221066 from landline.</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">0</td>
+          <td style="text-align: center">0.93745</td>
+          <td style="text-align: left">Delivery within 28 days.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>DistilBert For Sequence Classification</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"de.classify.distil_bert.base"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"Natürlich kann ich von zuwanderern mehr erwarten. muss ich sogar. sie müssen die sprache lernen, sie müssen die gepflogenheiten lernen und sich in die gesellschaft einfügen. dass muss ich nicht weil ich mich schon in die gesellschaft eingefügt habe. egal wo du hin ziehst, nirgendwo wird dir soviel zucker in den arsch geblasen wie in deutschland."</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">classified_sequence</th>
+          <th style="text-align: center">classified_sequence_confidence</th>
+          <th style="text-align: left">sentence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">non_toxic</td>
+          <td style="text-align: center">0.955292</td>
+          <td style="text-align: left">Natürlich kann ich von zuwanderern mehr erwarten.</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">non_toxic</td>
+          <td style="text-align: center">0.968591</td>
+          <td style="text-align: left">muss ich sogar.</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">non_toxic</td>
+          <td style="text-align: center">0.841958</td>
+          <td style="text-align: left">sie müssen die sprache lernen, sie müssen die gepflogenheiten lernen und sich in die gesellschaft einfügen.</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">non_toxic</td>
+          <td style="text-align: center">0.934119</td>
+          <td style="text-align: left">dass muss ich nicht weil ich mich schon in die gesellschaft eingefügt habe.</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">non_toxic</td>
+          <td style="text-align: center">0.771795</td>
+          <td style="text-align: left">egal wo du hin ziehst, nirgendwo wird dir soviel zucker in den arsch geblasen wie in deutschland.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>RoBerta For Sequence Classification</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.classify.roberta.finetuned"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"I love you very much!"</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">classified_sequence</th>
+          <th style="text-align: center">classified_sequence_confidence</th>
+          <th style="text-align: left">sentence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">LABEL_0</td>
+          <td style="text-align: center">0.597792</td>
+          <td style="text-align: left">I love you very much!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="lemmatizer">Lemmatizer</h4>
+
+    <p>Lemmatization in linguistics is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word’s lemma, or dictionary form. On the NLU core side we have over 30 new lemmatizer models.</p>
+
+    <h4 id="classifierdlmodel">ClassifierDLModel</h4>
+
+    <p>ClassifierDL for generic Multi-class Text Classification. ClassifierDL uses the state-of-the-art Universal Sentence Encoder as an input for text classifications. The ClassifierDL annotator uses a deep learning model (DNNs) we have built inside TensorFlow and supports up to 100 classes. On the NLU core side we have over 5 new ClassifierDLModel models.</p>
+
+    <h4 id="contextspellcheckermodel">ContextSpellCheckerModel</h4>
+
+    <p>Spell Checking is a sequence to sequence mapping problem. Given an input sequence, potentially containing a certain number of errors, ContextSpellChecker will rank correction sequences according to three things:</p>
+
+    <ol>
+      <li>Different correction candidates for each word — word level.</li>
+      <li>The surrounding text of each word, i.e. it’s context — sentence level.</li>
+      <li>The relative cost of different correction candidates according to the edit operations at the character level it requires — subword level.</li>
+    </ol>
+
+    <p>On the NLU core side we have over 5 new ClassifierDLModel models.</p>
+
+    <h4 id="token-classification">Token Classification</h4>
+
+    <p>Token classification is a natural language understanding task in which a label is assigned to some tokens in a text. Some popular token classification subtasks are Named Entity Recognition (NER) and Part-of-Speech (PoS) tagging. NER models could be trained to identify specific entities in a text, such as dates, individuals and places; and PoS tagging would identify, for example, which words in a text are verbs, nouns, and punctuation marks. We have new 463 models XlmRoBertaForTokenClassification, BertForTokenClassification, DistilBertForTokenClassification, DistilBertEmbeddings, LongformerForTokenClassification, RoBertaForTokenClassification for in different languages.</p>
+
+    <ul>
+      <li>BertForTokenClassification English</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.ner.bc5cdr.biobert.disease"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"I love you very much!"</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>index</th>
+          <th>document</th>
+          <th>entities_wikiner_glove_840B_300</th>
+          <th>entities_wikiner_glove_840B_300_class</th>
+          <th>entities_wikiner_glove_840B_300_confidence</th>
+          <th>entities_wikiner_glove_840B_300_origin_chunk</th>
+          <th>entities_wikiner_glove_840B_300_origin_sentence</th>
+          <th>word_embedding_glove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>I love you very much!</td>
+          <td>I love you very much!</td>
+          <td>MISC</td>
+          <td>0.66433334</td>
+          <td>0</td>
+          <td>0</td>
+          <td>[ 0.19410001  0.22603001 -0.43764001 ]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>BertForTokenClassification German</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"de.ner.distil_bert.base_cased"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"Ich liebe Spark NLP"</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>index</th>
+          <th>classified_token</th>
+          <th>document</th>
+          <th>entities_distil_bert</th>
+          <th>entities_distil_bert_class</th>
+          <th>entities_distil_bert_origin_chunk</th>
+          <th>entities_distil_bert_origin_sentence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>O,O,B-OTHderiv,O</td>
+          <td>Ich liebe Spark NLP</td>
+          <td>Spark</td>
+          <td>OTHderiv</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>XlmRoBertaForTokenClassification Igbo</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"ig.ner.xlmr_roberta.base"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"Ahụrụ m n'anya na-atọ m ụtọ"</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>index</th>
+          <th>classified_token</th>
+          <th>document</th>
+          <th>entities_xlmr_roberta</th>
+          <th>entities_xlmr_roberta_class</th>
+          <th>entities_xlmr_roberta_origin_chunk</th>
+          <th>entities_xlmr_roberta_origin_sentence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>B-ORG,I-ORG,I-ORG,I-ORG,I-ORG,I-ORG</td>
+          <td>Ahụrụ m n’anya na-atọ m ụtọ</td>
+          <td>Ahụrụ m n’anya na-atọ m ụtọ</td>
+          <td>ORG</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="nercrfmodel">NerCrfModel</h4>
+
+    <p>This Named Entity Recognizer is based on a CRF Algorithm. Conditional random fields (CRFs) are a class of statistical modeling methods often applied in pattern recognition and machine learning and used for structured prediction. Whereas a classifier predicts a label for a single sample without considering “neighbouring” samples, a CRF can take context into account. To do so, the predictions are modelled as a graphical model, which represents the presence of dependencies between the predictions. What kind of graph is used depends on the application. For example, in natural language processing, “linear chain” CRFs are popular, for which each prediction is dependent only on its immediate neighbours. In image processing, the graph typically connects locations to nearby and/or similar locations to enforce that they receive similar predictions.</p>
+
+    <ul>
+      <li>NerCrfModel</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.ner.ner.crf'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"Donald Trump and Angela Merkel dont share many oppinions"</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>index</th>
+          <th>document</th>
+          <th>entities_wikiner_glove_840B_300</th>
+          <th>entities_wikiner_glove_840B_300_class</th>
+          <th>entities_wikiner_glove_840B_300_confidence</th>
+          <th>entities_wikiner_glove_840B_300_origin_chunk</th>
+          <th>entities_wikiner_glove_840B_300_origin_sentence</th>
+          <th>word_embedding_glove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>Donald Trump and Angela Merkel dont share many oppinions</td>
+          <td>Donald Trump</td>
+          <td>PER</td>
+          <td>0.78524995</td>
+          <td>0</td>
+          <td>0</td>
+          <td>[-0.074014   -0.23684999  0.17772 ]</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>Donald Trump and Angela Merkel dont share many oppinions</td>
+          <td>Angela Merkel</td>
+          <td>PER</td>
+          <td>0.7701</td>
+          <td>1</td>
+          <td>0</td>
+          <td>[-0.074014   -0.23684999  0.17772  ]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="nerdlmodel">NerDLModel</h4>
+
+    <p>This Named Entity recognition annotator is a generic NER model based on Neural Networks.
+Neural Network architecture is Char CNNs - BiLSTM - CRF that achieves state-of-the-art in most datasets.
+This is the instantiated model of the NerDLApproach. For training your own model, please see the documentation of that class.
+We have new 6 models.</p>
+
+    <ul>
+      <li>NerDLModel Japanese</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'ja.ner.ner.base'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"宮本茂氏は、日本の任天堂のゲームプロデューサーです。"</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>index</th>
+          <th>document</th>
+          <th>entities_xtreme_glove_840B_300</th>
+          <th>word_embedding_glove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>宮本茂氏は、日本の任天堂のゲームプロデューサーです。</td>
+          <td>NaN</td>
+          <td>[0. 0. ]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>NerDLModel English</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s">"My name is John!"</span><span class="p">]</span>
+
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.ner.conll.ner.large'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">output_level</span><span class="o">=</span><span class="s">'token'</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>index</th>
+          <th>entities_wikiner_glove_840B_300</th>
+          <th>entities_wikiner_glove_840B_300_class</th>
+          <th>entities_wikiner_glove_840B_300_confidence</th>
+          <th>entities_wikiner_glove_840B_300_origin_chunk</th>
+          <th>entities_wikiner_glove_840B_300_origin_sentence</th>
+          <th>token</th>
+          <th>word_embedding_glove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>My name is John!</td>
+          <td>MISC</td>
+          <td>0.63266003</td>
+          <td>0</td>
+          <td>0</td>
+          <td>My</td>
+          <td>[-2.19990000e-01  2.57800013e-01 -4.25859988e-01 ]</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>My name is John!</td>
+          <td>MISC</td>
+          <td>0.63266003</td>
+          <td>0</td>
+          <td>0</td>
+          <td>name</td>
+          <td>[ 2.32309997e-01 -2.41020005e-02]</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>My name is John!</td>
+          <td>MISC</td>
+          <td>0.63266003</td>
+          <td>0</td>
+          <td>0</td>
+          <td>is</td>
+          <td>[-8.49609971e-02  5.01999974e-01  2.38230010e-03]</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>My name is John!</td>
+          <td>MISC</td>
+          <td>0.63266003</td>
+          <td>0</td>
+          <td>0</td>
+          <td>John</td>
+          <td>[-2.96090007e-01 -8.18260014e-02  9.67490021e-03 ]</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>My name is John!</td>
+          <td>MISC</td>
+          <td>0.63266003</td>
+          <td>0</td>
+          <td>0</td>
+          <td>!</td>
+          <td>[-2.65540004e-01  3.35310012e-01  2.18600005e-01 ]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="perceptronmodel">PerceptronModel</h4>
+
+    <p>We have new 26 models.</p>
+
+    <h4 id="stopwordscleaner">StopWordsCleaner</h4>
+    <p>This model removes ‘stop words’ from text. Stop words are words so common that they can be removed without significantly altering the meaning of a text. Removing stop words is useful when one wants to deal with only the most semantically important words in a text, and ignore words that are rarely semantically relevant, such as articles and prepositions. We have new 33 models.</p>
+
+    <hr />
+    <hr />
+
     <h2 id="nlu-version-400">NLU Version 4.0.0</h2>
     <p>OCR Visual Tables into Pandas DataFrames from PDF/DOC(X)/PPT files, 1000+ new state-of-the-art transformer models for Question Answering (QA)  for over 30 languages, up to 700% speedup on GPU, 20 Biomedical models for over 8 languages, 50+ Terminology Code Mappers between RXNORM, NDC, UMLS,ICD10, ICDO, UMLS, SNOMED and MESH, Deidentification in Romanian, various Spark NLP helper methods and much more in 1 line of code with John Snow Labs NLU 4.0.0</p>
 
@@ -33675,7 +35692,7 @@ In addition, <code class="language-plaintext highlighter-rouge">Spark 3.0.X</cod
     <li><a href="https://nlp.johnsnowlabs.com/docs/en/jsl/examples_hc#authorize-access-to-licensed-features-and-install-healthcare-dependencies">Instrunctions to authorize your environment to use Licensed features</a></li>
   </ul>
 
-  <h4 id="new-notebooks">New Notebooks</h4>
+  <h4 id="new-notebooks-1">New Notebooks</h4>
   <ul>
     <li><a href="https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/overview_medical_entity_recognizers.ipynb">Medical Named Entity Extraction (NER) notebook</a></li>
     <li><a href="https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/relation_extraction/overview_relation.ipynb">Relation extraction notebook</a></li>
@@ -36814,7 +38831,7 @@ The language references must be <a href="https://en.wikipedia.org/wiki/List_of_I
 
     <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb">refer to this notebook</a> to see how to use every T5 Task.</p>
 
-    <h4 id="question-answering">Question Answering</h4>
+    <h4 id="question-answering-1">Question Answering</h4>
     <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb">Question answering example</a></p>
 
     <p>Predict an <code class="language-plaintext highlighter-rouge">answer</code> to a <code class="language-plaintext highlighter-rouge">question</code> based on input <code class="language-plaintext highlighter-rouge">context</code>.  <br />
