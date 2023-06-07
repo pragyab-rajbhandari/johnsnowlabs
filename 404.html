@@ -429,11 +429,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Medical Question Answering (biogpt)</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline for Detect Subentity PHI for Deidentification (Arabic)</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model is directly ported from the  official BioGPT implementation  that is trained on Pubmed abstracts and then finetuned with PubmedQA dataset. It is the baseline version called BioGPT-QA-PubMedQA-BioGPT.It can generate two types of answers, short and long. Types of questions are supported: "short"(...">
-<!-- <link rel="canonical" href="/2023/05/17/medical_qa_biogpt_en.html"> -->
-<link rel="canonical" href="/2023/05/17/medical_qa_biogpt_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_subentity model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "ar", "clinical/models")text= '''ملاحظات سريرية - مري...">
+<!-- <link rel="canonical" href="/2023/05/31/ner_deid_subentity_pipeline_ar.html"> -->
+<link rel="canonical" href="/2023/05/31/ner_deid_subentity_pipeline_ar.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -830,108 +830,67 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Cabir40/2023-05-17-medical_qa_biogpt_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/mellahysf/2023-05-31-ner_deid_subentity_pipeline_ar.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>May 17, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-05-17T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Medical Question Answering (biogpt)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Medical Question Answering (biogpt)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>clinical</li><li>en</li><li>biogpt</li><li>pubmed</li><li>question_answering</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-05-17T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,clinical,en,biogpt,pubmed,question_answering,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>May 31, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-05-31T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline for Detect Subentity PHI for Deidentification (Arabic)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline for Detect Subentity PHI for Deidentification (Arabic)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>clinical</li><li>deidentification</li><li>ar</li><li>pipeline</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-05-31T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,clinical,deidentification,ar,pipeline"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model is directly ported from the  official BioGPT <a href="https://github.com/microsoft/BioGPT">implementation</a>  that is trained on Pubmed abstracts and then finetuned with PubmedQA dataset. It is the baseline version called <a href="https://msramllasc.blob.core.windows.net/modelrelease/BioGPT/checkpoints/QA-PubMedQA-BioGPT.tgz">BioGPT-QA-PubMedQA-BioGPT</a>.
-It can generate two types of answers, short and long. Types of questions are supported: <code class="language-plaintext highlighter-rouge">"short"</code>(producing yes/no/maybe) answers and <code class="language-plaintext highlighter-rouge">"full"</code> (long answers).</p>
+<p>This pretrained pipeline is built on the top of <a href="https://nlp.johnsnowlabs.com/2023/05/29/ner_deid_subentity_ar.html">ner_deid_subentity</a> model.</p>
 
-<h2 id="predicted-entities">Predicted Entities</h2>
-
-<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/BIOGPT_MEDICAL_QUESTION_ANSWERING/" class="button button-orange">Live Demo</a>
-<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medical_qa_biogpt_en_4.4.2_3.0_1684313829161.zip" class="button button-orange">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/medical_qa_biogpt_en_4.4.2_3.0_1684313829161.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
+<button class="button button-orange" disabled="">Open in Colab</button>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_pipeline_ar_4.4.1_3.0_1685563688023.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_pipeline_ar_4.4.1_3.0_1685563688023.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCols</span><span class="p">(</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">med_qa</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="p">.</span><span class="n">annotators</span><span class="p">.</span><span class="n">MedicalQuestionAnswering</span>\
-    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"medical_qa_biogpt"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"answer"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setTopK</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setQuestionType</span><span class="p">(</span><span class="s">"long"</span><span class="p">)</span> <span class="c1"># "short"
-</span>
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_qa</span><span class="p">])</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_deid_subentity_pipeline"</span><span class="p">,</span> <span class="s">"ar"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">paper_abstract</span> <span class="o">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+<span class="n">text</span><span class="o">=</span> <span class="s">'''
+ملاحظات سريرية - مريض الربو. التاريخ: 16 أبريل 2000. اسم المريضة: ليلى حسن. العنوان: شارع المعرفة، مبنى رقم 789، حي الأمانة، جدة. الرمز البريدي: 54321. البلد: المملكة العربية السعودية. اسم المستشفى: مستشفى النور. اسم الطبيب: د. أميرة أحمد. تفاصيل الحالة: المريضة ليلى حسن، البالغة من العمر 35 عامًا، تعاني من مرض الربو المزمن. تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد. تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة. الخطة: تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج. يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة. يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة. يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو. تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح.
+'''</span>
 
-<span class="n">long_question</span> <span class="o">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
-<span class="n">yes_no_question</span> <span class="o">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span>
-    <span class="p">[</span>
-        <span class="p">[</span><span class="n">long_question</span><span class="p">,</span> <span class="n">paper_abstract</span><span class="p">,</span> <span class="s">"long"</span><span class="p">],</span>
-        <span class="p">[</span><span class="n">yes_no_question</span><span class="p">,</span> <span class="n">paper_abstract</span><span class="p">,</span> <span class="s">"short"</span><span class="p">],</span>
-    <span class="p">]</span>
-<span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">,</span> <span class="s">"question_type"</span><span class="p">)</span>
-
-<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="s">"question_type == 'long'"</span><span class="p">))</span>\
-    <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"answer.result"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-
-
-<span class="c1">###############################
-# for short ansver
-</span>
-<span class="n">med_qa</span><span class="p">.</span><span class="n">setQuestionType</span><span class="p">(</span><span class="s">"short"</span><span class="p">)</span> <span class="c1"># "long"
-</span>
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">med_qa</span><span class="p">])</span>
-
-<span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="s">"question_type == 'short'"</span><span class="p">))</span>\
-    <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"answer.result"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">MultiDocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"question"</span><span class="o">,</span> <span class="s">"context"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCols</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">med_qa</span> <span class="k">=</span> <span class="nc">MedicalQuestionAnswering</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medical_qa_biogpt"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document_question"</span><span class="o">,</span> <span class="s">"document_context"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"answer"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">30</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setTopK</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setQuestionType</span><span class="o">(</span><span class="s">"long"</span><span class="o">)</span> <span class="k">#</span> <span class="s">"short"</span>
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_deid_subentity_pipeline"</span><span class="o">,</span> <span class="s">"ar"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">med_qa</span><span class="o">))</span>
 
-<span class="n">paper_abstract</span> <span class="k">=</span> <span class="s">"The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 32, 65–97, 1989) predicts that visual attention mechanisms are employed when mental images are projected onto a visual scene. Recent eye-tracking studies have supported this hypothesis by showing that people tend to look at empty places where requested information has been previously presented. However, it has remained unclear to what extent this behavior is related to memory performance. The aim of the present study was to explore whether the manipulation of spatial attention can facilitate memory retrieval. In two experiments, participants were asked first to memorize a set of four objects and then to determine whether a probe word referred to any of the objects. The results of both experiments indicate that memory accuracy is not affected by the current focus of attention and that all the effects of directing attention to specific locations on response times can be explained in terms of stimulus–stimulus and stimulus–response spatial compatibility."</span>
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"ملاحظات سريرية - مريض الربو. التاريخ: 16 أبريل 2000. اسم المريضة: ليلى حسن. العنوان: شارع المعرفة، مبنى رقم 789، حي الأمانة، جدة. الرمز البريدي: 54321. البلد: المملكة العربية السعودية. اسم المستشفى: مستشفى النور. اسم الطبيب: د. أميرة أحمد. تفاصيل الحالة: المريضة ليلى حسن، البالغة من العمر 35 عامًا، تعاني من مرض الربو المزمن. تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد. تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة. الخطة: تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج. يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة. يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة. يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو. تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح."</span>
 
-<span class="n">long_question</span> <span class="k">=</span> <span class="s">"What is the effect of directing attention on memory?"</span>
-<span class="n">yes_no_question</span> <span class="k">=</span> <span class="s">"Does directing attention improve memory for items?"</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span> 
-    <span class="o">(</span><span class="n">long_question</span><span class="o">,</span> <span class="n">paper_abstract</span><span class="o">,</span><span class="s">"long"</span> <span class="o">),</span>
-    <span class="o">(</span><span class="n">yes_no_question</span><span class="o">,</span> <span class="n">paper_abstract</span><span class="o">,</span> <span class="s">"short"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"question"</span><span class="o">,</span> <span class="s">"context"</span><span class="o">,</span> <span class="s">"question_type"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|result                                                                                                                                                                        |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[The effect of directing attention on memory is that it can <span class="nb">help </span>to improve the accuracy and recall of a document. It can <span class="nb">help </span>to improve the accuracy of a document by allowing the user to quickly and easily access the information they need. It can also <span class="nb">help </span>to improve the overall efficiency of a document by allowing the user to quickly]|
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
++---------------+--------+
+|chunks         |entities|
++---------------+--------+
+|16 أبريل 2000  |DATE    |
+|ليلى حسن       |PATIENT |
+|789،           |ZIP     |
+|جدة            |CITY    |
+|54321          |ZIP     |
+|المملكة العربية|CITY    |
+|السعودية       |COUNTRY |
+|النور          |HOSPITAL|
+|أميرة أحمد     |DOCTOR  |
+|ليلى           |PATIENT |
+|35             |AGE     |
++---------------+--------+
 
 </code></pre></div></div>
 
@@ -941,11 +900,15 @@ It can generate two types of answers, short and long. Types of questions are sup
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>medical_qa_biogpt</td>
+      <td>ner_deid_subentity_pipeline</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 4.4.2+</td>
+      <td>Healthcare NLP 4.4.1+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -957,19 +920,27 @@ It can generate two types of answers, short and long. Types of questions are sup
     </tr>
     <tr>
       <td>Language:</td>
-      <td>en</td>
+      <td>ar</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.1 GB</td>
-    </tr>
-    <tr>
-      <td>Case sensitive:</td>
-      <td>true</td>
+      <td>1.2 GB</td>
     </tr>
   </tbody>
 </table>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-05-17T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<h2 id="included-models">Included Models</h2>
+
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverter</li>
+</ul>
+
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-05-31T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -1134,7 +1105,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/05/15/ner_anatomy_emb_clinical_medium_en.html">Detect Anatomical Regions ((embeddings_clinical_medium)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/05/31/summarizer_clinical_laymen_en.html">Summarize Clinical Notes in Layman Terms</a></div></div></div>
 
 </div>
 </div>
@@ -1200,7 +1171,7 @@ $(document).ready(function () {
   <div class="main"><div itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content=""><meta itemprop="url" content="/"></div><div class="site-info mt-2">
       <div>© <span id="year"></span> John Snow Labs Inc.
-        <a href="http://www.johnsnowlabs.com/terms-of-service">Terms of Service</a> | <a href="http://www.johnsnowlabs.com/privacy-policy/">Privacy Policy</a>
+        <a target="_blank" href="https://www.johnsnowlabs.com/terms-of-service">Terms of Service</a> | <a target="_blank" href="https://www.johnsnowlabs.com/privacy-policy/">Privacy Policy</a>
       </div>
     </div>
   </div>
@@ -1951,7 +1922,7 @@ $(document).ready(function () {
   <div class="main"><div itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content=""><meta itemprop="url" content="/"></div><div class="site-info mt-2">
       <div>© <span id="year"></span> John Snow Labs Inc.
-        <a href="http://www.johnsnowlabs.com/terms-of-service">Terms of Service</a> | <a href="http://www.johnsnowlabs.com/privacy-policy/">Privacy Policy</a>
+        <a target="_blank" href="https://www.johnsnowlabs.com/terms-of-service">Terms of Service</a> | <a target="_blank" href="https://www.johnsnowlabs.com/privacy-policy/">Privacy Policy</a>
       </div>
     </div>
   </div>
