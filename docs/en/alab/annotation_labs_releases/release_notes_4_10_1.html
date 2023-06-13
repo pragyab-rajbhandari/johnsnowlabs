@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 4.5.1</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>NLP Lab Release Notes 4.10.1</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_5_1"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_5_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_10_1"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_10_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -523,34 +523,36 @@
 <!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 4.5.1</li>
+    <li>NLP Lab Release Notes 4.10.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 4.5.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>NLP Lab Release Notes 4.10.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_4_5_1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 4.5.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_4_10_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 4.10.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.5.1</h2>
+  <h2 id="section">4.10.1</h2>
 
-  <p>Release date: <strong>05-01-2023</strong></p>
+  <p>Release date: <strong>12-06-2023</strong></p>
 
-  <p>This release includes some stabilization and bug fixes for issues reported by our user community. Below are the details of what has been included in this release.</p>
+  <p>The v4.10.1 version release includes the following bug fixes:</p>
 
-  <h2 id="improvement">Improvement</h2>
+  <h3 id="improvement">Improvement</h3>
   <ul>
-    <li>Name of available models should be visible completely in the Predefined Labels tab</li>
+    <li>Remove recognized text seen on the top of the Visual NER task</li>
   </ul>
 
-  <h2 id="bug-fixes">Bug Fixes</h2>
+  <h3 id="bug-fixes">Bug Fixes</h3>
   <ul>
-    <li>Finance models cannot be downloaded to NLP Lab with a floating license from Models Hub</li>
-    <li>Trained visual NER model is not listed in the predefined labels section on the configuration page</li>
-    <li>Error due to circular dependency of logger</li>
+    <li>Airflow-scheduler pod randomly crashes</li>
+    <li>When one of the two visual NER tasks with the same name is deleted, the image of the other task goes missing</li>
+    <li>When the user clicks on “buy license” the user is redirected to “license.johnsnowlabs.com” instead of “my.johnsnowlabs.com”</li>
+    <li>Prediction not generated for Visual NER project</li>
+    <li>Old visual NER tasks without comments are shown as task</li>
   </ul>
 
 </div>
@@ -613,7 +615,7 @@
   <li><a href="release_notes_2_0_1">2.0.1</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-01-05T00:00:00+00:00">Jan 05, 2023</time>
+      <time itemprop="dateModified" datetime="2023-06-12T00:00:00+00:00">Jun 12, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

@@ -535,125 +535,24 @@
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.10</h2>
+  <h2 id="section">4.10.1</h2>
 
-  <p>Release date: <strong>04-05-2023</strong></p>
+  <p>Release date: <strong>12-06-2023</strong></p>
 
-  <h2 id="trial-license-integration-comment-and-tag-functionality-and-enhanced-task-export-filters-nlp-lab-410">Trial License Integration, Comment and Tag Functionality, and Enhanced Task Export Filters NLP Lab 4.10</h2>
+  <p>The v4.10.1 version release includes the following bug fixes</p>
 
-  <p>The release of NLP Lab version 4.10 comes with an array of exciting new features aimed at enhancing user experience and improving the efficiency of the platform. Among the notable additions are the integration of a get trial license feature, enabling users to explore the full potential of NLP Lab, and the seamless automatic import of the trial license into the platform.</p>
-
-  <p>Additionally, users can now conveniently add comments in the Labeling Page, providing a more collaborative and organized environment for annotation tasks. Another valuable feature introduced in this release is the ability to add tags directly in the Labeling Screen, allowing for better categorization and management of labeled data. Lastly, the update includes an expanded range of filters when exporting tasks, empowering users to customize and streamline their task exports.</p>
-
-  <p>Here are the highlights of this release:</p>
-
-  <h2 id="get-trial-license-from-license-page">Get trial license from License page</h2>
-
-  <p>Version offers an updated License page layout, providing a simpler process for acquiring a trial license. Users can now request a trial license directly from the License page, eliminating the need to navigate to external pages. This new workflow introduces a dedicated “Get License” tab, while the Import License and Existing Licenses tabs remain unchanged.</p>
-
-  <p>To obtain a trial license, users are required to fill out the form on the “Get License” tab, providing their organizational email. Once the form is submitted, a validation link is sent to the provided email address and the trial license is automatically imported to the NLP Lab when the link is clicked, making it readily available for use.
-<img src="/assets/images/annotation_lab/4.10.0/1.png" alt="trial-license" /></p>
-
-  <h2 id="comments-in-the-labeling-page">Comments in the Labeling Page</h2>
-
-  <p>NLP Lab 4.10 introduces an enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature significantly improves work efficiency and productivity and enhances communication between team members, leading to faster delivery and more effective collaboration. To access this feature, users can find the New Burger menu located at the top right of the labeling page. Within the burger menu, users will find an option for Comments, which displays the total number of comments. By clicking this option, a new pop-up window will appear, providing access to various commenting features.</p>
-
-  <p><img src="/assets/images/annotation_lab/4.10.0/2.gif" alt="Comments" /></p>
-
-  <h2 id="tags-from-the-labeling-screen">Tags from the Labeling Screen</h2>
-
-  <p>NLP Lab 4.10 introduces an enhanced tags feature for labeling pages. This feature provide users with a convenient way to create, add, and remove tags from tasks directly on the labeling page. It significantly contributes to better organization and enahnced productivity streamlining task management by offering users increased flexibility in categorizing and tracking their labeled data. Similar to the comment feature described above, the tag feature can be accessed through the burger menu located at the top right corner. The burger menu displays the total number of tags associated with its functions. By clicking the burger menu option, a new popup window appears, allowing users to add existing tags or create new ones.</p>
-
-  <p><img src="/assets/images/annotation_lab/4.10.0/3.gif" alt="tags" /></p>
-
-  <h2 id="filters-for-exporting-tasks">Filters for exporting tasks</h2>
-
-  <p>This version of NLP Lab comes with a new feature: selective annotation exports. Users can now choose which annotations to export by using two new filters on the export page. These new filters can be combined with other filter options like tags, Only ground truth, and Exclude tasks without Completions.</p>
-  <ol>
-    <li>Filter Exported Annotations by Task:
-  this filter allows users to select annotations based on the task (NER, Classification, Assertion, Relation Extraction)</li>
-    <li>Select Annotations to Include In the Export:
-  this filter can be used to select available labels, classes, assertion labels, or relations.
-<img src="/assets/images/annotation_lab/4.10.0/4.gif" alt="add-filter-for-export" /></li>
-  </ol>
-
-  <h2 id="improvements">Improvements</h2>
-
-  <h3 id="add-video-template-to-the-project-content-type">Add video template to the project content type</h3>
-
-  <p>The current release, re-introduces the Video content type to the project configuration page. This provides the users with a flexible way to annotate projects that are based on video content.</p>
-
-  <p><img src="/assets/images/annotation_lab/4.10.0/5.png" alt="videotemplate" /></p>
-
-  <h3 id="image-path-for-visual-ner-task-export-json-should-always-be-in-list">Image path for visual NER task export JSON should always be in list</h3>
-  <p>The inconsistency with regards to the format of the image property value in the exported task JSON was eliminated in the current version. When there was a single image task, the image property had a value of string type, but for multiple images, it was of list type. To ensure consistency, the image property will now always have a value of list type.</p>
-
-  <h3 id="remove-items-in-chart-with-empty-value--for-tasks-by-status-chart">Remove items in chart with empty value  for “Tasks by Status” chart</h3>
-
-  <p>In the previous versions, “Tasks by status” chart displayed redundant values(0.00%) when there are no tasks for the specific status category. In the current release, these redundant values have been removed from “Tasks by status” chart in the analytics page.</p>
-
-  <p><img src="/assets/images/annotation_lab/4.10.0/6.png" alt="taskschart" /></p>
-
-  <h3 id="tasks-and-project-filters-based-on-multiple-tags">Tasks and Project filters based on multiple tags</h3>
-
-  <p>Filtering tasks based on tags, inside the task view’s tag filter has been updated to allow users to select multiple tags from the Tags dropdown. This allows filtering of the tasks based on multiple criteria. In our  previous versions, users were limited to selecting only one tag at a time, making the filtering mechanism restrictive when attempting to narrow down tasks based on multiple tags simultaneously. The new functionality increases productivity by allowing users to apply multiple filter criteria for retreiving the desired list of tasks, matching at least one of the selected tags.</p>
-
-  <p><img src="/assets/images/annotation_lab/4.10.0/7.gif" alt="filter" /></p>
-
-  <p>Additionally, the same improved filter behaivour can be found in project page too. This provides users with increased flexibility and efficiency in filtering tasks based on multiple tags, thereby improving task and project management and facilitating a more streamlined workflow.</p>
+  <h3 id="improvement">Improvement</h3>
+  <ul>
+    <li>Remove recognized text seen on the top of the Visual NER task</li>
+  </ul>
 
   <h3 id="bug-fixes">Bug Fixes</h3>
   <ul>
-    <li>
-      <p><strong>ALAB-2212 Audio/Video cannot be played after the completion is submitted</strong></p>
-
-      <p>In previous versions, users were not able to play/pause Audio/Video after the completion is submited. The bug has been resolved in the latest release, allowing users to play/pause Audio/Video after the completion is submitted.</p>
-    </li>
-    <li>
-      <p><strong>ALAB-2312 When the group color is white the project name, description and instructions cannot be seen on the project card</strong></p>
-
-      <p>In the latest release, the problem with the visibility of the project name, description, and instructions on the projects page has been resolved. Previously, when assigning the group color white to the project group, the text was not visible because it blended with the white background.</p>
-    </li>
-    <li>
-      <p><strong>ALAB-3133 Validation is missing in the UI from the configuration when invalid orientation is added</strong></p>
-
-      <p>This release includes the addition of validation for incorrect orientation in project configuration, accompanied by appropriate error messaging.  Hence, project configurations will only permit the inclusion of “Vertical Layout,” “Horizontal Layout,” and “Horizontal-Sticky Layout.</p>
-    </li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/4.10.0/8.gif" alt="filter" /></p>
-
-  <ul>
-    <li>
-      <p><strong>Databricks license should not be imported into NLP Lab</strong></p>
-
-      <p>It is no longer possible to import Spark NLP licenses generated for Databricks into the NLP Lab. Users will be presented with an error message in the UI if they attempt to upload such licenses.</p>
-    </li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/4.10.0/9.png" alt="filter" /></p>
-
-  <ul>
-    <li>
-      <p><strong>By modifying the URL, the user can access pages of projects that have not been shared with them.</strong></p>
-
-      <p>In previous versions, users were able to access configuration pages of projects that had not been shared with them by modifying the URL. However, this issue has been resolved in the current version.</p>
-    </li>
-    <li>
-      <p><strong>Pretrained assertions are listed in dropdown when creating relation prompts</strong></p>
-
-      <p>When creating relation prompts, a list of labels is displayed. However, the list previously included assertion labels, which are not supported for creating relation prompts. As a result, the assertion label will no longer be shown when users create relation prompts.</p>
-    </li>
-    <li>
-      <p><strong>ALAB-3365 Single-word annotation is split into multiple blocks when the user is annotating a task</strong></p>
-
-      <p>In earlier version, annotating a single word would result in it being split into multiple blocks instead of being annotated as a single word. This issue occurred when highlighting only a few characters of the word without selecting any label initially and later attempting to annotate the entire word. This bug has been fixed in the latest release.</p>
-    </li>
-    <li>
-      <p><strong>ALAB-3368 Pre-annotation button becomes irresponsive in a project with 1000s of pre-annotated task</strong></p>
-
-      <p>Previously, after running pre-annotation on thousands of tasks, the pre-annotation status was missing from the task cards on the Tasks page. Additionally, the pre-annotation button was unresponsive. These issues have been resolved in the latest release. The responsiveness of the pre-annotation button has also users can navigate seamlessly between different pages on the Tasks page.</p>
-    </li>
+    <li>Airflow-scheduler pod randomly crashes</li>
+    <li>When one of the two visual NER tasks with the same name is deleted, the image of the other task goes missing</li>
+    <li>When the user clicks on “buy license” the user is redirected to “license.johnsnowlabs.com” instead of “my.johnsnowlabs.com”</li>
+    <li>Prediction not generated for Visual NER project</li>
+    <li>Old visual NER tasks without comments are shown as task</li>
   </ul>
 
 </div>
@@ -663,8 +562,9 @@
 
 </div>
 
-<ul class="pagination owl-carousel pagination_big">]
-    <li class="active"><a href="annotation_labs_releases/release_notes_4_10_0">4.10.0</a></li>
+<ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_4_10_1">4.10.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_4_10_0">4.10.0</a></li> 
     <li><a href="annotation_labs_releases/release_notes_4_9_2">4.9.2</a></li> 
     <li><a href="annotation_labs_releases/release_notes_4_8_4">4.8.4</a></li> 
     <li><a href="annotation_labs_releases/release_notes_4_8_3">4.8.3</a></li> 
@@ -705,7 +605,7 @@
     <li><a href="annotation_labs_releases/release_notes_2_0_1">2.0.1</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-06-02T00:00:00+00:00">Jun 02, 2023</time>
+      <time itemprop="dateModified" datetime="2023-06-12T00:00:00+00:00">Jun 12, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
