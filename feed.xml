@@ -1,308 +1,236 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-06-15T07:56:50+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Drug Side Effect Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en.html" rel="alternate" type="text/html" title="Drug Side Effect Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-06-15T11:54:35+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Drug Side Effect Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en.html" rel="alternate" type="text/html" title="Drug Side Effect Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify health-related text in colloquial language according to the presence or absence of mentions of side effects related to drugs. The pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_drug_side_effect_en.html&quot;&gt;bert_sequence_classifier_vop_drug_side_effect&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify health-related text in colloquial language according to the presence or absence of mentions of side effects related to drugs. The pipeline is built on the top of [bert_sequence_classifier_vop_drug_side_effect](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_drug_side_effect_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_drug_side_effect_pipeline_en_4.4.3_3.2_1686704779005.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_drug_side_effect_pipeline_en_4.4.3_3.2_1686704779005.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_drug_side_effect_pipeline_en_4.4.3_3.2_1686704779005.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_drug_side_effect_pipeline_en_4.4.3_3.2_1686704779005.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_vop_drug_side_effect_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;I felt kind of dizzy after taking that medication for a month.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_vop_drug_side_effect_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_drug_side_effect_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;felt&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dizzy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;after&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;taking&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medication&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;month&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+pipeline.annotate(&quot;I felt kind of dizzy after taking that medication for a month.&quot;)
+```
+```scala
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_drug_side_effect_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = pipeline.annotate(I felt kind of dizzy after taking that medication for a month.)
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| text                                                           | prediction   |
+```bash
+| text                                                           | prediction   |
 |:---------------------------------------------------------------|:-------------|
-| I felt kind of dizzy after taking that medication &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;a month. | Drug_AE      |
+| I felt kind of dizzy after taking that medication for a month. | Drug_AE      |
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;bert_sequence_classifier_vop_drug_side_effect_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 4.4.3+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;406.4 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|bert_sequence_classifier_vop_drug_side_effect_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 4.4.3+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|406.4 MB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;MedicalBertForSequenceClassification&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="clinical" /><category term="licensed" /><category term="en" /><category term="classification" /><category term="vop" /><summary type="html">Description This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify health-related text in colloquial language according to the presence or absence of mentions of side effects related to drugs. The pipeline is built on the top of bert_sequence_classifier_vop_drug_side_effect model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_drug_side_effect_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) pipeline.annotate(&quot;I felt kind of dizzy after taking that medication for a month.&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_drug_side_effect_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = pipeline.annotate(I felt kind of dizzy after taking that medication for a month.) Results | text | prediction | |:---------------------------------------------------------------|:-------------| | I felt kind of dizzy after taking that medication for a month. | Drug_AE | Model Information Model Name: bert_sequence_classifier_vop_drug_side_effect_pipeline Type: pipeline Compatibility: Healthcare NLP 4.4.3+ License: Licensed Edition: Official Language: en Size: 406.4 MB Included Models DocumentAssembler TokenizerModel MedicalBertForSequenceClassification</summary></entry><entry><title type="html">HCP Consult Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_hcp_consult_pipeline_en.html" rel="alternate" type="text/html" title="HCP Consult Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_hcp_consult_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_hcp_consult_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- TokenizerModel
+- MedicalBertForSequenceClassification</content><author><name>John Snow Labs</name></author><category term="clinical" /><category term="licensed" /><category term="en" /><category term="classification" /><category term="vop" /><summary type="html">Description This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify health-related text in colloquial language according to the presence or absence of mentions of side effects related to drugs. The pipeline is built on the top of bert_sequence_classifier_vop_drug_side_effect model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_drug_side_effect_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) pipeline.annotate(&quot;I felt kind of dizzy after taking that medication for a month.&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_drug_side_effect_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = pipeline.annotate(I felt kind of dizzy after taking that medication for a month.) Results | text | prediction | |:---------------------------------------------------------------|:-------------| | I felt kind of dizzy after taking that medication for a month. | Drug_AE | Model Information Model Name: bert_sequence_classifier_vop_drug_side_effect_pipeline Type: pipeline Compatibility: Healthcare NLP 4.4.3+ License: Licensed Edition: Official Language: en Size: 406.4 MB Included Models DocumentAssembler TokenizerModel MedicalBertForSequenceClassification</summary></entry><entry><title type="html">HCP Consult Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_hcp_consult_pipeline_en.html" rel="alternate" type="text/html" title="HCP Consult Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_hcp_consult_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_hcp_consult_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify texts that mention a HCP consult. The pipeline is built on the top of  &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_hcp_consult_en.html&quot;&gt;bert_sequence_classifier_vop_hcp_consult&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify texts that mention a HCP consult. The pipeline is built on the top of  [bert_sequence_classifier_vop_hcp_consult](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_hcp_consult_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_hcp_consult_pipeline_en_4.4.3_3.2_1686708308086.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_hcp_consult_pipeline_en_4.4.3_3.2_1686708308086.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_hcp_consult_pipeline_en_4.4.3_3.2_1686708308086.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_hcp_consult_pipeline_en_4.4.3_3.2_1686708308086.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_vop_hcp_consult_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_vop_hcp_consult_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_hcp_consult_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;My&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;son&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;been&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;two&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doctors&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;who&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gave&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;him&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;antibiotic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;drops&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;but&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;they&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;also&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;say&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;problem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;might&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;related&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allergies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+pipeline.annotate(&quot;My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies.&quot;)
+```
+```scala
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_hcp_consult_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = pipeline.annotate(My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies.)
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| text                                                                                                                   | prediction       |
+```bash
+| text                                                                                                                   | prediction       |
 |:-----------------------------------------------------------------------------------------------------------------------|:-----------------|
-| My son has been to two doctors &lt;span class=&quot;nb&quot;&gt;who &lt;/span&gt;gave him antibiotic drops but they also say the problem might related to allergies. | Consulted_By_HCP |
+| My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies. | Consulted_By_HCP |
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;bert_sequence_classifier_vop_hcp_consult_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 4.4.3+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;406.4 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|bert_sequence_classifier_vop_hcp_consult_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 4.4.3+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|406.4 MB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;MedicalBertForSequenceClassification&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="clinical" /><category term="classification" /><category term="vop" /><summary type="html">Description This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify texts that mention a HCP consult. The pipeline is built on the top of bert_sequence_classifier_vop_hcp_consult model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_hcp_consult_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) pipeline.annotate(&quot;My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies.&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_hcp_consult_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = pipeline.annotate(My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies.) Results | text | prediction | |:-----------------------------------------------------------------------------------------------------------------------|:-----------------| | My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies. | Consulted_By_HCP | Model Information Model Name: bert_sequence_classifier_vop_hcp_consult_pipeline Type: pipeline Compatibility: Healthcare NLP 4.4.3+ License: Licensed Edition: Official Language: en Size: 406.4 MB Included Models DocumentAssembler TokenizerModel MedicalBertForSequenceClassification</summary></entry><entry><title type="html">Self Report Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_self_report_pipeline_en.html" rel="alternate" type="text/html" title="Self Report Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_self_report_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_self_report_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- TokenizerModel
+- MedicalBertForSequenceClassification</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="clinical" /><category term="classification" /><category term="vop" /><summary type="html">Description This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify texts that mention a HCP consult. The pipeline is built on the top of bert_sequence_classifier_vop_hcp_consult model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_hcp_consult_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) pipeline.annotate(&quot;My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies.&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_hcp_consult_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = pipeline.annotate(My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies.) Results | text | prediction | |:-----------------------------------------------------------------------------------------------------------------------|:-----------------| | My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies. | Consulted_By_HCP | Model Information Model Name: bert_sequence_classifier_vop_hcp_consult_pipeline Type: pipeline Compatibility: Healthcare NLP 4.4.3+ License: Licensed Edition: Official Language: en Size: 406.4 MB Included Models DocumentAssembler TokenizerModel MedicalBertForSequenceClassification</summary></entry><entry><title type="html">Self Report Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_self_report_pipeline_en.html" rel="alternate" type="text/html" title="Self Report Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_self_report_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_self_report_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify texts depending on if they are self-reported or if they refer to another person. The pipeline is built on the top of  &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_self_report_en.html&quot;&gt;bert_sequence_classifier_vop_self_report&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify texts depending on if they are self-reported or if they refer to another person. The pipeline is built on the top of  [bert_sequence_classifier_vop_self_report](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_self_report_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_self_report_pipeline_en_4.4.3_3.2_1686702483761.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_self_report_pipeline_en_4.4.3_3.2_1686702483761.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_self_report_pipeline_en_4.4.3_3.2_1686702483761.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_self_report_pipeline_en_4.4.3_3.2_1686702483761.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_vop_self_report_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;My friend was treated for her skin cancer two years ago.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_vop_self_report_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_self_report_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;My&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;friend&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;was&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;treated&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;her&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;skin&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;two&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;years&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ago&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+pipeline.annotate(&quot;My friend was treated for her skin cancer two years ago.&quot;)
+```
+```scala
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_self_report_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = pipeline.annotate(My friend was treated for her skin cancer two years ago.)
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| text                                                     | prediction   |
+```bash
+| text                                                     | prediction   |
 |:---------------------------------------------------------|:-------------|
-| My friend was treated &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;her skin cancer two years ago. | 3rd_Person   |
+| My friend was treated for her skin cancer two years ago. | 3rd_Person   |
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;bert_sequence_classifier_vop_self_report_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 4.4.3+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;406.4 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|bert_sequence_classifier_vop_self_report_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 4.4.3+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|406.4 MB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;MedicalBertForSequenceClassification&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="clinical" /><category term="vop" /><category term="classification" /><summary type="html">Description This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify texts depending on if they are self-reported or if they refer to another person. The pipeline is built on the top of bert_sequence_classifier_vop_self_report model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_self_report_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) pipeline.annotate(&quot;My friend was treated for her skin cancer two years ago.&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_self_report_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = pipeline.annotate(My friend was treated for her skin cancer two years ago.) Results | text | prediction | |:---------------------------------------------------------|:-------------| | My friend was treated for her skin cancer two years ago. | 3rd_Person | Model Information Model Name: bert_sequence_classifier_vop_self_report_pipeline Type: pipeline Compatibility: Healthcare NLP 4.4.3+ License: Licensed Edition: Official Language: en Size: 406.4 MB Included Models DocumentAssembler TokenizerModel MedicalBertForSequenceClassification</summary></entry><entry><title type="html">Sound Medical Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_sound_medical_pipeline_en.html" rel="alternate" type="text/html" title="Sound Medical Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_sound_medical_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_sound_medical_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- TokenizerModel
+- MedicalBertForSequenceClassification</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="clinical" /><category term="vop" /><category term="classification" /><summary type="html">Description This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify texts depending on if they are self-reported or if they refer to another person. The pipeline is built on the top of bert_sequence_classifier_vop_self_report model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_self_report_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) pipeline.annotate(&quot;My friend was treated for her skin cancer two years ago.&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_self_report_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = pipeline.annotate(My friend was treated for her skin cancer two years ago.) Results | text | prediction | |:---------------------------------------------------------|:-------------| | My friend was treated for her skin cancer two years ago. | 3rd_Person | Model Information Model Name: bert_sequence_classifier_vop_self_report_pipeline Type: pipeline Compatibility: Healthcare NLP 4.4.3+ License: Licensed Edition: Official Language: en Size: 406.4 MB Included Models DocumentAssembler TokenizerModel MedicalBertForSequenceClassification</summary></entry><entry><title type="html">Sound Medical Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_sound_medical_pipeline_en.html" rel="alternate" type="text/html" title="Sound Medical Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_sound_medical_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_sound_medical_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify whether the suggestion that is mentioned in the text is medically sound. The pipeline is built on the top of  &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_sound_medical_en.html&quot;&gt;bert_sequence_classifier_vop_sound_medical&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify whether the suggestion that is mentioned in the text is medically sound. The pipeline is built on the top of  [bert_sequence_classifier_vop_sound_medical](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_sound_medical_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_pipeline_en_4.4.3_3.2_1686710496292.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_pipeline_en_4.4.3_3.2_1686710496292.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_pipeline_en_4.4.3_3.2_1686710496292.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_pipeline_en_4.4.3_3.2_1686710496292.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_vop_sound_medical_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;I had a lung surgery for emphyema and after surgery my xray showing some recovery.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_vop_sound_medical_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_sound_medical_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;had&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lung&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surgery&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emphyema&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;after&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surgery&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xray&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;showing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recovery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+pipeline.annotate(&quot;I had a lung surgery for emphyema and after surgery my xray showing some recovery.&quot;)
+```
+```scala
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_sound_medical_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = pipeline.annotate(I had a lung surgery for emphyema and after surgery my xray showing some recovery.)
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| text                                                                               | prediction   |
+```bash
+| text                                                                               | prediction   |
 |:-----------------------------------------------------------------------------------|:-------------|
-| I had a lung surgery &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;emphyema and after surgery my xray showing some recovery. | True         |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+| I had a lung surgery for emphyema and after surgery my xray showing some recovery. | True         |
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;bert_sequence_classifier_vop_sound_medical_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 4.4.3+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;406.4 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|bert_sequence_classifier_vop_sound_medical_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 4.4.3+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|406.4 MB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;MedicalBertForSequenceClassification&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="clinical" /><category term="classification" /><category term="vop" /><summary type="html">Description This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify whether the suggestion that is mentioned in the text is medically sound. The pipeline is built on the top of bert_sequence_classifier_vop_sound_medical model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_sound_medical_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) pipeline.annotate(&quot;I had a lung surgery for emphyema and after surgery my xray showing some recovery.&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_sound_medical_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = pipeline.annotate(I had a lung surgery for emphyema and after surgery my xray showing some recovery.) Results | text | prediction | |:-----------------------------------------------------------------------------------|:-------------| | I had a lung surgery for emphyema and after surgery my xray showing some recovery. | True | Model Information Model Name: bert_sequence_classifier_vop_sound_medical_pipeline Type: pipeline Compatibility: Healthcare NLP 4.4.3+ License: Licensed Edition: Official Language: en Size: 406.4 MB Included Models DocumentAssembler TokenizerModel MedicalBertForSequenceClassification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline (Arabic)</title><link href="/2023/06/14/clinical_deidentification_ar.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline (Arabic)" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/clinical_deidentification_ar</id><content type="html" xml:base="/2023/06/14/clinical_deidentification_ar.html">## Description
+- DocumentAssembler
+- TokenizerModel
+- MedicalBertForSequenceClassification</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="clinical" /><category term="classification" /><category term="vop" /><summary type="html">Description This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify whether the suggestion that is mentioned in the text is medically sound. The pipeline is built on the top of bert_sequence_classifier_vop_sound_medical model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bert_sequence_classifier_vop_sound_medical_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) pipeline.annotate(&quot;I had a lung surgery for emphyema and after surgery my xray showing some recovery.&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = new PretrainedPipeline(&quot;bert_sequence_classifier_vop_sound_medical_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = pipeline.annotate(I had a lung surgery for emphyema and after surgery my xray showing some recovery.) Results | text | prediction | |:-----------------------------------------------------------------------------------|:-------------| | I had a lung surgery for emphyema and after surgery my xray showing some recovery. | True | Model Information Model Name: bert_sequence_classifier_vop_sound_medical_pipeline Type: pipeline Compatibility: Healthcare NLP 4.4.3+ License: Licensed Edition: Official Language: en Size: 406.4 MB Included Models DocumentAssembler TokenizerModel MedicalBertForSequenceClassification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline (Arabic)</title><link href="/2023/06/14/clinical_deidentification_ar.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline (Arabic)" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/clinical_deidentification_ar</id><content type="html" xml:base="/2023/06/14/clinical_deidentification_ar.html">## Description
 
 This pipeline can be used to deidentify Arabic PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate CONTACT, NAME, DATE, ID, LOCATION, AGE, PATIENT, HOSPITAL, ORGANIZATION, CITY, STREET, USERNAME, SEX, IDNUM, EMAIL, ZIP, MEDICALRECORD, PROFESSION, PHONE, COUNTRY, DOCTOR, SSN, ACCOUNT, LICENSE, DLN and VIN
 
