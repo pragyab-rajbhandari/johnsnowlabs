@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Clinical Deidentification</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Self Report Classification Pipeline - Voice of the Patient</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to deidentify PHI information from German medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate PATIENT, HOSPITAL, DATE, ORGANIZATION, CITY, STREET, USERNAME, PROFESSION, PHONE, COUNTRY, DOCTOR, AGE, CONTACT, I...">
-<!-- <link rel="canonical" href="/2023/06/13/clinical_deidentification_de.html"> -->
-<link rel="canonical" href="/2023/06/13/clinical_deidentification_de.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pretrained pipeline includes the Medical Bert for Sequence Classification model to classify texts depending on if they are self-reported or if they refer to another person. The pipeline is built on the top of  bert_sequence_classifier_vop_self_report model.Live DemoOpen in ColabDownloadCopy S3 URIHow...">
+<!-- <link rel="canonical" href="/2023/06/14/bert_sequence_classifier_vop_self_report_pipeline_en.html"> -->
+<link rel="canonical" href="/2023/06/14/bert_sequence_classifier_vop_self_report_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -410,25 +410,23 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Cabir40/2023-06-13-clinical_deidentification_de.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/mauro-nievoff/2023-06-14-bert_sequence_classifier_vop_self_report_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jun 13, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-06-13T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Clinical Deidentification</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Clinical Deidentification"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>deidentification</li><li>pipeline</li><li>de</li><li>licensed</li><li>clinical</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-06-13T00:00:00+00:00">
-    <meta itemprop="keywords" content="deidentification,pipeline,de,licensed,clinical"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jun 14, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-06-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Self Report Classification Pipeline - Voice of the Patient</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Self Report Classification Pipeline - Voice of the Patient"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>clinical</li><li>vop</li><li>classification</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-06-14T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,clinical,vop,classification"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to deidentify PHI information from <strong>German</strong> medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">PLATE</code> entities.</p>
-
-<h2 id="predicted-entities">Predicted Entities</h2>
+<p>This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify texts depending on if they are self-reported or if they refer to another person. The pipeline is built on the top of  <a href="https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_self_report_en.html">bert_sequence_classifier_vop_self_report</a> model.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_de_4.4.4_3.4_1686674620606.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_de_4.4.4_3.4_1686674620606.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_self_report_pipeline_en_4.4.3_3.2_1686702483761.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_self_report_pipeline_en_4.4.3_3.2_1686702483761.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -436,172 +434,24 @@
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification"</span><span class="p">,</span> <span class="s">"de"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"bert_sequence_classifier_vop_self_report_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">sample</span> <span class="o">=</span> <span class="s">"""Zusammenfassung : Michael Berger wird am Morgen des 12 Dezember 2018 ins St.Elisabeth Krankenhaus eingeliefert. 
-Herr Michael Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.
-
-Persönliche Daten :
-ID-Nummer: T0110053F
-Platte A-BC124
-Kontonummer: DE89370400440532013000
-SSN : 13110587M565
-Lizenznummer: B072RRE2I55
-Adresse : St.Johann-Straße 13 19300
-"""</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'masked'</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'masked_with_chars'</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'masked_fixed_length_chars'</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'obfuscated'</span><span class="p">]))</span>
+<span class="n">pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"My friend was treated for her skin cancer two years ago."</span><span class="p">)</span>
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification"</span><span class="o">,</span><span class="s">"de"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"bert_sequence_classifier_vop_self_report_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sample</span> <span class="k">=</span> <span class="s">"Zusammenfassung : Michael Berger wird am Morgen des 12 Dezember 2018 ins St.Elisabeth Krankenhaus eingeliefert. 
-Herr Michael Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.
-
-Persönliche Daten :
-ID-Nummer: T0110053F
-Platte A-BC124
-Kontonummer: DE89370400440532013000
-SSN : 13110587M565
-Lizenznummer: B072RRE2I55
-Adresse : St.Johann-Straße 13 19300"</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span>
-</code></pre></div>  </div>
-
-  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"de.deid.clinical"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Zusammenfassung : Michael Berger wird am Morgen des 12 Dezember 2018 ins St.Elisabeth Krankenhaus eingeliefert. 
-Herr Michael Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.
-
-Persönliche Daten :
-ID-Nummer: T0110053F
-Platte A-BC124
-Kontonummer: DE89370400440532013000
-SSN : 13110587M565
-Lizenznummer: B072RRE2I55
-Adresse : St.Johann-Straße 13 19300
-"""</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-</div>
-
-<div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
-
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification"</span><span class="p">,</span> <span class="s">"de"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-
-<span class="n">sample</span> <span class="o">=</span> <span class="s">"""Zusammenfassung : Michael Berger wird am Morgen des 12 Dezember 2018 ins St.Elisabeth Krankenhaus eingeliefert. 
-Herr Michael Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.
-
-Persönliche Daten :
-ID-Nummer: T0110053F
-Platte A-BC124
-Kontonummer: DE89370400440532013000
-SSN : 13110587M565
-Lizenznummer: B072RRE2I55
-Adresse : St.Johann-Straße 13 19300
-"""</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'masked'</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'masked_with_chars'</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'masked_fixed_length_chars'</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'obfuscated'</span><span class="p">]))</span>
-</code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
-
-<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification"</span><span class="o">,</span><span class="s">"de"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">sample</span> <span class="k">=</span> <span class="s">"Zusammenfassung : Michael Berger wird am Morgen des 12 Dezember 2018 ins St.Elisabeth Krankenhaus eingeliefert. 
-Herr Michael Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.
-
-Persönliche Daten :
-ID-Nummer: T0110053F
-Platte A-BC124
-Kontonummer: DE89370400440532013000
-SSN : 13110587M565
-Lizenznummer: B072RRE2I55
-Adresse : St.Johann-Straße 13 19300"</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span>
-</code></pre></div>  </div>
-
-  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"de.deid.clinical"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Zusammenfassung : Michael Berger wird am Morgen des 12 Dezember 2018 ins St.Elisabeth Krankenhaus eingeliefert. 
-Herr Michael Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.
-
-Persönliche Daten :
-ID-Nummer: T0110053F
-Platte A-BC124
-Kontonummer: DE89370400440532013000
-SSN : 13110587M565
-Lizenznummer: B072RRE2I55
-Adresse : St.Johann-Straße 13 19300
-"""</span><span class="p">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="nc">My</span> <span class="n">friend</span> <span class="n">was</span> <span class="n">treated</span> <span class="k">for</span> <span class="n">her</span> <span class="n">skin</span> <span class="n">cancer</span> <span class="n">two</span> <span class="n">years</span> <span class="n">ago</span><span class="o">.)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Results
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| text                                                     | prediction   |
+|:---------------------------------------------------------|:-------------|
+| My friend was treated <span class="k">for </span>her skin cancer two years ago. | 3rd_Person   |
 
-
-Masked with entity labels
-<span class="nt">------------------------------</span>
-Zusammenfassung : &lt;PATIENT&gt; wird am Morgen des &lt;DATE&gt; ins &lt;HOSPITAL&gt; eingeliefert.
-Herr &lt;PATIENT&gt; ist &lt;AGE&gt; Jahre alt und hat zu viel Wasser <span class="k">in </span>den Beinen.
-Persönliche Daten :
-ID-Nummer: &lt;ID&gt;
-Platte &lt;PLATE&gt;
-Kontonummer: &lt;ACCOUNT&gt;
-SSN : &lt;SSN&gt;
-Lizenznummer: &lt;DLN&gt;
-Adresse : &lt;STREET&gt; &lt;ZIP&gt;
-
-Masked with chars
-<span class="nt">------------------------------</span>
-Zusammenfassung : <span class="o">[</span><span class="k">************</span><span class="o">]</span> wird am Morgen des <span class="o">[</span><span class="k">**************</span><span class="o">]</span> ins <span class="o">[</span><span class="k">**********************</span><span class="o">]</span> eingeliefert.
-Herr <span class="o">[</span><span class="k">************</span><span class="o">]</span> ist <span class="k">**</span> Jahre alt und hat zu viel Wasser <span class="k">in </span>den Beinen.
-Persönliche Daten :
-ID-Nummer: <span class="o">[</span><span class="k">*******</span><span class="o">]</span>
-Platte <span class="o">[</span><span class="k">*****</span><span class="o">]</span>
-Kontonummer: <span class="o">[</span><span class="k">********************</span><span class="o">]</span>
-SSN : <span class="o">[</span><span class="k">**********</span><span class="o">]</span>
-Lizenznummer: <span class="o">[</span><span class="k">*********</span><span class="o">]</span>
-Adresse : <span class="o">[</span><span class="k">*****************</span><span class="o">]</span> <span class="o">[</span><span class="k">***</span><span class="o">]</span>
-
-Masked with fixed length chars
-<span class="nt">------------------------------</span>
-Zusammenfassung : <span class="k">****</span> wird am Morgen des <span class="k">****</span> ins <span class="k">****</span> eingeliefert.
-Herr <span class="k">****</span> ist <span class="k">****</span> Jahre alt und hat zu viel Wasser <span class="k">in </span>den Beinen.
-Persönliche Daten :
-ID-Nummer: <span class="k">****</span>
-Platte <span class="k">****</span>
-Kontonummer: <span class="k">****</span>
-SSN : <span class="k">****</span>
-Lizenznummer: <span class="k">****</span>
-Adresse : <span class="k">****</span> <span class="k">****</span>
-
-Obfusceted
-<span class="nt">------------------------------</span>
-Zusammenfassung : Herrmann Kallert wird am Morgen des 11-26-1977 ins International Neuroscience eingeliefert.
-Herr Herrmann Kallert ist 79 Jahre alt und hat zu viel Wasser <span class="k">in </span>den Beinen.
-Persönliche Daten :
-ID-Nummer: 136704D357
-Platte QA348G
-Kontonummer: 192837465738
-SSN : 1310011981M454
-Lizenznummer: XX123456
-Adresse : Klingelhöferring 31206
-
-
-<span class="o">{</span>:.model-param<span class="o">}</span>
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -610,7 +460,7 @@ Adresse : Klingelhöferring 31206
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>clinical_deidentification</td>
+      <td>bert_sequence_classifier_vop_self_report_pipeline</td>
     </tr>
     <tr>
       <td>Type:</td>
@@ -618,7 +468,7 @@ Adresse : Klingelhöferring 31206
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 4.4.4+</td>
+      <td>Healthcare NLP 4.4.3+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -630,11 +480,11 @@ Adresse : Klingelhöferring 31206
     </tr>
     <tr>
       <td>Language:</td>
-      <td>de</td>
+      <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.3 GB</td>
+      <td>406.4 MB</td>
     </tr>
   </tbody>
 </table>
@@ -643,29 +493,10 @@ Adresse : Klingelhöferring 31206
 
 <ul>
   <li>DocumentAssembler</li>
-  <li>SentenceDetectorDLModel</li>
   <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverter</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ChunkMergeModel</li>
-  <li>DeIdentificationModel</li>
-  <li>DeIdentificationModel</li>
-  <li>DeIdentificationModel</li>
-  <li>DeIdentificationModel</li>
-  <li>Finisher</li>
+  <li>MedicalBertForSequenceClassification</li>
 </ul>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-06-13T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-06-14T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -830,7 +661,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/06/13/clinical_deidentification_augmented_es.html">Clinical Deidentification (Spanish, augmented)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/06/13/clinical_deidentification_es.html">Clinical Deidentification (Spanish)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/06/14/bert_sequence_classifier_vop_hcp_consult_pipeline_en.html">HCP Consult Classification Pipeline - Voice of the Patient</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/06/14/bert_sequence_classifier_vop_sound_medical_pipeline_en.html">Sound Medical Classification Pipeline - Voice of the Patient</a></div></div></div>
 
 </div>
 </div>
