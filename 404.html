@@ -429,11 +429,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Pipeline for Detect Subentity PHI for Deidentification (Arabic)</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Clinical Deidentification Pipeline (Arabic)</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_subentity model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "ar", "clinical/models")text= '''ملاحظات سريرية - مري...">
-<!-- <link rel="canonical" href="/2023/05/31/ner_deid_subentity_pipeline_ar.html"> -->
-<link rel="canonical" href="/2023/05/31/ner_deid_subentity_pipeline_ar.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pipeline can be used to deidentify Arabic PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate CONTACT, NAME, DATE, ID, LOCATION, AGE, PATIENT, HOSPITAL, ORGANIZATION, CITY, STREET, USERNAME, SEX, IDNUM, EMAIL...">
+<!-- <link rel="canonical" href="/2023/06/14/clinical_deidentification_ar.html"> -->
+<link rel="canonical" href="/2023/06/14/clinical_deidentification_ar.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -830,23 +830,23 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/mellahysf/2023-05-31-ner_deid_subentity_pipeline_ar.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/mellahysf/2023-06-14-clinical_deidentification_ar.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>May 31, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-05-31T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Pipeline for Detect Subentity PHI for Deidentification (Arabic)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline for Detect Subentity PHI for Deidentification (Arabic)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>clinical</li><li>deidentification</li><li>ar</li><li>pipeline</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-05-31T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,clinical,deidentification,ar,pipeline"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jun 14, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-06-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Clinical Deidentification Pipeline (Arabic)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Clinical Deidentification Pipeline (Arabic)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>deidentification</li><li>clinical</li><li>ar</li><li>pipeline</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-06-14T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,deidentification,clinical,ar,pipeline"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained pipeline is built on the top of <a href="https://nlp.johnsnowlabs.com/2023/05/29/ner_deid_subentity_ar.html">ner_deid_subentity</a> model.</p>
+<p>This pipeline can be used to deidentify Arabic PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate CONTACT, NAME, DATE, ID, LOCATION, AGE, PATIENT, HOSPITAL, ORGANIZATION, CITY, STREET, USERNAME, SEX, IDNUM, EMAIL, ZIP, MEDICALRECORD, PROFESSION, PHONE, COUNTRY, DOCTOR, SSN, ACCOUNT, LICENSE, DLN and VIN</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_pipeline_ar_4.4.1_3.0_1685563688023.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_pipeline_ar_4.4.1_3.0_1685563688023.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_ar_4.4.4_3.0_1686734212603.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_ar_4.4.4_3.0_1686734212603.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -854,44 +854,184 @@
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_deid_subentity_pipeline"</span><span class="p">,</span> <span class="s">"ar"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification"</span><span class="p">,</span> <span class="s">"ar"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">text</span><span class="o">=</span> <span class="s">'''
-ملاحظات سريرية - مريض الربو. التاريخ: 16 أبريل 2000. اسم المريضة: ليلى حسن. العنوان: شارع المعرفة، مبنى رقم 789، حي الأمانة، جدة. الرمز البريدي: 54321. البلد: المملكة العربية السعودية. اسم المستشفى: مستشفى النور. اسم الطبيب: د. أميرة أحمد. تفاصيل الحالة: المريضة ليلى حسن، البالغة من العمر 35 عامًا، تعاني من مرض الربو المزمن. تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد. تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة. الخطة: تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج. يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة. يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة. يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو. تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح.
+<span class="n">text</span> <span class="o">=</span> <span class="s">'''
+
+ملاحظات سريرية - مريض الربو:
+
+التاريخ: 30 مايو 2023
+اسم المريضة: ليلى حسن
+
+تم تسجيل المريض في النظام باستخدام رقم الضمان الاجتماعي 123456789012.
+
+العنوان: شارع المعرفة، مبنى رقم 789، حي الأمانة، جدة
+الرمز البريدي: 54321
+البلد: المملكة العربية السعودية
+اسم المستشفى: مستشفى النور
+اسم الطبيب: د. أميرة أحمد
+
+تفاصيل الحالة:
+المريضة ليلى حسن، البالغة من العمر 35 عامًا، تعاني من مرض الربو المزمن. تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد. تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة.
+
+الخطة:
+
+تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج.
+يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة.
+يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة.
+يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو.
+تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح
+
 '''</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Masked with entity labels"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'masked_with_entity'</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Masked with chars"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'masked_with_chars'</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Masked with fixed length chars"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'masked_fixed_length_chars'</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Obfuscated"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">'obfuscated'</span><span class="p">]))</span>
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_deid_subentity_pipeline"</span><span class="o">,</span> <span class="s">"ar"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification"</span><span class="o">,</span><span class="s">"ar"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="sc">'''</span>
 
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"ملاحظات سريرية - مريض الربو. التاريخ: 16 أبريل 2000. اسم المريضة: ليلى حسن. العنوان: شارع المعرفة، مبنى رقم 789، حي الأمانة، جدة. الرمز البريدي: 54321. البلد: المملكة العربية السعودية. اسم المستشفى: مستشفى النور. اسم الطبيب: د. أميرة أحمد. تفاصيل الحالة: المريضة ليلى حسن، البالغة من العمر 35 عامًا، تعاني من مرض الربو المزمن. تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد. تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة. الخطة: تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج. يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة. يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة. يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو. تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح."</span>
+<span class="n">ملاحظات</span> <span class="n">سريرية</span> <span class="o">-</span> <span class="n">مريض</span> <span class="n">الربو</span><span class="k">:</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+<span class="kt">التاريخ:</span> <span class="err">30</span> <span class="kt">مايو</span> <span class="err">2023</span>
+<span class="kt">اسم</span> <span class="kt">المريضة:</span> <span class="kt">ليلى</span> <span class="kt">حسن</span>
+
+<span class="n">تم</span> <span class="n">تسجيل</span> <span class="n">المريض</span> <span class="n">في</span> <span class="n">النظام</span> <span class="n">باستخدام</span> <span class="n">رقم</span> <span class="n">الضمان</span> <span class="n">الاجتماعي</span> <span class="mf">123456789012.</span>
+
+<span class="n">العنوان</span><span class="k">:</span> <span class="kt">شارع</span> <span class="kt">المعرفة</span><span class="err">،</span> <span class="kt">مبنى</span> <span class="kt">رقم</span> <span class="err">789،</span> <span class="kt">حي</span> <span class="kt">الأمانة</span><span class="err">،</span> <span class="kt">جدة</span>
+<span class="n">الرمز</span> <span class="n">البريدي</span><span class="k">:</span> <span class="err">54321</span>
+<span class="kt">البلد:</span> <span class="kt">المملكة</span> <span class="kt">العربية</span> <span class="kt">السعودية</span>
+<span class="n">اسم</span> <span class="n">المستشفى</span><span class="k">:</span> <span class="kt">مستشفى</span> <span class="kt">النور</span>
+<span class="n">اسم</span> <span class="n">الطبيب</span><span class="k">:</span> <span class="kt">د.</span> <span class="kt">أميرة</span> <span class="kt">أحمد</span>
+
+<span class="n">تفاصيل</span> <span class="n">الحالة</span><span class="k">:</span>
+<span class="kt">المريضة</span> <span class="kt">ليلى</span> <span class="kt">حسن</span><span class="err">،</span> <span class="kt">البالغة</span> <span class="kt">من</span> <span class="kt">العمر</span> <span class="err">35</span> <span class="kt">عام</span><span class="err">ً</span><span class="kt">ا</span><span class="err">،</span> <span class="kt">تعاني</span> <span class="kt">من</span> <span class="kt">مرض</span> <span class="kt">الربو</span> <span class="kt">المزمن.</span> <span class="kt">تشكو</span> <span class="kt">من</span> <span class="kt">ضيق</span> <span class="kt">التنفس</span> <span class="kt">والسعال</span> <span class="kt">المتكرر</span> <span class="kt">والشهيق</span> <span class="kt">الشديد.</span> <span class="kt">تم</span> <span class="kt">تشخيصها</span> <span class="kt">بمرض</span> <span class="kt">الربو</span> <span class="kt">بناء</span><span class="err">ً</span> <span class="kt">على</span> <span class="kt">تاريخها</span> <span class="kt">الطبي</span> <span class="kt">واختبارات</span> <span class="kt">وظائف</span> <span class="kt">الرئة.</span>
+
+<span class="kt">الخطة:</span>
+
+<span class="kt">تم</span> <span class="kt">وصف</span> <span class="kt">مضادات</span> <span class="kt">الالتهاب</span> <span class="kt">غير</span> <span class="kt">الستيرويدية</span> <span class="kt">والموسعات</span> <span class="kt">القصبية</span> <span class="kt">لتحسين</span> <span class="kt">التنفس</span> <span class="kt">وتقليل</span> <span class="kt">التهيج.</span>
+<span class="kt">يجب</span> <span class="kt">على</span> <span class="kt">المريضة</span> <span class="kt">حمل</span> <span class="kt">معها</span> <span class="kt">جهاز</span> <span class="kt">الاستنشاق</span> <span class="kt">في</span> <span class="kt">حالة</span> <span class="kt">حدوث</span> <span class="kt">نوبة</span> <span class="kt">ربو</span> <span class="kt">حادة.</span>
+<span class="kt">يتعين</span> <span class="kt">على</span> <span class="kt">المريضة</span> <span class="kt">تجنب</span> <span class="kt">التحسس</span> <span class="kt">من</span> <span class="kt">العوامل</span> <span class="kt">المسببة</span> <span class="kt">للربو</span><span class="err">،</span> <span class="kt">مثل</span> <span class="kt">الدخان</span> <span class="kt">والغبار</span> <span class="kt">والحيوانات</span> <span class="kt">الأليفة.</span>
+<span class="kt">يجب</span> <span class="kt">مراقبة</span> <span class="kt">وظائف</span> <span class="kt">الرئة</span> <span class="kt">بانتظام</span> <span class="kt">ومتابعة</span> <span class="kt">التعليمات</span> <span class="kt">الطبية</span> <span class="kt">المتعلقة</span> <span class="kt">بمرض</span> <span class="kt">الربو.</span>
+<span class="kt">تعليم</span> <span class="kt">المريضة</span> <span class="kt">بشأن</span> <span class="kt">كيفية</span> <span class="kt">استخدام</span> <span class="kt">جهاز</span> <span class="kt">الاستنشاق</span> <span class="kt">بشكل</span> <span class="kt">صحيح</span> <span class="kt">وتقنيات</span> <span class="kt">التنفس</span> <span class="kt">الصحيح</span>
+
+<span class="sc">'''</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+---------------+--------+
-|chunks         |entities|
-+---------------+--------+
-|16 أبريل 2000  |DATE    |
-|ليلى حسن       |PATIENT |
-|789،           |ZIP     |
-|جدة            |CITY    |
-|54321          |ZIP     |
-|المملكة العربية|CITY    |
-|السعودية       |COUNTRY |
-|النور          |HOSPITAL|
-|أميرة أحمد     |DOCTOR  |
-|ليلى           |PATIENT |
-|35             |AGE     |
-+---------------+--------+
+Masked with entity labels
+<span class="nt">------------------------------</span>
+ملاحظات سريرية - مريض الربو:
 
+التاريخ: <span class="o">[</span>تاريخ] <span class="o">[</span>تاريخ]
+اسم المريضة: <span class="o">[</span>المريض]
+تم تسجيل المريض في النظام باستخدام رقم الضمان الاجتماعي <span class="o">[</span>هاتف].
+العنوان: شارع المعرفة، مبنى رقم <span class="o">[</span>الرمز البريدي] حي <span class="o">[</span>الموقع]
+الرمز البريدي: <span class="o">[</span>الرمز البريدي]
+البلد: <span class="o">[</span>المدينة] <span class="o">[</span>البلد]
+اسم المستشفى: <span class="o">[</span>الموقع]
+اسم الطبيب: د. <span class="o">[</span>دكتور]
+تفاصيل الحالة:
+المريضة <span class="o">[</span>المريض] حسن، البالغة من العمر <span class="o">[</span>العمر]عامًا، تعاني من مرض الربو المزمن.
+تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد.
+تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة.
+الخطة:
+
+تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج.
+يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة.
+يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة.
+يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو.
+تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح
+
+Masked with chars
+<span class="nt">------------------------------</span>
+ملاحظات سريرية - مريض الربو:
+
+التاريخ: <span class="o">[</span>٭٭٭٭٭] <span class="o">[</span>٭٭]
+اسم المريضة: <span class="o">[</span>٭٭٭٭٭٭]
+تم تسجيل المريض في النظام باستخدام رقم الضمان الاجتماعي <span class="o">[</span>٭٭٭٭٭٭٭٭٭٭].
+العنوان: شارع المعرفة، مبنى رقم <span class="o">[</span>٭٭] حي <span class="o">[</span>٭٭٭٭٭٭٭٭٭٭]
+الرمز البريدي: <span class="o">[</span>٭٭٭]
+البلد: <span class="o">[</span>٭٭٭٭٭٭٭٭٭٭٭٭٭] <span class="o">[</span>٭٭٭٭٭٭]
+اسم المستشفى: <span class="o">[</span>٭٭٭٭٭٭٭٭٭٭]
+اسم الطبيب: د. <span class="o">[</span>٭٭٭٭٭٭٭٭]
+تفاصيل الحالة:
+المريضة <span class="o">[</span>٭٭] حسن، البالغة من العمر ٭٭عامًا، تعاني من مرض الربو المزمن.
+تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد.
+تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة.
+الخطة:
+
+تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج.
+يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة.
+يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة.
+يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو.
+تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح
+
+Masked with fixed length chars
+<span class="nt">------------------------------</span>
+ملاحظات سريرية - مريض الربو:
+
+التاريخ: ٭٭٭٭ ٭٭٭٭
+اسم المريضة: ٭٭٭٭
+تم تسجيل المريض في النظام باستخدام رقم الضمان الاجتماعي ٭٭٭٭.
+العنوان: شارع المعرفة، مبنى رقم ٭٭٭٭ حي ٭٭٭٭
+الرمز البريدي: ٭٭٭٭
+البلد: ٭٭٭٭ ٭٭٭٭
+اسم المستشفى: ٭٭٭٭
+اسم الطبيب: د. ٭٭٭٭
+تفاصيل الحالة:
+المريضة ٭٭٭٭ حسن، البالغة من العمر ٭٭٭٭عامًا، تعاني من مرض الربو المزمن.
+تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد.
+تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة.
+الخطة:
+
+تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج.
+يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة.
+يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة.
+يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو.
+تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح
+
+Obfuscated
+<span class="nt">------------------------------</span>
+ملاحظات سريرية - مريض الربو:
+
+التاريخ: 30 يونيو 2024
+اسم المريضة: رياض حسيبي
+تم تسجيل المريض في النظام باستخدام رقم الضمان الاجتماعي 217492240818.
+العنوان: شارع المعرفة، مبنى رقم 616، حي شارع الحرية
+الرمز البريدي: 32681
+البلد: تاونات موريشيوس
+اسم المستشفى: شارع الجزر الموريسية
+اسم الطبيب: د. ميرا نورة
+تفاصيل الحالة:
+المريضة ربى شحاتة حسن، البالغة من العمر 26عامًا، تعاني من مرض الربو المزمن.
+تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد.
+تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة.
+الخطة:
+
+تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج.
+يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة.
+يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة.
+يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو.
+تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -900,7 +1040,7 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>ner_deid_subentity_pipeline</td>
+      <td>clinical_deidentification</td>
     </tr>
     <tr>
       <td>Type:</td>
@@ -908,7 +1048,7 @@
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 4.4.1+</td>
+      <td>Healthcare NLP 4.4.4+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -924,7 +1064,7 @@
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.2 GB</td>
+      <td>1.3 GB</td>
     </tr>
   </tbody>
 </table>
@@ -938,9 +1078,28 @@
   <li>WordEmbeddingsModel</li>
   <li>MedicalNerModel</li>
   <li>NerConverter</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverter</li>
+  <li>ChunkMergeModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ChunkMergeModel</li>
+  <li>DeIdentificationModel</li>
+  <li>DeIdentificationModel</li>
+  <li>DeIdentificationModel</li>
+  <li>DeIdentificationModel</li>
+  <li>Finisher</li>
 </ul>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-05-31T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-06-14T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -1105,7 +1264,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/05/31/summarizer_clinical_laymen_en.html">Summarize Clinical Notes in Layman Terms</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/06/14/bert_sequence_classifier_vop_sound_medical_pipeline_en.html">Sound Medical Classification Pipeline - Voice of the Patient</a></div></div></div>
 
 </div>
 </div>
