@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Finance NER (10Q, md, 12 entities)</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Finance NER (10-K, 10-Q, md, XBRL)</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model is an NER model containing 12 numeric financial entities from different 10Q reports. The tokens being annotated are the amounts, not any other surrounding word, but the context will determine what kind of amount is from the list of the 12 available.This is a large (md) model, trained with 200K ...">
-<!-- <link rel="canonical" href="/2022/12/14/finner_10q_xlbr_md_subset2_en.html"> -->
-<link rel="canonical" href="/2022/12/14/finner_10q_xlbr_md_subset2_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model is a Named Entity Recognition (NER) model focused on financial numeric items. It identifies 12 numeric financial entities from diverse 10-Q and 10-K reports. These entities are annotated using eXtensible Business Reporting Language (XBRL) tags. The annotation process primarily targets numerical...">
+<!-- <link rel="canonical" href="/2022/12/14/finner_10q_xbrl_md_subset3_en.html"> -->
+<link rel="canonical" href="/2022/12/14/finner_10q_xbrl_md_subset3_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -410,29 +410,27 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gadde5300/2022-12-14-finner_10q_xlbr_md_subset2_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gadde5300/2022-12-14-finner_10q_xbrl_md_subset3_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
         </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Dec 14, 2022</span>
             </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2022-12-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Finance NER (10Q, md, 12 entities)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance NER (10Q, md, 12 entities)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>10q</li><li>xlbr</li><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2022-12-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="10q,xlbr,en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+          <h1>Finance NER (10-K, 10-Q, md, XBRL)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance NER (10-K, 10-Q, md, XBRL)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>10q</li><li>xbrl</li><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2022-12-14T00:00:00+00:00">
+    <meta itemprop="keywords" content="10q,xbrl,en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model is an NER model containing 12 numeric financial entities from different 10Q reports. The tokens being annotated are the amounts, not any other surrounding word, but the context will determine what kind of amount is from the list of the 12 available.</p>
-
-<p>This is a large (<code class="language-plaintext highlighter-rouge">md</code>) model, trained with 200K sentences.</p>
+<p>This model is a Named Entity Recognition (NER) model focused on financial numeric items. It identifies 12 numeric financial entities from diverse 10-Q and 10-K reports. These entities are annotated using eXtensible Business Reporting Language (XBRL) tags. The annotation process primarily targets numerical tokens, and the context plays a crucial role in accurately assigning the appropriate entity type from the 139 most common financial entities available in the dataset.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">ConcentrationRiskPercentage1</code>, <code class="language-plaintext highlighter-rouge">BusinessCombinationContingentConsiderationLiability</code>, <code class="language-plaintext highlighter-rouge">BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles</code>, <code class="language-plaintext highlighter-rouge">BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill</code>, <code class="language-plaintext highlighter-rouge">CommonStockSharesAuthorized</code>, <code class="language-plaintext highlighter-rouge">CommonStockSharesOutstanding</code>, <code class="language-plaintext highlighter-rouge">CashAndCashEquivalentsFairValueDisclosure</code>, <code class="language-plaintext highlighter-rouge">ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1</code>, <code class="language-plaintext highlighter-rouge">CommonStockParOrStatedValuePerShare</code>, <code class="language-plaintext highlighter-rouge">CommonStockCapitalSharesReservedForFutureIssuance</code>, <code class="language-plaintext highlighter-rouge">CapitalizedContractCostAmortization</code>, <code class="language-plaintext highlighter-rouge">CommonStockDividendsPerShareDeclared</code></p>
+<p><code class="language-plaintext highlighter-rouge">ContractWithCustomerLiability</code>, <code class="language-plaintext highlighter-rouge">DebtInstrumentFairValue</code>, <code class="language-plaintext highlighter-rouge">DebtInstrumentMaturityDate</code>, <code class="language-plaintext highlighter-rouge">DebtInstrumentInterestRateStatedPercentage</code>, <code class="language-plaintext highlighter-rouge">DebtInstrumentRedemptionPricePercentage</code>, <code class="language-plaintext highlighter-rouge">DebtInstrumentInterestRateEffectivePercentage</code>, <code class="language-plaintext highlighter-rouge">DebtInstrumentBasisSpreadOnVariableRate1</code>, <code class="language-plaintext highlighter-rouge">CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption</code>, <code class="language-plaintext highlighter-rouge">DebtInstrumentConvertibleConversionPrice1</code>, <code class="language-plaintext highlighter-rouge">ContractWithCustomerLiabilityRevenueRecognized</code>, <code class="language-plaintext highlighter-rouge">DebtInstrumentCarryingAmount</code>, <code class="language-plaintext highlighter-rouge">DebtInstrumentFaceAmount</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_md_subset2_en_1.0.0_3.0_1671036114572.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_md_subset2_en_1.0.0_3.0_1671036114572.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_md_subset3_en_1.0.0_3.0_1671036722936.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_md_subset3_en_1.0.0_3.0_1671036722936.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -458,7 +456,7 @@
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setMaxSentenceLength</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
 
-<span class="n">nerTagger</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'finner_10q_xlbr_md_subset2'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'finance/models'</span><span class="p">)</span>\
+<span class="n">nerTagger</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'finner_10q_xbrl_md_subset3'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'finance/models'</span><span class="p">)</span>\
    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
               
@@ -488,26 +486,30 @@
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+-----------+-------------------------------------------------------+----------+
-|token      |ner_label                                              |confidence|
-+-----------+-------------------------------------------------------+----------+
-|The        |O                                                      |1.0       |
-|Warrant    |O                                                      |1.0       |
-|bears      |O                                                      |1.0       |
-|a          |O                                                      |1.0       |
-|purchase   |O                                                      |1.0       |
-|price      |O                                                      |1.0       |
-|of         |O                                                      |1.0       |
-|<span class="nv">$ </span>         |O                                                      |1.0       |
-|3.17       |B-ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1|0.9582    |
-|per        |O                                                      |1.0       |
-|share      |O                                                      |1.0       |
-|,          |O                                                      |1.0       |
-|subject    |O                                                      |1.0       |
-|to         |O                                                      |1.0       |
-|adjustments|O                                                      |1.0       |
-|.          |O                                                      |1.0       |
-+-----------+-------------------------------------------------------+----------+
++----------+--------------------------+----------+
+|token     |ner_label                 |confidence|
++----------+--------------------------+----------+
+|Notes     |O                         |1.0       |
+|and       |O                         |1.0       |
+|Other     |O                         |1.0       |
+|Debts     |O                         |1.0       |
+|Payable   |O                         |1.0       |
+|In        |O                         |1.0       |
+|November  |O                         |1.0       |
+|2013      |O                         |0.9999    |
+|,         |O                         |1.0       |
+|the       |O                         |1.0       |
+|Rialto    |O                         |1.0       |
+|segment   |O                         |1.0       |
+|originally|O                         |1.0       |
+|issued    |O                         |1.0       |
+|<span class="nv">$ </span>        |O                         |0.9999    |
+|250       |B-DebtInstrumentFaceAmount|0.5981    |
+|million   |O                         |1.0       |
+|aggregate |O                         |1.0       |
+|principal |O                         |1.0       |
+|amount    |O                         |1.0       |
++----------+--------------------------+----------+
 
 </code></pre></div></div>
 
@@ -517,7 +519,7 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>finner_10q_xlbr_md_subset2</td>
+      <td>finner_10q_xbrl_md_subset3</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -557,24 +559,24 @@
 <h2 id="benchmarking">Benchmarking</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-label                                                                                                               precision    recall  f1-score   support
-B-BusinessCombinationContingentConsiderationLiability                                                               0.9127    0.9914    0.9504       232
-B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill     0.7333    0.8148    0.7719        81
-B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles                           0.7907    0.6182    0.6939        55
-B-CapitalizedContractCostAmortization                                                                               0.9829    1.0000    0.9914       230
-B-CashAndCashEquivalentsFairValueDisclosure                                                                         1.0000    0.9920    0.9960       250
-B-ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1                                                             0.9873    1.0000    0.9936       156
-B-CommonStockCapitalSharesReservedForFutureIssuance                                                                 0.9353    0.9938    0.9636       160
-B-CommonStockDividendsPerShareDeclared                                                                              0.9651    1.0000    0.9822       332
-B-CommonStockParOrStatedValuePerShare                                                                               0.9766    0.9709    0.9738       172
-B-CommonStockSharesAuthorized                                                                                       0.9817    0.9583    0.9699       168
-B-CommonStockSharesOutstanding                                                                                      0.9796    0.9172    0.9474       157
-B-ConcentrationRiskPercentage1                                                                                      0.9945    0.9899    0.9922      1091
-I-CommonStockSharesAuthorized                                                                                       0.0000    0.0000    0.0000         3
-O                                                                                                                   0.9995    0.9992    0.9993     76729
-accuracy                                                                                                                -          -    0.9982     79816
-macro-avg                                                                                                           0.8742    0.8747    0.8733     79816
-weighted-avg                                                                                                        0.9982    0.9982    0.9982     79816
+label                                                           precision    recall  f1-score   support
+B-ContractWithCustomerLiability                                    0.9847    0.8344    0.9033       308
+B-ContractWithCustomerLiabilityRevenueRecognized                   0.9657    0.9888    0.9771       627
+B-CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption       0.9817    0.9267    0.9534       232
+B-DebtInstrumentBasisSpreadOnVariableRate1                         0.9332    0.9828    0.9573      2145
+B-DebtInstrumentCarryingAmount                                     0.7082    0.4751    0.5687       562
+B-DebtInstrumentConvertibleConversionPrice1                        0.9770    0.9290    0.9524       183
+B-DebtInstrumentFaceAmount                                         0.8648    0.7501    0.8034      1901
+B-DebtInstrumentFairValue                                          0.9728    0.7150    0.8242       200
+B-DebtInstrumentInterestRateEffectivePercentage                    0.8225    0.8024    0.8123       410
+B-DebtInstrumentInterestRateStatedPercentage                       0.9410    0.9454    0.9432      2731
+B-DebtInstrumentMaturityDate                                       0.9143    0.4812    0.6305       266
+B-DebtInstrumentRedemptionPricePercentage                          0.9518    0.9518    0.9518       436
+I-DebtInstrumentMaturityDate                                       0.9143    0.4812    0.6305       798
+O                                                                  0.9947    0.9984    0.9966    246872
+accuracy                                                               -          -    0.9917    257671
+macro-avg                                                          0.9233    0.8045    0.8504    257671
+weighted-avg                                                       0.9912    0.9917    0.9911    257671
 </code></pre></div></div>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-12-14T00:00:00+00:00"><!-- start custom article footer snippet -->
 
@@ -741,7 +743,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2022/12/14/finner_10q_xlbr_md_subset1_en.html">Finance NER (10Q, md, 12 entities)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2022/12/14/finner_10q_xlbr_md_subset3_en.html">Finance NER (10Q, md, 12 entities)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2022/12/14/finner_10q_xbrl_md_subset2_en.html">Finance NER (10-K, 10-Q, md, XBRL)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2022/12/15/finner_contraliability_en.html">Liability and Contra-Liability NER (Small)</a></div></div></div>
 
 </div>
 </div>
