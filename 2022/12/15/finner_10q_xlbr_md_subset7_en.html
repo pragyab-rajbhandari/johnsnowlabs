@@ -9,9 +9,9 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Finance NER (10Q, md, 12 entities)</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Finance NER (10-K, 10-Q, md, XBRL)</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model is an NER model containing 12 numeric financial entities from different 10Q reports. The tokens being annotated are the amounts, not any other surrounding word, but the context will determine what kind of amount is from the list of the 12 available.This is a large (md) model, trained with 200K ...">
+<meta name="description" content="DescriptionThis model is a Named Entity Recognition (NER) model focused on financial numeric items. It identifies 12 numeric financial entities from diverse 10-Q and 10-K reports. These entities are annotated using eXtensible Business Reporting Language (XBRL) tags. The annotation process primarily targets numerical...">
 <!-- <link rel="canonical" href="/2022/12/15/finner_10q_xlbr_md_subset7_en.html"> -->
 <link rel="canonical" href="/2022/12/15/finner_10q_xlbr_md_subset7_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -416,12 +416,12 @@
             </a>
         </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Dec 15, 2022</span>
             </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2022-12-15T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Finance NER (10Q, md, 12 entities)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance NER (10Q, md, 12 entities)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>10q</li><li>xlbr</li><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2022-12-15T00:00:00+00:00">
-    <meta itemprop="keywords" content="10q,xlbr,en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+          <h1>Finance NER (10-K, 10-Q, md, XBRL)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance NER (10-K, 10-Q, md, XBRL)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>10q</li><li>xbrl</li><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2022-12-15T00:00:00+00:00">
+    <meta itemprop="keywords" content="10q,xbrl,en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model is an NER model containing 12 numeric financial entities from different 10Q reports. The tokens being annotated are the amounts, not any other surrounding word, but the context will determine what kind of amount is from the list of the 12 available.</p>
+<p>This model is a Named Entity Recognition (NER) model focused on financial numeric items. It identifies 12 numeric financial entities from diverse 10-Q and 10-K reports. These entities are annotated using eXtensible Business Reporting Language (XBRL) tags. The annotation process primarily targets numerical tokens, and the context plays a crucial role in accurately assigning the appropriate entity type from the 139 most common financial entities available in the dataset.</p>
 
 <p>This is a large (<code class="language-plaintext highlighter-rouge">md</code>) model, trained with 200K sentences.</p>
 
@@ -431,8 +431,8 @@
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_md_subset7_en_1.0.0_3.0_1671081068821.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_md_subset7_en_1.0.0_3.0_1671081068821.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_md_subset7_en_1.0.0_3.0_1671081068821.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_md_subset7_en_1.0.0_3.0_1671081068821.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -458,7 +458,7 @@
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setMaxSentenceLength</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
 
-<span class="n">nerTagger</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'finner_10q_xlbr_md_subset7'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'finance/models'</span><span class="p">)</span>\
+<span class="n">nerTagger</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'finner_10q_xbrl_md_subset7'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'finance/models'</span><span class="p">)</span>\
    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
               
@@ -541,7 +541,7 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>finner_10q_xlbr_md_subset7</td>
+      <td>finner_10q_xbrl_md_subset7</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -764,7 +764,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2022/12/15/finner_10q_xlbr_md_subset6_en.html">Finance NER (10Q, md, 12 entities)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2022/12/15/finner_10q_xlbr_md_subset8_en.html">Finance NER (10Q, md, 12 entities)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2022/12/15/finner_10q_xlbr_md_subset6_en.html">Finance NER (10-K, 10-Q, md, XBRL)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2022/12/15/finner_10q_xlbr_md_subset8_en.html">Finance NER (10-K, 10-Q, md, XBRL)</a></div></div></div>
 
 </div>
 </div>
