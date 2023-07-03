@@ -579,7 +579,7 @@ Section-Based Annotation is now available for Visual NER projects, specifically 
 With Section-Based Annotation, NLP Lab offers a more granular approach to annotation and analysis, allowing users to focus on specific sections and achieve more accurate and efficient results.</li>
   </ol>
 
-  <p><img src="https://github.com/JohnSnowLabs/annotationlab/assets/85957146/b9dc0b90-a015-4c10-b6b9-b406a6a66d5c" alt="Types of SBA 1" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/1.gif" alt="Types of SBA 1" /></p>
 
   <h2 id="task-splitting">Task Splitting </h2>
 
@@ -595,15 +595,17 @@ Text tasks can be divided into paragraphs by using a dynamic regex such as “\n
   <p><strong>Split by Sentence:</strong>
 This selection enables users to partition text documents into individual sentences, using single or multiple delimiters. The full-stop sign ‘.’ is the default delimiter used to identify sentence boundaries. Since a sentence may end with various delimiters. users have the flexibility to include multiple delimiters for sentence segmentation.</p>
 
-  <p><img src="https://github.com/JohnSnowLabs/annotationlab/assets/17021686/5c14e5b7-b4a1-412e-a6e2-7681bf2a2356" alt="split-document-into-sections" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/2.gif" alt="split-document-into-sections" /></p>
 
   <p><strong>IMPORTANT REMARKS:</strong></p>
   <ul>
     <li>The Split by Paragraph and Split by Sentence options are not applicable for Visual NER projects.</li>
-    <li>Section Based annotations cannot be enabled for pre-existing projects with annotated tasks or any project with tasks already in progress. </li>
-  </ul>
+    <li>
+      <p>Section Based annotations cannot be enabled for pre-existing projects with annotated tasks or any project with tasks already in progress. </p>
 
-  <p>  <img src="https://github.com/JohnSnowLabs/annotationlab/assets/17021686/adfef6c4-5e3d-43a3-894c-b13962a1b039" alt="visNER-split-docs" /></p>
+      <p><img src="/assets/images/annotation_lab/5.1.0/3.png" alt="visNER-split-docs" /></p>
+    </li>
+  </ul>
 
   <h2 id="what-makes-a-section-relevant">What Makes a Section Relevant?</h2>
 
@@ -624,29 +626,29 @@ Four types of rules can be combined to identify relevant sections:</p>
   <h3 id="classifier-based-rules">Classifier-Based Rules:</h3>
   <p>Identification of relevant sections can also be done using pre-trained classifier models. Users can select one classifier from the available ones (downloaded or trained within NLP Lab) and pick the classes considered relevant for the current project. Those will be associated to a section name. Multiple relevant sections can be created with the same classifier. Please note that only one classifier can be used for section classification as part of one project. Saving this rule will deploy a classifier server, which can be viewed on the Cluster page. Licensed classifiers require a free valid license to run, and the deployment of a classifier is subject to the availability of server capacity.</p>
 
-  <p><img src="https://github.com/JohnSnowLabs/annotationlab/assets/17021686/1ed0c5dc-4611-4c28-a68f-cbe139a84645" alt="Screen Recording 2023-06-29 at 5 02 24 PM" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/4.gif" alt="Screen Recording 2023-06-29 at 5 02 24 PM" /></p>
 
   <h3 id="merge-consecutive-sections-for-simplified-workflows">Merge Consecutive Sections for Simplified Workflows:</h3>
   <p>Successive sections with the same name can be merged into one section. This feature is available by checking the corresponding option below the section definition widget. This simplifies the annotation process by grouping together neighboring sections with the same name for which the same taxonomy applies. </p>
 
-  <p><img src="https://github.com/JohnSnowLabs/annotationlab/assets/17021686/819748ff-968c-4cdc-9bb5-8d7d0970b024" alt="merge-consecutive-sections" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/5.gif" alt="merge-consecutive-sections" />)</p>
 
   <p><strong>IMPORTANT REMARKS:</strong></p>
 
   <p>For Visual NER projects, the rules for defining relevant sections are limited to index, keywords, and regex.</p>
 
-  <p><img src="https://github.com/JohnSnowLabs/annotationlab/assets/17021686/4b3957a9-9e0e-4487-8aba-776b2cdad810" alt="visNER_section_rulse" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/6.gif" alt="visNER_section_rulse" /></p>
 
   <h2 id="section-specific-taxonomies">Section Specific Taxonomies</h2>
   <p>The section-based annotation options provide users with the flexibility to customize and configure the labels and choices that are displayed in specific sections. This setup can be conveniently accomplished via the project configuration page, which presents a visual mode for label customization.</p>
 
-  <p><img src="https://github.com/JohnSnowLabs/annotationlab/assets/33893292/83868b7b-d23f-44b5-a5f3-d51a865566fc" alt="SectionBasedLabelOption" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/7.gif" alt="SectionBasedLabelOption" /></p>
 
   <p>In the case of Named Entity Recognition (NER) labels, users can simply click on individual labels and choose the specific sections where they want the label to be visible. By doing so, users have the ability to define the sections within the task where each NER label should appear, ensuring that the annotation is precise and applicable to the intended sections.</p>
 
   <p>Similarly, for choices, users can navigate to the three-dot menu, typically located next to each choice name. By selecting this menu, users can access the configuration settings to designate the relevant sections where the particular choice should be displayed. This feature allows users to tailor the choices available for annotation in specific sections, making the annotation process more precise and efficient.</p>
 
-  <p><img width="1060" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" alt="ChoiceSecitonOption" src="https://github.com/JohnSnowLabs/annotationlab/assets/33893292/e7c059d7-5dae-42c9-860a-73462e20fc8d" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/8.png" alt="ChoiceSecitonOption" /></p>
 
   <p>By providing the ability to configure labels and choices at the section level, users can ensure that their annotation efforts are focused on the most relevant parts of the text. This ensures that the annotation process is efficient, saving valuable time and resources. Ultimately, this level of customization empowers users to create high-quality annotations tailored to their specific tasks and objectives.</p>
 
@@ -660,7 +662,7 @@ Four types of rules can be combined to identify relevant sections:</p>
 
   <p>It’s also important to note that LLMs do not have a memory of previous requests. Therefore, the context that is sent for each request should contain all the necessary information for generating accurate predictions.</p>
 
-  <p><img src="https://github.com/JohnSnowLabs/annotationlab/assets/85957146/302d3af7-d362-43a1-afc6-f95648762669" alt="Preannotation for SBA" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/9.gif" alt="Preannotation for SBA" /></p>
 
   <h2 id="model-training-with-section-level-annotations">Model Training with Section-Level Annotations</h2>
   <p>In projects that support Section-Based Annotation, each section is treated as an individual document during the training process. This means that the annotations contained within a given section, along with the section’s text, are provided to the training pipeline. By considering the specific content and context of the relevant sections, the training process becomes more targeted and accurate, resulting in improved model performance.</p>
@@ -674,12 +676,12 @@ Four types of rules can be combined to identify relevant sections:</p>
 
   <p>When a task is opened in the annotation screen, a new completion is generated by default, based on the automatically detected sections. The first relevant section is active by default and shown as highlighted in the yellow background (see item 7 on the below image) on the UI. Additionally, the name of the active section is displayed in the top bar (5), providing clear context to the user.</p>
 
-  <p><img width="1129" alt="section options" src="https://github.com/JohnSnowLabs/annotationlab/assets/33893292/56b2b3ba-76cb-4d83-af2b-36a41f8161c1" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/10.png" alt="section options" /></p>
 
   <h3 id="manual-creationremoval-of-relevant-section">Manual Creation/Removal of Relevant Section</h3>
   <p>There may be occasions when the predefined rules do not accurately capture the necessary relevant sections. For such scenarios, the user has the option to manually select the required text regions within the document and add a new section using the ‘Create’ button located at the top of the annotation area (see item 2 in the below image). A pop-up window allows users to choose the section to which the selected region belongs. (see item 3 in the image below). This ensures that no relevant information is overlooked or omitted during the annotation process. The custom-created sections are specific to the completions created by each user, and it can be possible that different users will submit starred completions with different relevant sections for the same task. This type of situation should be discussed in Inter Annotator Agreement meetings and consensus should be reached on what defines a relevant section. </p>
 
-  <p><img width="1246" alt="Create Section" src="https://github.com/JohnSnowLabs/annotationlab/assets/33893292/4d30e911-2fff-4014-a964-1acae50463bc" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/11.png" alt="Create Section" /></p>
 
   <p>By incorporating both automated section generation based on configuration rules and the ability to manually create sections, the annotation system offers a comprehensive approach that balances convenience and customization. Annotators can annotate efficiently on the automatically detected sections, while also having the flexibility to modify or create sections manually when necessary.
 It is also possible to remove an existing section. For this, users can simply click on the delete button associated with that section (see item 4 on the above images).</p>
@@ -692,7 +694,7 @@ It is also possible to remove an existing section. For this, users can simply cl
 
   <p>In other words, the process of copying completions ensures that the section structure, along with its corresponding annotations, is replicated in the new completion. This feature allows users to work on multiple iterations or variations of the task, each with its distinct relevant section, without losing any work - annotations, and labels - done in the original completion.</p>
 
-  <p><img src="https://github.com/JohnSnowLabs/annotationlab/assets/33893292/c30f35e7-39f6-42c0-bba6-170fdb40cf06" alt="Copying a completion" /></p>
+  <p><img src="/assets/images/annotation_lab/5.1.0/12.gif" alt="Copying a completion" /></p>
 
   <p>By supporting the duplication of completions while preserving the section-based context, the annotation system grants users the flexibility to modify and refine their work as needed. It enables users to submit different versions of completions, each with its unique relevant section, facilitating a more nuanced and specific analysis of the underlying data.</p>
 
