@@ -190,8 +190,6 @@ If there are multiple completions submitted by different annotators and the user
 **IMPORTANT REMARKS:** Changes made to the section rules do not apply to existing imported tasks. The updated rules are only applied to newly imported tasks.
 
 
-
-
 </div><div class="prev_ver h3-box" markdown="1">
 
 ## Versions
