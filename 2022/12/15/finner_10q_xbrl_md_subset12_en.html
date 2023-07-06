@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Finance Income NER (10Q, lg)</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Finance NER (10-Q, 10-K, md, XBRL)</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model is an NER model containing 5 numeric financial Income entities from different 10Q reports. The tokens being annotated are the amounts, not any other surrounding word, but the context will determine what kind of amount is from the list of the 5 available.This is a large (lg) model, trained with ...">
-<!-- <link rel="canonical" href="/2023/01/02/finner_10q_xlbr_lg_income_en.html"> -->
-<link rel="canonical" href="/2023/01/02/finner_10q_xlbr_lg_income_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model is a Named Entity Recognition (NER) model focused on financial numeric items. It identifies 6 numeric financial entities from diverse 10-Q and 10-K reports. These entities are annotated using eXtensible Business Reporting Language (XBRL) tags. The annotation process primarily targets numerical ...">
+<!-- <link rel="canonical" href="/2022/12/15/finner_10q_xbrl_md_subset12_en.html"> -->
+<link rel="canonical" href="/2022/12/15/finner_10q_xbrl_md_subset12_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -410,29 +410,27 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gadde5300/2023-01-02-finner_10q_xlbr_lg_income_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gadde5300/2022-12-15-finner_10q_xbrl_md_subset12_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 02, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-01-02T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Finance Income NER (10Q, lg)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance Income NER (10Q, lg)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>10q</li><li>xlbr</li><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-01-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="10q,xlbr,en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Dec 15, 2022</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2022-12-15T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Finance NER (10-Q, 10-K, md, XBRL)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance NER (10-Q, 10-K, md, XBRL)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>10q</li><li>10k</li><li>xbrl</li><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2022-12-15T00:00:00+00:00">
+    <meta itemprop="keywords" content="10q,10k,xbrl,en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model is an NER model containing 5 numeric financial Income entities from different 10Q reports. The tokens being annotated are the amounts, not any other surrounding word, but the context will determine what kind of amount is from the list of the 5 available.</p>
-
-<p>This is a large (<code class="language-plaintext highlighter-rouge">lg</code>) model, trained with 200K sentences.</p>
+<p>This model is a Named Entity Recognition (NER) model focused on financial numeric items. It identifies 6 numeric financial entities from diverse 10-Q and 10-K reports. These entities are annotated using eXtensible Business Reporting Language (XBRL) tags. The annotation process primarily targets numerical tokens, and the context plays a crucial role in accurately assigning the appropriate entity type from the 139 most common financial entities available in the dataset.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">IncomeLossFromEquityMethodInvestments</code>, <code class="language-plaintext highlighter-rouge">DisposalGroupIncludingDiscontinuedOperationConsideration</code>, <code class="language-plaintext highlighter-rouge">GainsLossesOnExtinguishmentOfDebt</code>, <code class="language-plaintext highlighter-rouge">DerivativeFixedInterestRate</code>, <code class="language-plaintext highlighter-rouge">IncomeTaxExpenseBenefit</code></p>
+<p><code class="language-plaintext highlighter-rouge">TreasuryStockValueAcquiredCostMethod</code>, <code class="language-plaintext highlighter-rouge">StockRepurchasedDuringPeriodShares</code>, <code class="language-plaintext highlighter-rouge">TreasuryStockAcquiredAverageCostPerShare</code>, <code class="language-plaintext highlighter-rouge">UnrecognizedTaxBenefits</code>, <code class="language-plaintext highlighter-rouge">SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense</code>, <code class="language-plaintext highlighter-rouge">TreasuryStockSharesAcquired</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_lg_income_en_1.0.0_3.0_1672653711790.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_lg_income_en_1.0.0_3.0_1672653711790.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_md_subset12_en_1.0.0_3.0_1671083679343.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_md_subset12_en_1.0.0_3.0_1671083679343.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -458,7 +456,7 @@
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setMaxSentenceLength</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
 
-<span class="n">nerTagger</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'finner_10q_xlbr_lg_income'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'finance/models'</span><span class="p">)</span>\
+<span class="n">nerTagger</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'finner_10q_xbrl_md_subset12'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'finance/models'</span><span class="p">)</span>\
    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
               
@@ -468,7 +466,7 @@
                             <span class="n">embeddings</span><span class="p">,</span>
                             <span class="n">nerTagger</span>
                                 <span class="p">])</span>
-<span class="n">text</span> <span class="o">=</span> <span class="s">"This was partially offset by $ 6.7 million and $ 12.7 million , respectively , of equity in earnings from one of the Company 's unconsolidated entities for the three and six months ended May 31 , 2016 primarily due to sales of 253 homesites and 471 homesites , respectively , to third parties for $ 52.1 million and $ 114.1 million , respectively , that resulted in gross profits of $ 18.3 million and $ 39.0 million , respectively ."</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"At both May 31 , 2016 and November 30 , 2015 , the Company had $ 12.3 million of gross unrecognized tax benefits . "</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 <span class="n">fit</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -488,93 +486,38 @@
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+--------------+---------------------------------------+----------+
-|token         |ner_label                              |confidence|
-+--------------+---------------------------------------+----------+
-|This          |O                                      |1.0       |
-|was           |O                                      |1.0       |
-|partially     |O                                      |1.0       |
-|offset        |O                                      |1.0       |
-|by            |O                                      |1.0       |
-|<span class="nv">$ </span>            |O                                      |1.0       |
-|6.7           |B-IncomeLossFromEquityMethodInvestments|0.9998    |
-|million       |O                                      |1.0       |
-|and           |O                                      |1.0       |
-|<span class="nv">$ </span>            |O                                      |1.0       |
-|12.7          |B-IncomeLossFromEquityMethodInvestments|0.9975    |
-|million       |O                                      |1.0       |
-|,             |O                                      |1.0       |
-|respectively  |O                                      |1.0       |
-|,             |O                                      |1.0       |
-|of            |O                                      |1.0       |
-|equity        |O                                      |1.0       |
-|in            |O                                      |1.0       |
-|earnings      |O                                      |1.0       |
-|from          |O                                      |1.0       |
-|one           |O                                      |1.0       |
-|of            |O                                      |1.0       |
-|the           |O                                      |1.0       |
-|Company       |O                                      |1.0       |
-|<span class="s1">'s            |O                                      |1.0       |
-|unconsolidated|O                                      |1.0       |
-|entities      |O                                      |1.0       |
-|for           |O                                      |1.0       |
-|the           |O                                      |1.0       |
-|three         |O                                      |1.0       |
-|and           |O                                      |1.0       |
-|six           |O                                      |1.0       |
-|months        |O                                      |1.0       |
-|ended         |O                                      |1.0       |
-|May           |O                                      |1.0       |
-|31            |O                                      |1.0       |
-|,             |O                                      |1.0       |
-|2016          |O                                      |1.0       |
-|primarily     |O                                      |1.0       |
-|due           |O                                      |1.0       |
-|to            |O                                      |1.0       |
-|sales         |O                                      |1.0       |
-|of            |O                                      |1.0       |
-|253           |O                                      |0.9997    |
-|homesites     |O                                      |1.0       |
-|and           |O                                      |1.0       |
-|471           |O                                      |0.9999    |
-|homesites     |O                                      |1.0       |
-|,             |O                                      |1.0       |
-|respectively  |O                                      |1.0       |
-|,             |O                                      |1.0       |
-|to            |O                                      |1.0       |
-|third         |O                                      |1.0       |
-|parties       |O                                      |1.0       |
-|for           |O                                      |1.0       |
-|$             |O                                      |1.0       |
-|52.1          |O                                      |0.9845    |
-|million       |O                                      |1.0       |
-|and           |O                                      |1.0       |
-|$             |O                                      |1.0       |
-|114.1         |O                                      |0.9984    |
-|million       |O                                      |1.0       |
-|,             |O                                      |1.0       |
-|respectively  |O                                      |1.0       |
-|,             |O                                      |1.0       |
-|that          |O                                      |1.0       |
-|resulted      |O                                      |1.0       |
-|in            |O                                      |1.0       |
-|gross         |O                                      |1.0       |
-|profits       |O                                      |1.0       |
-|of            |O                                      |1.0       |
-|$             |O                                      |1.0       |
-|18.3          |O                                      |0.7789    |
-|million       |O                                      |1.0       |
-|and           |O                                      |1.0       |
-|$             |O                                      |1.0       |
-|39.0          |O                                      |0.9363    |
-|million       |O                                      |1.0       |
-|,             |O                                      |1.0       |
-|respectively  |O                                      |1.0       |
-|.             |O                                      |1.0       |
-+--------------+---------------------------------------+----------+
++-----------+-------------------------------------------------------------------------------------+----------+
+|token      |ner_label                                                                            |confidence|
++------------+-------------------------+----------+
+|token       |ner_label                |confidence|
++------------+-------------------------+----------+
+|At          |O                        |1.0       |
+|both        |O                        |1.0       |
+|May         |O                        |1.0       |
+|31          |O                        |1.0       |
+|,           |O                        |1.0       |
+|2016        |O                        |1.0       |
+|and         |O                        |1.0       |
+|November    |O                        |1.0       |
+|30          |O                        |1.0       |
+|,           |O                        |1.0       |
+|2015        |O                        |1.0       |
+|,           |O                        |1.0       |
+|the         |O                        |1.0       |
+|Company     |O                        |1.0       |
+|had         |O                        |1.0       |
+|<span class="nv">$ </span>          |O                        |1.0       |
+|12.3        |B-UnrecognizedTaxBenefits|1.0       |
+|million     |O                        |1.0       |
+|of          |O                        |1.0       |
+|gross       |O                        |1.0       |
+|unrecognized|O                        |1.0       |
+|tax         |O                        |1.0       |
+|benefits    |O                        |1.0       |
+|.           |O                        |1.0       |
++------------+-------------------------+----------+
 
-</span></code></pre></div></div>
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
@@ -582,7 +525,7 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>finner_10q_xlbr_lg_income</td>
+      <td>finner_10q_xbrl_md_subset12</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -610,7 +553,7 @@
     </tr>
     <tr>
       <td>Size:</td>
-      <td>16.3 MB</td>
+      <td>16.4 MB</td>
     </tr>
   </tbody>
 </table>
@@ -622,20 +565,20 @@
 <h2 id="benchmarking">Benchmarking</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-
-label                                                        precision    recall  f1-score   support
-                             B-DerivativeFixedInterestRate     0.9858    1.0000    0.9929       139
-B-DisposalGroupIncludingDiscontinuedOperationConsideration     0.9756    0.9479    0.9615       211
-                       B-GainsLossesOnExtinguishmentOfDebt     0.9502    0.9709    0.9604       275
-                   B-IncomeLossFromEquityMethodInvestments     0.9734    0.9846    0.9790       260
-                                 B-IncomeTaxExpenseBenefit     0.9901    0.9832    0.9866       713
-                                                         O     0.9993    0.9993    0.9993     43335
-                                                  accuracy         -         -     0.9986     44933
-                                                 macro-avg     0.9791    0.9810    0.9800     44933
-                                              weighted-avg     0.9986    0.9986    0.9986     44933
-
+label                                                                                                       precision    recall  f1-score   support
+B-StockRepurchasedDuringPeriodShares                                                                           0.5798    0.4523    0.5082       241
+B-SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense     0.9008    1.0000    0.9478       236
+B-TreasuryStockAcquiredAverageCostPerShare                                                                     0.8359    0.9819    0.9030       166
+B-TreasuryStockSharesAcquired                                                                                  0.6911    0.8193    0.7497       415
+B-TreasuryStockValueAcquiredCostMethod                                                                         0.7214    0.5153    0.6012       196
+B-UnrecognizedTaxBenefits                                                                                      0.9897    0.9897    0.9897       291
+I-TreasuryStockSharesAcquired                                                                                  0.0000    0.0000    0.0000         1
+O                                                                                                              0.9969    0.9962    0.9965     32427
+accuracy                                                                                                           -         -     0.9873     33973
+macro-avg                                                                                                      0.7144    0.7193    0.7120     33973
+weighted-avg                                                                                                   0.9870    0.9873    0.9869     33973  
 </code></pre></div></div>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-01-02T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-12-15T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -800,7 +743,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/01/02/finner_10q_xlbr_lg_expense_en.html">Finance Expense NER (10Q, lg)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/01/02/finner_10q_xlbr_lg_liability_en.html">Finance Liability NER (10Q, lg)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2022/12/15/finner_earning_calls_specific_md_en.html">Earning Calls Financial NER (Specific, md)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2022/12/15/finner_10q_xbrl_md_subset5_en.html">Finance NER (10-K, 10-Q, md, XBRL)</a></div></div></div>
 
 </div>
 </div>
