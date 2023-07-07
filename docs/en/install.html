@@ -520,7 +520,7 @@
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
-<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
+<!-- end custom main top snippet --><article itemscope itemtype="https://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
     <li>Installation</li>
@@ -808,7 +808,7 @@ to install Spark NLP for your system.</p>
 <p>Run the following code in Google Colab notebook and start using spark-nlp right away.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This is only to setup PySpark and Spark NLP on Colab</span>
-<span class="o">!</span>wget http://setup.johnsnowlabs.com/colab.sh <span class="nt">-O</span> - | bash
+<span class="o">!</span>wget https://setup.johnsnowlabs.com/colab.sh <span class="nt">-O</span> - | bash
 </code></pre></div></div>
 
 <p>This script comes with the two options to define <code class="language-plaintext highlighter-rouge">pyspark</code> and <code class="language-plaintext highlighter-rouge">spark-nlp</code> versions via options:</p>
@@ -816,7 +816,7 @@ to install Spark NLP for your system.</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># -p is for pyspark</span>
 <span class="c"># -s is for spark-nlp</span>
 <span class="c"># by default they are set to the latest</span>
-<span class="o">!</span>wget http://setup.johnsnowlabs.com/colab.sh <span class="nt">-O</span> - | bash /dev/stdin <span class="nt">-p</span> 3.2.3 <span class="nt">-s</span> 4.3.2
+<span class="o">!</span>wget https://setup.johnsnowlabs.com/colab.sh <span class="nt">-O</span> - | bash /dev/stdin <span class="nt">-p</span> 3.2.3 <span class="nt">-s</span> 4.3.2
 </code></pre></div></div>
 
 <p><a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/jupyter/quick_start_google_colab.ipynb">Spark NLP quick start on Google Colab</a> is a live demo on Google Colab that performs named entity recognitions and sentiment analysis by using Spark NLP pretrained pipelines.</p>
@@ -826,7 +826,7 @@ to install Spark NLP for your system.</p>
 <p>Run the following code in Kaggle Kernel and start using spark-nlp right away.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Let's setup Kaggle for Spark NLP and PySpark</span>
-<span class="o">!</span>wget http://setup.johnsnowlabs.com/kaggle.sh <span class="nt">-O</span> - | bash
+<span class="o">!</span>wget https://setup.johnsnowlabs.com/kaggle.sh <span class="nt">-O</span> - | bash
 </code></pre></div></div>
 
 <p><a href="https://www.kaggle.com/mozzie/spark-nlp-named-entity-recognition">Spark NLP quick start on Kaggle Kernel</a> is a live demo on Kaggle Kernel that performs named entity recognitions by using Spark NLP pretrained pipeline.</p>
@@ -1559,7 +1559,7 @@ $(document).ready(function () {
 <!-- end custom main bottom snippet --></div>
             </div></div></div><div class="page__footer d-print-none">
 <footer class="footer py-4 js-page-footer">
-  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+  <div class="main"><div itemscope itemtype="https://schema.org/Person">
       <meta itemprop="name" content=""><meta itemprop="url" content="/"></div><div class="site-info mt-2">
       <div>© <span id="year"></span> John Snow Labs Inc.
         <a target="_blank" href="https://www.johnsnowlabs.com/terms-of-service">Terms of Service</a> | <a target="_blank" href="https://www.johnsnowlabs.com/privacy-policy/">Privacy Policy</a>
