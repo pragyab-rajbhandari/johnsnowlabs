@@ -1,105 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-07-07T12:43:16+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Legal Contract NLI</title><link href="/2023/07/04/leggen_contract_nli_en.html" rel="alternate" type="text/html" title="Legal Contract NLI" /><published>2023-07-04T00:00:00+00:00</published><updated>2023-07-04T00:00:00+00:00</updated><id>/2023/07/04/leggen_contract_nli_en</id><content type="html" xml:base="/2023/07/04/leggen_contract_nli_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-07-10T16:30:45+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Legal Contract NLI</title><link href="/2023/07/04/leggen_contract_nli_en.html" rel="alternate" type="text/html" title="Legal Contract NLI" /><published>2023-07-04T00:00:00+00:00</published><updated>2023-07-04T00:00:00+00:00</updated><id>/2023/07/04/leggen_contract_nli_en</id><content type="html" xml:base="/2023/07/04/leggen_contract_nli_en.html">## Description
 
-&lt;p&gt;This is a text-to-text generation model (encode-decoder architecture) that has undergone fine-tuning on flan-t5 using the Contract-NLI dataset. The ContractNLI dataset is designed for document-level natural language inference (NLI) on contracts, aiming to streamline and expedite the contract review process. The objective of this task is to provide a system with a set of hypotheses, like “Some obligations of Agreement may survive termination,” along with a contract, and task it with classifying whether each hypothesis is entailed, contradicted, or not mentioned (neutral) by the contract.&lt;/p&gt;
+This is a text-to-text generation model (encode-decoder architecture) that has undergone fine-tuning on flan-t5 using the Contract-NLI dataset. The ContractNLI dataset is designed for document-level natural language inference (NLI) on contracts, aiming to streamline and expedite the contract review process. The objective of this task is to provide a system with a set of hypotheses, like &quot;Some obligations of Agreement may survive termination,&quot; along with a contract, and task it with classifying whether each hypothesis is entailed, contradicted, or not mentioned (neutral) by the contract.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Contradiction&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Entailment&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Neutral&lt;/code&gt;&lt;/p&gt;
+`Contradiction`, `Entailment`, `Neutral`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/leggen_contract_nli_en_1.0.0_3.0_1688441488610.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/leggen_contract_nli_en_1.0.0_3.0_1688441488610.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/leggen_contract_nli_en_1.0.0_3.0_1688441488610.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/leggen_contract_nli_en_1.0.0_3.0_1688441488610.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextGenerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'leggen_contract_nli'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'en'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'legal/models'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxNewTokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setStopAtEos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;generated&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flant5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'''mnli hypothesis:
+flant5 = legal.TextGenerator.pretrained('leggen_contract_nli','en','legal/models')\
+    .setInputCols([&quot;document&quot;])\
+    .setMaxNewTokens(256)\
+    .setStopAtEos(True)\
+    .setOutputCol(&quot;generated&quot;)
+
+pipeline = nlp.Pipeline(stages=[document_assembler, flant5])
+
+data = spark.createDataFrame([
+   [1, '''mnli hypothesis:
 Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.
 premise:
 (a) furnish only that portion of the Proprietary Information which in its reasonable opinion, based upon advice of counsel, it is legally compelled to disclose, and (b) at the other Party's cost, cooperate with the efforts of the Party to obtain order or other reliable assurance that confidential treat will he accorded to such portion of the Proprietary Information as may be disclosed.
-'''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+''']]).toDF('id', 'text')
 
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+results = pipeline.fit(data).transform(data)
 
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;generated.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+results.select(&quot;generated.result&quot;).show(truncate=False)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+---------+
+```bash
++---------+
 |result   |
 +---------+
 |[Neutral]|
 +---------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;leggen_contract_nli&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.6 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|leggen_contract_nli|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.6 GB|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;This model has been fine tuned using &lt;a href=&quot;https://stanfordnlp.github.io/contract-nli/&quot;&gt;Stanford ContractNLI&lt;/a&gt; dataset.&lt;/p&gt;
+This model has been fine tuned using [Stanford ContractNLI](https://stanfordnlp.github.io/contract-nli/) dataset.
 
-&lt;p&gt;Reference:&lt;/p&gt;
-&lt;div class=&quot;language-bibtex highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;@inproceedings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;koreeda-manning-2021-contractnli-dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;{C}ontract{NLI}: A Dataset for Document-level Natural Language Inference for Contracts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Koreeda, Yuta  and Manning, Christopher&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;booktitle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Findings of the Association for Computational Linguistics: EMNLP 2021&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;month&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nov&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;2021&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Punta Cana, Dominican Republic&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;publisher&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Association for Computational Linguistics&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;https://aclanthology.org/2021.findings-emnlp.164&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;pages&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;1907--1919&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+Reference:
+```bibtex
+@inproceedings{koreeda-manning-2021-contractnli-dataset,
+    title = &quot;{C}ontract{NLI}: A Dataset for Document-level Natural Language Inference for Contracts&quot;,
+    author = &quot;Koreeda, Yuta  and Manning, Christopher&quot;,
+    booktitle = &quot;Findings of the Association for Computational Linguistics: EMNLP 2021&quot;,
+    month = nov,
+    year = &quot;2021&quot;,
+    address = &quot;Punta Cana, Dominican Republic&quot;,
+    publisher = &quot;Association for Computational Linguistics&quot;,
+    url = &quot;https://aclanthology.org/2021.findings-emnlp.164&quot;,
+    pages = &quot;1907--1919&quot;,
+}
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="legal" /><category term="en" /><category term="text_generation" /><category term="contract_nli" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This is a text-to-text generation model (encode-decoder architecture) that has undergone fine-tuning on flan-t5 using the Contract-NLI dataset. The ContractNLI dataset is designed for document-level natural language inference (NLI) on contracts, aiming to streamline and expedite the contract review process. The objective of this task is to provide a system with a set of hypotheses, like “Some obligations of Agreement may survive termination,” along with a contract, and task it with classifying whether each hypothesis is entailed, contradicted, or not mentioned (neutral) by the contract. Predicted Entities Contradiction, Entailment, Neutral Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) flant5 = legal.TextGenerator.pretrained('leggen_contract_nli','en','legal/models')\ .setInputCols([&quot;document&quot;])\ .setMaxNewTokens(256)\ .setStopAtEos(True)\ .setOutputCol(&quot;generated&quot;) pipeline = nlp.Pipeline(stages=[document_assembler, flant5]) data = spark.createDataFrame([ [1, '''mnli hypothesis: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement. premise: (a) furnish only that portion of the Proprietary Information which in its reasonable opinion, based upon advice of counsel, it is legally compelled to disclose, and (b) at the other Party's cost, cooperate with the efforts of the Party to obtain order or other reliable assurance that confidential treat will he accorded to such portion of the Proprietary Information as may be disclosed. ''']]).toDF('id', 'text') results = pipeline.fit(data).transform(data) results.select(&quot;generated.result&quot;).show(truncate=False) Results +---------+ |result | +---------+ |[Neutral]| +---------+ Model Information Model Name: leggen_contract_nli Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 1.6 GB References This model has been fine tuned using Stanford ContractNLI dataset. Reference: @inproceedings{koreeda-manning-2021-contractnli-dataset, title = &quot;{C}ontract{NLI}: A Dataset for Document-level Natural Language Inference for Contracts&quot;, author = &quot;Koreeda, Yuta and Manning, Christopher&quot;, booktitle = &quot;Findings of the Association for Computational Linguistics: EMNLP 2021&quot;, month = nov, year = &quot;2021&quot;, address = &quot;Punta Cana, Dominican Republic&quot;, publisher = &quot;Association for Computational Linguistics&quot;, url = &quot;https://aclanthology.org/2021.findings-emnlp.164&quot;, pages = &quot;1907--1919&quot;, }</summary></entry><entry><title type="html">Drug Side Effect Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en.html" rel="alternate" type="text/html" title="Drug Side Effect Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en.html">## Description
+```</content><author><name>John Snow Labs</name></author><category term="legal" /><category term="en" /><category term="text_generation" /><category term="contract_nli" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This is a text-to-text generation model (encode-decoder architecture) that has undergone fine-tuning on flan-t5 using the Contract-NLI dataset. The ContractNLI dataset is designed for document-level natural language inference (NLI) on contracts, aiming to streamline and expedite the contract review process. The objective of this task is to provide a system with a set of hypotheses, like “Some obligations of Agreement may survive termination,” along with a contract, and task it with classifying whether each hypothesis is entailed, contradicted, or not mentioned (neutral) by the contract. Predicted Entities Contradiction, Entailment, Neutral Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) flant5 = legal.TextGenerator.pretrained('leggen_contract_nli','en','legal/models')\ .setInputCols([&quot;document&quot;])\ .setMaxNewTokens(256)\ .setStopAtEos(True)\ .setOutputCol(&quot;generated&quot;) pipeline = nlp.Pipeline(stages=[document_assembler, flant5]) data = spark.createDataFrame([ [1, '''mnli hypothesis: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement. premise: (a) furnish only that portion of the Proprietary Information which in its reasonable opinion, based upon advice of counsel, it is legally compelled to disclose, and (b) at the other Party's cost, cooperate with the efforts of the Party to obtain order or other reliable assurance that confidential treat will he accorded to such portion of the Proprietary Information as may be disclosed. ''']]).toDF('id', 'text') results = pipeline.fit(data).transform(data) results.select(&quot;generated.result&quot;).show(truncate=False) Results +---------+ |result | +---------+ |[Neutral]| +---------+ Model Information Model Name: leggen_contract_nli Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 1.6 GB References This model has been fine tuned using Stanford ContractNLI dataset. Reference: @inproceedings{koreeda-manning-2021-contractnli-dataset, title = &quot;{C}ontract{NLI}: A Dataset for Document-level Natural Language Inference for Contracts&quot;, author = &quot;Koreeda, Yuta and Manning, Christopher&quot;, booktitle = &quot;Findings of the Association for Computational Linguistics: EMNLP 2021&quot;, month = nov, year = &quot;2021&quot;, address = &quot;Punta Cana, Dominican Republic&quot;, publisher = &quot;Association for Computational Linguistics&quot;, url = &quot;https://aclanthology.org/2021.findings-emnlp.164&quot;, pages = &quot;1907--1919&quot;, }</summary></entry><entry><title type="html">Drug Side Effect Classification Pipeline - Voice of the Patient</title><link href="/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en.html" rel="alternate" type="text/html" title="Drug Side Effect Classification Pipeline - Voice of the Patient" /><published>2023-06-14T00:00:00+00:00</published><updated>2023-06-14T00:00:00+00:00</updated><id>/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en</id><content type="html" xml:base="/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en.html">## Description
 
 This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify health-related text in colloquial language according to the presence or absence of mentions of side effects related to drugs. The pipeline is built on the top of [bert_sequence_classifier_vop_drug_side_effect](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_drug_side_effect_en.html) model.
 

@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 3.2.0</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>NLP Lab Release Notes 5.1.1</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_3_2_0"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_3_2_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_1_1"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_1_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -523,35 +523,32 @@
 <!-- end custom main top snippet --><article itemscope itemtype="https://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 3.2.0</li>
+    <li>NLP Lab Release Notes 5.1.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 3.2.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>NLP Lab Release Notes 5.1.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_3_2_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 3.2.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_5_1_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 5.1.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.2.0</h2>
+  <h2 id="section">5.1.1</h2>
 
-  <p>Release date: <strong>31-05-2022</strong></p>
+  <p>Release date: <strong>10-07-2023</strong></p>
 
-  <p>We are very excited to announce the release of Annotation Lab v3.2.0 which includes new and exciting features such as Project cloning and Project backup, Evaluation of Pretrained Models, and Search feature in the Visual NER Project. Support for Multiple files import, ability to view statuses of Model Servers and Training Jobs, and prioritization of completions for CONLL export. Spark NLP and Spark OCR libraries were also upgraded, and some security fixes and stabilizations were also implemented. Here are the highlights:</p>
-
-  <h3 id="highlights">Highlights</h3>
+  <p>We are pleased to announce the release of v5.1.1 which includes the following Section Based Annotation bug fixes:</p>
 
   <ul>
-    <li>Import/export of an entire Project. All project-related items (tasks, project configuration, project members, task assignments) can be imported/exported. In addition, users can also clone an existing project.</li>
-    <li>Evaluate Named Entity Models. Project Owner and/or Manager can now test and evaluate annotated tasks against the Pretrained NER models in the Training &amp; Active Learning Settings tab, configured NER models will be tested against the tasks tagged as test.</li>
-    <li>Statuses of Training and Preannotation Server. A new column, status, is added to the server page that gives the status of training and preannotation servers. Also if any issues are encountered during server initialization, those are displayed on mouse-over the status value.</li>
-    <li>Import Multiple Files. Project Owners or Managers can now upload multiple files at once in bulk.</li>
-    <li>Prioritize Annotators For Data Export. When multiple completions are available for the same task, the CONLL export will include completions from higher priority members.</li>
-    <li>Network Policies have been implemented which specify how a pod is allowed to communicate with various network “entities” over the network. The entities that are required to function in Annotation Lab were clearly identified and only traffic coming from them is now allowed.</li>
-    <li>Support for airgap licenses with scope. Previously airgap licenses with scopes were missrecognized as floating licenses.</li>
-    <li>Upgraded Spark NLP and Spark NLP for Health Care v3.4.1 and Spark OCR v3.12.0</li>
+    <li>Relevant sections are now listed in the “export JSON” task for Section Based Annotation enabled projects.</li>
+    <li>Section based annotation enabled visual NER projects now support import of annotated tasks. The imported tasks are split on the basis of the rules and relevant sections are captured.</li>
+    <li>The side menu options will now show a hover state only when they are clickable.</li>
+    <li>Error messages will now be shown when invalid section rules for “Section Index” are entered.</li>
+    <li>Section Index now supports Index with single value (1, 2, 3, …) and series index (1-5) in the same rule.</li>
+    <li>Manually created relevant sections of a deleted completion were still visible for section based tasks. This issue has been fixed.</li>
+    <li>In the previous version, when a model was trained in a Visual NER project, the trained model did not have any prediction labels. This issue has been fixed.</li>
   </ul>
 
 </div>
@@ -616,7 +613,7 @@
   <li><a href="release_notes_2_0_1">2.0.1</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-05-31T00:00:00+00:00">May 31, 2022</time>
+      <time itemprop="dateModified" datetime="2023-07-10T00:00:00+00:00">Jul 10, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
