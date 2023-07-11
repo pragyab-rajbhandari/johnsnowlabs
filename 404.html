@@ -429,11 +429,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Legal Contract NLI Text Generation | leggen_contract_nli | Legal NLP 1.0.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Named Entity Recognition Profiling (SDOH) | ner_profiling_sdoh | Healthcare NLP 4.4.4</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis is a text generation model that has undergone fine-tuning on flan-t5 using the Contract-NLI dataset. The ContractNLI dataset is designed for document-level natural language inference (NLI) on contracts, aiming to streamline and expedite the contract review process. The objective of this task is to pr...">
-<!-- <link rel="canonical" href="/2023/07/04/leggen_contract_nli_en.html"> -->
-<link rel="canonical" href="/2023/07/04/leggen_contract_nli_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pipeline can be used to explore all the available pretrained NER models at once for Social Determinants of Health. When you run this pipeline over your text, you will end up with the predictions coming out of each pretrained clinical NER model trained with embeddings_clinical.Here are the NER models ...">
+<!-- <link rel="canonical" href="/2023/07/11/ner_profiling_sdoh_en.html"> -->
+<link rel="canonical" href="/2023/07/11/ner_profiling_sdoh_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -830,65 +830,98 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gadde5300/2023-07-04-leggen_contract_nli_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gokhanturer/2023-07-11-ner_profiling_sdoh_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jul 04, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-07-04T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Legal Contract NLI Text Generation</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Legal Contract NLI Text Generation"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>legal</li><li>en</li><li>text_generation</li><li>contract_nli</li><li>licensed</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-07-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="legal,en,text_generation,contract_nli,licensed,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jul 11, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-07-11T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Named Entity Recognition Profiling (SDOH)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Named Entity Recognition Profiling (SDOH)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>clinical</li><li>profiling</li><li>ner_profiling</li><li>ner</li><li>sdoh</li><li>social_determinants_of_health</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-07-11T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,clinical,profiling,ner_profiling,ner,sdoh,social_determinants_of_health"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This is a text generation model that has undergone fine-tuning on flan-t5 using the Contract-NLI dataset. The ContractNLI dataset is designed for document-level natural language inference (NLI) on contracts, aiming to streamline and expedite the contract review process. The objective of this task is to provide a system with a set of hypotheses, like “Some obligations of Agreement may survive termination,” along with a contract, and task it with classifying whether each hypothesis is entailed, contradicted, or not mentioned (neutral) by the contract.</p>
+<p>This pipeline can be used to explore all the available pretrained NER models at once for Social Determinants of Health. When you run this pipeline over your text, you will end up with the predictions coming out of each pretrained clinical NER model trained with <code class="language-plaintext highlighter-rouge">embeddings_clinical</code>.</p>
 
-<h2 id="predicted-entities">Predicted Entities</h2>
+<p>Here are the NER models that this pretrained pipeline includes:</p>
 
-<p><code class="language-plaintext highlighter-rouge">Contradiction</code>, <code class="language-plaintext highlighter-rouge">Entailment</code>, <code class="language-plaintext highlighter-rouge">Neutral</code></p>
+<p><code class="language-plaintext highlighter-rouge">ner_sdoh</code>, <code class="language-plaintext highlighter-rouge">ner_sdoh_social_environment_wip</code>, <code class="language-plaintext highlighter-rouge">ner_sdoh_mentions</code>, <code class="language-plaintext highlighter-rouge">ner_sdoh_demographics_wip</code>, <code class="language-plaintext highlighter-rouge">ner_sdoh_community_condition_wip</code>, <code class="language-plaintext highlighter-rouge">ner_sdoh_substance_usage_wip</code>, <code class="language-plaintext highlighter-rouge">ner_sdoh_access_to_healthcare_wip</code>, <code class="language-plaintext highlighter-rouge">ner_sdoh_health_behaviours_problems_wip</code>, <code class="language-plaintext highlighter-rouge">ner_sdoh_income_social_status_wip</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/leggen_contract_nli_en_1.0.0_3.0_1688441488610.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/legal/models/leggen_contract_nli_en_1.0.0_3.0_1688441488610.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_sdoh_en_4.4.4_3.4_1689085109838.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_sdoh_en_4.4.4_3.4_1689085109838.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">flant5</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">TextGenerator</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'leggen_contract_nli'</span><span class="p">,</span><span class="s">'en'</span><span class="p">,</span><span class="s">'legal/models'</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setStopAtEos</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"generated"</span><span class="p">)</span>
+<span class="n">ner_profiling_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_profiling_sdoh"</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">flant5</span><span class="p">])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ner_profiling_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well.  She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week."""</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-   <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">'''mnli hypothesis:
-Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.
-premise:
-(a) furnish only that portion of the Proprietary Information which in its reasonable opinion, based upon advice of counsel, it is legally compelled to disclose, and (b) at the other Party's cost, cooperate with the efforts of the Party to obtain order or other reliable assurance that confidential treat will he accorded to such portion of the Proprietary Information as may be disclosed.
-'''</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'text'</span><span class="p">)</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="n">results</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"generated.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
+<span class="k">val</span> <span class="nv">ner_profiling_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_profiling_sdoh"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_profiling_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well.  She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week."""</span><span class="o">)</span>
+
+</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+
-|result   |
-+---------+
-|[Neutral]|
-+---------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="k">********************</span> ner_sdoh_mentions Model Results <span class="k">********************</span>
+
+<span class="o">[(</span><span class="s1">'Smith'</span>, <span class="s1">'B-sdoh_community'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'divorced'</span>, <span class="s1">'B-sdoh_community'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'lives'</span>, <span class="s1">'B-sdoh_environment'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'apartment'</span>, <span class="s1">'B-sdoh_environment'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'blood'</span>, <span class="s1">'B-behavior_drug'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'works'</span>, <span class="s1">'B-sdoh_economics'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'son'</span>, <span class="s1">'B-sdoh_community'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'rehab'</span>, <span class="s1">'B-sdoh_environment'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'etoh'</span>, <span class="s1">'B-behavior_alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'drinker'</span>, <span class="s1">'B-behavior_alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'beer'</span>, <span class="s1">'B-behavior_alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'smokes'</span>, <span class="s1">'B-behavior_tobacco'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'pack'</span>, <span class="s1">'B-behavior_tobacco'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'cigarettes'</span>, <span class="s1">'B-behavior_tobacco'</span><span class="o">)]</span>
+
+
+ <span class="k">********************</span> ner_sdoh_community_condition Model Results <span class="k">********************</span>
+
+<span class="o">[(</span><span class="s1">'apartment'</span>, <span class="s1">'B-Housing'</span><span class="o">)]</span>
+
+
+ <span class="k">********************</span> ner_sdoh_demographics Model Results <span class="k">********************</span>
+
+<span class="o">[(</span><span class="s1">'55'</span>, <span class="s1">'B-Age'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'years'</span>, <span class="s1">'I-Age'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'old'</span>, <span class="s1">'I-Age'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'New'</span>, <span class="s1">'B-Geographic_Entity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'York'</span>, <span class="s1">'I-Geographic_Entity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'American'</span>, <span class="s1">'B-Race_Ethnicity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'woman'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'Spanish'</span>, <span class="s1">'B-Language'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'Portuguese'</span>, <span class="s1">'B-Language'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'son'</span>, <span class="s1">'B-Family_Member'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'she'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'her'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'catholic'</span>, <span class="s1">'B-Spiritual_Beliefs'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'faith'</span>, <span class="s1">'I-Spiritual_Beliefs'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'her'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'teens'</span>, <span class="s1">'B-Age'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'she'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)]</span>
+
+
+ <span class="k">********************</span> ner_sdoh Model Results <span class="k">********************</span>
+
+<span class="o">[(</span><span class="s1">'55'</span>, <span class="s1">'B-Age'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'years'</span>, <span class="s1">'I-Age'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'old'</span>, <span class="s1">'I-Age'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'New'</span>, <span class="s1">'B-Geographic_Entity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'York'</span>, <span class="s1">'I-Geographic_Entity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'divorced'</span>, <span class="s1">'B-Marital_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'Mexcian'</span>, <span class="s1">'B-Race_Ethnicity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'American'</span>, <span class="s1">'I-Race_Ethnicity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'woman'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'financial'</span>, <span class="s1">'B-Financial_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'problems'</span>, <span class="s1">'I-Financial_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'Spanish'</span>, <span class="s1">'B-Language'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'Portuguese'</span>, <span class="s1">'B-Language'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'apartment'</span>, <span class="s1">'B-Housing'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'diabetes'</span>, <span class="s1">'B-Other_Disease'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'hospitalizations'</span>, <span class="s1">'B-Other_SDoH_Keywords'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'cleaning'</span>, <span class="s1">'B-Employment'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'assistant'</span>, <span class="s1">'I-Employment'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'health'</span>, <span class="s1">'B-Insurance_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'insurance'</span>, <span class="s1">'I-Insurance_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'son'</span>, <span class="s1">'B-Family_Member'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'student'</span>, <span class="s1">'B-Education'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'college'</span>, <span class="s1">'B-Education'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'depression'</span>, <span class="s1">'B-Mental_Health'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'she'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'rehab'</span>, <span class="s1">'B-Access_To_Care'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'her'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'catholic'</span>, <span class="s1">'B-Spiritual_Beliefs'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'faith'</span>, <span class="s1">'I-Spiritual_Beliefs'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'support'</span>, <span class="s1">'B-Social_Support'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'etoh'</span>, <span class="s1">'B-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'abuse'</span>, <span class="s1">'I-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'her'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'teens'</span>, <span class="s1">'B-Age'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'she'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'daily'</span>, <span class="s1">'B-Substance_Frequency'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'drinker'</span>, <span class="s1">'B-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'30'</span>, <span class="s1">'B-Substance_Duration'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'years'</span>, <span class="s1">'I-Substance_Duration'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'drinking'</span>, <span class="s1">'B-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'beer'</span>, <span class="s1">'B-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'daily'</span>, <span class="s1">'B-Substance_Frequency'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'smokes'</span>, <span class="s1">'B-Smoking'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'a'</span>, <span class="s1">'B-Substance_Quantity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'pack'</span>, <span class="s1">'I-Substance_Quantity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'cigarettes'</span>, <span class="s1">'B-Smoking'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'a'</span>, <span class="s1">'B-Substance_Frequency'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'day'</span>, <span class="s1">'I-Substance_Frequency'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'She'</span>, <span class="s1">'B-Gender'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'DUI'</span>, <span class="s1">'B-Legal_Issues'</span><span class="o">)]</span>
+
+
+ <span class="k">********************</span> ner_social_environment Model Results <span class="k">********************</span>
+
+<span class="o">[(</span><span class="s1">'support'</span>, <span class="s1">'B-Social_Support'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'DUI'</span>, <span class="s1">'B-Legal_Issues'</span><span class="o">)]</span>
+
+
+ <span class="k">********************</span> ner_sdoh_access_to_healthcare Model Results <span class="k">********************</span>
+
+<span class="o">[(</span><span class="s1">'health'</span>, <span class="s1">'B-Insurance_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'insurance'</span>, <span class="s1">'I-Insurance_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'rehab'</span>, <span class="s1">'B-Access_To_Care'</span><span class="o">)]</span>
+
+
+ <span class="k">********************</span> ner_sdoh_health_behaviours_problems Model Results <span class="k">********************</span>
+
+<span class="o">[(</span><span class="s1">'diabetes'</span>, <span class="s1">'B-Other_Disease'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'depression'</span>, <span class="s1">'B-Mental_Health'</span><span class="o">)]</span>
+
+
+  <span class="k">********************</span> ner_sdoh_substance_usage Model Results <span class="k">********************</span>
+
+<span class="o">[(</span><span class="s1">'etoh'</span>, <span class="s1">'B-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'abuse'</span>, <span class="s1">'I-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'daily'</span>, <span class="s1">'B-Substance_Frequency'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'drinker'</span>, <span class="s1">'B-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'30'</span>, <span class="s1">'B-Substance_Duration'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'years'</span>, <span class="s1">'I-Substance_Duration'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'drinking'</span>, <span class="s1">'B-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'beer'</span>, <span class="s1">'B-Alcohol'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'daily'</span>, <span class="s1">'B-Substance_Frequency'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'smokes'</span>, <span class="s1">'B-Smoking'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'a'</span>, <span class="s1">'B-Substance_Quantity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'pack'</span>, <span class="s1">'I-Substance_Quantity'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'cigarettes'</span>, <span class="s1">'B-Smoking'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'a'</span>, <span class="s1">'B-Substance_Frequency'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'day'</span>, <span class="s1">'I-Substance_Frequency'</span><span class="o">)]</span>
+
+
+ <span class="k">********************</span> ner_sdoh_income_social_status Model Results <span class="k">********************</span>
+
+<span class="o">[(</span><span class="s1">'divorced'</span>, <span class="s1">'B-Marital_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'financial'</span>, <span class="s1">'B-Financial_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'problems'</span>, <span class="s1">'I-Financial_Status'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'cleaning'</span>, <span class="s1">'B-Employment'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'assistant'</span>, <span class="s1">'I-Employment'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'student'</span>, <span class="s1">'B-Education'</span><span class="o">)</span>, <span class="o">(</span><span class="s1">'college'</span>, <span class="s1">'B-Education'</span><span class="o">)]</span>
+
+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -897,11 +930,15 @@ premise:
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>leggen_contract_nli</td>
+      <td>ner_profiling_sdoh</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Legal NLP 1.0.0+</td>
+      <td>Healthcare NLP 4.4.4+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -917,15 +954,38 @@ premise:
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.6 GB</td>
+      <td>1.7 GB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="included-models">Included Models</h2>
 
-<p>This model has been fine tuned using: https://stanfordnlp.github.io/contract-nli/</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-07-04T00:00:00+00:00"><!-- start custom article footer snippet -->
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-07-11T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -1090,7 +1150,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/06/14/clinical_deidentification_ar.html">Clinical Deidentification Pipeline (Arabic)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/07/11/clinical_deidentification_en.html">Clinical Deidentification</a></div></div></div>
 
 </div>
 </div>
