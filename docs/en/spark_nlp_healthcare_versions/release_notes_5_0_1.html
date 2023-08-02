@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Spark NLP for Healthcare Release Notes 3.0.1</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Spark NLP for Healthcare Release Notes 5.0.1</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_3_0_1"> -->
-<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_3_0_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_5_0_1"> -->
+<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_5_0_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -523,148 +523,942 @@
 <!-- end custom main top snippet --><article itemscope itemtype="https://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Spark NLP for Healthcare Release Notes 3.0.1</li>
+    <li>Spark NLP for Healthcare Release Notes 5.0.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Spark NLP for Healthcare Release Notes 3.0.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Spark NLP for Healthcare Release Notes 5.0.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_3_0_1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark NLP for Healthcare Release Notes 3.0.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_5_0_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark NLP for Healthcare Release Notes 5.0.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="prev_ver h3-box">
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h3 id="section">3.0.1</h3>
+  <h2 id="section">5.0.1</h2>
 
-  <p>We are very excited to announce that <strong>Spark NLP for Healthcare 3.0.1</strong> has been released!</p>
+  <h4 id="highlights">Highlights</h4>
 
-  <h4 id="highlights">Highlights:</h4>
-
-  <ul>
-    <li>Fixed problem in Assertion Status internal tokenization (reported in Spark-NLP #2470).</li>
-    <li>Fixes in the internal implementation of DeIdentificationModel/Obfuscator.</li>
-    <li>Being able to disable the use of regexes in the Deidentification process</li>
-    <li>Other minor bug fixes &amp; general improvements.</li>
-  </ul>
-
-  <h4 id="deidentificationmodel-annotator">DeIdentificationModel Annotator</h4>
-
-  <h5 id="new-seed-parameter">New <code class="language-plaintext highlighter-rouge">seed</code> parameter.</h5>
-  <p>Now we have the possibility of using a seed to guide the process of obfuscating entities and returning the same result across different executions. To make that possible a new method setSeed(seed:Int) was introduced.</p>
-
-  <p><strong>Example:</strong>
-Return obfuscated documents in a repeatable manner based on the same seed.</p>
-  <h5 id="scala">Scala</h5>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deIdentification</span> <span class="k">=</span> <span class="nc">DeIdentification</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"sentence"</span><span class="o">))</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"dei"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setMode</span><span class="o">(</span><span class="s">"obfuscate"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setObfuscateRefSource</span><span class="o">(</span><span class="s">"faker"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setSeed</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setIgnoreRegex</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-</code></pre></div>  </div>
-  <h5 id="python">Python</h5>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">de_identification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
-            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span> \
-            <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dei"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">"faker"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setIgnoreRegex</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-
-</code></pre></div>  </div>
-
-  <p>This seed controls how the obfuscated values are picked from a set of obfuscation candidates. Fixing the seed allows the process to be replicated.</p>
-
-  <p><strong>Example:</strong></p>
-
-  <p>Given the following input to the deidentification:</p>
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"David Hale was in Cocke County Baptist Hospital. David Hale"
-</code></pre></div>  </div>
-
-  <p>If the annotator is set up with a seed of 10:</p>
-  <h5 id="scala-1">Scala</h5>
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val deIdentification = new DeIdentification()
-      .setInputCols(Array("ner_chunk", "token", "sentence"))
-      .setOutputCol("dei")
-      .setMode("obfuscate")
-      .setObfuscateRefSource("faker")
-      .setSeed(10)
-      .setIgnoreRegex(true)
-</code></pre></div>  </div>
-  <h5 id="python-1">Python</h5>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">de_identification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
-            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span> \
-            <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dei"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">"faker"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setIgnoreRegex</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-
-</code></pre></div>  </div>
-
-  <p>The result will be the following for any execution,</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Brendan Kitten was in New Megan.Brendan Kitten"
-</code></pre></div>  </div>
-  <p>Now if we set up a seed of 32,</p>
-  <h5 id="scala-2">Scala</h5>
-
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">deIdentification</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DeIdentification</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"sentence"</span><span class="o">))</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"dei"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setMode</span><span class="o">(</span><span class="s">"obfuscate"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setObfuscateRefSource</span><span class="o">(</span><span class="s">"faker"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setSeed</span><span class="o">(</span><span class="mi">32</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setIgnoreRegex</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-</code></pre></div>  </div>
-  <h5 id="python-2">Python</h5>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">de_identification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
-            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span> \
-            <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dei"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">"faker"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setIgnoreRegex</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p>The result will be the following for any execution,</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Louise Pear was in Lake Edward.Louise Pear"
-</code></pre></div>  </div>
-
-  <h5 id="new-ignoreregex-parameter">New <code class="language-plaintext highlighter-rouge">ignoreRegex</code> parameter.</h5>
-  <p>You can now choose to completely disable the use of regexes in the deidentification process by setting the setIgnoreRegex param to True.
-<strong>Example:</strong></p>
-  <h5 id="scala-3">Scala</h5>
-
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">DeIdentificationModel</span><span class="o">.</span><span class="py">setIgnoreRegex</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-</code></pre></div>  </div>
-  <h5 id="python-3">Python</h5>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DeIdentificationModel</span><span class="p">().</span><span class="n">setIgnoreRegex</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p>The default value for this param is <code class="language-plaintext highlighter-rouge">False</code> meaning that regexes will be used by default.</p>
-
-  <h5 id="new-supported-entities-for-deidentification--obfuscation">New supported entities for Deidentification &amp; Obfuscation:</h5>
-
-  <p>We added new entities to the default supported regexes:</p>
+  <p>We are delighted to announce a suite of remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. <strong>This release comes with the first NER models that are augmented by LangTest library for robustness and bias as well as a support for RxHCC risk score calculation in latest versions</strong>.</p>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">SSN - Social security number.</code></li>
-    <li><code class="language-plaintext highlighter-rouge">PASSPORT - Passport id.</code></li>
-    <li><code class="language-plaintext highlighter-rouge">DLN - Department of Labor Number.</code></li>
-    <li><code class="language-plaintext highlighter-rouge">NPI - National Provider Identifier.</code></li>
-    <li><code class="language-plaintext highlighter-rouge">C_CARD - The id number for credits card.</code></li>
-    <li><code class="language-plaintext highlighter-rouge">IBAN - International Bank Account Number.</code></li>
-    <li><code class="language-plaintext highlighter-rouge">DEA - DEA Registration Number, which is an identifier assigned to a health care provider by the United States Drug Enforcement Administration.</code></li>
+    <li>Integrated the Risk Adjustment for Prescription Drug Hierarchical Condition Categories (RxHCC) model into our risk adjustment score calculation engine</li>
+    <li>Advanced entity detection for Section Headers and Diagnoses entities in clinical notes</li>
+    <li>Augmented NER models by leveraging the capabilities of the LangTest library</li>
+    <li>Enhanced Sentence Entity Resolver Models for associating clinical entities with LOINC</li>
+    <li>Strengthen the performance of assertion status detection by reinforcing it with entity type constraints</li>
+    <li>Entity blacklisting in <code class="language-plaintext highlighter-rouge">AssertionFilterer</code> to manage assertion status effectively</li>
+    <li>Enhanced <code class="language-plaintext highlighter-rouge">ChunkMergeApproach</code> and <code class="language-plaintext highlighter-rouge">ChunkFilterer</code> with case sensitivity settings</li>
+    <li>New feature for <code class="language-plaintext highlighter-rouge">ChunkMergeApproach</code> to enable filtering chunks according to confidence thresholds</li>
+    <li>Included sentence ID information in <code class="language-plaintext highlighter-rouge">Relation Extraction Model</code> metadata</li>
+    <li>Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
+      <ul>
+        <li>Improved deidentification regex pattern for Romanian language</li>
+        <li>Fixed exploded sentences issue in <code class="language-plaintext highlighter-rouge">RelationExtractionDLModel</code></li>
+      </ul>
+    </li>
+    <li>Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand</li>
+    <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
   </ul>
 
-  <p>We also introduced new Obfuscator cases for these new entities.</p>
+  <p>We believe that these enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
 </div>
-<div class="prev_ver h3-box">
+<div class="h3-box">
+
+  <h4 id="integrated-the-risk-adjustment-for-prescription-drug-hierarchical-condition-categories-rxhcc-model-into-our-risk-adjustment-score-calculation-engine">Integrated The Risk Adjustment For Prescription Drug Hierarchical Condition Categories (RxHCC) Model Into Our Risk Adjustment Score Calculation Engine</h4>
+
+  <p>We have integrated the RxHCC into our existing risk adjustment score calculation module. This means more accurate and comprehensive risk adjustment scores, especially for patients whose healthcare costs are significantly influenced by prescription drug usage. This enhancement brings a holistic view of a patient’s healthcare needs, further improving the precision of risk assessment.</p>
+
+  <p>We are pleased to introduce support for RxHCC risk score calculation in two new versions: v05 (applicable for 2020, 2021, 2022, and 2023) and v08 (applicable for 2022 and 2023). To utilize these versions with specific years, simply use the following formats: <code class="language-plaintext highlighter-rouge">profileRxHCCV05YXX</code> for v05 and <code class="language-plaintext highlighter-rouge">profileRxHCCV08YXX</code> for v08.</p>
+
+  <p><em>Example</em>:</p>
+
+  <p>Input Data Frame:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>filename</th>
+        <th>Age</th>
+        <th>icd10_code</th>
+        <th>Extracted_Entities_vs_ICD_Codes</th>
+        <th>Gender</th>
+        <th>eligibility</th>
+        <th>orec</th>
+        <th>esrd</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>patient_01.txt</td>
+        <td>66</td>
+        <td>C49.9, J18.9, C49.9, D61.81, I26, M06.9</td>
+        <td>{leiomyosarcoma, C49.9}, {pneumonia, J18.9}, …</td>
+        <td>F</td>
+        <td>CE_NoLowAged</td>
+        <td>1</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>patient_02.txt</td>
+        <td>59</td>
+        <td>C50.92, P61.4, C80.1</td>
+        <td>{breast cancer, C50.92}, {dysplasia, P61.4}, …</td>
+        <td>F</td>
+        <td>CE_NoLowNoAged</td>
+        <td>0</td>
+        <td>true</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># v08 year 2023
+</span><span class="kn">from</span> <span class="nn">sparknlp_jsl.functions</span> <span class="kn">import</span> <span class="n">profileRxHCCV08Y23</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"rxhcc_profile"</span><span class="p">,</span> <span class="n">profileRxHCCV08Y23</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">icd10_code</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">Gender</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">eligibility</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">orec</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">esrd</span><span class="p">))</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"rxhcc_profile"</span><span class="p">,</span> <span class="n">F</span><span class="p">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="s">"rxhcc_profile"</span><span class="p">),</span> <span class="n">schema</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"risk_score"</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">rxhcc_profile</span><span class="p">.</span><span class="n">getItem</span><span class="p">(</span><span class="s">"risk_score"</span><span class="p">))</span>\
+       <span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"parameters"</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">rxhcc_profile</span><span class="p">.</span><span class="n">getItem</span><span class="p">(</span><span class="s">"parameters"</span><span class="p">))</span>\
+       <span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"details"</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">rxhcc_profile</span><span class="p">.</span><span class="n">getItem</span><span class="p">(</span><span class="s">"details"</span><span class="p">))</span>\
+</code></pre></div>  </div>
+
+  <p><em>Results (V08-Y23)</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>filename</th>
+        <th>Age</th>
+        <th>icd10_code</th>
+        <th>Extracted_Entities_vs_ICD_Codes</th>
+        <th>Gender</th>
+        <th>eligibility</th>
+        <th>orec</th>
+        <th>esrd</th>
+        <th>rxhcc_profile</th>
+        <th>risk_score</th>
+        <th>parameters</th>
+        <th>details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>patient_01.txt</td>
+        <td>66</td>
+        <td>C49.9, J18.9, C49.9, D61.81, I26, M06.9</td>
+        <td>{leiomyosarcoma, C49.9}, {pneumonia, J18.9}, …</td>
+        <td>F</td>
+        <td>CE_NoLowAged</td>
+        <td>1</td>
+        <td>false</td>
+        <td>{0.575, null, {“elig”:”CE_NoLowAged”,”age”:66, …</td>
+        <td>0.575</td>
+        <td>{“elig”:”CE_NoLowAged”,”age”: …</td>
+        <td>{“Rx_CE_NoLowAged_F65_69”…</td>
+      </tr>
+      <tr>
+        <td>patient_02.txt</td>
+        <td>59</td>
+        <td>C50.92, P61.4, C80.1</td>
+        <td>{breast cancer, C50.92}, {dysplasia, P61.4}, …</td>
+        <td>F</td>
+        <td>CE_NoLowNoAged</td>
+        <td>0</td>
+        <td>true</td>
+        <td>{0.367, null, {“elig”:”CE_NoLowNoAged”,”age”:59…</td>
+        <td>0.367</td>
+        <td>{“elig”:”CE_NoLowNoAged”,”age”…</td>
+        <td>{ Rx_CE_NoLowNoAged_F55_5…</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="advanced-entity-detection-for-section-headers-and-diagnoses-entities-in-clinical-notes">Advanced Entity Detection For Section Headers And Diagnoses Entities In Clinical Notes</h4>
+
+  <p>We have a new state-of-the-art NER model that is specifically designed to extract vital data from clinical documents, focusing on two key aspects: <em>Section Headers</em> and <em>Diagnoses</em>. By accurately identifying and labeling various medical conditions like heart disease, diabetes, and Alzheimer’s disease, this model provides unparalleled insights into diagnosis and treatment trends.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_section_header_diagnosis"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setLabelCasing</span><span class="p">(</span><span class="s">"upper"</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""
+Medical History:
+Patient has a history of Chronic respiratory disease.
+Clinical History:
+Patient presented with shortness of breath and chest pain.
+Chief Complaint:
+Patient complained of chest pain and difficulty breathing.
+History of Present Illness:
+Patient has been experiencing chest pain and shortness of breath for the past week. Symptoms were relieved by medication at first but became worse over time.
+Past Medical History:
+Patient has a history of Asthma and was previously diagnosed with Bronchitis.
+Medications:
+Patient is currently taking Albuterol, Singulair, and Advair for respiratory issues.
+Allergies:
+Patient has a documented allergy to Penicillin.
+"""</span>
+
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>chunks</th>
+        <th>entities</th>
+        <th>confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Medical History</td>
+        <td>MEDICAL_HISTORY_HEADER</td>
+        <td>0.81</td>
+      </tr>
+      <tr>
+        <td>Chronic respiratory disease</td>
+        <td>RESPIRATORY_DISEASE</td>
+        <td>0.74</td>
+      </tr>
+      <tr>
+        <td>Clinical History</td>
+        <td>CLINICAL_HISTORY_HEADER</td>
+        <td>0.77</td>
+      </tr>
+      <tr>
+        <td>Chief Complaint</td>
+        <td>CHIEF_COMPLAINT_HEADER</td>
+        <td>0.85</td>
+      </tr>
+      <tr>
+        <td>History of Present Illness</td>
+        <td>HISTORY_PRES_ILNESS_HEADER</td>
+        <td>0.99</td>
+      </tr>
+      <tr>
+        <td>Past Medical History</td>
+        <td>MEDICAL_HISTORY_HEADER</td>
+        <td>0.71</td>
+      </tr>
+      <tr>
+        <td>Asthma</td>
+        <td>RESPIRATORY_DISEASE</td>
+        <td>0.99</td>
+      </tr>
+      <tr>
+        <td>Bronchitis</td>
+        <td>RESPIRATORY_DISEASE</td>
+        <td>0.84</td>
+      </tr>
+      <tr>
+        <td>Medications</td>
+        <td>MEDICATIONS_HEADER</td>
+        <td>0.99</td>
+      </tr>
+      <tr>
+        <td>Allergies</td>
+        <td>ALLERGIES_HEADER</td>
+        <td>0.99</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Please check: <a href="https://nlp.johnsnowlabs.com/2023/07/26/ner_section_header_diagnosis_en.html">ner_section_header_diagnosis</a> model card for more information.</p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="augmented-ner-models-leveraging-langtest-library-capabilities">Augmented NER Models Leveraging LangTest Library Capabilities</h4>
+
+  <p>Newly introduced augmented NER models, namely <a href="https://nlp.johnsnowlabs.com/2023/07/28/ner_posology_langtest_en.html"><code class="language-plaintext highlighter-rouge">ner_posology_langtest</code></a>, <a href="https://nlp.johnsnowlabs.com/2023/07/31/ner_jsl_langtest_en.html"><code class="language-plaintext highlighter-rouge">ner_jsl_langtest</code></a>, <a href="https://nlp.johnsnowlabs.com/2023/07/31/ner_ade_clinical_langtest_en.html"><code class="language-plaintext highlighter-rouge">ner_ade_clinical_langtest</code></a>, and <a href="https://nlp.johnsnowlabs.com/2023/07/31/ner_sdoh_langtest_en.html"><code class="language-plaintext highlighter-rouge">ner_sdoh_langtest</code></a>, are powered by the innovative <a href="https://langtest.org/"><code class="language-plaintext highlighter-rouge">LangTest</code></a> library. This cutting-edge NLP toolkit is at the forefront of language processing advancements, incorporating state-of-the-art techniques and algorithms to enhance the capabilities of our models significantly.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_sdoh_langtest"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave."""</span>
+
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>chunk</th>
+        <th>begin</th>
+        <th>end</th>
+        <th>ner_label</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>55 years old</td>
+        <td>9</td>
+        <td>20</td>
+        <td>Age</td>
+      </tr>
+      <tr>
+        <td>New York</td>
+        <td>33</td>
+        <td>40</td>
+        <td>Geographic_Entity</td>
+      </tr>
+      <tr>
+        <td>divorced</td>
+        <td>45</td>
+        <td>52</td>
+        <td>Marital_Status</td>
+      </tr>
+      <tr>
+        <td>Mexcian American</td>
+        <td>54</td>
+        <td>69</td>
+        <td>Race_Ethnicity</td>
+      </tr>
+      <tr>
+        <td>woman</td>
+        <td>71</td>
+        <td>75</td>
+        <td>Gender</td>
+      </tr>
+      <tr>
+        <td>financial problems</td>
+        <td>82</td>
+        <td>99</td>
+        <td>Financial_Status</td>
+      </tr>
+      <tr>
+        <td>She</td>
+        <td>102</td>
+        <td>104</td>
+        <td>Gender</td>
+      </tr>
+      <tr>
+        <td>Spanish</td>
+        <td>113</td>
+        <td>119</td>
+        <td>Language</td>
+      </tr>
+      <tr>
+        <td>Portuguese</td>
+        <td>125</td>
+        <td>134</td>
+        <td>Language</td>
+      </tr>
+      <tr>
+        <td>She</td>
+        <td>137</td>
+        <td>139</td>
+        <td>Gender</td>
+      </tr>
+      <tr>
+        <td>apartment</td>
+        <td>153</td>
+        <td>161</td>
+        <td>Housing</td>
+      </tr>
+      <tr>
+        <td>She</td>
+        <td>164</td>
+        <td>166</td>
+        <td>Gender</td>
+      </tr>
+      <tr>
+        <td>diabetes</td>
+        <td>193</td>
+        <td>200</td>
+        <td>Other_Disease</td>
+      </tr>
+      <tr>
+        <td>hospitalizations</td>
+        <td>268</td>
+        <td>283</td>
+        <td>Other_SDoH_Keywords</td>
+      </tr>
+      <tr>
+        <td>cleaning assistant</td>
+        <td>342</td>
+        <td>359</td>
+        <td>Employment</td>
+      </tr>
+      <tr>
+        <td>access health ins…</td>
+        <td>372</td>
+        <td>394</td>
+        <td>Insurance_Status</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="enhanced-sentence-entity-resolver-models-for-associating-clinical-entities-with-loinc">Enhanced Sentence Entity Resolver Models For Associating Clinical Entities With LOINC</h4>
+
+  <p>Introducing the new <code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric</code> model and improving the <code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_augmented</code> model, both offering enhanced accuracy for mapping medical laboratory observations and clinical measurements to their corresponding Logical Observation Identifiers Names and Codes (LOINC). The <code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric</code> model is specialized in numeric LOINC codes, as it was trained without the inclusion of LOINC “Document Ontology” codes starting with the letter “L”. On the other hand, the <code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_augmented</code> model offers broader functionality, capable of returning both numeric and document ontology codes for enhanced versatility.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_loinc_numeric"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"loinc_code"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"The patient is a 22-year-old female with a history of obesity. She has a Body mass index (BMI) of 33.5 kg/m2, aspartate aminotransferase 64, and alanine aminotransferase 126."</span>
+</code></pre></div>  </div>
+
+  <p><em>Results:</em></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>chunk</th>
+        <th>entity</th>
+        <th>loinc_code</th>
+        <th>all_codes</th>
+        <th>resolutions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BMI</td>
+        <td>Test</td>
+        <td>39156-5</td>
+        <td>39156-5, 89270-3, 100847-3…</td>
+        <td>[BMI [Body mass index], BMI Est [Body mass index], BldA [Gas &amp; ammonia panel], …</td>
+      </tr>
+      <tr>
+        <td>aspartate aminotransferase</td>
+        <td>Test</td>
+        <td>14409-7</td>
+        <td>14409-7, 1916-6, 16324-6, …</td>
+        <td>[Aspartate aminotransferase [Aspartate aminotransferase], Aspartate aminotransf…</td>
+      </tr>
+      <tr>
+        <td>alanine aminotransferase</td>
+        <td>Test</td>
+        <td>16324-6</td>
+        <td>16324-6, 16325-3, 1916-6, …</td>
+        <td>[Alanine aminotransferase [Alanine aminotransferase], Alanine aminotransferase/…</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="strengthen-the-performance-of-assertion-status-detection-by-reinforcing-with-entity-type-constraints">Strengthen The Performance Of Assertion Status Detection By Reinforcing With Entity Type Constraints</h4>
+
+  <p>Introducing the latest enhancements to our <code class="language-plaintext highlighter-rouge">AssertionDLModel</code> - the <code class="language-plaintext highlighter-rouge">setEntityAssertion</code> and <code class="language-plaintext highlighter-rouge">setEntityAssertionCaseSensitive</code> parameters. Now, you can effortlessly constrain assertions based on specific entity types using a convenient dictionary format: <code class="language-plaintext highlighter-rouge">{"entity": [assertion_label1, assertion_label2, .. assertion_labelN]}</code>. When an entity is not found in the dictionary, no constraints are applied, ensuring flexibility in your data processing. With the <code class="language-plaintext highlighter-rouge">setEntityAssertionCaseSensitive</code> parameter, you can control the case sensitivity for both entities and assertion labels. Unleash the full potential of your NLP model with these cutting-edge additions to the AssertionDLModel.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_assertion</span> <span class="o">=</span> <span class="n">AssertionDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"assertion_jsl_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEntityAssertionCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEntityAssertion</span><span class="p">({</span>
+        <span class="s">"PROBLEM"</span><span class="p">:</span> <span class="p">[</span><span class="s">"hypothetical"</span><span class="p">,</span> <span class="s">"absent"</span><span class="p">],</span>
+        <span class="s">"treAtment"</span><span class="p">:</span> <span class="p">[</span><span class="s">"present"</span><span class="p">],</span>
+        <span class="s">"TEST"</span><span class="p">:</span> <span class="p">[</span><span class="s">"POssible"</span><span class="p">],</span>
+    <span class="p">})</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">'''
+A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting.
+She was on metformin, glipizide, and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG. She had been on dapagliflozin for six months at the time of presentation.
+Physical examination on presentation was significant for dry oral mucosa ; significantly , her abdominal examination was benign with no tenderness, guarding, or rigidity. Pertinent laboratory findings on admission were: serum glucose 111 mg/dl,  creatinine 0.4 mg/dL, triglycerides 508 mg/dL, total cholesterol 122 mg/dL, and venous pH 7.27.
+'''</span>
+
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>idx</th>
+        <th>chunks</th>
+        <th>entities</th>
+        <th>assertion</th>
+        <th>confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0</td>
+        <td>metformin</td>
+        <td>TREATMENT</td>
+        <td>Present</td>
+        <td>0.54</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>glipizide</td>
+        <td>TREATMENT</td>
+        <td>Present</td>
+        <td>0.99</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>dapagliflozin</td>
+        <td>TREATMENT</td>
+        <td>Present</td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>HTG</td>
+        <td>PROBLEM</td>
+        <td>Hypothetical</td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Physical examination</td>
+        <td>TEST</td>
+        <td>Possible</td>
+        <td>0.94</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>tenderness</td>
+        <td>PROBLEM</td>
+        <td>Absent</td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>guarding</td>
+        <td>PROBLEM</td>
+        <td>Absent</td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>rigidity</td>
+        <td>PROBLEM</td>
+        <td>Hypothetical</td>
+        <td>0.99</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="entity-blacklisting-in-assertionfilterer-for-effective-assertion-status-management">Entity Blacklisting In <code class="language-plaintext highlighter-rouge">AssertionFilterer</code> For Effective Assertion Status Management</h4>
+
+  <p>With the <code class="language-plaintext highlighter-rouge">setBlackList</code> option in the <code class="language-plaintext highlighter-rouge">AssertionFilterer</code> annotator, you can now blacklist specific entities based on their assertion labels.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_assertion</span> <span class="o">=</span> <span class="n">AssertionDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"assertion_jsl_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>
+
+
+<span class="n">assertion_filterer</span> <span class="o">=</span> <span class="n">AssertionFilterer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">,</span><span class="s">"assertion"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_filtered"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setBlackList</span><span class="p">([</span><span class="s">"Hypothetical"</span><span class="p">])</span>\
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Patient has a headache for the last 2 weeks, needs to get a head CT, and appears anxious when she walks fast. No alopecia and pain noted"""</span>
+
+</code></pre></div>  </div>
+
+  <p><em>Without Filtering Results</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: right"> </th>
+        <th style="text-align: left">chunks</th>
+        <th style="text-align: left">entities</th>
+        <th style="text-align: left">assertion</th>
+        <th style="text-align: right">confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: right">0</td>
+        <td style="text-align: left">a headache</td>
+        <td style="text-align: left">PROBLEM</td>
+        <td style="text-align: left">Present</td>
+        <td style="text-align: right">1</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">1</td>
+        <td style="text-align: left">a head CT</td>
+        <td style="text-align: left">TEST</td>
+        <td style="text-align: left">Hypothetical</td>
+        <td style="text-align: right">1</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">2</td>
+        <td style="text-align: left">anxious</td>
+        <td style="text-align: left">PROBLEM</td>
+        <td style="text-align: left">SomeoneElse</td>
+        <td style="text-align: right">0.77</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">3</td>
+        <td style="text-align: left">alopecia</td>
+        <td style="text-align: left">PROBLEM</td>
+        <td style="text-align: left">Hypothetical</td>
+        <td style="text-align: right">0.97</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">4</td>
+        <td style="text-align: left">pain</td>
+        <td style="text-align: left">PROBLEM</td>
+        <td style="text-align: left">Hypothetical</td>
+        <td style="text-align: right">0.99</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Filtered Results</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: right"> </th>
+        <th style="text-align: left">chunks</th>
+        <th style="text-align: left">entities</th>
+        <th style="text-align: left">assertion</th>
+        <th style="text-align: right">confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: right">0</td>
+        <td style="text-align: left">a headache</td>
+        <td style="text-align: left">PROBLEM</td>
+        <td style="text-align: left">Present</td>
+        <td style="text-align: right">0.97</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">1</td>
+        <td style="text-align: left">anxious</td>
+        <td style="text-align: left">PROBLEM</td>
+        <td style="text-align: left">SomeoneElse</td>
+        <td style="text-align: right">0.99</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="enhanced-chunkmergeapproach-and-chunkfilterer-with-case-sensitivity-settings">Enhanced <code class="language-plaintext highlighter-rouge">ChunkMergeApproach</code> And <code class="language-plaintext highlighter-rouge">ChunkFilterer</code> With Case Sensitivity Settings</h4>
+
+  <p>The <code class="language-plaintext highlighter-rouge">setCaseSensitive</code> parameter now applies to the whitelist and blacklist functionalities. As part of the enhancement, this parameter has been included in the filtering feature, which serves as a superclass for, <code class="language-plaintext highlighter-rouge">ChunkFilterer</code> and <code class="language-plaintext highlighter-rouge">ChunkMergeApproach</code>. With this update, the caseSensitive setting can be conveniently utilized across these classes, offering improved control and consistency in the filtering process.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">posology_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_posology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">chunk_filterer</span> <span class="o">=</span> <span class="n">ChunkFilterer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk_filtered"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCriteria</span><span class="p">(</span><span class="s">"isin"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">'ADVIL'</span><span class="p">,</span><span class="s">'Metformin'</span><span class="p">,</span> <span class="s">'Insulin Lispro'</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span><span class="s">"""The patient was prescribed 1 capsule of Advil for 5 days . She was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night , 12 units of insulin lispro with meals , metformin 1000 mg two times a day."""</span>
+
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># detected ner chunks</span>
+<span class="o">[</span><span class="s1">'1'</span>, <span class="s1">'capsule'</span>, <span class="s1">'Advil'</span>, <span class="s1">'for 5 days'</span>, <span class="s1">'40 units'</span>, <span class="s1">'insulin glargine'</span>, <span class="s1">'at night'</span>, <span class="s1">'12 units'</span>, <span class="s1">'insulin lispro'</span>, <span class="s1">'with meals'</span>, <span class="s1">'metformin'</span>, <span class="s1">'1000 mg'</span>, <span class="s1">'two times a day'</span><span class="o">]</span>
+
+<span class="c"># filtered ner chunks</span>
+<span class="o">[</span><span class="s1">'Advil'</span>, <span class="s1">'insulin lispro'</span>, <span class="s1">'metformin'</span><span class="o">]</span>
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="new-feature-for-chunkmergeapproach-to-enable-filtering-chunks-according-to-confidence-thresholds">New Feature For <code class="language-plaintext highlighter-rouge">ChunkMergeApproach</code> To Enable Filtering Chunks According To Confidence Thresholds</h4>
+
+  <p>We have added a new <code class="language-plaintext highlighter-rouge">setEntitiesConfidence</code> parameter to <code class="language-plaintext highlighter-rouge">ChunkMergeApproach</code> annotator that enables filtering the chunks according to the confidence thresholds. The only thing you need to do is provide a csv file that has the NER labels as keys and the confidence thresholds as values.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">conf_dict</span> <span class="o">=</span> <span class="s">"""DRUG,0.99
+FREQUENCY,0.99
+DOSAGE,0.99
+DURATION,0.99
+STRENGTH,0.99
+"""</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'conf_dict.csv'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">conf_dict</span><span class="p">)</span>
+
+<span class="n">chunk_merger</span> <span class="o">=</span> <span class="n">ChunkMergeApproach</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"posology_ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'merged_ner_chunk'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEntitiesConfidenceResource</span><span class="p">(</span><span class="s">"conf_dict.csv"</span><span class="p">)</span>
+
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">'The patient was prescribed 1 capsule of Advil for 5 days. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night.'</span>  
+</code></pre></div>  </div>
+
+  <p><em>Detected chunks</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left">chunks</th>
+        <th style="text-align: right">begin</th>
+        <th style="text-align: right">end</th>
+        <th style="text-align: left">entities</th>
+        <th style="text-align: right">confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">1</td>
+        <td style="text-align: right">27</td>
+        <td style="text-align: right">27</td>
+        <td style="text-align: left">DOSAGE</td>
+        <td style="text-align: right">0.99</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">capsule</td>
+        <td style="text-align: right">29</td>
+        <td style="text-align: right">35</td>
+        <td style="text-align: left">FORM</td>
+        <td style="text-align: right">0.99</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Advil</td>
+        <td style="text-align: right">40</td>
+        <td style="text-align: right">44</td>
+        <td style="text-align: left">DRUG</td>
+        <td style="text-align: right">0.99</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">for 5 days</td>
+        <td style="text-align: right">46</td>
+        <td style="text-align: right">55</td>
+        <td style="text-align: left">DURATION</td>
+        <td style="text-align: right">0.71</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">40 units</td>
+        <td style="text-align: right">125</td>
+        <td style="text-align: right">132</td>
+        <td style="text-align: left">DOSAGE</td>
+        <td style="text-align: right">0.85</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">insulin glargine</td>
+        <td style="text-align: right">137</td>
+        <td style="text-align: right">152</td>
+        <td style="text-align: left">DRUG</td>
+        <td style="text-align: right">0.83</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">at night</td>
+        <td style="text-align: right">154</td>
+        <td style="text-align: right">161</td>
+        <td style="text-align: left">FREQUENCY</td>
+        <td style="text-align: right">0.81</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Filtered by confidence scores</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left">chunks</th>
+        <th style="text-align: right">begin</th>
+        <th style="text-align: right">end</th>
+        <th style="text-align: left">entities</th>
+        <th style="text-align: right">confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">1</td>
+        <td style="text-align: right">27</td>
+        <td style="text-align: right">27</td>
+        <td style="text-align: left">DOSAGE</td>
+        <td style="text-align: right">0.99</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">capsule</td>
+        <td style="text-align: right">29</td>
+        <td style="text-align: right">35</td>
+        <td style="text-align: left">FORM</td>
+        <td style="text-align: right">0.99</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Advil</td>
+        <td style="text-align: right">40</td>
+        <td style="text-align: right">44</td>
+        <td style="text-align: left">DRUG</td>
+        <td style="text-align: right">0.99</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="included-sentence-id-information-in-relationextractionmodel-metadata">Included Sentence Id Information In <code class="language-plaintext highlighter-rouge">RelationExtractionModel</code> Metadata</h4>
+
+  <p>Our Relation Extraction Models have been upgraded with the inclusion of <code class="language-plaintext highlighter-rouge">sentence</code> information in the metadata. This enhancement offers a deeper understanding of the extracted relationships and facilitates more precise analysis and interpretation of the results.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">re_dl_model</span> <span class="o">=</span> <span class="n">RelationExtractionDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'redl_bodypart_direction_biobert'</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"re_ner_chunks"</span><span class="p">,</span> <span class="s">"sentences"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relations_dl"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">'''MRI demonstrated infarction in the upper brain stem , and  right basil ganglia.
+No neurologic deficits other than some numbness in his left hand.
+there is a problem at right chest.'''</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>idx</th>
+        <th>sentence</th>
+        <th>chunk1</th>
+        <th>entity1</th>
+        <th>chunk2</th>
+        <th>entity2</th>
+        <th>relation</th>
+        <th>confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>upper</td>
+        <td>Direction</td>
+        <td>brain stem</td>
+        <td>Internal_organ_or_component</td>
+        <td>1</td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>upper</td>
+        <td>Direction</td>
+        <td>basil ganglia</td>
+        <td>Internal_organ_or_component</td>
+        <td>0</td>
+        <td>0.99</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>0</td>
+        <td>right</td>
+        <td>Direction</td>
+        <td>basil ganglia</td>
+        <td>Internal_organ_or_component</td>
+        <td>1</td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>1</td>
+        <td>left</td>
+        <td>Direction</td>
+        <td>hand</td>
+        <td>External_body_part_or_region</td>
+        <td>1</td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>right</td>
+        <td>Direction</td>
+        <td>chest</td>
+        <td>External_body_part_or_region</td>
+        <td>1</td>
+        <td>1.0</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="various-core-improvements-bug-fixes-enhanced-overall-robustness-and-reliability-of-spark-nlp-for-healthcare">Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, And Reliability Of Spark NLP For Healthcare</h4>
+
+  <ul>
+    <li>Improved deidentification regex pattern for Romanian language</li>
+    <li>Fixed exploded sentences issue in Relation Extraction DL (when <code class="language-plaintext highlighter-rouge">.setExplodeSentences(True)</code> is used in <code class="language-plaintext highlighter-rouge">SentenceDetector</code>, <code class="language-plaintext highlighter-rouge">RelationExtractionDLModel</code>’s relation output has only the <code class="language-plaintext highlighter-rouge">sentence#0</code> relations, other sentences’ relations are not displayed.)</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="updated-notebooks-and-demonstrations-for-making-spark-nlp-for-healthcare-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand</h4>
+
+  <ul>
+    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb">Clinical_Named_Entity_Recognition_Model</a> notebook according to latest improvement in ChunkFilterer</li>
+    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.Clinical_Assertion_Model.ipynb">Clinical_Assertion_Model</a> notebook according to latest improvement in AssertionFilterer</li>
+    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/7.Clinical_NER_Chunk_Merger.ipynb">Clinical_NER_Chunk_Merger</a> notebook according to latest improvement in ChunkMergerApproach</li>
+    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.Clinical_Relation_Extraction.ipynb">Clinical_Relation_Extraction</a> notebook according to latest improvement in RelationExtractionModel’s metadata</li>
+    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb#scrollTo=L6qvg0X7BbnU">Calculate_Medicare_Risk_Adjustment_Score</a> notebook according to latest improvement in HCC implementation</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">ner_section_header_diagnosis</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_posology_langtest</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_jsl_langtest</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_sdoh_langtest</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_ade_clinical_langtest</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_augmented</code></li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <p>For all Spark NLP for Healthcare models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
+
+</div>
+<div class="h3-box">
 
   <h2 id="versions">Versions</h2>
 
@@ -743,7 +1537,7 @@ Return obfuscated documents in a repeatable manner based on the same seed.</p>
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2021-07-14T00:00:00+00:00">Jul 14, 2021</time>
+      <time itemprop="dateModified" datetime="2023-08-02T00:00:00+00:00">Aug 02, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
