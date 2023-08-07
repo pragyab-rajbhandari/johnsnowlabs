@@ -1,134 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-08-07T19:00:24+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Legal NER on Subpoenas (Small)</title><link href="/2023/08/07/legner_bert_subpoenas_sm_en.html" rel="alternate" type="text/html" title="Legal NER on Subpoenas (Small)" /><published>2023-08-07T00:00:00+00:00</published><updated>2023-08-07T00:00:00+00:00</updated><id>/2023/08/07/legner_bert_subpoenas_sm_en</id><content type="html" xml:base="/2023/08/07/legner_bert_subpoenas_sm_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-08-07T19:20:44+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Legal NER on Subpoenas (Small)</title><link href="/2023/08/07/legner_bert_subpoenas_sm_en.html" rel="alternate" type="text/html" title="Legal NER on Subpoenas (Small)" /><published>2023-08-07T00:00:00+00:00</published><updated>2023-08-07T00:00:00+00:00</updated><id>/2023/08/07/legner_bert_subpoenas_sm_en</id><content type="html" xml:base="/2023/08/07/legner_bert_subpoenas_sm_en.html">## Description
 
-&lt;p&gt;This is a Legal NER model aimed to extract 19 entities from subpoenas. This is called a small version because it has been trained on more generic labels. The larger versions of this model will be available on models hub.&lt;/p&gt;
+This is a Legal NER model aimed to extract 19 entities from subpoenas. This is called a small version because it has been trained on more generic labels. The larger versions of this model will be available on models hub.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COURT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;APPOINTMENT_DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DEADLINE_DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCUMENT_DATE_FROM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ADDRESS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;APPOINTMENT_HOUR&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCUMENT_DATE_TO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCUMENT_PERSON&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCUMENT_DATE_YEAR&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MATTER_VS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CASE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCUMENT_TOPIC&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MATTER&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SUBPOENA_DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGNER&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RECEIVER&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCUMENT_TYPE&lt;/code&gt;&lt;/p&gt;
+`COURT`, `APPOINTMENT_DATE`, `DEADLINE_DATE`, `DOCUMENT_DATE_FROM`, `ADDRESS`, `APPOINTMENT_HOUR`, `DOCUMENT_DATE_TO`, `DOCUMENT_PERSON`, `DOCUMENT_DATE_YEAR`, `STATE`, `MATTER_VS`, `CASE`, `COUNTY`, `DOCUMENT_TOPIC`, `MATTER`, `SUBPOENA_DATE`, `SIGNER`, `RECEIVER`, `DOCUMENT_TYPE`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legner_bert_subpoenas_sm_en_1.0.0_3.0_1691423741988.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legner_bert_subpoenas_sm_en_1.0.0_3.0_1691423741988.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legner_bert_subpoenas_sm_en_1.0.0_3.0_1691423741988.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legner_bert_subpoenas_sm_en_1.0.0_3.0_1691423741988.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
-
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.sql&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;functions&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-
-&lt;span class=&quot;n&quot;&gt;sentence_detector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ner_model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForTokenClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legner_bert_subpoenas_sm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxSentenceLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sentence_detector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ner_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+## How to use
 
 
-&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+from pyspark.sql import functions as F
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;In addition , in an earlier motion for summary disposition in which all Respondents joined , and which this Court denied in its Order of April30 , 2013 , Respondent Deloitte Touche Tohmatsu Certified Public Accountants Ltd .&quot;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)\
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+sentence_detector = nlp.SentenceDetector()\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;sentence&quot;)\
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arrays_zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ner_chunk.result'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'ner_chunk.metadata'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; \
-          &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['0']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-                       &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['1']['entity']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+tokenizer = nlp.Tokenizer() \
+    .setInputCols([&quot;sentence&quot;]) \
+    .setOutputCol(&quot;token&quot;)
+
+ner_model = legal.BertForTokenClassification.pretrained(&quot;legner_bert_subpoenas_sm&quot;, &quot;en&quot;, &quot;legal/models&quot;)\
+    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
+    .setOutputCol(&quot;ner&quot;)\
+    .setCaseSensitive(True)\
+    .setMaxSentenceLength(512)
+
+ner_converter = nlp.NerConverter()\
+    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
+    .setOutputCol(&quot;ner_chunk&quot;)
+
+pipeline =  nlp.Pipeline(stages=[
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    ner_model,
+    ner_converter
+])
+
+
+empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
+
+model = pipeline.fit(empty_data)
+
+text = &quot;&quot;&quot;In addition , in an earlier motion for summary disposition in which all Respondents joined , and which this Court denied in its Order of April30 , 2013 , Respondent Deloitte Touche Tohmatsu Certified Public Accountants Ltd .&quot;&quot;&quot;
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+
+result = model.transform(data)
+
+result.select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \
+          .select(F.expr(&quot;cols['0']&quot;).alias(&quot;chunk&quot;),
+                       F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------------------------+---------------+
+```bash
++------------------------+---------------+
 |chunk                   |label          |
 +------------------------+---------------+
 |summary disposition     |DOCUMENT_TYPE  |
 |Deloitte Touche Tohmatsu|DOCUMENT_PERSON|
 +------------------------+---------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legner_bert_subpoenas_sm&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[document, token]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[ner]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;401.1 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Case sensitive:&lt;/td&gt;
-      &lt;td&gt;true&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Max sentence length:&lt;/td&gt;
-      &lt;td&gt;128&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legner_bert_subpoenas_sm|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document, token]|
+|Output Labels:|[ner]|
+|Language:|en|
+|Size:|401.1 MB|
+|Case sensitive:|true|
+|Max sentence length:|128|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;In House annotated dataset&lt;/p&gt;
+In House annotated dataset
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label                      precision    recall  f1-score   support
+```bash
+label                      precision    recall  f1-score   support
              B-COURT       1.00      0.60      0.75        30
   I-APPOINTMENT_DATE       0.57      0.65      0.60        20
              I-COURT       0.93      0.89      0.91       166
@@ -169,115 +144,90 @@ I-DOCUMENT_DATE_FROM       0.87      1.00      0.93        48
            micro-avg       0.82      0.84      0.83     13157
            macro-avg       0.66      0.61      0.61     13157
         weighted-avg       0.82      0.84      0.83     13157
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This is a Legal NER model aimed to extract 19 entities from subpoenas. This is called a small version because it has been trained on more generic labels. The larger versions of this model will be available on models hub. Predicted Entities COURT, APPOINTMENT_DATE, DEADLINE_DATE, DOCUMENT_DATE_FROM, ADDRESS, APPOINTMENT_HOUR, DOCUMENT_DATE_TO, DOCUMENT_PERSON, DOCUMENT_DATE_YEAR, STATE, MATTER_VS, CASE, COUNTY, DOCUMENT_TOPIC, MATTER, SUBPOENA_DATE, SIGNER, RECEIVER, DOCUMENT_TYPE Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from pyspark.sql import functions as F document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;)\ sentence_detector = nlp.SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;)\ tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) ner_model = legal.BertForTokenClassification.pretrained(&quot;legner_bert_subpoenas_sm&quot;, &quot;en&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;ner&quot;)\ .setCaseSensitive(True)\ .setMaxSentenceLength(512) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, ner_model, ner_converter ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;In addition , in an earlier motion for summary disposition in which all Respondents joined , and which this Court denied in its Order of April30 , 2013 , Respondent Deloitte Touche Tohmatsu Certified Public Accountants Ltd .&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model.transform(data) result.select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \ .select(F.expr(&quot;cols['0']&quot;).alias(&quot;chunk&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False) Results +------------------------+---------------+ |chunk |label | +------------------------+---------------+ |summary disposition |DOCUMENT_TYPE | |Deloitte Touche Tohmatsu|DOCUMENT_PERSON| +------------------------+---------------+ Model Information Model Name: legner_bert_subpoenas_sm Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [ner] Language: en Size: 401.1 MB Case sensitive: true Max sentence length: 128 References In House annotated dataset Benchmarking label precision recall f1-score support B-COURT 1.00 0.60 0.75 30 I-APPOINTMENT_DATE 0.57 0.65 0.60 20 I-COURT 0.93 0.89 0.91 166 B-APPOINTMENT_DATE 0.67 0.44 0.53 9 I-DEADLINE_DATE 0.83 0.26 0.40 19 B-DOCUMENT_DATE_FROM 0.80 1.00 0.89 16 I-ADDRESS 0.87 0.94 0.90 1046 B-APPOINTMENT_HOUR 0.43 0.92 0.59 13 B-DOCUMENT_DATE_TO 0.88 1.00 0.93 7 I-APPOINTMENT_HOUR 1.00 0.15 0.26 20 B-DOCUMENT_PERSON 0.79 0.84 0.82 2919 B-DOCUMENT_DATE_YEAR 0.00 0.00 0.00 5 B-STATE 0.59 0.79 0.68 24 I-MATTER_VS 0.65 0.79 0.71 150 I-CASE 0.00 0.00 0.00 11 I-COUNTY 0.00 0.00 0.00 0 B-DOCUMENT_TOPIC 0.64 0.77 0.70 208 B-COUNTY 0.00 0.00 0.00 0 B-MATTER 0.85 0.86 0.86 328 I-DOCUMENT_DATE_FROM 0.87 1.00 0.93 48 I-SUBPOENA_DATE 0.56 0.28 0.38 53 I-SIGNER 0.56 0.46 0.50 59 I-DOCUMENT_DATE_TO 0.83 1.00 0.91 25 I-RECEIVER 0.71 0.52 0.60 98 B-SIGNER 0.76 0.49 0.59 39 I-DOCUMENT_TOPIC 0.83 0.80 0.81 725 I-STATE 0.67 0.29 0.40 14 B-MATTER_VS 0.78 0.82 0.80 136 I-DOCUMENT_TYPE 0.83 0.87 0.85 621 B-DEADLINE_DATE 0.00 0.00 0.00 6 I-MATTER 0.88 0.82 0.85 479 B-DOCUMENT_TYPE 0.87 0.90 0.88 1714 B-ADDRESS 0.81 0.83 0.82 101 B-SUBPOENA_DATE 0.42 0.28 0.33 18 B-CASE 0.91 0.97 0.94 312 I-DOCUMENT_PERSON 0.80 0.83 0.81 3672 B-RECEIVER 0.76 0.63 0.69 46 micro-avg 0.82 0.84 0.83 13157 macro-avg 0.66 0.61 0.61 13157 weighted-avg 0.82 0.84 0.83 13157</summary></entry><entry><title type="html">Legal Law Stack Exchange Classifier in Domain-Specific Documents</title><link href="/2023/08/04/legclf_law_stack_exchange_en.html" rel="alternate" type="text/html" title="Legal Law Stack Exchange Classifier in Domain-Specific Documents" /><published>2023-08-04T00:00:00+00:00</published><updated>2023-08-04T00:00:00+00:00</updated><id>/2023/08/04/legclf_law_stack_exchange_en</id><content type="html" xml:base="/2023/08/04/legclf_law_stack_exchange_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This is a Legal NER model aimed to extract 19 entities from subpoenas. This is called a small version because it has been trained on more generic labels. The larger versions of this model will be available on models hub. Predicted Entities COURT, APPOINTMENT_DATE, DEADLINE_DATE, DOCUMENT_DATE_FROM, ADDRESS, APPOINTMENT_HOUR, DOCUMENT_DATE_TO, DOCUMENT_PERSON, DOCUMENT_DATE_YEAR, STATE, MATTER_VS, CASE, COUNTY, DOCUMENT_TOPIC, MATTER, SUBPOENA_DATE, SIGNER, RECEIVER, DOCUMENT_TYPE Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from pyspark.sql import functions as F document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;)\ sentence_detector = nlp.SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;)\ tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) ner_model = legal.BertForTokenClassification.pretrained(&quot;legner_bert_subpoenas_sm&quot;, &quot;en&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;ner&quot;)\ .setCaseSensitive(True)\ .setMaxSentenceLength(512) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, ner_model, ner_converter ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;In addition , in an earlier motion for summary disposition in which all Respondents joined , and which this Court denied in its Order of April30 , 2013 , Respondent Deloitte Touche Tohmatsu Certified Public Accountants Ltd .&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model.transform(data) result.select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \ .select(F.expr(&quot;cols['0']&quot;).alias(&quot;chunk&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False) Results +------------------------+---------------+ |chunk |label | +------------------------+---------------+ |summary disposition |DOCUMENT_TYPE | |Deloitte Touche Tohmatsu|DOCUMENT_PERSON| +------------------------+---------------+ Model Information Model Name: legner_bert_subpoenas_sm Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [ner] Language: en Size: 401.1 MB Case sensitive: true Max sentence length: 128 References In House annotated dataset Benchmarking label precision recall f1-score support B-COURT 1.00 0.60 0.75 30 I-APPOINTMENT_DATE 0.57 0.65 0.60 20 I-COURT 0.93 0.89 0.91 166 B-APPOINTMENT_DATE 0.67 0.44 0.53 9 I-DEADLINE_DATE 0.83 0.26 0.40 19 B-DOCUMENT_DATE_FROM 0.80 1.00 0.89 16 I-ADDRESS 0.87 0.94 0.90 1046 B-APPOINTMENT_HOUR 0.43 0.92 0.59 13 B-DOCUMENT_DATE_TO 0.88 1.00 0.93 7 I-APPOINTMENT_HOUR 1.00 0.15 0.26 20 B-DOCUMENT_PERSON 0.79 0.84 0.82 2919 B-DOCUMENT_DATE_YEAR 0.00 0.00 0.00 5 B-STATE 0.59 0.79 0.68 24 I-MATTER_VS 0.65 0.79 0.71 150 I-CASE 0.00 0.00 0.00 11 I-COUNTY 0.00 0.00 0.00 0 B-DOCUMENT_TOPIC 0.64 0.77 0.70 208 B-COUNTY 0.00 0.00 0.00 0 B-MATTER 0.85 0.86 0.86 328 I-DOCUMENT_DATE_FROM 0.87 1.00 0.93 48 I-SUBPOENA_DATE 0.56 0.28 0.38 53 I-SIGNER 0.56 0.46 0.50 59 I-DOCUMENT_DATE_TO 0.83 1.00 0.91 25 I-RECEIVER 0.71 0.52 0.60 98 B-SIGNER 0.76 0.49 0.59 39 I-DOCUMENT_TOPIC 0.83 0.80 0.81 725 I-STATE 0.67 0.29 0.40 14 B-MATTER_VS 0.78 0.82 0.80 136 I-DOCUMENT_TYPE 0.83 0.87 0.85 621 B-DEADLINE_DATE 0.00 0.00 0.00 6 I-MATTER 0.88 0.82 0.85 479 B-DOCUMENT_TYPE 0.87 0.90 0.88 1714 B-ADDRESS 0.81 0.83 0.82 101 B-SUBPOENA_DATE 0.42 0.28 0.33 18 B-CASE 0.91 0.97 0.94 312 I-DOCUMENT_PERSON 0.80 0.83 0.81 3672 B-RECEIVER 0.76 0.63 0.69 46 micro-avg 0.82 0.84 0.83 13157 macro-avg 0.66 0.61 0.61 13157 weighted-avg 0.82 0.84 0.83 13157</summary></entry><entry><title type="html">Legal Law Stack Exchange Classifier in Domain-Specific Documents</title><link href="/2023/08/04/legclf_law_stack_exchange_en.html" rel="alternate" type="text/html" title="Legal Law Stack Exchange Classifier in Domain-Specific Documents" /><published>2023-08-04T00:00:00+00:00</published><updated>2023-08-04T00:00:00+00:00</updated><id>/2023/08/04/legclf_law_stack_exchange_en</id><content type="html" xml:base="/2023/08/04/legclf_law_stack_exchange_en.html">## Description
 
-&lt;p&gt;This model is a multi-class classification model that can classify a wide variety of legal issues. The model demonstrates remarkable proficiency in predicting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;business&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constitutional-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;contract-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copyright&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;criminal-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;employment&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;liability&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;privacy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tax-law&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trademark&lt;/code&gt;.&lt;/p&gt;
+This model is a multi-class classification model that can classify a wide variety of legal issues. The model demonstrates remarkable proficiency in predicting `business`, `constitutional-law`, `contract-law`, `copyright`, `criminal-law`, `employment`, `liability`, `privacy`, `tax-law`, and `trademark`.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;business&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constitutional-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;contract-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copyright&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;criminal-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;employment&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;liability&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;privacy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tax-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trademark&lt;/code&gt;&lt;/p&gt;
+`business`, `constitutional-law`, `contract-law`, `copyright`, `criminal-law`, `employment`, `liability`, `privacy`, `tax-law`, `trademark`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_law_stack_exchange_en_1.0.0_3.0_1691173181059.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legclf_law_stack_exchange_en_1.0.0_3.0_1691173181059.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_law_stack_exchange_en_1.0.0_3.0_1691173181059.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legclf_law_stack_exchange_en_1.0.0_3.0_1691173181059.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;sequenceClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legclf_law_stack_exchange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document_assembler = nlp.DocumentAssembler() \
+    .setInputCol('text') \
+    .setOutputCol('document')
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sequenceClassifier&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+tokenizer = nlp.Tokenizer() \
+    .setInputCols(['document']) \
+    .setOutputCol('token')
 
-&lt;span class=&quot;c1&quot;&gt;# couple of simple examples
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;I have been helping a nonprofit by developing a piece of software that they needed. The software is more-or-less built to their specs in a 'functional' way, but I wrote 100% of the code: they are not programmers. Anyhow, we didn't make any kind of contract at the beginning verbally or otherwise. Who owns the copyright to all of this? Do they have any rights to it at all for providing 'ideas'?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+sequenceClassifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_law_stack_exchange&quot;, &quot;en&quot;, &quot;legal/models&quot;) \
+    .setInputCols([&quot;document&quot;, &quot;token&quot;]) \
+    .setOutputCol(&quot;class&quot;)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    sequenceClassifier
+])
 
-&lt;span class=&quot;c1&quot;&gt;# result is a DataFrame
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;class.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+# couple of simple examples
+example = spark.createDataFrame([[&quot;I have been helping a nonprofit by developing a piece of software that they needed. The software is more-or-less built to their specs in a 'functional' way, but I wrote 100% of the code: they are not programmers. Anyhow, we didn't make any kind of contract at the beginning verbally or otherwise. Who owns the copyright to all of this? Do they have any rights to it at all for providing 'ideas'?&quot;]]).toDF(&quot;text&quot;)
+
+result = pipeline.fit(example).transform(example)
+
+# result is a DataFrame
+result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=100)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+----------------------------------------------------------------------------------------------------+-----------+
+```bash
++----------------------------------------------------------------------------------------------------+-----------+
 |                                                                                                text|     result|
 +----------------------------------------------------------------------------------------------------+-----------+
 |I have been helping a nonprofit by developing a piece of software that they needed. The software ...|[copyright]|
 +----------------------------------------------------------------------------------------------------+-----------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legclf_law_stack_exchange&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[document, token]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[class]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;410.1 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Case sensitive:&lt;/td&gt;
-      &lt;td&gt;true&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Max sentence length:&lt;/td&gt;
-      &lt;td&gt;512&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legclf_law_stack_exchange|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document, token]|
+|Output Labels:|[class]|
+|Language:|en|
+|Size:|410.1 MB|
+|Case sensitive:|true|
+|Max sentence length:|512|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;Train dataset available &lt;a href=&quot;https://huggingface.co/datasets/jonathanli/law-stack-exchange&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+Train dataset available [here](https://huggingface.co/datasets/jonathanli/law-stack-exchange)
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label               precision  recall  f1-score  support
+```bash
+label               precision  recall  f1-score  support
 business            0.50       0.24    0.32      17      
 constitutional-law  0.94       0.68    0.79      25      
 contract-law        0.88       0.85    0.86      91      
@@ -291,7 +241,7 @@ trademark           0.89       0.91    0.90      44
 accuracy            -          -       0.86      506     
 macro-avg           0.80       0.74    0.75      506     
 weighted-avg        0.85       0.86    0.85      506 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="classification" /><category term="legal" /><category term="tensorflow" /><summary type="html">Description This model is a multi-class classification model that can classify a wide variety of legal issues. The model demonstrates remarkable proficiency in predicting business, constitutional-law, contract-law, copyright, criminal-law, employment, liability, privacy, tax-law, and trademark. Predicted Entities business, constitutional-law, contract-law, copyright, criminal-law, employment, liability, privacy, tax-law, trademark Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler() \ .setInputCol('text') \ .setOutputCol('document') tokenizer = nlp.Tokenizer() \ .setInputCols(['document']) \ .setOutputCol('token') sequenceClassifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_law_stack_exchange&quot;, &quot;en&quot;, &quot;legal/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;class&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequenceClassifier ]) # couple of simple examples example = spark.createDataFrame([[&quot;I have been helping a nonprofit by developing a piece of software that they needed. The software is more-or-less built to their specs in a 'functional' way, but I wrote 100% of the code: they are not programmers. Anyhow, we didn't make any kind of contract at the beginning verbally or otherwise. Who owns the copyright to all of this? Do they have any rights to it at all for providing 'ideas'?&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(example).transform(example) # result is a DataFrame result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=100) Results +----------------------------------------------------------------------------------------------------+-----------+ | text| result| +----------------------------------------------------------------------------------------------------+-----------+ |I have been helping a nonprofit by developing a piece of software that they needed. The software ...|[copyright]| +----------------------------------------------------------------------------------------------------+-----------+ Model Information Model Name: legclf_law_stack_exchange Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: en Size: 410.1 MB Case sensitive: true Max sentence length: 512 References Train dataset available here Benchmarking label precision recall f1-score support business 0.50 0.24 0.32 17 constitutional-law 0.94 0.68 0.79 25 contract-law 0.88 0.85 0.86 91 copyright 0.91 0.97 0.94 151 criminal-law 0.80 0.91 0.85 75 employment 0.74 0.93 0.82 30 liability 0.67 0.31 0.42 13 privacy 0.77 0.82 0.79 28 tax-law 0.93 0.78 0.85 32 trademark 0.89 0.91 0.90 44 accuracy - - 0.86 506 macro-avg 0.80 0.74 0.75 506 weighted-avg 0.85 0.86 0.85 506</summary></entry><entry><title type="html">Sentence Entity Resolver for LOINC (sbiobert_base_cased_mli embeddings)</title><link href="/2023/08/01/sbiobertresolve_loinc_augmented_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for LOINC (sbiobert_base_cased_mli embeddings)" /><published>2023-08-01T00:00:00+00:00</published><updated>2023-08-01T00:00:00+00:00</updated><id>/2023/08/01/sbiobertresolve_loinc_augmented_en</id><content type="html" xml:base="/2023/08/01/sbiobertresolve_loinc_augmented_en.html">## Description
+```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="classification" /><category term="legal" /><category term="tensorflow" /><summary type="html">Description This model is a multi-class classification model that can classify a wide variety of legal issues. The model demonstrates remarkable proficiency in predicting business, constitutional-law, contract-law, copyright, criminal-law, employment, liability, privacy, tax-law, and trademark. Predicted Entities business, constitutional-law, contract-law, copyright, criminal-law, employment, liability, privacy, tax-law, trademark Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler() \ .setInputCol('text') \ .setOutputCol('document') tokenizer = nlp.Tokenizer() \ .setInputCols(['document']) \ .setOutputCol('token') sequenceClassifier = legal.BertForSequenceClassification.pretrained(&quot;legclf_law_stack_exchange&quot;, &quot;en&quot;, &quot;legal/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;class&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, sequenceClassifier ]) # couple of simple examples example = spark.createDataFrame([[&quot;I have been helping a nonprofit by developing a piece of software that they needed. The software is more-or-less built to their specs in a 'functional' way, but I wrote 100% of the code: they are not programmers. Anyhow, we didn't make any kind of contract at the beginning verbally or otherwise. Who owns the copyright to all of this? Do they have any rights to it at all for providing 'ideas'?&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(example).transform(example) # result is a DataFrame result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=100) Results +----------------------------------------------------------------------------------------------------+-----------+ | text| result| +----------------------------------------------------------------------------------------------------+-----------+ |I have been helping a nonprofit by developing a piece of software that they needed. The software ...|[copyright]| +----------------------------------------------------------------------------------------------------+-----------+ Model Information Model Name: legclf_law_stack_exchange Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [class] Language: en Size: 410.1 MB Case sensitive: true Max sentence length: 512 References Train dataset available here Benchmarking label precision recall f1-score support business 0.50 0.24 0.32 17 constitutional-law 0.94 0.68 0.79 25 contract-law 0.88 0.85 0.86 91 copyright 0.91 0.97 0.94 151 criminal-law 0.80 0.91 0.85 75 employment 0.74 0.93 0.82 30 liability 0.67 0.31 0.42 13 privacy 0.77 0.82 0.79 28 tax-law 0.93 0.78 0.85 32 trademark 0.89 0.91 0.90 44 accuracy - - 0.86 506 macro-avg 0.80 0.74 0.75 506 weighted-avg 0.85 0.86 0.85 506</summary></entry><entry><title type="html">Sentence Entity Resolver for LOINC (sbiobert_base_cased_mli embeddings)</title><link href="/2023/08/01/sbiobertresolve_loinc_augmented_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for LOINC (sbiobert_base_cased_mli embeddings)" /><published>2023-08-01T00:00:00+00:00</published><updated>2023-08-01T00:00:00+00:00</updated><id>/2023/08/01/sbiobertresolve_loinc_augmented_en</id><content type="html" xml:base="/2023/08/01/sbiobertresolve_loinc_augmented_en.html">## Description
 
 This model maps extracted clinical NER entities to Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous LOINC resolver models. It also provides the official resolution of the codes within the brackets.
 
