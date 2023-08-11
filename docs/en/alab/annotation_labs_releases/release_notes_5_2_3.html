@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 4.7.4</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>NLP Lab Release Notes 5.2.3</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_7_4"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_7_4"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_2_3"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_2_3"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -523,28 +523,34 @@
 <!-- end custom main top snippet --><article itemscope itemtype="https://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 4.7.4</li>
+    <li>NLP Lab Release Notes 5.2.3</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 4.7.4</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>NLP Lab Release Notes 5.2.3</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_4_7_4.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 4.7.4"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_5_2_3.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 5.2.3"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.7.4</h2>
+  <h2 id="section">5.2.3</h2>
 
-  <p>Release date: <strong>27-02-2023</strong></p>
+  <p>Release date: <strong>10-08-2023</strong></p>
 
-  <p>NLP Lab v4.7.4, which includes significant optimizations and bugfixes. The following are some of the key updates included in this release:</p>
+  <p>We are pleased to announce the release of v5.2.3 which includes the following bug fixes:</p>
 
   <ul>
-    <li>Ability to track NLP Lab installation and upgrades</li>
-    <li>Resolved CVE issues related to Debian packages</li>
-    <li>Corrected the number of completions needed to trigger Active learning when no test-tagged tasks are present.”</li>
+    <li>Text Generation Error Removal: Resolved an issue where there was no option to remove text generations with errors from the Result section.</li>
+    <li>CSV Download Retry: Fixed the problem with CSV download for generated tasks, which was failing on the first attempt after correcting an invalid secret key.</li>
+    <li>Exported Failed Tasks: Addressed the problem where failed generated tasks were being exported as blank tasks in the CSV file. These blank tasks could also be imported, which has been rectified.</li>
+    <li>Unauthorized Page Navigation: Users were encountering an “Unauthorized” page when attempting to navigate to the configuration page. This issue has been resolved, and users can now access the configuration page without any problem.</li>
+    <li>Scheduled Synthetic Dag: The generation of synthetic Dags was erroneously scheduled even if the feature was disabled. This behavior has been fixed, and synthetic Dags will now respect the disabled setting.</li>
+    <li>Ad-hoc Task Generation: Corrected the issue where ad-hoc synthetic tasks were not being generated for projects with long names.</li>
+    <li>UI Crash on History Button Click: Resolved a production UI crash that occurred when users clicked on the History button on the train page when the trained failed due to max server count.</li>
+    <li>Firefox Compatibility: Fixed the problem where importing generated tasks was not functioning correctly in the Firefox browser.</li>
+    <li>Visual NER Project Export: Fixed a 500 Error that was preventing the export of tagged Visual NER tasks.</li>
   </ul>
 
 </div>
@@ -611,7 +617,7 @@
   <li><a href="release_notes_2_0_1">2.0.1</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-02-27T00:00:00+00:00">Feb 27, 2023</time>
+      <time itemprop="dateModified" datetime="2023-08-10T00:00:00+00:00">Aug 10, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
