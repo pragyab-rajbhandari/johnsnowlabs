@@ -3373,6 +3373,23 @@ and NLU will return a pandas DF with one row per image detected</p>
 
     <p><img src="/assets/images/nlu/visual/vit_example.png" alt="vit" /></p>
 
+    <h2 id="image-classification-convnext">Image Classification (ConvNext)</h2>
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/convnext_image_classification_overview.ipynb">Image Classification Tutorial Notebook</a>      <br />
+Image Classifier Based on <a href="https://arxiv.org/abs/2201.03545">ConvNext</a>
+Lets download a folder of images and predict on it</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">auxdata</span><span class="p">.</span><span class="n">johnsnowlabs</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">images</span><span class="p">.</span><span class="nb">zip</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="n">shutil</span><span class="p">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s">"images.zip"</span><span class="p">,</span> <span class="s">"images"</span><span class="p">,</span> <span class="s">"zip"</span><span class="p">)</span>
+<span class="err">!</span> <span class="n">ls</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">images</span><span class="o">/</span>
+</code></pre></div>    </div>
+
+    <p>Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.classify_image.convnext.tiny'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'/content/images/images'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><img src="/assets/images/nlu/visual/convnext_example.png" alt="convnext" /></p>
+
     <h2 id="image-classification-swin">Image Classification (SWIN)</h2>
     <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb">Image Classification Tutorial Notebook</a>      <br />
 Image Classifier Based on <a href="https://arxiv.org/abs/2103.14030">SWIN</a>
@@ -3713,6 +3730,40 @@ Based on <a href="https://nyu-mll.github.io/CoLA/">CoLA - Binary Grammatical Sen
         <tr>
           <td>Anna and Mike like to dance</td>
           <td>acceptable</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="h3-box">
+
+    <h2 id="bart-transformer">Bart Transformer</h2>
+    <p><a href="https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/bart_transformer.ipynb">Bart Transformer tutorial</a></p>
+
+    <p>Bart is based on transformer architecture and is designed to handle a wide range of natural language processing tasks such as text generation, summarization, and machine translation.
+Based on <a href="https://aclanthology.org/2020.acl-main.703.pdf">BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension Transformer</a></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.seq2seq.distilbart_cnn_12_6'</span><span class="p">)</span>
+<span class="c1"># Set the task on T5
+</span><span class="n">model</span><span class="p">[</span><span class="s">'bart_transformer'</span><span class="p">].</span><span class="n">setTask</span><span class="p">(</span><span class="s">"summarize: "</span><span class="p">)</span>
+<span class="n">model</span><span class="p">[</span><span class="s">'bart_transformer'</span><span class="p">].</span><span class="n">setMaxOutputLength</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="c1"># define Data
+</span><span class="n">data</span> <span class="o">=</span> <span class="s">'''LONDON, England (Reuters) -- Harry Potter star Daniel Radcliffe gains access to a reported £20 million ($41.1 million) fortune as he turns 18 on Monday, but he insists the money won't cast a spell on him. Daniel Radcliffe as Harry Potter in "Harry Potter and the Order of the Phoenix" To the disappointment of gossip columnists around the world, the young actor says he has no plans to fritter his cash away on fast cars, drink and celebrity parties. "I don't plan to be one of those people who, as soon as they turn 18, suddenly buy themselves a massive sports car collection or something similar," he told an Australian interviewer earlier this month. "I don't think I'll be particularly extravagant. "The things I like buying are things that cost about 10 pounds -- books and CDs and DVDs." At 18, Radcliffe will be able to gamble in a casino, buy a drink in a pub or see the horror film "Hostel: Part II," currently six places below his number one movie on the UK box office chart. Details of how he'll mark his landmark birthday are under wraps. His agent and publicist had no comment on his plans. "I'll definitely have some sort of party," he said in an interview. "Hopefully none of you will be reading about it." Radcliffe's earnings from the first five Potter films have been held in a trust fund which he has not been able to touch. Despite his growing fame and riches, the actor says he is keeping his feet firmly on the ground. "People are always looking to say 'kid star goes off the rails,'" he told reporters last month. "But I try very hard not to go that way because it would be too easy for them." His latest outing as the boy wizard in "Harry Potter and the Order of the Phoenix" is breaking records on both sides of the Atlantic and he will reprise the role in the last two films. Watch I-Reporter give her review of Potter's latest » . There is life beyond Potter, however. The Londoner has filmed a TV movie called "My Boy Jack," about author Rudyard Kipling and his son, due for release later this year. He will also appear in "December Boys," an Australian film about four boys who escape an orphanage. Earlier this year, he made his stage debut playing a tortured teenager in Peter Shaffer's "Equus." Meanwhile, he is braced for even closer media scrutiny now that he's legally an adult: "I just think I'm going to be more sort of fair game," he told Reuters. E-mail to a friend . Copyright 2007 Reuters. All rights reserved.This material may not be published, broadcast, rewritten, or redistributed.'''</span>
+<span class="c1">#Predict on text data with T5
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <table class="table-model-big mb0">
+      <thead>
+        <tr>
+          <th>text</th>
+          <th>generated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LONDON, England (Reuters) – Harry Potter star Daniel Radcliffe gains access to a reported £20 million ($41.1 million) fortune as he turns 18 on Monday, but he insists the money won’t cast a spell on him. Daniel Radcliffe as Harry Potter in “Harry Potter and the Order of the Phoenix” To the disappointment of gossip columnists around the world, the young actor says he has no plans to fritter his cash away on fast cars, drink and celebrity parties. “I don’t plan to be one of those people who, as soon as they turn 18, suddenly buy themselves a massive sports car collection or something similar,” he told an Australian interviewer earlier this month. “I don’t think I’ll be particularly extravagant. “The things I like buying are things that cost about 10 pounds – books and CDs and DVDs.” At 18, Radcliffe will be able to gamble in a casino, buy a drink in a pub or see the horror film “Hostel: Part II,” currently six places below his number one movie on the UK box office chart. Details of how he’ll mark his landmark birthday are under wraps. His agent and publicist had no comment on his plans. “I’ll definitely have some sort of party,” he said in an interview. “Hopefully none of you will be reading about it.” Radcliffe’s earnings from the first five Potter films have been held in a trust fund which he has not been able to touch. Despite his growing fame and riches, the actor says he is keeping his feet firmly on the ground. “People are always looking to say ‘kid star goes off the rails,’” he told reporters last month. “But I try very hard not to go that way because it would be too easy for them.” His latest outing as the boy wizard in “Harry Potter and the Order of the Phoenix” is breaking records on both sides of the Atlantic and he will reprise the role in the last two films. Watch I-Reporter give her review of Potter’s latest » . There is life beyond Potter, however. The Londoner has filmed a TV movie called “My Boy Jack,” about author Rudyard Kipling and his son, due for release later this year. He will also appear in “December Boys,” an Australian film about four boys who escape an orphanage. Earlier this year, he made his stage debut playing a tortured teenager in Peter Shaffer’s “Equus.” Meanwhile, he is braced for even closer media scrutiny now that he’s legally an adult: “I just think I’m going to be more sort of fair game,” he told Reuters. E-mail to a friend . Copyright 2007 Reuters. All rights reserved.This material may not be published, broadcast, rewritten, or redistributed.</td>
+          <td>Daniel Radcliffe gains access to a reported � 20 million $ 41 . 1 million fortune . Harry Potter star Daniel Radcliffe turns 18 on Monday . Radcliffe insists the money won’t cast a spell on him .</td>
         </tr>
       </tbody>
     </table>
