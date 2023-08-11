@@ -1322,6 +1322,35 @@ Defaults is <code class="language-plaintext highlighter-rouge">all</code>. <code
   </div>
   <div class="h3-box">
 
+    <h2 id="text-generator">Text Generator</h2>
+    <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/sequence2sequence/NLU_Medical_TextGenerators.ipynb">Text Generation tutorial notebook</a></p>
+
+    <p>Given a few tokens as an intro, it can generate human-like, conceptually meaningful texts  up to 512 tokens given an input text (max 1024 tokens).</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">-</span> <span class="p">[</span><span class="s">'Covid 19 is'</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.text_generator.biomedical_biogpt_base'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">text</th>
+          <th style="text-align: left">generated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">Covid 19 is</td>
+          <td style="text-align: left">Covid 19 is a pandemic that has affected the world economy and health. The World Health Organization ( WHO ) has declared the pandemic a global emergency.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>See the <a href="https://nlp.johnsnowlabs.com/models?task=Text+Generation&amp;edition=Healthcare+NLP">Models Hub for all available Text Generation Models</a></p>
+
+  </div>
+  <div class="h3-box">
+
     <h2 id="rule-based-ner-with-context-matcher">Rule based NER with Context Matcher</h2>
     <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/rule_based_named_entity_recognition_and_resolution/rule_based_NER_and_resolution_with_context_matching.ipynb">Rule based NER with context matching tutorial notebook</a>
 Define a rule based NER algorithm by providing Regex Patterns and resolution mappings.
