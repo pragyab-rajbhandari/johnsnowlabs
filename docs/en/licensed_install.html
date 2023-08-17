@@ -1537,6 +1537,274 @@ os.environ.update(license_keys)
 </div>
 <div class="h3-box">
 
+  <h1 id="deploying-spark-nlp-healthcare-on-kubernetes">Deploying Spark NLP Healthcare on Kubernetes</h1>
+
+  <p>This guide will walk you through the deployment of a Spark NLP Healthcare application on a Kubernetes cluster using kind.</p>
+
+  <h3 id="prerequisites">Prerequisites</h3>
+  <p>Installing Necessary Tools:</p>
+
+  <ol>
+    <li><strong>Docker</strong>:
+      <ul>
+        <li>Install from Docker Desktop(https://www.docker.com/products/docker-desktop/).</li>
+        <li>Ensure Kubernetes is enabled in Docker Desktop settings.</li>
+      </ul>
+    </li>
+    <li><strong>kubectl</strong>:
+      <ul>
+        <li>Install using the instructions from Kubernetes official documentation(https://kubernetes.io/docs/tasks/tools/).</li>
+      </ul>
+    </li>
+    <li><strong>kind</strong>:
+      <ul>
+        <li>Install using the instructions from Kubernetes official documentation(https://kubernetes.io/docs/tasks/tools/).</li>
+      </ul>
+    </li>
+    <li><strong>Docker Hub Account</strong>:
+      <ul>
+        <li>If you don’t have one, create your account at Docker Hub(https://hub.docker.com/signup).</li>
+      </ul>
+    </li>
+    <li>Install JohnSnow Labs <strong>licence key file</strong> to the project directory(https://my.johnsnowlabs.com/subscriptions).</li>
+  </ol>
+
+  <h3 id="project-structure">Project Structure:</h3>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── Dockerfile
+├── main.py
+├── README.md
+├── requirements.txt
+├── spark-nlp-healthcare-deployment.yaml
+└── spark_nlp_for_healthcare_spark_ocr_8204.json (licence key filename)
+</code></pre></div>  </div>
+
+  <h3 id="application-details">Application Details</h3>
+  <p>The main application script, <code class="language-plaintext highlighter-rouge">main.py</code>, is as follows:</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from johnsnowlabs import nlp, medical
+import pandas as pd
+from pyspark.sql import DataFrame
+import pyspark.sql.functions as F
+import pyspark.sql.types as T
+import pyspark.sql as SQL
+from pyspark import keyword_only
+from pyspark.ml import PipelineModel
+import os
+
+class NLPProcessor:
+    def __init__(self):
+        """Initialize and set up NLP tools."""
+        # Install all licensed Python Wheels and pre-download Jars the Spark Session JVM
+        nlp.install()
+        
+        # Automatically load license data and start a session with all jars user has access to
+        self.spark = nlp.start()
+        
+        # Set up the NLP pipeline
+        self.model = self.setup_pipeline()
+
+    def setup_pipeline(self):
+        """Set up the NLP pipeline using John Snow Labs library."""
+
+        # Annotator that transforms a text column from dataframe into an Annotation ready for NLP
+        documentAssembler = nlp.DocumentAssembler()\
+            .setInputCol("text")\
+            .setOutputCol("document")
+
+        # Sentence detector specific to healthcare data
+        sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+            .setInputCols(["document"])\
+            .setOutputCol("sentence")
+
+        # Tokenizer splits words in a relevant format for NLP
+        tokenizer = nlp.Tokenizer()\
+            .setInputCols(["sentence"])\
+            .setOutputCol("token")
+
+        # Clinical word embeddings trained on PubMED dataset
+        word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+            .setInputCols(["sentence", "token"])\
+            .setOutputCol("embeddings")
+
+        # NER model trained on i2b2 (sampled from MIMIC) dataset
+        jsl_ner = medical.NerModel.pretrained("ner_jsl", "en", "clinical/models")\
+            .setInputCols(["sentence", "token", "embeddings"])\
+            .setOutputCol("jsl_ner")
+
+        # Converter to transform NER results
+        jsl_ner_converter = nlp.NerConverter()\
+            .setInputCols(["sentence", "token", "jsl_ner"])\
+            .setOutputCol("jsl_ner_chunk")
+
+        # Combine all the stages of the pipeline
+        nlpPipeline = nlp.Pipeline(stages=[
+            documentAssembler,
+            sentenceDetector,
+            tokenizer,
+            word_embeddings,
+            jsl_ner,
+            jsl_ner_converter
+        ])
+
+        # Fit an empty dataframe to initialize the pipeline
+        return nlpPipeline.fit(self.spark.createDataFrame([[""]]).toDF("text"))
+
+    def annotate_text(self, text):
+        """Annotate the provided text using the NLP pipeline."""
+        light_model = nlp.LightPipeline(self.model)
+        return light_model.annotate(text)
+
+def main():
+    """Main function to run the NLP annotation."""
+    processor = NLPProcessor()
+    
+    sample_text = '''A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM )'''
+    
+    result = processor.annotate_text(sample_text)
+    
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
+</code></pre></div>  </div>
+
+  <h3 id="step-by-step-guide">Step-by-step Guide</h3>
+  <h5 id="containerizing-the-spark-nlp-healthcare-application">1. Containerizing the Spark NLP Healthcare Application</h5>
+
+  <h5 id="dockerfile">Dockerfile:</h5>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Use Ubuntu 20.04 as the base image
+FROM ubuntu:20.04
+
+# Update and install necessary packages
+RUN apt-get update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jdk python3-pip curl
+
+# Set JAVA_HOME
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+
+# Copy the base requirements and main application into the image
+COPY requirements.txt /app/requirements.txt
+COPY &lt;licence_filename&gt; /app/&lt;licence_filename&gt;
+WORKDIR /app
+
+# Install Python packages
+RUN pip3 install -r requirements.txt
+
+# Copy the main application
+COPY main.py /app/main.py
+
+CMD ["python3", "main.py"]
+</code></pre></div>  </div>
+
+  <p>Note: Before building the Docker image, replace <licence_filename> in the Dockerfile with your actual Spark NLP Healthcare license key file name and set <JSL_VERSION> to the appropriate version number (e.g., 5.0.1).
+You can find the <JSL_VERSION> value in your licence key json file.</JSL_VERSION></JSL_VERSION></licence_filename></p>
+
+  <p>Logging in to Docker Hub:
+Run the command:<code class="language-plaintext highlighter-rouge">docker login -u &lt;your-docker-hub-username&gt; -p &lt;your-docker-hub-password&gt;</code>
+This will authenticate you with Docker Hub, allowing you to push and pull private images.</p>
+
+  <p>Build the Docker image with the specific tag:
+<code class="language-plaintext highlighter-rouge">docker build -t &lt;your-docker-hub-username&gt;/spark-nlp-healthcare:&lt;JSL_VERSION&gt; .</code></p>
+
+  <h5 id="pushing-docker-image-to-docker-hub">2. Pushing Docker Image to Docker Hub</h5>
+
+  <p>Tag the image with your Docker Hub username:
+<code class="language-plaintext highlighter-rouge">docker tag spark-nlp-healthcare:&lt;JSL_VERSION&gt; &lt;your-docker-hub-username&gt;/spark-nlp-healthcare:&lt;JSL_VERSION&gt;</code></p>
+
+  <p>Push the image to Docker Hub:</p>
+
+  <p><code class="language-plaintext highlighter-rouge">docker push &lt;your-docker-hub-username&gt;/spark-nlp-healthcare:&lt;JSL_VERSION&gt;</code></p>
+
+  <h5 id="setting-up-the-kubernetes-cluster-with-kind">3. Setting Up the Kubernetes Cluster with kind</h5>
+  <p>Before deploying the application, you’ll need to set up a local Kubernetes cluster using kind. Run the following command:
+<code class="language-plaintext highlighter-rouge">kind create cluster</code></p>
+
+  <h5 id="setting-up-secrets-in-kubernetes">4. Setting up Secrets in Kubernetes</h5>
+
+  <p>Make sure your Spark NLP Healthcare license key file (e.g., <licence_filename>) is present in the project directory.</licence_filename></p>
+
+  <p>Replace <licence_filename> with your actual license key file name in the below command:</licence_filename></p>
+
+  <p><code class="language-plaintext highlighter-rouge">kubectl create secret generic spark-nlp-healthcare-secret --from-file=license=&lt;licence_filename&gt;</code></p>
+
+  <h5 id="deploying-the-spark-nlp-healthcare-application">5. Deploying the Spark NLP Healthcare Application</h5>
+  <p>Before proceeding, ensure that you replace the placeholders <your-docker-hub-username> and <JSL_VERSION> in the spark-nlp-healthcare-deployment.yaml with your Docker Hub username and the appropriate Spark NLP version respectively.
+Use the following content for spark-nlp-healthcare-deployment.yaml:</JSL_VERSION></your-docker-hub-username></p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-nlp-healthcare-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-nlp-healthcare
+  template:
+    metadata:
+      labels:
+        app: spark-nlp-healthcare
+    spec:
+      containers:
+      - name: spark-nlp-healthcare
+        image: &lt;your-docker-hub-username&gt;/spark-nlp-healthcare:&lt;JSL_VERSION&gt;
+        ports:
+        - containerPort: 8888
+        env:
+        - name: SPARK_NLP_LICENSE
+          valueFrom:
+            secretKeyRef:
+              name: spark-nlp-healthcare-secret
+              key: license
+</code></pre></div>  </div>
+
+  <p>Apply the deployment:
+<code class="language-plaintext highlighter-rouge">kubectl apply -f spark-nlp-healthcare-deployment.yaml</code></p>
+
+  <p>To verify, run commands below:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get deployments
+kubectl get pods
+</code></pre></div>  </div>
+  <p>The output will look like as following;</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get deployments
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+spark-nlp-healthcare-deployment   0/1     1            0           2m42s
+
+kubectl get pods
+NAME                                               READY   STATUS              RESTARTS   AGE
+spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   0/1     ContainerCreating   0          2m50s
+</code></pre></div>  </div>
+  <p>Wait until the output becomes as following;</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get deployments                                              
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+spark-nlp-healthcare-deployment   1/1     1            1           8m46s
+
+kubectl get pods                                                     
+NAME                                               READY   STATUS    RESTARTS   AGE
+spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          8m54s
+</code></pre></div>  </div>
+  <p>Now the pod is ready and running.</p>
+
+  <h5 id="validating-the-deployment">6. Validating the Deployment</h5>
+
+  <p>To get the name of the pod:</p>
+
+  <p><code class="language-plaintext highlighter-rouge">kubectl get pods -l app=spark-nlp-healthcare -o jsonpath="{.items[0].metadata.name}"</code></p>
+
+  <p>You can verify if the application is running properly within the Kubernetes cluster by executing a shell within the pod:</p>
+
+  <p><code class="language-plaintext highlighter-rouge">kubectl exec -it &lt;kubernetes_pod_name&gt; -- /bin/bash</code></p>
+
+  <p>This command will open a bash shell and the program can be run with <code class="language-plaintext highlighter-rouge">python3 main.py</code> command. It will output the following;</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[OK!]
+{'document': ['A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM )'], 'jsl_ner_chunk': ['28-year-old', 'female', 'gestational diabetes mellitus', 'eight years prior', 'type two diabetes mellitus', 'T2DM'], 'jsl_ner': ['O', 'B-Age', 'B-Gender', 'O', 'O', 'O', 'O', 'B-Diabetes', 'I-Diabetes', 'I-Diabetes', 'O', 'B-RelativeDate', 'I-RelativeDate', 'I-RelativeDate', 'O', 'O', 'O', 'O', 'B-Diabetes', 'I-Diabetes', 'I-Diabetes', 'I-Diabetes', 'O', 'B-Diabetes', 'O'], 'token': ['A', '28-year-old', 'female', 'with', 'a', 'history', 'of', 'gestational', 'diabetes', 'mellitus', 'diagnosed', 'eight', 'years', 'prior', 'to', 'presentation', 'and', 'subsequent', 'type', 'two', 'diabetes', 'mellitus', '(', 'T2DM', ')'], 'embeddings': ['A', '28-year-old', 'female', 'with', 'a', 'history', 'of', 'gestational', 'diabetes', 'mellitus', 'diagnosed', 'eight', 'years', 'prior', 'to', 'presentation', 'and', 'subsequent', 'type', 'two', 'diabetes', 'mellitus', '(', 'T2DM', ')'], 'sentence': ['A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM )']}
+</code></pre></div>  </div>
+
+  <p>If you have any questions or face any issues during the deployment process, please feel free to reach out to me at burhan@johnsnowlabs.com. I’m here to help!</p>
+
+</div>
+<div class="h3-box">
   <h2 id="fancy-trying">Fancy trying?</h2>
 
   <p>You can ask for a free trial for Enterprise Spark NLP <a href="https://www.johnsnowlabs.com/install/">here</a>. This will automatically create a new account for you on <a href="https://my.johnsnowlabs.com/">my.JohnSnowLabs.com</a>. Login in to your new account and from <code class="language-plaintext highlighter-rouge">My Subscriptions</code> section, you can download your license key as a json file.</p>
