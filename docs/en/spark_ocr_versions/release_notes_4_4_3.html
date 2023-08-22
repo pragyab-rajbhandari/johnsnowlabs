@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Spark NLP release notes 3.2.0</title><meta property="og:title" content="Spark NLP"/>
+<!-- End Google Tag Manager --><title>Spark OCR release notes</title><meta property="og:title" content="Spark OCR | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_3_2_0"> -->
-<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_3_2_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_4_4_3"> -->
+<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_4_4_3"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -392,7 +392,7 @@
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Spark NLP</li><li class="toc-h2"><a href="/docs/en/quickstart">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/install">Install Spark NLP</a></li><li class="toc-h2"><a href="/docs/en/concepts">General Concepts</a></li><li class="toc-h2"><a href="/docs/en/annotators">Annotators</a></li><li class="toc-h2"><a href="/docs/en/transformers">Transformers</a></li><li class="toc-h2"><a href="/docs/en/training">Training</a></li><li class="toc-h2"><a href="/docs/en/display">Spark NLP Display</a></li><li class="toc-h2"><a href="/docs/en/mlflow">Experiment Tracking</a></li><li class="toc-h2"><a href="/docs/en/serving_spark_nlp_via_api_databricks_mlflow">Serving Spark NLP&#58 MLFlow on Databricks</a></li><li class="toc-h2"><a href="/docs/en/hardware_acceleration">Hardware Acceleration</a></li><li class="toc-h2"><a href="/docs/en/CPUvsGPUbenchmark">GPU vs CPU Training</a></li><li class="toc-h2"><a href="/docs/en/auxiliary">Helpers</a></li><li class="toc-h2"><a href="/api/">Scala API (Scaladoc)</a></li><li class="toc-h2"><a href="/api/python/">Python API (Sphinx)</a></li><li class="toc-h2"><a href="/docs/en/developers">Developers</a></li><li class="toc-h2"><a href="/docs/en/third-party-projects">Third Party Projects</a></li><li class="toc-h2"><a href="/docs/en/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Spark OCR</li><li class="toc-h2"><a href="/docs/en/ocr">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/ocr_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/version_compatibility">Version Compatibility</a></li><li class="toc-h2"><a href="/docs/en/ocr_pipeline_components">Pipeline components</a></li><li class="toc-h2"><a href="/docs/en/ocr_table_recognition">Table recognition</a></li><li class="toc-h2"><a href="/docs/en/ocr_visual_document_understanding">Visual document understanding</a></li><li class="toc-h2"><a href="/docs/en/ocr_object_detection">Object detection</a></li><li class="toc-h2"><a href="/docs/en/ocr_structures">Structures and helpers</a></li><li class="toc-h2"><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -523,58 +523,85 @@
 <!-- end custom main top snippet --><article itemscope itemtype="https://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Spark NLP release notes 3.2.0</li>
+    <li>Spark OCR release notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Spark NLP release notes 3.2.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Spark OCR release notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_3_2_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark NLP release notes 3.2.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_4_4_3.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark OCR release notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.2.0</h2>
+  <h2 id="section">4.4.3</h2>
 
-  <p>Release date: 28-05-2021</p>
+  <p>Release date: 33-06-2023</p>
 
-  <h4 id="overview">Overview</h4>
+  <p>We are glad to announce that Visual NLP 😎 4.4.3 has been released.</p>
 
-  <p>Multi-modal visual document understanding, built on the LayoutLM architecture.
-It achieves new state-of-the-art accuracy in several downstream tasks,
-including form understanding and receipt understanding.</p>
+  <h4 id="highlights">Highlights</h4>
 
-  <h4 id="new-features">New Features</h4>
+  <p>In line with our unwavering dedication to delivering top-notch products, Visual NLP is backed by our steadfast commitment to quality and stability. We have meticulously addressed various issues and introduced enhancements to ensure a seamless user experience. By diligently resolving bugs, improving error handling, and expanding functionality, we prioritize the reliability and robustness of Visual NLP.</p>
 
   <ul>
-    <li><a href="/docs/en/ocr_pipeline_components#visualdocumentner">VisualDocumentNER</a> is a DL model for NER problem using text and layout data.
-Currently available pre-trained model on the SROIE dataset.</li>
+    <li>
+      <p>ImageToText Auxiliary Data Download Fix:
+Resolved an issue related to downloading auxiliary data in ImageToText, ensuring seamless data retrieval.</p>
+    </li>
+    <li>
+      <p>Expanded DICOM Compression Algorithm Support:
+Introduced support for additional compression algorithms in the images returned by DicomDrawRegions, including,</p>
+
+      <ul>
+        <li>JPEGBaseline8Bit: 8-bit basic lossy JPEG encoding.</li>
+        <li>JPEGLSLossless: lossless JPEG encoding.</li>
+        <li>RLELossless: lossless run-length-encoding.</li>
+      </ul>
+    </li>
   </ul>
 
-  <h4 id="enhancements">Enhancements</h4>
+  <p>You can change it by calling the API like this,</p>
+
+  <p>DicomDrawRegions.setCompression(<your-method>)</your-method></p>
+
+  <p>The default value is RLELossless.</p>
 
   <ul>
-    <li>Added support <code class="language-plaintext highlighter-rouge">SPARK_OCR_LICENSE</code> env key for read license.</li>
-    <li>Update dependencies and sync Spark versions with Spark NLP.</li>
+    <li>
+      <p>Serialization Error Fix in PositionFinder:
+Rectified a serialization error that previously existed in PositionFinder, resolving the issue encountered since version 4.3.2.</p>
+    </li>
+    <li>
+      <p>Enhanced Exception Handling and Error Reporting in DICOM Transformers:
+Implemented improvements in exception handling and error reporting within DICOM transformers, resulting in enhanced stability and preventing unexpected crashes. Error information is now conveniently available in the ‘exception’ column.</p>
+    </li>
+    <li>
+      <p>ImageToTextV2 Introduces ‘Positions’ Column:
+Expanded the capabilities of ImageToTextV2 to include a newly introduced ‘positions’ column, aligning it with similar functionality of ImageToText. The ‘positions’ column contains coordinates that are used to locate text in images and PDFs, and is consumed by annotators like PositionFinder.</p>
+    </li>
+    <li>
+      <p>Resolved Path Error in DicomDrawRegions:
+Rectified a path error within DicomDrawRegions, ensuring its proper functionality. Among the functionalities affected was this notebook: SparkOcrDicomDeIdentification.ipynb</p>
+    </li>
+    <li>
+      <p>Improved Matching Strategy in PositionFinder:
+PositionFinder now employs an advanced matching strategy to accurately identify the coordinates of entities, even in cases where spaces and newlines are present within the entity.
+We added a more complex example to showcase capabilities: SparkOcrPDFDeIdentification.ipynb</p>
+    </li>
+    <li>
+      <p>ImageToPdf Preserves Input Columns:
+ImageToPdf has been enhanced to retain all input columns, preventing any loss of valuable data during the conversion process.</p>
+    </li>
   </ul>
 
-  <h4 id="bugfixes">Bugfixes</h4>
-
-  <ul>
-    <li>Fixed an issue that some ImageReaderSpi plugins are unavailable in the fat jar.</li>
-  </ul>
-
-  <h4 id="new-notebooks">New notebooks</h4>
-
-  <ul>
-    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/3.2.0/jupyter/SparkOCRVisualDocumentNer.ipynb">Visual Document NER</a></li>
-  </ul>
+  <p>This release is compatible with Spark NLP 4.4.4 and Spark NLP for Healthcare 4.4.3.</p>
 
 </div>
 <div class="prev_ver h3-box">
 
-  <h2 id="versions">Versions</h2>
+  <h2 id="previous-versions">Previous versions</h2>
 
 </div>
 <ul class="pagination owl-carousel pagination_big">
@@ -625,7 +652,7 @@ Currently available pre-trained model on the SROIE dataset.</li>
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-01-06T00:00:00+00:00">Jan 06, 2022</time>
+      <time itemprop="dateModified" datetime="2023-05-30T00:00:00+00:00">May 30, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -791,7 +818,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/release_notes">Release Notes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></div></div></div>
 
 </div>
 </div>

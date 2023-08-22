@@ -535,35 +535,67 @@
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.4.2</h2>
+  <h2 id="section">5.0.0</h2>
 
-  <p>Release date: 30-05-2023</p>
+  <p>Release date: 21-08-2023</p>
 
-  <p>We are glad to announce that Visual NLP 😎 4.4.2 has been released. This is a small release with mostly bug fixes and minor improvements.</p>
+  <p>We are glad to announce that Visual NLP 😎 5.0.0 has been released! 
+This release comes with new models, bug fixes and more!</p>
 
-  <h4 id="fixes">Fixes</h4>
+  <h4 id="new-models">New Models</h4>
   <ul>
-    <li>ImageTextDetectorV2 initialization bug happening in some cluster environments is now fixed.</li>
-    <li>PdfToText and PdfToHocr now return document dimensions using the same data type(integer).</li>
-    <li>Remaining 2 vulnerabilities from release 4.4.1 in JAR package are now gone.</li>
-    <li>Fixed the problem causing the following exception in HocrToTextTable:  java.lang.UnsupportedOperationException.</li>
+    <li>New dit_base_finetuned_rvlcdip_opt: Dit based Visual Document Classification model. This is an optimized version of previous dit_base_finetuned_rvlcdip model. It has a reduced model size of 80MB(vs. 304 of original model), which reduces the memory footprint, also memory management within the model itself has been improved. It offers a speedup of 1.54x compared to the original implementation. The impact in accuracy is minimal, it achieves an accuracy of 91.55% over RVL-CDIP dataset compared to 91.83% of the original model.
+Setting up the model is straightforward,</li>
   </ul>
 
-  <p>New Features</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>doc_class = VisualDocumentClassifierV3() \
+    .pretrained("dit_base_finetuned_rvlcdip_opt", "en", "clinical/ocr") \
+    .setInputCols(["image"]) \
+    .setOutputCol("label")
+</code></pre></div>  </div>
+
+  <p>Use <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRVisualDocumentClassifierv3.ipynb">this notebook</a> as a reference.</p>
+
   <ul>
-    <li>Bounding boxes spawning multiple lines are now supported in PositionFinder!</li>
+    <li>New image_text_detector_mem_opt: memory optimized Craft Text Detection Model. This is new a model that improves the performance and memory consumption of the previous ImageTextDetector models. This is the same CRAFT architecture, where memory management has been improved, and refiner network has been merged into a single graph with the main network. This removes expensive data movement and reduces memory consumption.
+Setting up the model is straightforward,</li>
   </ul>
 
-  <p>original:
-<img src="/assets/images/ocr/position_finder_1.png" alt="image" />
-masked:
-<img src="/assets/images/ocr/position_finder_2.png" alt="image" /></p>
-
-  <p>Here for “Lockheed Martin” PositionFinder will return two bounding boxes. Remember that you can still link the two bounding boxes to the original entity by using the ‘chunk index’.</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>text_detector = ImageTextDetector.pretrained("image_text_detector_opt", "en", "clinical/ocr")
+text_detector.setInputCol("image")
+text_detector.setOutputCol("text_regions")
+</code></pre></div>  </div>
+  <p>Use <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/TextDetection/SparkOcrImageTextDetection.ipynb">this notebook</a> as a reference.</p>
 
   <ul>
-    <li>Support for Spark 3.4.</li>
-    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/java/build_env_setup.md">Guidelines for building Visual NLP into a Java app.</a></li>
+    <li>New lilt_rvl_cdip_296K: Lilt based Visual Document Classification model: Language-independent Layout Transformer (LiLT) model for document classification. The model was trained on RVL-CDIP dataset that consists of 400.000 grayscale images in 16 classes.</li>
+  </ul>
+
+  <p>Setting up the model is done like this,
+doc_class = VisualDocumentClassifierLilt() \
+    .pretrained(“lilt_rvl_cdip_296K”, “en”, “clinical/ocr”) \
+    .setInputCol(“hocr”) \
+    .setOutputCol(“label”)
+Use <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRVisualDocumentClassifierLiLT.ipynb">this notebook</a> as a reference.</p>
+
+  <h4 id="new-annotators">New Annotators</h4>
+  <ul>
+    <li>New DicomToPdf and DicomUpdatePdf annotators: the new annotators now make it possible to extract and update encapsulated PDF files within DICOM documents. This opens up opportunities to building de-identification pipelines for the purpose of anonymizing PDF documents that have been encapsulated(embedded) into Dicom files.</li>
+  </ul>
+
+  <h4 id="bug-fixes">Bug Fixes</h4>
+  <ul>
+    <li>ImageDrawAnnotations serialization issues were solved.</li>
+    <li>FormRelationExtraction is now compatible with the new Lilt Visual Ner models.</li>
+    <li>Pipeline serialization issues in Databricks affecting annotators like ImageHandwrittenDetector have been solved.</li>
+    <li>Pillow related errors in Colab setup have been fixed.</li>
+  </ul>
+
+  <h4 id="new-notebooks">New Notebooks</h4>
+  <ul>
+    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/jupyter/VisualDocumentClassifierTraining">VisualDocumentClassifierTraining</a>, notebooks for Visual Documents Classifier fine tuning have been updated to use the new Lilt based models.</li>
+    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Dicom/SparkOcrDeidentificationDicomWithEncapsulatedPDF.ipynb">SparkOcrDeidentificationDicomWithEncapsulatedPDF.ipynb</a>, learn how to use the new DicomToPdf and DicomUpdatePdf.</li>
+    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Dicom/SparkOcrDicomDeIdentificationV2Streaming.ipynb">SparkOcrDicomDeIdentificationV2Streaming.ipynb</a>, learn how to setup a Spark Structured Streaming pipeline for Dicom Deidentification.</li>
   </ul>
 
 </div>
@@ -573,7 +605,11 @@ masked:
 
 </div>
 <ul class="pagination owl-carousel pagination_big">
-    <li><a href="ocr_release_notes">4.4.2</a></li>
+    <li><a href="ocr_release_notes">5.0.0</a></li>
+    <li><a href="release_notes_5_0_0">5.0.0</a></li>
+    <li><a href="release_notes_4_4_4">4.4.4</a></li>
+    <li><a href="release_notes_4_4_3">4.4.3</a></li>
+    <li><a href="release_notes_4_4_2">4.4.2</a></li>
     <li><a href="release_notes_4_4_1">4.4.1</a></li>
     <li><a href="release_notes_4_4_0">4.4.0</a></li>
     <li><a href="release_notes_4_3_3">4.3.3</a></li>
@@ -616,7 +652,7 @@ masked:
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-05-30T00:00:00+00:00">May 30, 2023</time>
+      <time itemprop="dateModified" datetime="2023-08-21T00:00:00+00:00">Aug 21, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
