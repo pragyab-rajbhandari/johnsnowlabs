@@ -1865,12 +1865,12 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
     <li>Click “Upload” to upload the necessary JAR and wheel files.</li>
   </ul>
 
-  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/docs/assets/images/Workspace%20Packages.png" alt="WorkspacePackages" /></p>
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/c0117820-7e27-4f1b-a8c8-a99ee69c8857" alt="image" /></p>
 
   <ul>
     <li>For running licensed models, navigate to the “Apache Spark configurations” under the “Manage” section.</li>
     <li>Click on “New” to add a new configuration.</li>
-    <li>Add the following properties (at least):
+    <li>For licensed Healthcare models, Add the following properties:
       <ul>
         <li><code class="language-plaintext highlighter-rouge">spark.hadoop.fs.s3a.access.key</code> : <AWS_ACCESS_KEY_ID></AWS_ACCESS_KEY_ID></li>
         <li><code class="language-plaintext highlighter-rouge">spark.hadoop.fs.s3a.secret.key</code> : <AWS_SECRET_ACCESS_KEY></AWS_SECRET_ACCESS_KEY></li>
@@ -1879,7 +1879,7 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
     </li>
   </ul>
 
-  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/docs/assets/images/ApacheSparkConfiguration.png" alt="ApacheSparkConfiguration" /></p>
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/08968952-efd3-43cd-9bca-587532bb519c" alt="image" /></p>
 
   <p>After adding these properties, the Apache Spark configuration is ready.</p>
   <ul>
@@ -1890,6 +1890,26 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   </ul>
 
   <p>Now, all the necessary licenses and JARs are ready to be used. You can proceed to run your notebook.</p>
+
+  <p>For running OCR models, upload the following JAR and wheel files to the Workspace packages.
+<img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/1c3eadc7-2b12-4624-99b0-64a77966b6e2" alt="image" /></p>
+
+  <ul>
+    <li>For licensed OCR models, Add the following properties:
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">spark.hadoop.fs.s3a.access.key</code> : <AWS_ACCESS_KEY_ID></AWS_ACCESS_KEY_ID></li>
+        <li><code class="language-plaintext highlighter-rouge">spark.hadoop.fs.s3a.secret.key</code> : <AWS_SECRET_ACCESS_KEY></AWS_SECRET_ACCESS_KEY></li>
+        <li><code class="language-plaintext highlighter-rouge">spark.yarn.appMasterEnv.SPARK_OCR_LICENSE</code> : <SPARK_OCR_LICENSE></SPARK_OCR_LICENSE></li>
+        <li><code class="language-plaintext highlighter-rouge">spark.driver.extraJavaOptions</code> : -Dorg.fluentd.logger.sender.NullSender=org.fluentd.logger.sender.NullSender</li>
+        <li><code class="language-plaintext highlighter-rouge">spark.executor.extraJavaOptions</code> : -Dorg.fluentd.logger.sender.NullSender=org.fluentd.logger.sender.NullSender</li>
+        <li><code class="language-plaintext highlighter-rouge">spark.sql.legacy.allowUntypedScalaUDF</code> : True</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/a8caf1fd-5c76-47ed-94fd-bf3237f7417d" alt="image" /></p>
+
+  <p>Now, you can proceed to run your OCR models and notebooks.</p>
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
