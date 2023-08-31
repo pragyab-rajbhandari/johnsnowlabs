@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-08-30T15:23:45+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-08-31T13:33:39+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
 </subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial Deidentification Pipeline</title><link href="/2023/08/30/finpipe_deid_en.html" rel="alternate" type="text/html" title="Financial Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/finpipe_deid_en</id><content type="html" xml:base="/2023/08/30/finpipe_deid_en.html">## Description
 
 This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.
@@ -136,28 +136,32 @@ phone : 78 834 854
 - DeIdentificationModel
 - DeIdentificationModel
 - DeIdentificationModel
-- DeIdentificationModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="finance" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY, TITLE_CLASS, TICKER, STOCK_EXCHANGE, CFN, IRS Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;finpipe_deid&quot;, &quot;en&quot;, &quot;finance/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;CARGILL, INCORPORATED By: Pirkko Suominen Name: Pirkko Suominen Title: Director, Bio Technology Development Center, Date: 10/19/2011 BIOAMBER, SAS By: Jean-François Huc Name: Jean-François Huc Title: President Date: October 15, 2011 email : jeanfran@gmail.com phone : 18087339090 &quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;, Date: &amp;lt;EFFDATE&amp;gt; &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;Date: &amp;lt;EFFDATE&amp;gt; email : &amp;lt;EMAIL&amp;gt; phone : &amp;lt;PHONE&amp;gt; Masked with chars ------------------------------ [*****], [**********] By: [*************] Name: [*******************]: [**********************************] Center, Date: [********] [******], [*] By: [***************] Name: [**********************]: [*******]Date: [**************] email : [****************] phone : [********] Masked with fixed length chars ------------------------------ ****, **** By: **** Name: ****: ****, Date: **** ****, **** By: **** Name: ****: ****Date: **** email : **** phone : **** Obfuscated ------------------------------ MGT Trust Company, LLC., Clarus llc. By: Benjamin Dean Name: John Snow Labs Inc: Sales Manager, Date: 03/08/2025 Clarus llc., SESA CO. By: JAMES TURNER Name: MGT Trust Company, LLC.: Business ManagerDate: 11/7/2016 email : Tyrus@google.com phone : 78 834 854 Model Information Model Name: finpipe_deid Type: pipeline Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 475.2 MB Included Models DocumentAssembler SentenceDetector TokenizerModel BertEmbeddings FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Legal Deidentification Pipeline</title><link href="/2023/08/30/legpipe_deid_en.html" rel="alternate" type="text/html" title="Legal Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/legpipe_deid_en</id><content type="html" xml:base="/2023/08/30/legpipe_deid_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DeIdentificationModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="finance" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY, TITLE_CLASS, TICKER, STOCK_EXCHANGE, CFN, IRS Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;finpipe_deid&quot;, &quot;en&quot;, &quot;finance/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;CARGILL, INCORPORATED By: Pirkko Suominen Name: Pirkko Suominen Title: Director, Bio Technology Development Center, Date: 10/19/2011 BIOAMBER, SAS By: Jean-François Huc Name: Jean-François Huc Title: President Date: October 15, 2011 email : jeanfran@gmail.com phone : 18087339090 &quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;, Date: &amp;lt;EFFDATE&amp;gt; &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;Date: &amp;lt;EFFDATE&amp;gt; email : &amp;lt;EMAIL&amp;gt; phone : &amp;lt;PHONE&amp;gt; Masked with chars ------------------------------ [*****], [**********] By: [*************] Name: [*******************]: [**********************************] Center, Date: [********] [******], [*] By: [***************] Name: [**********************]: [*******]Date: [**************] email : [****************] phone : [********] Masked with fixed length chars ------------------------------ ****, **** By: **** Name: ****: ****, Date: **** ****, **** By: **** Name: ****: ****Date: **** email : **** phone : **** Obfuscated ------------------------------ MGT Trust Company, LLC., Clarus llc. By: Benjamin Dean Name: John Snow Labs Inc: Sales Manager, Date: 03/08/2025 Clarus llc., SESA CO. By: JAMES TURNER Name: MGT Trust Company, LLC.: Business ManagerDate: 11/7/2016 email : Tyrus@google.com phone : 78 834 854 Model Information Model Name: finpipe_deid Type: pipeline Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 475.2 MB Included Models DocumentAssembler SentenceDetector TokenizerModel BertEmbeddings FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Legal Deidentification Pipeline</title><link href="/2023/08/30/legpipe_deid_en.html" rel="alternate" type="text/html" title="Legal Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/legpipe_deid_en</id><content type="html" xml:base="/2023/08/30/legpipe_deid_en.html">## Description
 
-&lt;p&gt;This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee 100 % accuracy.&lt;/p&gt;
+This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee 100 % accuracy.
 
-&lt;p&gt;You can carry out both masking and obfuscation with this pipeline, on the following entities: 
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ALIAS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORG&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PERSON&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ADDRESS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STREET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZIP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTRY&lt;/code&gt;&lt;/p&gt;
+You can carry out both masking and obfuscation with this pipeline, on the following entities: 
+`ALIAS`, `EMAIL`, `PHONE`, `PROFESSION`, `ORG`, `DATE`, `PERSON`, `ADDRESS`, `STREET`, `CITY`, `STATE`, `ZIP`, `COUNTRY`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.0_1693403422632.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.0_1693403422632.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.0_1693403422632.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.0_1693403422632.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legpipe_deid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page.
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline = PretrainedPipeline(&quot;legpipe_deid&quot;, &quot;en&quot;, &quot;legal/models&quot;)
+
+result = deid_pipeline.annotate(&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page.
 
 Source: PF HOSPITALITY GROUP INC., 9/23/2015
 
@@ -169,78 +173,79 @@ Source: PF HOSPITALITY GROUP INC., 9/23/2015
 
 1.3. Our Limitations and Our Reserved Rights. The rights granted to you under this Agreement are not exclusive.sed Business.
 
-Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Masked with entity labels
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-&amp;lt;PARTY&amp;gt;. &amp;lt;DOC&amp;gt; This &amp;lt;DOC&amp;gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &amp;lt;ALIAS&amp;gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between &amp;lt;PARTY&amp;gt; a Florida corporation, and the individual or legal entity identified on the cover page.
-Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt;
+```bash
+Masked with entity labels
+------------------------------
+&lt;PARTY&gt;. &lt;DOC&gt; This &lt;DOC&gt; (the &lt;ALIAS&gt;) is entered into as of the Agreement Date shown on the cover page between &lt;PARTY&gt; a Florida corporation, and the individual or legal entity identified on the cover page.
+Source: &lt;PARTY&gt;., &lt;DATE&gt;
 
 
 1.
-&amp;lt;PARTY&amp;gt; 1.1.
-&amp;lt;PARTY&amp;gt;.
-1.1.1 We grant you the right, and you accept the obligation, to use the &amp;lt;PARTY&amp;gt; and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &amp;lt;ALIAS&amp;gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
-Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt;
+&lt;PARTY&gt; 1.1.
+&lt;PARTY&gt;.
+1.1.1 We grant you the right, and you accept the obligation, to use the &lt;PARTY&gt; and the System to operate one Restaurant (the &lt;ALIAS&gt;) at the Premises, in accordance with the terms of this Agreement.
+Source: &lt;PARTY&gt;., &lt;DATE&gt;
 
 
 1.3.
-Our &amp;lt;PARTY&amp;gt; and &amp;lt;PARTY&amp;gt;.
+Our &lt;PARTY&gt; and &lt;PARTY&gt;.
 The rights granted to you under this Agreement are not exclusive.sed Business.
-Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt;
+Source: &lt;PARTY&gt;., &lt;DATE&gt;
 
 Masked with chars
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;************************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; This &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*********&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*************************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; a Florida corporation, and the individual or legal entity identified on the cover page.
-Source: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;., &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+------------------------------
+[************************]. [*****************] This [*****************] (the [*********]) is entered into as of the Agreement Date shown on the cover page between [*************************] a Florida corporation, and the individual or legal entity identified on the cover page.
+Source: [**********************]., [*******]
 
 
 1.
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 1.1.
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-1.1.1 We grant you the right, and you accept the obligation, to use the &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;***************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
-Source: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;., &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+[************] 1.1.
+[****************].
+1.1.1 We grant you the right, and you accept the obligation, to use the [***************] and the System to operate one Restaurant (the [*******************]) at the Premises, in accordance with the terms of this Agreement.
+Source: [**********************]., [*******]
 
 
 1.3.
-Our &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*********&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; and &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Our [*********] and [*****************].
 The rights granted to you under this Agreement are not exclusive.sed Business.
-Source: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;., &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+Source: [**********************]., [*******]
 
 Masked with fixed length chars
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; This &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; a Florida corporation, and the individual or legal entity identified on the cover page.
-Source: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;., &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+------------------------------
+****. **** This **** (the ****) is entered into as of the Agreement Date shown on the cover page between **** a Florida corporation, and the individual or legal entity identified on the cover page.
+Source: ****., ****
 
 
 1.
-&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; 1.1.
-&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-1.1.1 We grant you the right, and you accept the obligation, to use the &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
-Source: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;., &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+**** 1.1.
+****.
+1.1.1 We grant you the right, and you accept the obligation, to use the **** and the System to operate one Restaurant (the ****) at the Premises, in accordance with the terms of this Agreement.
+Source: ****., ****
 
 
 1.3.
-Our &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; and &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Our **** and ****.
 The rights granted to you under this Agreement are not exclusive.sed Business.
-Source: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;., &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+Source: ****., ****
 
 Obfuscated
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-SESA CO.. Estate Document This Estate Document &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;s2&quot;&gt;&quot;Contract&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page.
+------------------------------
+SESA CO.. Estate Document This Estate Document (the (the &quot;Contract&quot;)) is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page.
 Source: SESA CO.., 11/7/2016
 
 
 1.
 SESA CO. 1.1.
 Clarus llc..
-1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the&lt;span class=&quot;s2&quot;&gt;&quot; Agreement&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
+1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant (the (the&quot; Agreement&quot;)) at the Premises, in accordance with the terms of this Agreement.
 Source: SESA CO.., 11/7/2016
 
 
@@ -249,69 +254,45 @@ Our MGT Trust Company, LLC. and John Snow Labs Inc.
 The rights granted to you under this Agreement are not exclusive.sed Business.
 Source: SESA CO.., 11/7/2016
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legpipe_deid&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;503.2 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legpipe_deid|
+|Type:|pipeline|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|503.2 MB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetector&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;DateMatcher&lt;/li&gt;
-  &lt;li&gt;Date2Chunk&lt;/li&gt;
-  &lt;li&gt;RoBertaEmbeddings&lt;/li&gt;
-  &lt;li&gt;LegalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;LegalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;LegalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="legal" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee 100 % accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;legpipe_deid&quot;, &quot;en&quot;, &quot;legal/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1. RIGHTS GRANTED 1.1. Grant of Franchise. 1.1.1 We grant you the right, and you accept the obligation, to use the Proprietary Marks and the System to operate one Restaurant (the &quot;Franchised Business&quot;) at the Premises, in accordance with the terms of this Agreement. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1.3. Our Limitations and Our Reserved Rights. The rights granted to you under this Agreement are not exclusive.sed Business. Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;. &amp;lt;DOC&amp;gt; This &amp;lt;DOC&amp;gt; (the &amp;lt;ALIAS&amp;gt;) is entered into as of the Agreement Date shown on the cover page between &amp;lt;PARTY&amp;gt; a Florida corporation, and the individual or legal entity identified on the cover page. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1. &amp;lt;PARTY&amp;gt; 1.1. &amp;lt;PARTY&amp;gt;. 1.1.1 We grant you the right, and you accept the obligation, to use the &amp;lt;PARTY&amp;gt; and the System to operate one Restaurant (the &amp;lt;ALIAS&amp;gt;) at the Premises, in accordance with the terms of this Agreement. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1.3. Our &amp;lt;PARTY&amp;gt; and &amp;lt;PARTY&amp;gt;. The rights granted to you under this Agreement are not exclusive.sed Business. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; Masked with chars ------------------------------ [************************]. [*****************] This [*****************] (the [*********]) is entered into as of the Agreement Date shown on the cover page between [*************************] a Florida corporation, and the individual or legal entity identified on the cover page. Source: [**********************]., [*******] 1. [************] 1.1. [****************]. 1.1.1 We grant you the right, and you accept the obligation, to use the [***************] and the System to operate one Restaurant (the [*******************]) at the Premises, in accordance with the terms of this Agreement. Source: [**********************]., [*******] 1.3. Our [*********] and [*****************]. The rights granted to you under this Agreement are not exclusive.sed Business. Source: [**********************]., [*******] Masked with fixed length chars ------------------------------ ****. **** This **** (the ****) is entered into as of the Agreement Date shown on the cover page between **** a Florida corporation, and the individual or legal entity identified on the cover page. Source: ****., **** 1. **** 1.1. ****. 1.1.1 We grant you the right, and you accept the obligation, to use the **** and the System to operate one Restaurant (the ****) at the Premises, in accordance with the terms of this Agreement. Source: ****., **** 1.3. Our **** and ****. The rights granted to you under this Agreement are not exclusive.sed Business. Source: ****., **** Obfuscated ------------------------------ SESA CO.. Estate Document This Estate Document (the (the &quot;Contract&quot;)) is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page. Source: SESA CO.., 11/7/2016 1. SESA CO. 1.1. Clarus llc.. 1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant (the (the&quot; Agreement&quot;)) at the Premises, in accordance with the terms of this Agreement. Source: SESA CO.., 11/7/2016 1.3. Our MGT Trust Company, LLC. and John Snow Labs Inc. The rights granted to you under this Agreement are not exclusive.sed Business. Source: SESA CO.., 11/7/2016 Model Information Model Name: legpipe_deid Type: pipeline Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 503.2 MB Included Models DocumentAssembler SentenceDetector TokenizerModel DateMatcher Date2Chunk RoBertaEmbeddings LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Financial Deidentification Pipeline</title><link href="/2023/08/30/finpipe_deid_en.html" rel="alternate" type="text/html" title="Financial Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/finpipe_deid_en</id><content type="html" xml:base="/2023/08/30/finpipe_deid_en.html">## Description
+- DocumentAssembler
+- SentenceDetector
+- TokenizerModel
+- DateMatcher
+- Date2Chunk
+- RoBertaEmbeddings
+- LegalNerModel
+- NerConverterInternalModel
+- LegalNerModel
+- NerConverterInternalModel
+- LegalNerModel
+- NerConverterInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ChunkMergeModel
+- DeIdentificationModel
+- DeIdentificationModel
+- DeIdentificationModel
+- DeIdentificationModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="legal" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee 100 % accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;legpipe_deid&quot;, &quot;en&quot;, &quot;legal/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1. RIGHTS GRANTED 1.1. Grant of Franchise. 1.1.1 We grant you the right, and you accept the obligation, to use the Proprietary Marks and the System to operate one Restaurant (the &quot;Franchised Business&quot;) at the Premises, in accordance with the terms of this Agreement. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1.3. Our Limitations and Our Reserved Rights. The rights granted to you under this Agreement are not exclusive.sed Business. Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;. &amp;lt;DOC&amp;gt; This &amp;lt;DOC&amp;gt; (the &amp;lt;ALIAS&amp;gt;) is entered into as of the Agreement Date shown on the cover page between &amp;lt;PARTY&amp;gt; a Florida corporation, and the individual or legal entity identified on the cover page. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1. &amp;lt;PARTY&amp;gt; 1.1. &amp;lt;PARTY&amp;gt;. 1.1.1 We grant you the right, and you accept the obligation, to use the &amp;lt;PARTY&amp;gt; and the System to operate one Restaurant (the &amp;lt;ALIAS&amp;gt;) at the Premises, in accordance with the terms of this Agreement. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1.3. Our &amp;lt;PARTY&amp;gt; and &amp;lt;PARTY&amp;gt;. The rights granted to you under this Agreement are not exclusive.sed Business. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; Masked with chars ------------------------------ [************************]. [*****************] This [*****************] (the [*********]) is entered into as of the Agreement Date shown on the cover page between [*************************] a Florida corporation, and the individual or legal entity identified on the cover page. Source: [**********************]., [*******] 1. [************] 1.1. [****************]. 1.1.1 We grant you the right, and you accept the obligation, to use the [***************] and the System to operate one Restaurant (the [*******************]) at the Premises, in accordance with the terms of this Agreement. Source: [**********************]., [*******] 1.3. Our [*********] and [*****************]. The rights granted to you under this Agreement are not exclusive.sed Business. Source: [**********************]., [*******] Masked with fixed length chars ------------------------------ ****. **** This **** (the ****) is entered into as of the Agreement Date shown on the cover page between **** a Florida corporation, and the individual or legal entity identified on the cover page. Source: ****., **** 1. **** 1.1. ****. 1.1.1 We grant you the right, and you accept the obligation, to use the **** and the System to operate one Restaurant (the ****) at the Premises, in accordance with the terms of this Agreement. Source: ****., **** 1.3. Our **** and ****. The rights granted to you under this Agreement are not exclusive.sed Business. Source: ****., **** Obfuscated ------------------------------ SESA CO.. Estate Document This Estate Document (the (the &quot;Contract&quot;)) is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page. Source: SESA CO.., 11/7/2016 1. SESA CO. 1.1. Clarus llc.. 1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant (the (the&quot; Agreement&quot;)) at the Premises, in accordance with the terms of this Agreement. Source: SESA CO.., 11/7/2016 1.3. Our MGT Trust Company, LLC. and John Snow Labs Inc. The rights granted to you under this Agreement are not exclusive.sed Business. Source: SESA CO.., 11/7/2016 Model Information Model Name: legpipe_deid Type: pipeline Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 503.2 MB Included Models DocumentAssembler SentenceDetector TokenizerModel DateMatcher Date2Chunk RoBertaEmbeddings LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Financial Deidentification Pipeline</title><link href="/2023/08/30/finpipe_deid_en.html" rel="alternate" type="text/html" title="Financial Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/finpipe_deid_en</id><content type="html" xml:base="/2023/08/30/finpipe_deid_en.html">## Description
 
 This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.
 
@@ -448,28 +429,32 @@ phone : 78 834 854
 - DeIdentificationModel
 - DeIdentificationModel
 - DeIdentificationModel
-- DeIdentificationModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="finance" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY, TITLE_CLASS, TICKER, STOCK_EXCHANGE, CFN, IRS Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;finpipe_deid&quot;, &quot;en&quot;, &quot;finance/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;CARGILL, INCORPORATED By: Pirkko Suominen Name: Pirkko Suominen Title: Director, Bio Technology Development Center, Date: 10/19/2011 BIOAMBER, SAS By: Jean-François Huc Name: Jean-François Huc Title: President Date: October 15, 2011 email : jeanfran@gmail.com phone : 18087339090 &quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;, Date: &amp;lt;EFFDATE&amp;gt; &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;Date: &amp;lt;EFFDATE&amp;gt; email : &amp;lt;EMAIL&amp;gt; phone : &amp;lt;PHONE&amp;gt; Masked with chars ------------------------------ [*****], [**********] By: [*************] Name: [*******************]: [**********************************] Center, Date: [********] [******], [*] By: [***************] Name: [**********************]: [*******]Date: [**************] email : [****************] phone : [********] Masked with fixed length chars ------------------------------ ****, **** By: **** Name: ****: ****, Date: **** ****, **** By: **** Name: ****: ****Date: **** email : **** phone : **** Obfuscated ------------------------------ MGT Trust Company, LLC., Clarus llc. By: Benjamin Dean Name: John Snow Labs Inc: Sales Manager, Date: 03/08/2025 Clarus llc., SESA CO. By: JAMES TURNER Name: MGT Trust Company, LLC.: Business ManagerDate: 11/7/2016 email : Tyrus@google.com phone : 78 834 854 Model Information Model Name: finpipe_deid Type: pipeline Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 474.8 MB Included Models DocumentAssembler SentenceDetector TokenizerModel BertEmbeddings FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Legal Deidentification Pipeline</title><link href="/2023/08/30/legpipe_deid_en.html" rel="alternate" type="text/html" title="Legal Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/legpipe_deid_en</id><content type="html" xml:base="/2023/08/30/legpipe_deid_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DeIdentificationModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="finance" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY, TITLE_CLASS, TICKER, STOCK_EXCHANGE, CFN, IRS Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;finpipe_deid&quot;, &quot;en&quot;, &quot;finance/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;CARGILL, INCORPORATED By: Pirkko Suominen Name: Pirkko Suominen Title: Director, Bio Technology Development Center, Date: 10/19/2011 BIOAMBER, SAS By: Jean-François Huc Name: Jean-François Huc Title: President Date: October 15, 2011 email : jeanfran@gmail.com phone : 18087339090 &quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;, Date: &amp;lt;EFFDATE&amp;gt; &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;Date: &amp;lt;EFFDATE&amp;gt; email : &amp;lt;EMAIL&amp;gt; phone : &amp;lt;PHONE&amp;gt; Masked with chars ------------------------------ [*****], [**********] By: [*************] Name: [*******************]: [**********************************] Center, Date: [********] [******], [*] By: [***************] Name: [**********************]: [*******]Date: [**************] email : [****************] phone : [********] Masked with fixed length chars ------------------------------ ****, **** By: **** Name: ****: ****, Date: **** ****, **** By: **** Name: ****: ****Date: **** email : **** phone : **** Obfuscated ------------------------------ MGT Trust Company, LLC., Clarus llc. By: Benjamin Dean Name: John Snow Labs Inc: Sales Manager, Date: 03/08/2025 Clarus llc., SESA CO. By: JAMES TURNER Name: MGT Trust Company, LLC.: Business ManagerDate: 11/7/2016 email : Tyrus@google.com phone : 78 834 854 Model Information Model Name: finpipe_deid Type: pipeline Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 474.8 MB Included Models DocumentAssembler SentenceDetector TokenizerModel BertEmbeddings FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Legal Deidentification Pipeline</title><link href="/2023/08/30/legpipe_deid_en.html" rel="alternate" type="text/html" title="Legal Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/legpipe_deid_en</id><content type="html" xml:base="/2023/08/30/legpipe_deid_en.html">## Description
 
-&lt;p&gt;This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.&lt;/p&gt;
+This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.
 
-&lt;p&gt;You can carry out both masking and obfuscation with this pipeline, on the following entities: 
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ALIAS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORG&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PERSON&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ADDRESS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STREET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZIP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTRY&lt;/code&gt;&lt;/p&gt;
+You can carry out both masking and obfuscation with this pipeline, on the following entities: 
+`ALIAS`, `EMAIL`, `PHONE`, `PROFESSION`, `ORG`, `DATE`, `PERSON`, `ADDRESS`, `STREET`, `CITY`, `STATE`, `ZIP`, `COUNTRY`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.2_1693407801182.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.2_1693407801182.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.2_1693407801182.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.2_1693407801182.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legpipe_deid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page.
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline = PretrainedPipeline(&quot;legpipe_deid&quot;, &quot;en&quot;, &quot;legal/models&quot;)
+
+result = deid_pipeline.annotate(&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page.
 
 Source: PF HOSPITALITY GROUP INC., 9/23/2015
 
@@ -481,78 +466,79 @@ Source: PF HOSPITALITY GROUP INC., 9/23/2015
 
 1.3. Our Limitations and Our Reserved Rights. The rights granted to you under this Agreement are not exclusive.sed Business.
 
-Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Masked with entity labels
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-&amp;lt;PARTY&amp;gt;. &amp;lt;DOC&amp;gt; This &amp;lt;DOC&amp;gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &amp;lt;ALIAS&amp;gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between &amp;lt;PARTY&amp;gt; a Florida corporation, and the individual or legal entity identified on the cover page.
-Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt;
+```bash
+Masked with entity labels
+------------------------------
+&lt;PARTY&gt;. &lt;DOC&gt; This &lt;DOC&gt; (the &lt;ALIAS&gt;) is entered into as of the Agreement Date shown on the cover page between &lt;PARTY&gt; a Florida corporation, and the individual or legal entity identified on the cover page.
+Source: &lt;PARTY&gt;., &lt;DATE&gt;
 
 
 1.
-&amp;lt;PARTY&amp;gt; 1.1.
-&amp;lt;PARTY&amp;gt;.
-1.1.1 We grant you the right, and you accept the obligation, to use the &amp;lt;PARTY&amp;gt; and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &amp;lt;ALIAS&amp;gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
-Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt;
+&lt;PARTY&gt; 1.1.
+&lt;PARTY&gt;.
+1.1.1 We grant you the right, and you accept the obligation, to use the &lt;PARTY&gt; and the System to operate one Restaurant (the &lt;ALIAS&gt;) at the Premises, in accordance with the terms of this Agreement.
+Source: &lt;PARTY&gt;., &lt;DATE&gt;
 
 
 1.3.
-Our &amp;lt;PARTY&amp;gt; and &amp;lt;PARTY&amp;gt;.
+Our &lt;PARTY&gt; and &lt;PARTY&gt;.
 The rights granted to you under this Agreement are not exclusive.sed Business.
-Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt;
+Source: &lt;PARTY&gt;., &lt;DATE&gt;
 
 Masked with chars
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;************************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; This &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*********&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*************************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; a Florida corporation, and the individual or legal entity identified on the cover page.
-Source: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;., &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+------------------------------
+[************************]. [*****************] This [*****************] (the [*********]) is entered into as of the Agreement Date shown on the cover page between [*************************] a Florida corporation, and the individual or legal entity identified on the cover page.
+Source: [**********************]., [*******]
 
 
 1.
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 1.1.
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-1.1.1 We grant you the right, and you accept the obligation, to use the &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;***************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
-Source: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;., &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+[************] 1.1.
+[****************].
+1.1.1 We grant you the right, and you accept the obligation, to use the [***************] and the System to operate one Restaurant (the [*******************]) at the Premises, in accordance with the terms of this Agreement.
+Source: [**********************]., [*******]
 
 
 1.3.
-Our &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*********&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; and &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Our [*********] and [*****************].
 The rights granted to you under this Agreement are not exclusive.sed Business.
-Source: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;., &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+Source: [**********************]., [*******]
 
 Masked with fixed length chars
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; This &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; a Florida corporation, and the individual or legal entity identified on the cover page.
-Source: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;., &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+------------------------------
+****. **** This **** (the ****) is entered into as of the Agreement Date shown on the cover page between **** a Florida corporation, and the individual or legal entity identified on the cover page.
+Source: ****., ****
 
 
 1.
-&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; 1.1.
-&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-1.1.1 We grant you the right, and you accept the obligation, to use the &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
-Source: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;., &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+**** 1.1.
+****.
+1.1.1 We grant you the right, and you accept the obligation, to use the **** and the System to operate one Restaurant (the ****) at the Premises, in accordance with the terms of this Agreement.
+Source: ****., ****
 
 
 1.3.
-Our &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; and &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Our **** and ****.
 The rights granted to you under this Agreement are not exclusive.sed Business.
-Source: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;., &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+Source: ****., ****
 
 Obfuscated
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-SESA CO.. Estate Document This Estate Document &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;s2&quot;&gt;&quot;Contract&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page.
+------------------------------
+SESA CO.. Estate Document This Estate Document (the (the &quot;Contract&quot;)) is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page.
 Source: SESA CO.., 11/7/2016
 
 
 1.
 SESA CO. 1.1.
 Clarus llc..
-1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the&lt;span class=&quot;s2&quot;&gt;&quot; Agreement&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
+1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant (the (the&quot; Agreement&quot;)) at the Premises, in accordance with the terms of this Agreement.
 Source: SESA CO.., 11/7/2016
 
 
@@ -561,69 +547,45 @@ Our MGT Trust Company, LLC. and John Snow Labs Inc.
 The rights granted to you under this Agreement are not exclusive.sed Business.
 Source: SESA CO.., 11/7/2016
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legpipe_deid&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;502.9 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legpipe_deid|
+|Type:|pipeline|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|502.9 MB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetector&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;DateMatcher&lt;/li&gt;
-  &lt;li&gt;Date2Chunk&lt;/li&gt;
-  &lt;li&gt;RoBertaEmbeddings&lt;/li&gt;
-  &lt;li&gt;LegalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;LegalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;LegalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="legal" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;legpipe_deid&quot;, &quot;en&quot;, &quot;legal/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1. RIGHTS GRANTED 1.1. Grant of Franchise. 1.1.1 We grant you the right, and you accept the obligation, to use the Proprietary Marks and the System to operate one Restaurant (the &quot;Franchised Business&quot;) at the Premises, in accordance with the terms of this Agreement. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1.3. Our Limitations and Our Reserved Rights. The rights granted to you under this Agreement are not exclusive.sed Business. Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;. &amp;lt;DOC&amp;gt; This &amp;lt;DOC&amp;gt; (the &amp;lt;ALIAS&amp;gt;) is entered into as of the Agreement Date shown on the cover page between &amp;lt;PARTY&amp;gt; a Florida corporation, and the individual or legal entity identified on the cover page. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1. &amp;lt;PARTY&amp;gt; 1.1. &amp;lt;PARTY&amp;gt;. 1.1.1 We grant you the right, and you accept the obligation, to use the &amp;lt;PARTY&amp;gt; and the System to operate one Restaurant (the &amp;lt;ALIAS&amp;gt;) at the Premises, in accordance with the terms of this Agreement. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1.3. Our &amp;lt;PARTY&amp;gt; and &amp;lt;PARTY&amp;gt;. The rights granted to you under this Agreement are not exclusive.sed Business. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; Masked with chars ------------------------------ [************************]. [*****************] This [*****************] (the [*********]) is entered into as of the Agreement Date shown on the cover page between [*************************] a Florida corporation, and the individual or legal entity identified on the cover page. Source: [**********************]., [*******] 1. [************] 1.1. [****************]. 1.1.1 We grant you the right, and you accept the obligation, to use the [***************] and the System to operate one Restaurant (the [*******************]) at the Premises, in accordance with the terms of this Agreement. Source: [**********************]., [*******] 1.3. Our [*********] and [*****************]. The rights granted to you under this Agreement are not exclusive.sed Business. Source: [**********************]., [*******] Masked with fixed length chars ------------------------------ ****. **** This **** (the ****) is entered into as of the Agreement Date shown on the cover page between **** a Florida corporation, and the individual or legal entity identified on the cover page. Source: ****., **** 1. **** 1.1. ****. 1.1.1 We grant you the right, and you accept the obligation, to use the **** and the System to operate one Restaurant (the ****) at the Premises, in accordance with the terms of this Agreement. Source: ****., **** 1.3. Our **** and ****. The rights granted to you under this Agreement are not exclusive.sed Business. Source: ****., **** Obfuscated ------------------------------ SESA CO.. Estate Document This Estate Document (the (the &quot;Contract&quot;)) is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page. Source: SESA CO.., 11/7/2016 1. SESA CO. 1.1. Clarus llc.. 1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant (the (the&quot; Agreement&quot;)) at the Premises, in accordance with the terms of this Agreement. Source: SESA CO.., 11/7/2016 1.3. Our MGT Trust Company, LLC. and John Snow Labs Inc. The rights granted to you under this Agreement are not exclusive.sed Business. Source: SESA CO.., 11/7/2016 Model Information Model Name: legpipe_deid Type: pipeline Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 502.9 MB Included Models DocumentAssembler SentenceDetector TokenizerModel DateMatcher Date2Chunk RoBertaEmbeddings LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Financial Deidentification Pipeline</title><link href="/2023/08/30/finpipe_deid_en.html" rel="alternate" type="text/html" title="Financial Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/finpipe_deid_en</id><content type="html" xml:base="/2023/08/30/finpipe_deid_en.html">## Description
+- DocumentAssembler
+- SentenceDetector
+- TokenizerModel
+- DateMatcher
+- Date2Chunk
+- RoBertaEmbeddings
+- LegalNerModel
+- NerConverterInternalModel
+- LegalNerModel
+- NerConverterInternalModel
+- LegalNerModel
+- NerConverterInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ChunkMergeModel
+- DeIdentificationModel
+- DeIdentificationModel
+- DeIdentificationModel
+- DeIdentificationModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="legal" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;legpipe_deid&quot;, &quot;en&quot;, &quot;legal/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1. RIGHTS GRANTED 1.1. Grant of Franchise. 1.1.1 We grant you the right, and you accept the obligation, to use the Proprietary Marks and the System to operate one Restaurant (the &quot;Franchised Business&quot;) at the Premises, in accordance with the terms of this Agreement. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1.3. Our Limitations and Our Reserved Rights. The rights granted to you under this Agreement are not exclusive.sed Business. Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;. &amp;lt;DOC&amp;gt; This &amp;lt;DOC&amp;gt; (the &amp;lt;ALIAS&amp;gt;) is entered into as of the Agreement Date shown on the cover page between &amp;lt;PARTY&amp;gt; a Florida corporation, and the individual or legal entity identified on the cover page. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1. &amp;lt;PARTY&amp;gt; 1.1. &amp;lt;PARTY&amp;gt;. 1.1.1 We grant you the right, and you accept the obligation, to use the &amp;lt;PARTY&amp;gt; and the System to operate one Restaurant (the &amp;lt;ALIAS&amp;gt;) at the Premises, in accordance with the terms of this Agreement. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1.3. Our &amp;lt;PARTY&amp;gt; and &amp;lt;PARTY&amp;gt;. The rights granted to you under this Agreement are not exclusive.sed Business. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; Masked with chars ------------------------------ [************************]. [*****************] This [*****************] (the [*********]) is entered into as of the Agreement Date shown on the cover page between [*************************] a Florida corporation, and the individual or legal entity identified on the cover page. Source: [**********************]., [*******] 1. [************] 1.1. [****************]. 1.1.1 We grant you the right, and you accept the obligation, to use the [***************] and the System to operate one Restaurant (the [*******************]) at the Premises, in accordance with the terms of this Agreement. Source: [**********************]., [*******] 1.3. Our [*********] and [*****************]. The rights granted to you under this Agreement are not exclusive.sed Business. Source: [**********************]., [*******] Masked with fixed length chars ------------------------------ ****. **** This **** (the ****) is entered into as of the Agreement Date shown on the cover page between **** a Florida corporation, and the individual or legal entity identified on the cover page. Source: ****., **** 1. **** 1.1. ****. 1.1.1 We grant you the right, and you accept the obligation, to use the **** and the System to operate one Restaurant (the ****) at the Premises, in accordance with the terms of this Agreement. Source: ****., **** 1.3. Our **** and ****. The rights granted to you under this Agreement are not exclusive.sed Business. Source: ****., **** Obfuscated ------------------------------ SESA CO.. Estate Document This Estate Document (the (the &quot;Contract&quot;)) is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page. Source: SESA CO.., 11/7/2016 1. SESA CO. 1.1. Clarus llc.. 1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant (the (the&quot; Agreement&quot;)) at the Premises, in accordance with the terms of this Agreement. Source: SESA CO.., 11/7/2016 1.3. Our MGT Trust Company, LLC. and John Snow Labs Inc. The rights granted to you under this Agreement are not exclusive.sed Business. Source: SESA CO.., 11/7/2016 Model Information Model Name: legpipe_deid Type: pipeline Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 502.9 MB Included Models DocumentAssembler SentenceDetector TokenizerModel DateMatcher Date2Chunk RoBertaEmbeddings LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Financial Deidentification Pipeline</title><link href="/2023/08/30/finpipe_deid_en.html" rel="alternate" type="text/html" title="Financial Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/finpipe_deid_en</id><content type="html" xml:base="/2023/08/30/finpipe_deid_en.html">## Description
 
 This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.
 
@@ -760,28 +722,32 @@ phone : 78 834 854
 - DeIdentificationModel
 - DeIdentificationModel
 - DeIdentificationModel
-- DeIdentificationModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="finance" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY, TITLE_CLASS, TICKER, STOCK_EXCHANGE, CFN, IRS Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;finpipe_deid&quot;, &quot;en&quot;, &quot;finance/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;CARGILL, INCORPORATED By: Pirkko Suominen Name: Pirkko Suominen Title: Director, Bio Technology Development Center, Date: 10/19/2011 BIOAMBER, SAS By: Jean-François Huc Name: Jean-François Huc Title: President Date: October 15, 2011 email : jeanfran@gmail.com phone : 18087339090 &quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;, Date: &amp;lt;EFFDATE&amp;gt; &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;Date: &amp;lt;EFFDATE&amp;gt; email : &amp;lt;EMAIL&amp;gt; phone : &amp;lt;PHONE&amp;gt; Masked with chars ------------------------------ [*****], [**********] By: [*************] Name: [*******************]: [**********************************] Center, Date: [********] [******], [*] By: [***************] Name: [**********************]: [*******]Date: [**************] email : [****************] phone : [********] Masked with fixed length chars ------------------------------ ****, **** By: **** Name: ****: ****, Date: **** ****, **** By: **** Name: ****: ****Date: **** email : **** phone : **** Obfuscated ------------------------------ MGT Trust Company, LLC., Clarus llc. By: Benjamin Dean Name: John Snow Labs Inc: Sales Manager, Date: 03/08/2025 Clarus llc., SESA CO. By: JAMES TURNER Name: MGT Trust Company, LLC.: Business ManagerDate: 11/7/2016 email : Tyrus@google.com phone : 78 834 854 Model Information Model Name: finpipe_deid Type: pipeline Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 475.2 MB Included Models DocumentAssembler SentenceDetector TokenizerModel BertEmbeddings FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Legal Deidentification Pipeline</title><link href="/2023/08/30/legpipe_deid_en.html" rel="alternate" type="text/html" title="Legal Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/legpipe_deid_en</id><content type="html" xml:base="/2023/08/30/legpipe_deid_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DeIdentificationModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="finance" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY, TITLE_CLASS, TICKER, STOCK_EXCHANGE, CFN, IRS Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;finpipe_deid&quot;, &quot;en&quot;, &quot;finance/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;CARGILL, INCORPORATED By: Pirkko Suominen Name: Pirkko Suominen Title: Director, Bio Technology Development Center, Date: 10/19/2011 BIOAMBER, SAS By: Jean-François Huc Name: Jean-François Huc Title: President Date: October 15, 2011 email : jeanfran@gmail.com phone : 18087339090 &quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;, Date: &amp;lt;EFFDATE&amp;gt; &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;Date: &amp;lt;EFFDATE&amp;gt; email : &amp;lt;EMAIL&amp;gt; phone : &amp;lt;PHONE&amp;gt; Masked with chars ------------------------------ [*****], [**********] By: [*************] Name: [*******************]: [**********************************] Center, Date: [********] [******], [*] By: [***************] Name: [**********************]: [*******]Date: [**************] email : [****************] phone : [********] Masked with fixed length chars ------------------------------ ****, **** By: **** Name: ****: ****, Date: **** ****, **** By: **** Name: ****: ****Date: **** email : **** phone : **** Obfuscated ------------------------------ MGT Trust Company, LLC., Clarus llc. By: Benjamin Dean Name: John Snow Labs Inc: Sales Manager, Date: 03/08/2025 Clarus llc., SESA CO. By: JAMES TURNER Name: MGT Trust Company, LLC.: Business ManagerDate: 11/7/2016 email : Tyrus@google.com phone : 78 834 854 Model Information Model Name: finpipe_deid Type: pipeline Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 475.2 MB Included Models DocumentAssembler SentenceDetector TokenizerModel BertEmbeddings FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Legal Deidentification Pipeline</title><link href="/2023/08/30/legpipe_deid_en.html" rel="alternate" type="text/html" title="Legal Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/legpipe_deid_en</id><content type="html" xml:base="/2023/08/30/legpipe_deid_en.html">## Description
 
-&lt;p&gt;This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.&lt;/p&gt;
+This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.
 
-&lt;p&gt;You can carry out both masking and obfuscation with this pipeline, on the following entities: 
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ALIAS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORG&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PERSON&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ADDRESS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STREET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZIP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTRY&lt;/code&gt;&lt;/p&gt;
+You can carry out both masking and obfuscation with this pipeline, on the following entities: 
+`ALIAS`, `EMAIL`, `PHONE`, `PROFESSION`, `ORG`, `DATE`, `PERSON`, `ADDRESS`, `STREET`, `CITY`, `STATE`, `ZIP`, `COUNTRY`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.4_1693407447448.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.4_1693407447448.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.4_1693407447448.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.4_1693407447448.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legpipe_deid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page.
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline = PretrainedPipeline(&quot;legpipe_deid&quot;, &quot;en&quot;, &quot;legal/models&quot;)
+
+result = deid_pipeline.annotate(&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page.
 
 Source: PF HOSPITALITY GROUP INC., 9/23/2015
 
@@ -793,78 +759,79 @@ Source: PF HOSPITALITY GROUP INC., 9/23/2015
 
 1.3. Our Limitations and Our Reserved Rights. The rights granted to you under this Agreement are not exclusive.sed Business.
 
-Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Masked with entity labels
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-&amp;lt;PARTY&amp;gt;. &amp;lt;DOC&amp;gt; This &amp;lt;DOC&amp;gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &amp;lt;ALIAS&amp;gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between &amp;lt;PARTY&amp;gt; a Florida corporation, and the individual or legal entity identified on the cover page.
-Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt;
+```bash
+Masked with entity labels
+------------------------------
+&lt;PARTY&gt;. &lt;DOC&gt; This &lt;DOC&gt; (the &lt;ALIAS&gt;) is entered into as of the Agreement Date shown on the cover page between &lt;PARTY&gt; a Florida corporation, and the individual or legal entity identified on the cover page.
+Source: &lt;PARTY&gt;., &lt;DATE&gt;
 
 
 1.
-&amp;lt;PARTY&amp;gt; 1.1.
-&amp;lt;PARTY&amp;gt;.
-1.1.1 We grant you the right, and you accept the obligation, to use the &amp;lt;PARTY&amp;gt; and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &amp;lt;ALIAS&amp;gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
-Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt;
+&lt;PARTY&gt; 1.1.
+&lt;PARTY&gt;.
+1.1.1 We grant you the right, and you accept the obligation, to use the &lt;PARTY&gt; and the System to operate one Restaurant (the &lt;ALIAS&gt;) at the Premises, in accordance with the terms of this Agreement.
+Source: &lt;PARTY&gt;., &lt;DATE&gt;
 
 
 1.3.
-Our &amp;lt;PARTY&amp;gt; and &amp;lt;PARTY&amp;gt;.
+Our &lt;PARTY&gt; and &lt;PARTY&gt;.
 The rights granted to you under this Agreement are not exclusive.sed Business.
-Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt;
+Source: &lt;PARTY&gt;., &lt;DATE&gt;
 
 Masked with chars
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;************************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; This &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*********&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*************************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; a Florida corporation, and the individual or legal entity identified on the cover page.
-Source: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;., &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+------------------------------
+[************************]. [*****************] This [*****************] (the [*********]) is entered into as of the Agreement Date shown on the cover page between [*************************] a Florida corporation, and the individual or legal entity identified on the cover page.
+Source: [**********************]., [*******]
 
 
 1.
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 1.1.
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-1.1.1 We grant you the right, and you accept the obligation, to use the &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;***************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
-Source: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;., &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+[************] 1.1.
+[****************].
+1.1.1 We grant you the right, and you accept the obligation, to use the [***************] and the System to operate one Restaurant (the [*******************]) at the Premises, in accordance with the terms of this Agreement.
+Source: [**********************]., [*******]
 
 
 1.3.
-Our &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*********&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; and &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Our [*********] and [*****************].
 The rights granted to you under this Agreement are not exclusive.sed Business.
-Source: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;., &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+Source: [**********************]., [*******]
 
 Masked with fixed length chars
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; This &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; a Florida corporation, and the individual or legal entity identified on the cover page.
-Source: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;., &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+------------------------------
+****. **** This **** (the ****) is entered into as of the Agreement Date shown on the cover page between **** a Florida corporation, and the individual or legal entity identified on the cover page.
+Source: ****., ****
 
 
 1.
-&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; 1.1.
-&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-1.1.1 We grant you the right, and you accept the obligation, to use the &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
-Source: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;., &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+**** 1.1.
+****.
+1.1.1 We grant you the right, and you accept the obligation, to use the **** and the System to operate one Restaurant (the ****) at the Premises, in accordance with the terms of this Agreement.
+Source: ****., ****
 
 
 1.3.
-Our &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt; and &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Our **** and ****.
 The rights granted to you under this Agreement are not exclusive.sed Business.
-Source: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;., &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+Source: ****., ****
 
 Obfuscated
-&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
-SESA CO.. Estate Document This Estate Document &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;s2&quot;&gt;&quot;Contract&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page.
+------------------------------
+SESA CO.. Estate Document This Estate Document (the (the &quot;Contract&quot;)) is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page.
 Source: SESA CO.., 11/7/2016
 
 
 1.
 SESA CO. 1.1.
 Clarus llc..
-1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the&lt;span class=&quot;s2&quot;&gt;&quot; Agreement&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; at the Premises, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;accordance with the terms of this Agreement.
+1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant (the (the&quot; Agreement&quot;)) at the Premises, in accordance with the terms of this Agreement.
 Source: SESA CO.., 11/7/2016
 
 
@@ -873,69 +840,45 @@ Our MGT Trust Company, LLC. and John Snow Labs Inc.
 The rights granted to you under this Agreement are not exclusive.sed Business.
 Source: SESA CO.., 11/7/2016
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legpipe_deid&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;503.2 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legpipe_deid|
+|Type:|pipeline|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|503.2 MB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetector&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;DateMatcher&lt;/li&gt;
-  &lt;li&gt;Date2Chunk&lt;/li&gt;
-  &lt;li&gt;RoBertaEmbeddings&lt;/li&gt;
-  &lt;li&gt;LegalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;LegalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;LegalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="legal" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;legpipe_deid&quot;, &quot;en&quot;, &quot;legal/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1. RIGHTS GRANTED 1.1. Grant of Franchise. 1.1.1 We grant you the right, and you accept the obligation, to use the Proprietary Marks and the System to operate one Restaurant (the &quot;Franchised Business&quot;) at the Premises, in accordance with the terms of this Agreement. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1.3. Our Limitations and Our Reserved Rights. The rights granted to you under this Agreement are not exclusive.sed Business. Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;. &amp;lt;DOC&amp;gt; This &amp;lt;DOC&amp;gt; (the &amp;lt;ALIAS&amp;gt;) is entered into as of the Agreement Date shown on the cover page between &amp;lt;PARTY&amp;gt; a Florida corporation, and the individual or legal entity identified on the cover page. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1. &amp;lt;PARTY&amp;gt; 1.1. &amp;lt;PARTY&amp;gt;. 1.1.1 We grant you the right, and you accept the obligation, to use the &amp;lt;PARTY&amp;gt; and the System to operate one Restaurant (the &amp;lt;ALIAS&amp;gt;) at the Premises, in accordance with the terms of this Agreement. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1.3. Our &amp;lt;PARTY&amp;gt; and &amp;lt;PARTY&amp;gt;. The rights granted to you under this Agreement are not exclusive.sed Business. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; Masked with chars ------------------------------ [************************]. [*****************] This [*****************] (the [*********]) is entered into as of the Agreement Date shown on the cover page between [*************************] a Florida corporation, and the individual or legal entity identified on the cover page. Source: [**********************]., [*******] 1. [************] 1.1. [****************]. 1.1.1 We grant you the right, and you accept the obligation, to use the [***************] and the System to operate one Restaurant (the [*******************]) at the Premises, in accordance with the terms of this Agreement. Source: [**********************]., [*******] 1.3. Our [*********] and [*****************]. The rights granted to you under this Agreement are not exclusive.sed Business. Source: [**********************]., [*******] Masked with fixed length chars ------------------------------ ****. **** This **** (the ****) is entered into as of the Agreement Date shown on the cover page between **** a Florida corporation, and the individual or legal entity identified on the cover page. Source: ****., **** 1. **** 1.1. ****. 1.1.1 We grant you the right, and you accept the obligation, to use the **** and the System to operate one Restaurant (the ****) at the Premises, in accordance with the terms of this Agreement. Source: ****., **** 1.3. Our **** and ****. The rights granted to you under this Agreement are not exclusive.sed Business. Source: ****., **** Obfuscated ------------------------------ SESA CO.. Estate Document This Estate Document (the (the &quot;Contract&quot;)) is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page. Source: SESA CO.., 11/7/2016 1. SESA CO. 1.1. Clarus llc.. 1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant (the (the&quot; Agreement&quot;)) at the Premises, in accordance with the terms of this Agreement. Source: SESA CO.., 11/7/2016 1.3. Our MGT Trust Company, LLC. and John Snow Labs Inc. The rights granted to you under this Agreement are not exclusive.sed Business. Source: SESA CO.., 11/7/2016 Model Information Model Name: legpipe_deid Type: pipeline Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 503.2 MB Included Models DocumentAssembler SentenceDetector TokenizerModel DateMatcher Date2Chunk RoBertaEmbeddings LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Medical Question Answering on Clinical Notes (ONNX)</title><link href="/2023/08/17/clinical_notes_qa_base_onnx_en.html" rel="alternate" type="text/html" title="Medical Question Answering on Clinical Notes (ONNX)" /><published>2023-08-17T00:00:00+00:00</published><updated>2023-08-17T00:00:00+00:00</updated><id>/2023/08/17/clinical_notes_qa_base_onnx_en</id><content type="html" xml:base="/2023/08/17/clinical_notes_qa_base_onnx_en.html">## Description
+- DocumentAssembler
+- SentenceDetector
+- TokenizerModel
+- DateMatcher
+- Date2Chunk
+- RoBertaEmbeddings
+- LegalNerModel
+- NerConverterInternalModel
+- LegalNerModel
+- NerConverterInternalModel
+- LegalNerModel
+- NerConverterInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ChunkMergeModel
+- DeIdentificationModel
+- DeIdentificationModel
+- DeIdentificationModel
+- DeIdentificationModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="legal" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;legpipe_deid&quot;, &quot;en&quot;, &quot;legal/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;Pizza Fusion Holdings, Inc. Franchise Agreement This Franchise Agreement (the &quot;Agreement&quot;) is entered into as of the Agreement Date shown on the cover page between Pizza Fusion Holding, Inc., a Florida corporation, and the individual or legal entity identified on the cover page. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1. RIGHTS GRANTED 1.1. Grant of Franchise. 1.1.1 We grant you the right, and you accept the obligation, to use the Proprietary Marks and the System to operate one Restaurant (the &quot;Franchised Business&quot;) at the Premises, in accordance with the terms of this Agreement. Source: PF HOSPITALITY GROUP INC., 9/23/2015 1.3. Our Limitations and Our Reserved Rights. The rights granted to you under this Agreement are not exclusive.sed Business. Source: PF HOSPITALITY GROUP INC., 9/23/2015&quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;. &amp;lt;DOC&amp;gt; This &amp;lt;DOC&amp;gt; (the &amp;lt;ALIAS&amp;gt;) is entered into as of the Agreement Date shown on the cover page between &amp;lt;PARTY&amp;gt; a Florida corporation, and the individual or legal entity identified on the cover page. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1. &amp;lt;PARTY&amp;gt; 1.1. &amp;lt;PARTY&amp;gt;. 1.1.1 We grant you the right, and you accept the obligation, to use the &amp;lt;PARTY&amp;gt; and the System to operate one Restaurant (the &amp;lt;ALIAS&amp;gt;) at the Premises, in accordance with the terms of this Agreement. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; 1.3. Our &amp;lt;PARTY&amp;gt; and &amp;lt;PARTY&amp;gt;. The rights granted to you under this Agreement are not exclusive.sed Business. Source: &amp;lt;PARTY&amp;gt;., &amp;lt;DATE&amp;gt; Masked with chars ------------------------------ [************************]. [*****************] This [*****************] (the [*********]) is entered into as of the Agreement Date shown on the cover page between [*************************] a Florida corporation, and the individual or legal entity identified on the cover page. Source: [**********************]., [*******] 1. [************] 1.1. [****************]. 1.1.1 We grant you the right, and you accept the obligation, to use the [***************] and the System to operate one Restaurant (the [*******************]) at the Premises, in accordance with the terms of this Agreement. Source: [**********************]., [*******] 1.3. Our [*********] and [*****************]. The rights granted to you under this Agreement are not exclusive.sed Business. Source: [**********************]., [*******] Masked with fixed length chars ------------------------------ ****. **** This **** (the ****) is entered into as of the Agreement Date shown on the cover page between **** a Florida corporation, and the individual or legal entity identified on the cover page. Source: ****., **** 1. **** 1.1. ****. 1.1.1 We grant you the right, and you accept the obligation, to use the **** and the System to operate one Restaurant (the ****) at the Premises, in accordance with the terms of this Agreement. Source: ****., **** 1.3. Our **** and ****. The rights granted to you under this Agreement are not exclusive.sed Business. Source: ****., **** Obfuscated ------------------------------ SESA CO.. Estate Document This Estate Document (the (the &quot;Contract&quot;)) is entered into as of the Agreement Date shown on the cover page between Clarus llc. a Florida corporation, and the individual or legal entity identified on the cover page. Source: SESA CO.., 11/7/2016 1. SESA CO. 1.1. Clarus llc.. 1.1.1 We grant you the right, and you accept the obligation, to use the John Snow Labs Inc and the System to operate one Restaurant (the (the&quot; Agreement&quot;)) at the Premises, in accordance with the terms of this Agreement. Source: SESA CO.., 11/7/2016 1.3. Our MGT Trust Company, LLC. and John Snow Labs Inc. The rights granted to you under this Agreement are not exclusive.sed Business. Source: SESA CO.., 11/7/2016 Model Information Model Name: legpipe_deid Type: pipeline Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 503.2 MB Included Models DocumentAssembler SentenceDetector TokenizerModel DateMatcher Date2Chunk RoBertaEmbeddings LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel LegalNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Medical Question Answering on Clinical Notes (ONNX)</title><link href="/2023/08/17/clinical_notes_qa_base_onnx_en.html" rel="alternate" type="text/html" title="Medical Question Answering on Clinical Notes (ONNX)" /><published>2023-08-17T00:00:00+00:00</published><updated>2023-08-17T00:00:00+00:00</updated><id>/2023/08/17/clinical_notes_qa_base_onnx_en</id><content type="html" xml:base="/2023/08/17/clinical_notes_qa_base_onnx_en.html">## Description
 
 This model is capable of open-book question answering on Medical Notes.
 
