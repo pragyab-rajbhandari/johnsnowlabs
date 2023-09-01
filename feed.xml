@@ -1,5 +1,161 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-09-01T09:45:00+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial Deidentification Pipeline</title><link href="/2023/08/30/finpipe_deid_en.html" rel="alternate" type="text/html" title="Financial Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/finpipe_deid_en</id><content type="html" xml:base="/2023/08/30/finpipe_deid_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-09-01T20:42:10+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial Deidentification Pipeline</title><link href="/2023/09/01/finpipe_deid_en.html" rel="alternate" type="text/html" title="Financial Deidentification Pipeline" /><published>2023-09-01T00:00:00+00:00</published><updated>2023-09-01T00:00:00+00:00</updated><id>/2023/09/01/finpipe_deid_en</id><content type="html" xml:base="/2023/09/01/finpipe_deid_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.&lt;/p&gt;
+
+&lt;p&gt;You can carry out both masking and obfuscation with this pipeline, on the following entities:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ALIAS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORG&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PERSON&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ADDRESS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STREET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZIP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTRY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TITLE_CLASS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TICKER&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STOCK_EXCHANGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CFN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IRS&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finpipe_deid_en_1.0.0_3.0_1693599372226.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finpipe_deid_en_1.0.0_3.0_1693599372226.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finpipe_deid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;CARGILL, INCORPORATED
+
+By:     Pirkko Suominen
+
+
+
+Name: Pirkko Suominen Title: Director, Bio Technology Development  Center,  Date:   10/19/2011
+
+BIOAMBER, SAS
+
+By:     Jean-François Huc
+
+
+
+Name: Jean-François Huc  Title: President Date:   October 15, 2011
+
+email : jeanfran@gmail.com
+phone : 18087339090 &quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Masked with entity labels
+&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
+&amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt;
+By:     &amp;lt;SIGNING_PERSON&amp;gt;
+Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;,  Date:   &amp;lt;EFFDATE&amp;gt;
+&amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt;
+By:     &amp;lt;SIGNING_PERSON&amp;gt;
+Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;Date:   &amp;lt;EFFDATE&amp;gt;
+
+email : &amp;lt;EMAIL&amp;gt;
+phone : &amp;lt;PHONE&amp;gt;
+
+Masked with chars
+&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*****&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;, &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+By:     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+Name: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;  Center,  Date:   &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;********&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;, &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+By:     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;***************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+Name: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**********************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;Date:   &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;**************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+email : &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;****************&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+phone : &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;********&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+Masked with fixed length chars
+&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;, &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+By:     &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+Name: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;,  Date:   &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;, &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+By:     &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+Name: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;: &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;Date:   &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+
+email : &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+phone : &lt;span class=&quot;k&quot;&gt;****&lt;/span&gt;
+
+Obfuscated
+&lt;span class=&quot;nt&quot;&gt;------------------------------&lt;/span&gt;
+MGT Trust Company, LLC., Clarus llc.
+By:     Benjamin Dean
+Name: John Snow Labs Inc: Sales Manager,  Date:   03/08/2025
+Clarus llc., SESA CO.
+By:     JAMES TURNER
+Name: MGT Trust Company, LLC.: Business ManagerDate:   11/7/2016
+
+email : Tyrus@google.com
+phone : 78 834 854
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finpipe_deid&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;471.8 MB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetector&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;BertEmbeddings&lt;/li&gt;
+  &lt;li&gt;FinanceNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;FinanceNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;FinanceNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;FinanceNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
+  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
+  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
+  &lt;li&gt;DeIdentificationModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="finance" /><category term="deid" /><category term="deidentification" /><category term="anonymization" /><summary type="html">Description This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy. You can carry out both masking and obfuscation with this pipeline, on the following entities: ALIAS, EMAIL, PHONE, PROFESSION, ORG, DATE, PERSON, ADDRESS, STREET, CITY, STATE, ZIP, COUNTRY, TITLE_CLASS, TICKER, STOCK_EXCHANGE, CFN, IRS Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;finpipe_deid&quot;, &quot;en&quot;, &quot;finance/models&quot;) result = deid_pipeline.annotate(&quot;&quot;&quot;CARGILL, INCORPORATED By: Pirkko Suominen Name: Pirkko Suominen Title: Director, Bio Technology Development Center, Date: 10/19/2011 BIOAMBER, SAS By: Jean-François Huc Name: Jean-François Huc Title: President Date: October 15, 2011 email : jeanfran@gmail.com phone : 18087339090 &quot;&quot;&quot;) Results Masked with entity labels ------------------------------ &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;, Date: &amp;lt;EFFDATE&amp;gt; &amp;lt;PARTY&amp;gt;, &amp;lt;PARTY&amp;gt; By: &amp;lt;SIGNING_PERSON&amp;gt; Name: &amp;lt;PARTY&amp;gt;: &amp;lt;SIGNING_TITLE&amp;gt;Date: &amp;lt;EFFDATE&amp;gt; email : &amp;lt;EMAIL&amp;gt; phone : &amp;lt;PHONE&amp;gt; Masked with chars ------------------------------ [*****], [**********] By: [*************] Name: [*******************]: [**********************************] Center, Date: [********] [******], [*] By: [***************] Name: [**********************]: [*******]Date: [**************] email : [****************] phone : [********] Masked with fixed length chars ------------------------------ ****, **** By: **** Name: ****: ****, Date: **** ****, **** By: **** Name: ****: ****Date: **** email : **** phone : **** Obfuscated ------------------------------ MGT Trust Company, LLC., Clarus llc. By: Benjamin Dean Name: John Snow Labs Inc: Sales Manager, Date: 03/08/2025 Clarus llc., SESA CO. By: JAMES TURNER Name: MGT Trust Company, LLC.: Business ManagerDate: 11/7/2016 email : Tyrus@google.com phone : 78 834 854 Model Information Model Name: finpipe_deid Type: pipeline Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Language: en Size: 471.8 MB Included Models DocumentAssembler SentenceDetector TokenizerModel BertEmbeddings FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel FinanceNerModel NerConverterInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ChunkMergeModel DeIdentificationModel DeIdentificationModel DeIdentificationModel DeIdentificationModel</summary></entry><entry><title type="html">Financial Deidentification Pipeline</title><link href="/2023/08/30/finpipe_deid_en.html" rel="alternate" type="text/html" title="Financial Deidentification Pipeline" /><published>2023-08-30T00:00:00+00:00</published><updated>2023-08-30T00:00:00+00:00</updated><id>/2023/08/30/finpipe_deid_en</id><content type="html" xml:base="/2023/08/30/finpipe_deid_en.html">## Description
 
 This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.
 
@@ -1213,147 +1369,4 @@ Hypothetical_Or_Absent       0.75      0.78      0.76      1265
               accuracy       -         -         0.85      5222
              macro_avg       0.85      0.85      0.85      5222
           weighted_avg       0.86      0.85      0.86      5222
-```</content><author><name>John Snow Labs</name></author><category term="clinical" /><category term="licensed" /><category term="en" /><category term="assertion" /><category term="vop" /><summary type="html">Description Assertion status model used to predict if an NER chunk refers to a positive finding from the patient (Present_Or_Past), or if it refers to a family member or another person (SomeoneElse) or if it is mentioned but not as something present (Hypothetical_Or_Absent). Predicted Entities Hypothetical_Or_Absent, Present_Or_Past, SomeoneElse Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_vop_emb_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) assertion = AssertionDLModel.pretrained(&quot;assertion_vop_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;assertion&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, assertion]) data = spark.createDataFrame([[&quot;I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_vop_emb_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val assertion = AssertionDLModel.pretrained(&quot;assertion_vop_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentence&quot;,&quot;ner_chunk&quot;,&quot;embeddings&quot;) .setOutputCol(&quot;assertion&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, assertion)) val data = Seq(&quot;I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +--------+-----+---+----------------------+-------+----------------------+----------+ |chunk |begin|end|ner_label |sent_id|assertion |confidence| +--------+-----+---+----------------------+-------+----------------------+----------+ |anxiety |14 |20 |PsychologicalCondition|0 |Present_Or_Past |0.9853 | |tremors |48 |54 |Symptom |1 |Hypothetical_Or_Absent|0.9998 | |diabetes|105 |112|Disease |2 |SomeoneElse |0.9916 | +--------+-----+---+----------------------+-------+----------------------+----------+ Model Information Model Name: assertion_vop_clinical Compatibility: Healthcare NLP 5.0.1+ License: Licensed Edition: Official Input Labels: [document, chunk, embeddings] Output Labels: [assertion] Language: en Size: 942.0 KB References In-house annotated health-related text in colloquial language. Benchmarking label precision recall f1-score support Hypothetical_Or_Absent 0.75 0.78 0.76 1265 Present_Or_Past 0.88 0.88 0.88 2873 SomeoneElse 0.92 0.88 0.90 1084 accuracy - - 0.85 5222 macro_avg 0.85 0.85 0.85 5222 weighted_avg 0.86 0.85 0.86 5222</summary></entry><entry><title type="html">Assertion Status for Voice of the Patients (embeddings_clinical_large)</title><link href="/2023/08/17/assertion_vop_clinical_large_en.html" rel="alternate" type="text/html" title="Assertion Status for Voice of the Patients (embeddings_clinical_large)" /><published>2023-08-17T00:00:00+00:00</published><updated>2023-08-17T00:00:00+00:00</updated><id>/2023/08/17/assertion_vop_clinical_large_en</id><content type="html" xml:base="/2023/08/17/assertion_vop_clinical_large_en.html">## Description
-
-Assertion status model used to predict if an NER chunk refers to a positive finding from the patient (Present_Or_Past), or if it refers to a family member or another person (SomeoneElse) or if it is mentioned but not as something present (Hypothetical_Or_Absent).
-
-This model is the final version of the [WIP assertion model](https://nlp.johnsnowlabs.com/2023/06/17/assertion_vop_3cl_emb_clinical_large_wip_en.html).
-
-## Predicted Entities
-
-`Hypothetical_Or_Absent`, `Present_Or_Past`, `SomeoneElse`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/assertion_vop_clinical_large_en_5.0.1_3.0_1692307735425.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/assertion_vop_clinical_large_en_5.0.1_3.0_1692307735425.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer() \
-    .setInputCols([&quot;sentence&quot;]) \
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \
-    .setOutputCol(&quot;embeddings&quot;)
-
-ner = MedicalNerModel.pretrained(&quot;ner_vop_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal() \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-assertion = AssertionDLModel.pretrained(&quot;assertion_vop_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
-    .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;, &quot;embeddings&quot;]) \
-    .setOutputCol(&quot;assertion&quot;)
-
-pipeline = Pipeline(stages=[document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter,
-                            assertion])
-
-data = spark.createDataFrame([[&quot;I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes.&quot;]]).toDF(&quot;text&quot;)
-
-result = pipeline.fit(data).transform(data)
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;document&quot;)
-    .setOutputCol(&quot;sentence&quot;)
-
-val tokenizer = new Tokenizer()
-    .setInputCols(&quot;sentence&quot;)
-    .setOutputCol(&quot;token&quot;)
-
-val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)
-
-val ner = MedicalNerModel.pretrained(&quot;ner_vop_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;ner&quot;)
-
-val ner_converter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-val assertion = AssertionDLModel.pretrained(&quot;assertion_vop_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;sentence&quot;,&quot;ner_chunk&quot;,&quot;embeddings&quot;)
-    .setOutputCol(&quot;assertion&quot;)
-
-val pipeline = new Pipeline().setStages(Array(document_assembler,
-                                              sentence_detector,
-                                              tokenizer,
-                                              word_embeddings,
-                                              ner,
-                                              ner_converter,
-                                              assertion))
-
-val data = Seq(&quot;I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes.&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+--------+-----+---+----------------------+-------+----------------------+----------+
-|chunk   |begin|end|ner_label             |sent_id|assertion             |confidence|
-+--------+-----+---+----------------------+-------+----------------------+----------+
-|anxiety |14   |20 |PsychologicalCondition|0      |Present_Or_Past       |0.9853    |
-|tremors |48   |54 |Symptom               |1      |Hypothetical_Or_Absent|0.9998    |
-|diabetes|105  |112|Disease               |2      |SomeoneElse           |0.9916    |
-+--------+-----+---+----------------------+-------+----------------------+----------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|assertion_vop_clinical_large|
-|Compatibility:|Healthcare NLP 5.0.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[document, chunk, embeddings]|
-|Output Labels:|[assertion]|
-|Language:|en|
-|Size:|940.7 KB|
-
-## Benchmarking
-
-```bash
-                 label  precision    recall  f1-score   support
-Hypothetical_Or_Absent       0.77      0.78      0.78      1265
-       Present_Or_Past       0.88      0.89      0.89      2873
-           SomeoneElse       0.92      0.87      0.90      1084
-              accuracy       -         -         0.86      5222
-             macro_avg       0.86      0.85      0.85      5222
-          weighted_avg       0.86      0.86      0.86      5222
-```</content><author><name>John Snow Labs</name></author><category term="clinical" /><category term="licensed" /><category term="en" /><category term="assertion" /><category term="vop" /><summary type="html">Description Assertion status model used to predict if an NER chunk refers to a positive finding from the patient (Present_Or_Past), or if it refers to a family member or another person (SomeoneElse) or if it is mentioned but not as something present (Hypothetical_Or_Absent). This model is the final version of the WIP assertion model. Predicted Entities Hypothetical_Or_Absent, Present_Or_Past, SomeoneElse Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_vop_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) assertion = AssertionDLModel.pretrained(&quot;assertion_vop_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;assertion&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, assertion]) data = spark.createDataFrame([[&quot;I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_vop_emb_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val assertion = AssertionDLModel.pretrained(&quot;assertion_vop_clinical_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentence&quot;,&quot;ner_chunk&quot;,&quot;embeddings&quot;) .setOutputCol(&quot;assertion&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, assertion)) val data = Seq(&quot;I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +--------+-----+---+----------------------+-------+----------------------+----------+ |chunk |begin|end|ner_label |sent_id|assertion |confidence| +--------+-----+---+----------------------+-------+----------------------+----------+ |anxiety |14 |20 |PsychologicalCondition|0 |Present_Or_Past |0.9853 | |tremors |48 |54 |Symptom |1 |Hypothetical_Or_Absent|0.9998 | |diabetes|105 |112|Disease |2 |SomeoneElse |0.9916 | +--------+-----+---+----------------------+-------+----------------------+----------+ Model Information Model Name: assertion_vop_clinical_large Compatibility: Healthcare NLP 5.0.1+ License: Licensed Edition: Official Input Labels: [document, chunk, embeddings] Output Labels: [assertion] Language: en Size: 940.7 KB Benchmarking label precision recall f1-score support Hypothetical_Or_Absent 0.77 0.78 0.78 1265 Present_Or_Past 0.88 0.89 0.89 2873 SomeoneElse 0.92 0.87 0.90 1084 accuracy - - 0.86 5222 macro_avg 0.86 0.85 0.85 5222 weighted_avg 0.86 0.86 0.86 5222</summary></entry></feed>
+```</content><author><name>John Snow Labs</name></author><category term="clinical" /><category term="licensed" /><category term="en" /><category term="assertion" /><category term="vop" /><summary type="html">Description Assertion status model used to predict if an NER chunk refers to a positive finding from the patient (Present_Or_Past), or if it refers to a family member or another person (SomeoneElse) or if it is mentioned but not as something present (Hypothetical_Or_Absent). Predicted Entities Hypothetical_Or_Absent, Present_Or_Past, SomeoneElse Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_vop_emb_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) assertion = AssertionDLModel.pretrained(&quot;assertion_vop_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;assertion&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, assertion]) data = spark.createDataFrame([[&quot;I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_vop_emb_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val assertion = AssertionDLModel.pretrained(&quot;assertion_vop_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentence&quot;,&quot;ner_chunk&quot;,&quot;embeddings&quot;) .setOutputCol(&quot;assertion&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, assertion)) val data = Seq(&quot;I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +--------+-----+---+----------------------+-------+----------------------+----------+ |chunk |begin|end|ner_label |sent_id|assertion |confidence| +--------+-----+---+----------------------+-------+----------------------+----------+ |anxiety |14 |20 |PsychologicalCondition|0 |Present_Or_Past |0.9853 | |tremors |48 |54 |Symptom |1 |Hypothetical_Or_Absent|0.9998 | |diabetes|105 |112|Disease |2 |SomeoneElse |0.9916 | +--------+-----+---+----------------------+-------+----------------------+----------+ Model Information Model Name: assertion_vop_clinical Compatibility: Healthcare NLP 5.0.1+ License: Licensed Edition: Official Input Labels: [document, chunk, embeddings] Output Labels: [assertion] Language: en Size: 942.0 KB References In-house annotated health-related text in colloquial language. Benchmarking label precision recall f1-score support Hypothetical_Or_Absent 0.75 0.78 0.76 1265 Present_Or_Past 0.88 0.88 0.88 2873 SomeoneElse 0.92 0.88 0.90 1084 accuracy - - 0.85 5222 macro_avg 0.85 0.85 0.85 5222 weighted_avg 0.86 0.85 0.86 5222</summary></entry></feed>
