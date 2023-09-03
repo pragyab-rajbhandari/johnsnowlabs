@@ -538,12 +538,12 @@
 It will not accept <strong>library secrets</strong> which correspond to <strong>versions do not match the settings</strong>.
 This essentially prevents you from installing <strong>outdated</strong> or <strong>new but not deeply tested</strong> libraries, or from shooting yourself in the foot you might say.</p>
 
-    <p>You can work around this protection mechanism, by configuring <code class="language-plaintext highlighter-rouge">jsl.settings.enforce_versions=False</code>.
+    <p>You can work around this protection mechanism, by configuring <code class="language-plaintext highlighter-rouge">nlp.settings.enforce_versions=False</code>.
 This will ignore bad secret versions.</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">jsl</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">enforce_versions</span><span class="o">=</span><span class="bp">False</span>
-<span class="n">jsl</span><span class="p">.</span><span class="n">install</span><span class="p">(</span><span class="n">secret</span><span class="o">=</span><span class="s">'1.2.3-My.Custom.or.Outdated.Secret'</span><span class="p">)</span>
+<span class="n">nlp</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">enforce_versions</span><span class="o">=</span><span class="bp">False</span>
+<span class="n">nlp</span><span class="p">.</span><span class="n">install</span><span class="p">(</span><span class="n">secret</span><span class="o">=</span><span class="s">'1.2.3-My.Custom.or.Outdated.Secret'</span><span class="p">)</span>
 </code></pre></div>    </div>
 
   </div>

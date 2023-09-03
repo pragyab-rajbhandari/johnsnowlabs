@@ -533,22 +533,22 @@
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="main-docs">
   <div class="h3-box">
 
-    <p>To use most features you must start a Spark Session with <code class="language-plaintext highlighter-rouge">jsl.start()</code>first.      <br />
+    <p>To use most features you must start a Spark Session with <code class="language-plaintext highlighter-rouge">nlp.start()</code>first.      <br />
 This will launch a <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">Java Virtual Machine(JVM)</a> process on your machine
 which has all of John Snow Labs and Sparks <a href="https://de.wikipedia.org/wiki/Java_Archive">Scala/Java Libraries(JARs)</a> you have access to loaded into memory.</p>
 
-    <p>The <code class="language-plaintext highlighter-rouge">jsl.start()</code> method downloads loads  and caches all jars for which credentials are provided if they are missing into <code class="language-plaintext highlighter-rouge">~/.jsl_home/java_installs</code>.     <br />
-If you have installed via <code class="language-plaintext highlighter-rouge">jsl.install()</code> you can most likely <strong>skip the rest of this page</strong>, since your secrets have been cached in <code class="language-plaintext highlighter-rouge">~/.jsl_home</code> and will be re-used.      <br />
+    <p>The <code class="language-plaintext highlighter-rouge">nlp.start()</code> method downloads loads  and caches all jars for which credentials are provided if they are missing into <code class="language-plaintext highlighter-rouge">~/.jsl_home/java_installs</code>.     <br />
+If you have installed via <code class="language-plaintext highlighter-rouge">nlp.install()</code> you can most likely <strong>skip the rest of this page</strong>, since your secrets have been cached in <code class="language-plaintext highlighter-rouge">~/.jsl_home</code> and will be re-used.      <br />
 If you <strong>disabled license caching</strong> while installing or if you want to <strong>tweak settings about your spark session</strong> continue reading this section further.</p>
 
-    <p>Outputs of running <code class="language-plaintext highlighter-rouge">jsl.start()</code> tell you which jars are loaded and versions of all relevant libraries.<br />
+    <p>Outputs of running <code class="language-plaintext highlighter-rouge">nlp.start()</code> tell you which jars are loaded and versions of all relevant libraries.<br />
 <img src="/assets/images/jsl_lib/start/start.png" alt="access_token1.png" /></p>
 
   </div>
   <div class="h3-box">
 
     <h2 id="authorization-flow-parameters">Authorization Flow Parameters</h2>
-    <p>Most of the authorization Flows and Parameters of <code class="language-plaintext highlighter-rouge">jsl.install()</code> are supported.               <br />
+    <p>Most of the authorization Flows and Parameters of <code class="language-plaintext highlighter-rouge">nlp.install()</code> are supported.               <br />
 Review detailed <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview">docs here</a></p>
 
     <table>
@@ -564,43 +564,43 @@ Review detailed <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#author
         <tr>
           <td><code class="language-plaintext highlighter-rouge">None</code></td>
           <td>Load license automatically via one of the <strong>Auto-Detection Mechanisms</strong></td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start()</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start()</code></td>
           <td><code class="language-plaintext highlighter-rouge">False</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">browser_login</code></td>
           <td>Browser based authorization, Button to click on Notebooks and Browser Pop-Up otherwise.</td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(browser_login=True)</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(browser_login=True)</code></td>
           <td><code class="language-plaintext highlighter-rouge">False</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">access_token</code></td>
           <td>Vist <a href="https://my.johnsnowlabs.com/">my.johnsnowlabs.com</a> to extract a token which you can provide to enable license access. See <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#via-access-token">Access Token Example</a></td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(access_token='myToken')</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(access_token='myToken')</code></td>
           <td><code class="language-plaintext highlighter-rouge">None</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">secrets_file</code></td>
           <td>Define JSON license file with keys  defined by <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables">License Variable Overview</a> and provide file path</td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(secrets_file='path/to/license.json')</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(secrets_file='path/to/license.json')</code></td>
           <td><code class="language-plaintext highlighter-rouge">None</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">store_in_jsl_home</code></td>
           <td>Disable caching of new licenses to <code class="language-plaintext highlighter-rouge">~./jsl_home</code></td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(store_in_jsl_home=False)</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(store_in_jsl_home=False)</code></td>
           <td><code class="language-plaintext highlighter-rouge">True</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">local_license_number</code></td>
           <td>Specify which license to use, if you have access to multiple locally cached</td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(license_number=5)</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(license_number=5)</code></td>
           <td><code class="language-plaintext highlighter-rouge">0</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">remote_license_number</code></td>
           <td>Specify which license to use, if you have access to multiple via OAUTH on <a href="https://my.johnsnowlabs.com/">my.jsl.com</a></td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(license_number=5)</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(license_number=5)</code></td>
           <td><code class="language-plaintext highlighter-rouge">0</code></td>
         </tr>
       </tbody>
@@ -676,49 +676,49 @@ See <a href="https://spark.apache.org/docs/latest/configuration.html">Spark Conf
           <td><code class="language-plaintext highlighter-rouge">spark_conf</code></td>
           <td><code class="language-plaintext highlighter-rouge">None</code></td>
           <td>Dictionary Key/Value pairs of <a href="https://spark.apache.org/docs/latest/configuration.html">Spark Configurations</a> for the Spark Session</td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(spark_conf={'spark.executor.memory':'6g'})</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(spark_conf={'spark.executor.memory':'6g'})</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">master_url</code></td>
           <td><code class="language-plaintext highlighter-rouge">local[*]</code></td>
           <td>URL to Spark Cluster master</td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(master_url='spark://my.master')</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(master_url='spark://my.master')</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">jar_paths</code></td>
           <td><code class="language-plaintext highlighter-rouge">None</code></td>
           <td>List of paths to jars which should be loaded into the Spark Session</td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(jar_paths=['my/jar_folder/jar1.zip','my/jar_folder/jar2.zip'] )</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(jar_paths=['my/jar_folder/jar1.zip','my/jar_folder/jar2.zip'] )</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">exclude_nlp</code></td>
           <td><code class="language-plaintext highlighter-rouge">False</code></td>
           <td>Whether to include Spark NLP jar in Session or not. This will always load the jar if available, unless set to <code class="language-plaintext highlighter-rouge">True</code>.</td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(exclude_nlp=True)</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(exclude_nlp=True)</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">exclude_healthcare</code></td>
           <td><code class="language-plaintext highlighter-rouge">False</code></td>
           <td>Whether to include licensed NLP Jar for Legal,Finance or Healthcare. This will always load the jar if available using your provided license, unless set to <code class="language-plaintext highlighter-rouge">True</code>.</td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(exclude_healthcare=True)</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(exclude_healthcare=True)</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">exclude_ocr</code></td>
           <td><code class="language-plaintext highlighter-rouge">False</code></td>
           <td>Whether to include licensed OCR Jar for Legal,Finance or Healthcare. This will always load the jar if available using your provided license, unless set to <code class="language-plaintext highlighter-rouge">True</code>.</td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(exclude_ocr=True)</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(exclude_ocr=True)</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">hardware_target</code></td>
           <td><code class="language-plaintext highlighter-rouge">cpu</code></td>
           <td>Specify for which hardware Jar should be optimized. Valid values are <code class="language-plaintext highlighter-rouge">gpu</code>,<code class="language-plaintext highlighter-rouge">cpu</code>,<code class="language-plaintext highlighter-rouge">m1</code>,<code class="language-plaintext highlighter-rouge">aarch</code></td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(hardware_target='m1')</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(hardware_target='m1')</code></td>
         </tr>
         <tr>
           <td><code class="language-plaintext highlighter-rouge">model_cache_folder</code></td>
           <td><code class="language-plaintext highlighter-rouge">None</code></td>
           <td>Specify where models should be downloaded to when using <code class="language-plaintext highlighter-rouge">model.pretrained()</code></td>
-          <td><code class="language-plaintext highlighter-rouge">jsl.start(model_cache_folder=True)</code></td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(model_cache_folder=True)</code></td>
         </tr>
       </tbody>
     </table>
