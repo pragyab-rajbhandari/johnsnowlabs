@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Text-to-SQL Generation (MIMICSQL) | text2sql_mimicsql | Healthcare NLP 5.0.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Date of Brith Contexrual Parser Model | date_of_birth_parser | Healthcare NLP 5.0.2</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model can generate SQL queries from natural questions. It is based on a small-size LLM, which is finetuned by John Snow Labs on a dataset having a schema with the same schema that MIMIC-III has.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  document_assembler =...">
-<!-- <link rel="canonical" href="/2023/08/14/text2sql_mimicsql_en.html"> -->
-<link rel="canonical" href="/2023/08/14/text2sql_mimicsql_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model is a ContextualParserModel that can extract date-of-birth (DOB) entities in clinical texts.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  document_assembler = DocumentAssembler() \    .setInputCol("text") \    .setOutputCol("document")sentence_detector = SentenceDetectorDL...">
+<!-- <link rel="canonical" href="/2023/08/22/date_of_birth_parser_en.html"> -->
+<link rel="canonical" href="/2023/08/22/date_of_birth_parser_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -407,79 +407,126 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/mellahysf/2023-08-14-text2sql_mimicsql_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Meryem1425/2023-08-22-date_of_birth_parser_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Aug 14, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-08-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Text-to-SQL Generation (MIMICSQL)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Text-to-SQL Generation (MIMICSQL)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>text2sql</li><li>medicaltextgeneration</li><li>medicalquestionanswering</li><li>clinical</li><li>en</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-08-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,text2sql,medicaltextgeneration,medicalquestionanswering,clinical,en,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Aug 22, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-08-22T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Date of Brith Contexrual Parser Model</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Date of Brith Contexrual Parser Model"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>clinical</li><li>contextual_parser</li><li>date_of_birth</li><li>dob</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-08-22T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,clinical,contextual_parser,date_of_birth,dob"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model can generate SQL queries from natural questions. It is based on a small-size LLM, which is finetuned by John Snow Labs on a dataset having a schema with the same schema that MIMIC-III has.</p>
-
-<h2 id="predicted-entities">Predicted Entities</h2>
+<p>This model is a <code class="language-plaintext highlighter-rouge">ContextualParserModel</code> that can extract date-of-birth (DOB) entities in clinical texts.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/text2sql_mimicsql_en_5.0.1_3.0_1692034266037.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/text2sql_mimicsql_en_5.0.1_3.0_1692034266037.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/date_of_birth_parser_en_5.0.2_3.0_1692700035475.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/date_of_birth_parser_en_5.0.2_3.0_1692700035475.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">text2sql</span> <span class="o">=</span> <span class="n">Text2SQL</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"text2sql_mimicsql"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sql"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">text2sql</span> 
-<span class="p">])</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">"Calulate the total number of patients who had icd9 code 5771"</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">dob_contextual_parser</span> <span class="o">=</span> <span class="n">ContextualParserModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"date_of_birth_parser"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk_dob"</span><span class="p">)</span> 
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">text2sql</span><span class="p">])</span>
-<span class="n">result</span><span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">parserPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">dob_contextual_parser</span>
+        <span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">parserPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""
+Record date : 2081-01-04 
+DB : 11.04.1962
+DT : 12-03-1978 
+DOD : 10.25.23 
+
+SOCIAL HISTORY:
+She was born on Nov 04, 1962 in London and got married on 04/05/1979. When she got pregnant on 15 May 1079, the doctor wanted to verify her DOB was November 4, 1962. Her date of birth was confirmed to be 11-04-1962, the patient is 45 years old on 25 Sep 2007.
+
+PROCEDURES:
+Patient was evaluated on 1988-03-15 for allergies. She was seen by the endocrinology service and she was discharged on 9/23/1988. 
+
+MEDICATIONS
+1. Coumadin 1 mg daily. Last INR was on August 14, 2007, and her INR was 2.3."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
 
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">text2sql</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">Text2SQL</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"text2sql_mimicsql"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">document</span><span class="err">"</span><span class="o">])</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sql"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">text2sql</span> <span class="o">))</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Calulate the total number of patients who had icd9 code 5771"""</span>
+<span class="k">val</span> <span class="nv">dob_contextual_parser</span> <span class="k">=</span> <span class="nv">ContextualParserModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"date_of_birth_parser"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk_dob"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">text</span><span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">parserPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+        <span class="n">document_assembler</span><span class="o">,</span>
+        <span class="n">sentence_detector</span><span class="o">,</span>
+        <span class="n">tokenizer</span><span class="o">,</span>
+        <span class="n">dob_contextual_parser</span>
+        <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="n">model</span> <span class="k">=</span> <span class="nv">parserPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="nv">spark</span><span class="o">.</span><span class="py">createDataFrame</span><span class="o">([[</span><span class="err">""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">))</span>
 
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="nv">spark</span><span class="o">.</span><span class="py">createDataFrame</span><span class="o">([[</span><span class="err">"""</span>
+<span class="kt">Record</span> <span class="kt">date</span> <span class="kt">:</span> <span class="err">2081</span><span class="kt">-</span><span class="err">01</span><span class="kt">-</span><span class="err">04</span> 
+<span class="kt">DB</span> <span class="kt">:</span> <span class="err">11</span><span class="kt">.</span><span class="err">04</span><span class="kt">.</span><span class="err">1962</span>
+<span class="kt">DT</span> <span class="kt">:</span> <span class="err">12</span><span class="kt">-</span><span class="err">03</span><span class="kt">-</span><span class="err">1978</span> 
+<span class="kt">DOD</span> <span class="kt">:</span> <span class="err">10</span><span class="kt">.</span><span class="err">25</span><span class="kt">.</span><span class="err">23</span> 
+
+<span class="kt">SOCIAL</span> <span class="kt">HISTORY:</span>
+<span class="kt">She</span> <span class="kt">was</span> <span class="kt">born</span> <span class="kt">on</span> <span class="kt">Nov</span> <span class="err">04</span>, <span class="err">1962</span> <span class="kt">in</span> <span class="kt">London</span> <span class="kt">and</span> <span class="kt">got</span> <span class="kt">married</span> <span class="kt">on</span> <span class="err">04</span><span class="kt">/</span><span class="err">05</span><span class="kt">/</span><span class="err">1979</span><span class="kt">.</span> <span class="kt">When</span> <span class="kt">she</span> <span class="kt">got</span> <span class="kt">pregnant</span> <span class="kt">on</span> <span class="err">15</span> <span class="kt">May</span> <span class="err">1079</span>, <span class="kt">the</span> <span class="kt">doctor</span> <span class="kt">wanted</span> <span class="kt">to</span> <span class="kt">verify</span> <span class="kt">her</span> <span class="kt">DOB</span> <span class="kt">was</span> <span class="kt">November</span> <span class="err">4</span>, <span class="err">1962</span><span class="kt">.</span> <span class="kt">Her</span> <span class="kt">date</span> <span class="kt">of</span> <span class="kt">birth</span> <span class="kt">was</span> <span class="kt">confirmed</span> <span class="kt">to</span> <span class="kt">be</span> <span class="err">11</span><span class="kt">-</span><span class="err">04</span><span class="kt">-</span><span class="err">1962</span>, <span class="kt">the</span> <span class="kt">patient</span> <span class="kt">is</span> <span class="err">45</span> <span class="kt">years</span> <span class="kt">old</span> <span class="kt">on</span> <span class="err">25</span> <span class="kt">Sep</span> <span class="err">2007</span><span class="kt">.</span>
+
+<span class="kt">PROCEDURES:</span>
+<span class="kt">Patient</span> <span class="kt">was</span> <span class="kt">evaluated</span> <span class="kt">on</span> <span class="err">1988</span><span class="kt">-</span><span class="err">03</span><span class="kt">-</span><span class="err">15</span> <span class="kt">for</span> <span class="kt">allergies.</span> <span class="kt">She</span> <span class="kt">was</span> <span class="kt">seen</span> <span class="kt">by</span> <span class="kt">the</span> <span class="kt">endocrinology</span> <span class="kt">service</span> <span class="kt">and</span> <span class="kt">she</span> <span class="kt">was</span> <span class="kt">discharged</span> <span class="kt">on</span> <span class="err">9</span><span class="kt">/</span><span class="err">23</span><span class="kt">/</span><span class="err">1988</span><span class="kt">.</span> 
+
+<span class="kt">MEDICATIONS</span>
+<span class="err">1</span><span class="kt">.</span> <span class="kt">Coumadin</span> <span class="err">1</span> <span class="kt">mg</span> <span class="kt">daily.</span> <span class="kt">Last</span> <span class="kt">INR</span> <span class="kt">was</span> <span class="kt">on</span> <span class="kt">August</span> <span class="err">14</span>, <span class="err">2007</span>, <span class="kt">and</span> <span class="kt">her</span> <span class="kt">INR</span> <span class="kt">was</span> <span class="err">2</span><span class="kt">.</span><span class="err">3</span><span class="kt">.</span><span class="err">"""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">))</span>
 
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>
-SELECT COUNT <span class="o">(</span> DISTINCT DEMOGRAPHIC.<span class="s2">"SUBJECT_ID"</span> <span class="o">)</span>
-FROM DEMOGRAPHIC
-INNER JOIN PROCEDURES on DEMOGRAPHIC.HADM_ID <span class="o">=</span> PROCEDURES.HADM_ID
-WHERE PROCEDURES.<span class="s2">"ICD9_CODE"</span> <span class="o">=</span> <span class="s2">"5771"</span>
-<span class="o">]</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
++-----------+----------------+-----+---+---------+
+|sentence_id|chunk           |begin|end|ner_label|
++-----------+----------------+-----+---+---------+
+|1          |11.04.1962      |32   |41 |DOB      |
+|3          |Nov 04, 1962    |109  |120|DOB      |
+|4          |November 4, 1962|241  |256|DOB      |
+|5          |11-04-1962      |297  |306|DOB      |
++-----------+----------------+-----+---+---------+
+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -488,11 +535,11 @@ WHERE PROCEDURES.<span class="s2">"ICD9_CODE"</span> <span class="o">=</span> <s
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>text2sql_mimicsql</td>
+      <td>date_of_birth_parser</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.0.1+</td>
+      <td>Healthcare NLP 5.0.2+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -503,16 +550,28 @@ WHERE PROCEDURES.<span class="s2">"ICD9_CODE"</span> <span class="o">=</span> <s
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[sentence, token]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[chunk_dob]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>3.0 GB</td>
+      <td>4.9 KB</td>
+    </tr>
+    <tr>
+      <td>Case sensitive:</td>
+      <td>false</td>
     </tr>
   </tbody>
 </table>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-08-14T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-08-22T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -677,7 +736,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/08/13/genericclassifier_sdoh_transportation_insecurity_sbiobert_cased_mli_en.html">SDOH Transportation Insecurity For Classification</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/08/16/summarizer_clinical_laymen_onnx_en.html">Summarize Clinical Notes in Laymen Terms (ONNX)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/08/17/few_shot_classifier_age_group_sbiobert_cased_mli_en.html">Few Shot Age Group Classification</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/08/22/visualclf_vit_dicom_en.html">Dicom Image Classification</a></div></div></div>
 
 </div>
 </div>

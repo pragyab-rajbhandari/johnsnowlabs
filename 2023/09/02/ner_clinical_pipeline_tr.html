@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Text-to-SQL Generation (MIMICSQL) | text2sql_mimicsql | Healthcare NLP 5.0.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline to Detect Problem, Test and Treatment (Turkish) | ner_clinical_pipeline | Healthcare NLP 5.0.2</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model can generate SQL queries from natural questions. It is based on a small-size LLM, which is finetuned by John Snow Labs on a dataset having a schema with the same schema that MIMIC-III has.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  document_assembler =...">
-<!-- <link rel="canonical" href="/2023/08/14/text2sql_mimicsql_en.html"> -->
-<link rel="canonical" href="/2023/08/14/text2sql_mimicsql_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_clinical model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  from sparknlp.pretrained import PretrainedPipelinener_pipeline = PretrainedPipeline("ner_clinical_pipeline", "tr", "clinical/models")result = ner_pipeline.annotate("""50 ...">
+<!-- <link rel="canonical" href="/2023/09/02/ner_clinical_pipeline_tr.html"> -->
+<link rel="canonical" href="/2023/09/02/ner_clinical_pipeline_tr.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -407,79 +407,66 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/mellahysf/2023-08-14-text2sql_mimicsql_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/ahmet-mesut/2023-09-02-ner_clinical_pipeline_tr.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Aug 14, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-08-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Text-to-SQL Generation (MIMICSQL)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Text-to-SQL Generation (MIMICSQL)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>text2sql</li><li>medicaltextgeneration</li><li>medicalquestionanswering</li><li>clinical</li><li>en</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-08-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,text2sql,medicaltextgeneration,medicalquestionanswering,clinical,en,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 02, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-02T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline to Detect Problem, Test and Treatment (Turkish)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline to Detect Problem, Test and Treatment (Turkish)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>tr</li><li>clinical</li><li>pipeline</li><li>ner</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-02T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,tr,clinical,pipeline,ner"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model can generate SQL queries from natural questions. It is based on a small-size LLM, which is finetuned by John Snow Labs on a dataset having a schema with the same schema that MIMIC-III has.</p>
+<p>This pretrained pipeline is built on the top of <a href="https://nlp.johnsnowlabs.com/2023/08/29/ner_clinical_tr.html">ner_clinical</a> model.</p>
 
-<h2 id="predicted-entities">Predicted Entities</h2>
-
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/text2sql_mimicsql_en_5.0.1_3.0_1692034266037.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/text2sql_mimicsql_en_5.0.1_3.0_1692034266037.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/" class="button button-orange">Live Demo</a>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_CLINICAL_MULTI.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_clinical_pipeline_tr_5.0.2_3.4_1693688823112.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_clinical_pipeline_tr_5.0.2_3.4_1693688823112.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">text2sql</span> <span class="o">=</span> <span class="n">Text2SQL</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"text2sql_mimicsql"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sql"</span><span class="p">)</span>
+<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_clinical_pipeline"</span><span class="p">,</span> <span class="s">"tr"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">text2sql</span> 
-<span class="p">])</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">"Calulate the total number of patients who had icd9 code 5771"</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">text2sql</span><span class="p">])</span>
-<span class="n">result</span><span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""50 yaşında bir kadın hasta ortopedi kliniğine sağ dizinde sürekli ağrı, şişlik ve hareket kısıtlılığı şikâyetleriyle başvurdu. Hasta osteoartrit ve daha önce geçirilmiş diz yaralanması öyküsü bildirdi. Klinik muayene ve çekilen röntgenlerde eklem aralığında daralma, osteofit oluşumu ve kıkırdak dejenerasyonu bulguları tespit edildi. Tanıyı doğrulamak ve ciddiyetini değerlendirmek için bir MR taraması istendi. MRG, ileri osteoartrit ile uyumlu yoğun kıkırdak kaybı ve kemik değişiklikleri gösterdi. Hastanın durumu ve tercihleri göz önünde bulundurulduktan sonra  fizik tedavi ve eklem replasmanı ameliyatı olasılığını içeren bir tedavi planı tartışıldı."""</span><span class="p">)</span>
 
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">text2sql</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">Text2SQL</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"text2sql_mimicsql"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">document</span><span class="err">"</span><span class="o">])</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sql"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_clinical_pipeline"</span><span class="o">,</span> <span class="s">"tr"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">text2sql</span> <span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Calulate the total number of patients who had icd9 code 5771"""</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">text</span><span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""50 yaşında bir kadın hasta ortopedi kliniğine sağ dizinde sürekli ağrı, şişlik ve hareket kısıtlılığı şikâyetleriyle başvurdu. Hasta osteoartrit ve daha önce geçirilmiş diz yaralanması öyküsü bildirdi. Klinik muayene ve çekilen röntgenlerde eklem aralığında daralma, osteofit oluşumu ve kıkırdak dejenerasyonu bulguları tespit edildi. Tanıyı doğrulamak ve ciddiyetini değerlendirmek için bir MR taraması istendi. MRG, ileri osteoartrit ile uyumlu yoğun kıkırdak kaybı ve kemik değişiklikleri gösterdi. Hastanın durumu ve tercihleri göz önünde bulundurulduktan sonra  fizik tedavi ve eklem replasmanı ameliyatı olasılığını içeren bir tedavi planı tartışıldı."""</span><span class="o">)</span>
 
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>
-SELECT COUNT <span class="o">(</span> DISTINCT DEMOGRAPHIC.<span class="s2">"SUBJECT_ID"</span> <span class="o">)</span>
-FROM DEMOGRAPHIC
-INNER JOIN PROCEDURES on DEMOGRAPHIC.HADM_ID <span class="o">=</span> PROCEDURES.HADM_ID
-WHERE PROCEDURES.<span class="s2">"ICD9_CODE"</span> <span class="o">=</span> <span class="s2">"5771"</span>
-<span class="o">]</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunks                           |   begin |   end | entities   |
+|---:|:---------------------------------|--------:|------:|:-----------|
+|  0 | sürekli ağrı                     |      58 |    69 | PROBLEM    |
+|  1 | şişlik                           |      72 |    77 | PROBLEM    |
+|  2 | hareket kısıtlılığı              |      82 |   100 | PROBLEM    |
+|  3 | osteoartrit                      |     133 |   143 | PROBLEM    |
+|  4 | geçirilmiş diz yaralanması       |     158 |   183 | PROBLEM    |
+|  5 | eklem aralığında daralma         |     241 |   264 | PROBLEM    |
+|  6 | osteofit oluşumu                 |     267 |   282 | PROBLEM    |
+|  7 | kıkırdak dejenerasyonu bulguları |     287 |   318 | PROBLEM    |
+|  8 | bir MR taraması                  |     388 |   402 | TEST       |
+|  9 | MRG                              |     413 |   415 | TEST       |
+| 10 | ileri osteoartrit                |     418 |   434 | PROBLEM    |
+| 11 | yoğun kıkırdak kaybı             |     447 |   466 | PROBLEM    |
+| 12 | kemik değişiklikleri             |     471 |   490 | PROBLEM    |
+| 13 | fizik tedavi                     |     567 |   578 | TREATMENT  |
+| 14 | eklem replasmanı ameliyatı       |     583 |   608 | TREATMENT  |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -488,11 +475,15 @@ WHERE PROCEDURES.<span class="s2">"ICD9_CODE"</span> <span class="o">=</span> <s
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>text2sql_mimicsql</td>
+      <td>ner_clinical_pipeline</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.0.1+</td>
+      <td>Healthcare NLP 5.0.2+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -504,15 +495,26 @@ WHERE PROCEDURES.<span class="s2">"ICD9_CODE"</span> <span class="o">=</span> <s
     </tr>
     <tr>
       <td>Language:</td>
-      <td>en</td>
+      <td>tr</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>3.0 GB</td>
+      <td>1.2 GB</td>
     </tr>
   </tbody>
 </table>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-08-14T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<h2 id="included-models">Included Models</h2>
+
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-09-02T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -677,7 +679,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/08/13/genericclassifier_sdoh_transportation_insecurity_sbiobert_cased_mli_en.html">SDOH Transportation Insecurity For Classification</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/08/16/summarizer_clinical_laymen_onnx_en.html">Summarize Clinical Notes in Laymen Terms (ONNX)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/09/02/ner_clinical_pipeline_pt.html">Pipeline to Detect Problem, Test and Treatment (Portuguese)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/09/02/text2sql_with_schema_single_table_en.html">Text-to-SQL Generation (Custom_DB_Schema_Single_Table)</a></div></div></div>
 
 </div>
 </div>
