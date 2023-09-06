@@ -816,6 +816,52 @@ MEDICATIONS
 
   <p>Newly introduced augmented NER models namely <a href="https://nlp.johnsnowlabs.com/2023/08/31/ner_events_clinical_langtest_en.html">ner_events_clinical_langtest</a>, <a href="https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_general_langtest_en.html">ner_oncology_anatomy_general_langtest</a>, <a href="https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_granular_langtest_en.html">ner_oncology_anatomy_granular_langtest</a>,  <a href="https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_demographics_langtest_en.html">ner_oncology_demographics_langtest</a>, <a href="https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_posology_langtest_en.html">ner_oncology_posology_langtest</a>, and <a href="https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_response_to_treatment_langtest_en.html">ner_oncology_response_to_treatment_langtest</a> are powered by the innovative LangTest library. This cutting-edge NLP toolkit is at the forefront of language processing advancements, incorporating state-of-the-art techniques and algorithms to enhance the capabilities of our models significantly.</p>
 
+  <ul>
+    <li>These models are strengthened against various perturbations (lowercase, uppercase, titlecase, punctuation removal, etc.), and the previous and new robustness scores are presented below</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>model names</th>
+        <th>original robustness</th>
+        <th>new robustness</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ner_oncology_anatomy_granular_langtest</td>
+        <td>0.79</td>
+        <td>0.89</td>
+      </tr>
+      <tr>
+        <td>ner_oncology_response_to_treatment_langtest</td>
+        <td>0.76</td>
+        <td>0.90</td>
+      </tr>
+      <tr>
+        <td>ner_oncology_demographics_langtest</td>
+        <td>0.81</td>
+        <td>0.95</td>
+      </tr>
+      <tr>
+        <td>ner_oncology_anatomy_general_langtest</td>
+        <td>0.79</td>
+        <td>0.81</td>
+      </tr>
+      <tr>
+        <td>ner_oncology_posology_langtest</td>
+        <td>0.74</td>
+        <td>0.85</td>
+      </tr>
+      <tr>
+        <td>ner_events_clinical_langtest</td>
+        <td>0.71</td>
+        <td>0.80</td>
+      </tr>
+    </tbody>
+  </table>
+
   <p><em>Example</em>:</p>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_events_clinical_langtest"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
@@ -897,10 +943,10 @@ MEDICATIONS
       </tr>
       <tr>
         <td>1</td>
-        <td>fatigue</td>
-        <td>ADE</td>
         <td>Zocor</td>
         <td>DRUG</td>
+        <td>fatigue</td>
+        <td>ADE</td>
         <td>0</td>
         <td>0.9884</td>
         <td>0.9341</td>
@@ -917,10 +963,10 @@ MEDICATIONS
       </tr>
       <tr>
         <td>3</td>
-        <td>aggression</td>
-        <td>ADE</td>
         <td>Zocor</td>
         <td>DRUG</td>
+        <td>aggression</td>
+        <td>ADE</td>
         <td>0</td>
         <td>0.9972</td>
         <td>0.9833</td>
@@ -937,10 +983,10 @@ MEDICATIONS
       </tr>
       <tr>
         <td>5</td>
-        <td>sadness</td>
-        <td>ADE</td>
         <td>Zocor</td>
         <td>DRUG</td>
+        <td>sadness</td>
+        <td>ADE</td>
         <td>1</td>
         <td>0.9080</td>
         <td>0.9644</td>
