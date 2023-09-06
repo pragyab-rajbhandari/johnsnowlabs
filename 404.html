@@ -426,11 +426,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Few Shot Age Group Classification | few_shot_classifier_age_group_sbiobert_cased_mli | Healthcare NLP 5.0.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Legal Question Answering (MPRE) | legqa_flant5_mpre | Legal NLP 1.0.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionFew-shot classification in NLP refers to the task of building text classification models that can learn from only a small number of labeled examples per class. It aims to mimic the human ability to learn concepts from just a few examples.The original dataset included thousands of labelled text; for the tr...">
-<!-- <link rel="canonical" href="/2023/08/17/few_shot_classifier_age_group_sbiobert_cased_mli_en.html"> -->
-<link rel="canonical" href="/2023/08/17/few_shot_classifier_age_group_sbiobert_cased_mli_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis Question Answering model has been fine-tuned on FLANT5 using legal MPRE data. MPRE stands for Multistate Professional Responsibility Examination. The dataset contains examples of questions from past MPRE exams along with their answers and explanations. This model provides a powerful and efficient sol...">
+<!-- <link rel="canonical" href="/2023/09/04/legqa_flant5_mpre_en.html"> -->
+<link rel="canonical" href="/2023/09/04/legqa_flant5_mpre_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -824,98 +824,61 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gpirge/2023-08-17-few_shot_classifier_age_group_sbiobert_cased_mli_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gadde5300/2023-09-04-legqa_flant5_mpre_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Aug 17, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-08-17T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Few Shot Age Group Classification</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Few Shot Age Group Classification"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>clinical</li><li>licensed</li><li>en</li><li>text_classification</li><li>age</li><li>age_group</li><li>few_shot</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-08-17T00:00:00+00:00">
-    <meta itemprop="keywords" content="clinical,licensed,en,text_classification,age,age_group,few_shot"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 04, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-04T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Legal Question Answering (MPRE)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Legal Question Answering (MPRE)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>qa</li><li>question_answering</li><li>legal</li><li>mpre</li><li>en</li><li>licensed</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-04T00:00:00+00:00">
+    <meta itemprop="keywords" content="qa,question_answering,legal,mpre,en,licensed,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>Few-shot classification in NLP refers to the task of building text classification models that can learn from only a small number of labeled examples per class. It aims to mimic the human ability to learn concepts from just a few examples.</p>
-
-<p>The original dataset included thousands of labelled text; for the training of this Few Shot Classifier model, only a small portion of the original dataset was used and the benchmarks are satisfactory.</p>
-
-<p>This Few Shot Classifier model is trained for analyzing the age group of a person mentioned in health documents. Age of the person may or may not be mentioned explicitly in the training dataset.</p>
-
-<p>The Text Classifier model has been trained using in-house annotated health-related text that have been labeled with three different classes:</p>
-
-<p><code class="language-plaintext highlighter-rouge">Adult</code>: A person who is fully grown or developed. Typically refers to someone who is 18 years or older,</p>
-
-<p><code class="language-plaintext highlighter-rouge">Child</code>: Requires intervention, urgent, not life-threatening cases.</p>
-
-<p><code class="language-plaintext highlighter-rouge">Unknown</code>: Not possible to comprehend/figure out the age group from the given text.</p>
+<p>This Question Answering model has been fine-tuned on FLANT5 using legal MPRE data. MPRE stands for Multistate Professional Responsibility Examination. The dataset contains examples of questions from past MPRE exams along with their answers and explanations. This model provides a powerful and efficient solution for accurately answering the questions and delivering insightful information.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">Adult</code>, <code class="language-plaintext highlighter-rouge">Child</code>, <code class="language-plaintext highlighter-rouge">Unknown</code></p>
-
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/few_shot_classifier_age_group_sbiobert_cased_mli_en_5.0.1_3.0_1692292726234.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/few_shot_classifier_age_group_sbiobert_cased_mli_en_5.0.1_3.0_1692292726234.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legqa_flant5_mpre_en_1.0.0_3.0_1693846701106.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/legal/models/legqa_flant5_mpre_en_1.0.0_3.0_1693846701106.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCols</span><span class="p">(</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">)</span>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+<span class="n">leg_qa</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">QuestionAnswering</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legqa_flant5_mpre"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"legal/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setCustomPrompt</span><span class="p">(</span><span class="s">"question: {QUESTION} context: {CONTEXT}"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"answer"</span><span class="p">)</span>
 
-<span class="n">bert_sent</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence_embeddings"</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">leg_qa</span><span class="p">])</span>
 
-<span class="n">few_shot_classifier</span> <span class="o">=</span> <span class="n">FewShotClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"few_shot_classifier_age_group_sbiobert_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
+<span class="n">context</span> <span class="o">=</span> <span class="s">"Mr. Burns, the chief executive officer of Conglomerate Corporation, now faces criminal charges of discussing prices with the president of a competing firm. If found guilty, both Mr. Burns and Conglomerate Corporation will be subject to civil and criminal penalties under state and federal antitrust laws. An attorney has been representing Conglomerate Corporation. She has conducted a thorough investigation of the matter, and she has personally concluded that no such pricing discussions occurred. Both Conglomerate Corporation and Mr. Burns plan to defend on that ground. Mr. Burns has asked the attorney to represent him, as well as Conglomerate Corporation, in the proceedings. The legal and factual defenses of Conglomerate Corporation and Mr. Burns seem completely consistent at the outset of the matter. Would the attorney need to obtain informed consent to a conflict of interest from both Mr."</span>
 
-<span class="n">clf_Pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">bert_sent</span><span class="p">,</span>
-    <span class="n">few_shot_classifier</span>
-<span class="p">])</span>
+<span class="n">question</span> <span class="o">=</span> <span class="s">" Burns and a separate corporate officer at Conglomerate Corporation before proceeding with this dual representation?"</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""A patient presented with complaints of chest pain and shortness of breath. The medical history revealed the patient had a smoking habit for over 30 years, and was diagnosed with hypertension two years ago. After a detailed physical examination, the doctor found a noticeable wheeze on lung auscultation and prescribed a spirometry test, which showed irreversible airway obstruction. The patient was diagnosed with Chronic obstructive pulmonary disease (COPD) caused by smoking."""</span><span class="p">],</span>
- <span class="p">[</span><span class="s">"""Hi, wondering if anyone has had a similar situation. My 1 year old daughter has the following; loose stools/ pale stools, elevated liver enzymes, low iron.  5 months and still no answers from drs. """</span><span class="p">],</span>
- <span class="p">[</span><span class="s">"""Hi have chronic gastritis from 4 month(confirmed by endoscopy).I do not have acid reflux.Only dull ache above abdomen and left side of chest.I am on reberprozole and librax.My question is whether chronic gastritis is curable or is it a lifetime condition?I am loosing hope because this dull ache is not going away.Please please reply"""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">clf_Pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">question</span><span class="p">,</span> <span class="n">context</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sentence_embeddings</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">few_shot_classifier</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">FewShotClassifierModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"few_shot_classifier_age_group_sbiobert_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"prediction"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">clf_Pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">sentence_embeddings</span><span class="o">,</span> <span class="n">few_shot_classifier</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"A patient presented with complaints of chest pain and shortness of breath. The medical history revealed the patient had a smoking habit for over 30 years, and was diagnosed with hypertension two years ago. After a detailed physical examination, the doctor found a noticeable wheeze on lung auscultation and prescribed a spirometry test, which showed irreversible airway obstruction. The patient was diagnosed with Chronic obstructive pulmonary disease (COPD) caused by smoking."</span><span class="o">,</span> <span class="s">"Hi, wondering if anyone has had a similar situation. My 1 year old daughter has the following; loose stools/ pale stools, elevated liver enzymes, low iron.  5 months and still no answers from drs."</span><span class="o">,</span> <span class="s">"Hi have chronic gastritis from 4 month(confirmed by endoscopy).I do not have acid reflux.Only dull ache above abdomen and left side of chest.I am on reberprozole and librax.My question is whether chronic gastritis is curable or is it a lifetime condition?I am loosing hope because this dull ache is not going away.Please please reply"</span><span class="o">)).</span><span class="py">toDS</span><span class="o">().</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">clf_Pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
-|                                                                                                                                                  text|   result|
-+------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
-|A patient presented with complaints of chest pain and shortness of breath. The medical <span class="nb">history </span>revealed the patient had a smoking habit <span class="k">for </span>over 30...|  <span class="o">[</span>Adult]|
-|Hi, wondering <span class="k">if </span>anyone has had a similar situation. My 1 year old daughter has the following<span class="p">;</span> loose stools/ pale stools, elevated liver enzymes, l...|  <span class="o">[</span>Child]|
-|Hi have chronic gastritis from 4 month<span class="o">(</span>confirmed by endoscopy<span class="o">)</span>.I <span class="k">do </span>not have acid reflux.Only dull ache above abdomen and left side of chest.I am o...|[Unknown]|
-+------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                                                                                                    |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[Yes, because the conflicting positions <span class="k">in </span>the legal and factual defenses require the attorney to obtain the informed consent of both clients before proceeding with the representation. <span class="o">]</span>|
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -924,11 +887,11 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>few_shot_classifier_age_group_sbiobert_cased_mli</td>
+      <td>legqa_flant5_mpre</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.0.1+</td>
+      <td>Legal NLP 1.0.0+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -939,39 +902,24 @@
       <td>Official</td>
     </tr>
     <tr>
-      <td>Input Labels:</td>
-      <td>[sentence_embeddings]</td>
-    </tr>
-    <tr>
-      <td>Output Labels:</td>
-      <td>[prediction]</td>
-    </tr>
-    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>47.2 KB</td>
+      <td>1.6 GB</td>
+    </tr>
+    <tr>
+      <td>Case sensitive:</td>
+      <td>true</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="references">References</h2>
 
-<p>In-house annotated health-related text.</p>
-
-<h2 id="benchmarking">Benchmarking</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       label  precision    recall  f1-score   support
-       Adult       0.76      0.72      0.74       329
-       Child       0.87      0.91      0.89       194
-     Unknown       0.74      0.77      0.76       325
-    accuracy       -         -         0.78       848
-   macro-avg       0.79      0.80      0.80       848
-weighted-avg       0.78      0.78      0.78       848
-</code></pre></div></div>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-08-17T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>In house annotated dataset</p>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-09-04T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -1136,7 +1084,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/08/17/assertion_vop_clinical_medium_en.html">Assertion Status for Voice of the Patients (embeddings_clinical_medium)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/09/04/leggen_flant5_mpre_en.html">Legal Text Generation (MPRE)</a></div></div></div>
 
 </div>
 </div>
