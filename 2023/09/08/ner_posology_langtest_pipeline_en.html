@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Legal Question Answering (MPRE) | legqa_flant5_mpre | Legal NLP 1.0.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline to Detect Posology concepts (langtest) | ner_posology_langtest_pipeline | Healthcare NLP 5.1.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis Question Answering model has been fine-tuned on FLANT5 using legal MPRE data. MPRE stands for Multistate Professional Responsibility Examination. The dataset contains examples of questions from past MPRE exams along with their answers and explanations. This model provides a powerful and efficient sol...">
-<!-- <link rel="canonical" href="/2023/09/04/legqa_flant5_mpre_en.html"> -->
-<link rel="canonical" href="/2023/09/04/legqa_flant5_mpre_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_posology_langtest model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  from sparknlp.pretrained import PretrainedPipelinener_pipeline = PretrainedPipeline("ner_posology_langtest_pipeline", "en", "clinical/models")result = ner_pipeli...">
+<!-- <link rel="canonical" href="/2023/09/08/ner_posology_langtest_pipeline_en.html"> -->
+<link rel="canonical" href="/2023/09/08/ner_posology_langtest_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -407,61 +407,113 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gadde5300/2023-09-04-legqa_flant5_mpre_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/ahmet-mesut/2023-09-08-ner_posology_langtest_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 04, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-04T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Legal Question Answering (MPRE)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Legal Question Answering (MPRE)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>qa</li><li>question_answering</li><li>legal</li><li>mpre</li><li>en</li><li>licensed</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="qa,question_answering,legal,mpre,en,licensed,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 08, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-08T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline to Detect Posology concepts (langtest)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline to Detect Posology concepts (langtest)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>posology</li><li>pipeline</li><li>ner</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-08T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,posology,pipeline,ner"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This Question Answering model has been fine-tuned on FLANT5 using legal MPRE data. MPRE stands for Multistate Professional Responsibility Examination. The dataset contains examples of questions from past MPRE exams along with their answers and explanations. This model provides a powerful and efficient solution for accurately answering the questions and delivering insightful information.</p>
-
-<h2 id="predicted-entities">Predicted Entities</h2>
+<p>This pretrained pipeline is built on the top of <a href="https://nlp.johnsnowlabs.com/2023/07/28/ner_posology_langtest_en.html">ner_posology_langtest</a> model.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legqa_flant5_mpre_en_1.0.0_3.0_1693846701106.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/legal/models/legqa_flant5_mpre_en_1.0.0_3.0_1693846701106.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_posology_langtest_pipeline_en_5.1.0_3.4_1694193464607.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_posology_langtest_pipeline_en_5.1.0_3.4_1694193464607.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCols</span><span class="p">(</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">leg_qa</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">QuestionAnswering</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legqa_flant5_mpre"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"legal/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setCustomPrompt</span><span class="p">(</span><span class="s">"question: {QUESTION} context: {CONTEXT}"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"answer"</span><span class="p">)</span>
+<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_posology_langtest_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">leg_qa</span><span class="p">])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""The patient is a 30-year-old female with a long history of insulin dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI. Evidently, at some point in time, the patient was noted to develop a pressure-type wound on the sole of her left foot and left great toe. She was also noted to have a large sacral wound; this is in a similar location with her previous laminectomy, and this continues to receive daily care. The patient was transferred secondary to inability to participate in full physical and occupational therapy and continue medical management of her diabetes, the sacral decubitus, left foot pressure wound, and associated complications of diabetes. She is given Fragmin 5000 units subcutaneously daily, Xenaderm to wounds topically b.i.d., Lantus 40 units subcutaneously at bedtime, OxyContin 30 mg p.o. q.12 h., folic acid 1 mg daily, levothyroxine 0.1 mg p.o. daily, Prevacid 30 mg daily, Avandia 4 mg daily, Norvasc 10 mg daily, Lexapro 20 mg daily, aspirin 81 mg daily, Senna 2 tablets p.o. q.a.m., Neurontin 400 mg p.o. t.i.d., Percocet 5/325 mg 2 tablets q.4 h. p.r.n., magnesium citrate 1 bottle p.o. p.r.n., sliding scale coverage insulin, Wellbutrin 100 mg p.o. daily, and Bactrim DS b.i.d."""</span><span class="p">)</span>
 
-<span class="n">context</span> <span class="o">=</span> <span class="s">"Mr. Burns, the chief executive officer of Conglomerate Corporation, now faces criminal charges of discussing prices with the president of a competing firm. If found guilty, both Mr. Burns and Conglomerate Corporation will be subject to civil and criminal penalties under state and federal antitrust laws. An attorney has been representing Conglomerate Corporation. She has conducted a thorough investigation of the matter, and she has personally concluded that no such pricing discussions occurred. Both Conglomerate Corporation and Mr. Burns plan to defend on that ground. Mr. Burns has asked the attorney to represent him, as well as Conglomerate Corporation, in the proceedings. The legal and factual defenses of Conglomerate Corporation and Mr. Burns seem completely consistent at the outset of the matter. Would the attorney need to obtain informed consent to a conflict of interest from both Mr."</span>
-
-<span class="n">question</span> <span class="o">=</span> <span class="s">" Burns and a separate corporate officer at Conglomerate Corporation before proceeding with this dual representation?"</span>
-
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">question</span><span class="p">,</span> <span class="n">context</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
+<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_posology_langtest_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""The patient is a 30-year-old female with a long history of insulin dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI. Evidently, at some point in time, the patient was noted to develop a pressure-type wound on the sole of her left foot and left great toe. She was also noted to have a large sacral wound; this is in a similar location with her previous laminectomy, and this continues to receive daily care. The patient was transferred secondary to inability to participate in full physical and occupational therapy and continue medical management of her diabetes, the sacral decubitus, left foot pressure wound, and associated complications of diabetes. She is given Fragmin 5000 units subcutaneously daily, Xenaderm to wounds topically b.i.d., Lantus 40 units subcutaneously at bedtime, OxyContin 30 mg p.o. q.12 h., folic acid 1 mg daily, levothyroxine 0.1 mg p.o. daily, Prevacid 30 mg daily, Avandia 4 mg daily, Norvasc 10 mg daily, Lexapro 20 mg daily, aspirin 81 mg daily, Senna 2 tablets p.o. q.a.m., Neurontin 400 mg p.o. t.i.d., Percocet 5/325 mg 2 tablets q.4 h. p.r.n., magnesium citrate 1 bottle p.o. p.r.n., sliding scale coverage insulin, Wellbutrin 100 mg p.o. daily, and Bactrim DS b.i.d."""</span><span class="o">)</span>
+
+</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|result                                                                                                                                                                                    |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[Yes, because the conflicting positions <span class="k">in </span>the legal and factual defenses require the attorney to obtain the informed consent of both clients before proceeding with the representation. <span class="o">]</span>|
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunks            |   begin |   end | entities   |
+|---:|:------------------|--------:|------:|:-----------|
+|  0 | insulin           |      59 |    65 | DRUG       |
+|  1 | Bactrim           |     346 |   352 | DRUG       |
+|  2 | <span class="k">for </span>14 days       |     354 |   364 | DURATION   |
+|  3 | Fragmin           |     925 |   931 | DRUG       |
+|  4 | 5000 units        |     933 |   942 | DOSAGE     |
+|  5 | subcutaneously    |     944 |   957 | ROUTE      |
+|  6 | daily             |     959 |   963 | FREQUENCY  |
+|  7 | topically         |     985 |   993 | ROUTE      |
+|  8 | b.i.d             |     995 |   999 | FREQUENCY  |
+|  9 | Lantus            |    1003 |  1008 | DRUG       |
+| 10 | 40 units          |    1010 |  1017 | DOSAGE     |
+| 11 | subcutaneously    |    1019 |  1032 | ROUTE      |
+| 12 | at bedtime        |    1034 |  1043 | FREQUENCY  |
+| 13 | OxyContin         |    1046 |  1054 | DRUG       |
+| 14 | 30 mg             |    1056 |  1060 | STRENGTH   |
+| 15 | p.o               |    1062 |  1064 | ROUTE      |
+| 16 | q.12 h            |    1067 |  1072 | FREQUENCY  |
+| 17 | folic acid        |    1076 |  1085 | DRUG       |
+| 18 | 1 mg              |    1087 |  1090 | STRENGTH   |
+| 19 | daily             |    1092 |  1096 | FREQUENCY  |
+| 20 | levothyroxine     |    1099 |  1111 | DRUG       |
+| 21 | 0.1 mg            |    1113 |  1118 | STRENGTH   |
+| 22 | p.o               |    1120 |  1122 | ROUTE      |
+| 23 | daily             |    1125 |  1129 | FREQUENCY  |
+| 24 | Prevacid          |    1132 |  1139 | DRUG       |
+| 25 | 30 mg             |    1141 |  1145 | STRENGTH   |
+| 26 | daily             |    1147 |  1151 | FREQUENCY  |
+| 27 | 4 mg              |    1162 |  1165 | STRENGTH   |
+| 28 | daily             |    1167 |  1171 | FREQUENCY  |
+| 29 | Norvasc           |    1174 |  1180 | DRUG       |
+| 30 | 10 mg             |    1182 |  1186 | STRENGTH   |
+| 31 | daily             |    1188 |  1192 | FREQUENCY  |
+| 32 | Lexapro           |    1195 |  1201 | DRUG       |
+| 33 | 20 mg             |    1203 |  1207 | STRENGTH   |
+| 34 | daily             |    1209 |  1213 | FREQUENCY  |
+| 35 | aspirin           |    1216 |  1222 | DRUG       |
+| 36 | 81 mg             |    1224 |  1228 | STRENGTH   |
+| 37 | daily             |    1230 |  1234 | FREQUENCY  |
+| 38 | Senna             |    1237 |  1241 | DRUG       |
+| 39 | 2                 |    1243 |  1243 | DOSAGE     |
+| 40 | tablets           |    1245 |  1251 | FORM       |
+| 41 | p.o               |    1253 |  1255 | ROUTE      |
+| 42 | q                 |    1258 |  1258 | FREQUENCY  |
+| 43 | Neurontin         |    1266 |  1274 | DRUG       |
+| 44 | 400 mg            |    1276 |  1281 | STRENGTH   |
+| 45 | p.o               |    1283 |  1285 | ROUTE      |
+| 46 | t.i.d             |    1288 |  1292 | FREQUENCY  |
+| 47 | Percocet          |    1296 |  1303 | DRUG       |
+| 48 | 5/325 mg          |    1305 |  1312 | STRENGTH   |
+| 49 | 2                 |    1314 |  1314 | DOSAGE     |
+| 50 | tablets           |    1316 |  1322 | FORM       |
+| 51 | q.4 h             |    1324 |  1328 | FREQUENCY  |
+| 52 | magnesium citrate |    1339 |  1355 | DRUG       |
+| 53 | 1                 |    1357 |  1357 | DOSAGE     |
+| 54 | bottle            |    1359 |  1364 | FORM       |
+| 55 | p.o               |    1366 |  1368 | ROUTE      |
+| 56 | insulin           |    1402 |  1408 | DRUG       |
+| 57 | Wellbutrin        |    1411 |  1420 | DRUG       |
+| 58 | 100 mg            |    1422 |  1427 | STRENGTH   |
+| 59 | p.o               |    1429 |  1431 | ROUTE      |
+| 60 | daily             |    1434 |  1438 | FREQUENCY  |
+| 61 | Bactrim DS        |    1445 |  1454 | DRUG       |
+| 62 | b.i.d             |    1456 |  1460 | FREQUENCY  |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -470,11 +522,15 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>legqa_flant5_mpre</td>
+      <td>ner_posology_langtest_pipeline</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Legal NLP 1.0.0+</td>
+      <td>Healthcare NLP 5.1.0+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -490,19 +546,22 @@
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.6 GB</td>
-    </tr>
-    <tr>
-      <td>Case sensitive:</td>
-      <td>true</td>
+      <td>1.7 GB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="included-models">Included Models</h2>
 
-<p>In house annotated dataset</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-09-04T00:00:00+00:00"><!-- start custom article footer snippet -->
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetector</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-09-08T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -667,7 +726,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/09/04/leggen_flant5_mpre_en.html">Legal Text Generation (MPRE)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/09/08/ner_posology_langtest_pipeline_en.html">Pipeline to Detect Posology concepts (langtest)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/09/08/ner_posology_langtest_pipeline_en.html">Pipeline to Detect Posology concepts (langtest)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/09/09/ner_ade_clinical_langtest_pipeline_en.html">Pipeline to Detect Adverse Drug Events (langtest)</a></div></div></div>
 
 </div>
 </div>

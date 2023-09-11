@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Legal Question Answering (MPRE) | legqa_flant5_mpre | Legal NLP 1.0.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline to Extract Anatomical Entities from Oncology Texts (langtest) | ner_oncology_anatomy_general_langtest_pipeline | Healthcare NLP 5.1.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis Question Answering model has been fine-tuned on FLANT5 using legal MPRE data. MPRE stands for Multistate Professional Responsibility Examination. The dataset contains examples of questions from past MPRE exams along with their answers and explanations. This model provides a powerful and efficient sol...">
-<!-- <link rel="canonical" href="/2023/09/04/legqa_flant5_mpre_en.html"> -->
-<link rel="canonical" href="/2023/09/04/legqa_flant5_mpre_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_oncology_anatomy_general_langtest model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  from sparknlp.pretrained import PretrainedPipelinener_pipeline = PretrainedPipeline("ner_oncology_anatomy_general_langtest_pipeline", "en", "clin...">
+<!-- <link rel="canonical" href="/2023/09/09/ner_oncology_anatomy_general_langtest_pipeline_en.html"> -->
+<link rel="canonical" href="/2023/09/09/ner_oncology_anatomy_general_langtest_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -407,61 +407,54 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gadde5300/2023-09-04-legqa_flant5_mpre_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/ahmet-mesut/2023-09-09-ner_oncology_anatomy_general_langtest_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 04, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-04T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Legal Question Answering (MPRE)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Legal Question Answering (MPRE)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>qa</li><li>question_answering</li><li>legal</li><li>mpre</li><li>en</li><li>licensed</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="qa,question_answering,legal,mpre,en,licensed,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 09, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-09T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline to Extract Anatomical Entities from Oncology Texts (langtest)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline to Extract Anatomical Entities from Oncology Texts (langtest)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>oncology</li><li>anatomy</li><li>general</li><li>pipeline</li><li>ner</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-09-09T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,oncology,anatomy,general,pipeline,ner"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This Question Answering model has been fine-tuned on FLANT5 using legal MPRE data. MPRE stands for Multistate Professional Responsibility Examination. The dataset contains examples of questions from past MPRE exams along with their answers and explanations. This model provides a powerful and efficient solution for accurately answering the questions and delivering insightful information.</p>
-
-<h2 id="predicted-entities">Predicted Entities</h2>
+<p>This pretrained pipeline is built on the top of <a href="https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_general_langtest_en.html">ner_oncology_anatomy_general_langtest</a> model.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legqa_flant5_mpre_en_1.0.0_3.0_1693846701106.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/legal/models/legqa_flant5_mpre_en_1.0.0_3.0_1693846701106.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_general_langtest_pipeline_en_5.1.0_3.4_1694286854706.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_general_langtest_pipeline_en_5.1.0_3.4_1694286854706.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCols</span><span class="p">(</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">leg_qa</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">QuestionAnswering</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legqa_flant5_mpre"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"legal/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setCustomPrompt</span><span class="p">(</span><span class="s">"question: {QUESTION} context: {CONTEXT}"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"answer"</span><span class="p">)</span>
+<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_oncology_anatomy_general_langtest_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">leg_qa</span><span class="p">])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver."""</span><span class="p">)</span>
 
-<span class="n">context</span> <span class="o">=</span> <span class="s">"Mr. Burns, the chief executive officer of Conglomerate Corporation, now faces criminal charges of discussing prices with the president of a competing firm. If found guilty, both Mr. Burns and Conglomerate Corporation will be subject to civil and criminal penalties under state and federal antitrust laws. An attorney has been representing Conglomerate Corporation. She has conducted a thorough investigation of the matter, and she has personally concluded that no such pricing discussions occurred. Both Conglomerate Corporation and Mr. Burns plan to defend on that ground. Mr. Burns has asked the attorney to represent him, as well as Conglomerate Corporation, in the proceedings. The legal and factual defenses of Conglomerate Corporation and Mr. Burns seem completely consistent at the outset of the matter. Would the attorney need to obtain informed consent to a conflict of interest from both Mr."</span>
-
-<span class="n">question</span> <span class="o">=</span> <span class="s">" Burns and a separate corporate officer at Conglomerate Corporation before proceeding with this dual representation?"</span>
-
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">question</span><span class="p">,</span> <span class="n">context</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
+<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_oncology_anatomy_general_langtest_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver."""</span><span class="o">)</span>
+
+</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|result                                                                                                                                                                                    |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[Yes, because the conflicting positions <span class="k">in </span>the legal and factual defenses require the attorney to obtain the informed consent of both clients before proceeding with the representation. <span class="o">]</span>|
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunks   |   begin |   end | entities        |
+|---:|:---------|--------:|------:|:----------------|
+|  0 | left     |      36 |    39 | Direction       |
+|  1 | breast   |      41 |    46 | Anatomical_Site |
+|  2 | lungs    |      82 |    86 | Anatomical_Site |
+|  3 | liver    |      99 |   103 | Anatomical_Site |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -470,11 +463,15 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>legqa_flant5_mpre</td>
+      <td>ner_oncology_anatomy_general_langtest_pipeline</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Legal NLP 1.0.0+</td>
+      <td>Healthcare NLP 5.1.0+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -490,19 +487,22 @@
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.6 GB</td>
-    </tr>
-    <tr>
-      <td>Case sensitive:</td>
-      <td>true</td>
+      <td>1.7 GB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="included-models">Included Models</h2>
 
-<p>In house annotated dataset</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-09-04T00:00:00+00:00"><!-- start custom article footer snippet -->
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverter</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-09-09T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -667,7 +667,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/09/04/leggen_flant5_mpre_en.html">Legal Text Generation (MPRE)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/09/08/ner_posology_langtest_pipeline_en.html">Pipeline to Detect Posology concepts (langtest)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/09/09/ner_jsl_langtest_pipeline_en.html">Pipeline to Detect Clinical Entities (langtest)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/09/09/ner_oncology_anatomy_granular_langtest_pipeline_en.html">Pipeline to Extract Granular Anatomical Entities from Oncology Texts (langtest)</a></div></div></div>
 
 </div>
 </div>
