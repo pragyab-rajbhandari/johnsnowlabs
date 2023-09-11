@@ -548,7 +548,7 @@ and <a href="https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/da
 <span class="n">nlp</span><span class="p">.</span><span class="n">query_and_deploy_if_missing</span><span class="p">(</span><span class="s">'bert'</span><span class="p">,</span><span class="s">'My String to embed'</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <p><code class="language-plaintext highlighter-rouge">nlp.query_and_deploy_if_missing</code> has the following parameters:</p>
+  <p><code class="language-plaintext highlighter-rouge">nlp.query_and_deploy_if_missing</code> has the following parameters related to <strong>deploying your model</strong>:</p>
 
   <table>
     <thead>
@@ -587,6 +587,10 @@ and <a href="https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/da
         <td>one of Small, Medium, Large.</td>
       </tr>
       <tr>
+        <td><code class="language-plaintext highlighter-rouge">gpu</code></td>
+        <td><code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code> to load  GPU-optimized jars or CPU-optimized jars in the container</td>
+      </tr>
+      <tr>
         <td><code class="language-plaintext highlighter-rouge">new_run</code></td>
         <td>if True, mlflow will start a new run before logging the model</td>
       </tr>
@@ -601,6 +605,73 @@ and <a href="https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/da
       <tr>
         <td><code class="language-plaintext highlighter-rouge">block_until_deployed</code></td>
         <td>if True, this function will block until the endpoint is created</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><code class="language-plaintext highlighter-rouge">nlp.query_and_deploy_if_missing</code> has the following parameters related to <strong>querying your model</strong>,   <br />
+which are forwarded to the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api">model.predict()</a> call:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">output_level</code></td>
+        <td>One of <code class="language-plaintext highlighter-rouge">token</code>, <code class="language-plaintext highlighter-rouge">chunk</code>, <code class="language-plaintext highlighter-rouge">sentence</code>, <code class="language-plaintext highlighter-rouge">relation</code>, <code class="language-plaintext highlighter-rouge">document</code> to shape outputs</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">positions</code></td>
+        <td>Set <code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code> to include or exclude character index position of predictions</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">metadata</code></td>
+        <td>Set <code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code> to include additional metadata</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">drop_irrelevant_cols</code></td>
+        <td>Set <code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code> to drop irrelevant columns</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">get_embeddings</code></td>
+        <td>Set <code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code> to include embedding or not</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">keep_stranger_features</code></td>
+        <td>Set <code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code> to return columns not named “text”, ‘image” or “file_type” from your input data</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">multithread</code></td>
+        <td>Set <code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code> to use multi-Threading for inference. Auto-inferred if not set</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><code class="language-plaintext highlighter-rouge">nlp.query_and_deploy_if_missing</code> checks the following Env vars</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Env Var Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">HEALTHCARE_SECRET</code></td>
+        <td>Automatically set on your cluster if you run nlp.install()</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">VISUAL_SECRET</code></td>
+        <td>Automatically set if you run. <code class="language-plaintext highlighter-rouge">nlp.install(..., visual=True)</code>. You can only spawn visual endpoint from a cluster created by <code class="language-plaintext highlighter-rouge">nlp.install(..., visual=True)</code></td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">JOHNSNOWLABS_LICENSE_JSON</code></td>
+        <td>JSON content of your john snow labs licensed to use for endpoints. Should be <strong>airgap license</strong></td>
       </tr>
     </tbody>
   </table>
