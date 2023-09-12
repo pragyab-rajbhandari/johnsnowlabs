@@ -1,38 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-09-11T08:32:15+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Pipeline to Detect Adverse Drug Events (langtest)</title><link href="/2023/09/09/ner_ade_clinical_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Detect Adverse Drug Events (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_ade_clinical_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_ade_clinical_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-09-12T21:19:06+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Pipeline to Detect Adverse Drug Events (langtest)</title><link href="/2023/09/09/ner_ade_clinical_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Detect Adverse Drug Events (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_ade_clinical_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_ade_clinical_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/07/31/ner_ade_clinical_langtest_en.html&quot;&gt;ner_ade_clinical_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_ade_clinical_langtest](https://nlp.johnsnowlabs.com/2023/07/31/ner_ade_clinical_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_langtest_pipeline_en_5.1.0_3.0_1694280973257.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_langtest_pipeline_en_5.1.0_3.0_1694280973257.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_langtest_pipeline_en_5.1.0_3.0_1694280973257.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_langtest_pipeline_en_5.1.0_3.0_1694280973257.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_ade_clinical_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_ade_clinical_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks                     |   begin |   end | entities   |
+```bash
+|    | chunks                     |   begin |   end | entities   |
 |---:|:---------------------------|--------:|------:|:-----------|
 |  0 | the Lipitor                |      80 |    90 | DRUG       |
 |  1 | stomach pain               |     124 |   135 | ADE        |
@@ -45,183 +51,147 @@
 |  8 | lack of energy             |     820 |   833 | ADE        |
 |  9 | Lipitor                    |     946 |   952 | DRUG       |
 | 10 | vitamin C                  |    1034 |  1042 | DRUG       |
-| 11 | I don&lt;span class=&quot;s1&quot;&gt;'t                    |    1250 |  1256 | DRUG       |
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+| 11 | I don't                    |    1250 |  1256 | DRUG       |
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_ade_clinical_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_ade_clinical_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="ade" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_ade_clinical_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:---------------------------|--------:|------:|:-----------| | 0 | the Lipitor | 80 | 90 | DRUG | | 1 | stomach pain | 124 | 135 | ADE | | 2 | back | 167 | 170 | ADE | | 3 | stomach pain | 177 | 188 | ADE | | 4 | urinary tract infection | 308 | 330 | ADE | | 5 | urge to urinate constantly | 438 | 463 | ADE | | 6 | the prescription drugs | 610 | 631 | DRUG | | 7 | the Lipitor | 715 | 725 | DRUG | | 8 | lack of energy | 820 | 833 | ADE | | 9 | Lipitor | 946 | 952 | DRUG | | 10 | vitamin C | 1034 | 1042 | DRUG | | 11 | I don't | 1250 | 1256 | DRUG | Model Information Model Name: ner_ade_clinical_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel</summary></entry><entry><title type="html">Pipeline to Detect Clinical Events (langtest)</title><link href="/2023/09/09/ner_events_clinical_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Detect Clinical Events (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_events_clinical_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_events_clinical_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="ade" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_ade_clinical_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:---------------------------|--------:|------:|:-----------| | 0 | the Lipitor | 80 | 90 | DRUG | | 1 | stomach pain | 124 | 135 | ADE | | 2 | back | 167 | 170 | ADE | | 3 | stomach pain | 177 | 188 | ADE | | 4 | urinary tract infection | 308 | 330 | ADE | | 5 | urge to urinate constantly | 438 | 463 | ADE | | 6 | the prescription drugs | 610 | 631 | DRUG | | 7 | the Lipitor | 715 | 725 | DRUG | | 8 | lack of energy | 820 | 833 | ADE | | 9 | Lipitor | 946 | 952 | DRUG | | 10 | vitamin C | 1034 | 1042 | DRUG | | 11 | I don't | 1250 | 1256 | DRUG | Model Information Model Name: ner_ade_clinical_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel</summary></entry><entry><title type="html">Pipeline to Detect Clinical Events (langtest)</title><link href="/2023/09/09/ner_events_clinical_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Detect Clinical Events (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_events_clinical_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_events_clinical_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/08/31/ner_events_clinical_langtest_en.html&quot;&gt;ner_events_clinical_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_events_clinical_langtest](https://nlp.johnsnowlabs.com/2023/08/31/ner_events_clinical_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_events_clinical_langtest_pipeline_en_5.1.0_3.0_1694283106515.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_events_clinical_langtest_pipeline_en_5.1.0_3.0_1694283106515.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_events_clinical_langtest_pipeline_en_5.1.0_3.0_1694283106515.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_events_clinical_langtest_pipeline_en_5.1.0_3.0_1694283106515.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_events_clinical_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient presented to the emergency room last evening&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_events_clinical_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_events_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient presented to the emergency room last evening&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented to the emergency room last evening&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_events_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented to the emergency room last evening&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks             |   begin |   end | entities      |
+```bash
+|    | chunks             |   begin |   end | entities      |
 |---:|:-------------------|--------:|------:|:--------------|
 |  0 | presented          |      12 |    20 | EVIDENTIAL    |
 |  1 | the emergency room |      25 |    42 | CLINICAL_DEPT |
 |  2 | last evening       |      44 |    55 | DATE          |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_events_clinical_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_events_clinical_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverter&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="events" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_events_clinical_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_events_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented to the emergency room last evening&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_events_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented to the emergency room last evening&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:-------------------|--------:|------:|:--------------| | 0 | presented | 12 | 20 | EVIDENTIAL | | 1 | the emergency room | 25 | 42 | CLINICAL_DEPT | | 2 | last evening | 44 | 55 | DATE | Model Information Model Name: ner_events_clinical_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Detect Clinical Entities (langtest)</title><link href="/2023/09/09/ner_jsl_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Detect Clinical Entities (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_jsl_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_jsl_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverter</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="events" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_events_clinical_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_events_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented to the emergency room last evening&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_events_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented to the emergency room last evening&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:-------------------|--------:|------:|:--------------| | 0 | presented | 12 | 20 | EVIDENTIAL | | 1 | the emergency room | 25 | 42 | CLINICAL_DEPT | | 2 | last evening | 44 | 55 | DATE | Model Information Model Name: ner_events_clinical_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Detect Clinical Entities (langtest)</title><link href="/2023/09/09/ner_jsl_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Detect Clinical Entities (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_jsl_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_jsl_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/07/31/ner_jsl_langtest_en.html&quot;&gt;ner_jsl_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_jsl_langtest](https://nlp.johnsnowlabs.com/2023/07/31/ner_jsl_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_jsl_langtest_pipeline_en_5.1.0_3.0_1694275178959.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_jsl_langtest_pipeline_en_5.1.0_3.0_1694275178959.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_jsl_langtest_pipeline_en_5.1.0_3.0_1694275178959.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_jsl_langtest_pipeline_en_5.1.0_3.0_1694275178959.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_jsl_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_jsl_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_jsl_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_jsl_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks                                    |   begin |   end | entities                     |
+```bash
+|    | chunks                                    |   begin |   end | entities                     |
 |---:|:------------------------------------------|--------:|------:|:-----------------------------|
 |  0 | 21-day-old                                |      17 |    26 | Age                          |
 |  1 | Caucasian                                 |      28 |    36 | Race_Ethnicity               |
 |  2 | male                                      |      38 |    41 | Gender                       |
-|  3 | &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;2 days                                |      48 |    57 | Duration                     |
+|  3 | for 2 days                                |      48 |    57 | Duration                     |
 |  4 | congestion                                |      62 |    71 | Symptom                      |
 |  5 | mom                                       |      75 |    77 | Gender                       |
 |  6 | discharge                                 |     106 |   114 | Admission_Discharge          |
 |  7 | nares                                     |     135 |   139 | External_body_part_or_region |
 |  8 | she                                       |     147 |   149 | Gender                       |
 |  9 | mild                                      |     168 |   171 | Modifier                     |
-| 10 | problems with his breathing &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;feeding |     173 |   213 | Symptom                      |
+| 10 | problems with his breathing while feeding |     173 |   213 | Symptom                      |
 | 11 | perioral cyanosis                         |     237 |   253 | Symptom                      |
 | 12 | retractions                               |     258 |   268 | Symptom                      |
 | 13 | Influenza vaccine                         |     325 |   341 | Vaccine_Name                 |
@@ -251,340 +221,268 @@
 | 37 | diarrhea                                  |     908 |   915 | Symptom                      |
 | 38 | His                                       |     918 |   920 | Gender                       |
 | 39 | bowel                                     |     922 |   926 | Internal_organ_or_component  |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_jsl_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_jsl_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="jsl" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_jsl_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_jsl_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_jsl_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:------------------------------------------|--------:|------:|:-----------------------------| | 0 | 21-day-old | 17 | 26 | Age | | 1 | Caucasian | 28 | 36 | Race_Ethnicity | | 2 | male | 38 | 41 | Gender | | 3 | for 2 days | 48 | 57 | Duration | | 4 | congestion | 62 | 71 | Symptom | | 5 | mom | 75 | 77 | Gender | | 6 | discharge | 106 | 114 | Admission_Discharge | | 7 | nares | 135 | 139 | External_body_part_or_region | | 8 | she | 147 | 149 | Gender | | 9 | mild | 168 | 171 | Modifier | | 10 | problems with his breathing while feeding | 173 | 213 | Symptom | | 11 | perioral cyanosis | 237 | 253 | Symptom | | 12 | retractions | 258 | 268 | Symptom | | 13 | Influenza vaccine | 325 | 341 | Vaccine_Name | | 14 | One day ago | 344 | 354 | RelativeDate | | 15 | mom | 357 | 359 | Gender | | 16 | Tylenol | 417 | 423 | Drug_BrandName | | 17 | Baby | 426 | 429 | Age | | 18 | decreased p.o | 449 | 461 | Symptom | | 19 | His | 472 | 474 | Gender | | 20 | 20 minutes | 511 | 520 | Duration | | 21 | q.2h. to 5 to 10 minutes | 522 | 545 | Frequency | | 22 | his | 560 | 562 | Gender | | 23 | respiratory congestion | 564 | 585 | Symptom | | 24 | He | 588 | 589 | Gender | | 25 | tired | 622 | 626 | Symptom | | 26 | fussy | 641 | 645 | Symptom | | 27 | over the past 2 days | 647 | 666 | RelativeDate | | 28 | albuterol | 709 | 717 | Drug_Ingredient | | 29 | ER | 743 | 744 | Clinical_Dept | | 30 | His | 747 | 749 | Gender | | 31 | urine output has also decreased | 751 | 781 | Symptom | | 32 | he | 793 | 794 | Gender | | 33 | per 24 hours | 832 | 843 | Frequency | | 34 | he | 850 | 851 | Gender | | 35 | per 24 hours | 879 | 890 | Frequency | | 36 | Mom | 893 | 895 | Gender | | 37 | diarrhea | 908 | 915 | Symptom | | 38 | His | 918 | 920 | Gender | | 39 | bowel | 922 | 926 | Internal_organ_or_component | Model Information Model Name: ner_jsl_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel</summary></entry><entry><title type="html">Pipeline to Extract Anatomical Entities from Oncology Texts (langtest)</title><link href="/2023/09/09/ner_oncology_anatomy_general_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Anatomical Entities from Oncology Texts (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_anatomy_general_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_anatomy_general_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="jsl" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_jsl_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_jsl_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_jsl_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). Additionally, there is no side effect observed after Influenza vaccine. One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:------------------------------------------|--------:|------:|:-----------------------------| | 0 | 21-day-old | 17 | 26 | Age | | 1 | Caucasian | 28 | 36 | Race_Ethnicity | | 2 | male | 38 | 41 | Gender | | 3 | for 2 days | 48 | 57 | Duration | | 4 | congestion | 62 | 71 | Symptom | | 5 | mom | 75 | 77 | Gender | | 6 | discharge | 106 | 114 | Admission_Discharge | | 7 | nares | 135 | 139 | External_body_part_or_region | | 8 | she | 147 | 149 | Gender | | 9 | mild | 168 | 171 | Modifier | | 10 | problems with his breathing while feeding | 173 | 213 | Symptom | | 11 | perioral cyanosis | 237 | 253 | Symptom | | 12 | retractions | 258 | 268 | Symptom | | 13 | Influenza vaccine | 325 | 341 | Vaccine_Name | | 14 | One day ago | 344 | 354 | RelativeDate | | 15 | mom | 357 | 359 | Gender | | 16 | Tylenol | 417 | 423 | Drug_BrandName | | 17 | Baby | 426 | 429 | Age | | 18 | decreased p.o | 449 | 461 | Symptom | | 19 | His | 472 | 474 | Gender | | 20 | 20 minutes | 511 | 520 | Duration | | 21 | q.2h. to 5 to 10 minutes | 522 | 545 | Frequency | | 22 | his | 560 | 562 | Gender | | 23 | respiratory congestion | 564 | 585 | Symptom | | 24 | He | 588 | 589 | Gender | | 25 | tired | 622 | 626 | Symptom | | 26 | fussy | 641 | 645 | Symptom | | 27 | over the past 2 days | 647 | 666 | RelativeDate | | 28 | albuterol | 709 | 717 | Drug_Ingredient | | 29 | ER | 743 | 744 | Clinical_Dept | | 30 | His | 747 | 749 | Gender | | 31 | urine output has also decreased | 751 | 781 | Symptom | | 32 | he | 793 | 794 | Gender | | 33 | per 24 hours | 832 | 843 | Frequency | | 34 | he | 850 | 851 | Gender | | 35 | per 24 hours | 879 | 890 | Frequency | | 36 | Mom | 893 | 895 | Gender | | 37 | diarrhea | 908 | 915 | Symptom | | 38 | His | 918 | 920 | Gender | | 39 | bowel | 922 | 926 | Internal_organ_or_component | Model Information Model Name: ner_jsl_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel</summary></entry><entry><title type="html">Pipeline to Extract Anatomical Entities from Oncology Texts (langtest)</title><link href="/2023/09/09/ner_oncology_anatomy_general_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Anatomical Entities from Oncology Texts (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_anatomy_general_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_anatomy_general_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_general_langtest_en.html&quot;&gt;ner_oncology_anatomy_general_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_oncology_anatomy_general_langtest](https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_general_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_general_langtest_pipeline_en_5.1.0_3.0_1694285460148.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_general_langtest_pipeline_en_5.1.0_3.0_1694285460148.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_general_langtest_pipeline_en_5.1.0_3.0_1694285460148.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_general_langtest_pipeline_en_5.1.0_3.0_1694285460148.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_anatomy_general_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_anatomy_general_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_general_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_general_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks   |   begin |   end | entities        |
+```bash
+|    | chunks   |   begin |   end | entities        |
 |---:|:---------|--------:|------:|:----------------|
 |  0 | left     |      36 |    39 | Direction       |
 |  1 | breast   |      41 |    46 | Anatomical_Site |
 |  2 | lungs    |      82 |    86 | Anatomical_Site |
 |  3 | liver    |      99 |   103 | Anatomical_Site |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_oncology_anatomy_general_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_oncology_anatomy_general_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverter&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="anatomy" /><category term="general" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_anatomy_general_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_general_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_general_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:---------|--------:|------:|:----------------| | 0 | left | 36 | 39 | Direction | | 1 | breast | 41 | 46 | Anatomical_Site | | 2 | lungs | 82 | 86 | Anatomical_Site | | 3 | liver | 99 | 103 | Anatomical_Site | Model Information Model Name: ner_oncology_anatomy_general_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Extract Granular Anatomical Entities from Oncology Texts (langtest)</title><link href="/2023/09/09/ner_oncology_anatomy_granular_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Granular Anatomical Entities from Oncology Texts (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_anatomy_granular_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_anatomy_granular_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverter</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="anatomy" /><category term="general" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_anatomy_general_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_general_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_general_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:---------|--------:|------:|:----------------| | 0 | left | 36 | 39 | Direction | | 1 | breast | 41 | 46 | Anatomical_Site | | 2 | lungs | 82 | 86 | Anatomical_Site | | 3 | liver | 99 | 103 | Anatomical_Site | Model Information Model Name: ner_oncology_anatomy_general_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Extract Granular Anatomical Entities from Oncology Texts (langtest)</title><link href="/2023/09/09/ner_oncology_anatomy_granular_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Granular Anatomical Entities from Oncology Texts (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_anatomy_granular_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_anatomy_granular_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_granular_langtest_en.html&quot;&gt;ner_oncology_anatomy_granular_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_oncology_anatomy_granular_langtest](https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_granular_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_granular_langtest_pipeline_en_5.1.0_3.0_1694287632097.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_granular_langtest_pipeline_en_5.1.0_3.0_1694287632097.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_granular_langtest_pipeline_en_5.1.0_3.0_1694287632097.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_anatomy_granular_langtest_pipeline_en_5.1.0_3.0_1694287632097.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_anatomy_granular_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_anatomy_granular_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_granular_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_granular_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks   |   begin |   end | entities    |
+```bash
+|    | chunks   |   begin |   end | entities    |
 |---:|:---------|--------:|------:|:------------|
 |  0 | left     |      36 |    39 | Direction   |
 |  1 | breast   |      41 |    46 | Site_Breast |
 |  2 | lungs    |      82 |    86 | Site_Lung   |
 |  3 | liver    |      99 |   103 | Site_Liver  |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_oncology_anatomy_granular_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_oncology_anatomy_granular_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverter&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="anatomy" /><category term="granular" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_anatomy_granular_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_granular_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_granular_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:---------|--------:|------:|:------------| | 0 | left | 36 | 39 | Direction | | 1 | breast | 41 | 46 | Site_Breast | | 2 | lungs | 82 | 86 | Site_Lung | | 3 | liver | 99 | 103 | Site_Liver | Model Information Model Name: ner_oncology_anatomy_granular_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Extract Demographic Entities from Oncology Texts (langtest)</title><link href="/2023/09/09/ner_oncology_demographics_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Demographic Entities from Oncology Texts (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_demographics_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_demographics_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverter</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="anatomy" /><category term="granular" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_anatomy_granular_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_granular_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_anatomy_granular_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:---------|--------:|------:|:------------| | 0 | left | 36 | 39 | Direction | | 1 | breast | 41 | 46 | Site_Breast | | 2 | lungs | 82 | 86 | Site_Lung | | 3 | liver | 99 | 103 | Site_Liver | Model Information Model Name: ner_oncology_anatomy_granular_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Extract Demographic Entities from Oncology Texts (langtest)</title><link href="/2023/09/09/ner_oncology_demographics_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Demographic Entities from Oncology Texts (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_demographics_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_demographics_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_demographics_langtest_en.html&quot;&gt;ner_oncology_demographics_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_oncology_demographics_langtest](https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_demographics_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_demographics_langtest_pipeline_en_5.1.0_3.0_1694289418438.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_demographics_langtest_pipeline_en_5.1.0_3.0_1694289418438.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_demographics_langtest_pipeline_en_5.1.0_3.0_1694289418438.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_demographics_langtest_pipeline_en_5.1.0_3.0_1694289418438.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_demographics_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient is a 40 year old man with history of heavy smoking.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_demographics_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_oncology_demographics_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient is a 40 year old man with history of heavy smoking.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 40 year old man with history of heavy smoking.&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_demographics_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 40 year old man with history of heavy smoking.&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks      |   begin |   end | entities       |
+```bash
+|    | chunks      |   begin |   end | entities       |
 |---:|:------------|--------:|------:|:---------------|
 |  0 | 40 year old |      17 |    27 | Age            |
 |  1 | man         |      29 |    31 | Gender         |
 |  2 | smoking     |      55 |    61 | Smoking_Status |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_oncology_demographics_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_oncology_demographics_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverter&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="demographics" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_demographics_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_demographics_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 40 year old man with history of heavy smoking.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_demographics_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 40 year old man with history of heavy smoking.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:------------|--------:|------:|:---------------| | 0 | 40 year old | 17 | 27 | Age | | 1 | man | 29 | 31 | Gender | | 2 | smoking | 55 | 61 | Smoking_Status | Model Information Model Name: ner_oncology_demographics_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Extract Cancer Therapies and Granular Posology Information (langtest)</title><link href="/2023/09/09/ner_oncology_posology_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Cancer Therapies and Granular Posology Information (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_posology_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_posology_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverter</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="demographics" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_demographics_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_demographics_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 40 year old man with history of heavy smoking.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_demographics_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient is a 40 year old man with history of heavy smoking.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:------------|--------:|------:|:---------------| | 0 | 40 year old | 17 | 27 | Age | | 1 | man | 29 | 31 | Gender | | 2 | smoking | 55 | 61 | Smoking_Status | Model Information Model Name: ner_oncology_demographics_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Extract Cancer Therapies and Granular Posology Information (langtest)</title><link href="/2023/09/09/ner_oncology_posology_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Cancer Therapies and Granular Posology Information (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_posology_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_posology_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_posology_langtest_en.html&quot;&gt;ner_oncology_posology_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_oncology_posology_langtest](https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_posology_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_posology_langtest_pipeline_en_5.1.0_3.0_1694291142810.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_posology_langtest_pipeline_en_5.1.0_3.0_1694291142810.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_posology_langtest_pipeline_en_5.1.0_3.0_1694291142810.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_posology_langtest_pipeline_en_5.1.0_3.0_1694291142810.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_posology_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_posology_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_oncology_posology_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_posology_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks           |   begin |   end | entities       |
+```bash
+|    | chunks           |   begin |   end | entities       |
 |---:|:-----------------|--------:|------:|:---------------|
 |  0 | adriamycin       |      46 |    55 | Cancer_Therapy |
 |  1 | 60 mg/m2         |      58 |    65 | Dosage         |
@@ -593,169 +491,133 @@
 |  4 | six courses      |     106 |   116 | Cycle_Count    |
 |  5 | second cycle     |     150 |   161 | Cycle_Number   |
 |  6 | chemotherapy     |     166 |   177 | Cancer_Therapy |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_oncology_posology_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_oncology_posology_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverter&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="posology" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_posology_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_posology_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_posology_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:-----------------|--------:|------:|:---------------| | 0 | adriamycin | 46 | 55 | Cancer_Therapy | | 1 | 60 mg/m2 | 58 | 65 | Dosage | | 2 | cyclophosphamide | 72 | 87 | Cancer_Therapy | | 3 | 600 mg/m2 | 90 | 98 | Dosage | | 4 | six courses | 106 | 116 | Cycle_Count | | 5 | second cycle | 150 | 161 | Cycle_Number | | 6 | chemotherapy | 166 | 177 | Cancer_Therapy | Model Information Model Name: ner_oncology_posology_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Extract Mentions of Response to Cancer Treatment (langtest)</title><link href="/2023/09/09/ner_oncology_response_to_treatment_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Mentions of Response to Cancer Treatment (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_response_to_treatment_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_response_to_treatment_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverter</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="posology" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_posology_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_posology_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_posology_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:-----------------|--------:|------:|:---------------| | 0 | adriamycin | 46 | 55 | Cancer_Therapy | | 1 | 60 mg/m2 | 58 | 65 | Dosage | | 2 | cyclophosphamide | 72 | 87 | Cancer_Therapy | | 3 | 600 mg/m2 | 90 | 98 | Dosage | | 4 | six courses | 106 | 116 | Cycle_Count | | 5 | second cycle | 150 | 161 | Cycle_Number | | 6 | chemotherapy | 166 | 177 | Cancer_Therapy | Model Information Model Name: ner_oncology_posology_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Extract Mentions of Response to Cancer Treatment (langtest)</title><link href="/2023/09/09/ner_oncology_response_to_treatment_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Extract Mentions of Response to Cancer Treatment (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_oncology_response_to_treatment_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_oncology_response_to_treatment_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_response_to_treatment_langtest_en.html&quot;&gt;ner_oncology_response_to_treatment_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_oncology_response_to_treatment_langtest](https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_response_to_treatment_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_response_to_treatment_langtest_pipeline_en_5.1.0_3.0_1694293041587.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_response_to_treatment_langtest_pipeline_en_5.1.0_3.0_1694293041587.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_response_to_treatment_langtest_pipeline_en_5.1.0_3.0_1694293041587.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_response_to_treatment_langtest_pipeline_en_5.1.0_3.0_1694293041587.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_response_to_treatment_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;She completed her first-line therapy, but some months later there was recurrence of the breast cancer.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_oncology_response_to_treatment_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_oncology_response_to_treatment_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;She completed her first-line therapy, but some months later there was recurrence of the breast cancer.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;She completed her first-line therapy, but some months later there was recurrence of the breast cancer.&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_response_to_treatment_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;She completed her first-line therapy, but some months later there was recurrence of the breast cancer.&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks     |   begin |   end | entities              |
+```bash
+|    | chunks     |   begin |   end | entities              |
 |---:|:-----------|--------:|------:|:----------------------|
 |  0 | first-line |      18 |    27 | Line_Of_Therapy       |
 |  1 | recurrence |      70 |    79 | Response_To_Treatment |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_oncology_response_to_treatment_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_oncology_response_to_treatment_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverter&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="response" /><category term="treatment" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_response_to_treatment_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_response_to_treatment_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;She completed her first-line therapy, but some months later there was recurrence of the breast cancer.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_response_to_treatment_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;She completed her first-line therapy, but some months later there was recurrence of the breast cancer.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:-----------|--------:|------:|:----------------------| | 0 | first-line | 18 | 27 | Line_Of_Therapy | | 1 | recurrence | 70 | 79 | Response_To_Treatment | Model Information Model Name: ner_oncology_response_to_treatment_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Social Determinants of Health (LangTest)</title><link href="/2023/09/09/ner_sdoh_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Social Determinants of Health (LangTest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_sdoh_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_sdoh_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverter</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="response" /><category term="treatment" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_oncology_response_to_treatment_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_oncology_response_to_treatment_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;She completed her first-line therapy, but some months later there was recurrence of the breast cancer.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_oncology_response_to_treatment_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;She completed her first-line therapy, but some months later there was recurrence of the breast cancer.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:-----------|--------:|------:|:----------------------| | 0 | first-line | 18 | 27 | Line_Of_Therapy | | 1 | recurrence | 70 | 79 | Response_To_Treatment | Model Information Model Name: ner_oncology_response_to_treatment_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter</summary></entry><entry><title type="html">Pipeline to Social Determinants of Health (LangTest)</title><link href="/2023/09/09/ner_sdoh_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Social Determinants of Health (LangTest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_sdoh_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_sdoh_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/07/31/ner_sdoh_langtest_en.html&quot;&gt;ner_sdoh_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_sdoh_langtest](https://nlp.johnsnowlabs.com/2023/07/31/ner_sdoh_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_langtest_pipeline_en_5.1.0_3.0_1694278273068.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_langtest_pipeline_en_5.1.0_3.0_1694278273068.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_langtest_pipeline_en_5.1.0_3.0_1694278273068.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_langtest_pipeline_en_5.1.0_3.0_1694278273068.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_sdoh_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well.  She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_sdoh_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_sdoh_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well.  She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well.  She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week.&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_sdoh_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well.  She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week.&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks                  |   begin |   end | entities            |
+```bash
+|    | chunks                  |   begin |   end | entities            |
 |---:|:------------------------|--------:|------:|:--------------------|
 |  0 | 55 years old            |       9 |    20 | Age                 |
 |  1 | New York                |      33 |    40 | Geographic_Entity   |
@@ -803,86 +665,68 @@
 | 43 | a day                   |     777 |   781 | Substance_Frequency |
 | 44 | She                     |     784 |   786 | Gender              |
 | 45 | DUI                     |     792 |   794 | Legal_Issues        |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_sdoh_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_sdoh_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="sdoh" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_sdoh_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_sdoh_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well. She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_sdoh_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well. She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:------------------------|--------:|------:|:--------------------| | 0 | 55 years old | 9 | 20 | Age | | 1 | New York | 33 | 40 | Geographic_Entity | | 2 | divorced | 45 | 52 | Marital_Status | | 3 | Mexcian American | 54 | 69 | Race_Ethnicity | | 4 | woman | 71 | 75 | Gender | | 5 | financial problems | 82 | 99 | Financial_Status | | 6 | She | 102 | 104 | Gender | | 7 | Spanish | 113 | 119 | Language | | 8 | Portuguese | 125 | 134 | Language | | 9 | She | 137 | 139 | Gender | | 10 | apartment | 153 | 161 | Housing | | 11 | She | 164 | 166 | Gender | | 12 | diabetes | 193 | 200 | Other_Disease | | 13 | hospitalizations | 268 | 283 | Other_SDoH_Keywords | | 14 | cleaning assistant | 342 | 359 | Employment | | 15 | access health insurance | 372 | 394 | Insurance_Status | | 16 | She | 416 | 418 | Gender | | 17 | son | 426 | 428 | Family_Member | | 18 | student | 433 | 439 | Education | | 19 | college | 444 | 450 | Education | | 20 | depression | 482 | 491 | Mental_Health | | 21 | She | 494 | 496 | Gender | | 22 | she | 507 | 509 | Gender | | 23 | rehab | 517 | 521 | Access_To_Care | | 24 | her | 542 | 544 | Gender | | 25 | catholic faith | 546 | 559 | Spiritual_Beliefs | | 26 | support | 575 | 581 | Social_Support | | 27 | She | 593 | 595 | Gender | | 28 | etoh abuse | 619 | 628 | Alcohol | | 29 | her | 644 | 646 | Gender | | 30 | teens | 648 | 652 | Age | | 31 | She | 655 | 657 | Gender | | 32 | she | 667 | 669 | Gender | | 33 | daily | 682 | 686 | Substance_Frequency | | 34 | drinker | 688 | 694 | Alcohol | | 35 | 30 years | 700 | 707 | Substance_Duration | | 36 | drinking | 724 | 731 | Alcohol | | 37 | beer | 733 | 736 | Alcohol | | 38 | daily | 738 | 742 | Substance_Frequency | | 39 | She | 745 | 747 | Gender | | 40 | smokes | 749 | 754 | Smoking | | 41 | a pack | 756 | 761 | Substance_Quantity | | 42 | cigarettes | 766 | 775 | Smoking | | 43 | a day | 777 | 781 | Substance_Frequency | | 44 | She | 784 | 786 | Gender | | 45 | DUI | 792 | 794 | Legal_Issues | Model Information Model Name: ner_sdoh_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel</summary></entry><entry><title type="html">Pipeline to Detect Adverse Drug Events (langtest)</title><link href="/2023/09/09/ner_ade_clinical_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Detect Adverse Drug Events (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_ade_clinical_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_ade_clinical_langtest_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="sdoh" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_sdoh_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_sdoh_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well. She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_sdoh_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;Smith is 55 years old, living in New York, a divorced Mexcian American woman with financial problems. She speaks Spanish and Portuguese. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and cannot access health insurance or paid sick leave. She has a son, a student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reports having her catholic faith as a means of support as well. She has a long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI in April and was due to court this week.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:------------------------|--------:|------:|:--------------------| | 0 | 55 years old | 9 | 20 | Age | | 1 | New York | 33 | 40 | Geographic_Entity | | 2 | divorced | 45 | 52 | Marital_Status | | 3 | Mexcian American | 54 | 69 | Race_Ethnicity | | 4 | woman | 71 | 75 | Gender | | 5 | financial problems | 82 | 99 | Financial_Status | | 6 | She | 102 | 104 | Gender | | 7 | Spanish | 113 | 119 | Language | | 8 | Portuguese | 125 | 134 | Language | | 9 | She | 137 | 139 | Gender | | 10 | apartment | 153 | 161 | Housing | | 11 | She | 164 | 166 | Gender | | 12 | diabetes | 193 | 200 | Other_Disease | | 13 | hospitalizations | 268 | 283 | Other_SDoH_Keywords | | 14 | cleaning assistant | 342 | 359 | Employment | | 15 | access health insurance | 372 | 394 | Insurance_Status | | 16 | She | 416 | 418 | Gender | | 17 | son | 426 | 428 | Family_Member | | 18 | student | 433 | 439 | Education | | 19 | college | 444 | 450 | Education | | 20 | depression | 482 | 491 | Mental_Health | | 21 | She | 494 | 496 | Gender | | 22 | she | 507 | 509 | Gender | | 23 | rehab | 517 | 521 | Access_To_Care | | 24 | her | 542 | 544 | Gender | | 25 | catholic faith | 546 | 559 | Spiritual_Beliefs | | 26 | support | 575 | 581 | Social_Support | | 27 | She | 593 | 595 | Gender | | 28 | etoh abuse | 619 | 628 | Alcohol | | 29 | her | 644 | 646 | Gender | | 30 | teens | 648 | 652 | Age | | 31 | She | 655 | 657 | Gender | | 32 | she | 667 | 669 | Gender | | 33 | daily | 682 | 686 | Substance_Frequency | | 34 | drinker | 688 | 694 | Alcohol | | 35 | 30 years | 700 | 707 | Substance_Duration | | 36 | drinking | 724 | 731 | Alcohol | | 37 | beer | 733 | 736 | Alcohol | | 38 | daily | 738 | 742 | Substance_Frequency | | 39 | She | 745 | 747 | Gender | | 40 | smokes | 749 | 754 | Smoking | | 41 | a pack | 756 | 761 | Substance_Quantity | | 42 | cigarettes | 766 | 775 | Smoking | | 43 | a day | 777 | 781 | Substance_Frequency | | 44 | She | 784 | 786 | Gender | | 45 | DUI | 792 | 794 | Legal_Issues | Model Information Model Name: ner_sdoh_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel</summary></entry><entry><title type="html">Pipeline to Detect Adverse Drug Events (langtest)</title><link href="/2023/09/09/ner_ade_clinical_langtest_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Detect Adverse Drug Events (langtest)" /><published>2023-09-09T00:00:00+00:00</published><updated>2023-09-09T00:00:00+00:00</updated><id>/2023/09/09/ner_ade_clinical_langtest_pipeline_en</id><content type="html" xml:base="/2023/09/09/ner_ade_clinical_langtest_pipeline_en.html">## Description
 
-&lt;p&gt;This pretrained pipeline is built on the top of &lt;a href=&quot;https://nlp.johnsnowlabs.com/2023/07/31/ner_ade_clinical_langtest_en.html&quot;&gt;ner_ade_clinical_langtest&lt;/a&gt; model.&lt;/p&gt;
+This pretrained pipeline is built on the top of [ner_ade_clinical_langtest](https://nlp.johnsnowlabs.com/2023/07/31/ner_ade_clinical_langtest_en.html) model.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_langtest_pipeline_en_5.1.0_3.2_1694281764159.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_langtest_pipeline_en_5.1.0_3.2_1694281764159.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_langtest_pipeline_en_5.1.0_3.2_1694281764159.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_langtest_pipeline_en_5.1.0_3.2_1694281764159.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_ade_clinical_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_ade_clinical_langtest_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunks                     |   begin |   end | entities   |
+```bash
+|    | chunks                     |   begin |   end | entities   |
 |---:|:---------------------------|--------:|------:|:-----------|
 |  0 | the Lipitor                |      80 |    90 | DRUG       |
 |  1 | stomach pain               |     124 |   135 | ADE        |
@@ -895,51 +739,27 @@
 |  8 | lack of energy             |     820 |   833 | ADE        |
 |  9 | Lipitor                    |     946 |   952 | DRUG       |
 | 10 | vitamin C                  |    1034 |  1042 | DRUG       |
-| 11 | I don&lt;span class=&quot;s1&quot;&gt;'t                    |    1250 |  1256 | DRUG       |
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+| 11 | I don't                    |    1250 |  1256 | DRUG       |
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;ner_ade_clinical_langtest_pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|ner_ade_clinical_langtest_pipeline|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.7 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="ade" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_ade_clinical_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:---------------------------|--------:|------:|:-----------| | 0 | the Lipitor | 80 | 90 | DRUG | | 1 | stomach pain | 124 | 135 | ADE | | 2 | back | 167 | 170 | ADE | | 3 | stomach pain | 177 | 188 | ADE | | 4 | urinary tract infection | 308 | 330 | ADE | | 5 | urge to urinate constantly | 438 | 463 | ADE | | 6 | the prescription drugs | 610 | 631 | DRUG | | 7 | the Lipitor | 715 | 725 | DRUG | | 8 | lack of energy | 820 | 833 | ADE | | 9 | Lipitor | 946 | 952 | DRUG | | 10 | vitamin C | 1034 | 1042 | DRUG | | 11 | I don't | 1250 | 1256 | DRUG | Model Information Model Name: ner_ade_clinical_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel</summary></entry></feed>
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="ade" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><summary type="html">Description This pretrained pipeline is built on the top of ner_ade_clinical_langtest model. Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;ner_ade_clinical_langtest_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;I asked my doctor what could have caused this, and he said it was probably from the Lipitor. Recently I experienced extreme stomach pain that stretched to my side and back. The stomach pain came suddenly and it would come and go for a week before it became so bad I could not sleep. I had just gotten over a urinary tract infection (one of the side-effects) and I thought it had returned, but the symptoms were different. I still had the urge to urinate constantly, but it would come and go, and I would have no symptoms for a day, then it would return again. I remembered reading the pamphlet that comes with the prescription drugs, and it mentioning some of the symptoms that I was experiencing. I stopped taking the Lipitor for a day, and I did not have any more stomach pain or urgency. I also had been experiencing lack of energy for quite some time, and I attributed this to stress, but after reading this website, I feel it was due to the Lipitor also. I don't think I will take this drug anymore, and since I read that taking vitamin C can help you with your cholesterol, I think I will try this method instead. I think there should be a better alternative to lowering cholesterol than such a potent drug that can cause so many side effects. I don't want to be a case-study when they finally take this drug off the market.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | |---:|:---------------------------|--------:|------:|:-----------| | 0 | the Lipitor | 80 | 90 | DRUG | | 1 | stomach pain | 124 | 135 | ADE | | 2 | back | 167 | 170 | ADE | | 3 | stomach pain | 177 | 188 | ADE | | 4 | urinary tract infection | 308 | 330 | ADE | | 5 | urge to urinate constantly | 438 | 463 | ADE | | 6 | the prescription drugs | 610 | 631 | DRUG | | 7 | the Lipitor | 715 | 725 | DRUG | | 8 | lack of energy | 820 | 833 | ADE | | 9 | Lipitor | 946 | 952 | DRUG | | 10 | vitamin C | 1034 | 1042 | DRUG | | 11 | I don't | 1250 | 1256 | DRUG | Model Information Model Name: ner_ade_clinical_langtest_pipeline Type: pipeline Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel</summary></entry></feed>
