@@ -430,8 +430,8 @@
 
 <p><code class="language-plaintext highlighter-rouge">Good</code>, <code class="language-plaintext highlighter-rouge">Poor</code>, <code class="language-plaintext highlighter-rouge">Unknown</code></p>
 
-<p class="btn-box"><a href="https://nlp.johnsnowlabs.com/social_determinant" class="button button-orange">Live Demo</a>
-<button class="button button-orange" disabled="">Open in Colab</button>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/SDOH/" class="button button-orange">Live Demo</a>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
 <a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_insurance_coverage_sbiobert_cased_mli_en_4.4.0_3.0_1682710286670.zip" class="button button-orange">Download</a>
 <a href="s3://auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_insurance_coverage_sbiobert_cased_mli_en_4.4.0_3.0_1682710286670.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
@@ -439,6 +439,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>

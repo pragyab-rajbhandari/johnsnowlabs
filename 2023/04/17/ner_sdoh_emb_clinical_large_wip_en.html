@@ -424,8 +424,8 @@
 
 <p><code class="language-plaintext highlighter-rouge">Access_To_Care</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Alcohol</code>, <code class="language-plaintext highlighter-rouge">Chidhood_Event</code>, <code class="language-plaintext highlighter-rouge">Communicable_Disease</code>, <code class="language-plaintext highlighter-rouge">Community_Safety</code>, <code class="language-plaintext highlighter-rouge">Diet</code>, <code class="language-plaintext highlighter-rouge">Disability</code>, <code class="language-plaintext highlighter-rouge">Eating_Disorder</code>, <code class="language-plaintext highlighter-rouge">Education</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">Environmental_Condition</code>, <code class="language-plaintext highlighter-rouge">Exercise</code>, <code class="language-plaintext highlighter-rouge">Family_Member</code>, <code class="language-plaintext highlighter-rouge">Financial_Status</code>, <code class="language-plaintext highlighter-rouge">Food_Insecurity</code>, <code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">Geographic_Entity</code>, <code class="language-plaintext highlighter-rouge">Healthcare_Institution</code>, <code class="language-plaintext highlighter-rouge">Housing</code>, <code class="language-plaintext highlighter-rouge">Hyperlipidemia</code>, <code class="language-plaintext highlighter-rouge">Hypertension</code>, <code class="language-plaintext highlighter-rouge">Income</code>, <code class="language-plaintext highlighter-rouge">Insurance_Status</code>, <code class="language-plaintext highlighter-rouge">Language</code>, <code class="language-plaintext highlighter-rouge">Legal_Issues</code>, <code class="language-plaintext highlighter-rouge">Marital_Status</code>, <code class="language-plaintext highlighter-rouge">Mental_Health</code>, <code class="language-plaintext highlighter-rouge">Obesity</code>, <code class="language-plaintext highlighter-rouge">Other_Disease</code>, <code class="language-plaintext highlighter-rouge">Other_SDoH_Keywords</code>, <code class="language-plaintext highlighter-rouge">Population_Group</code>, <code class="language-plaintext highlighter-rouge">Quality_Of_Life</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>, <code class="language-plaintext highlighter-rouge">Sexual_Activity</code>, <code class="language-plaintext highlighter-rouge">Sexual_Orientation</code>, <code class="language-plaintext highlighter-rouge">Smoking</code>, <code class="language-plaintext highlighter-rouge">Social_Exclusion</code>, <code class="language-plaintext highlighter-rouge">Social_Support</code>, <code class="language-plaintext highlighter-rouge">Spiritual_Beliefs</code>, <code class="language-plaintext highlighter-rouge">Substance_Duration</code>, <code class="language-plaintext highlighter-rouge">Substance_Frequency</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Substance_Use</code>, <code class="language-plaintext highlighter-rouge">Transportation</code>, <code class="language-plaintext highlighter-rouge">Violence_Or_Abuse</code></p>
 
-<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_NER/" class="button button-orange">Live Demo</a>
-<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/SDOH/" class="button button-orange">Live Demo</a>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
 <a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_emb_clinical_large_wip_en_4.3.2_3.0_1681756284245.zip" class="button button-orange">Download</a>
 <a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_emb_clinical_large_wip_en_4.3.2_3.0_1681756284245.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
@@ -433,6 +433,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
@@ -488,7 +489,7 @@
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_sdoh_emb_clinical_large_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"c"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
 
@@ -513,44 +514,54 @@
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>document_assembler <span class="o">=</span> DocumentAssembler<span class="o">()</span><span class="se">\</span>
-    .setInputCol<span class="o">(</span><span class="s2">"text"</span><span class="o">)</span><span class="se">\</span>
-    .setOutputCol<span class="o">(</span><span class="s2">"document"</span><span class="o">)</span>
-
-sentence_detector <span class="o">=</span> SentenceDetectorDLModel.pretrained<span class="o">(</span><span class="s2">"sentence_detector_dl"</span>, <span class="s2">"en"</span><span class="o">)</span><span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s2">"document"</span><span class="o">])</span><span class="se">\</span>
-    .setOutputCol<span class="o">(</span><span class="s2">"sentence"</span><span class="o">)</span>
-
-tokenizer <span class="o">=</span> Tokenizer<span class="o">()</span><span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s2">"sentence"</span><span class="o">])</span><span class="se">\</span>
-    .setOutputCol<span class="o">(</span><span class="s2">"token"</span><span class="o">)</span>
-
-clinical_embeddings <span class="o">=</span> WordEmbeddingsModel.pretrained<span class="o">(</span><span class="s2">"embeddings_clinical_large"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s2">"sentence"</span>, <span class="s2">"token"</span><span class="o">])</span><span class="se">\</span>
-    .setOutputCol<span class="o">(</span><span class="s2">"embeddings"</span><span class="o">)</span>
-
-ner_model <span class="o">=</span> MedicalNerModel.pretrained<span class="o">(</span><span class="s2">"ner_sdoh_emb_clinical_large_wip"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s2">"sentence"</span>, <span class="s2">"token"</span>, <span class="s2">"embeddings"</span><span class="o">])</span><span class="se">\</span>
-    .setOutputCol<span class="o">(</span><span class="s2">"ner"</span><span class="o">)</span>
-
-ner_converter <span class="o">=</span> NerConverterInternal<span class="o">()</span><span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s2">"sentence"</span>, <span class="s2">"token"</span>, <span class="s2">"ner"</span><span class="o">])</span><span class="se">\</span>
-    .setOutputCol<span class="o">(</span><span class="s2">"ner_chunk"</span><span class="o">)</span>
-
-pipeline <span class="o">=</span> Pipeline<span class="o">(</span><span class="nv">stages</span><span class="o">=[</span>
-    document_assembler, 
-    sentence_detector,
-    tokenizer,
-    clinical_embeddings,
-    ner_model,
-    ner_converter   
-    <span class="o">])</span>
-
-sample_texts <span class="o">=</span> <span class="o">[[</span><span class="s2">"Smith is a 55 years old, divorced Mexcian American woman with financial problems. She speaks spanish. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave. She has a son student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reprots having her catholic faith as a means of support as well.  She has long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI back in April and was due to be in court this week."</span><span class="o">]]</span>
-             
-data <span class="o">=</span> spark.createDataFrame<span class="o">(</span>sample_texts<span class="o">)</span>.toDF<span class="o">(</span><span class="s2">"text"</span><span class="o">)</span>
-
-result <span class="o">=</span> pipeline.fit<span class="o">(</span>data<span class="o">)</span>.transform<span class="o">(</span>data<span class="o">)</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+-----+---+-------------------+
+|chunk             |begin|end|ner_label          |
++------------------+-----+---+-------------------+
+|55 years old      |11   |22 |Age                |
+|divorced          |25   |32 |Marital_Status     |
+|Mexcian           |34   |40 |Race_Ethnicity     |
+|American          |42   |49 |Race_Ethnicity     |
+|woman             |51   |55 |Gender             |
+|financial problems|62   |79 |Financial_Status   |
+|She               |82   |84 |Gender             |
+|spanish           |93   |99 |Language           |
+|She               |102  |104|Gender             |
+|apartment         |118  |126|Housing            |
+|She               |129  |131|Gender             |
+|diabetes          |158  |165|Other_Disease      |
+|hospitalizations  |233  |248|Other_SDoH_Keywords|
+|cleaning assistant|307  |324|Employment         |
+|health insurance  |354  |369|Insurance_Status   |
+|She               |391  |393|Gender             |
+|son               |401  |403|Family_Member      |
+|student           |405  |411|Education          |
+|college           |416  |422|Education          |
+|depression        |454  |463|Mental_Health      |
+|She               |466  |468|Gender             |
+|she               |479  |481|Gender             |
+|rehab             |489  |493|Access_To_Care     |
+|her               |514  |516|Gender             |
+|catholic faith    |518  |531|Spiritual_Beliefs  |
+|support           |547  |553|Social_Support     |
+|She               |565  |567|Gender             |
+|etoh abuse        |589  |598|Alcohol            |
+|her               |614  |616|Gender             |
+|teens             |618  |622|Age                |
+|She               |625  |627|Gender             |
+|she               |637  |639|Gender             |
+|daily             |652  |656|Substance_Quantity |
+|drinker           |658  |664|Alcohol            |
+|30 years          |670  |677|Substance_Duration |
+|drinking beer     |694  |706|Alcohol            |
+|daily             |708  |712|Substance_Frequency|
+|She               |715  |717|Gender             |
+|smokes            |719  |724|Smoking            |
+|a pack            |726  |731|Substance_Quantity |
+|cigarettes        |736  |745|Smoking            |
+|a day             |747  |751|Substance_Frequency|
+|She               |754  |756|Gender             |
+|DUI               |762  |764|Legal_Issues       |
++------------------+-----+---+-------------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

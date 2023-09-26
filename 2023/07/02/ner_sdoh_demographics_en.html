@@ -434,8 +434,8 @@
 
 <p><code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Family_Member</code>, <code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">Geographic_Entity</code>, <code class="language-plaintext highlighter-rouge">Language</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>, <code class="language-plaintext highlighter-rouge">Spiritual_Beliefs</code></p>
 
-<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_NER/" class="button button-orange">Live Demo</a>
-<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/SDOH/" class="button button-orange">Live Demo</a>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
 <a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_demographics_en_4.4.4_3.0_1688323815011.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
 <a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_demographics_en_4.4.4_3.0_1688323815011.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
@@ -443,6 +443,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StringType</span>
 
 <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
