@@ -702,6 +702,33 @@ print(nlu.load('sentiment').predict('That was easy!'))"""</span>
 
   <p><img src="/assets/images/jsl_lib/databricks_utils/submit_raw_str_result.png" alt="databricks_cluster_submit_raw.png" /></p>
 
+  <h3 id="run-a-local-python-notebook-in-databricks">Run a local Python Notebook in Databricks</h3>
+
+  <p>Provide the path to a notebook on your localhost, it will be copied to HDFS and executed by the Databricks cluster.
+You need to provide a destination path to your Workspace, where the notebook will be copied to and you have write access to.
+A common pattern that should work is<code class="language-plaintext highlighter-rouge">/Users/&lt;your_databricks_email@somewhere.com&gt;/test.ipynb</code></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_nb_path</span> <span class="o">=</span> <span class="s">"path/to/my/notebook.ipynb"</span>
+<span class="n">remote_dst_path</span> <span class="o">=</span> <span class="s">"/Users/christian@johnsnowlabs.com/test.ipynb"</span>
+
+<span class="c1"># notebook.ipynb will run on databricks, url will be printed
+</span><span class="n">nlp</span><span class="p">.</span><span class="n">run_in_databricks</span><span class="p">(</span>
+  <span class="n">local_nb_path</span><span class="p">,</span>
+  <span class="n">databricks_host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span>
+  <span class="n">databricks_token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+  <span class="n">run_name</span><span class="o">=</span><span class="s">"Notebook Test"</span><span class="p">,</span>
+  <span class="n">dst_path</span><span class="o">=</span><span class="n">remote_dst_path</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p>This could be your input notebook</p>
+
+  <p><img src="/assets/images/jsl_lib/databricks_utils/submit_notebook.png" alt="databricks_cluster_submit_notebook.png" /></p>
+
+  <p>A URL where you can monitor the run will be printed, which will look like this</p>
+
+  <p><img src="/assets/images/jsl_lib/databricks_utils/submit_notebook_result.png" alt="databricks_cluster_submit_notebook_result.png" /></p>
+
   <h3 id="run-a-python-function-in-databricks">Run a Python Function in Databricks</h3>
 
   <p>Define a function, which will be written to a local file, copied to HDFS and executed by the Databricks cluster.</p>
