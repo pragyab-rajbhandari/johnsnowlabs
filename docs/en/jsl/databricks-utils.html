@@ -678,7 +678,8 @@ which are forwarded to the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/pre
 
   <h2 id="submit-a-task-with-nlprunindatabricks">Submit a Task with nlp.run_in_databricks</h2>
   <p>Easily run Python code in a Databricks cluster, using the John Snow Labs library. 
-The fastest way to test this out, is to create a cluster with <code class="language-plaintext highlighter-rouge">nlp.install()</code> and then use <code class="language-plaintext highlighter-rouge">nlp.run_in_databricks</code> to start a task.</p>
+The fastest way to test this out, is to create a cluster with <code class="language-plaintext highlighter-rouge">nlp.install()</code> and then use <code class="language-plaintext highlighter-rouge">nlp.run_in_databricks</code> to start a task.
+You can parameterize your jobs, according to the <a href="https://docs.databricks.com/en/workflows/jobs/create-run-jobs.html#pass-parameters-to-a-databricks-job-task">Databricks docs</a> via the</p>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c1"># Execute a Raw Python string as script on Databricks
 </span><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span>
@@ -749,7 +750,7 @@ A common pattern that should work is<code class="language-plaintext highlighter-
                       <span class="n">run_name</span><span class="o">=</span><span class="s">'Function test'</span><span class="p">)</span>
 
 </code></pre></div>  </div>
-  <p>This example will print all columns of the resulting dataframe which contains emdical NER predictions.</p>
+  <p>This example will print all columns of the resulting dataframe which contains medical NER predictions.</p>
 
   <p><img src="/assets/images/jsl_lib/databricks_utils/submit_func.png" alt="databricks_cluster_submit_raw.png" /></p>
 
@@ -789,6 +790,53 @@ It’s content’s will be written to a local file, copied to HDFS and executed 
                       <span class="n">databricks_host</span><span class="o">=</span><span class="n">my_host</span><span class="p">,</span>
                       <span class="n">databricks_token</span><span class="o">=</span><span class="n">my_token</span><span class="p">,</span>
                       <span class="n">run_name</span><span class="o">=</span><span class="s">'nlp_test'</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <h2 id="parameterizing-your-databricks-jobs">Parameterizing your Databricks Jobs</h2>
+
+  <p>You can parameterize <code class="language-plaintext highlighter-rouge">run_in_databricks</code> with parameters formatted according to the <a href="https://docs.databricks.com/en/workflows/jobs/create-run-jobs.html#pass-parameters-to-a-databricks-job-task">job task API</a></p>
+
+  <h3 id="parameterizing-a-notebook-run-in-databricks">Parameterizing a Notebook run in Databricks</h3>
+  <p>In your notebook you can use <code class="language-plaintext highlighter-rouge">dbutils.widgets.text("my_parameter", "my_default_value")</code> and other <a href="https://ipywidgets.readthedocs.io/en/7.7.0/examples/Widget%20List.html">ipywidets</a> to parameterize your notebook.
+You just pass a dictionary to <code class="language-plaintext highlighter-rouge">run_in_databricks</code> where <code class="language-plaintext highlighter-rouge">key=parameter_name</code> and <code class="language-plaintext highlighter-rouge">value=parameter_value</code>. 
+See this <a href="https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/parameterized_nb_example.ipynb">example parameterized DB-Notebook</a> for a full example which you can use as <code class="language-plaintext highlighter-rouge">nb_path</code> parameter.</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nb_path</span> <span class="o">=</span> <span class="s">"parameterized_nb_example.ipynb"</span>
+<span class="n">dst_path</span> <span class="o">=</span> <span class="s">"/Users/christian@johnsnowlabs.com/test.ipynb"</span>
+<span class="n">nlp</span><span class="p">.</span><span class="n">run_in_databricks</span><span class="p">(</span>
+    <span class="n">nb_path</span><span class="p">,</span>
+    <span class="n">databricks_cluster_id</span><span class="o">=</span><span class="n">cluster_id</span><span class="p">,</span>
+    <span class="n">databricks_host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span>
+    <span class="n">databricks_token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+    <span class="n">run_name</span><span class="o">=</span><span class="s">"Parameterized Notebook"</span><span class="p">,</span>
+    <span class="n">dst_path</span><span class="o">=</span><span class="n">dst_path</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s">"input_text"</span><span class="p">:</span> <span class="s">"I love peanut butter"</span><span class="p">,</span> <span class="s">"model_name"</span><span class="p">:</span> <span class="s">"sentiment"</span><span class="p">},</span>
+<span class="p">)</span>
+
+
+
+</code></pre></div>  </div>
+
+  <h3 id="parameterizing-a-python-script-run-in-databricks">Parameterizing a Python Script run in Databricks</h3>
+  <p>Simply pass a list of parameters to the <code class="language-plaintext highlighter-rouge">run_in_databricks</code> function. They will be passed to the script as <code class="language-plaintext highlighter-rouge">sys.argv</code> arguments.</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="n">script</span> <span class="o">=</span> <span class="s">"""
+import sys
+print(f"First argument: {sys.argv[1]}, Second argument: {sys.argv[2]}")
+"""</span>
+<span class="n">arg1</span> <span class="o">=</span> <span class="s">"My first arg"</span>
+<span class="n">arg2</span> <span class="o">=</span> <span class="s">"My second arg"</span>
+<span class="n">nlp</span><span class="p">.</span><span class="n">run_in_databricks</span><span class="p">(</span>
+    <span class="n">script</span><span class="p">,</span>
+    <span class="n">databricks_cluster_id</span><span class="o">=</span><span class="n">cluster_id</span><span class="p">,</span>
+    <span class="n">databricks_host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span>
+    <span class="n">databricks_token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+    <span class="n">run_name</span><span class="o">=</span><span class="s">"Parameterized Script"</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">],</span>
+<span class="p">)</span>
+
+
 </code></pre></div>  </div>
 
 </div>
