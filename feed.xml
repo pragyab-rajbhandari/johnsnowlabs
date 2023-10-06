@@ -1,5 +1,396 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-10-06T11:45:07+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Detect Clinical Conditions (LangTest - ner_eu_clinical_condition)</title><link href="/2023/09/22/ner_eu_clinical_condition_langtest_en.html" rel="alternate" type="text/html" title="Detect Clinical Conditions (LangTest - ner_eu_clinical_condition)" /><published>2023-09-22T00:00:00+00:00</published><updated>2023-09-22T00:00:00+00:00</updated><id>/2023/09/22/ner_eu_clinical_condition_langtest_en</id><content type="html" xml:base="/2023/09/22/ner_eu_clinical_condition_langtest_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-10-06T21:04:48+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial Assertion of Sentiment (sm, Small)</title><link href="/2023/10/06/finassertion_absa_sm_en.html" rel="alternate" type="text/html" title="Financial Assertion of Sentiment (sm, Small)" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>/2023/10/06/finassertion_absa_sm_en</id><content type="html" xml:base="/2023/10/06/finassertion_absa_sm_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This assertion model classifies financial entities into a sentiment. It is designed to be used together with the associated NER model.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POSITIVE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NEGATIVE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NEUTRAL&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finassertion_absa_sm_en_1.0.0_3.0_1696606845902.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finassertion_absa_sm_en_1.0.0_3.0_1696606845902.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Sentence Detector annotator, processes various sentences per line
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Tokenizer splits words in a relevant format for NLP
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;bert_embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_embeddings_sec_bert_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxSentenceLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;clinical_ner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finner_absa_sm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;assertion_model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AssertionDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finassertion_absa_sm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;assertion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;nlpPipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;bert_embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;clinical_ner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;assertion_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arrays_zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner_chunk.metadata&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['0']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;entity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['1']['entity']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------+---------+
+|entity  |label    |
++--------+---------+
+|Equity  |LIABILITY|
+|earnings|PROFIT   |
++--------+---------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finassertion_absa_sm&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[document, chunk, embeddings]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[assertion]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;2.7 MB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In-house annotations of earning call transcripts.&lt;/p&gt;
+
+&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     label    precision    recall  f1-score   support
+
+    NEGATIVE       0.57      0.42      0.48        74
+     NEUTRAL       0.51      0.70      0.59       184
+    POSITIVE       0.75      0.64      0.69       324
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="assertion" /><category term="en" /><category term="sentiment_analysis" /><category term="licensed" /><summary type="html">Description This assertion model classifies financial entities into a sentiment. It is designed to be used together with the associated NER model. Predicted Entities POSITIVE, NEGATIVE, NEUTRAL Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = ( nlp.DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document&quot;) ) # Sentence Detector annotator, processes various sentences per line sentenceDetector = ( nlp.SentenceDetector() .setInputCols([&quot;document&quot;]) .setOutputCol(&quot;sentence&quot;) ) # Tokenizer splits words in a relevant format for NLP tokenizer = ( nlp.Tokenizer().setInputCols([&quot;sentence&quot;]).setOutputCol(&quot;token&quot;) ) bert_embeddings = ( nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;, &quot;en&quot;) .setInputCols(&quot;document&quot;, &quot;token&quot;) .setOutputCol(&quot;embeddings&quot;) .setMaxSentenceLength(512) ) clinical_ner = ( finance.NerModel.pretrained(&quot;finner_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;) .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) .setOutputCol(&quot;ner&quot;) ) ner_converter = ( finance.NerConverterInternal() .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) .setOutputCol(&quot;ner_chunk&quot;) ) assertion_model = ( finance.AssertionDLModel.pretrained(&quot;finassertion_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;) .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;, &quot;embeddings&quot;]) .setOutputCol(&quot;assertion&quot;) ) nlpPipeline = nlp.Pipeline( stages=[ documentAssembler, sentenceDetector, tokenizer, bert_embeddings, clinical_ner, ner_converter, assertion_model, ] ) text = &quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot; spark_df = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model.fit(spark_df ).transform(spark_df) result.select( F.explode( F.arrays_zip(&quot;ner_chunk.result&quot;, &quot;ner_chunk.metadata&quot;) ).alias(&quot;cols&quot;) ).select( F.expr(&quot;cols['0']&quot;).alias(&quot;entity&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;), ).show( 50, truncate=False ) Results +--------+---------+ |entity |label | +--------+---------+ |Equity |LIABILITY| |earnings|PROFIT | +--------+---------+ Model Information Model Name: finassertion_absa_sm Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, chunk, embeddings] Output Labels: [assertion] Language: en Size: 2.7 MB References In-house annotations of earning call transcripts. Benchmarking label precision recall f1-score support NEGATIVE 0.57 0.42 0.48 74 NEUTRAL 0.51 0.70 0.59 184 POSITIVE 0.75 0.64 0.69 324</summary></entry><entry><title type="html">Finance E5 Embedding Base</title><link href="/2023/10/06/finembedding_e5_base_en.html" rel="alternate" type="text/html" title="Finance E5 Embedding Base" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>/2023/10/06/finembedding_e5_base_en</id><content type="html" xml:base="/2023/10/06/finembedding_e5_base_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This model is a financial version of the E5 base model fine-tuned on earning call transcripts and finance question-answering datasets. Reference: Wang, Liang, et al. “Text embeddings by weakly-supervised contrastive pre-training.” arXiv preprint arXiv:2212.03533 (2022).&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finembedding_e5_base_en_1.0.0_3.0_1696603847700.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finembedding_e5_base_en_1.0.0_3.0_1696603847700.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;E5_embedding&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E5Embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;finembedding_e5_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;E5&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;E5_embedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;What is the best way to invest in the stock market?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;E5.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+----------------------------------------------------------------------------------------------------+
+|                                                                                          embeddings|
++----------------------------------------------------------------------------------------------------+
+|[0.45521045, &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt;.16874692, &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt;.06179046, &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt;.37956607, 1.152633, 0.6849592, &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt;.9676384, 0.4624033, ...|
++----------------------------------------------------------------------------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finembedding_e5_base&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[document]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[E5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;398.5 MB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;For our Finance models, we will use publicly available datasets to fine-tune the model:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/&quot;&gt;FiQA&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;In-house annotated Earning Calls Transcripts&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="en" /><category term="licensed" /><category term="e5" /><category term="sentence_embedding" /><category term="onnx" /><summary type="html">Description This model is a financial version of the E5 base model fine-tuned on earning call transcripts and finance question-answering datasets. Reference: Wang, Liang, et al. “Text embeddings by weakly-supervised contrastive pre-training.” arXiv preprint arXiv:2212.03533 (2022). Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = ( nlp.DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document&quot;) ) E5_embedding = ( nlp.E5Embeddings.pretrained( &quot;finembedding_e5_base&quot;, &quot;en&quot;, &quot;finance/models&quot; ) .setInputCols([&quot;document&quot;]) .setOutputCol(&quot;E5&quot;) ) pipeline = nlp.Pipeline(stages=[document_assembler, E5_embedding]) data = spark.createDataFrame( [[&quot;What is the best way to invest in the stock market?&quot;]] ).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) result. Select(&quot;E5.result&quot;).show() Results +----------------------------------------------------------------------------------------------------+ | embeddings| +----------------------------------------------------------------------------------------------------+ |[0.45521045, -0.16874692, -0.06179046, -0.37956607, 1.152633, 0.6849592, -0.9676384, 0.4624033, ...| +----------------------------------------------------------------------------------------------------+ Model Information Model Name: finembedding_e5_base Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document] Output Labels: [E5] Language: en Size: 398.5 MB References For our Finance models, we will use publicly available datasets to fine-tune the model: FiQA In-house annotated Earning Calls Transcripts</summary></entry><entry><title type="html">Financial NER for Aspect-based Sentiment Analysis (sm, Small)</title><link href="/2023/10/06/finner_absa_sm_en.html" rel="alternate" type="text/html" title="Financial NER for Aspect-based Sentiment Analysis (sm, Small)" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>/2023/10/06/finner_absa_sm_en</id><content type="html" xml:base="/2023/10/06/finner_absa_sm_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This NER model identifies entities that can be associated with a financial sentiment. The model is designed to be used with the associated Assertion Status model that classifies the entities into a sentiment category.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;REVENUE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EXPENSE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFIT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;KPI&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GAINS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ASSET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LIABILITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CASHFLOW&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOSSES&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FREE_CASH_FLOW&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_absa_sm_en_1.0.0_3.0_1696605316183.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finner_absa_sm_en_1.0.0_3.0_1696605316183.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sentence_detector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCustomBounds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_embeddings_sec_bert_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxSentenceLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finner_absa_sm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+
+&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sentence_detector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ner_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;   
+    &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arrays_zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ner_chunk.result'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'ner_chunk.metadata'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; \
+               &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['0']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;entity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                       &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['1']['entity']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------+---------+
+|entity  |label    |
++--------+---------+
+|Equity  |LIABILITY|
+|earnings|PROFIT   |
++--------+---------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;finner_absa_sm&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[sentence, token, embeddings]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[ner]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;16.3 MB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In-house annotations of earning call transcripts.&lt;/p&gt;
+
+&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;         label    precision    recall  f1-score   support
+
+         B-ASSET     0.6000    0.2400    0.3429        25
+      B-CASHFLOW     0.7000    0.5833    0.6364        12
+       B-EXPENSE     0.7222    0.6500    0.6842        60
+B-FREE_CASH_FLOW     1.0000    1.0000    1.0000         8
+         B-GAINS     0.7333    0.5946    0.6567        37
+           B-KPI     0.7143    0.5556    0.6250        36
+     B-LIABILITY     0.5000    0.2778    0.3571        18
+        B-LOSSES     0.7143    0.7143    0.7143         7
+        B-PROFIT     0.8462    0.8919    0.8684        37
+       B-REVENUE     0.7385    0.8000    0.7680        60
+         I-ASSET     0.8000    0.3636    0.5000        11
+      I-CASHFLOW     0.9091    0.9091    0.9091        11
+       I-EXPENSE     0.7451    0.6230    0.6786        61
+I-FREE_CASH_FLOW     1.0000    1.0000    1.0000        17
+         I-GAINS     0.8333    0.6667    0.7407        30
+           I-KPI     0.8500    0.5000    0.6296        34
+     I-LIABILITY     0.5000    0.5000    0.5000         6
+        I-LOSSES     0.7143    0.6250    0.6667         8
+        I-PROFIT     0.8621    0.9615    0.9091        26
+       I-REVENUE     0.7600    0.7308    0.7451        26
+               O     0.9839    0.9923    0.9880      8660
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="en" /><category term="ner" /><category term="licensed" /><summary type="html">Description This NER model identifies entities that can be associated with a financial sentiment. The model is designed to be used with the associated Assertion Status model that classifies the entities into a sentiment category. Predicted Entities REVENUE, EXPENSE, PROFIT, KPI, GAINS, ASSET, LIABILITY, CASHFLOW, LOSSES, FREE_CASH_FLOW Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;sentence&quot;) \ .setCustomBounds([&quot;\n\n&quot;]) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;,&quot;en&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setCaseSensitive(True)\ .setMaxSentenceLength(512) ner_model = finance.NerModel.pretrained(&quot;finner_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;)\ ner_converter = finance.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner_model, ner_converter ]) model = pipeline.fit(spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)) text = &quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot; spark_df = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model. Transform(spark_df) result. Select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \ .select(F.expr(&quot;cols['0']&quot;).alias(&quot;entity&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False) Results +--------+---------+ |entity |label | +--------+---------+ |Equity |LIABILITY| |earnings|PROFIT | +--------+---------+ Model Information Model Name: finner_absa_sm Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 16.3 MB References In-house annotations of earning call transcripts. Benchmarking label precision recall f1-score support B-ASSET 0.6000 0.2400 0.3429 25 B-CASHFLOW 0.7000 0.5833 0.6364 12 B-EXPENSE 0.7222 0.6500 0.6842 60 B-FREE_CASH_FLOW 1.0000 1.0000 1.0000 8 B-GAINS 0.7333 0.5946 0.6567 37 B-KPI 0.7143 0.5556 0.6250 36 B-LIABILITY 0.5000 0.2778 0.3571 18 B-LOSSES 0.7143 0.7143 0.7143 7 B-PROFIT 0.8462 0.8919 0.8684 37 B-REVENUE 0.7385 0.8000 0.7680 60 I-ASSET 0.8000 0.3636 0.5000 11 I-CASHFLOW 0.9091 0.9091 0.9091 11 I-EXPENSE 0.7451 0.6230 0.6786 61 I-FREE_CASH_FLOW 1.0000 1.0000 1.0000 17 I-GAINS 0.8333 0.6667 0.7407 30 I-KPI 0.8500 0.5000 0.6296 34 I-LIABILITY 0.5000 0.5000 0.5000 6 I-LOSSES 0.7143 0.6250 0.6667 8 I-PROFIT 0.8621 0.9615 0.9091 26 I-REVENUE 0.7600 0.7308 0.7451 26 O 0.9839 0.9923 0.9880 8660</summary></entry><entry><title type="html">Detect Clinical Conditions (LangTest - ner_eu_clinical_condition)</title><link href="/2023/09/22/ner_eu_clinical_condition_langtest_en.html" rel="alternate" type="text/html" title="Detect Clinical Conditions (LangTest - ner_eu_clinical_condition)" /><published>2023-09-22T00:00:00+00:00</published><updated>2023-09-22T00:00:00+00:00</updated><id>/2023/09/22/ner_eu_clinical_condition_langtest_en</id><content type="html" xml:base="/2023/09/22/ner_eu_clinical_condition_langtest_en.html">## Description
 
 Pretrained named entity recognition (NER) deep learning model for clinical conditions. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state-of-the-art model for NER: Chiu &amp; Nichols, Named Entity Recognition with Bidirectional LSTM-CNN. The model is the version of [ner_eu_clinical_condition](https://nlp.johnsnowlabs.com/2023/02/06/ner_eu_clinical_condition_en.html) model augmented with `langtest` library.
 
@@ -1154,465 +1545,4 @@ Posology_Information  0.87       0.86    0.87      1199
 micro-avg             0.89       0.89    0.89      3044    
 macro-avg             0.89       0.88    0.88      3044    
 weighted-avg          0.89       0.89    0.89      3044 
-```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="ner" /><category term="licensed" /><category term="clinical" /><category term="oncology" /><category term="posology" /><category term="langtest" /><summary type="html">Description This model extracts mentions of treatments and posology information using unspecific labels (low granularity). It is the version of ner_oncology_unspecific_posology model augmented with langtest library. Definitions of Predicted Entities: Cancer_Therapy: Mentions of cancer treatments, including chemotherapy, radiotherapy, surgery, and others. Posology_Information: Terms related to the posology of the treatment, including duration, frequencies, and dosage. test_type before fail_count after fail_count before pass_count after pass_count minimum pass_rate before pass_rate after pass_rate add_ocr_typo 658 228 630 1060 70% 49% 82% add_slangs 20 14 1268 1274 60% 98% 99% add_typo 167 142 1121 1146 60% 87% 89% lowercase 166 116 1122 1172 70% 87% 91% titlecase 600 200 688 1088 70% 53% 84% uppercase 1195 268 93 1020 60% 7% 79% weighted average 2806 968 4922 6760 65% 63.69% 87.47% Predicted Entities Cancer_Therapy, Posology_Information Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_oncology_unspecific_posology_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverter() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_oncology_unspecific_posology_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverter() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter)) val data = Seq(&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +----------------+--------------------+ |chunk |ner_label | +----------------+--------------------+ |adriamycin |Cancer_Therapy | |60 mg/m2 |Posology_Information| |cyclophosphamide|Cancer_Therapy | |600 mg/m2 |Posology_Information| |six courses |Posology_Information| |second cycle |Posology_Information| |chemotherapy |Cancer_Therapy | +----------------+--------------------+ Model Information Model Name: ner_oncology_unspecific_posology_langtest Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 14.6 MB References In-house annotated oncology case reports. Benchmarking label precision recall f1-score support Cancer_Therapy 0.90 0.90 0.90 1845 Posology_Information 0.87 0.86 0.87 1199 micro-avg 0.89 0.89 0.89 3044 macro-avg 0.89 0.88 0.88 3044 weighted-avg 0.89 0.89 0.89 3044</summary></entry><entry><title type="html">Extract Clinical Problem Entities (low granularity) from Voice of the Patient Documents (LangTest)</title><link href="/2023/09/22/ner_vop_problem_reduced_langtest_en.html" rel="alternate" type="text/html" title="Extract Clinical Problem Entities (low granularity) from Voice of the Patient Documents (LangTest)" /><published>2023-09-22T00:00:00+00:00</published><updated>2023-09-22T00:00:00+00:00</updated><id>/2023/09/22/ner_vop_problem_reduced_langtest_en</id><content type="html" xml:base="/2023/09/22/ner_vop_problem_reduced_langtest_en.html">## Description
-
-This model extracts clinical problems from the documents transferred from the patient’s own sentences. The taxonomy is reduced (one label for all clinical problems). It is the version of [ner_vop_problem_reduced](https://nlp.johnsnowlabs.com/2023/06/07/ner_vop_problem_reduced_en.html) model augmented with `langtest` library.
-
-| **test_type**             | **before fail_count** | **after fail_count** | **before pass_count** | **after pass_count** | **minimum pass_rate** | **before pass_rate** | **after pass_rate** |
-|---------------------------|-----------------------|----------------------|-----------------------|----------------------|-----------------------|----------------------|---------------------|
-| **add_abbreviation**      | 855                   | 745                  | 2246                  | 2356                 | 60%                   | 72%                  | 76%                 |
-| **add_ocr_typo**          | 1446                  | 900                  | 2023                  | 2569                 | 60%                   | 58%                  | 74%                 |
-| **add_punctuation**       | 3                     | 0                    | 44                    | 47                   | 70%                   | 94%                  | 100%                |
-| **add_slangs**            | 643                   | 471                  | 1240                  | 1412                 | 70%                   | 66%                  | 75%                 |
-| **add_typo**              | 392                   | 353                  | 2964                  | 3016                 | 70%                   | 88%                  | 90%                 |
-| **lowercase**             | 139                   | 101                  | 3083                  | 3121                 | 70%                   | 96%                  | 97%                 |
-| **number_to_word**        | 42                    | 33                   | 638                   | 647                  | 70%                   | 94%                  | 95%                 |
-| **strip_all_punctuation** | 272                   | 242                  | 3228                  | 3258                 | 70%                   | 92%                  | 93%                 |
-| **strip_punctuation**     | 79                    | 79                   | 3388                  | 3388                 | 70%                   | 98%                  | 98%                 |
-| **swap_entities**         | 692                   | 640                  | 2734                  | 2781                 | 70%                   | 80%                  | 81%                 |
-| **titlecase**             | 1257                  | 764                  | 2255                  | 2748                 | 70%                   | 64%                  | 78%                 |
-| **uppercase**             | 2510                  | 732                  | 1001                  | 2779                 | 70%                   | 29%                  | 79%                 |
-| **weighted average**      | 8330                  | 5060                 | 24844                 | 28122                | 68%                   | 74.89%               | 84.75%              |
-
-## Predicted Entities
-
-`Problem`, `HealthStatus`, `Modifier`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_reduced_langtest_en_5.1.0_3.0_1695367521585.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_reduced_langtest_en_5.1.0_3.0_1695367521585.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer() \
-    .setInputCols([&quot;sentence&quot;]) \
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \
-    .setOutputCol(&quot;embeddings&quot;)                
-
-ner = MedicalNerModel.pretrained(&quot;ner_vop_problem_reduced_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal() \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-pipeline = Pipeline(stages=[document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter])
-
-data = spark.createDataFrame([[&quot;I've been experiencing joint pain and fatigue lately, so I went to the rheumatology department. After some tests, they diagnosed me with rheumatoid arthritis and started me on a treatment plan to manage the symptoms.&quot;]]).toDF(&quot;text&quot;)
-
-result = pipeline.fit(data).transform(data)
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-    
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
-    .setInputCols(&quot;document&quot;)
-    .setOutputCol(&quot;sentence&quot;)
-    
-val tokenizer = new Tokenizer()
-    .setInputCols(&quot;sentence&quot;)
-    .setOutputCol(&quot;token&quot;)
-    
-val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)                
-    
-val ner = MedicalNerModel.pretrained(&quot;ner_vop_problem_reduced_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;ner&quot;)
-    
-val ner_converter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-        
-val pipeline = new Pipeline().setStages(Array(document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter))    
-
-val data = Seq(&quot;I've been experiencing joint pain and fatigue lately, so I went to the rheumatology department. After some tests, they diagnosed me with rheumatoid arthritis and started me on a treatment plan to manage the symptoms.&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+--------------------+---------+
-|chunk               |ner_label|
-+--------------------+---------+
-|pain                |Problem  |
-|fatigue             |Problem  |
-|rheumatoid arthritis|Problem  |
-+--------------------+---------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|ner_vop_problem_reduced_langtest|
-|Compatibility:|Healthcare NLP 5.1.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|14.5 MB|
-
-## References
-
-In-house annotated health-related text in colloquial language.
-
-## Sample text from the training dataset
-
-Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I'm taking weekly supplement of vitamin D and 1000 mcg b12 daily. I'm taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I'm facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you.
-
-## Benchmarking
-
-```bash
-label         precision  recall  f1-score  support 
-HealthStatus  0.80       0.89    0.84      125     
-Modifier      0.79       0.78    0.79      1069    
-Problem       0.89       0.87    0.88      5762    
-micro-avg     0.87       0.86    0.87      6956    
-macro-avg     0.83       0.85    0.84      6956    
-weighted-avg  0.87       0.86    0.87      6956    
-```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="ner" /><category term="clinical" /><category term="vop" /><category term="problem" /><category term="langtest" /><summary type="html">Description This model extracts clinical problems from the documents transferred from the patient’s own sentences. The taxonomy is reduced (one label for all clinical problems). It is the version of ner_vop_problem_reduced model augmented with langtest library. test_type before fail_count after fail_count before pass_count after pass_count minimum pass_rate before pass_rate after pass_rate add_abbreviation 855 745 2246 2356 60% 72% 76% add_ocr_typo 1446 900 2023 2569 60% 58% 74% add_punctuation 3 0 44 47 70% 94% 100% add_slangs 643 471 1240 1412 70% 66% 75% add_typo 392 353 2964 3016 70% 88% 90% lowercase 139 101 3083 3121 70% 96% 97% number_to_word 42 33 638 647 70% 94% 95% strip_all_punctuation 272 242 3228 3258 70% 92% 93% strip_punctuation 79 79 3388 3388 70% 98% 98% swap_entities 692 640 2734 2781 70% 80% 81% titlecase 1257 764 2255 2748 70% 64% 78% uppercase 2510 732 1001 2779 70% 29% 79% weighted average 8330 5060 24844 28122 68% 74.89% 84.75% Predicted Entities Problem, HealthStatus, Modifier Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_vop_problem_reduced_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;I've been experiencing joint pain and fatigue lately, so I went to the rheumatology department. After some tests, they diagnosed me with rheumatoid arthritis and started me on a treatment plan to manage the symptoms.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_vop_problem_reduced_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter)) val data = Seq(&quot;I've been experiencing joint pain and fatigue lately, so I went to the rheumatology department. After some tests, they diagnosed me with rheumatoid arthritis and started me on a treatment plan to manage the symptoms.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +--------------------+---------+ |chunk |ner_label| +--------------------+---------+ |pain |Problem | |fatigue |Problem | |rheumatoid arthritis|Problem | +--------------------+---------+ Model Information Model Name: ner_vop_problem_reduced_langtest Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 14.5 MB References In-house annotated health-related text in colloquial language. Sample text from the training dataset Hello,I’m 20 year old girl. I’m diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss, from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I’m taking weekly supplement of vitamin D and 1000 mcg b12 daily. I’m taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I’m facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you. Benchmarking label precision recall f1-score support HealthStatus 0.80 0.89 0.84 125 Modifier 0.79 0.78 0.79 1069 Problem 0.89 0.87 0.88 5762 micro-avg 0.87 0.86 0.87 6956 macro-avg 0.83 0.85 0.84 6956 weighted-avg 0.87 0.86 0.87 6956</summary></entry><entry><title type="html">Extract Temporal Entities from Voice of the Patient Documents (LangTest)</title><link href="/2023/09/22/ner_vop_temporal_langtest_en.html" rel="alternate" type="text/html" title="Extract Temporal Entities from Voice of the Patient Documents (LangTest)" /><published>2023-09-22T00:00:00+00:00</published><updated>2023-09-22T00:00:00+00:00</updated><id>/2023/09/22/ner_vop_temporal_langtest_en</id><content type="html" xml:base="/2023/09/22/ner_vop_temporal_langtest_en.html">## Description
-
-This model extracts temporal references from the documents transferred from the patient’s own sentences. It is the version of [ner_vop_temporal](https://nlp.johnsnowlabs.com/2023/06/06/ner_vop_temporal_en.html) model augmented with `langtest` library.
-
-| **test_type**        | **before fail_count** | **after fail_count** | **before pass_count** | **after pass_count** | **minimum pass_rate** | **before pass_rate** | **after pass_rate** |
-|----------------------|-----------------------|----------------------|-----------------------|----------------------|-----------------------|----------------------|---------------------|
-| **add_ocr_typo**     | 1623                  | 928                  | 1065                  | 1760                 | 60%                   | 40%                  | 65%                 |
-| **add_typo**         | 202                   | 161                  | 2401                  | 2432                 | 70%                   | 92%                  | 94%                 |
-| **lowercase**        | 55                    | 59                   | 2466                  | 2462                 | 70%                   | 98%                  | 98%                 |
-| **swap_entities**    | 609                   | 597                  | 1905                  | 1911                 | 70%                   | 76%                  | 76%                 |
-| **titlecase**        | 680                   | 480                  | 2037                  | 2237                 | 70%                   | 75%                  | 82%                 |
-| **uppercase**        | 1911                  | 337                  | 805                   | 2379                 | 70%                   | 30%                  | 88%                 |
-| **weighted average** | **5080**              | **2562**             | **10679**             | **13181**            | **68%**               | **67.76%**           | **83.73%**          |
-
-## Predicted Entities
-
-`DateTime`, `Duration`, `Frequency`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_temporal_langtest_en_5.1.0_3.0_1695369554858.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_temporal_langtest_en_5.1.0_3.0_1695369554858.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer() \
-    .setInputCols([&quot;sentence&quot;]) \
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \
-    .setOutputCol(&quot;embeddings&quot;)                
-
-ner = MedicalNerModel.pretrained(&quot;ner_vop_temporal_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal() \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-pipeline = Pipeline(stages=[document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter])
-
-data = spark.createDataFrame([[&quot;Hi everyone, I'm a 35-year-old woman who was diagnosed with depression last year. I've been taking medication and seeing a therapist for about six months now, and I'm starting to feel a lot better. I have therapy sessions once a week, and I take my medication every day at the same time. I've noticed that my mood tends to be better in the mornings than in the evenings. Has anyone else had a similar experience? Any tips for managing depression long-term?&quot;]]).toDF(&quot;text&quot;)
-
-result = pipeline.fit(data).transform(data)
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-    
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;document&quot;)
-    .setOutputCol(&quot;sentence&quot;)
-    
-val tokenizer = new Tokenizer()
-    .setInputCols(&quot;sentence&quot;)
-    .setOutputCol(&quot;token&quot;)
-    
-val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)                
-    
-val ner = MedicalNerModel.pretrained(&quot;ner_vop_temporal_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;ner&quot;)
-    
-val ner_converter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-        
-val pipeline = new Pipeline().setStages(Array(document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter))    
-
-val data = Seq(&quot;Hi everyone, I'm a 35-year-old woman who was diagnosed with depression last year. I've been taking medication and seeing a therapist for about six months now, and I'm starting to feel a lot better. I have therapy sessions once a week, and I take my medication every day at the same time. I've noticed that my mood tends to be better in the mornings than in the evenings. Has anyone else had a similar experience? Any tips for managing depression long-term?&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+---------------+---------+
-|chunk          |ner_label|
-+---------------+---------+
-|last year      |DateTime |
-|six months     |Duration |
-|now            |DateTime |
-|once a week    |Frequency|
-|every day      |Frequency|
-|in the mornings|DateTime |
-|in the evenings|DateTime |
-+---------------+---------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|ner_vop_temporal_langtest|
-|Compatibility:|Healthcare NLP 5.1.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|14.5 MB|
-
-## References
-
-In-house annotated health-related text in colloquial language.
-
-## Sample text from the training dataset
-
-Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I'm taking weekly supplement of vitamin D and 1000 mcg b12 daily. I'm taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I'm facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you.
-
-## Benchmarking
-
-```bash
-label         precision  recall  f1-score  support 
-DateTime      0.84       0.85    0.84      2131    
-Duration      0.80       0.81    0.81      1058    
-Frequency     0.84       0.86    0.85      672     
-micro-avg     0.83       0.84    0.83      3861    
-macro-avg     0.83       0.84    0.83      3861    
-weighted-avg  0.83       0.84    0.83      3861
-```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="ner" /><category term="clinical" /><category term="licensed" /><category term="vop" /><category term="temporal" /><category term="langtest" /><summary type="html">Description This model extracts temporal references from the documents transferred from the patient’s own sentences. It is the version of ner_vop_temporal model augmented with langtest library. test_type before fail_count after fail_count before pass_count after pass_count minimum pass_rate before pass_rate after pass_rate add_ocr_typo 1623 928 1065 1760 60% 40% 65% add_typo 202 161 2401 2432 70% 92% 94% lowercase 55 59 2466 2462 70% 98% 98% swap_entities 609 597 1905 1911 70% 76% 76% titlecase 680 480 2037 2237 70% 75% 82% uppercase 1911 337 805 2379 70% 30% 88% weighted average 5080 2562 10679 13181 68% 67.76% 83.73% Predicted Entities DateTime, Duration, Frequency Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_vop_temporal_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;Hi everyone, I'm a 35-year-old woman who was diagnosed with depression last year. I've been taking medication and seeing a therapist for about six months now, and I'm starting to feel a lot better. I have therapy sessions once a week, and I take my medication every day at the same time. I've noticed that my mood tends to be better in the mornings than in the evenings. Has anyone else had a similar experience? Any tips for managing depression long-term?&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_vop_temporal_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter)) val data = Seq(&quot;Hi everyone, I'm a 35-year-old woman who was diagnosed with depression last year. I've been taking medication and seeing a therapist for about six months now, and I'm starting to feel a lot better. I have therapy sessions once a week, and I take my medication every day at the same time. I've noticed that my mood tends to be better in the mornings than in the evenings. Has anyone else had a similar experience? Any tips for managing depression long-term?&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +---------------+---------+ |chunk |ner_label| +---------------+---------+ |last year |DateTime | |six months |Duration | |now |DateTime | |once a week |Frequency| |every day |Frequency| |in the mornings|DateTime | |in the evenings|DateTime | +---------------+---------+ Model Information Model Name: ner_vop_temporal_langtest Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 14.5 MB References In-house annotated health-related text in colloquial language. Sample text from the training dataset Hello,I’m 20 year old girl. I’m diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss, from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I’m taking weekly supplement of vitamin D and 1000 mcg b12 daily. I’m taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I’m facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you. Benchmarking label precision recall f1-score support DateTime 0.84 0.85 0.84 2131 Duration 0.80 0.81 0.81 1058 Frequency 0.84 0.86 0.85 672 micro-avg 0.83 0.84 0.83 3861 macro-avg 0.83 0.84 0.83 3861 weighted-avg 0.83 0.84 0.83 3861</summary></entry><entry><title type="html">Extract Test Entities from Voice of the Patient Documents (LangTest</title><link href="/2023/09/22/ner_vop_test_langtest_en.html" rel="alternate" type="text/html" title="Extract Test Entities from Voice of the Patient Documents (LangTest" /><published>2023-09-22T00:00:00+00:00</published><updated>2023-09-22T00:00:00+00:00</updated><id>/2023/09/22/ner_vop_test_langtest_en</id><content type="html" xml:base="/2023/09/22/ner_vop_test_langtest_en.html">## Description
-
-This model extracts test mentions from the documents transferred from the patient’s own sentences. It is the version of [ner_vop_test](https://nlp.johnsnowlabs.com/2023/06/06/ner_vop_test_en.html) model augmented with `langtest` library.
-
-| **test_type**        | **before fail_count** | **after fail_count** | **before pass_count** | **after pass_count** | **minimum pass_rate** | **before pass_rate** | **after pass_rate** |
-|----------------------|-----------------------|----------------------|-----------------------|----------------------|-----------------------|----------------------|---------------------|
-| **add_abbreviation** | 149                   | 124                  | 305                   | 330                  | 70%                   | 67%                  | 73%                 |
-| **add_ocr_typo**     | 280                   | 117                  | 217                   | 380                  | 70%                   | 44%                  | 76%                 |
-| **add_punctuation**  | 0                     | 0                    | 4                     | 4                    | 70%                   | 100%                 | 100%                |
-| **add_typo**         | 61                    | 51                   | 426                   | 430                  | 70%                   | 87%                  | 89%                 |
-| **lowercase**        | 53                    | 50                   | 427                   | 430                  | 70%                   | 89%                  | 90%                 |
-| **titlecase**        | 169                   | 83                   | 337                   | 423                  | 70%                   | 67%                  | 84%                 |
-| **uppercase**        | 417                   | 106                  | 89                    | 400                  | 70%                   | 18%                  | 79%                 |
-| **weighted average** | **1129**              | **531**              | **1805**              | **2397**             | **70%**               | **61.52%**           | **81.86%**          |
-
-## Predicted Entities
-
-`VitalTest`, `Test`, `Measurements`, `TestResult`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_test_langtest_en_5.1.0_3.0_1695371748577.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_test_langtest_en_5.1.0_3.0_1695371748577.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer() \
-    .setInputCols([&quot;sentence&quot;]) \
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \
-    .setOutputCol(&quot;embeddings&quot;)                
-
-ner = MedicalNerModel.pretrained(&quot;ner_vop_test_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal() \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-pipeline = Pipeline(stages=[document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter])
-
-data = spark.createDataFrame([[&quot;I went to the endocrinology department to get my thyroid levels checked. They ordered a blood test and found out that I have hypothyroidism, so now I'm on medication to manage it.&quot;]]).toDF(&quot;text&quot;)
-
-result = pipeline.fit(data).transform(data)
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-    
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;document&quot;)
-    .setOutputCol(&quot;sentence&quot;)
-    
-val tokenizer = new Tokenizer()
-    .setInputCols(&quot;sentence&quot;)
-    .setOutputCol(&quot;token&quot;)
-    
-val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)                
-    
-val ner = MedicalNerModel.pretrained(&quot;ner_vop_test_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;ner&quot;)
-    
-val ner_converter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-        
-val pipeline = new Pipeline().setStages(Array(document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter))    
-
-val data = Seq(&quot;I went to the endocrinology department to get my thyroid levels checked. They ordered a blood test and found out that I have hypothyroidism, so now I'm on medication to manage it.&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+--------------+---------+
-|chunk         |ner_label|
-+--------------+---------+
-|thyroid levels|Test     |
-|blood test    |Test     |
-+--------------+---------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|ner_vop_test_langtest|
-|Compatibility:|Healthcare NLP 5.1.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|14.5 MB|
-
-## References
-
-In-house annotated health-related text in colloquial language.
-
-## Sample text from the training dataset
-
-Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I'm taking weekly supplement of vitamin D and 1000 mcg b12 daily. I'm taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I'm facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you.
-
-## Benchmarking
-
-```bash
-label         precision  recall  f1-score  support 
-Measurements  0.74       0.74    0.74      81      
-Test          0.86       0.85    0.85      607     
-TestResult    0.76       0.81    0.78      343     
-VitalTest     0.92       0.97    0.95      89      
-micro-avg     0.82       0.84    0.83      1120    
-macro-avg     0.82       0.84    0.83      1120    
-weighted-avg  0.82       0.84    0.83      1120    
-```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="clinical" /><category term="ner" /><category term="licensed" /><category term="vop" /><category term="test" /><category term="langtest" /><summary type="html">Description This model extracts test mentions from the documents transferred from the patient’s own sentences. It is the version of ner_vop_test model augmented with langtest library. test_type before fail_count after fail_count before pass_count after pass_count minimum pass_rate before pass_rate after pass_rate add_abbreviation 149 124 305 330 70% 67% 73% add_ocr_typo 280 117 217 380 70% 44% 76% add_punctuation 0 0 4 4 70% 100% 100% add_typo 61 51 426 430 70% 87% 89% lowercase 53 50 427 430 70% 89% 90% titlecase 169 83 337 423 70% 67% 84% uppercase 417 106 89 400 70% 18% 79% weighted average 1129 531 1805 2397 70% 61.52% 81.86% Predicted Entities VitalTest, Test, Measurements, TestResult Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_vop_test_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;I went to the endocrinology department to get my thyroid levels checked. They ordered a blood test and found out that I have hypothyroidism, so now I'm on medication to manage it.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_vop_test_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter)) val data = Seq(&quot;I went to the endocrinology department to get my thyroid levels checked. They ordered a blood test and found out that I have hypothyroidism, so now I'm on medication to manage it.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +--------------+---------+ |chunk |ner_label| +--------------+---------+ |thyroid levels|Test | |blood test |Test | +--------------+---------+ Model Information Model Name: ner_vop_test_langtest Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 14.5 MB References In-house annotated health-related text in colloquial language. Sample text from the training dataset Hello,I’m 20 year old girl. I’m diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss, from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I’m taking weekly supplement of vitamin D and 1000 mcg b12 daily. I’m taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I’m facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you. Benchmarking label precision recall f1-score support Measurements 0.74 0.74 0.74 81 Test 0.86 0.85 0.85 607 TestResult 0.76 0.81 0.78 343 VitalTest 0.92 0.97 0.95 89 micro-avg 0.82 0.84 0.83 1120 macro-avg 0.82 0.84 0.83 1120 weighted-avg 0.82 0.84 0.83 1120</summary></entry></feed>
+```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="ner" /><category term="licensed" /><category term="clinical" /><category term="oncology" /><category term="posology" /><category term="langtest" /><summary type="html">Description This model extracts mentions of treatments and posology information using unspecific labels (low granularity). It is the version of ner_oncology_unspecific_posology model augmented with langtest library. Definitions of Predicted Entities: Cancer_Therapy: Mentions of cancer treatments, including chemotherapy, radiotherapy, surgery, and others. Posology_Information: Terms related to the posology of the treatment, including duration, frequencies, and dosage. test_type before fail_count after fail_count before pass_count after pass_count minimum pass_rate before pass_rate after pass_rate add_ocr_typo 658 228 630 1060 70% 49% 82% add_slangs 20 14 1268 1274 60% 98% 99% add_typo 167 142 1121 1146 60% 87% 89% lowercase 166 116 1122 1172 70% 87% 91% titlecase 600 200 688 1088 70% 53% 84% uppercase 1195 268 93 1020 60% 7% 79% weighted average 2806 968 4922 6760 65% 63.69% 87.47% Predicted Entities Cancer_Therapy, Posology_Information Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_oncology_unspecific_posology_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverter() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_oncology_unspecific_posology_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverter() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter)) val data = Seq(&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +----------------+--------------------+ |chunk |ner_label | +----------------+--------------------+ |adriamycin |Cancer_Therapy | |60 mg/m2 |Posology_Information| |cyclophosphamide|Cancer_Therapy | |600 mg/m2 |Posology_Information| |six courses |Posology_Information| |second cycle |Posology_Information| |chemotherapy |Cancer_Therapy | +----------------+--------------------+ Model Information Model Name: ner_oncology_unspecific_posology_langtest Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 14.6 MB References In-house annotated oncology case reports. Benchmarking label precision recall f1-score support Cancer_Therapy 0.90 0.90 0.90 1845 Posology_Information 0.87 0.86 0.87 1199 micro-avg 0.89 0.89 0.89 3044 macro-avg 0.89 0.88 0.88 3044 weighted-avg 0.89 0.89 0.89 3044</summary></entry></feed>
