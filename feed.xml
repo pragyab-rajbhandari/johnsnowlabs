@@ -1,373 +1,315 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-10-06T21:04:48+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial Assertion of Sentiment (sm, Small)</title><link href="/2023/10/06/finassertion_absa_sm_en.html" rel="alternate" type="text/html" title="Financial Assertion of Sentiment (sm, Small)" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>/2023/10/06/finassertion_absa_sm_en</id><content type="html" xml:base="/2023/10/06/finassertion_absa_sm_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-10-06T21:14:42+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Financial Assertion of Sentiment (sm, Small)</title><link href="/2023/10/06/finassertion_absa_sm_en.html" rel="alternate" type="text/html" title="Financial Assertion of Sentiment (sm, Small)" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>/2023/10/06/finassertion_absa_sm_en</id><content type="html" xml:base="/2023/10/06/finassertion_absa_sm_en.html">## Description
 
-&lt;p&gt;This assertion model classifies financial entities into a sentiment. It is designed to be used together with the associated NER model.&lt;/p&gt;
+This assertion model classifies financial entities into a sentiment. It is designed to be used together with the associated NER model.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POSITIVE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NEGATIVE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NEUTRAL&lt;/code&gt;&lt;/p&gt;
+`POSITIVE`, `NEGATIVE`, `NEUTRAL`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finassertion_absa_sm_en_1.0.0_3.0_1696606845902.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finassertion_absa_sm_en_1.0.0_3.0_1696606845902.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finassertion_absa_sm_en_1.0.0_3.0_1696606845902.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finassertion_absa_sm_en_1.0.0_3.0_1696606845902.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
-
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Sentence Detector annotator, processes various sentences per line
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Tokenizer splits words in a relevant format for NLP
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;bert_embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_embeddings_sec_bert_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxSentenceLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;clinical_ner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finner_absa_sm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;assertion_model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AssertionDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finassertion_absa_sm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;assertion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;nlpPipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;bert_embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;clinical_ner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;assertion_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+## How to use
 
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot;&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+documentAssembler = (
+    nlp.DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document&quot;)
+)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+# Sentence Detector annotator, processes various sentences per line
+sentenceDetector = (
+    nlp.SentenceDetector()
+    .setInputCols([&quot;document&quot;])
+    .setOutputCol(&quot;sentence&quot;)
+)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arrays_zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner_chunk.metadata&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['0']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;entity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['1']['entity']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+# Tokenizer splits words in a relevant format for NLP
+tokenizer = (
+    nlp.Tokenizer().setInputCols([&quot;sentence&quot;]).setOutputCol(&quot;token&quot;)
+)
+
+bert_embeddings = (
+    nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;, &quot;en&quot;)
+    .setInputCols(&quot;document&quot;, &quot;token&quot;)
+    .setOutputCol(&quot;embeddings&quot;)
+    .setMaxSentenceLength(512)
+)
+
+clinical_ner = (
+    finance.NerModel.pretrained(&quot;finner_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;)
+    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])
+    .setOutputCol(&quot;ner&quot;)
+)
+
+ner_converter = (
+    finance.NerConverterInternal()
+    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])
+    .setOutputCol(&quot;ner_chunk&quot;)
+)
+
+assertion_model = (
+    finance.AssertionDLModel.pretrained(&quot;finassertion_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;)
+    .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;, &quot;embeddings&quot;])
+    .setOutputCol(&quot;assertion&quot;)
+)
+
+nlpPipeline = nlp.Pipeline(
+    stages=[
+        documentAssembler,
+        sentenceDetector,
+        tokenizer,
+        bert_embeddings,
+        clinical_ner,
+        ner_converter,
+        assertion_model,
+    ]
+)
+
+
+text = &quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot;
+
+spark_df = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+
+result = model.fit(spark_df ).transform(spark_df)
+
+result.select(
+    F.explode(
+        F.arrays_zip(&quot;ner_chunk.result&quot;, &quot;ner_chunk.metadata&quot;)
+    ).alias(&quot;cols&quot;)
+).select(
+    F.expr(&quot;cols['0']&quot;).alias(&quot;entity&quot;),
+    F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;),
+).show(
+    50, truncate=False
+)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------+---------+
+```bash
++--------+---------+
 |entity  |label    |
 +--------+---------+
 |Equity  |LIABILITY|
 |earnings|PROFIT   |
 +--------+---------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;finassertion_absa_sm&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[document, chunk, embeddings]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[assertion]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;2.7 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|finassertion_absa_sm|
+|Compatibility:|Finance NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document, chunk, embeddings]|
+|Output Labels:|[assertion]|
+|Language:|en|
+|Size:|2.7 MB|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;In-house annotations of earning call transcripts.&lt;/p&gt;
+In-house annotations of earning call transcripts.
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     label    precision    recall  f1-score   support
+```bash
+     label    precision    recall  f1-score   support
 
     NEGATIVE       0.57      0.42      0.48        74
      NEUTRAL       0.51      0.70      0.59       184
     POSITIVE       0.75      0.64      0.69       324
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="assertion" /><category term="en" /><category term="sentiment_analysis" /><category term="licensed" /><summary type="html">Description This assertion model classifies financial entities into a sentiment. It is designed to be used together with the associated NER model. Predicted Entities POSITIVE, NEGATIVE, NEUTRAL Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = ( nlp.DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document&quot;) ) # Sentence Detector annotator, processes various sentences per line sentenceDetector = ( nlp.SentenceDetector() .setInputCols([&quot;document&quot;]) .setOutputCol(&quot;sentence&quot;) ) # Tokenizer splits words in a relevant format for NLP tokenizer = ( nlp.Tokenizer().setInputCols([&quot;sentence&quot;]).setOutputCol(&quot;token&quot;) ) bert_embeddings = ( nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;, &quot;en&quot;) .setInputCols(&quot;document&quot;, &quot;token&quot;) .setOutputCol(&quot;embeddings&quot;) .setMaxSentenceLength(512) ) clinical_ner = ( finance.NerModel.pretrained(&quot;finner_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;) .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) .setOutputCol(&quot;ner&quot;) ) ner_converter = ( finance.NerConverterInternal() .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) .setOutputCol(&quot;ner_chunk&quot;) ) assertion_model = ( finance.AssertionDLModel.pretrained(&quot;finassertion_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;) .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;, &quot;embeddings&quot;]) .setOutputCol(&quot;assertion&quot;) ) nlpPipeline = nlp.Pipeline( stages=[ documentAssembler, sentenceDetector, tokenizer, bert_embeddings, clinical_ner, ner_converter, assertion_model, ] ) text = &quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot; spark_df = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model.fit(spark_df ).transform(spark_df) result.select( F.explode( F.arrays_zip(&quot;ner_chunk.result&quot;, &quot;ner_chunk.metadata&quot;) ).alias(&quot;cols&quot;) ).select( F.expr(&quot;cols['0']&quot;).alias(&quot;entity&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;), ).show( 50, truncate=False ) Results +--------+---------+ |entity |label | +--------+---------+ |Equity |LIABILITY| |earnings|PROFIT | +--------+---------+ Model Information Model Name: finassertion_absa_sm Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, chunk, embeddings] Output Labels: [assertion] Language: en Size: 2.7 MB References In-house annotations of earning call transcripts. Benchmarking label precision recall f1-score support NEGATIVE 0.57 0.42 0.48 74 NEUTRAL 0.51 0.70 0.59 184 POSITIVE 0.75 0.64 0.69 324</summary></entry><entry><title type="html">Finance E5 Embedding Base</title><link href="/2023/10/06/finembedding_e5_base_en.html" rel="alternate" type="text/html" title="Finance E5 Embedding Base" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>/2023/10/06/finembedding_e5_base_en</id><content type="html" xml:base="/2023/10/06/finembedding_e5_base_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+```</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="assertion" /><category term="en" /><category term="sentiment_analysis" /><category term="licensed" /><summary type="html">Description This assertion model classifies financial entities into a sentiment. It is designed to be used together with the associated NER model. Predicted Entities POSITIVE, NEGATIVE, NEUTRAL Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = ( nlp.DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document&quot;) ) # Sentence Detector annotator, processes various sentences per line sentenceDetector = ( nlp.SentenceDetector() .setInputCols([&quot;document&quot;]) .setOutputCol(&quot;sentence&quot;) ) # Tokenizer splits words in a relevant format for NLP tokenizer = ( nlp.Tokenizer().setInputCols([&quot;sentence&quot;]).setOutputCol(&quot;token&quot;) ) bert_embeddings = ( nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;, &quot;en&quot;) .setInputCols(&quot;document&quot;, &quot;token&quot;) .setOutputCol(&quot;embeddings&quot;) .setMaxSentenceLength(512) ) clinical_ner = ( finance.NerModel.pretrained(&quot;finner_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;) .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) .setOutputCol(&quot;ner&quot;) ) ner_converter = ( finance.NerConverterInternal() .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) .setOutputCol(&quot;ner_chunk&quot;) ) assertion_model = ( finance.AssertionDLModel.pretrained(&quot;finassertion_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;) .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;, &quot;embeddings&quot;]) .setOutputCol(&quot;assertion&quot;) ) nlpPipeline = nlp.Pipeline( stages=[ documentAssembler, sentenceDetector, tokenizer, bert_embeddings, clinical_ner, ner_converter, assertion_model, ] ) text = &quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot; spark_df = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model.fit(spark_df ).transform(spark_df) result.select( F.explode( F.arrays_zip(&quot;ner_chunk.result&quot;, &quot;ner_chunk.metadata&quot;) ).alias(&quot;cols&quot;) ).select( F.expr(&quot;cols['0']&quot;).alias(&quot;entity&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;), ).show( 50, truncate=False ) Results +--------+---------+ |entity |label | +--------+---------+ |Equity |LIABILITY| |earnings|PROFIT | +--------+---------+ Model Information Model Name: finassertion_absa_sm Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document, chunk, embeddings] Output Labels: [assertion] Language: en Size: 2.7 MB References In-house annotations of earning call transcripts. Benchmarking label precision recall f1-score support NEGATIVE 0.57 0.42 0.48 74 NEUTRAL 0.51 0.70 0.59 184 POSITIVE 0.75 0.64 0.69 324</summary></entry><entry><title type="html">Finance E5 Embedding Base</title><link href="/2023/10/06/finembedding_e5_base_en.html" rel="alternate" type="text/html" title="Finance E5 Embedding Base" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>/2023/10/06/finembedding_e5_base_en</id><content type="html" xml:base="/2023/10/06/finembedding_e5_base_en.html">## Description
 
-&lt;p&gt;This model is a financial version of the E5 base model fine-tuned on earning call transcripts and finance question-answering datasets. Reference: Wang, Liang, et al. “Text embeddings by weakly-supervised contrastive pre-training.” arXiv preprint arXiv:2212.03533 (2022).&lt;/p&gt;
+This model is a financial version of the E5 base model fine-tuned on earning call transcripts and finance question-answering datasets. Reference: Wang, Liang, et al. &quot;Text embeddings by weakly-supervised contrastive pre-training.&quot; arXiv preprint arXiv:2212.03533 (2022).
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finembedding_e5_base_en_1.0.0_3.0_1696603847700.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finembedding_e5_base_en_1.0.0_3.0_1696603847700.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finembedding_e5_base_en_1.0.0_3.0_1696603847700.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finembedding_e5_base_en_1.0.0_3.0_1696603847700.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;E5_embedding&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E5Embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;finembedding_e5_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;E5&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;E5_embedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+## How to use
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;What is the best way to invest in the stock market?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;E5.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document_assembler = (
+    nlp.DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document&quot;)
+)
+
+E5_embedding = (
+    nlp.E5Embeddings.pretrained(
+        &quot;finembedding_e5_base&quot;, &quot;en&quot;, &quot;finance/models&quot;
+    )
+    .setInputCols([&quot;document&quot;])
+    .setOutputCol(&quot;E5&quot;)
+)
+pipeline = nlp.Pipeline(stages=[document_assembler, E5_embedding])
+
+data = spark.createDataFrame(
+    [[&quot;What is the best way to invest in the stock market?&quot;]]
+).toDF(&quot;text&quot;)
+
+result = pipeline.fit(data).transform(data)
+result. Select(&quot;E5.result&quot;).show()
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+----------------------------------------------------------------------------------------------------+
+```bash
++----------------------------------------------------------------------------------------------------+
 |                                                                                          embeddings|
 +----------------------------------------------------------------------------------------------------+
-|[0.45521045, &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt;.16874692, &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt;.06179046, &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt;.37956607, 1.152633, 0.6849592, &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt;.9676384, 0.4624033, ...|
+|[0.45521045, -0.16874692, -0.06179046, -0.37956607, 1.152633, 0.6849592, -0.9676384, 0.4624033, ...|
 +----------------------------------------------------------------------------------------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;finembedding_e5_base&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[document]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[E5]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;398.5 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|finembedding_e5_base|
+|Compatibility:|Finance NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document]|
+|Output Labels:|[E5]|
+|Language:|en|
+|Size:|398.5 MB|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;For our Finance models, we will use publicly available datasets to fine-tune the model:&lt;/p&gt;
+For our Finance models, we will use publicly available datasets to fine-tune the model:
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/&quot;&gt;FiQA&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;In-house annotated Earning Calls Transcripts&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="en" /><category term="licensed" /><category term="e5" /><category term="sentence_embedding" /><category term="onnx" /><summary type="html">Description This model is a financial version of the E5 base model fine-tuned on earning call transcripts and finance question-answering datasets. Reference: Wang, Liang, et al. “Text embeddings by weakly-supervised contrastive pre-training.” arXiv preprint arXiv:2212.03533 (2022). Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = ( nlp.DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document&quot;) ) E5_embedding = ( nlp.E5Embeddings.pretrained( &quot;finembedding_e5_base&quot;, &quot;en&quot;, &quot;finance/models&quot; ) .setInputCols([&quot;document&quot;]) .setOutputCol(&quot;E5&quot;) ) pipeline = nlp.Pipeline(stages=[document_assembler, E5_embedding]) data = spark.createDataFrame( [[&quot;What is the best way to invest in the stock market?&quot;]] ).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) result. Select(&quot;E5.result&quot;).show() Results +----------------------------------------------------------------------------------------------------+ | embeddings| +----------------------------------------------------------------------------------------------------+ |[0.45521045, -0.16874692, -0.06179046, -0.37956607, 1.152633, 0.6849592, -0.9676384, 0.4624033, ...| +----------------------------------------------------------------------------------------------------+ Model Information Model Name: finembedding_e5_base Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document] Output Labels: [E5] Language: en Size: 398.5 MB References For our Finance models, we will use publicly available datasets to fine-tune the model: FiQA In-house annotated Earning Calls Transcripts</summary></entry><entry><title type="html">Financial NER for Aspect-based Sentiment Analysis (sm, Small)</title><link href="/2023/10/06/finner_absa_sm_en.html" rel="alternate" type="text/html" title="Financial NER for Aspect-based Sentiment Analysis (sm, Small)" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>/2023/10/06/finner_absa_sm_en</id><content type="html" xml:base="/2023/10/06/finner_absa_sm_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- [FiQA](https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/)
+- In-house annotated Earning Calls Transcripts</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="en" /><category term="licensed" /><category term="e5" /><category term="sentence_embedding" /><category term="onnx" /><summary type="html">Description This model is a financial version of the E5 base model fine-tuned on earning call transcripts and finance question-answering datasets. Reference: Wang, Liang, et al. “Text embeddings by weakly-supervised contrastive pre-training.” arXiv preprint arXiv:2212.03533 (2022). Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = ( nlp.DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document&quot;) ) E5_embedding = ( nlp.E5Embeddings.pretrained( &quot;finembedding_e5_base&quot;, &quot;en&quot;, &quot;finance/models&quot; ) .setInputCols([&quot;document&quot;]) .setOutputCol(&quot;E5&quot;) ) pipeline = nlp.Pipeline(stages=[document_assembler, E5_embedding]) data = spark.createDataFrame( [[&quot;What is the best way to invest in the stock market?&quot;]] ).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) result. Select(&quot;E5.result&quot;).show() Results +----------------------------------------------------------------------------------------------------+ | embeddings| +----------------------------------------------------------------------------------------------------+ |[0.45521045, -0.16874692, -0.06179046, -0.37956607, 1.152633, 0.6849592, -0.9676384, 0.4624033, ...| +----------------------------------------------------------------------------------------------------+ Model Information Model Name: finembedding_e5_base Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [document] Output Labels: [E5] Language: en Size: 398.5 MB References For our Finance models, we will use publicly available datasets to fine-tune the model: FiQA In-house annotated Earning Calls Transcripts</summary></entry><entry><title type="html">Financial NER for Aspect-based Sentiment Analysis (sm, Small)</title><link href="/2023/10/06/finner_absa_sm_en.html" rel="alternate" type="text/html" title="Financial NER for Aspect-based Sentiment Analysis (sm, Small)" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>/2023/10/06/finner_absa_sm_en</id><content type="html" xml:base="/2023/10/06/finner_absa_sm_en.html">## Description
 
-&lt;p&gt;This NER model identifies entities that can be associated with a financial sentiment. The model is designed to be used with the associated Assertion Status model that classifies the entities into a sentiment category.&lt;/p&gt;
+This NER model identifies entities that can be associated with a financial sentiment. The model is designed to be used with the associated Assertion Status model that classifies the entities into a sentiment category.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;REVENUE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EXPENSE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFIT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;KPI&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GAINS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ASSET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LIABILITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CASHFLOW&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOSSES&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FREE_CASH_FLOW&lt;/code&gt;&lt;/p&gt;
+`REVENUE`, `EXPENSE`, `PROFIT`, `KPI`, `GAINS`, `ASSET`, `LIABILITY`, `CASHFLOW`, `LOSSES`, `FREE_CASH_FLOW`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_absa_sm_en_1.0.0_3.0_1696605316183.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/finance/models/finner_absa_sm_en_1.0.0_3.0_1696605316183.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_absa_sm_en_1.0.0_3.0_1696605316183.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_absa_sm_en_1.0.0_3.0_1696605316183.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
-
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;sentence_detector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCustomBounds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_embeddings_sec_bert_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaxSentenceLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ner_model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;finner_absa_sm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;finance/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-
-&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sentence_detector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ner_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;   
-    &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+## How to use
 
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot;&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arrays_zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ner_chunk.result'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'ner_chunk.metadata'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; \
-               &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['0']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;entity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-                       &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cols['1']['entity']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+sentence_detector = nlp.SentenceDetector() \
+    .setInputCols([&quot;document&quot;]) \
+    .setOutputCol(&quot;sentence&quot;) \
+    .setCustomBounds([&quot;\n\n&quot;])
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+tokenizer = nlp.Tokenizer()\
+    .setInputCols([&quot;sentence&quot;])\
+    .setOutputCol(&quot;token&quot;)
+
+embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;,&quot;en&quot;)\
+    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
+    .setOutputCol(&quot;embeddings&quot;)\
+    .setCaseSensitive(True)\
+    .setMaxSentenceLength(512)
+
+ner_model = finance.NerModel.pretrained(&quot;finner_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;)\
+    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
+    .setOutputCol(&quot;ner&quot;)\
+
+ner_converter = finance.NerConverterInternal()\
+    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
+    .setOutputCol(&quot;ner_chunk&quot;)
+
+pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    embeddings,
+    ner_model,
+    ner_converter   
+    ])
+
+model = pipeline.fit(spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;))
+
+
+text = &quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot;
+
+spark_df = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+
+result = model. Transform(spark_df)
+result. Select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \
+               .select(F.expr(&quot;cols['0']&quot;).alias(&quot;entity&quot;),
+                       F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False)
+
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------+---------+
+```bash
++--------+---------+
 |entity  |label    |
 +--------+---------+
 |Equity  |LIABILITY|
 |earnings|PROFIT   |
 +--------+---------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;finner_absa_sm&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Finance NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[sentence, token, embeddings]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[ner]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;16.3 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|finner_absa_sm|
+|Compatibility:|Finance NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence, token, embeddings]|
+|Output Labels:|[ner]|
+|Language:|en|
+|Size:|16.3 MB|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;In-house annotations of earning call transcripts.&lt;/p&gt;
+In-house annotations of earning call transcripts.
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;         label    precision    recall  f1-score   support
+```bash
+         label    precision    recall  f1-score   support
 
          B-ASSET     0.6000    0.2400    0.3429        25
       B-CASHFLOW     0.7000    0.5833    0.6364        12
@@ -390,7 +332,148 @@ I-FREE_CASH_FLOW     1.0000    1.0000    1.0000        17
         I-PROFIT     0.8621    0.9615    0.9091        26
        I-REVENUE     0.7600    0.7308    0.7451        26
                O     0.9839    0.9923    0.9880      8660
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="en" /><category term="ner" /><category term="licensed" /><summary type="html">Description This NER model identifies entities that can be associated with a financial sentiment. The model is designed to be used with the associated Assertion Status model that classifies the entities into a sentiment category. Predicted Entities REVENUE, EXPENSE, PROFIT, KPI, GAINS, ASSET, LIABILITY, CASHFLOW, LOSSES, FREE_CASH_FLOW Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;sentence&quot;) \ .setCustomBounds([&quot;\n\n&quot;]) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;,&quot;en&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setCaseSensitive(True)\ .setMaxSentenceLength(512) ner_model = finance.NerModel.pretrained(&quot;finner_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;)\ ner_converter = finance.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner_model, ner_converter ]) model = pipeline.fit(spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)) text = &quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot; spark_df = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model. Transform(spark_df) result. Select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \ .select(F.expr(&quot;cols['0']&quot;).alias(&quot;entity&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False) Results +--------+---------+ |entity |label | +--------+---------+ |Equity |LIABILITY| |earnings|PROFIT | +--------+---------+ Model Information Model Name: finner_absa_sm Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 16.3 MB References In-house annotations of earning call transcripts. Benchmarking label precision recall f1-score support B-ASSET 0.6000 0.2400 0.3429 25 B-CASHFLOW 0.7000 0.5833 0.6364 12 B-EXPENSE 0.7222 0.6500 0.6842 60 B-FREE_CASH_FLOW 1.0000 1.0000 1.0000 8 B-GAINS 0.7333 0.5946 0.6567 37 B-KPI 0.7143 0.5556 0.6250 36 B-LIABILITY 0.5000 0.2778 0.3571 18 B-LOSSES 0.7143 0.7143 0.7143 7 B-PROFIT 0.8462 0.8919 0.8684 37 B-REVENUE 0.7385 0.8000 0.7680 60 I-ASSET 0.8000 0.3636 0.5000 11 I-CASHFLOW 0.9091 0.9091 0.9091 11 I-EXPENSE 0.7451 0.6230 0.6786 61 I-FREE_CASH_FLOW 1.0000 1.0000 1.0000 17 I-GAINS 0.8333 0.6667 0.7407 30 I-KPI 0.8500 0.5000 0.6296 34 I-LIABILITY 0.5000 0.5000 0.5000 6 I-LOSSES 0.7143 0.6250 0.6667 8 I-PROFIT 0.8621 0.9615 0.9091 26 I-REVENUE 0.7600 0.7308 0.7451 26 O 0.9839 0.9923 0.9880 8660</summary></entry><entry><title type="html">Detect Clinical Conditions (LangTest - ner_eu_clinical_condition)</title><link href="/2023/09/22/ner_eu_clinical_condition_langtest_en.html" rel="alternate" type="text/html" title="Detect Clinical Conditions (LangTest - ner_eu_clinical_condition)" /><published>2023-09-22T00:00:00+00:00</published><updated>2023-09-22T00:00:00+00:00</updated><id>/2023/09/22/ner_eu_clinical_condition_langtest_en</id><content type="html" xml:base="/2023/09/22/ner_eu_clinical_condition_langtest_en.html">## Description
+```</content><author><name>John Snow Labs</name></author><category term="finance" /><category term="en" /><category term="ner" /><category term="licensed" /><summary type="html">Description This NER model identifies entities that can be associated with a financial sentiment. The model is designed to be used with the associated Assertion Status model that classifies the entities into a sentiment category. Predicted Entities REVENUE, EXPENSE, PROFIT, KPI, GAINS, ASSET, LIABILITY, CASHFLOW, LOSSES, FREE_CASH_FLOW Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;sentence&quot;) \ .setCustomBounds([&quot;\n\n&quot;]) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;,&quot;en&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setCaseSensitive(True)\ .setMaxSentenceLength(512) ner_model = finance.NerModel.pretrained(&quot;finner_absa_sm&quot;, &quot;en&quot;, &quot;finance/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;)\ ner_converter = finance.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner_model, ner_converter ]) model = pipeline.fit(spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)) text = &quot;Equity and earnings of affiliates in Latin America increased to $4.8 million in the quarter from $2.2 million in the prior year as the commodity markets in Latin America remain strong through the end of the quarter.&quot; spark_df = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = model. Transform(spark_df) result. Select(F.explode(F.arrays_zip('ner_chunk.result', 'ner_chunk.metadata')).alias(&quot;cols&quot;)) \ .select(F.expr(&quot;cols['0']&quot;).alias(&quot;entity&quot;), F.expr(&quot;cols['1']['entity']&quot;).alias(&quot;label&quot;)).show(50, truncate = False) Results +--------+---------+ |entity |label | +--------+---------+ |Equity |LIABILITY| |earnings|PROFIT | +--------+---------+ Model Information Model Name: finner_absa_sm Compatibility: Finance NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 16.3 MB References In-house annotations of earning call transcripts. Benchmarking label precision recall f1-score support B-ASSET 0.6000 0.2400 0.3429 25 B-CASHFLOW 0.7000 0.5833 0.6364 12 B-EXPENSE 0.7222 0.6500 0.6842 60 B-FREE_CASH_FLOW 1.0000 1.0000 1.0000 8 B-GAINS 0.7333 0.5946 0.6567 37 B-KPI 0.7143 0.5556 0.6250 36 B-LIABILITY 0.5000 0.2778 0.3571 18 B-LOSSES 0.7143 0.7143 0.7143 7 B-PROFIT 0.8462 0.8919 0.8684 37 B-REVENUE 0.7385 0.8000 0.7680 60 I-ASSET 0.8000 0.3636 0.5000 11 I-CASHFLOW 0.9091 0.9091 0.9091 11 I-EXPENSE 0.7451 0.6230 0.6786 61 I-FREE_CASH_FLOW 1.0000 1.0000 1.0000 17 I-GAINS 0.8333 0.6667 0.7407 30 I-KPI 0.8500 0.5000 0.6296 34 I-LIABILITY 0.5000 0.5000 0.5000 6 I-LOSSES 0.7143 0.6250 0.6667 8 I-PROFIT 0.8621 0.9615 0.9091 26 I-REVENUE 0.7600 0.7308 0.7451 26 O 0.9839 0.9923 0.9880 8660</summary></entry><entry><title type="html">Legal Multilabel Classifier on Law Stack Exchange</title><link href="/2023/10/04/legmulticlf_law_stack_exchange_en.html" rel="alternate" type="text/html" title="Legal Multilabel Classifier on Law Stack Exchange" /><published>2023-10-04T00:00:00+00:00</published><updated>2023-10-04T00:00:00+00:00</updated><id>/2023/10/04/legmulticlf_law_stack_exchange_en</id><content type="html" xml:base="/2023/10/04/legmulticlf_law_stack_exchange_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This is the Multi-Label Text Classification model that can be used to identify 30+ classes to facilitate analysis, discovery, and comparison of legal texts in English related to Law Stack Exchange.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;business&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;california&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;canada&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;civil-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constitutional-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;consumer-protection&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;contract-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copyright&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;corporate-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;criminal-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;employment&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;england-and-wales&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;european-union&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fraud&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gdpr&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;germany&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;intellectual-property&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;international&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;internet&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;landlord&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;legal-terms&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;liability&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;licensing&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;police&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;privacy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;property&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;real-estate&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rental-property&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;software&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tax-law&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terms-of-service&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trademark&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;traffic&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;united-kingdom&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;united-states&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;us-constitution&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_law_stack_exchange_en_1.0.0_3.0_1696431033425.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legmulticlf_law_stack_exchange_en_1.0.0_3.0_1696431033425.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCleanupMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;shrink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;InstructorEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;instructor_large&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInstruction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Represent for multilabel classification:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;classifierdl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MultiClassifierDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'legmulticlf_law_stack_exchange'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'en'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'legal/models'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  
+&lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+                                    &lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+                                    &lt;span class=&quot;n&quot;&gt;classifierdl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;I've seen this label on coke cans at one point, and I was wondering: is this legally enforceable?If it's not, is it possible for a retailer in any way to disallow the resale of an item purchased?Something like, I don't know, maybe a license you have to agree to in order to be allowed to purchase said item?This comes in the larger context of these new tech releases (GPUs, consoles) and how the producers/retailers could legally prevent scalpers.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;class.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+|text                                                                                                                                                                                                                                                                                                                                                                                                                                                           |result                  |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+|I&lt;span class=&quot;s1&quot;&gt;'ve seen this label on coke cans at one point, and I was wondering: is this legally enforceable?If it'&lt;/span&gt;s not, is it possible &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;a retailer &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;any way to disallow the resale of an item purchased?Something like, I don&lt;span class=&quot;s1&quot;&gt;'t know, maybe a license you have to agree to in order to be allowed to purchase said item?This comes in the larger context of these new tech releases (GPUs, consoles) and how the producers/retailers could legally prevent scalpers.|[contract-law, business]|
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;legmulticlf_law_stack_exchange&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[sentence_embeddings]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[class]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;14.0 MB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Train dataset available &lt;a href=&quot;https://huggingface.co/datasets/ymoslem/Law-StackExchange&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label                  precision  recall  f1-score  support 
+business               1.00       0.82    0.90      51      
+california             1.00       1.00    1.00      74     
+canada                 1.00       0.97    0.99      74      
+civil-law              0.98       0.94    0.96      52      
+constitutional-law     1.00       1.00    1.00      53      
+consumer-protection    1.00       0.86    0.92      28      
+contract-law           0.98       0.89    0.94      199     
+copyright              0.94       0.97    0.95      246     
+corporate-law          1.00       0.88    0.94      26      
+criminal-law           0.92       0.95    0.94      198     
+employment             1.00       1.00    1.00      83      
+england-and-wales      0.96       0.99    0.97      93      
+european-union         0.91       0.93    0.92      72      
+fraud                  1.00       0.97    0.99      39      
+gdpr                   1.00       1.00    1.00      87      
+germany                1.00       1.00    1.00      44      
+intellectual-property  0.82       0.93    0.87      89      
+international          0.91       1.00    0.95      71      
+internet               0.96       0.96    0.96      83      
+landlord               0.97       0.94    0.96      36      
+legal-terms            1.00       1.00    1.00      56      
+liability              1.00       0.93    0.96      42      
+licensing              0.99       0.92    0.95      73      
+police                 0.98       1.00    0.99      51      
+privacy                1.00       0.83    0.90      69      
+property               0.89       0.97    0.93      32      
+real-estate            1.00       0.97    0.98      32      
+rental-property        1.00       1.00    1.00      41      
+software               0.92       0.83    0.87      69      
+tax-law                1.00       1.00    1.00      38      
+terms-of-service       0.96       0.96    0.96      25      
+trademark              1.00       1.00    1.00      45      
+traffic                1.00       1.00    1.00      30      
+united-kingdom         0.97       0.94    0.96      161     
+united-states          0.77       0.87    0.81      644     
+us-constitution        1.00       0.95    0.98      43      
+micro avg              0.92       0.93    0.93      3149    
+macro avg              0.97       0.95    0.96      3149    
+weighted avg           0.92       0.93    0.93      3149    
+samples avg            0.92       0.94    0.92      3149    
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="legal" /><category term="en" /><category term="classification" /><category term="multilabel" /><category term="tensorflow" /><summary type="html">Description This is the Multi-Label Text Classification model that can be used to identify 30+ classes to facilitate analysis, discovery, and comparison of legal texts in English related to Law Stack Exchange. Predicted Entities business, california, canada, civil-law, constitutional-law, consumer-protection, contract-law, copyright, corporate-law, criminal-law, employment, england-and-wales, european-union, fraud, gdpr, germany, intellectual-property, international, internet, landlord, legal-terms, liability, licensing, police, privacy, property, real-estate, rental-property, software, tax-law, terms-of-service, trademark, traffic, united-kingdom, united-states, us-constitution Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) \ .setCleanupMode(&quot;shrink&quot;) embeddings = nlp.InstructorEmbeddings.pretrained(&quot;instructor_large&quot;, &quot;en&quot;) \ .setInstruction(&quot;Represent for multilabel classification:&quot;) \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;sentence_embeddings&quot;) classifierdl = nlp.MultiClassifierDLModel.pretrained('legmulticlf_law_stack_exchange', 'en', 'legal/models') \ .setInputCols([&quot;sentence_embeddings&quot;])\ .setOutputCol(&quot;class&quot;) clf_pipeline = nlp.Pipeline(stages=[document_assembler, embeddings, classifierdl]) df = spark.createDataFrame([[&quot;I've seen this label on coke cans at one point, and I was wondering: is this legally enforceable?If it's not, is it possible for a retailer in any way to disallow the resale of an item purchased?Something like, I don't know, maybe a license you have to agree to in order to be allowed to purchase said item?This comes in the larger context of these new tech releases (GPUs, consoles) and how the producers/retailers could legally prevent scalpers.&quot;]]).toDF(&quot;text&quot;) model = clf_pipeline.fit(df) result = model.transform(df) result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False) Results +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+ |text |result | +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+ |I've seen this label on coke cans at one point, and I was wondering: is this legally enforceable?If it's not, is it possible for a retailer in any way to disallow the resale of an item purchased?Something like, I don't know, maybe a license you have to agree to in order to be allowed to purchase said item?This comes in the larger context of these new tech releases (GPUs, consoles) and how the producers/retailers could legally prevent scalpers.|[contract-law, business]| +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+ Model Information Model Name: legmulticlf_law_stack_exchange Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 14.0 MB References Train dataset available here Benchmarking label precision recall f1-score support business 1.00 0.82 0.90 51 california 1.00 1.00 1.00 74 canada 1.00 0.97 0.99 74 civil-law 0.98 0.94 0.96 52 constitutional-law 1.00 1.00 1.00 53 consumer-protection 1.00 0.86 0.92 28 contract-law 0.98 0.89 0.94 199 copyright 0.94 0.97 0.95 246 corporate-law 1.00 0.88 0.94 26 criminal-law 0.92 0.95 0.94 198 employment 1.00 1.00 1.00 83 england-and-wales 0.96 0.99 0.97 93 european-union 0.91 0.93 0.92 72 fraud 1.00 0.97 0.99 39 gdpr 1.00 1.00 1.00 87 germany 1.00 1.00 1.00 44 intellectual-property 0.82 0.93 0.87 89 international 0.91 1.00 0.95 71 internet 0.96 0.96 0.96 83 landlord 0.97 0.94 0.96 36 legal-terms 1.00 1.00 1.00 56 liability 1.00 0.93 0.96 42 licensing 0.99 0.92 0.95 73 police 0.98 1.00 0.99 51 privacy 1.00 0.83 0.90 69 property 0.89 0.97 0.93 32 real-estate 1.00 0.97 0.98 32 rental-property 1.00 1.00 1.00 41 software 0.92 0.83 0.87 69 tax-law 1.00 1.00 1.00 38 terms-of-service 0.96 0.96 0.96 25 trademark 1.00 1.00 1.00 45 traffic 1.00 1.00 1.00 30 united-kingdom 0.97 0.94 0.96 161 united-states 0.77 0.87 0.81 644 us-constitution 1.00 0.95 0.98 43 micro avg 0.92 0.93 0.93 3149 macro avg 0.97 0.95 0.96 3149 weighted avg 0.92 0.93 0.93 3149 samples avg 0.92 0.94 0.92 3149</summary></entry><entry><title type="html">Detect Clinical Conditions (LangTest - ner_eu_clinical_condition)</title><link href="/2023/09/22/ner_eu_clinical_condition_langtest_en.html" rel="alternate" type="text/html" title="Detect Clinical Conditions (LangTest - ner_eu_clinical_condition)" /><published>2023-09-22T00:00:00+00:00</published><updated>2023-09-22T00:00:00+00:00</updated><id>/2023/09/22/ner_eu_clinical_condition_langtest_en</id><content type="html" xml:base="/2023/09/22/ner_eu_clinical_condition_langtest_en.html">## Description
 
 Pretrained named entity recognition (NER) deep learning model for clinical conditions. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state-of-the-art model for NER: Chiu &amp; Nichols, Named Entity Recognition with Bidirectional LSTM-CNN. The model is the version of [ner_eu_clinical_condition](https://nlp.johnsnowlabs.com/2023/02/06/ner_eu_clinical_condition_en.html) model augmented with `langtest` library.
 
@@ -1391,158 +1474,4 @@ Tumor_Description    0.70       0.68    0.69      1060
 micro-avg            0.83       0.80    0.81      3559    
 macro-avg            0.84       0.81    0.82      3559    
 weighted-avg         0.83       0.80    0.81      3559    
-```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="ner" /><category term="clinical" /><category term="licensed" /><category term="oncology" /><category term="tnm" /><category term="langtest" /><summary type="html">Description This model extracts staging information and mentions related to tumors, lymph nodes, and metastases. It is the version of ner_oncology_tnm model augmented with langtest library. Definitions of Predicted Entities: Cancer_Dx: Mentions of cancer diagnoses (such as “breast cancer”) or pathological types that are usually used as synonyms for “cancer” (e.g. “carcinoma”). When anatomical references are present, they are included in the Cancer_Dx extraction. Lymph_Node: Mentions of lymph nodes and pathological findings of the lymph nodes. Lymph_Node_Modifier: Words that refer to a lymph node being abnormal (such as “enlargement”). Metastasis: Terms that indicate a metastatic disease. Anatomical references are not included in these extractions. Staging: Mentions of cancer stage such as “stage 2b” or “T2N1M0”. It also includes words such as “in situ”, “early-stage” or “advanced”. Tumor: All nonspecific terms that may be related to tumors, either malignant or benign (for example: “mass”, “tumor”, “lesion”, or “neoplasm”). Tumor_Description: Information related to tumor characteristics, such as size, presence of invasion, grade, and hystological type. test_type before fail_count after fail_count before pass_count after pass_count minimum pass_rate before pass_rate after pass_rate add_typo 249 209 4089 4146 70% 94% 95% lowercase 273 238 4243 4278 70% 94% 95% swap_entities 362 342 1192 1211 70% 77% 78% titlecase 985 712 3517 3790 70% 78% 84% uppercase 1779 378 2736 4137 70% 61% 92% weighted average 3648 1879 15777 17562 70% 81.22% 90.33% Predicted Entities Cancer_Dx, Lymph_Node, Lymph_Node_Modifier, Metastasis, Staging, Tumor, Tumor_Description Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_oncology_tnm_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverter() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;Chest computed tomography (CT) showed pulmonary lesions in the posterior segment of the right upper lobe, and peripheral lung cancer with multiple pulmonary metastases. Multiple metastases of the thoracic vertebrae, sternum, and ribs were considered, which were similar to previous CT images.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_oncology_tnm_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverter() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter)) val data = Seq(&quot;Chest computed tomography (CT) showed pulmonary lesions in the posterior segment of the right upper lobe, and peripheral lung cancer with multiple pulmonary metastases. Multiple metastases of the thoracic vertebrae, sternum, and ribs were considered, which were similar to previous CT images.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +----------------------+----------+ |chunk |ner_label | +----------------------+----------+ |lesions |Tumor | |peripheral lung cancer|Cancer_Dx | |metastases |Metastasis| |metastases |Metastasis| +----------------------+----------+ Model Information Model Name: ner_oncology_tnm_langtest Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 14.8 MB References In-house annotated oncology case reports. Benchmarking label precision recall f1-score support Cancer_Dx 0.88 0.86 0.87 721 Lymph_Node 0.78 0.77 0.77 271 Lymph_Node_Modifier 0.79 0.76 0.77 45 Metastasis 0.92 0.92 0.92 321 Staging 0.88 0.80 0.84 123 Tumor 0.90 0.86 0.88 1018 Tumor_Description 0.70 0.68 0.69 1060 micro-avg 0.83 0.80 0.81 3559 macro-avg 0.84 0.81 0.82 3559 weighted-avg 0.83 0.80 0.81 3559</summary></entry><entry><title type="html">Extract Cancer Therapies and Posology Information (LangTest)</title><link href="/2023/09/22/ner_oncology_unspecific_posology_langtest_en.html" rel="alternate" type="text/html" title="Extract Cancer Therapies and Posology Information (LangTest)" /><published>2023-09-22T00:00:00+00:00</published><updated>2023-09-22T00:00:00+00:00</updated><id>/2023/09/22/ner_oncology_unspecific_posology_langtest_en</id><content type="html" xml:base="/2023/09/22/ner_oncology_unspecific_posology_langtest_en.html">## Description
-
-This model extracts mentions of treatments and posology information using unspecific labels (low granularity). It is the version of [ner_oncology_unspecific_posology](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_unspecific_posology_en.html) model augmented with `langtest` library.
-
-Definitions of Predicted Entities:
-
-- `Cancer_Therapy`: Mentions of cancer treatments, including chemotherapy, radiotherapy, surgery, and others.
-- `Posology_Information`: Terms related to the posology of the treatment, including duration, frequencies, and dosage.
-
-| **test_type**        | **before fail_count** | **after fail_count** | **before pass_count** | **after pass_count** | **minimum pass_rate** | **before pass_rate** | **after pass_rate** |
-|----------------------|-----------------------|----------------------|-----------------------|----------------------|-----------------------|----------------------|---------------------|
-| **add_ocr_typo**     | 658                   | 228                  | 630                   | 1060                 | 70%                   | 49%                  | 82%                 |
-| **add_slangs**       | 20                    | 14                   | 1268                  | 1274                 | 60%                   | 98%                  | 99%                 |
-| **add_typo**         | 167                   | 142                  | 1121                  | 1146                 | 60%                   | 87%                  | 89%                 |
-| **lowercase**        | 166                   | 116                  | 1122                  | 1172                 | 70%                   | 87%                  | 91%                 |
-| **titlecase**        | 600                   | 200                  | 688                   | 1088                 | 70%                   | 53%                  | 84%                 |
-| **uppercase**        | 1195                  | 268                  | 93                    | 1020                 | 60%                   | 7%                   | 79%                 |
-| **weighted average** | **2806**              | **968**              | **4922**              | **6760**             | **65%**               | **63.69%**           | **87.47%**          |
-
-## Predicted Entities
-
-`Cancer_Therapy`, `Posology_Information`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_unspecific_posology_langtest_en_5.1.0_3.0_1695384084019.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_unspecific_posology_langtest_en_5.1.0_3.0_1695384084019.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer() \
-    .setInputCols([&quot;sentence&quot;]) \
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \
-    .setOutputCol(&quot;embeddings&quot;)                
-
-ner = MedicalNerModel.pretrained(&quot;ner_oncology_unspecific_posology_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverter() \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-pipeline = Pipeline(stages=[document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter])
-
-data = spark.createDataFrame([[&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;]]).toDF(&quot;text&quot;)
-
-result = pipeline.fit(data).transform(data)
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-    
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;document&quot;)
-    .setOutputCol(&quot;sentence&quot;)
-    
-val tokenizer = new Tokenizer()
-    .setInputCols(&quot;sentence&quot;)
-    .setOutputCol(&quot;token&quot;)
-    
-val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)                
-    
-val ner = MedicalNerModel.pretrained(&quot;ner_oncology_unspecific_posology_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;ner&quot;)
-    
-val ner_converter = new NerConverter()
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;))
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-        
-val pipeline = new Pipeline().setStages(Array(document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter))    
-
-val data = Seq(&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+----------------+--------------------+
-|chunk           |ner_label           |
-+----------------+--------------------+
-|adriamycin      |Cancer_Therapy      |
-|60 mg/m2        |Posology_Information|
-|cyclophosphamide|Cancer_Therapy      |
-|600 mg/m2       |Posology_Information|
-|six courses     |Posology_Information|
-|second cycle    |Posology_Information|
-|chemotherapy    |Cancer_Therapy      |
-+----------------+--------------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|ner_oncology_unspecific_posology_langtest|
-|Compatibility:|Healthcare NLP 5.1.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, embeddings]|
-|Output Labels:|[ner]|
-|Language:|en|
-|Size:|14.6 MB|
-
-## References
-
-In-house annotated oncology case reports.
-
-## Benchmarking
-
-```bash
-label                 precision  recall  f1-score  support 
-Cancer_Therapy        0.90       0.90    0.90      1845    
-Posology_Information  0.87       0.86    0.87      1199    
-micro-avg             0.89       0.89    0.89      3044    
-macro-avg             0.89       0.88    0.88      3044    
-weighted-avg          0.89       0.89    0.89      3044 
-```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="ner" /><category term="licensed" /><category term="clinical" /><category term="oncology" /><category term="posology" /><category term="langtest" /><summary type="html">Description This model extracts mentions of treatments and posology information using unspecific labels (low granularity). It is the version of ner_oncology_unspecific_posology model augmented with langtest library. Definitions of Predicted Entities: Cancer_Therapy: Mentions of cancer treatments, including chemotherapy, radiotherapy, surgery, and others. Posology_Information: Terms related to the posology of the treatment, including duration, frequencies, and dosage. test_type before fail_count after fail_count before pass_count after pass_count minimum pass_rate before pass_rate after pass_rate add_ocr_typo 658 228 630 1060 70% 49% 82% add_slangs 20 14 1268 1274 60% 98% 99% add_typo 167 142 1121 1146 60% 87% 89% lowercase 166 116 1122 1172 70% 87% 91% titlecase 600 200 688 1088 70% 53% 84% uppercase 1195 268 93 1020 60% 7% 79% weighted average 2806 968 4922 6760 65% 63.69% 87.47% Predicted Entities Cancer_Therapy, Posology_Information Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_oncology_unspecific_posology_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverter() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_oncology_unspecific_posology_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverter() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter)) val data = Seq(&quot;The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +----------------+--------------------+ |chunk |ner_label | +----------------+--------------------+ |adriamycin |Cancer_Therapy | |60 mg/m2 |Posology_Information| |cyclophosphamide|Cancer_Therapy | |600 mg/m2 |Posology_Information| |six courses |Posology_Information| |second cycle |Posology_Information| |chemotherapy |Cancer_Therapy | +----------------+--------------------+ Model Information Model Name: ner_oncology_unspecific_posology_langtest Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 14.6 MB References In-house annotated oncology case reports. Benchmarking label precision recall f1-score support Cancer_Therapy 0.90 0.90 0.90 1845 Posology_Information 0.87 0.86 0.87 1199 micro-avg 0.89 0.89 0.89 3044 macro-avg 0.89 0.88 0.88 3044 weighted-avg 0.89 0.89 0.89 3044</summary></entry></feed>
+```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="ner" /><category term="clinical" /><category term="licensed" /><category term="oncology" /><category term="tnm" /><category term="langtest" /><summary type="html">Description This model extracts staging information and mentions related to tumors, lymph nodes, and metastases. It is the version of ner_oncology_tnm model augmented with langtest library. Definitions of Predicted Entities: Cancer_Dx: Mentions of cancer diagnoses (such as “breast cancer”) or pathological types that are usually used as synonyms for “cancer” (e.g. “carcinoma”). When anatomical references are present, they are included in the Cancer_Dx extraction. Lymph_Node: Mentions of lymph nodes and pathological findings of the lymph nodes. Lymph_Node_Modifier: Words that refer to a lymph node being abnormal (such as “enlargement”). Metastasis: Terms that indicate a metastatic disease. Anatomical references are not included in these extractions. Staging: Mentions of cancer stage such as “stage 2b” or “T2N1M0”. It also includes words such as “in situ”, “early-stage” or “advanced”. Tumor: All nonspecific terms that may be related to tumors, either malignant or benign (for example: “mass”, “tumor”, “lesion”, or “neoplasm”). Tumor_Description: Information related to tumor characteristics, such as size, presence of invasion, grade, and hystological type. test_type before fail_count after fail_count before pass_count after pass_count minimum pass_rate before pass_rate after pass_rate add_typo 249 209 4089 4146 70% 94% 95% lowercase 273 238 4243 4278 70% 94% 95% swap_entities 362 342 1192 1211 70% 77% 78% titlecase 985 712 3517 3790 70% 78% 84% uppercase 1779 378 2736 4137 70% 61% 92% weighted average 3648 1879 15777 17562 70% 81.22% 90.33% Predicted Entities Cancer_Dx, Lymph_Node, Lymph_Node_Modifier, Metastasis, Staging, Tumor, Tumor_Description Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_oncology_tnm_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverter() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter]) data = spark.createDataFrame([[&quot;Chest computed tomography (CT) showed pulmonary lesions in the posterior segment of the right upper lobe, and peripheral lung cancer with multiple pulmonary metastases. Multiple metastases of the thoracic vertebrae, sternum, and ribs were considered, which were similar to previous CT images.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel().pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_oncology_tnm_langtest&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverter() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter)) val data = Seq(&quot;Chest computed tomography (CT) showed pulmonary lesions in the posterior segment of the right upper lobe, and peripheral lung cancer with multiple pulmonary metastases. Multiple metastases of the thoracic vertebrae, sternum, and ribs were considered, which were similar to previous CT images.&quot;).toDS.toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +----------------------+----------+ |chunk |ner_label | +----------------------+----------+ |lesions |Tumor | |peripheral lung cancer|Cancer_Dx | |metastases |Metastasis| |metastases |Metastasis| +----------------------+----------+ Model Information Model Name: ner_oncology_tnm_langtest Compatibility: Healthcare NLP 5.1.0+ License: Licensed Edition: Official Input Labels: [sentence, token, embeddings] Output Labels: [ner] Language: en Size: 14.8 MB References In-house annotated oncology case reports. Benchmarking label precision recall f1-score support Cancer_Dx 0.88 0.86 0.87 721 Lymph_Node 0.78 0.77 0.77 271 Lymph_Node_Modifier 0.79 0.76 0.77 45 Metastasis 0.92 0.92 0.92 321 Staging 0.88 0.80 0.84 123 Tumor 0.90 0.86 0.88 1018 Tumor_Description 0.70 0.68 0.69 1060 micro-avg 0.83 0.80 0.81 3559 macro-avg 0.84 0.81 0.82 3559 weighted-avg 0.83 0.80 0.81 3559</summary></entry></feed>
