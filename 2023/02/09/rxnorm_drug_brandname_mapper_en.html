@@ -433,6 +433,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
       <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
       <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
@@ -444,7 +445,7 @@
     
 <span class="n">rxnorm_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span>\
       <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_rxnorm_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"chunk"</span><span class="p">,</span> <span class="s">"sbert_embeddings"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span>\
       <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"rxnorm_code"</span><span class="p">)</span>\
       <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
 
@@ -730,7 +731,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/02/08/zero_shot_ner_roberta_en.html">Zero-Shot Named Entity Recognition (Generic sample)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/02/09/legmulticlf_mnda_sections_other_en.html">Multilabel Classification of NDA Clauses (sentences, medium)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/02/08/legclf_nda_agreements_en.html">MNDA / NDA Agreement Document Classifier (Bert Sentence Embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/02/09/legmulticlf_mnda_sections_other_en.html">Multilabel Classification of NDA Clauses (sentences, medium)</a></div></div></div>
 
 </div>
 </div>
