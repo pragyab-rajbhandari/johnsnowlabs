@@ -430,8 +430,8 @@
 
 <p><code class="language-plaintext highlighter-rouge">Hypertension</code>, <code class="language-plaintext highlighter-rouge">MI</code>, <code class="language-plaintext highlighter-rouge">CAD</code>, <code class="language-plaintext highlighter-rouge">Other/Unknown</code>, <code class="language-plaintext highlighter-rouge">No</code></p>
 
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/" class="button button-orange">Live Demo</a>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_CLASSIFIER_DL.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
 <a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
 <a href="s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
@@ -459,7 +459,8 @@
 
 <span class="n">multiclassifierdl</span> <span class="o">=</span> <span class="n">MultiClassifierDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"multiclassifierdl_heart_disease"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"predicted_class"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"predicted_class"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setThreshold</span><span class="p">(</span><span class="mf">0.999</span><span class="p">)</span>
 
 <span class="n">clf_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
     <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
@@ -472,9 +473,9 @@
 
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-    <span class="p">[</span><span class="s">"""Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had consistently high blood pressure readings over several visits, indicative of hypertension. Often experiencing headaches and occasional bouts of dizziness, these could be linked to his elevated blood pressure. He has been prescribed antihypertensive medications and advised to adopt lifestyle modifications, such as reducing salt intake and engaging in regular exercise, to manage his hypertension effectively."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during physical exertion. After undergoing an angiogram, she was diagnosed with coronary artery disease due to significant blockage in her coronary arteries. Her family history reveals her father had a similar condition, making her predisposed to CAD. Along with prescribed medications to reduce her risk of a heart attack, Mrs. Martinez will undergo a cardiac rehabilitation program and make dietary changes to manage her coronary artery disease."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""Mr. Jackson, at the age of 52, suddenly experienced severe chest pain while at work and was immediately rushed to the emergency department. The ECG and elevated cardiac enzymes confirmed a diagnosis of myocardial infarction. Recounting the event, Mr. Jackson mentioned that he felt a crushing pain in his chest, radiating to his left arm, typical symptoms of a heart attack. Post-treatment, he was advised to engage in cardiac rehabilitation, maintain a heart-healthy diet, and take prescribed medications diligently to prevent another myocardial infarction in the future."""</span><span class="p">],</span>
+     <span class="p">[</span><span class="s">"""Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg."""</span><span class="p">],</span>
+     <span class="p">[</span><span class="s">"""Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease)."""</span><span class="p">],</span>
+     <span class="p">[</span><span class="s">"""After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction)."""</span><span class="p">]</span>
 <span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 
@@ -499,7 +500,8 @@
 
 <span class="k">val</span> <span class="nv">multiclassifierdl</span> <span class="k">=</span> <span class="nv">MultiClassifierDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"multiclassifierdl_heart_disease"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"predicted_class"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"predicted_class"</span><span class="o">)\</span>
+    <span class="o">.</span><span class="py">setThreshold</span><span class="o">(</span><span class="mf">0.999</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">clf_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
     <span class="n">documentAssembler</span><span class="o">,</span>
@@ -510,9 +512,9 @@
 <span class="o">))</span>
 
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="s">"""Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had consistently high blood pressure readings over several visits, indicative of hypertension. Often experiencing headaches and occasional bouts of dizziness, these could be linked to his elevated blood pressure. He has been prescribed antihypertensive medications and advised to adopt lifestyle modifications, such as reducing salt intake and engaging in regular exercise, to manage his hypertension effectively."""</span><span class="o">,</span>
-    <span class="s">"""Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during physical exertion. After undergoing an angiogram, she was diagnosed with coronary artery disease due to significant blockage in her coronary arteries. Her family history reveals her father had a similar condition, making her predisposed to CAD. Along with prescribed medications to reduce her risk of a heart attack, Mrs. Martinez will undergo a cardiac rehabilitation program and make dietary changes to manage her coronary artery disease."""</span><span class="o">,</span>
-    <span class="s">"""Mr. Jackson, at the age of 52, suddenly experienced severe chest pain while at work and was immediately rushed to the emergency department. The ECG and elevated cardiac enzymes confirmed a diagnosis of myocardial infarction. Recounting the event, Mr. Jackson mentioned that he felt a crushing pain in his chest, radiating to his left arm, typical symptoms of a heart attack. Post-treatment, he was advised to engage in cardiac rehabilitation, maintain a heart-healthy diet, and take prescribed medications diligently to prevent another myocardial infarction in the future."""</span><span class="o">,</span>
+      <span class="s">"""Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg."""</span><span class="o">,</span>
+      <span class="s">"""Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease)."""</span><span class="o">,</span>
+      <span class="s">"""After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction)."""</span>
  <span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">clf_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
@@ -521,13 +523,13 @@
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+------------------+
-|                                                                                              result|            result|
-+----------------------------------------------------------------------------------------------------+------------------+
-|[Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had c...|    <span class="o">[</span>Hypertension]|
-|[Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during...|         <span class="o">[</span>MI, CAD]|
-|[Mr. Jackson, at the age of 52, suddenly experienced severe chest pain <span class="k">while </span>at work and was imme...|[MI, Hypertension]|
-+----------------------------------------------------------------------------------------------------+------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+--------------+
+|                                                                                                text|        result|
++----------------------------------------------------------------------------------------------------+--------------+
+|Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings a...|[Hypertension]|
+|Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD <span class="o">(</span>Coronary Artery Dis...|         <span class="o">[</span>CAD]|
+|After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI <span class="o">(</span>...|          <span class="o">[</span>MI]|
++----------------------------------------------------------------------------------------------------+--------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

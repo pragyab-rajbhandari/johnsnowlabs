@@ -413,8 +413,8 @@
             </a>
         </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 03, 2023</span>
             </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-10-03T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Multilabel Text Classification For Respiratory Disease</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Multilabel Text Classification For Respiratory Disease"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>text_classification</li><li>multiclassifier</li><li>respiratory_disease</li><li>asthma</li><li>emphysema</li><li>chronic_bronchitis</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-10-03T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed,text_classification,multiclassifier,respiratory_disease,asthma,emphysema,chronic_bronchitis,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+          <h1>Multilabel Text Classification For Respiratory Disease</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Multilabel Text Classification For Respiratory Disease"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>text_classification</li><li>multiclassifier</li><li>respiratory_disease</li><li>asthma</li><li>emphysema</li><li>chronic_bronchitis</li><li>COPD</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-10-03T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,licensed,text_classification,multiclassifier,respiratory_disease,asthma,emphysema,chronic_bronchitis,COPD,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
@@ -432,8 +432,8 @@
 
 <p><code class="language-plaintext highlighter-rouge">Astham</code>,<code class="language-plaintext highlighter-rouge">COPD</code>, <code class="language-plaintext highlighter-rouge">Emphysema</code>, <code class="language-plaintext highlighter-rouge">Chronic bronchitis</code>, <code class="language-plaintext highlighter-rouge">Other/Unknown</code>, <code class="language-plaintext highlighter-rouge">No</code></p>
 
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/" class="button button-orange">Live Demo</a>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_CLASSIFIER_DL.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
 <a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_respiratory_disease_en_5.1.1_3.0_1696348950217.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
 <a href="s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_respiratory_disease_en_5.1.1_3.0_1696348950217.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
@@ -461,7 +461,8 @@
 
 <span class="n">multiclassifierdl</span> <span class="o">=</span> <span class="n">MultiClassifierDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"multiclassifierdl_respiratory_disease"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"predicted_class"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"predicted_class"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setThreshold</span><span class="p">(</span><span class="mf">0.999</span><span class="p">)</span>
 
 <span class="n">clf_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
     <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
@@ -474,14 +475,10 @@
 
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-    <span class="p">[</span><span class="s">"""The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagnosed with Asthma and is advised to use a daily controller inhaler to manage the symptoms."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""Due to the patient's long history of tobacco use and persistent cough producing large amounts of sputum, a diagnosis of Chronic Obstructive Pulmonary Disease (COPD) has been established, necessitating bronchodilators for management."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Emphysema for the patient, warranting the initiation of long-term oxygen therapy."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cough and mucus production, and is recommended to undergo pulmonary rehabilitation and pharmacotherapy."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has received a diagnosis of Chronic Obstructive Pulmonary Disease (COPD), and a comprehensive treatment involving bronchodilators and lifestyle modifications has been recommended."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""The patient, exhibiting extensive lung damage and significant shortness of breath, has been diagnosed with Emphysema, requiring meticulous management with bronchodilators and pulmonary rehabilitation to improve lung function."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""Chronic Bronchitis has been diagnosed in the patient presenting with a chronic cough and frequent respiratory infections, necessitating a treatment plan inclusive of antibiotics and chest physiotherapy."""</span><span class="p">],</span>
+        <span class="p">[</span><span class="s">"""The patient takes inhalers for COPD management, weight loss medications, and disease-modifying antirheumatic drugs (DMARDs) for rheumatoid arthritis."""</span><span class="p">],</span>
+        <span class="p">[</span><span class="s">"""The patient was on Metformin for DM2, mood stabilizers for Bipolar II Disorder, and inhaled corticosteroids for Asthma."""</span><span class="p">],</span>
+        <span class="p">[</span><span class="s">"""The patient was diagnosed with Chronic Bronchitis after a series of pulmonary function tests."""</span><span class="p">],</span>
+        <span class="p">[</span><span class="s">"""Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosis of emphysema."""</span><span class="p">],</span>
 
     <span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
@@ -507,7 +504,8 @@
 
 <span class="k">val</span> <span class="nv">multiclassifierdl</span> <span class="k">=</span> <span class="nv">MultiClassifierDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"multiclassifierdl_respiratory_disease"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"predicted_class"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"predicted_class"</span><span class="o">)\</span>
+    <span class="o">.</span><span class="py">setThreshold</span><span class="o">(</span><span class="mf">0.999</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">clf_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
     <span class="n">documentAssembler</span><span class="o">,</span>
@@ -518,14 +516,10 @@
 <span class="o">))</span>
 
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="s">"""The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagnosed with Asthma and is advised to use a daily controller inhaler to manage the symptoms."""</span><span class="o">,</span>
-    <span class="s">"""Due to the patient's long history of tobacco use and persistent cough producing large amounts of sputum, a diagnosis of Chronic Obstructive Pulmonary Disease (COPD) has been established, necessitating bronchodilators for management."""</span><span class="o">,</span>
-    <span class="s">"""The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Emphysema for the patient, warranting the initiation of long-term oxygen therapy."""</span><span class="o">,</span>
-    <span class="s">"""The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cough and mucus production, and is recommended to undergo pulmonary rehabilitation and pharmacotherapy."""</span><span class="o">,</span>
-    <span class="s">"""With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""</span><span class="o">,</span>
-    <span class="s">"""Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has received a diagnosis of Chronic Obstructive Pulmonary Disease (COPD), and a comprehensive treatment involving bronchodilators and lifestyle modifications has been recommended."""</span><span class="o">,</span>
-    <span class="s">"""The patient, exhibiting extensive lung damage and significant shortness of breath, has been diagnosed with Emphysema, requiring meticulous management with bronchodilators and pulmonary rehabilitation to improve lung function."""</span><span class="o">,</span>
-    <span class="s">"""Chronic Bronchitis has been diagnosed in the patient presenting with a chronic cough and frequent respiratory infections, necessitating a treatment plan inclusive of antibiotics and chest physiotherapy,"""</span><span class="o">,</span>
+    <span class="s">"""The patient takes inhalers for COPD management, weight loss medications, and disease-modifying antirheumatic drugs (DMARDs) for rheumatoid arthritis."""</span><span class="o">,</span>
+    <span class="s">"""The patient was on Metformin for DM2, mood stabilizers for Bipolar II Disorder, and inhaled corticosteroids for Asthma."""</span><span class="o">,</span>
+    <span class="s">"""The patient was diagnosed with Chronic Bronchitis after a series of pulmonary function tests."""</span><span class="o">,</span>
+    <span class="s">"""Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosis of emphysema."""</span><span class="o">,</span>
     <span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">clf_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
@@ -534,23 +528,15 @@
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+-------------------------------------+
-|                                                                                              result|                               result|
-+----------------------------------------------------------------------------------------------------+-------------------------------------+
-|[The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagn...|         <span class="o">[</span>Asthma, Chronic bronchitis]|
-|[Due to the patient<span class="s1">'s long history of tobacco use and persistent cough producing large amounts of...|           [COPD, Chronic bronchitis]|
-|[The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Em...|[Emphysema, COPD, Chronic bronchitis]|
-|[The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cou...|                 [Chronic bronchitis]|
-|[With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has ...|              [Asthma, Other/Unknown]|
-|[Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has receive...|           [COPD, Chronic bronchitis]|
-|[The patient, exhibiting extensive lung damage and significant shortness of breath, has been diag...|     [Emphysema, COPD, Other/Unknown]|
-|[Chronic Bronchitis has been diagnosed in the patient presenting with a chronic cough and frequen...|                 [Chronic bronchitis]|
-|[To manage the symptoms of Asthma, the patient has been advised to use inhaled corticosteroids re...|   [COPD, Asthma, Chronic bronchitis]|
-|[In light of the COPD diagnosis, a comprehensive pulmonary rehabilitation program, coupled with l...|                               [COPD]|
-|[The patient with Emphysema has been recommended to undergo oxygen therapy and regular use of bro...|                    [Emphysema, COPD]|
-|[For the effective management of Chronic Bronchitis, a course of appropriate antibiotics, coupled...|                 [Chronic bronchitis]|
-+----------------------------------------------------------------------------------------------------+-------------------------------------+
-</span></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+--------------------+
+|                                                                                                text|              result|
++----------------------------------------------------------------------------------------------------+--------------------+
+|The patient takes inhalers <span class="k">for </span>COPD management, weight loss medications, and disease-modifying an...|              <span class="o">[</span>COPD]|
+|The patient was on Metformin <span class="k">for </span>DM2, mood stabilizers <span class="k">for </span>Bipolar II Disorder, and inhaled corti...|            <span class="o">[</span>Asthma]|
+|       The patient was diagnosed with Chronic Bronchitis after a series of pulmonary <span class="k">function </span>tests.|[Chronic bronchitis]|
+|Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosi...|         <span class="o">[</span>Emphysema]|
++----------------------------------------------------------------------------------------------------+--------------------+
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 

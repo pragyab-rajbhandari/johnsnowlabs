@@ -432,7 +432,7 @@
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">Anxiety Disorder</code>, <code class="language-plaintext highlighter-rouge">No</code>, <code class="language-plaintext highlighter-rouge">Schizophrenia</code>, <code class="language-plaintext highlighter-rouge">Depression</code>, <code class="language-plaintext highlighter-rouge">Other/Unknown</code></p>
+<p><code class="language-plaintext highlighter-rouge">Anxiety Disorder</code>, <code class="language-plaintext highlighter-rouge">Bipolar disorder</code>, <code class="language-plaintext highlighter-rouge">No</code>, <code class="language-plaintext highlighter-rouge">Schizophrenia</code>, <code class="language-plaintext highlighter-rouge">Depression</code>, <code class="language-plaintext highlighter-rouge">Other/Unknown</code></p>
 
 <p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/" class="button button-orange">Live Demo</a>
 <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MENTAL_HEALTH.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
@@ -465,7 +465,8 @@
 <span class="c1"># 3. Mental Disorder MultiClassifier (Using the provided model name)
 </span><span class="n">multilabel_classifier</span> <span class="o">=</span> <span class="n">MultiClassifierDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"multiclassifierdl_mental_disorder"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setThreshold</span><span class="p">(</span><span class="mf">0.999</span><span class="p">)</span>
 
 <span class="c1"># Creating the pipeline
 </span><span class="n">clf_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
@@ -478,10 +479,11 @@
 
 <span class="c1"># Sample text list
 </span><span class="n">text_list</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">"My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him."</span><span class="p">,</span>
-    <span class="s">"The heavy weight of depression often leaves me struggling to find joy in activities I once loved."</span><span class="p">,</span>
-    <span class="s">"Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without warning."</span><span class="p">,</span>
-    <span class="s">"My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical scenarios."</span>
+    <span class="s">"""The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression."""</span><span class="p">,</span>
+    <span class="s">"""Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder."""</span><span class="p">,</span>
+    <span class="s">"""Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder."""</span><span class="p">,</span>
+    <span class="s">"""Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines."""</span><span class="p">,</span>
+    <span class="s">"""With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""</span>
 <span class="p">]</span>
 
 <span class="c1"># Creating a DataFrame
@@ -520,10 +522,11 @@
 <span class="o">))</span>
 
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="s">"""My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him."""</span><span class="o">,</span>
-    <span class="s">"""The heavy weight of depression often leaves me struggling to find joy in activities I once loved."""</span><span class="o">,</span>
-    <span class="s">"""Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without warning."""</span><span class="o">,</span>
-    <span class="s">"""My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical scenarios."""</span><span class="o">,</span>
+    <span class="s">"""The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression."""</span><span class="o">,</span>
+    <span class="s">"""Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder."""</span><span class="o">,</span>
+    <span class="s">"""Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder."""</span><span class="o">,</span>
+    <span class="s">"""Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines."""</span><span class="o">,</span>
+    <span class="s">"""With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""</span><span class="o">,</span>
     <span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">clf_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
@@ -533,14 +536,15 @@
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+---------------------------------------------------+
-|                                                                                                text|                                             result|
-+----------------------------------------------------------------------------------------------------+---------------------------------------------------+
-|  My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging <span class="k">for </span>him.|      <span class="o">[</span>Anxiety disorder, Depression, Schizophrenia]|
-|   The heavy weight of depression often leaves me struggling to find joy <span class="k">in </span>activities I once loved.|                     <span class="o">[</span>Anxiety disorder, Depression]|
-|Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without wa...|               <span class="o">[</span>Anxiety disorder, Bipolar disorder]|
-|My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical sc...|[Anxiety disorder, Schizophrenia, Bipolar disorder]|
-+----------------------------------------------------------------------------------------------------+---------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+|                                                                                                                                                  text|            result|
++------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+|         The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention <span class="k">for </span>severe depression.|      <span class="o">[</span>Depression]|
+|                  Monitoring the patient <span class="k">for </span>potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.|[Bipolar disorder]|
+|       Commenced CBT to equip the patient with coping strategies <span class="k">for </span>persistent irrational fears and nervousness stemming from their anxiety disorder.|[Anxiety disorder]|
+|                                                    Michael Anderson takes medications <span class="k">for </span>schizophrenia, hypertension, hyperlipidemia, and migraines.|   <span class="o">[</span>Schizophrenia]|
+|With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitat...|              <span class="o">[</span>No]|
++------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
