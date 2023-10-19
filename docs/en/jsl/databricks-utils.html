@@ -588,7 +588,7 @@ and <a href="https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/da
       </tr>
       <tr>
         <td><code class="language-plaintext highlighter-rouge">gpu</code></td>
-        <td><code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code> to load  GPU-optimized jars or CPU-optimized jars in the container</td>
+        <td><code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code> to load  GPU-optimized jars or CPU-optimized jars in the container. Must use a gpu based <code class="language-plaintext highlighter-rouge">workload_type</code> if <code class="language-plaintext highlighter-rouge">gpu=true</code></td>
       </tr>
       <tr>
         <td><code class="language-plaintext highlighter-rouge">new_run</code></td>
@@ -605,6 +605,10 @@ and <a href="https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/da
       <tr>
         <td><code class="language-plaintext highlighter-rouge">block_until_deployed</code></td>
         <td>if True, this function will block until the endpoint is created</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">workload_type</code></td>
+        <td><code class="language-plaintext highlighter-rouge">CPU</code> by default, use <code class="language-plaintext highlighter-rouge">GPU_SMALL</code> to spawn a GPU based endpoint instead. Check Databricks docs for alternative values</td>
       </tr>
     </tbody>
   </table>
