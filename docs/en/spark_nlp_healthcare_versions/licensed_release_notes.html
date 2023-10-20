@@ -562,7 +562,6 @@
         <li>New <a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/">Respiratory Disease Demo</a> with new <code class="language-plaintext highlighter-rouge">multiclassifierdl_respiratory_disease</code> model</li>
         <li>New <a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/">Mental Disorder demo</a> with new <code class="language-plaintext highlighter-rouge">multiclassifierdl_mental_disorder</code> model</li>
         <li>New <a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/">Heart Disease demo</a> with new <code class="language-plaintext highlighter-rouge">multiclassifierdl_heart_disease</code> model</li>
-        <li>New <a href="https://demo.johnsnowlabs.com/healthcare/ABBREVIATION_MAPPER/">Abbreviation Mapper demo</a> for the most popular MAPPER models</li>
       </ul>
     </li>
     <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
@@ -851,51 +850,23 @@
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"predicted_class"</span><span class="p">)</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="p">[</span>
- <span class="p">[</span><span class="s">"""The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagnosed with Asthma and is advised to use a daily controller inhaler to manage the symptoms."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""Due to the patient's long history of tobacco use and persistent cough producing large amounts of sputum, a diagnosis of Chronic Obstructive Pulmonary Disease (COPD) has been established, necessitating bronchodilators for management."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Emphysema for the patient, warranting the initiation of long-term oxygen therapy."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cough and mucus production, and is recommended to undergo pulmonary rehabilitation and pharmacotherapy."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"""Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has received a diagnosis of Chronic Obstructive Pulmonary Disease (COPD), and a comprehensive treatment involving bronchodilators and lifestyle modifications has been recommended."""</span><span class="p">],</span>
+ <span class="p">[</span><span class="s">"""The patient takes inhalers for COPD management, weight loss medications, and disease-modifying antirheumatic drugs (DMARDs) for rheumatoid arthritis."""</span><span class="p">],</span>
+        <span class="p">[</span><span class="s">"""The patient was on Metformin for DM2, mood stabilizers for Bipolar II Disorder, and inhaled corticosteroids for Asthma."""</span><span class="p">],</span>
+        <span class="p">[</span><span class="s">"""The patient was diagnosed with Chronic Bronchitis after a series of pulmonary function tests."""</span><span class="p">],</span>
+        <span class="p">[</span><span class="s">"""Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosis of emphysema."""</span><span class="p">],</span>
     <span class="p">]</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>text</th>
-        <th>result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagn…</td>
-        <td>Asthma, Chronic bronchitis</td>
-      </tr>
-      <tr>
-        <td>Due to the patient s long history of tobacco use and persistent cough producing large amounts of…</td>
-        <td>COPD, Chronic bronchitis</td>
-      </tr>
-      <tr>
-        <td>The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Em…</td>
-        <td>Emphysema, COPD, Chronic bronchitis</td>
-      </tr>
-      <tr>
-        <td>The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cou…</td>
-        <td>Chronic bronchitis</td>
-      </tr>
-      <tr>
-        <td>With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has …</td>
-        <td>Asthma, Other/Unknown</td>
-      </tr>
-      <tr>
-        <td>Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has receive…</td>
-        <td>COPD, Chronic bronchitis</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+--------------------+
+|                                                                                                text|              result|
++----------------------------------------------------------------------------------------------------+--------------------+
+|The patient takes inhalers <span class="k">for </span>COPD management, weight loss medications, and disease-modifying an...|              <span class="o">[</span>COPD]|
+|The patient was on Metformin <span class="k">for </span>DM2, mood stabilizers <span class="k">for </span>Bipolar II Disorder, and inhaled corti...|            <span class="o">[</span>Asthma]|
+|       The patient was diagnosed with Chronic Bronchitis after a series of pulmonary <span class="k">function </span>tests.|[Chronic bronchitis]|
+|Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosi...|         <span class="o">[</span>Emphysema]|
++----------------------------------------------------------------------------------------------------+--------------------+
+</code></pre></div>  </div>
 
   <p>Please see the  <a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/">Respiratory Disease</a>, <a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/">Heart Disease</a>, and 
 <a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/">Mental Disorder</a> demos</p>
@@ -1237,7 +1208,6 @@ If the parameter is set as <code class="language-plaintext highlighter-rouge">Fa
     <li>New <a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/">Respiratory Disease Demo</a> with new <code class="language-plaintext highlighter-rouge">multiclassifierdl_respiratory_disease</code> model</li>
     <li>New <a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/">Mental Disorder demo</a> with new <code class="language-plaintext highlighter-rouge">multiclassifierdl_mental_disorder</code> model</li>
     <li>New <a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/">Heart Disease demo</a> with new <code class="language-plaintext highlighter-rouge">multiclassifierdl_heart_disease</code> model</li>
-    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/ABBREVIATION_MAPPER/">Abbreviation Mapper demo</a> for the most popular MAPPER models</li>
     <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/5.3.Spark_OCR_Utility_Module.ipynb">Spark OCR Utility Module Notebook</a> with latest improvements</li>
     <li><a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">Clinical DeIdentification Notebook</a> with new <code class="language-plaintext highlighter-rouge">setAgeRangesByHipaa</code> examples</li>
     <li><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb">Calculate Medicare Risk Adjustment Score Notebook</a> with new Risk-Adjustment feature examples</li>

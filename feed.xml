@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-10-19T21:58:20+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-10-20T14:41:01+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
 </subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Mapping UMLS Codes with Their Corresponding ICD10CM Codes</title><link href="/2023/10/17/umls_icd10cm_mapper_en.html" rel="alternate" type="text/html" title="Mapping UMLS Codes with Their Corresponding ICD10CM Codes" /><published>2023-10-17T00:00:00+00:00</published><updated>2023-10-17T00:00:00+00:00</updated><id>/2023/10/17/umls_icd10cm_mapper_en</id><content type="html" xml:base="/2023/10/17/umls_icd10cm_mapper_en.html">## Description
 
 This pretrained model maps UMLS codes to corresponding ICD10CM codes.
@@ -246,180 +246,159 @@ val result= pipeline.fit(data).transform(data)
 |Input Labels:|[document]|
 |Output Labels:|[mappings]|
 |Language:|en|
-|Size:|6.7 MB|</content><author><name>John Snow Labs</name></author><category term="snomed" /><category term="umls" /><category term="chunk_mapper" /><category term="clinical" /><category term="licensed" /><category term="en" /><summary type="html">Description This pretrained model maps UMLS codes to corresponding SNOMED codes. Predicted Entities snomed_code Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunkerMapper = DocMapperModel.pretrained(&quot;umls_snomed_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;mappings&quot;)\ .setRels([&quot;snomed_code&quot;]) pipeline = Pipeline().setStages([document_assembler, chunkerMapper]) df = spark.createDataFrame([[&quot;C0000248&quot;], [&quot;C3503397&quot;]]).toDF(&quot;text&quot;) res = pipeline.fit(df).transform(df) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val chunkerMapper = DocMapperModel.pretrained(&quot;umls_snomed_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;mappings&quot;) .setRels(&quot;snomed_code&quot;) val pipeline = new Pipeline(stages = Array( document_assembler, chunkerMapper )) val data = Seq([[&quot;C0000248&quot;], [&quot;C3503397&quot;]]).toDS.toDF(&quot;text&quot;) val result= pipeline.fit(data).transform(data) Results +---------+-----------+-----------+ |umls_code|snomed_code|relation | +---------+-----------+-----------+ |C0000248 |725541001 |snomed_code| |C3503397 |769507002 |snomed_code| +---------+-----------+-----------+ Model Information Model Name: umls_snomed_mapper Compatibility: Healthcare NLP 5.1.1+ License: Licensed Edition: Official Input Labels: [document] Output Labels: [mappings] Language: en Size: 6.7 MB</summary></entry><entry><title type="html">Multilabel Text Classification for Heart Disease</title><link href="/2023/10/16/multiclassifierdl_heart_disease_en.html" rel="alternate" type="text/html" title="Multilabel Text Classification for Heart Disease" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>/2023/10/16/multiclassifierdl_heart_disease_en</id><content type="html" xml:base="/2023/10/16/multiclassifierdl_heart_disease_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+|Size:|6.7 MB|</content><author><name>John Snow Labs</name></author><category term="snomed" /><category term="umls" /><category term="chunk_mapper" /><category term="clinical" /><category term="licensed" /><category term="en" /><summary type="html">Description This pretrained model maps UMLS codes to corresponding SNOMED codes. Predicted Entities snomed_code Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunkerMapper = DocMapperModel.pretrained(&quot;umls_snomed_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;mappings&quot;)\ .setRels([&quot;snomed_code&quot;]) pipeline = Pipeline().setStages([document_assembler, chunkerMapper]) df = spark.createDataFrame([[&quot;C0000248&quot;], [&quot;C3503397&quot;]]).toDF(&quot;text&quot;) res = pipeline.fit(df).transform(df) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val chunkerMapper = DocMapperModel.pretrained(&quot;umls_snomed_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;mappings&quot;) .setRels(&quot;snomed_code&quot;) val pipeline = new Pipeline(stages = Array( document_assembler, chunkerMapper )) val data = Seq([[&quot;C0000248&quot;], [&quot;C3503397&quot;]]).toDS.toDF(&quot;text&quot;) val result= pipeline.fit(data).transform(data) Results +---------+-----------+-----------+ |umls_code|snomed_code|relation | +---------+-----------+-----------+ |C0000248 |725541001 |snomed_code| |C3503397 |769507002 |snomed_code| +---------+-----------+-----------+ Model Information Model Name: umls_snomed_mapper Compatibility: Healthcare NLP 5.1.1+ License: Licensed Edition: Official Input Labels: [document] Output Labels: [mappings] Language: en Size: 6.7 MB</summary></entry><entry><title type="html">Multilabel Text Classification for Heart Disease</title><link href="/2023/10/16/multiclassifierdl_heart_disease_en.html" rel="alternate" type="text/html" title="Multilabel Text Classification for Heart Disease" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>/2023/10/16/multiclassifierdl_heart_disease_en</id><content type="html" xml:base="/2023/10/16/multiclassifierdl_heart_disease_en.html">## Description
 
-&lt;p&gt;The PHS-BERT Heart Disease Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of three prominent cardiovascular diseases: Hypertension, Coronary Artery Disease, and Myocardial Infarction. More detailed information about classes as follows:&lt;/p&gt;
+The PHS-BERT Heart Disease Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of three prominent cardiovascular diseases: Hypertension, Coronary Artery Disease, and Myocardial Infarction. More detailed information about classes as follows:
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hypertension&lt;/code&gt;: This category is designated for text mentions that correspond to Hypertension, a medical condition where the blood pressure in the arteries is persistently elevated. Chronic hypertension can lead to heart diseases, stroke, and other complications. Example: “Due to his consistent high blood pressure readings, my father was diagnosed with hypertension.”&lt;/p&gt;
+`Hypertension`: This category is designated for text mentions that correspond to Hypertension, a medical condition where the blood pressure in the arteries is persistently elevated. Chronic hypertension can lead to heart diseases, stroke, and other complications. Example: &quot;Due to his consistent high blood pressure readings, my father was diagnosed with hypertension.&quot;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Coronary Artery Disease&lt;/code&gt;(CAD): Textual content that implicates CAD is classified here. CAD, also known as ischemic heart disease, is characterized by a reduced blood flow to the heart muscle due to the build-up of plaque in the arteries supplying the heart. This could result in chest pain (angina) or a heart attack. Example: “My aunt had chest pain and, after some tests, she was told it was due to coronary artery disease.”&lt;/p&gt;
+`Coronary Artery Disease`(CAD): Textual content that implicates CAD is classified here. CAD, also known as ischemic heart disease, is characterized by a reduced blood flow to the heart muscle due to the build-up of plaque in the arteries supplying the heart. This could result in chest pain (angina) or a heart attack. Example: &quot;My aunt had chest pain and, after some tests, she was told it was due to coronary artery disease.&quot;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Myocardial Infarction&lt;/code&gt;(MI): Entries here incorporate text alluding to MI, more commonly known as a heart attack. MI occurs when blood flow to a part of the heart muscle gets blocked, usually by a blood clot. This can damage or destroy that part of the heart muscle. Example: “Last year, my neighbour experienced severe chest pain and was rushed to the hospital; the diagnosis was a myocardial infarction.”&lt;/p&gt;
+`Myocardial Infarction`(MI): Entries here incorporate text alluding to MI, more commonly known as a heart attack. MI occurs when blood flow to a part of the heart muscle gets blocked, usually by a blood clot. This can damage or destroy that part of the heart muscle. Example: &quot;Last year, my neighbour experienced severe chest pain and was rushed to the hospital; the diagnosis was a myocardial infarction.&quot;
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hypertension&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MI&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CAD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Other/Unknown&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;No&lt;/code&gt;&lt;/p&gt;
+`Hypertension`, `MI`, `CAD`, `Other/Unknown`, `No`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;a href=&quot;https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/&quot; class=&quot;button button-orange&quot;&gt;Live Demo&lt;/a&gt;
-&lt;a href=&quot;https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_CLASSIFIER_DL.ipynb&quot; class=&quot;button button-orange button-orange-trans co button-icon&quot;&gt;Open in Colab&lt;/a&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_CLASSIFIER_DL.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
-
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;word_embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WordEmbeddingsModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings_clinical&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;sentence_embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SentenceEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setPoolingStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AVERAGE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;multiclassifierdl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MultiClassifierDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;multiclassifierdl_heart_disease&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;predicted_class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setThreshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;word_embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;sentence_embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;multiclassifierdl&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+## How to use
 
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease).&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction).&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+documentAssembler = DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
+
+tokenizer = Tokenizer()\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;token&quot;)
+
+word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+    .setInputCols([&quot;document&quot;, &quot;token&quot;])\
+    .setOutputCol(&quot;embeddings&quot;)
+
+sentence_embeddings = SentenceEmbeddings()\
+    .setInputCols([&quot;document&quot;, &quot;embeddings&quot;]) \
+    .setOutputCol(&quot;sentence_embeddings&quot;) \
+    .setPoolingStrategy(&quot;AVERAGE&quot;)
+
+multiclassifierdl = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_heart_disease&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+    .setInputCols([&quot;sentence_embeddings&quot;])\
+    .setOutputCol(&quot;predicted_class&quot;)\
+    .setThreshold(0.999)
+
+clf_pipeline = Pipeline(
+    stages=[
+        documentAssembler,
+        tokenizer,
+        word_embeddings,
+        sentence_embeddings,
+        multiclassifierdl
+])
 
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+data = spark.createDataFrame([
+     [&quot;&quot;&quot;Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg.&quot;&quot;&quot;],
+     [&quot;&quot;&quot;Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease).&quot;&quot;&quot;],
+     [&quot;&quot;&quot;After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction).&quot;&quot;&quot;]
+]).toDF(&quot;text&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;wordEmbeddings&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;WordEmbeddingsModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings_clinical&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = clf_pipeline.fit(data).transform(data)
+```
+```scala
+val documentAssembler = new DocumentAssembler()
+    .setInputCol(&quot;text&quot;)
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sentence_embeddings&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SentenceEmbeddings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setPoolingStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AVERAGE&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val tokenizer = new Tokenizer()
+    .setInputCols(Array(&quot;document&quot;))
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;multiclassifierdl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;MultiClassifierDLModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;multiclassifierdl_heart_disease&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;predicted_class&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setThreshold&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.999&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val wordEmbeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+    .setInputCols(Array(&quot;document&quot;, &quot;token&quot;))
+    .setOutputCol(&quot;embeddings&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;clf_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;wordEmbeddings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sentence_embeddings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;multiclassifierdl&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+val sentence_embeddings = new SentenceEmbeddings()\
+    .setInputCols(Array(&quot;document&quot;, &quot;embeddings&quot;)) \
+    .setOutputCol(&quot;sentence_embeddings&quot;) \
+    .setPoolingStrategy(&quot;AVERAGE&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease).&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction).&quot;&quot;&quot;&lt;/span&gt;
- &lt;span class=&quot;o&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val multiclassifierdl = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_heart_disease&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+    .setInputCols(&quot;sentence_embeddings&quot;)\
+    .setOutputCol(&quot;predicted_class&quot;)\
+    .setThreshold(0.999)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;clf_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+val clf_pipeline = new Pipeline().setStages(Array(
+    documentAssembler,
+    tokenizer,
+    wordEmbeddings,
+    sentence_embeddings,
+    multiclassifierdl
+))
+
+val data = Seq(Array(
+      &quot;&quot;&quot;Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg.&quot;&quot;&quot;,
+      &quot;&quot;&quot;Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease).&quot;&quot;&quot;,
+      &quot;&quot;&quot;After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction).&quot;&quot;&quot;
+ )).toDS.toDF(&quot;text&quot;)
+
+val result = clf_pipeline.fit(data).transform(data)
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+----------------------------------------------------------------------------------------------------+--------------+
+```bash
++----------------------------------------------------------------------------------------------------+--------------+
 |                                                                                                text|        result|
 +----------------------------------------------------------------------------------------------------+--------------+
 |Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings a...|[Hypertension]|
-|Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Coronary Artery Dis...|         &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;CAD]|
-|After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;...|          &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;MI]|
+|Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Dis...|         [CAD]|
+|After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (...|          [MI]|
 +----------------------------------------------------------------------------------------------------+--------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;multiclassifierdl_heart_disease&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[sentence_embeddings]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[class]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;87.8 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Dependencies:&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;embeddings_clinical&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|multiclassifierdl_heart_disease|
+|Compatibility:|Healthcare NLP 5.1.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence_embeddings]|
+|Output Labels:|[class]|
+|Language:|en|
+|Size:|87.8 MB|
+|Dependencies:|`embeddings_clinical`|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;Trained with the in-house dataset&lt;/p&gt;
+Trained with the in-house dataset
 
-&lt;h2 id=&quot;sample-text-from-the-training-dataset&quot;&gt;Sample text from the training dataset&lt;/h2&gt;
+## Sample text from the training dataset
 
-&lt;p&gt;Hypertension: Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had consistently high blood pressure readings over several visits, indicative of hypertension. Often experiencing headaches and occasional bouts of dizziness, these could be linked to his elevated blood pressure. He has been prescribed antihypertensive medications and advised to adopt lifestyle modifications, such as reducing salt intake and engaging in regular exercise, to manage his hypertension effectively.&lt;/p&gt;
+Hypertension: Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had consistently high blood pressure readings over several visits, indicative of hypertension. Often experiencing headaches and occasional bouts of dizziness, these could be linked to his elevated blood pressure. He has been prescribed antihypertensive medications and advised to adopt lifestyle modifications, such as reducing salt intake and engaging in regular exercise, to manage his hypertension effectively.
 
-&lt;p&gt;Coronary Artery Disease (CAD): Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during physical exertion. After undergoing an angiogram, she was diagnosed with coronary artery disease due to significant blockage in her coronary arteries. Her family history reveals her father had a similar condition, making her predisposed to CAD. Along with prescribed medications to reduce her risk of a heart attack, Mrs. Martinez will undergo a cardiac rehabilitation program and make dietary changes to manage her coronary artery disease.&lt;/p&gt;
+Coronary Artery Disease (CAD): Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during physical exertion. After undergoing an angiogram, she was diagnosed with coronary artery disease due to significant blockage in her coronary arteries. Her family history reveals her father had a similar condition, making her predisposed to CAD. Along with prescribed medications to reduce her risk of a heart attack, Mrs. Martinez will undergo a cardiac rehabilitation program and make dietary changes to manage her coronary artery disease.
 
-&lt;p&gt;Myocardial Infarction (MI): Mr. Jackson, at the age of 52, suddenly experienced severe chest pain while at work and was immediately rushed to the emergency department. The ECG and elevated cardiac enzymes confirmed a diagnosis of myocardial infarction. Recounting the event, Mr. Jackson mentioned that he felt a crushing pain in his chest, radiating to his left arm, typical symptoms of a heart attack. Post-treatment, he was advised to engage in cardiac rehabilitation, maintain a heart-healthy diet, and take prescribed medications diligently to prevent another myocardial infarction in the future.&lt;/p&gt;
+Myocardial Infarction (MI): Mr. Jackson, at the age of 52, suddenly experienced severe chest pain while at work and was immediately rushed to the emergency department. The ECG and elevated cardiac enzymes confirmed a diagnosis of myocardial infarction. Recounting the event, Mr. Jackson mentioned that he felt a crushing pain in his chest, radiating to his left arm, typical symptoms of a heart attack. Post-treatment, he was advised to engage in cardiac rehabilitation, maintain a heart-healthy diet, and take prescribed medications diligently to prevent another myocardial infarction in the future.
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label         tp     fp    fn    prec            rec         f1
+```bash
+label         tp     fp    fn    prec            rec         f1
 Other/Unknown 48     10    28    0.82758623     0.6315789    0.7164179
 No            366    39    41    0.9037037      0.8992629    0.9014778
 MI            128    13    12    0.9078014      0.9142857    0.911032
@@ -427,189 +406,167 @@ Hypertension  184    30    41    0.8598131      0.8177778    0.8382688
 CAD           191    13    14    0.9362745      0.9317073    0.9339853
 Macro-average 917    105   136   0.8870357      0.8389225    0.8623085
 Micro-average 917    105   136   0.89726025     0.8708452    0.88385534
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="classification" /><category term="text_classification" /><category term="multiclassifier" /><category term="heart_disease" /><category term="hypertension" /><category term="coronary_artery_disease" /><category term="myocardial_infarction" /><category term="tensorflow" /><summary type="html">Description The PHS-BERT Heart Disease Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of three prominent cardiovascular diseases: Hypertension, Coronary Artery Disease, and Myocardial Infarction. More detailed information about classes as follows: Hypertension: This category is designated for text mentions that correspond to Hypertension, a medical condition where the blood pressure in the arteries is persistently elevated. Chronic hypertension can lead to heart diseases, stroke, and other complications. Example: “Due to his consistent high blood pressure readings, my father was diagnosed with hypertension.” Coronary Artery Disease(CAD): Textual content that implicates CAD is classified here. CAD, also known as ischemic heart disease, is characterized by a reduced blood flow to the heart muscle due to the build-up of plaque in the arteries supplying the heart. This could result in chest pain (angina) or a heart attack. Example: “My aunt had chest pain and, after some tests, she was told it was due to coronary artery disease.” Myocardial Infarction(MI): Entries here incorporate text alluding to MI, more commonly known as a heart attack. MI occurs when blood flow to a part of the heart muscle gets blocked, usually by a blood clot. This can damage or destroy that part of the heart muscle. Example: “Last year, my neighbour experienced severe chest pain and was rushed to the hospital; the diagnosis was a myocardial infarction.” Predicted Entities Hypertension, MI, CAD, Other/Unknown, No Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) sentence_embeddings = SentenceEmbeddings()\ .setInputCols([&quot;document&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;sentence_embeddings&quot;) \ .setPoolingStrategy(&quot;AVERAGE&quot;) multiclassifierdl = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_heart_disease&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence_embeddings&quot;])\ .setOutputCol(&quot;predicted_class&quot;)\ .setThreshold(0.999) clf_pipeline = Pipeline( stages=[ documentAssembler, tokenizer, word_embeddings, sentence_embeddings, multiclassifierdl ]) data = spark.createDataFrame([ [&quot;&quot;&quot;Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg.&quot;&quot;&quot;], [&quot;&quot;&quot;Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease).&quot;&quot;&quot;], [&quot;&quot;&quot;After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction).&quot;&quot;&quot;] ]).toDF(&quot;text&quot;) result = clf_pipeline.fit(data).transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val wordEmbeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val sentence_embeddings = new SentenceEmbeddings()\ .setInputCols(Array(&quot;document&quot;, &quot;embeddings&quot;)) \ .setOutputCol(&quot;sentence_embeddings&quot;) \ .setPoolingStrategy(&quot;AVERAGE&quot;) val multiclassifierdl = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_heart_disease&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence_embeddings&quot;)\ .setOutputCol(&quot;predicted_class&quot;)\ .setThreshold(0.999) val clf_pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, wordEmbeddings, sentence_embeddings, multiclassifierdl )) val data = Seq(Array( &quot;&quot;&quot;Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg.&quot;&quot;&quot;, &quot;&quot;&quot;Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease).&quot;&quot;&quot;, &quot;&quot;&quot;After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction).&quot;&quot;&quot; )).toDS.toDF(&quot;text&quot;) val result = clf_pipeline.fit(data).transform(data) Results +----------------------------------------------------------------------------------------------------+--------------+ | text| result| +----------------------------------------------------------------------------------------------------+--------------+ |Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings a...|[Hypertension]| |Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Dis...| [CAD]| |After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (...| [MI]| +----------------------------------------------------------------------------------------------------+--------------+ Model Information Model Name: multiclassifierdl_heart_disease Compatibility: Healthcare NLP 5.1.1+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 87.8 MB Dependencies: embeddings_clinical References Trained with the in-house dataset Sample text from the training dataset Hypertension: Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had consistently high blood pressure readings over several visits, indicative of hypertension. Often experiencing headaches and occasional bouts of dizziness, these could be linked to his elevated blood pressure. He has been prescribed antihypertensive medications and advised to adopt lifestyle modifications, such as reducing salt intake and engaging in regular exercise, to manage his hypertension effectively. Coronary Artery Disease (CAD): Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during physical exertion. After undergoing an angiogram, she was diagnosed with coronary artery disease due to significant blockage in her coronary arteries. Her family history reveals her father had a similar condition, making her predisposed to CAD. Along with prescribed medications to reduce her risk of a heart attack, Mrs. Martinez will undergo a cardiac rehabilitation program and make dietary changes to manage her coronary artery disease. Myocardial Infarction (MI): Mr. Jackson, at the age of 52, suddenly experienced severe chest pain while at work and was immediately rushed to the emergency department. The ECG and elevated cardiac enzymes confirmed a diagnosis of myocardial infarction. Recounting the event, Mr. Jackson mentioned that he felt a crushing pain in his chest, radiating to his left arm, typical symptoms of a heart attack. Post-treatment, he was advised to engage in cardiac rehabilitation, maintain a heart-healthy diet, and take prescribed medications diligently to prevent another myocardial infarction in the future. Benchmarking label tp fp fn prec rec f1 Other/Unknown 48 10 28 0.82758623 0.6315789 0.7164179 No 366 39 41 0.9037037 0.8992629 0.9014778 MI 128 13 12 0.9078014 0.9142857 0.911032 Hypertension 184 30 41 0.8598131 0.8177778 0.8382688 CAD 191 13 14 0.9362745 0.9317073 0.9339853 Macro-average 917 105 136 0.8870357 0.8389225 0.8623085 Micro-average 917 105 136 0.89726025 0.8708452 0.88385534</summary></entry><entry><title type="html">Text Classification For Mental Disorder</title><link href="/2023/10/16/multiclassifierdl_mental_disorder_en.html" rel="alternate" type="text/html" title="Text Classification For Mental Disorder" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>/2023/10/16/multiclassifierdl_mental_disorder_en</id><content type="html" xml:base="/2023/10/16/multiclassifierdl_mental_disorder_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+```</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="classification" /><category term="text_classification" /><category term="multiclassifier" /><category term="heart_disease" /><category term="hypertension" /><category term="coronary_artery_disease" /><category term="myocardial_infarction" /><category term="tensorflow" /><summary type="html">Description The PHS-BERT Heart Disease Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of three prominent cardiovascular diseases: Hypertension, Coronary Artery Disease, and Myocardial Infarction. More detailed information about classes as follows: Hypertension: This category is designated for text mentions that correspond to Hypertension, a medical condition where the blood pressure in the arteries is persistently elevated. Chronic hypertension can lead to heart diseases, stroke, and other complications. Example: “Due to his consistent high blood pressure readings, my father was diagnosed with hypertension.” Coronary Artery Disease(CAD): Textual content that implicates CAD is classified here. CAD, also known as ischemic heart disease, is characterized by a reduced blood flow to the heart muscle due to the build-up of plaque in the arteries supplying the heart. This could result in chest pain (angina) or a heart attack. Example: “My aunt had chest pain and, after some tests, she was told it was due to coronary artery disease.” Myocardial Infarction(MI): Entries here incorporate text alluding to MI, more commonly known as a heart attack. MI occurs when blood flow to a part of the heart muscle gets blocked, usually by a blood clot. This can damage or destroy that part of the heart muscle. Example: “Last year, my neighbour experienced severe chest pain and was rushed to the hospital; the diagnosis was a myocardial infarction.” Predicted Entities Hypertension, MI, CAD, Other/Unknown, No Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) sentence_embeddings = SentenceEmbeddings()\ .setInputCols([&quot;document&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;sentence_embeddings&quot;) \ .setPoolingStrategy(&quot;AVERAGE&quot;) multiclassifierdl = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_heart_disease&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence_embeddings&quot;])\ .setOutputCol(&quot;predicted_class&quot;)\ .setThreshold(0.999) clf_pipeline = Pipeline( stages=[ documentAssembler, tokenizer, word_embeddings, sentence_embeddings, multiclassifierdl ]) data = spark.createDataFrame([ [&quot;&quot;&quot;Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg.&quot;&quot;&quot;], [&quot;&quot;&quot;Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease).&quot;&quot;&quot;], [&quot;&quot;&quot;After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction).&quot;&quot;&quot;] ]).toDF(&quot;text&quot;) result = clf_pipeline.fit(data).transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val wordEmbeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val sentence_embeddings = new SentenceEmbeddings()\ .setInputCols(Array(&quot;document&quot;, &quot;embeddings&quot;)) \ .setOutputCol(&quot;sentence_embeddings&quot;) \ .setPoolingStrategy(&quot;AVERAGE&quot;) val multiclassifierdl = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_heart_disease&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence_embeddings&quot;)\ .setOutputCol(&quot;predicted_class&quot;)\ .setThreshold(0.999) val clf_pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, wordEmbeddings, sentence_embeddings, multiclassifierdl )) val data = Seq(Array( &quot;&quot;&quot;Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg.&quot;&quot;&quot;, &quot;&quot;&quot;Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease).&quot;&quot;&quot;, &quot;&quot;&quot;After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction).&quot;&quot;&quot; )).toDS.toDF(&quot;text&quot;) val result = clf_pipeline.fit(data).transform(data) Results +----------------------------------------------------------------------------------------------------+--------------+ | text| result| +----------------------------------------------------------------------------------------------------+--------------+ |Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings a...|[Hypertension]| |Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Dis...| [CAD]| |After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (...| [MI]| +----------------------------------------------------------------------------------------------------+--------------+ Model Information Model Name: multiclassifierdl_heart_disease Compatibility: Healthcare NLP 5.1.1+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 87.8 MB Dependencies: embeddings_clinical References Trained with the in-house dataset Sample text from the training dataset Hypertension: Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had consistently high blood pressure readings over several visits, indicative of hypertension. Often experiencing headaches and occasional bouts of dizziness, these could be linked to his elevated blood pressure. He has been prescribed antihypertensive medications and advised to adopt lifestyle modifications, such as reducing salt intake and engaging in regular exercise, to manage his hypertension effectively. Coronary Artery Disease (CAD): Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during physical exertion. After undergoing an angiogram, she was diagnosed with coronary artery disease due to significant blockage in her coronary arteries. Her family history reveals her father had a similar condition, making her predisposed to CAD. Along with prescribed medications to reduce her risk of a heart attack, Mrs. Martinez will undergo a cardiac rehabilitation program and make dietary changes to manage her coronary artery disease. Myocardial Infarction (MI): Mr. Jackson, at the age of 52, suddenly experienced severe chest pain while at work and was immediately rushed to the emergency department. The ECG and elevated cardiac enzymes confirmed a diagnosis of myocardial infarction. Recounting the event, Mr. Jackson mentioned that he felt a crushing pain in his chest, radiating to his left arm, typical symptoms of a heart attack. Post-treatment, he was advised to engage in cardiac rehabilitation, maintain a heart-healthy diet, and take prescribed medications diligently to prevent another myocardial infarction in the future. Benchmarking label tp fp fn prec rec f1 Other/Unknown 48 10 28 0.82758623 0.6315789 0.7164179 No 366 39 41 0.9037037 0.8992629 0.9014778 MI 128 13 12 0.9078014 0.9142857 0.911032 Hypertension 184 30 41 0.8598131 0.8177778 0.8382688 CAD 191 13 14 0.9362745 0.9317073 0.9339853 Macro-average 917 105 136 0.8870357 0.8389225 0.8623085 Micro-average 917 105 136 0.89726025 0.8708452 0.88385534</summary></entry><entry><title type="html">Text Classification For Mental Disorder</title><link href="/2023/10/16/multiclassifierdl_mental_disorder_en.html" rel="alternate" type="text/html" title="Text Classification For Mental Disorder" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>/2023/10/16/multiclassifierdl_mental_disorder_en</id><content type="html" xml:base="/2023/10/16/multiclassifierdl_mental_disorder_en.html">## Description
 
-&lt;p&gt;The PHS-BERT Mental Disorder Classifier Model classifies text based on the following mental disorders. (Schizophrenia, Depression, Bipolar disorder, Anxiety disorder).&lt;/p&gt;
+The PHS-BERT Mental Disorder Classifier Model classifies text based on the following mental disorders. (Schizophrenia, Depression, Bipolar disorder, Anxiety disorder).
 
-&lt;p&gt;The Mental Disorder Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of four prominent respiratory diseases: Schizophrenia, Depression, Bipolar disorder, Anxiety disorder. More detailed information about classes as follows:&lt;/p&gt;
+The Mental Disorder Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of four prominent respiratory diseases: Schizophrenia, Depression, Bipolar disorder, Anxiety disorder. More detailed information about classes as follows:
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Schizophrenia&lt;/code&gt;: This category is designated for text mentions that correspond to Schizophrenia, a mental disorder characterized by thought disorders, hallucinations, and often involving delusional beliefs and cognitive challenges. Example: “My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him.”&lt;/p&gt;
+`Schizophrenia`: This category is designated for text mentions that correspond to Schizophrenia, a mental disorder characterized by thought disorders, hallucinations, and often involving delusional beliefs and cognitive challenges. Example: &quot;My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him.&quot;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Depression&lt;/code&gt;: Textual content which implicates Depression, a pervasive mental health disorder marked by persistent feelings of sadness, loss of interest in activities, and potential physical health alterations, is classified here. Example: “The heavy weight of depression often leaves me struggling to find joy in activities I once loved.”&lt;/p&gt;
+`Depression`: Textual content which implicates Depression, a pervasive mental health disorder marked by persistent feelings of sadness, loss of interest in activities, and potential physical health alterations, is classified here. Example: &quot;The heavy weight of depression often leaves me struggling to find joy in activities I once loved.&quot;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bipolar Disorder&lt;/code&gt;: Entries here incorporate text alluding to Bipolar Disorder, a mental health condition distinguished by stark fluctuations in mood, transitioning between manic highs and depressive lows. Example: “Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without warning.”&lt;/p&gt;
+`Bipolar Disorder`: Entries here incorporate text alluding to Bipolar Disorder, a mental health condition distinguished by stark fluctuations in mood, transitioning between manic highs and depressive lows. Example: &quot;Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without warning.&quot;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Anxiety Disorder&lt;/code&gt;: Textual mentions signifying Anxiety Disorder, which involves persistent, excessive worry, nervousness, and physiological effects, are classified under this label. Example: “My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical scenarios.”&lt;/p&gt;
+`Anxiety Disorder`: Textual mentions signifying Anxiety Disorder, which involves persistent, excessive worry, nervousness, and physiological effects, are classified under this label. Example: &quot;My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical scenarios.&quot;
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Anxiety Disorder&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bipolar disorder&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;No&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Schizophrenia&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Depression&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Other/Unknown&lt;/code&gt;&lt;/p&gt;
+`Anxiety Disorder`, `Bipolar disorder`, `No`, `Schizophrenia`, `Depression`, `Other/Unknown`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;a href=&quot;https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/&quot; class=&quot;button button-orange&quot;&gt;Live Demo&lt;/a&gt;
-&lt;a href=&quot;https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MENTAL_HEALTH.ipynb&quot; class=&quot;button button-orange button-orange-trans co button-icon&quot;&gt;Open in Colab&lt;/a&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_mental_disorder_en_5.1.1_3.0_1697441541490.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_mental_disorder_en_5.1.1_3.0_1697441541490.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MENTAL_HEALTH.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_mental_disorder_en_5.1.1_3.0_1697441541490.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_mental_disorder_en_5.1.1_3.0_1697441541490.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
-
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 1. Document assembler
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;word_embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WordEmbeddingsModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings_clinical&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;word_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;sentence_embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SentenceEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;word_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setPoolingStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AVERAGE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 3. Mental Disorder MultiClassifier (Using the provided model name)
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;multilabel_classifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MultiClassifierDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;multiclassifierdl_mental_disorder&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;prediction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setThreshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Creating the pipeline
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;word_embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sentence_embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;multilabel_classifier&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Sample text list
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.&quot;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Creating a DataFrame
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StringType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+## How to use
 
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+# 1. Document assembler
+document_assembler = DocumentAssembler() \
+    .setInputCol(&quot;text&quot;) \
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;wordEmbeddings&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;WordEmbeddingsModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings_clinical&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+tokenizer = Tokenizer()\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sentence_embeddings&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SentenceEmbeddings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;embeddings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setPoolingStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;AVERAGE&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+    .setInputCols([&quot;document&quot;, &quot;token&quot;])\
+    .setOutputCol(&quot;word_embeddings&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;multiclassifierdl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;MultiClassifierDLModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;multiclassifierdl_mental_disorder&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)\&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;predicted_class&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+sentence_embeddings = SentenceEmbeddings()\
+    .setInputCols([&quot;document&quot;, &quot;word_embeddings&quot;])\
+    .setOutputCol(&quot;sentence_embeddings&quot;)\
+    .setPoolingStrategy(&quot;AVERAGE&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;clf_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;wordEmbeddings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sentence_embeddings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;multiclassifierdl&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+# 3. Mental Disorder MultiClassifier (Using the provided model name)
+multilabel_classifier = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_mental_disorder&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+    .setInputCols([&quot;sentence_embeddings&quot;]) \
+    .setOutputCol(&quot;prediction&quot;)\
+    .setThreshold(0.999)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+# Creating the pipeline
+clf_pipeline = Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    word_embeddings,
+    sentence_embeddings,
+    multilabel_classifier
+])
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;clf_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+# Sample text list
+text_list = [
+    &quot;&quot;&quot;The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.&quot;&quot;&quot;,
+    &quot;&quot;&quot;Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.&quot;&quot;&quot;,
+    &quot;&quot;&quot;Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.&quot;&quot;&quot;,
+    &quot;&quot;&quot;Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.&quot;&quot;&quot;,
+    &quot;&quot;&quot;With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.&quot;&quot;&quot;
+]
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+# Creating a DataFrame
+df = spark.createDataFrame(text_list, StringType()).toDF(&quot;text&quot;)
+
+
+result = clf_pipeline.fit(df).transform(df)
+```
+```scala
+val documentAssembler = new DocumentAssembler()
+    .setInputCol(&quot;text&quot;)
+    .setOutputCol(&quot;document&quot;)
+
+val tokenizer = new Tokenizer()
+    .setInputCols(Array(&quot;document&quot;))
+    .setOutputCol(&quot;token&quot;)
+
+val wordEmbeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+    .setInputCols(Array(&quot;document&quot;, &quot;token&quot;))
+    .setOutputCol(&quot;embeddings&quot;)
+
+val sentence_embeddings = new SentenceEmbeddings()\
+    .setInputCols(Array(&quot;document&quot;, &quot;embeddings&quot;)) \
+    .setOutputCol(&quot;sentence_embeddings&quot;) \
+    .setPoolingStrategy(&quot;AVERAGE&quot;)
+
+val multiclassifierdl = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_mental_disorder&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+    .setInputCols(&quot;sentence_embeddings&quot;)\
+    .setOutputCol(&quot;predicted_class&quot;)
+
+val clf_pipeline = new Pipeline().setStages(Array(
+    documentAssembler,
+    tokenizer,
+    wordEmbeddings,
+    sentence_embeddings,
+    multiclassifierdl
+))
+
+val data = Seq(Array(
+    &quot;&quot;&quot;The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.&quot;&quot;&quot;,
+    &quot;&quot;&quot;Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.&quot;&quot;&quot;,
+    &quot;&quot;&quot;Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.&quot;&quot;&quot;,
+    &quot;&quot;&quot;Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.&quot;&quot;&quot;,
+    &quot;&quot;&quot;With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.&quot;&quot;&quot;,
+    )).toDS.toDF(&quot;text&quot;)
+
+val result = clf_pipeline.fit(data).transform(data)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+```bash
++------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
 |                                                                                                                                                  text|            result|
 +------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
-|         The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;severe depression.|      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Depression]|
-|                  Monitoring the patient &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.|[Bipolar disorder]|
-|       Commenced CBT to equip the patient with coping strategies &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;persistent irrational fears and nervousness stemming from their anxiety disorder.|[Anxiety disorder]|
-|                                                    Michael Anderson takes medications &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;schizophrenia, hypertension, hyperlipidemia, and migraines.|   &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Schizophrenia]|
-|With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitat...|              &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;No]|
+|         The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.|      [Depression]|
+|                  Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.|[Bipolar disorder]|
+|       Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.|[Anxiety disorder]|
+|                                                    Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.|   [Schizophrenia]|
+|With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitat...|              [No]|
 +------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;multiclassifierdl_mental_disorder&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.1.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[sentence_embeddings]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[class]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;87.8 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Dependencies:&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;embeding_clinical&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|multiclassifierdl_mental_disorder|
+|Compatibility:|Healthcare NLP 5.1.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence_embeddings]|
+|Output Labels:|[class]|
+|Language:|en|
+|Size:|87.8 MB|
+|Dependencies:|`embeding_clinical`|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;Trained with the in-house dataset&lt;/p&gt;
+Trained with the in-house dataset
 
-&lt;h2 id=&quot;sample-text-from-the-training-dataset&quot;&gt;Sample text from the training dataset&lt;/h2&gt;
+## Sample text from the training dataset
 
-&lt;p&gt;Schizophrenia:
+Schizophrenia:
 The patient was diagnosed with schizophrenia at the age of 22 after a series of intense psychotic episodes.
-The patient often describes hearing voices that others don’t hear and harbors a persistent belief in unfounded conspiracies, indicative of schizophrenia.
+The patient often describes hearing voices that others don't hear and harbors a persistent belief in unfounded conspiracies, indicative of schizophrenia.
 The patient has been prescribed second-generation antipsychotics and will be undergoing cognitive behavioral therapy to help manage the symptoms of schizophrenia.
 Depression:
 Mrs. Thompson first sought treatment for depression during her late 20s, shortly after a series of personal losses.
@@ -622,11 +579,12 @@ The management approach for Mr. Gray includes mood stabilizers like lithium, cou
 Anxiety Disorder:
 The patient has been experiencing generalized anxiety disorder symptoms for the past six years, often linked to work-related stress.
 The patient describes persistent feelings of restlessness, muscle tension, and overwhelming worry about everyday events and activities, common to those with an anxiety disorder.
-A combination of cognitive behavioral therapy and an anxiolytic medication has been advised to alleviate the distressing symptoms of the anxiety disorder.&lt;/p&gt;
+A combination of cognitive behavioral therapy and an anxiolytic medication has been advised to alleviate the distressing symptoms of the anxiety disorder.
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;label              tp   fp      fn    prec          rec         f1
+```bash
+label              tp   fp      fn    prec          rec         f1
 Other/Unknown      39   10      22    0.79591835   0.6393443    0.7090909
 Depression         120  18      19    0.8695652    0.8633093    0.866426
 No                 28   21      27    0.93203884   0.9142857    0.9230769
@@ -635,7 +593,7 @@ Bipolar_disorder   101  5       10    0.9528302    0.9099099    0.9308756
 Schizophrenia      66   4       23    0.94285715   0.74157304   0.8301887
 Macro-average      750  73     119    0.89897865   0.8252565    0.8605415
 Micro-average      750  73     119    0.9113001    0.863061     0.886524
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="text_classification" /><category term="mental_disorder" /><category term="mental_health" /><category term="tensorflow" /><summary type="html">Description The PHS-BERT Mental Disorder Classifier Model classifies text based on the following mental disorders. (Schizophrenia, Depression, Bipolar disorder, Anxiety disorder). The Mental Disorder Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of four prominent respiratory diseases: Schizophrenia, Depression, Bipolar disorder, Anxiety disorder. More detailed information about classes as follows: Schizophrenia: This category is designated for text mentions that correspond to Schizophrenia, a mental disorder characterized by thought disorders, hallucinations, and often involving delusional beliefs and cognitive challenges. Example: “My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him.” Depression: Textual content which implicates Depression, a pervasive mental health disorder marked by persistent feelings of sadness, loss of interest in activities, and potential physical health alterations, is classified here. Example: “The heavy weight of depression often leaves me struggling to find joy in activities I once loved.” Bipolar Disorder: Entries here incorporate text alluding to Bipolar Disorder, a mental health condition distinguished by stark fluctuations in mood, transitioning between manic highs and depressive lows. Example: “Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without warning.” Anxiety Disorder: Textual mentions signifying Anxiety Disorder, which involves persistent, excessive worry, nervousness, and physiological effects, are classified under this label. Example: “My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical scenarios.” Predicted Entities Anxiety Disorder, Bipolar disorder, No, Schizophrenia, Depression, Other/Unknown Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU # 1. Document assembler document_assembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;word_embeddings&quot;) sentence_embeddings = SentenceEmbeddings()\ .setInputCols([&quot;document&quot;, &quot;word_embeddings&quot;])\ .setOutputCol(&quot;sentence_embeddings&quot;)\ .setPoolingStrategy(&quot;AVERAGE&quot;) # 3. Mental Disorder MultiClassifier (Using the provided model name) multilabel_classifier = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_mental_disorder&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence_embeddings&quot;]) \ .setOutputCol(&quot;prediction&quot;)\ .setThreshold(0.999) # Creating the pipeline clf_pipeline = Pipeline(stages=[ document_assembler, tokenizer, word_embeddings, sentence_embeddings, multilabel_classifier ]) # Sample text list text_list = [ &quot;&quot;&quot;The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.&quot;&quot;&quot;, &quot;&quot;&quot;Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.&quot;&quot;&quot;, &quot;&quot;&quot;Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.&quot;&quot;&quot;, &quot;&quot;&quot;Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.&quot;&quot;&quot;, &quot;&quot;&quot;With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.&quot;&quot;&quot; ] # Creating a DataFrame df = spark.createDataFrame(text_list, StringType()).toDF(&quot;text&quot;) result = clf_pipeline.fit(df).transform(df) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val wordEmbeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val sentence_embeddings = new SentenceEmbeddings()\ .setInputCols(Array(&quot;document&quot;, &quot;embeddings&quot;)) \ .setOutputCol(&quot;sentence_embeddings&quot;) \ .setPoolingStrategy(&quot;AVERAGE&quot;) val multiclassifierdl = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_mental_disorder&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence_embeddings&quot;)\ .setOutputCol(&quot;predicted_class&quot;) val clf_pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, wordEmbeddings, sentence_embeddings, multiclassifierdl )) val data = Seq(Array( &quot;&quot;&quot;The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.&quot;&quot;&quot;, &quot;&quot;&quot;Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.&quot;&quot;&quot;, &quot;&quot;&quot;Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.&quot;&quot;&quot;, &quot;&quot;&quot;Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.&quot;&quot;&quot;, &quot;&quot;&quot;With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.&quot;&quot;&quot;, )).toDS.toDF(&quot;text&quot;) val result = clf_pipeline.fit(data).transform(data) Results +------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+ | text| result| +------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+ | The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.| [Depression]| | Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.|[Bipolar disorder]| | Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.|[Anxiety disorder]| | Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.| [Schizophrenia]| |With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitat...| [No]| +------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+ Model Information Model Name: multiclassifierdl_mental_disorder Compatibility: Healthcare NLP 5.1.1+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 87.8 MB Dependencies: embeding_clinical References Trained with the in-house dataset Sample text from the training dataset Schizophrenia: The patient was diagnosed with schizophrenia at the age of 22 after a series of intense psychotic episodes. The patient often describes hearing voices that others don’t hear and harbors a persistent belief in unfounded conspiracies, indicative of schizophrenia. The patient has been prescribed second-generation antipsychotics and will be undergoing cognitive behavioral therapy to help manage the symptoms of schizophrenia. Depression: Mrs. Thompson first sought treatment for depression during her late 20s, shortly after a series of personal losses. She often expresses feelings of hopelessness, has a persistent low mood, and lacks interest in activities she once enjoyed, classic signs of depression. Mrs. Thompson will continue her selective serotonin reuptake inhibitor (SSRI) medication and engage in weekly psychotherapy sessions to address her depressive symptoms. Bipolar Disorder: Mr. Gray was diagnosed with bipolar disorder at the age of 27 following an episode of mania that was preceded by a deep depressive phase. He cycles between periods of elevated mood, increased energy, and impulsiveness, and phases of intense sadness and lethargy, consistent with bipolar disorder. The management approach for Mr. Gray includes mood stabilizers like lithium, coupled with cognitive-behavioral therapy to monitor and address the mood swings of bipolar disorder. Anxiety Disorder: The patient has been experiencing generalized anxiety disorder symptoms for the past six years, often linked to work-related stress. The patient describes persistent feelings of restlessness, muscle tension, and overwhelming worry about everyday events and activities, common to those with an anxiety disorder. A combination of cognitive behavioral therapy and an anxiolytic medication has been advised to alleviate the distressing symptoms of the anxiety disorder. Benchmarking label tp fp fn prec rec f1 Other/Unknown 39 10 22 0.79591835 0.6393443 0.7090909 Depression 120 18 19 0.8695652 0.8633093 0.866426 No 28 21 27 0.93203884 0.9142857 0.9230769 Anxiety_disorder 136 15 18 0.90066224 0.8831169 0.8918033 Bipolar_disorder 101 5 10 0.9528302 0.9099099 0.9308756 Schizophrenia 66 4 23 0.94285715 0.74157304 0.8301887 Macro-average 750 73 119 0.89897865 0.8252565 0.8605415 Micro-average 750 73 119 0.9113001 0.863061 0.886524</summary></entry><entry><title type="html">Detect Problems, Tests and Treatments (ner_clinical) in Finnish</title><link href="/2023/10/16/ner_clinical_fi.html" rel="alternate" type="text/html" title="Detect Problems, Tests and Treatments (ner_clinical) in Finnish" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>/2023/10/16/ner_clinical_fi</id><content type="html" xml:base="/2023/10/16/ner_clinical_fi.html">## Description
+```</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="text_classification" /><category term="mental_disorder" /><category term="mental_health" /><category term="tensorflow" /><summary type="html">Description The PHS-BERT Mental Disorder Classifier Model classifies text based on the following mental disorders. (Schizophrenia, Depression, Bipolar disorder, Anxiety disorder). The Mental Disorder Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of four prominent respiratory diseases: Schizophrenia, Depression, Bipolar disorder, Anxiety disorder. More detailed information about classes as follows: Schizophrenia: This category is designated for text mentions that correspond to Schizophrenia, a mental disorder characterized by thought disorders, hallucinations, and often involving delusional beliefs and cognitive challenges. Example: “My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him.” Depression: Textual content which implicates Depression, a pervasive mental health disorder marked by persistent feelings of sadness, loss of interest in activities, and potential physical health alterations, is classified here. Example: “The heavy weight of depression often leaves me struggling to find joy in activities I once loved.” Bipolar Disorder: Entries here incorporate text alluding to Bipolar Disorder, a mental health condition distinguished by stark fluctuations in mood, transitioning between manic highs and depressive lows. Example: “Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without warning.” Anxiety Disorder: Textual mentions signifying Anxiety Disorder, which involves persistent, excessive worry, nervousness, and physiological effects, are classified under this label. Example: “My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical scenarios.” Predicted Entities Anxiety Disorder, Bipolar disorder, No, Schizophrenia, Depression, Other/Unknown Live Demo Open in Colab Download Copy S3 URI How to use PythonScalaNLU # 1. Document assembler document_assembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;word_embeddings&quot;) sentence_embeddings = SentenceEmbeddings()\ .setInputCols([&quot;document&quot;, &quot;word_embeddings&quot;])\ .setOutputCol(&quot;sentence_embeddings&quot;)\ .setPoolingStrategy(&quot;AVERAGE&quot;) # 3. Mental Disorder MultiClassifier (Using the provided model name) multilabel_classifier = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_mental_disorder&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence_embeddings&quot;]) \ .setOutputCol(&quot;prediction&quot;)\ .setThreshold(0.999) # Creating the pipeline clf_pipeline = Pipeline(stages=[ document_assembler, tokenizer, word_embeddings, sentence_embeddings, multilabel_classifier ]) # Sample text list text_list = [ &quot;&quot;&quot;The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.&quot;&quot;&quot;, &quot;&quot;&quot;Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.&quot;&quot;&quot;, &quot;&quot;&quot;Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.&quot;&quot;&quot;, &quot;&quot;&quot;Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.&quot;&quot;&quot;, &quot;&quot;&quot;With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.&quot;&quot;&quot; ] # Creating a DataFrame df = spark.createDataFrame(text_list, StringType()).toDF(&quot;text&quot;) result = clf_pipeline.fit(df).transform(df) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val wordEmbeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val sentence_embeddings = new SentenceEmbeddings()\ .setInputCols(Array(&quot;document&quot;, &quot;embeddings&quot;)) \ .setOutputCol(&quot;sentence_embeddings&quot;) \ .setPoolingStrategy(&quot;AVERAGE&quot;) val multiclassifierdl = MultiClassifierDLModel.pretrained(&quot;multiclassifierdl_mental_disorder&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence_embeddings&quot;)\ .setOutputCol(&quot;predicted_class&quot;) val clf_pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, wordEmbeddings, sentence_embeddings, multiclassifierdl )) val data = Seq(Array( &quot;&quot;&quot;The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.&quot;&quot;&quot;, &quot;&quot;&quot;Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.&quot;&quot;&quot;, &quot;&quot;&quot;Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.&quot;&quot;&quot;, &quot;&quot;&quot;Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.&quot;&quot;&quot;, &quot;&quot;&quot;With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.&quot;&quot;&quot;, )).toDS.toDF(&quot;text&quot;) val result = clf_pipeline.fit(data).transform(data) Results +------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+ | text| result| +------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+ | The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.| [Depression]| | Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.|[Bipolar disorder]| | Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.|[Anxiety disorder]| | Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.| [Schizophrenia]| |With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitat...| [No]| +------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+ Model Information Model Name: multiclassifierdl_mental_disorder Compatibility: Healthcare NLP 5.1.1+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 87.8 MB Dependencies: embeding_clinical References Trained with the in-house dataset Sample text from the training dataset Schizophrenia: The patient was diagnosed with schizophrenia at the age of 22 after a series of intense psychotic episodes. The patient often describes hearing voices that others don’t hear and harbors a persistent belief in unfounded conspiracies, indicative of schizophrenia. The patient has been prescribed second-generation antipsychotics and will be undergoing cognitive behavioral therapy to help manage the symptoms of schizophrenia. Depression: Mrs. Thompson first sought treatment for depression during her late 20s, shortly after a series of personal losses. She often expresses feelings of hopelessness, has a persistent low mood, and lacks interest in activities she once enjoyed, classic signs of depression. Mrs. Thompson will continue her selective serotonin reuptake inhibitor (SSRI) medication and engage in weekly psychotherapy sessions to address her depressive symptoms. Bipolar Disorder: Mr. Gray was diagnosed with bipolar disorder at the age of 27 following an episode of mania that was preceded by a deep depressive phase. He cycles between periods of elevated mood, increased energy, and impulsiveness, and phases of intense sadness and lethargy, consistent with bipolar disorder. The management approach for Mr. Gray includes mood stabilizers like lithium, coupled with cognitive-behavioral therapy to monitor and address the mood swings of bipolar disorder. Anxiety Disorder: The patient has been experiencing generalized anxiety disorder symptoms for the past six years, often linked to work-related stress. The patient describes persistent feelings of restlessness, muscle tension, and overwhelming worry about everyday events and activities, common to those with an anxiety disorder. A combination of cognitive behavioral therapy and an anxiolytic medication has been advised to alleviate the distressing symptoms of the anxiety disorder. Benchmarking label tp fp fn prec rec f1 Other/Unknown 39 10 22 0.79591835 0.6393443 0.7090909 Depression 120 18 19 0.8695652 0.8633093 0.866426 No 28 21 27 0.93203884 0.9142857 0.9230769 Anxiety_disorder 136 15 18 0.90066224 0.8831169 0.8918033 Bipolar_disorder 101 5 10 0.9528302 0.9099099 0.9308756 Schizophrenia 66 4 23 0.94285715 0.74157304 0.8301887 Macro-average 750 73 119 0.89897865 0.8252565 0.8605415 Micro-average 750 73 119 0.9113001 0.863061 0.886524</summary></entry><entry><title type="html">Detect Problems, Tests and Treatments (ner_clinical) in Finnish</title><link href="/2023/10/16/ner_clinical_fi.html" rel="alternate" type="text/html" title="Detect Problems, Tests and Treatments (ner_clinical) in Finnish" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>/2023/10/16/ner_clinical_fi</id><content type="html" xml:base="/2023/10/16/ner_clinical_fi.html">## Description
 
 Pretrained named entity recognition deep learning model for clinical terms in Finnish. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state of the art model for NER: Chiu &amp; Nicols, Named Entity Recognition with Bidirectional LSTM-CNN.
 
