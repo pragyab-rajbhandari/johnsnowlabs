@@ -718,37 +718,6 @@
     </tbody>
   </table>
 
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_clinical_large_langtest"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
-     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
-
-<span class="n">text</span><span class="o">=</span> <span class="s">"""She was on metformin, glipizide, and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG. She had been on dapagliflozin for six months at the time of presentation. Physical examination on presentation was significant for dry oral mucosa; significantly, her abdominal examination was benign with no tenderness, guarding, or rigidity. """</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------------------------+---------+
-|chunk                                |ner_label|
-+-------------------------------------+---------+
-|metformin                            |TREATMENT|
-|glipizide                            |TREATMENT|
-|dapagliflozin                        |TREATMENT|
-|T2DM                                 |PROBLEM  |
-|atorvastatin                         |TREATMENT|
-|gemfibrozil                          |TREATMENT|
-|HTG                                  |PROBLEM  |
-|dapagliflozin                        |TREATMENT|
-|Physical examination                 |TEST     |
-|dry oral mucosa                      |PROBLEM  |
-|her abdominal examination            |TEST     |
-|tenderness                           |PROBLEM  |
-|guarding                             |PROBLEM  |
-|rigidity                             |PROBLEM  |
-+-------------------------------------+---------+
-</code></pre></div>  </div>
-
 </div>
 <div class="h3-box">
 
@@ -796,18 +765,54 @@
 <span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""تاريخ الزيارة: 25 سبتمبر 2023 - المريضة: فاطمة علي - العمر: 48 سنة - الجنس: أنثى - المشاكل: 1. مشكل ارتفاع في مستويات في الدم 2. ارتفاع مستوى الكوليستيرول في الدم 3. اضطراب في وظائف الغدة الدرقية - الفحوصات: 1. قياس مستوى السكر في الدم 2. تحليل مستوى الكوليستيرول في الدم 3. اختبار وظائف الغدة الدرقية - العلاجات: 1. وصف دواء لمراقبة وتنظيم مستوى السكر في الدم (ميتفورمين 500 ملغ يوميا) 2. وصف دواء لتخفيض مستوى الكوليستيرول (ستاتين 20 ملغ يوميا) 3. وصف العلاج اللازم لتحسين وظائف الغدة الدرقية (ليفوتيروكسين 50 ميكروغرام يوميا)، بالإضافة إلى توجيهات بشأن نمط حياة صحي تتضمن اتباع نظام غذائي مناسب وممارسة الرياضة بانتظام."""</span>
 </code></pre></div>  </div>
 
-  <p><em>Result</em>:
-|chunk                                               |ner_label|
-|—————————————————-|——————-|
-|مشكل ارتفاع في مستويات في الدم                 |PROBLEM  |
-|ارتفاع مستوى الكوليستيرول في الدم              |PROBLEM  |
-|اضطراب في وظائف الغدة الدرقية                |PROBLEM  |
-|قياس مستوى السكر في الدم                         |TEST     |
-|تحليل مستوى الكوليستيرول في الدم               |TEST     |
-|اختبار وظائف الغدة الدرقية                         |TEST     |
-|ميتفورمين                                              |TREATMENT|
-|ليفوتيروكسين                                          |TREATMENT|
-|نظام غذائي مناسب                                   |TREATMENT|</p>
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>chunk</th>
+        <th>ner_label</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>مشكل ارتفاع في مستويات في الدم</td>
+        <td>PROBLEM</td>
+      </tr>
+      <tr>
+        <td>ارتفاع مستوى الكوليستيرول في الدم</td>
+        <td>PROBLEM</td>
+      </tr>
+      <tr>
+        <td>اضطراب في وظائف الغدة الدرقية</td>
+        <td>PROBLEM</td>
+      </tr>
+      <tr>
+        <td>قياس مستوى السكر في الدم</td>
+        <td>TEST</td>
+      </tr>
+      <tr>
+        <td>تحليل مستوى الكوليستيرول في الدم</td>
+        <td>TEST</td>
+      </tr>
+      <tr>
+        <td>اختبار وظائف الغدة الدرقية</td>
+        <td>TEST</td>
+      </tr>
+      <tr>
+        <td>ميتفورمين</td>
+        <td>TREATMENT</td>
+      </tr>
+      <tr>
+        <td>ليفوتيروكسين</td>
+        <td>TREATMENT</td>
+      </tr>
+      <tr>
+        <td>نظام غذائي مناسب</td>
+        <td>TREATMENT</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
 <div class="h3-box">
@@ -858,6 +863,7 @@
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
+
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+--------------------+
 |                                                                                                text|              result|
 +----------------------------------------------------------------------------------------------------+--------------------+
