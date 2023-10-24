@@ -541,14 +541,18 @@
   <p>🚨 <strong>New Features</strong></p>
 
   <ul>
-    <li>New Dit based Text Detection Model: Continuing with our commitment to empower Text Extraction and De-identification pipelines we are delivering a new model for text detection, it was trained on the FUNSD dataset, and its utilization is similar to other related models,</li>
+    <li>New Dit based Text Detection Model: Continuing with our commitment to empower Text Extraction and De-identification pipelines we are delivering a new model for text detection, it was trained on the FUNSD dataset, and its utilization is similar to other related models,
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> python
+ImageTextDetector \
+.pretrained("image_text_detector_dit", "en", "clinical/ocr") \
+.setInputCol("image")
+.setOutputCol("region")
+.setScoreThreshold(0.5)
+</code></pre></div>      </div>
+    </li>
   </ul>
 
-  <p>ImageTextDetector \
-.pretrained(“image_text_detector_dit”, “en”, “clinical/ocr”) \
-.setInputCol(“image”)
-.setOutputCol(“region”)
-.setScoreThreshold(0.5)</p>
+  <p><img src="/assets/images/ocr/image_text_detector_dit.png" alt="image" /></p>
 
   <p>It is currently the best performing model at the FUNSD dataset, achieving an accuracy of 94% vs Craft detector which achieved 78.7%, and is recommended for De-identification and Text Extraction pipelines.</p>
 

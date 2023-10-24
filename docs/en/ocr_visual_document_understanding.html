@@ -879,10 +879,13 @@ scanned receipt images.</p>
 +-------------------------------------------------------------------------+
 </code></pre></div></div>
 
-<h2 id="visualdocumentnerv2">VisualDocumentNERv2</h2>
+<h2 id="visualdocumentner-1">VisualDocumentNER</h2>
 
-<p><code class="language-plaintext highlighter-rouge">VisualDocumentNERv2</code> is a DL model for NER documents which is an improved version of <code class="language-plaintext highlighter-rouge">VisualDocumentNER</code>. There is available pretrained model trained on FUNSD dataset.
-The dataset comprises 199 real, fully annotated, scanned forms.</p>
+<p><code class="language-plaintext highlighter-rouge">VisualDocumentNER</code> is the main entry point to transformer-based models for document NER. An example of a VisualDocumentNER task is the detection of keys and values like in the FUNSD dataset.
+These keys and values represent the structure of a form, and are typically “connected” to each other by using a FormRelationExtractor model.
+Some other VisualDocumentNER models are trained without this post-processing stage in mind, and consider entities in isolation. Some sample entities would be names, places, or medications, where the goal is not to connect the entities to other entities, but to use those entities individually.
+VisualDocumentNER follows the same architecture as VisualDocumentClassifier receiving ‘visual tokens’, this is, tokens with coordinates in HOCR format, along with images to inform the model.
+Check the Models Hub for available models.</p>
 
 <h4 id="input-columns-2">Input Columns</h4>
 
@@ -979,8 +982,8 @@ The dataset comprises 199 real, fully annotated, scanned forms.</p>
   <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"hocr"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">visualDocumentNER</span> <span class="k">=</span> <span class="nc">VisualDocumentNERv2</span>
-  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"layoutlmv2_funsd"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/ocr"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">visualDocumentNER</span> <span class="k">=</span> <span class="nc">VisualDocumentNER</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"lilt_roberta_funsd_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/ocr"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"token"</span><span class="o">,</span> <span class="s">"image"</span><span class="o">))</span>
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">()</span>
@@ -1024,8 +1027,8 @@ The dataset comprises 199 real, fully annotated, scanned forms.</p>
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"hocr"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">ner</span> <span class="o">=</span> <span class="n">VisualDocumentNerV2</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"layoutlmv2_funsd"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>\
+<span class="n">ner</span> <span class="o">=</span> <span class="n">VisualDocumentNer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"lilt_roberta_funsd_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"token"</span><span class="p">,</span> <span class="s">"image"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"entities"</span><span class="p">)</span>
 
@@ -1060,7 +1063,7 @@ The dataset comprises 199 real, fully annotated, scanned forms.</p>
 
 <h2 id="formrelationextractor">FormRelationExtractor</h2>
 
-<p><code class="language-plaintext highlighter-rouge">FormRelationExtractor</code> detect relation between keys and values detected by <code class="language-plaintext highlighter-rouge">VisualDocumentNERv2</code>.</p>
+<p><code class="language-plaintext highlighter-rouge">FormRelationExtractor</code> detect relation between keys and values detected by <code class="language-plaintext highlighter-rouge">VisualDocumentNER</code>.</p>
 
 <p>It can detect relations only for key/value in same line.</p>
 
@@ -1165,8 +1168,8 @@ The dataset comprises 199 real, fully annotated, scanned forms.</p>
   <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"hocr"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">visualDocumentNER</span> <span class="k">=</span> <span class="nc">VisualDocumentNERv2</span>
-  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"layoutlmv2_funsd"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/ocr"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">visualDocumentNER</span> <span class="k">=</span> <span class="nc">VisualDocumentNER</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"lilt_roberta_funsd_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/ocr"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"token"</span><span class="o">,</span> <span class="s">"image"</span><span class="o">))</span>
 
 <span class="k">val</span> <span class="nv">relExtractor</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FormRelationExtractor</span><span class="o">()</span>
@@ -1215,8 +1218,8 @@ The dataset comprises 199 real, fully annotated, scanned forms.</p>
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"hocr"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">ner</span> <span class="o">=</span> <span class="n">VisualDocumentNerV2</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"layoutlmv2_funsd"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>\
+<span class="n">ner</span> <span class="o">=</span> <span class="n">VisualDocumentNer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"lilt_roberta_funsd_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"token"</span><span class="p">,</span> <span class="s">"image"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"entities"</span><span class="p">)</span>
 
