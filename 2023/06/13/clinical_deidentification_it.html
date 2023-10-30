@@ -431,6 +431,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
 <span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification"</span><span class="p">,</span> <span class="s">"it"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
@@ -507,93 +508,11 @@ INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di End
 EMAIL: bferrabosco@poste.it"""</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-</div>
-
-<div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
-
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification"</span><span class="p">,</span> <span class="s">"it"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-
-<span class="n">sample</span> <span class="o">=</span> <span class="s">"""RAPPORTO DI RICOVERO
-NOME: Lodovico Fibonacci
-CODICE FISCALE: MVANSK92F09W408A
-INDIRIZZO: Viale Burcardo 7
-CITTÀ : Napoli
-CODICE POSTALE: 80139
-DATA DI NASCITA: 03/03/1946
-ETÀ: 70 anni 
-SESSO: M
-EMAIL: lpizzo@tim.it
-DATA DI AMMISSIONE: 12/12/2016
-DOTTORE: Eva Viviani
-RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
-È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
-L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
-L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
-L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
-
-INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
-EMAIL: bferrabosco@poste.it"""</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-</code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification"</span><span class="o">,</span> <span class="s">"it"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-
-<span class="n">sample</span> <span class="k">=</span> <span class="s">"RAPPORTO DI RICOVERO
-NOME: Lodovico Fibonacci
-CODICE FISCALE: MVANSK92F09W408A
-INDIRIZZO: Viale Burcardo 7
-CITTÀ : Napoli
-CODICE POSTALE: 80139
-DATA DI NASCITA: 03/03/1946
-ETÀ: 70 anni 
-SESSO: M
-EMAIL: lpizzo@tim.it
-DATA DI AMMISSIONE: 12/12/2016
-DOTTORE: Eva Viviani
-RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
-È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
-L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
-L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
-L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
-
-INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
-EMAIL: bferrabosco@poste.it"</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span>
-</code></pre></div>  </div>
-
-  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"it.deid.clinical"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""RAPPORTO DI RICOVERO
-NOME: Lodovico Fibonacci
-CODICE FISCALE: MVANSK92F09W408A
-INDIRIZZO: Viale Burcardo 7
-CITTÀ : Napoli
-CODICE POSTALE: 80139
-DATA DI NASCITA: 03/03/1946
-ETÀ: 70 anni 
-SESSO: M
-EMAIL: lpizzo@tim.it
-DATA DI AMMISSIONE: 12/12/2016
-DOTTORE: Eva Viviani
-RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
-È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
-L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
-L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
-L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
-
-INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
-EMAIL: bferrabosco@poste.it"""</span><span class="p">)</span>
-</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Results
-
-
-Masked with entity labels
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Masked with entity labels
 <span class="nt">------------------------------</span>
 RAPPORTO DI RICOVERO
 NOME: &lt;PATIENT&gt;
@@ -688,9 +607,6 @@ PSA di 1,16 ng/ml.
 INDIRIZZATO A: Dott.
 Antonio Rusticucci - ASL 7 DI CARBONIA AZIENDA U.S.L. N. 7, Dipartimento di Endocrinologia e Nutrizione - Via Giorgio 0 Appartamento 26, 03461 Sesto Raimondo
 EMAIL: murat.g@jsl.com
-
-
-<span class="o">{</span>:.model-param<span class="o">}</span>
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

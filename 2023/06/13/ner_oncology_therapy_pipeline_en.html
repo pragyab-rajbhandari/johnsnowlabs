@@ -431,30 +431,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_oncology_therapy_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
-The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to her breast.
-The cancer recurred as a right lung metastasis 13 years later. The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy.'''</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_oncology_therapy_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
-The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to her breast.
-The cancer recurred as a right lung metastasis 13 years later. The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy."</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-</code></pre></div>  </div>
-</div>
-
-<div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_oncology_therapy_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
@@ -479,10 +456,7 @@ The cancer recurred as a right lung metastasis 13 years later. The patient under
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Results
-
-
-|    | ner_chunks                     |   begin |   end | ner_label             |   confidence |
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | ner_chunks                     |   begin |   end | ner_label             |   confidence |
 |---:|:-------------------------------|--------:|------:|:----------------------|-------------:|
 |  0 | mastectomy                     |      36 |    45 | Cancer_Surgery        |     0.9817   |
 |  1 | axillary lymph node dissection |      54 |    83 | Cancer_Surgery        |     0.719725 |
@@ -493,10 +467,7 @@ The cancer recurred as a right lung metastasis 13 years later. The patient under
 |  6 | cyclophosphamide               |     363 |   378 | Chemotherapy          |     0.9976   |
 |  7 | 600 mg/m2                      |     381 |   389 | Dosage                |     0.64205  |
 |  8 | six courses                    |     397 |   407 | Cycle_Count           |     0.46815  |
-|  9 | first line                     |     413 |   422 | Line_Of_Therapy       |     0.95015  |
-
-
-<span class="o">{</span>:.model-param<span class="o">}</span>
+|  9 | first line                     |     413 |   422 | Line_Of_Therapy       |     0.95015  |s
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

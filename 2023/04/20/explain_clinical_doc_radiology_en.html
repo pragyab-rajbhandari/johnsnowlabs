@@ -429,6 +429,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_radiology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
@@ -454,8 +455,7 @@
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+----+------------------------------------------+---------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----+------------------------------------------+---------------------------+
 |    | chunks                                   | entities                  |
 |---:|:-----------------------------------------|:--------------------------|
 |  0 | Bilateral breast                         | BodyPart                  |
@@ -490,7 +490,6 @@
 |       1 | ImagingTest     | ultrasound            | ImagingFindings           | ovoid mass |
 |       0 | ImagingFindings | benign fibrous tissue | Disease_Syndrome_Disorder | lipoma     |
 +---------+-----------------+-----------------------+---------------------------+------------+
-
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

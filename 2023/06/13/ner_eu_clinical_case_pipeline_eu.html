@@ -431,30 +431,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_eu_clinical_case_pipeline"</span><span class="p">,</span> <span class="s">"eu"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">"
-3 urteko mutiko bat nahasmendu autistarekin unibertsitateko ospitaleko A pediatriako ospitalean. Ez du autismoaren espektroaren nahaste edo gaixotasun familiaren aurrekaririk. Mutilari komunikazio-nahaste larria diagnostikatu zioten, elkarrekintza sozialeko zailtasunak eta prozesamendu sentsorial atzeratua. Odol-analisiak normalak izan ziren (tiroidearen hormona estimulatzailea (TSH), hemoglobina, batez besteko bolumen corpuskularra (MCV) eta ferritina). Goiko endoskopiak mukosaren azpiko tumore bat ere erakutsi zuen, urdail-irteeren guztizko oztopoa eragiten zuena. Estroma gastrointestinalaren tumore baten susmoa ikusita, distaleko gastrektomia egin zen. Azterketa histopatologikoak agerian utzi zuen mukosaren azpiko zelulen ugaltzea.
-"</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_eu_clinical_case_pipeline"</span><span class="o">,</span> <span class="s">"eu"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"
-3 urteko mutiko bat nahasmendu autistarekin unibertsitateko ospitaleko A pediatriako ospitalean. Ez du autismoaren espektroaren nahaste edo gaixotasun familiaren aurrekaririk. Mutilari komunikazio-nahaste larria diagnostikatu zioten, elkarrekintza sozialeko zailtasunak eta prozesamendu sentsorial atzeratua. Odol-analisiak normalak izan ziren (tiroidearen hormona estimulatzailea (TSH), hemoglobina, batez besteko bolumen corpuskularra (MCV) eta ferritina). Goiko endoskopiak mukosaren azpiko tumore bat ere erakutsi zuen, urdail-irteeren guztizko oztopoa eragiten zuena. Estroma gastrointestinalaren tumore baten susmoa ikusita, distaleko gastrektomia egin zen. Azterketa histopatologikoak agerian utzi zuen mukosaren azpiko zelulen ugaltzea.
-"</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-</code></pre></div>  </div>
-</div>
-
-<div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_eu_clinical_case_pipeline"</span><span class="p">,</span> <span class="s">"eu"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
@@ -479,10 +456,7 @@
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Results
-
-
-|    | chunks                   |   begin |   end | entities           |   confidence |
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunks                   |   begin |   end | entities           |   confidence |
 |---:|:-------------------------|--------:|------:|:-------------------|-------------:|
 |  0 | 3 urteko mutiko bat      |       1 |    19 | patient            |     0.813975 |
 |  1 | nahasmendu               |      21 |    30 | clinical_event     |     0.9848   |
@@ -525,9 +499,6 @@
 | 38 | utzi                     |     701 |   704 | clinical_event     |     0.925    |
 | 39 | mukosaren azpiko zelulen |     711 |   734 | bodypart           |     0.754933 |
 | 40 | ugaltzea                 |     736 |   743 | clinical_event     |     0.9989   |
-
-
-<span class="o">{</span>:.model-param<span class="o">}</span>
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

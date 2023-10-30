@@ -429,6 +429,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"umls_drug_substance_resolver_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
@@ -442,15 +443,18 @@
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml"</span><span class="o">)</span>
 </code></pre></div>  </div>
 
-  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">+-----------------------------+---------+---------+</span>
-<span class="o">|</span><span class="n">chunk</span>                        <span class="o">|</span><span class="n">ner_label</span><span class="o">|</span><span class="n">umls_code</span><span class="o">|</span>
-<span class="o">+-----------------------------+---------+---------+</span>
-<span class="o">|</span><span class="n">metformin</span>                    <span class="o">|</span><span class="n">DRUG</span>     <span class="o">|</span><span class="n">C0025598</span> <span class="o">|</span>
-<span class="o">|</span><span class="n">lenvatinib</span>                   <span class="o">|</span><span class="n">DRUG</span>     <span class="o">|</span><span class="n">C2986924</span> <span class="o">|</span>
-<span class="o">|</span><span class="n">Magnesium</span> <span class="n">hydroxide</span> <span class="mi">100</span><span class="n">mg</span><span class="o">/</span><span class="mi">1</span><span class="n">ml</span><span class="o">|</span><span class="n">DRUG</span>     <span class="o">|</span><span class="n">C1134402</span> <span class="o">|</span>
-<span class="o">+-----------------------------+---------+---------+</span>
-</code></pre></div>  </div>
 </div>
+
+<h2 id="results">Results</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----------------------------+---------+---------+
+|chunk                        |ner_label|umls_code|
++-----------------------------+---------+---------+
+|metformin                    |DRUG     |C0025598 |
+|lenvatinib                   |DRUG     |C2986924 |
+|Magnesium hydroxide 100mg/1ml|DRUG     |C1134402 |
++-----------------------------+---------+---------+
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 

@@ -431,6 +431,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
 <span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_glove"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
@@ -504,10 +505,7 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Results
-
-
-Masked with entity labels
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Masked with entity labels
 <span class="nt">------------------------------</span>
 Name : &lt;PATIENT&gt;, Record <span class="nb">date</span>: &lt;DATE&gt;, <span class="c"># &lt;MEDICALRECORD&gt;.</span>
 Dr. &lt;DOCTOR&gt;, ID: &lt;IDNUM&gt;, IP &lt;IPADDR&gt;.
@@ -538,9 +536,6 @@ Dr. Dr Worley Colonel, ID: ZJ:9570208, IP 005.005.005.005.
 He is a 67 male was admitted to the ST. LUKE<span class="s1">'S HOSPITAL AT THE VINTAGE for cystectomy on 06-02-1981.
 Patient'</span>s VIN : 3CCCC22DDDD333888, SSN SSN-618-77-1042, Driver<span class="s1">'s license W693817528998.
 Phone 0496 46 46 70, 3100 weston rd, Shattuck, E-MAIL: Freddi@hotmail.com.
-
-
-{:.model-param}
 </span></code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

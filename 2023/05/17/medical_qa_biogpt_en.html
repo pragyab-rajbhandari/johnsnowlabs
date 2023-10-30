@@ -432,6 +432,7 @@ It can generate two types of answers, short and long. Types of questions are sup
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">MultiDocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"question"</span><span class="p">,</span> <span class="s">"context"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCols</span><span class="p">(</span><span class="s">"document_question"</span><span class="p">,</span> <span class="s">"document_context"</span><span class="p">)</span>
@@ -509,7 +510,6 @@ It can generate two types of answers, short and long. Types of questions are sup
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |[The effect of directing attention on memory is that it can <span class="nb">help </span>to improve the accuracy and recall of a document. It can <span class="nb">help </span>to improve the accuracy of a document by allowing the user to quickly and easily access the information they need. It can also <span class="nb">help </span>to improve the overall efficiency of a document by allowing the user to quickly]|
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

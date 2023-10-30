@@ -431,6 +431,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"oncology_biomarker_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
@@ -452,66 +453,11 @@
 <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.oncology_biomarker.pipeline"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."""</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-</div>
-
-<div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
-
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"oncology_biomarker_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.'''</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"oncology_biomarker_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-</code></pre></div>  </div>
-
-  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.oncology_biomarker.pipeline"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."""</span><span class="p">)</span>
-</code></pre></div>  </div>
-</div>
-
-<div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
-
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"oncology_biomarker_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.'''</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"oncology_biomarker_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-</code></pre></div>  </div>
-
-  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.oncology_biomarker.pipeline"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."""</span><span class="p">)</span>
-</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Results
-
-
-Results
-
-
-<span class="s2">"
-******************** ner_oncology_wip results ********************
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">********************</span> ner_oncology_wip results <span class="k">********************</span>
 
 | chunk                          | ner_label        |
 |:-------------------------------|:-----------------|
@@ -525,7 +471,7 @@ Results
 | HER2                           | Oncogene         |
 
 
-******************** ner_oncology_biomarker_wip results ********************
+<span class="k">********************</span> ner_oncology_biomarker_wip results <span class="k">********************</span>
 
 | chunk                          | ner_label        |
 |:-------------------------------|:-----------------|
@@ -539,7 +485,7 @@ Results
 | HER2                           | Biomarker        |
 
 
-******************** ner_oncology_test_wip results ********************
+<span class="k">********************</span> ner_oncology_test_wip results <span class="k">********************</span>
 
 | chunk                          | ner_label        |
 |:-------------------------------|:-----------------|
@@ -554,7 +500,7 @@ Results
 | HER2                           | Oncogene         |
 
 
-******************** ner_biomarker results ********************
+<span class="k">********************</span> ner_biomarker results <span class="k">********************</span>
 
 | chunk                          | ner_label             |
 |:-------------------------------|:----------------------|
@@ -569,7 +515,7 @@ Results
 | HER2                           | Biomarker             |
 
 
-******************** assertion_oncology_wip results ********************
+<span class="k">********************</span> assertion_oncology_wip results <span class="k">********************</span>
 
 | chunk                          | ner_label      | assertion   |
 |:-------------------------------|:---------------|:------------|
@@ -581,7 +527,7 @@ Results
 | HER2                           | Oncogene       | Present     |
 
 
-******************** assertion_oncology_test_binary_wip results ********************
+<span class="k">********************</span> assertion_oncology_test_binary_wip results <span class="k">********************</span>
 
 | chunk                          | ner_label      | assertion       |
 |:-------------------------------|:---------------|:----------------|
@@ -593,7 +539,7 @@ Results
 | HER2                           | Oncogene       | Medical_History |
 
 
-******************** re_oncology_wip results ********************
+<span class="k">********************</span> re_oncology_wip results <span class="k">********************</span>
 
 | chunk1               | entity1          | chunk2                         | entity2          | relation      |
 |:---------------------|:-----------------|:-------------------------------|:-----------------|:--------------|
@@ -608,7 +554,7 @@ Results
 | negative             | Biomarker_Result | HER2                           | Oncogene         | is_related_to |
 
 
-******************** re_oncology_granular_wip results ********************
+<span class="k">********************</span> re_oncology_granular_wip results <span class="k">********************</span>
 
 | chunk1               | entity1          | chunk2                         | entity2          | relation      |
 |:---------------------|:-----------------|:-------------------------------|:-----------------|:--------------|
@@ -623,7 +569,7 @@ Results
 | negative             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
 
 
-******************** re_oncology_biomarker_result_wip results ********************
+<span class="k">********************</span> re_oncology_biomarker_result_wip results <span class="k">********************</span>
 
 | chunk1               | entity1          | chunk2                         | entity2          | relation      |
 |:---------------------|:-----------------|:-------------------------------|:-----------------|:--------------|
@@ -636,14 +582,7 @@ Results
 | ER                   | Biomarker        | negative                       | Biomarker_Result | O             |
 | PR                   | Biomarker        | negative                       | Biomarker_Result | O             |
 | negative             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
-
-
-
-{:.model-param}
-
-
-{:.model-param}
-</span></code></pre></div></div>
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 

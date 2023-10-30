@@ -467,48 +467,9 @@ Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """</span><span
 
 </div>
 
-<div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
-
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification"</span><span class="p">,</span> <span class="s">"ro"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-
-<span class="n">sample</span> <span class="o">=</span> <span class="s">"""Medic : Dr. Agota EVELYN, C.N.P : 2450502264401, Data setului de analize: 25 May 2022 
-Varsta : 77, Nume si Prenume : BUREAN MARIA 
-Tel: +40(235)413773, E-mail : hale@gmail.com,
-Licență : B004256985M, Înmatriculare : CD205113, Cont : FXHZ7170951927104999, 
-Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-</code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
-
-<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification"</span><span class="o">,</span> <span class="s">"ro"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">sample</span> <span class="k">=</span> <span class="s">"""Medic : Dr. Agota EVELYN, C.N.P : 2450502264401, Data setului de analize: 25 May 2022 
-Varsta : 77, Nume si Prenume : BUREAN MARIA 
-Tel: +40(235)413773, E-mail : hale@gmail.com,
-Licență : B004256985M, Înmatriculare : CD205113, Cont : FXHZ7170951927104999, 
-Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span>
-</code></pre></div>  </div>
-
-  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"ro.deid.clinical"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Medic : Dr. Agota EVELYN, C.N.P : 2450502264401, Data setului de analize: 25 May 2022 
-Varsta : 77, Nume si Prenume : BUREAN MARIA 
-Tel: +40(235)413773, E-mail : hale@gmail.com,
-Licență : B004256985M, Înmatriculare : CD205113, Cont : FXHZ7170951927104999, 
-Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """</span><span class="p">)</span>
-</code></pre></div>  </div>
-</div>
-
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Results
-
-
-Masked with entity labels
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Masked with entity labels
 <span class="nt">------------------------------</span>
 Medic : Dr. &lt;DOCTOR&gt;, C.N.P : &lt;IDNUM&gt;, Data setului de analize: &lt;DATE&gt;
 Varsta : &lt;AGE&gt;, Nume si Prenume : &lt;PATIENT&gt;
@@ -539,9 +500,6 @@ Varsta : 91, Nume si Prenume : Dragomir Emilia
 Tel: 0248 551 376, E-mail : tudorsmaranda@kappa.ro,
 Licență : T003485962M, Înmatriculare : AR-65-UPQ, Cont : KHHO5029180812813651, 
 Centrul Medical de Evaluare si Recuperare pentru Copii si Tineri Cristian Serban Buzias Aleea Voinea Curcani, 328479
-
-
-<span class="o">{</span>:.model-param<span class="o">}</span>
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

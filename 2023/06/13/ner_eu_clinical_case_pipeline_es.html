@@ -431,30 +431,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_eu_clinical_case_pipeline"</span><span class="p">,</span> <span class="s">"es"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">"
-Un niño de 3 años con trastorno autista en el hospital de la sala pediátrica A del hospital universitario. No tiene antecedentes familiares de enfermedad o trastorno del espectro autista. El niño fue diagnosticado con un trastorno de comunicación severo, con dificultades de interacción social y retraso en el procesamiento sensorial. Los análisis de sangre fueron normales (hormona estimulante de la tiroides (TSH), hemoglobina, volumen corpuscular medio (MCV) y ferritina). La endoscopia alta también mostró un tumor submucoso que causaba una obstrucción subtotal de la salida gástrica. Ante la sospecha de tumor del estroma gastrointestinal, se realizó gastrectomía distal. El examen histopatológico reveló proliferación de células fusiformes en la capa submucosa.
-"</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_eu_clinical_case_pipeline"</span><span class="o">,</span> <span class="s">"es"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"
-Un niño de 3 años con trastorno autista en el hospital de la sala pediátrica A del hospital universitario. No tiene antecedentes familiares de enfermedad o trastorno del espectro autista. El niño fue diagnosticado con un trastorno de comunicación severo, con dificultades de interacción social y retraso en el procesamiento sensorial. Los análisis de sangre fueron normales (hormona estimulante de la tiroides (TSH), hemoglobina, volumen corpuscular medio (MCV) y ferritina). La endoscopia alta también mostró un tumor submucoso que causaba una obstrucción subtotal de la salida gástrica. Ante la sospecha de tumor del estroma gastrointestinal, se realizó gastrectomía distal. El examen histopatológico reveló proliferación de células fusiformes en la capa submucosa.
-"</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-</code></pre></div>  </div>
-</div>
-
-<div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_eu_clinical_case_pipeline"</span><span class="p">,</span> <span class="s">"es"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
@@ -479,10 +456,7 @@ Un niño de 3 años con trastorno autista en el hospital de la sala pediátrica 
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Results
-
-
-|    | chunks                       |   begin |   end | entities           |   confidence |
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunks                       |   begin |   end | entities           |   confidence |
 |---:|:-----------------------------|--------:|------:|:-------------------|-------------:|
 |  0 | Un niño de 3 años            |       1 |    17 | patient            |     0.68856  |
 |  1 | trastorno                    |      23 |    31 | clinical_event     |     0.9976   |
@@ -520,9 +494,6 @@ Un niño de 3 años con trastorno autista en el hospital de la sala pediátrica 
 | 33 | proliferación                |     711 |   723 | clinical_event     |     0.9996   |
 | 34 | células fusiformes           |     728 |   745 | bodypart           |     0.7001   |
 | 35 | la capa submucosa            |     750 |   766 | bodypart           |     0.641267 |
-
-
-<span class="o">{</span>:.model-param<span class="o">}</span>
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

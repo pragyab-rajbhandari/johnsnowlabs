@@ -451,6 +451,7 @@
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span>  <span class="n">new</span> <span class="n">DocumentAssembler</span><span class="p">().</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 <span class="n">tokenizer</span>          <span class="o">=</span>  <span class="n">new</span> <span class="n">Tokenizer</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 <span class="n">pos</span>                <span class="o">=</span>  <span class="n">PerceptronModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"pos_clinical"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">).</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span><span class="s">"document"</span><span class="p">)</span>
@@ -479,7 +480,6 @@
 +------------------------------------------+
 |[NN, NNS, PND, NN, II, DD, NN, DD, JJ, NN]|
 +------------------------------------------+
-
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -681,7 +681,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2021/03/28/spellcheck_dl_en.html">Context Spell Checker for the English Language</a></div><div class="next nav_link"><span>NEXT</span><a href="/2021/03/29/recognize_entities_posology_en.html">Recognize Posology Pipeline</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2021/03/18/assertion_dl_radiology_en.html">Detect Assertion Status for Radiology</a></div><div class="next nav_link"><span>NEXT</span><a href="/2021/03/29/recognize_entities_posology_en.html">Recognize Posology Pipeline</a></div></div></div>
 
 </div>
 </div>
