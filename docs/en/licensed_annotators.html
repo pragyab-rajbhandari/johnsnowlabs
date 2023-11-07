@@ -563,6 +563,14 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
   </thead>
   <tbody>
     <tr>
+      <td><a href="#annotationmerger">AnnotationMerger</a></td>
+      <td>Merge annotations from different pipeline steps that have the same annotation type into a unified annotation.</td>
+    </tr>
+    <tr>
+      <td><a href="#assertionchunkconverter">AssertionChunkConverter</a></td>
+      <td>AssertionChunkConverter annotator uses both begin and end indices of the tokens as input to add a more robust metadata to the chunk column in a way that improves the reliability of the indices and avoid loss of data.</td>
+    </tr>
+    <tr>
       <td><a href="#assertiondl">AssertionDL</a></td>
       <td>AssertionDL is a deep Learning based approach used to extract Assertion Status from extracted entities and text.</td>
     </tr>
@@ -837,16 +845,13 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
     <span class="n">annotation_merger</span>
 <span class="p">])</span>
 
-<span class="n">empty_df</span><span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">merger_model</span><span class="o">=</span> <span class="n">merger_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_df</span><span class="p">)</span>
-
 <span class="c1"># Show example result
 </span><span class="n">text</span> <span class="o">=</span> <span class="s">"""
 The patient was prescribed 1 unit of naproxen for 5 days after meals for chronic low back pain. The patient was also given 1 unit of oxaprozin daily for rheumatoid arthritis presented with tense bullae and cutaneous fragility on the face and the back of the hands.. 
 """</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">merger_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">merger_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">result</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"pos_relations.result as PosologyRelation"</span><span class="p">,</span> 
                   <span class="s">"ade_relations.result as AdeRelation"</span><span class="p">,</span> 
                   <span class="s">"all_relations.result as MergedRelation"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -864,8 +869,8 @@ The patient was prescribed 1 unit of naproxen for 5 days after meals for chronic
 
           <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create the pipeline with two RE models
 </span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
 <span class="n">text_splitter</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">TextSplitter</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
@@ -945,8 +950,6 @@ The patient was prescribed 1 unit of naproxen for 5 days after meals for chronic
         <span class="n">reDL_alias</span><span class="p">,</span>
         <span class="n">annotation_merger</span><span class="p">])</span>
 
-<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
 
 <span class="c1"># Show example result
 </span><span class="n">text</span> <span class="o">=</span><span class="s">"""Definite-lived intangible assets acquired with Cadence’s fiscal 2021 acquisitions were as follows:
@@ -1006,7 +1009,7 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 65"""</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 
 <span class="c1"># Show the results 
@@ -1027,8 +1030,8 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 
           <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create the pipeline with two RE models
 </span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
 <span class="n">text_splitter</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">TextSplitter</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
@@ -1075,12 +1078,12 @@ Cadence completed its annual goodwill impairment test during the third quarter o
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"re_ner_chunk"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setMaxSyntacticDistance</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="n">reDL</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">RelationExtractionDLModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'legre_contract_doc_parties_md'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'legal/models'</span><span class="p">)</span>\
+<span class="n">reDL</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">RelationExtractionDLModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legre_contract_doc_parties_md"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"re_ner_chunk"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relations_parties"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="n">reDL_alias</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">RelationExtractionDLModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'legre_whereas'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'legal/models'</span><span class="p">)</span>\
+<span class="n">reDL_alias</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">RelationExtractionDLModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legre_whereas"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"re_ner_chunk"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relations_whereas"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
@@ -1107,15 +1110,13 @@ Cadence completed its annual goodwill impairment test during the third quarter o
         <span class="n">reDL_alias</span><span class="p">,</span>
         <span class="n">annotation_merger</span><span class="p">])</span>
 
-<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
 
 <span class="c1"># Show example result
-</span><span class="n">text</span> <span class="o">=</span><span class="s">"""
+</span><span class="n">text</span> <span class="o">=</span> <span class="s">"""
 WHEREAS, the Company Entities own certain Copyrights and Know-How which may be used in the Arizona Field, and in connection with the transactions contemplated by the Stock Purchase Agreement, Arizona desires to obtain a license from the Company Entities to use such Intellectual Property on the terms and subject to the conditions set forth herein.
 """</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="c1"># Show the results 
 </span><span class="n">result</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"relations_parties.result as PartiesRelation"</span><span class="p">,</span> 
@@ -1327,8 +1328,7 @@ The patient was prescribed 1 unit of naproxen for 5 days after meals for chronic
 
 <span class="k">#</span> <span class="nc">Show</span> <span class="n">example</span> <span class="n">result</span>
 <span class="k">import</span> <span class="nn">spark.implicits._</span>
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span>
-  <span class="s">"""
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""
 Definite-lived intangible assets acquired with Cadence’s fiscal 2021 acquisitions were as follows:
  
 Acquisition Date Fair Value
@@ -1488,8 +1488,7 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 
 <span class="k">#</span> <span class="nc">Show</span> <span class="n">example</span> <span class="n">result</span>
 <span class="k">import</span> <span class="nn">spark.implicits._</span>
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span>
-  <span class="s">"""WHEREAS, the Company Entities own certain Copyrights and Know-How which may be used in the Arizona Field, and in connection with the transactions contemplated by the Stock Purchase Agreement, Arizona desires to obtain a license from the Company Entities to use such Intellectual Property on the terms and subject to the conditions set forth herein.
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""WHEREAS, the Company Entities own certain Copyrights and Know-How which may be used in the Arizona Field, and in connection with the transactions contemplated by the Stock Purchase Agreement, Arizona desires to obtain a license from the Company Entities to use such Intellectual Property on the terms and subject to the conditions set forth herein.
 """</span>
 
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
@@ -1527,10 +1526,30 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 
     <p>In some cases, there may be issues while creating the chunk column when using token indices that can lead to loss of data to train assertion status models.</p>
 
-    <p>The <code class="language-plaintext highlighter-rouge">AssertionChunkConverter</code> annotator uses both begin and end indices of the tokens as input to add a more robust metadata to the chunk column in a way that improves the reliability of the indices and avoid loss of data.</p>
+    <p>The <code class="language-plaintext highlighter-rouge">AssertionChunkConverter</code> annotator uses both the begin and end indices of the tokens as input to add more robust metadata to the chunk column in a way that improves the reliability of the indices and avoids loss of data.</p>
+
+    <p>AssertionChunkConverter Parameters:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">chunkBeginCol</code>: (Str) The column containing the start index of the chunk.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">chunkEndCol</code>: (Str) The column containing the end index of the chunk.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">chunkTextCol</code>: (Str) The column containing the text chunk.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">outputTokenBeginCol</code>: (Str)  The column containing the selected token start.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">outputTokenEndCol</code>: (Str) The column containing the selected token end index.</p>
+      </li>
+    </ul>
 
     <blockquote>
-      <p><em>NOTE</em>: Chunk begin and end indices in the assertion status model training dataframe can be populated using the new version of ALAB module.</p>
+      <p><em>NOTE</em>: Chunk begin and end indices in the assertion status model training dataframe can be populated using the new version of the ALAB module.</p>
     </blockquote>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">TOKEN</code></p>
@@ -1556,50 +1575,44 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 <div class="tabs-mfl-box">
 
         <div class="tabs-mfl-head">
-          <p><button class="tab-mfl-li">Medical</button></p>
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
         </div>
 
         <div class="tab-mfl-content">
 
-          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span>
-    <span class="p">[</span>
-        <span class="p">[</span>
-            <span class="s">"An angiography showed bleeding in two vessels off of the Minnie supplying the sigmoid that were succesfully embolized."</span><span class="p">,</span>
-            <span class="s">"Minnie"</span><span class="p">,</span>
-            <span class="mi">57</span><span class="p">,</span>
-            <span class="mi">64</span><span class="p">,</span>
-        <span class="p">],</span>
-        <span class="p">[</span>
-            <span class="s">"After discussing this with his PCP, Leon was clear that the patient had had recurrent DVTs and ultimately a PE and his PCP felt strongly that he required long-term anticoagulation "</span><span class="p">,</span>
-            <span class="s">"PCP"</span><span class="p">,</span>
-            <span class="mi">31</span><span class="p">,</span>
-            <span class="mi">34</span><span class="p">,</span>
-        <span class="p">],</span>
-    <span class="p">]</span>
-<span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="s">"target"</span><span class="p">,</span> <span class="s">"char_begin"</span><span class="p">,</span> <span class="s">"char_end"</span><span class="p">)</span>
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">().</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">SentenceDetector</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">]).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"tokens"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">]).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"tokens"</span><span class="p">)</span>
-
-<span class="n">converter</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">AssertionChunkConverter</span><span class="p">()</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"tokens"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setChunkTextCol</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setChunkBeginCol</span><span class="p">(</span><span class="s">"char_begin"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setChunkEndCol</span><span class="p">(</span><span class="s">"char_end"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setOutputTokenBeginCol</span><span class="p">(</span><span class="s">"token_begin"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setOutputTokenEndCol</span><span class="p">(</span><span class="s">"token_end"</span><span class="p">)</span>
+<span class="n">converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">AssertionChunkConverter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"tokens"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setChunkTextCol</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setChunkBeginCol</span><span class="p">(</span><span class="s">"char_begin"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setChunkEndCol</span><span class="p">(</span><span class="s">"char_end"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputTokenBeginCol</span><span class="p">(</span><span class="s">"token_begin"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputTokenEndCol</span><span class="p">(</span><span class="s">"token_end"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> 
+     <span class="n">sentenceDetector</span><span class="p">,</span> 
+     <span class="n">tokenizer</span><span class="p">,</span> 
+     <span class="n">converter</span><span class="p">]</span>
 <span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">(</span>
-    <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">sentenceDetector</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">converter</span><span class="p">]</span>
-<span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s">"An angiography showed bleeding in two vessels off of the Minnie supplying the sigmoid that were succesfully embolized."</span><span class="p">,</span><span class="s">"Minnie"</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">64</span><span class="p">,],</span>
+    <span class="p">[</span><span class="s">"After discussing this with his PCP, Leon was clear that the patient had had recurrent DVTs and ultimately a PE and his PCP felt strongly that he required long-term anticoagulation"</span><span class="p">,</span><span class="s">"PCP"</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">34</span><span class="p">,],</span>
+<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="s">"target"</span><span class="p">,</span> <span class="s">"char_begin"</span><span class="p">,</span> <span class="s">"char_end"</span><span class="p">)</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -1614,6 +1627,7 @@ Cadence completed its annual goodwill impairment test during the third quarter o
     <span class="s">"target"</span><span class="p">,</span>
     <span class="s">"chunk"</span><span class="p">,</span>
 <span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
 <span class="o">+------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+</span>
 <span class="o">|</span><span class="n">target</span><span class="o">|</span><span class="n">char_begin</span><span class="o">|</span><span class="n">char_end</span><span class="o">|</span><span class="n">token_begin</span><span class="o">|</span><span class="n">token_end</span><span class="o">|</span><span class="n">tokens</span><span class="p">[</span><span class="n">token_begin</span><span class="p">].</span><span class="n">result</span><span class="o">|</span><span class="n">tokens</span><span class="p">[</span><span class="n">token_end</span><span class="p">].</span><span class="n">result</span><span class="o">|</span><span class="n">target</span><span class="o">|</span><span class="n">chunk</span>                                         <span class="o">|</span>
 <span class="o">+------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+</span>
@@ -1624,12 +1638,297 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 
         </div>
 
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"tokens"</span><span class="p">)</span>
+
+<span class="n">converter</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">AssertionChunkConverter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"tokens"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setChunkTextCol</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setChunkBeginCol</span><span class="p">(</span><span class="s">"char_begin"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setChunkEndCol</span><span class="p">(</span><span class="s">"char_end"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputTokenBeginCol</span><span class="p">(</span><span class="s">"token_begin"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputTokenEndCol</span><span class="p">(</span><span class="s">"token_end"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> 
+     <span class="n">sentenceDetector</span><span class="p">,</span> 
+     <span class="n">tokenizer</span><span class="p">,</span> 
+     <span class="n">converter</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s">"Tom Martin worked as Cadence's CTO until 2010"</span><span class="p">,</span><span class="s">"Cadence's CTO"</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">33</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Mrs. Charles was before Managing Director at a big consultancy company"</span><span class="p">,</span><span class="s">"Managing Director"</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span>
+<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="s">"target"</span><span class="p">,</span> <span class="s">"char_begin"</span><span class="p">,</span> <span class="s">"char_end"</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">results</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span>
+    <span class="s">"target"</span><span class="p">,</span>
+    <span class="s">"char_begin"</span><span class="p">,</span>
+    <span class="s">"char_end"</span><span class="p">,</span>
+    <span class="s">"token_begin"</span><span class="p">,</span>
+    <span class="s">"token_end"</span><span class="p">,</span>
+    <span class="s">"tokens[token_begin].result"</span><span class="p">,</span>
+    <span class="s">"tokens[token_end].result"</span><span class="p">,</span>
+    <span class="s">"target"</span><span class="p">,</span>
+    <span class="s">"chunk"</span><span class="p">,</span>
+<span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="o">+-----------------+----------+--------+-----------+---------+--------------------------+------------------------+-----------------+---------------------------------------------------------+</span>
+<span class="o">|</span><span class="n">target</span>           <span class="o">|</span><span class="n">char_begin</span><span class="o">|</span><span class="n">char_end</span><span class="o">|</span><span class="n">token_begin</span><span class="o">|</span><span class="n">token_end</span><span class="o">|</span><span class="n">tokens</span><span class="p">[</span><span class="n">token_begin</span><span class="p">].</span><span class="n">result</span><span class="o">|</span><span class="n">tokens</span><span class="p">[</span><span class="n">token_end</span><span class="p">].</span><span class="n">result</span><span class="o">|</span><span class="n">target</span>           <span class="o">|</span><span class="n">chunk</span>                                                    <span class="o">|</span>
+<span class="o">+-----------------+----------+--------+-----------+---------+--------------------------+------------------------+-----------------+---------------------------------------------------------+</span>
+<span class="o">|</span><span class="n">Cadence</span><span class="s">'s CTO    |21        |33      |4          |4        |Cadence'</span><span class="n">s</span>                 <span class="o">|</span><span class="n">Cadence</span><span class="s">'s               |Cadence'</span><span class="n">s</span> <span class="n">CTO</span>    <span class="o">|</span><span class="p">[{</span><span class="n">chunk</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="n">Cadence</span><span class="s">'s CTO, {sentence -&gt; 0}, []}]    |
+|Managing Director|24        |40      |5          |5        |Managing                  |Managing                |Managing Director|[{chunk, 24, 31, Managing Director, {sentence -&gt; 0}, []}]|
++-----------------+----------+--------+-----------+---------+--------------------------+------------------------+-----------------+---------------------------------------------------------+
+</span></code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"tokens"</span><span class="p">)</span>
+
+<span class="n">converter</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">AssertionChunkConverter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"tokens"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setChunkTextCol</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setChunkBeginCol</span><span class="p">(</span><span class="s">"char_begin"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setChunkEndCol</span><span class="p">(</span><span class="s">"char_end"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputTokenBeginCol</span><span class="p">(</span><span class="s">"token_begin"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputTokenEndCol</span><span class="p">(</span><span class="s">"token_end"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+     <span class="n">sentenceDetector</span><span class="p">,</span>
+     <span class="n">tokenizer</span><span class="p">,</span> 
+     <span class="n">converter</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s">"This Agreement may be executed by different parties hereto"</span><span class="p">,</span><span class="s">"parties"</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">50</span><span class="p">,],</span>
+    <span class="p">[</span><span class="s">"The Administrative Agent will determine the Dollar Equivalent amount"</span><span class="p">,</span><span class="s">"Agent"</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">23</span><span class="p">,],</span>
+<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="s">"target"</span><span class="p">,</span> <span class="s">"char_begin"</span><span class="p">,</span> <span class="s">"char_end"</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">results</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span>
+    <span class="s">"target"</span><span class="p">,</span>
+    <span class="s">"char_begin"</span><span class="p">,</span>
+    <span class="s">"char_end"</span><span class="p">,</span>
+    <span class="s">"token_begin"</span><span class="p">,</span>
+    <span class="s">"token_end"</span><span class="p">,</span>
+    <span class="s">"tokens[token_begin].result"</span><span class="p">,</span>
+    <span class="s">"tokens[token_end].result"</span><span class="p">,</span>
+    <span class="s">"target"</span><span class="p">,</span>
+    <span class="s">"chunk"</span><span class="p">,</span>
+<span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="o">+-------+----------+--------+-----------+---------+--------------------------+------------------------+-------+-----------------------------------------------+</span>
+<span class="o">|</span><span class="n">target</span> <span class="o">|</span><span class="n">char_begin</span><span class="o">|</span><span class="n">char_end</span><span class="o">|</span><span class="n">token_begin</span><span class="o">|</span><span class="n">token_end</span><span class="o">|</span><span class="n">tokens</span><span class="p">[</span><span class="n">token_begin</span><span class="p">].</span><span class="n">result</span><span class="o">|</span><span class="n">tokens</span><span class="p">[</span><span class="n">token_end</span><span class="p">].</span><span class="n">result</span><span class="o">|</span><span class="n">target</span> <span class="o">|</span><span class="n">chunk</span>                                          <span class="o">|</span>
+<span class="o">+-------+----------+--------+-----------+---------+--------------------------+------------------------+-------+-----------------------------------------------+</span>
+<span class="o">|</span><span class="n">parties</span><span class="o">|</span><span class="mi">44</span>        <span class="o">|</span><span class="mi">50</span>      <span class="o">|</span><span class="mi">7</span>          <span class="o">|</span><span class="mi">6</span>        <span class="o">|</span><span class="n">parties</span>                   <span class="o">|</span><span class="n">different</span>               <span class="o">|</span><span class="n">parties</span><span class="o">|</span><span class="p">[{</span><span class="n">chunk</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="n">parties</span><span class="p">,</span> <span class="p">{</span><span class="n">sentence</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="p">},</span> <span class="p">[]}]</span><span class="o">|</span>
+<span class="o">|</span><span class="n">Agent</span>  <span class="o">|</span><span class="mi">19</span>        <span class="o">|</span><span class="mi">23</span>      <span class="o">|</span><span class="mi">2</span>          <span class="o">|</span><span class="mi">1</span>        <span class="o">|</span><span class="n">Agent</span>                     <span class="o">|</span><span class="n">Administrative</span>          <span class="o">|</span><span class="n">Agent</span>  <span class="o">|</span><span class="p">[{</span><span class="n">chunk</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="n">Agent</span><span class="p">,</span> <span class="p">{</span><span class="n">sentence</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="p">},</span> <span class="p">[]}]</span>  <span class="o">|</span>
+<span class="o">+-------+----------+--------+-----------+---------+--------------------------+------------------------+-------+-----------------------------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
       </div>
 <!--END Python-->
 <!--Scala--> 
 <div class="tabs-mfl-box">
 
         <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"tokens"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">AssertionChunkConverter</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"tokens"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setChunkTextCol</span><span class="o">(</span><span class="s">"target"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setChunkBeginCol</span><span class="o">(</span><span class="s">"char_begin"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setChunkEndCol</span><span class="o">(</span><span class="s">"char_end"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputTokenBeginCol</span><span class="o">(</span><span class="s">"token_begin"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputTokenEndCol</span><span class="o">(</span><span class="s">"token_end"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">sentenceDetector</span><span class="o">,</span> <span class="n">tokenizer</span><span class="o">,</span> <span class="n">converter</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="o">(</span><span class="s">"An angiography showed bleeding in two vessels off of the Minnie supplying the sigmoid that were succesfully embolized."</span><span class="o">,</span> <span class="s">"Minnie"</span><span class="o">,</span><span class="mi">57</span><span class="o">,</span><span class="mi">64</span><span class="o">,),</span>
+    <span class="o">(</span><span class="s">"After discussing this with his PCP, Leon was clear that the patient had had recurrent DVTs and ultimately a PE and his PCP felt strongly that he required long-term anticoagulation"</span><span class="o">,</span> <span class="s">"PCP"</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">34</span><span class="o">,)</span>
+<span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span> <span class="s">"target"</span><span class="o">,</span> <span class="s">"char_begin"</span><span class="o">,</span> <span class="s">"char_end"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">results</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="nv">results</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span>
+  <span class="s">"target"</span><span class="o">,</span>
+  <span class="s">"char_begin"</span><span class="o">,</span>
+  <span class="s">"char_end"</span><span class="o">,</span>
+  <span class="s">"token_begin"</span><span class="o">,</span>
+  <span class="s">"token_end"</span><span class="o">,</span>
+  <span class="s">"chunk.begin"</span><span class="o">,</span>
+  <span class="s">"chunk.end"</span><span class="o">,</span>
+  <span class="s">"tokens[token_begin].result as begin_result"</span><span class="o">,</span>
+  <span class="s">"tokens[token_end].result as end_result"</span><span class="o">,</span>
+  <span class="s">"chunk.result"</span>
+<span class="o">).</span><span class="py">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+
+<span class="o">+------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+</span>
+<span class="o">|</span><span class="n">target</span><span class="o">|</span><span class="n">char_begin</span><span class="o">|</span><span class="n">char_end</span><span class="o">|</span><span class="n">token_begin</span><span class="o">|</span><span class="n">token_end</span><span class="o">|</span><span class="n">tokens</span><span class="o">[</span><span class="kt">token_begin</span><span class="o">].</span><span class="py">result</span><span class="o">|</span><span class="n">tokens</span><span class="o">[</span><span class="kt">token_end</span><span class="o">].</span><span class="py">result</span><span class="o">|</span><span class="n">target</span><span class="o">|</span><span class="n">chunk</span>                                         <span class="o">|</span>
+<span class="o">+------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+</span>
+<span class="o">|</span><span class="nc">Minnie</span><span class="o">|</span><span class="mi">57</span>        <span class="o">|</span><span class="mi">64</span>      <span class="o">|</span><span class="mi">10</span>         <span class="o">|</span><span class="mi">10</span>       <span class="o">|</span><span class="nc">Minnie</span>                    <span class="o">|</span><span class="nc">Minnie</span>                  <span class="o">|</span><span class="nc">Minnie</span><span class="o">|[{</span><span class="kt">chunk</span>, <span class="err">57</span>, <span class="err">62</span>, <span class="kt">Minnie</span>, <span class="o">{</span><span class="kt">sentence</span> <span class="kt">-&gt;</span> <span class="err">0</span><span class="o">}</span>, <span class="o">[]}]|</span>
+<span class="o">|</span><span class="nc">PCP</span>   <span class="o">|</span><span class="mi">31</span>        <span class="o">|</span><span class="mi">34</span>      <span class="o">|</span><span class="mi">5</span>          <span class="o">|</span><span class="mi">5</span>        <span class="o">|</span><span class="nc">PCP</span>                       <span class="o">|</span><span class="nc">PCP</span>                     <span class="o">|</span><span class="nc">PCP</span>   <span class="o">|[{</span><span class="kt">chunk</span>, <span class="err">31</span>, <span class="err">33</span>, <span class="kt">PCP</span>, <span class="o">{</span><span class="kt">sentence</span> <span class="kt">-&gt;</span> <span class="err">0</span><span class="o">}</span>, <span class="o">[]}]</span>   <span class="o">|</span>
+<span class="o">+------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"tokens"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">AssertionChunkConverter</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"tokens"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setChunkTextCol</span><span class="o">(</span><span class="s">"target"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setChunkBeginCol</span><span class="o">(</span><span class="s">"char_begin"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setChunkEndCol</span><span class="o">(</span><span class="s">"char_end"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputTokenBeginCol</span><span class="o">(</span><span class="s">"token_begin"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputTokenEndCol</span><span class="o">(</span><span class="s">"token_end"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">sentenceDetector</span><span class="o">,</span> <span class="n">tokenizer</span><span class="o">,</span> <span class="n">converter</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="o">(</span><span class="s">"Tom Martin worked as Cadence's CTO until 2010"</span><span class="o">,</span><span class="s">"Cadence's CTO"</span><span class="o">,</span><span class="mi">21</span><span class="o">,</span><span class="mi">33</span><span class="o">,),</span>
+    <span class="o">(</span><span class="s">"Mrs. Charles was before Managing Director at a big consultancy company"</span><span class="o">,</span> <span class="s">"Managing Director"</span><span class="o">,</span><span class="mi">24</span><span class="o">,</span> <span class="mi">40</span><span class="o">,)</span>
+<span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span> <span class="s">"target"</span><span class="o">,</span> <span class="s">"char_begin"</span><span class="o">,</span> <span class="s">"char_end"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">results</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="nv">results</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span>
+  <span class="s">"target"</span><span class="o">,</span>
+  <span class="s">"char_begin"</span><span class="o">,</span>
+  <span class="s">"char_end"</span><span class="o">,</span>
+  <span class="s">"token_begin"</span><span class="o">,</span>
+  <span class="s">"token_end"</span><span class="o">,</span>
+  <span class="s">"chunk.begin"</span><span class="o">,</span>
+  <span class="s">"chunk.end"</span><span class="o">,</span>
+  <span class="s">"tokens[token_begin].result as begin_result"</span><span class="o">,</span>
+  <span class="s">"tokens[token_end].result as end_result"</span><span class="o">,</span>
+  <span class="s">"chunk.result"</span>
+<span class="o">).</span><span class="py">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+
+<span class="o">+-----------------+----------+--------+-----------+---------+-----+----+------------+----------+-------------------+</span>
+<span class="o">|</span><span class="n">target</span>           <span class="o">|</span><span class="n">char_begin</span><span class="o">|</span><span class="n">char_end</span><span class="o">|</span><span class="n">token_begin</span><span class="o">|</span><span class="n">token_end</span><span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span> <span class="o">|</span><span class="n">begin_result</span><span class="o">|</span><span class="n">end_result</span><span class="o">|</span><span class="n">result</span>             <span class="o">|</span>
+<span class="o">+-----------------+----------+--------+-----------+---------+-----+----+------------+----------+-------------------+</span>
+<span class="o">|</span><span class="nc">Cadence</span><span class="ss">'s</span> <span class="nc">CTO</span>    <span class="o">|</span><span class="mi">21</span>        <span class="o">|</span><span class="mi">33</span>      <span class="o">|</span><span class="mi">4</span>          <span class="o">|</span><span class="mi">4</span>        <span class="o">|[</span><span class="err">21</span><span class="o">]</span> <span class="o">|[</span><span class="err">29</span><span class="o">]|</span><span class="nc">Cadence</span><span class="ss">'s</span>   <span class="o">|</span><span class="nc">Cadence</span><span class="ss">'s</span> <span class="o">|[</span><span class="kt">Cadence's</span> <span class="kt">CTO</span><span class="o">]</span>    <span class="o">|</span>
+<span class="o">|</span><span class="nc">Managing</span> <span class="nc">Director</span><span class="o">|</span><span class="mi">24</span>        <span class="o">|</span><span class="mi">40</span>      <span class="o">|</span><span class="mi">5</span>          <span class="o">|</span><span class="mi">5</span>        <span class="o">|[</span><span class="err">24</span><span class="o">]</span> <span class="o">|[</span><span class="err">31</span><span class="o">]|</span><span class="nc">Managing</span>    <span class="o">|</span><span class="nc">Managing</span>  <span class="o">|[</span><span class="kt">Managing</span> <span class="kt">Director</span><span class="o">]|</span>
+<span class="o">+-----------------+----------+--------+-----------+---------+-----+----+------------+----------+-------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"tokens"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">AssertionChunkConverter</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"tokens"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setChunkTextCol</span><span class="o">(</span><span class="s">"target"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setChunkBeginCol</span><span class="o">(</span><span class="s">"char_begin"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setChunkEndCol</span><span class="o">(</span><span class="s">"char_end"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputTokenBeginCol</span><span class="o">(</span><span class="s">"token_begin"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputTokenEndCol</span><span class="o">(</span><span class="s">"token_end"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">sentenceDetector</span><span class="o">,</span> <span class="n">tokenizer</span><span class="o">,</span> <span class="n">converter</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="o">(</span><span class="s">"Tom Martin worked as Cadence's CTO until 2010"</span><span class="o">,</span><span class="s">"Cadence's CTO"</span><span class="o">,</span> <span class="mi">21</span><span class="o">,</span><span class="mi">33</span><span class="o">,),</span>
+    <span class="o">(</span><span class="s">"Mrs. Charles was before Managing Director at a big consultancy company"</span><span class="o">,</span><span class="s">"Managing Director"</span><span class="o">,</span><span class="mi">24</span><span class="o">,</span><span class="mi">40</span><span class="o">,)</span>
+<span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span> <span class="s">"target"</span><span class="o">,</span> <span class="s">"char_begin"</span><span class="o">,</span> <span class="s">"char_end"</span><span class="o">)</span>
+ 
+<span class="k">val</span> <span class="nv">results</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="nv">results</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span>
+  <span class="s">"target"</span><span class="o">,</span>
+  <span class="s">"char_begin"</span><span class="o">,</span>
+  <span class="s">"char_end"</span><span class="o">,</span>
+  <span class="s">"token_begin"</span><span class="o">,</span>
+  <span class="s">"token_end"</span><span class="o">,</span>
+  <span class="s">"chunk.begin"</span><span class="o">,</span>
+  <span class="s">"chunk.end"</span><span class="o">,</span>
+  <span class="s">"tokens[token_begin].result as begin_result"</span><span class="o">,</span>
+  <span class="s">"tokens[token_end].result as end_result"</span><span class="o">,</span>
+  <span class="s">"chunk.result"</span>
+<span class="o">).</span><span class="py">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+
+<span class="o">+-------+----------+--------+-----------+---------+--------------------------+------------------------+-------+-----------------------------------------------+</span>
+<span class="o">|</span><span class="n">target</span> <span class="o">|</span><span class="n">char_begin</span><span class="o">|</span><span class="n">char_end</span><span class="o">|</span><span class="n">token_begin</span><span class="o">|</span><span class="n">token_end</span><span class="o">|</span><span class="n">tokens</span><span class="o">[</span><span class="kt">token_begin</span><span class="o">].</span><span class="py">result</span><span class="o">|</span><span class="n">tokens</span><span class="o">[</span><span class="kt">token_end</span><span class="o">].</span><span class="py">result</span><span class="o">|</span><span class="n">target</span> <span class="o">|</span><span class="n">chunk</span>                                          <span class="o">|</span>
+<span class="o">+-------+----------+--------+-----------+---------+--------------------------+------------------------+-------+-----------------------------------------------+</span>
+<span class="o">|</span><span class="n">parties</span><span class="o">|</span><span class="mi">44</span>        <span class="o">|</span><span class="mi">50</span>      <span class="o">|</span><span class="mi">7</span>          <span class="o">|</span><span class="mi">6</span>        <span class="o">|</span><span class="n">parties</span>                   <span class="o">|</span><span class="n">different</span>               <span class="o">|</span><span class="n">parties</span><span class="o">|[{</span><span class="kt">chunk</span>, <span class="err">44</span>, <span class="err">42</span>, <span class="kt">parties</span>, <span class="o">{</span><span class="kt">sentence</span> <span class="kt">-&gt;</span> <span class="err">0</span><span class="o">}</span>, <span class="o">[]}]|</span>
+<span class="o">|</span><span class="nc">Agent</span>  <span class="o">|</span><span class="mi">19</span>        <span class="o">|</span><span class="mi">23</span>      <span class="o">|</span><span class="mi">2</span>          <span class="o">|</span><span class="mi">1</span>        <span class="o">|</span><span class="nc">Agent</span>                     <span class="o">|</span><span class="nc">Administrative</span>          <span class="o">|</span><span class="nc">Agent</span>  <span class="o">|[{</span><span class="kt">chunk</span>, <span class="err">19</span>, <span class="err">17</span>, <span class="kt">Agent</span>, <span class="o">{</span><span class="kt">sentence</span> <span class="kt">-&gt;</span> <span class="err">0</span><span class="o">}</span>, <span class="o">[]}]</span>  <span class="o">|</span>
+<span class="o">+-------+----------+--------+-----------+---------+--------------------------+------------------------+-------+-----------------------------------------------+</span>
+</code></pre></div>          </div>
 
         </div>
 
