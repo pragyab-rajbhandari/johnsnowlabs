@@ -1993,25 +1993,36 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
 
           <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
 <span class="c1"># Define pipeline stages to extract NER chunks first
-</span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-  <span class="p">[</span><span class="s">"Patient with severe fever and sore throat"</span><span class="p">],</span>
-  <span class="p">[</span><span class="s">"Patient shows no stomach pain"</span><span class="p">],</span>
-  <span class="p">[</span><span class="s">"She was maintained on an epidural and PCA for pain control."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">().</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
-<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">]).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">]).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+</span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
 <span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
 <span class="n">nerModel</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">]).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
-<span class="n">nerConverter</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">NerConverter</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">]).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">nerConverter</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">NerConverter</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
 <span class="c1"># Then a pretrained AssertionDLModel is used to extract the assertion status
 </span><span class="n">clinicalAssertion</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">AssertionDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"assertion_dl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
   <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>
 
-<span class="n">assertionPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+<span class="n">assertionPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
   <span class="n">documentAssembler</span><span class="p">,</span>
   <span class="n">sentenceDetector</span><span class="p">,</span>
   <span class="n">tokenizer</span><span class="p">,</span>
@@ -2021,13 +2032,18 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
   <span class="n">clinicalAssertion</span>
 <span class="p">])</span>
 
-<span class="n">assertionModel</span> <span class="o">=</span> <span class="n">assertionPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+  <span class="p">[</span><span class="s">"Patient with severe fever and sore throat"</span><span class="p">],</span>
+  <span class="p">[</span><span class="s">"Patient shows no stomach pain"</span><span class="p">],</span>
+  <span class="p">[</span><span class="s">"She was maintained on an epidural and PCA for pain control."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
 
 <span class="c1"># Show results
-</span><span class="n">result</span> <span class="o">=</span> <span class="n">assertionModel</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">result</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"ner_chunk.result"</span><span class="p">,</span> <span class="s">"assertion.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">assertionPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"ner_chunk.result as chunk_result"</span><span class="p">,</span> <span class="s">"assertion.result as assertion_result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
 <span class="o">+--------------------------------+--------------------------------+</span>
-<span class="o">|</span><span class="n">result</span>                          <span class="o">|</span><span class="n">result</span>                          <span class="o">|</span>
+<span class="o">|</span><span class="n">chunk_result</span>                    <span class="o">|</span><span class="n">assertion_result</span>                <span class="o">|</span>
 <span class="o">+--------------------------------+--------------------------------+</span>
 <span class="o">|</span><span class="p">[</span><span class="n">severe</span> <span class="n">fever</span><span class="p">,</span> <span class="n">sore</span> <span class="n">throat</span><span class="p">]</span>     <span class="o">|</span><span class="p">[</span><span class="n">present</span><span class="p">,</span> <span class="n">present</span><span class="p">]</span>              <span class="o">|</span>
 <span class="o">|</span><span class="p">[</span><span class="n">stomach</span> <span class="n">pain</span><span class="p">]</span>                  <span class="o">|</span><span class="p">[</span><span class="n">absent</span><span class="p">]</span>                        <span class="o">|</span>
@@ -2040,8 +2056,6 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
         <div class="tab-mfl-content">
 
           <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Our competitors include the following by general category: legacy antivirus product providers, such as McAfee LLC and Broadcom Inc."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
@@ -2071,7 +2085,7 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>
     
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
     <span class="n">document_assembler</span><span class="p">,</span> 
     <span class="n">sentence_detector</span><span class="p">,</span>
     <span class="n">tokenizer</span><span class="p">,</span>
@@ -2081,15 +2095,17 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
     <span class="n">assertion</span>
     <span class="p">])</span>
 
-<span class="n">assertionModel</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Our competitors include the following by general category: legacy antivirus product providers, such as McAfee LLC and Broadcom Inc."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
 
 <span class="c1"># Show results
-</span><span class="n">result</span> <span class="o">=</span> <span class="n">assertionModel</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">explode</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">arrays_zip</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">ner_chunk</span><span class="p">.</span><span class="n">result</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">ner_chunk</span><span class="p">.</span><span class="n">metadata</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">assertion</span><span class="p">.</span><span class="n">result</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">"cols"</span><span class="p">))</span>\
       <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['1']['sentence']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"sent_id"</span><span class="p">),</span>
               <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['0']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">),</span>
               <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['1']['entity']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"ner_label"</span><span class="p">),</span>
               <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['2']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
 <span class="o">+-------+------------+---------+----------+</span>
 <span class="o">|</span><span class="n">sent_id</span><span class="o">|</span><span class="n">chunk</span>       <span class="o">|</span><span class="n">ner_label</span><span class="o">|</span><span class="n">assertion</span> <span class="o">|</span>
 <span class="o">+-------+------------+---------+----------+</span>
@@ -2103,9 +2119,6 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
         <div class="tab-mfl-content">
 
           <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"This is an Intellectual Property Agreement between Amazon Inc. and Atlantic Inc."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
 <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
@@ -2139,8 +2152,7 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"embeddings_ass"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>
 
-
-<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
             <span class="n">document_assembler</span><span class="p">,</span> 
             <span class="n">sentence_detector</span><span class="p">,</span>
             <span class="n">tokenizer</span><span class="p">,</span>
@@ -2151,10 +2163,11 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
             <span class="n">assertion</span>
             <span class="p">])</span>
 
-<span class="n">assertionModel</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"This is an Intellectual Property Agreement between Amazon Inc. and Atlantic Inc."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
 
 <span class="c1"># Show results
-</span><span class="n">result</span> <span class="o">=</span> <span class="n">assertionModel</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">explode</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">arrays_zip</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">ner_chunk</span><span class="p">.</span><span class="n">result</span><span class="p">,</span>  
                                      <span class="n">result</span><span class="p">.</span><span class="n">ner_chunk</span><span class="p">.</span><span class="n">begin</span><span class="p">,</span> 
                                      <span class="n">result</span><span class="p">.</span><span class="n">ner_chunk</span><span class="p">.</span><span class="n">end</span><span class="p">,</span> 
@@ -2165,6 +2178,7 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
               <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['2']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"end"</span><span class="p">),</span>
               <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['3']['entity']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"ner_label"</span><span class="p">),</span>
               <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['4']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
 <span class="o">+-------------------------------+-----+---+---------+---------+</span>
 <span class="o">|</span><span class="n">chunk</span>                          <span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span><span class="o">|</span><span class="n">assertion</span><span class="o">|</span>
 <span class="o">+-------------------------------+-----+---+---------+---------+</span>
@@ -2187,25 +2201,36 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
 
         <div class="tab-mfl-content">
 
-          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Define pipeline stages to extract NER chunks first</span>
 
-// </span><span class="nn">Define</span> <span class="n">pipeline</span> <span class="n">stages</span> <span class="n">to</span> <span class="n">extract</span> <span class="nc">NER</span> <span class="n">chunks</span> <span class="n">first</span>
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
-  <span class="s">"Patient with severe fever and sore throat"</span><span class="o">,</span>
-  <span class="s">"Patient shows no stomach pain"</span><span class="o">,</span>
-  <span class="s">"She was maintained on an epidural and PCA for pain control."</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">().</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">SentenceDetector</span><span class="o">().</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Tokenizer</span><span class="o">().</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">).</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">)).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">nerModel</span> <span class="k">=</span> <span class="nv">medical</span><span class="o">.</span><span class="py">NerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">)).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">NerConverter</span><span class="o">().</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">)).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nerModel</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
 <span class="c1">// Then a pretrained AssertionDLModel is used to extract the assertion status</span>
-<span class="k">val</span> <span class="nv">clinicalAssertion</span> <span class="k">=</span> <span class="nv">medical</span><span class="o">.</span><span class="py">AssertionDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"assertion_dl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">clinicalAssertion</span> <span class="k">=</span> <span class="nv">AssertionDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"assertion_dl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">assertionPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
   <span class="n">documentAssembler</span><span class="o">,</span>
@@ -2217,13 +2242,18 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
   <span class="n">clinicalAssertion</span>
 <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">assertionModel</span> <span class="k">=</span> <span class="nv">assertionPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+  <span class="s">"Patient with severe fever and sore throat"</span><span class="o">,</span>
+  <span class="s">"Patient shows no stomach pain"</span><span class="o">,</span>
+  <span class="s">"She was maintained on an epidural and PCA for pain control."</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  
 
 <span class="c1">// Show results</span>
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">assertionModel</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="nv">result</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"ner_chunk.result"</span><span class="o">,</span> <span class="s">"assertion.result"</span><span class="o">).</span><span class="py">show</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">truncate</span><span class="k">=</span><span class="kc">false</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">assertionPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="nv">result</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"ner_chunk.result as chunk_result"</span><span class="o">,</span> <span class="s">"assertion.result as assertion_result"</span><span class="o">).</span><span class="py">show</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">truncate</span><span class="k">=</span><span class="kc">false</span><span class="o">)</span>
+
 <span class="o">+--------------------------------+--------------------------------+</span>
-<span class="o">|</span><span class="n">result</span>                          <span class="o">|</span><span class="n">result</span>                          <span class="o">|</span>
+<span class="o">|</span><span class="n">chunk_result</span>                    <span class="o">|</span><span class="n">assertion_result</span>                <span class="o">|</span>
 <span class="o">+--------------------------------+--------------------------------+</span>
 <span class="o">|[</span><span class="kt">severe</span> <span class="kt">fever</span>, <span class="kt">sore</span> <span class="kt">throat</span><span class="o">]</span>     <span class="o">|[</span><span class="kt">present</span>, <span class="kt">present</span><span class="o">]</span>              <span class="o">|</span>
 <span class="o">|[</span><span class="kt">stomach</span> <span class="kt">pain</span><span class="o">]</span>                  <span class="o">|[</span><span class="kt">absent</span><span class="o">]</span>                        <span class="o">|</span>
@@ -2235,35 +2265,31 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
 
         <div class="tab-mfl-content">
 
-          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
-
-</span><span class="nn">val</span> <span class="n">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"Our competitors include the following by general category: legacy antivirus product providers, such as McAfee LLC and Broadcom Inc."</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span>  <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">SentenceDetector</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span>  <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span>  <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Tokenizer</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span>  <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span>  <span class="nv">nlp</span><span class="o">.</span><span class="py">BertEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span>  <span class="nv">BertEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">finance</span><span class="o">.</span><span class="py">NerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"finner_orgs_prods_alias"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"finance/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">FinanceNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"finner_orgs_prods_alias"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"finance/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">finance</span><span class="o">.</span><span class="py">NerConverterInternal</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">assertion</span> <span class="k">=</span> <span class="nv">finance</span><span class="o">.</span><span class="py">AssertionDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"finassertion_competitors"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"finance/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">assertion</span> <span class="k">=</span> <span class="nv">AssertionDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"finassertion_competitors"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"finance/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)</span>
     
@@ -2275,49 +2301,56 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
     <span class="n">ner_model</span><span class="o">,</span>
     <span class="n">ner_converter</span><span class="o">,</span>
     <span class="n">assertion</span>
-    <span class="o">)</span>
+    <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">assertionModel</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"Our competitors include the following by general category: legacy antivirus product providers, such as McAfee LLC and Broadcom Inc."</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+
+<span class="c1">// Show results</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="o">+-------+------------+---------+----------+</span>
+<span class="o">|</span><span class="n">sent_id</span><span class="o">|</span><span class="n">chunk</span>       <span class="o">|</span><span class="n">ner_label</span><span class="o">|</span><span class="n">assertion</span> <span class="o">|</span>
+<span class="o">+-------+------------+---------+----------+</span>
+<span class="o">|</span><span class="mi">0</span>      <span class="o">|</span><span class="nc">McAfee</span> <span class="nc">LLC</span>  <span class="o">|</span><span class="nc">ORG</span>      <span class="o">|</span><span class="nc">COMPETITOR</span><span class="o">|</span>
+<span class="o">|</span><span class="mi">0</span>      <span class="o">|</span><span class="nc">Broadcom</span> <span class="nc">Inc</span><span class="o">|</span><span class="nc">ORG</span>      <span class="o">|</span><span class="nc">COMPETITOR</span><span class="o">|</span>
+<span class="o">+-------+------------+---------+----------+</span>
 </code></pre></div>          </div>
 
         </div>
 
         <div class="tab-mfl-content">
 
-          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
-
-</span><span class="nn">val</span> <span class="n">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"This is an Intellectual Property Agreement between Amazon Inc. and Atlantic Inc."</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl"</span><span class="o">,</span><span class="s">"xx"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl"</span><span class="o">,</span><span class="s">"xx"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Tokenizer</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">embeddings_ner</span> <span class="k">=</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">RoBertaEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"roberta_embeddings_legal_roberta_base"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">embeddings_ner</span> <span class="k">=</span> <span class="nv">RoBertaEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"roberta_embeddings_legal_roberta_base"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings_ner"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">legal</span><span class="o">.</span><span class="py">NerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="ss">'legner_contract_doc_partie</span><span class="n">s</span><span class="o">',</span> <span class="ss">'e</span><span class="n">n</span><span class="o">',</span> <span class="ss">'legal</span><span class="o">/</span><span class="n">models</span><span class="o">')</span>
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">LegalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="ss">'legner_contract_doc_partie</span><span class="n">s</span><span class="o">',</span> <span class="ss">'e</span><span class="n">n</span><span class="o">',</span> <span class="ss">'legal</span><span class="o">/</span><span class="n">models</span><span class="o">')</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings_ner"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">NerConverter</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"DOC"</span><span class="o">,</span> <span class="s">"EFFDATE"</span><span class="o">,</span> <span class="s">"PARTY"</span><span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">embeddings_ass</span> <span class="k">=</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">BertEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">embeddings_ass</span> <span class="k">=</span> <span class="nv">BertEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings_ass"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">assertion</span> <span class="k">=</span> <span class="nv">legal</span><span class="o">.</span><span class="py">AssertionDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"legassertion_time"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"legal/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">assertion</span> <span class="k">=</span> <span class="nv">AssertionDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"legassertion_time"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"legal/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"embeddings_ass"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)</span>
     
@@ -2330,9 +2363,21 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
     <span class="n">ner_converter</span><span class="o">,</span>
     <span class="n">embeddings_ass</span><span class="o">,</span>
     <span class="n">assertion</span>
-    <span class="o">)</span>
+    <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">assertionModel</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"This is an Intellectual Property Agreement between Amazon Inc. and Atlantic Inc."</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+
+<span class="c1">// Show results</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="o">+-------------------------------+-----+---+---------+---------+</span>
+<span class="o">|</span><span class="n">chunk</span>                          <span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span><span class="o">|</span><span class="n">assertion</span><span class="o">|</span>
+<span class="o">+-------------------------------+-----+---+---------+---------+</span>
+<span class="o">|</span><span class="nc">Intellectual</span> <span class="nc">Property</span> <span class="nc">Agreement</span><span class="o">|</span><span class="mi">11</span>   <span class="o">|</span><span class="mi">41</span> <span class="o">|</span><span class="nc">DOC</span>      <span class="o">|</span><span class="nc">PRESENT</span>  <span class="o">|</span>
+<span class="o">|</span><span class="nc">Amazon</span> <span class="nc">Inc</span>                     <span class="o">|</span><span class="mi">51</span>   <span class="o">|</span><span class="mi">60</span> <span class="o">|</span><span class="nc">PARTY</span>    <span class="o">|</span><span class="nc">PRESENT</span>  <span class="o">|</span>
+<span class="o">|</span><span class="nc">Atlantic</span> <span class="nc">Inc</span>                   <span class="o">|</span><span class="mi">67</span>   <span class="o">|</span><span class="mi">78</span> <span class="o">|</span><span class="nc">PARTY</span>    <span class="o">|</span><span class="nc">PRESENT</span>  <span class="o">|</span>
+<span class="o">+-------------------------------+-----+---+---------+---------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -2387,12 +2432,20 @@ For pretrained models please use AssertionDLModel and see the
 </span><span class="n">document</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
 <span class="n">chunk</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Doc2Chunk</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setChunkCol</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setStartCol</span><span class="p">(</span><span class="s">"start"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setStartColByTokenIndex</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setFailOnMissing</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
 <span class="n">token</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
 <span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
@@ -2410,7 +2463,7 @@ For pretrained models please use AssertionDLModel and see the
     <span class="p">.</span><span class="n">setEndCol</span><span class="p">(</span><span class="s">"end"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setMaxSentLen</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span>
 
-<span class="n">trainingPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+<span class="n">trainingPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
     <span class="n">document</span><span class="p">,</span>
     <span class="n">chunk</span><span class="p">,</span>
     <span class="n">token</span><span class="p">,</span>
@@ -2418,8 +2471,7 @@ For pretrained models please use AssertionDLModel and see the
     <span class="n">assertionStatus</span>
 <span class="p">])</span>
 
-<span class="n">assertionModel</span> <span class="o">=</span> <span class="n">trainingPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">assertionResults</span> <span class="o">=</span> <span class="n">assertionModel</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">assertionResults</span> <span class="o">=</span> <span class="n">trainingPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
 </code></pre></div>          </div>
 
         </div>
@@ -2431,12 +2483,15 @@ For pretrained models please use AssertionDLModel and see the
 </span><span class="n">document</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
 <span class="n">chunk</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Doc2Chunk</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
+
 <span class="n">token</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
 <span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
@@ -2454,7 +2509,7 @@ For pretrained models please use AssertionDLModel and see the
     <span class="p">.</span><span class="n">setEndCol</span><span class="p">(</span><span class="s">"end"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setMaxSentLen</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span>
 
-<span class="n">trainingPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+<span class="n">trainingPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
     <span class="n">document</span><span class="p">,</span>
     <span class="n">chunk</span><span class="p">,</span>
     <span class="n">token</span><span class="p">,</span>
@@ -2462,8 +2517,7 @@ For pretrained models please use AssertionDLModel and see the
     <span class="n">assertionStatus</span>
 <span class="p">])</span>
 
-<span class="n">assertionModel</span> <span class="o">=</span> <span class="n">trainingPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">assertionResults</span> <span class="o">=</span> <span class="n">assertionModel</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">assertionResults</span> <span class="o">=</span> <span class="n">trainingPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
 </code></pre></div>          </div>
 
         </div>
@@ -2475,12 +2529,15 @@ For pretrained models please use AssertionDLModel and see the
 </span><span class="n">document</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
 <span class="n">chunk</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Doc2Chunk</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"doc_chunk"</span><span class="p">)</span>
+
 <span class="n">token</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'document'</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'token'</span><span class="p">)</span>
+
 <span class="n">roberta_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">RoBertaEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"roberta_embeddings_legal_roberta_base"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span> \
@@ -2489,7 +2546,7 @@ For pretrained models please use AssertionDLModel and see the
 <span class="c1"># Define AssertionDLApproach with parameters and start training
 </span><span class="n">assertionStatus</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">AssertionDLApproach</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setLabelCol</span><span class="p">(</span><span class="s">"assertion_label"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"doc_chunk"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"doc_chunk"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setLearningRate</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>\
@@ -2506,7 +2563,7 @@ For pretrained models please use AssertionDLModel and see the
     <span class="c1">#.setValidationSplit(0.2)\    
 </span>    <span class="c1">#.setDropout(0.1)\    
 </span>
-<span class="n">trainingPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+<span class="n">trainingPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
     <span class="n">document</span><span class="p">,</span>
     <span class="n">chunk</span><span class="p">,</span>
     <span class="n">token</span><span class="p">,</span>
@@ -2514,8 +2571,7 @@ For pretrained models please use AssertionDLModel and see the
     <span class="n">assertionStatus</span>
 <span class="p">])</span>
 
-<span class="n">assertionModel</span> <span class="o">=</span> <span class="n">trainingPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">assertionResults</span> <span class="o">=</span> <span class="n">assertionModel</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">assertionResults</span> <span class="o">=</span> <span class="n">trainingPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
 </code></pre></div>          </div>
 
         </div>
@@ -2531,30 +2587,31 @@ For pretrained models please use AssertionDLModel and see the
 
         <div class="tab-mfl-content">
 
-          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
-
-// </span><span class="nn">First</span><span class="o">,</span> <span class="n">pipeline</span> <span class="n">stages</span> <span class="k">for</span> <span class="n">pre</span><span class="o">-</span><span class="n">processing</span> <span class="n">the</span> <span class="nf">dataset</span> <span class="o">(</span><span class="n">containing</span> <span class="n">columns</span> <span class="k">for</span> <span class="n">text</span> <span class="n">and</span> <span class="n">label</span><span class="o">)</span> <span class="n">are</span> <span class="n">defined</span><span class="o">.</span>
-<span class="k">val</span> <span class="nv">document</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// First, pipeline stages for pre-processing the dataset (containing columns for text and label) are defined.</span>
+<span class="k">val</span> <span class="nv">document</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
   <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">chunk</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Doc2Chunk</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">chunk</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Doc2Chunk</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">token</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Tokenizer</span><span class="o">()</span>
+
+<span class="k">val</span> <span class="nv">token</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
 
 <span class="c1">// Define AssertionDLApproach with parameters and start training</span>
-<span class="k">val</span> <span class="nv">assertionStatus</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">medical</span><span class="o">.</span><span class="py">AssertionDLApproach</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">assertionStatus</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">AssertionDLApproach</span><span class="o">()</span>
   <span class="o">.</span><span class="py">setLabelCol</span><span class="o">(</span><span class="s">"label"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setBatchSize</span><span class="o">(</span><span class="mi">128</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setDropout</span><span class="o">(</span><span class="mf">0.012f</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setLearningRate</span><span class="o">(</span><span class="mf">0.015f</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setDropout</span><span class="o">(</span><span class="mf">0.012</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setLearningRate</span><span class="o">(</span><span class="mf">0.015</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setEpochs</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setStartCol</span><span class="o">(</span><span class="s">"start"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setEndCol</span><span class="o">(</span><span class="s">"end"</span><span class="o">)</span>
@@ -2568,8 +2625,7 @@ For pretrained models please use AssertionDLModel and see the
   <span class="n">assertionStatus</span>
 <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">assertionModel</span> <span class="k">=</span> <span class="nv">trainingPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">assertionResults</span> <span class="k">=</span> <span class="nv">assertionModel</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">assertionResults</span> <span class="k">=</span> <span class="nv">trainingPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
 </code></pre></div>          </div>
 
         </div>
@@ -2579,27 +2635,30 @@ For pretrained models please use AssertionDLModel and see the
           <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
 
 // </span><span class="nn">First</span><span class="o">,</span> <span class="n">pipeline</span> <span class="n">stages</span> <span class="k">for</span> <span class="n">pre</span><span class="o">-</span><span class="n">processing</span> <span class="n">the</span> <span class="nf">dataset</span> <span class="o">(</span><span class="n">containing</span> <span class="n">columns</span> <span class="k">for</span> <span class="n">text</span> <span class="n">and</span> <span class="n">label</span><span class="o">)</span> <span class="n">are</span> <span class="n">defined</span><span class="o">.</span>
-<span class="k">val</span> <span class="nv">document</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">document</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
   <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">chunk</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Doc2Chunk</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">chunk</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Doc2Chunk</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">token</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Tokenizer</span><span class="o">()</span>
+
+<span class="k">val</span> <span class="nv">token</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
 
 <span class="c1">// Define AssertionDLApproach with parameters and start training</span>
-<span class="k">val</span> <span class="nv">assertionStatus</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">finance</span><span class="o">.</span><span class="py">AssertionDLApproach</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">assertionStatus</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">AssertionDLApproach</span><span class="o">()</span>
   <span class="o">.</span><span class="py">setLabelCol</span><span class="o">(</span><span class="s">"label"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setBatchSize</span><span class="o">(</span><span class="mi">128</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setDropout</span><span class="o">(</span><span class="mf">0.012f</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setLearningRate</span><span class="o">(</span><span class="mf">0.015f</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setDropout</span><span class="o">(</span><span class="mf">0.012</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setLearningRate</span><span class="o">(</span><span class="mf">0.015</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setEpochs</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setStartCol</span><span class="o">(</span><span class="s">"start"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setEndCol</span><span class="o">(</span><span class="s">"end"</span><span class="o">)</span>
@@ -2613,54 +2672,54 @@ For pretrained models please use AssertionDLModel and see the
   <span class="n">assertionStatus</span>
 <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">assertionModel</span> <span class="k">=</span> <span class="nv">trainingPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">assertionResults</span> <span class="k">=</span> <span class="nv">assertionModel</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">assertionResults</span> <span class="k">=</span> <span class="nv">trainingPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
 </code></pre></div>          </div>
 
         </div>
 
         <div class="tab-mfl-content">
 
-          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">from</span> <span class="n">johnsnowlabs</span> <span class="k">import</span> <span class="err">* 
-
-</span><span class="nn">val</span> <span class="n">document</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">DocumentAssembler</span><span class="o">()\</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)\</span>
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">chunk</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Doc2Chunk</span><span class="o">()\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"doc_chunk"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setChunkCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setStartCol</span><span class="o">(</span><span class="s">"tkn_start"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setStartColByTokenIndex</span><span class="o">(</span><span class="nc">True</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setFailOnMissing</span><span class="o">(</span><span class="nc">False</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setLowerCase</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">token</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">Tokenizer</span><span class="o">()\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="kt">'document'</span><span class="o">])\</span>
+
+<span class="k">val</span> <span class="nv">chunk</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Doc2Chunk</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"doc_chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setChunkCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setStartCol</span><span class="o">(</span><span class="s">"tkn_start"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setStartColByTokenIndex</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setFailOnMissing</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setLowerCase</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">token</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="ss">'documen</span><span class="n">t</span><span class="o">'))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="ss">'toke</span><span class="n">n</span><span class="o">')</span>
-<span class="k">val</span> <span class="nv">roberta_embeddings</span> <span class="k">=</span> <span class="nv">nlp</span><span class="o">.</span><span class="py">RoBertaEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"roberta_embeddings_legal_roberta_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span> <span class="o">\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">document</span><span class="err">"</span>, <span class="err">"</span><span class="kt">token</span><span class="err">"</span><span class="o">])</span> <span class="o">\</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span> <span class="o">\</span>
+
+<span class="k">val</span> <span class="nv">roberta_embeddings</span> <span class="k">=</span> <span class="nv">RoBertaEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"roberta_embeddings_legal_roberta_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span> 
     <span class="o">.</span><span class="py">setMaxSentenceLength</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
 
 <span class="k">#</span> <span class="nc">Define</span> <span class="nc">AssertionDLApproach</span> <span class="k">with</span> <span class="n">parameters</span> <span class="n">and</span> <span class="n">start</span> <span class="n">training</span>
-<span class="k">val</span> <span class="nv">assertionStatus</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">legal</span><span class="o">.</span><span class="py">AssertionDLApproach</span><span class="o">()\</span>
-    <span class="o">.</span><span class="py">setLabelCol</span><span class="o">(</span><span class="s">"assertion_label"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"doc_chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setBatchSize</span><span class="o">(</span><span class="mi">128</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setLearningRate</span><span class="o">(</span><span class="mf">0.001</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setEpochs</span><span class="o">(</span><span class="mi">2</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setStartCol</span><span class="o">(</span><span class="s">"tkn_start"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setEndCol</span><span class="o">(</span><span class="s">"tkn_end"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setMaxSentLen</span><span class="o">(</span><span class="mi">1200</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setEnableOutputLogs</span><span class="o">(</span><span class="nc">True</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setOutputLogsPath</span><span class="o">(</span><span class="ss">'training_logs</span><span class="o">/')\</span>
-    <span class="o">.</span><span class="py">setGraphFolder</span><span class="o">(</span><span class="n">graph_folder</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setGraphFile</span><span class="o">(</span><span class="n">f</span><span class="s">"{graph_folder}/assertion_graph.pb"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setTestDataset</span><span class="o">(</span><span class="n">path</span><span class="o">=</span><span class="s">"test_data.parquet"</span><span class="o">,</span> <span class="n">read_as</span><span class="o">='</span><span class="nc">SPARK</span><span class="o">',</span> <span class="n">options</span><span class="o">={</span><span class="ss">'forma</span><span class="n">t</span><span class="o">':</span> <span class="ss">'parque</span><span class="n">t</span><span class="o">'})\</span>
+<span class="k">val</span> <span class="nv">assertionStatus</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">AssertionDLApproach</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setLabelCol</span><span class="o">(</span><span class="s">"assertion_label"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"doc_chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setBatchSize</span><span class="o">(</span><span class="mi">128</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setLearningRate</span><span class="o">(</span><span class="mf">0.001</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setEpochs</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setStartCol</span><span class="o">(</span><span class="s">"tkn_start"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setEndCol</span><span class="o">(</span><span class="s">"tkn_end"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMaxSentLen</span><span class="o">(</span><span class="mi">1200</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setEnableOutputLogs</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputLogsPath</span><span class="o">(</span><span class="ss">'training_logs</span><span class="o">/')</span>
+    <span class="o">.</span><span class="py">setGraphFolder</span><span class="o">(</span><span class="n">graph_folder</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setGraphFile</span><span class="o">(</span><span class="n">f</span><span class="s">"{graph_folder}/assertion_graph.pb"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setTestDataset</span><span class="o">(</span><span class="n">path</span><span class="o">=</span><span class="s">"test_data.parquet"</span><span class="o">,</span> <span class="n">read_as</span><span class="o">='</span><span class="nc">SPARK</span><span class="o">',</span> <span class="n">options</span><span class="o">={</span><span class="ss">'forma</span><span class="n">t</span><span class="o">':</span> <span class="ss">'parque</span><span class="n">t</span><span class="o">'})</span>
     <span class="o">.</span><span class="py">setScopeWindow</span><span class="o">(</span><span class="n">scope_window</span><span class="o">)</span>
-    <span class="o">#.</span><span class="py">setValidationSplit</span><span class="o">(</span><span class="mf">0.2</span><span class="o">)\</span>    
-    <span class="o">#.</span><span class="py">setDropout</span><span class="o">(</span><span class="mf">0.1</span><span class="o">)\</span>    
+    <span class="o">#.</span><span class="py">setValidationSplit</span><span class="o">(</span><span class="mf">0.2</span><span class="o">)</span> 
+    <span class="o">#.</span><span class="py">setDropout</span><span class="o">(</span><span class="mf">0.1</span><span class="o">)</span> 
 
 <span class="k">val</span> <span class="nv">trainingPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
   <span class="n">document</span><span class="o">,</span>
@@ -2670,8 +2729,7 @@ For pretrained models please use AssertionDLModel and see the
   <span class="n">assertionStatus</span>
 <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">assertionModel</span> <span class="k">=</span> <span class="nv">trainingPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">assertionResults</span> <span class="k">=</span> <span class="nv">assertionModel</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">assertionResults</span> <span class="k">=</span> <span class="nv">trainingPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
 </code></pre></div>          </div>
 
         </div>
