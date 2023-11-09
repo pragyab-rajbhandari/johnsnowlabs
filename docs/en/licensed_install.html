@@ -917,7 +917,7 @@ running</p>
 java -version
 conda create -n sparknlp python=3.8 -y
 conda activate sparknlp
-pip install spark-nlp==4.4.1 pyspark==3.1.2
+pip install spark-nlp==5.1.2 pyspark==3.2.1
 pip install jupyter
 conda env config vars set PYSPARK_PYTHON=python
 conda activate sparknlp
@@ -978,28 +978,60 @@ jupyter notebook
 
   <p>A docker image that contains all the required libraries for installing and running Enterprise Spark NLP libraries is also available. However, it does not contain the library itself, as it is licensed, and requires installation credentials.</p>
 
-  <p>Make sure you have a valid license for Enterprise Spark NLP libraries (in case you do not have one, you can ask for a trial <a href="https://www.johnsnowlabs.com/install/">here</a> ), and follow the instructions below:</p>
+  <p>Make sure you have a valid license for Enterprise Spark NLP libraries (in case you do not have one, you can ask for a trial <a href="https://www.johnsnowlabs.com/install/">here</a>), and follow the instructions below:</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="instructions">Instructions</h4>
+  <h4 id="docker-image-for-running-spark-nlp-for-healthcare-inside-jupyter-notebook">Docker Image for running Spark NLP for Healthcare inside Jupyter Notebook</h4>
+
+  <p>The Image contains all the required libraries for installing and running Spark NLP for Healthcare. However, it does not contain the library itself, as it is licensed, and requires installation credentials.</p>
+
+  <ul>
+    <li>Please download the necessary files from the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter">here</a> or just get them with commandline as the following:</li>
+  </ul>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o</span> Dockerfile https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter/Dockerfile
+curl <span class="nt">-o</span> entrypoint.sh https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter/entrypoint.sh
+curl <span class="nt">-o</span> requirements.txt https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter/requirements.txt
+</code></pre></div>  </div>
+
+  <ul>
+    <li>Download your license key in json format from <a href="https://my.johnsnowlabs.com/">my.JohnSnowLabs.com</a> and put the same folder</li>
+    <li>Make sure you have valid license for Spark NLP for Healthcare,  and run the following command:</li>
+  </ul>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-v</span> /home/jsl_keys.json:/notebooks/sparknlp_keys.json <span class="nt">-p</span> 8888:8888 <span class="nt">-d</span> johnsnowlabs/sparknlp:sparknlp_for_healthcare_jupyter
+</code></pre></div>  </div>
+  <ul>
+    <li>Please replace values inside <code class="language-plaintext highlighter-rouge">tags</code>. For instance, replace <code class="language-plaintext highlighter-rouge">/home/jsl_keys.json</code> with the correct license json absolute path.</li>
+    <li>Make sure docker is installed on your system.</li>
+    <li>Run <code class="language-plaintext highlighter-rouge">docker ps</code> to validate the container is running.</li>
+    <li>If your container is not running, look at docker logs to identify issue.</li>
+    <li>If the default port <code class="language-plaintext highlighter-rouge">8888</code> is already occupied by another process, please change the mapping. Only change values inside the <code class="language-plaintext highlighter-rouge">tags</code>.</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="alternative-docker-image-instractions">Alternative Docker Image Instractions</h4>
 
   <ul>
     <li>Run the following commands to download the <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> and the <code class="language-plaintext highlighter-rouge">sparknlp_keys.txt</code> files on your local machine:
-      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o</span> docker-compose.yaml https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/blob/513a4d682f11abc33b2e26ef8a9d72ad52a7b4f0/jupyter/docker_image_nlp_hc/docker-compose.yaml
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o</span> docker-compose.yaml https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_image/docker-compose.yaml
 curl <span class="nt">-o</span> sparknlp_keys.txt https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_image_nlp_hc/sparknlp_keys.txt
 </code></pre></div>      </div>
     </li>
     <li>Download your license key in json format from <a href="https://my.johnsnowlabs.com/">my.JohnSnowLabs.com</a></li>
-    <li>Populate License keys in <code class="language-plaintext highlighter-rouge">sparknlp_keys.txt</code> file.</li>
+    <li>Update License keys in <code class="language-plaintext highlighter-rouge">sparknlp_keys.txt</code> file.</li>
     <li>Run the following command to run the container in detached mode:</li>
   </ul>
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker-compose up <span class="nt">-d</span>
 </code></pre></div>  </div>
   <ul>
-    <li>By default, the jupyter notebook runs on port <code class="language-plaintext highlighter-rouge">8888</code> - you can access it by typing <code class="language-plaintext highlighter-rouge">localhost:8888</code> in your browser.</li>
+    <li>By default, the jupyter notebook runs on port <code class="language-plaintext highlighter-rouge">8888</code> - you can access it by typing <code class="language-plaintext highlighter-rouge">localhost:8888</code> in your browser</li>
+    <li>Create a new jupyter <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_image/example_notebook.ipynb">notebook</a> and start coding</li>
   </ul>
 
 </div>
@@ -1011,7 +1043,7 @@ curl <span class="nt">-o</span> sparknlp_keys.txt https://raw.githubusercontent.
     <li>Make sure docker is installed on your system.</li>
     <li>If you face any error while importing the lib inside jupyter, make sure all the credentials are correct in the key files and restart the service again.</li>
     <li>If the default port <code class="language-plaintext highlighter-rouge">8888</code> is already occupied by another process, please change the mapping.</li>
-    <li>You can change/adjust volume and port mapping in the <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file.</li>
+    <li>You can change/adjust volume and port mapping in the <code class="language-plaintext highlighter-rouge">docker-compose.yaml</code> file.</li>
     <li>You don’t have a license key? Ask for a trial license <a href="https://www.johnsnowlabs.com/install/">here</a>.</li>
   </ul>
 
@@ -1099,20 +1131,20 @@ pyspark this cell is just ignored.</p>
   <h4 id="cheatsheet">Cheatsheet</h4>
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install Spark NLP from PyPI</span>
-pip <span class="nb">install </span>spark-nlp<span class="o">==</span>3.2.3
+pip <span class="nb">install </span>spark-nlp<span class="o">==</span><span class="k">${</span><span class="nv">public_version</span><span class="k">}</span>
 
 <span class="c">#install Spark NLP helathcare</span>
 
 pip <span class="nb">install </span>spark-nlp-jsl<span class="o">==</span><span class="k">${</span><span class="nv">version</span><span class="k">}</span> <span class="nt">--extra-index-url</span> https://pypi.johnsnowlabs.com/<span class="k">${</span><span class="nv">secret</span><span class="p">.code</span><span class="k">}</span> <span class="nt">--upgrade</span>
 
 <span class="c"># Load Spark NLP with Spark Shell</span>
-spark-shell <span class="nt">--packages</span> com.johnsnowlabs.nlp:spark-nlp_2.12:3.2.3 <span class="nt">--jars</span> spark-nlp-jsl-<span class="k">${</span><span class="nv">version</span><span class="k">}</span>.jar
+spark-shell <span class="nt">--packages</span> com.johnsnowlabs.nlp:spark-nlp_2.12:<span class="k">${</span><span class="nv">public_version</span><span class="k">}</span> <span class="nt">--jars</span> spark-nlp-jsl-<span class="k">${</span><span class="nv">version</span><span class="k">}</span>.jar
 
 <span class="c"># Load Spark NLP with PySpark</span>
-pyspark <span class="nt">--packages</span> com.johnsnowlabs.nlp:spark-nlp_2.12:3.2.3  <span class="nt">--jars</span> spark-nlp-jsl-<span class="k">${</span><span class="nv">version</span><span class="k">}</span>.jar
+pyspark <span class="nt">--packages</span> com.johnsnowlabs.nlp:spark-nlp_2.12:<span class="k">${</span><span class="nv">public_version</span><span class="k">}</span> <span class="nt">--jars</span> spark-nlp-jsl-<span class="k">${</span><span class="nv">version</span><span class="k">}</span>.jar
 
 <span class="c"># Load Spark NLP with Spark Submit</span>
-spark-submit <span class="nt">--packages</span> com.johnsnowlabs.nlp:spark-nlp_2.12:3.2.3 <span class="nt">--jars</span> spark-nlp-jsl-<span class="k">${</span><span class="nv">version</span><span class="k">}</span>.jar
+spark-submit <span class="nt">--packages</span> com.johnsnowlabs.nlp:spark-nlp_2.12:<span class="k">${</span><span class="nv">public_version</span><span class="k">}</span> <span class="nt">--jars</span> spark-nlp-jsl-<span class="k">${</span><span class="nv">version</span><span class="k">}</span>.jar
 </code></pre></div>  </div>
 
 </div>
@@ -1185,7 +1217,7 @@ spark-submit <span class="nt">--packages</span> com.johnsnowlabs.nlp:spark-nlp_2
   <p>The first thing that you need is to create the json file with the credentials and the configuration in your local system.</p>
 
   <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"PUBLIC_VERSION"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.2.3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"PUBLIC_VERSION"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{public-version}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"JSL_VERSION"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{version}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"SECRET"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{version}-{secret.code}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"SPARK_NLP_LICENSE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxx"</span><span class="p">,</span><span class="w">
@@ -1393,7 +1425,7 @@ authors <span class="o">=</span> <span class="o">[</span><span class="s2">"perso
 python <span class="o">=</span> <span class="s2">"^3.7"</span>
 
 <span class="o">[</span>tool.poetry.dev-dependencies]
-spark-nlp <span class="o">=</span> <span class="s2">"3.4.4"</span>
+spark-nlp <span class="o">=</span> <span class="s2">"5.1.2"</span>
 spark-nlp-jsl <span class="o">=</span> <span class="o">{</span> url <span class="o">=</span> <span class="s2">"https://pypi.johnsnowlabs.com/SECRET/spark-nlp-jsl/spark_nlp_jsl-tar.gz_OR_.whl"</span> <span class="o">}</span>
 
 <span class="o">[</span>build-system]
