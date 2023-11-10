@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Text Classification For Mental Disorder | multiclassifierdl_mental_disorder | Healthcare NLP 5.1.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Date of Death Contextual Parser Model | date_of_death_parser | Healthcare NLP 5.1.2</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThe PHS-BERT Mental Disorder Classifier Model classifies text based on the following mental disorders. (Schizophrenia, Depression, Bipolar disorder, Anxiety disorder).The Mental Disorder Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual ...">
-<!-- <link rel="canonical" href="/2023/10/16/multiclassifierdl_mental_disorder_en.html"> -->
-<link rel="canonical" href="/2023/10/16/multiclassifierdl_mental_disorder_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model is a ContextualParserModel that can extract date-of-death (DOD) entities in clinical texts.Predicted EntitiesDODLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  document_assembler = DocumentAssembler() \    .setInputCol("text") \    .setOutputCol("document")sentence_detector...">
+<!-- <link rel="canonical" href="/2023/11/05/date_of_death_parser_en.html"> -->
+<link rel="canonical" href="/2023/11/05/date_of_death_parser_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -407,144 +407,141 @@
 
 <!-- end custom main top snippet --><article><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Cabir40/2023-10-16-multiclassifierdl_mental_disorder_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/ahmet-mesut/2023-11-05-date_of_death_parser_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 16, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-10-16T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Text Classification For Mental Disorder</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Text Classification For Mental Disorder"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>text_classification</li><li>mental_disorder</li><li>mental_health</li><li>tensorflow</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-10-16T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,text_classification,mental_disorder,mental_health,tensorflow"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 05, 2023</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-11-05T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Date of Death Contextual Parser Model</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Date of Death Contextual Parser Model"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>clinical</li><li>date_of_death</li><li>contextual_parser</li><li>dod</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-11-05T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,clinical,date_of_death,contextual_parser,dod,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>The PHS-BERT Mental Disorder Classifier Model classifies text based on the following mental disorders. (Schizophrenia, Depression, Bipolar disorder, Anxiety disorder).</p>
-
-<p>The Mental Disorder Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of four prominent respiratory diseases: Schizophrenia, Depression, Bipolar disorder, Anxiety disorder. More detailed information about classes as follows:</p>
-
-<p><code class="language-plaintext highlighter-rouge">Schizophrenia</code>: This category is designated for text mentions that correspond to Schizophrenia, a mental disorder characterized by thought disorders, hallucinations, and often involving delusional beliefs and cognitive challenges. Example: “My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him.”</p>
-
-<p><code class="language-plaintext highlighter-rouge">Depression</code>: Textual content which implicates Depression, a pervasive mental health disorder marked by persistent feelings of sadness, loss of interest in activities, and potential physical health alterations, is classified here. Example: “The heavy weight of depression often leaves me struggling to find joy in activities I once loved.”</p>
-
-<p><code class="language-plaintext highlighter-rouge">Bipolar Disorder</code>: Entries here incorporate text alluding to Bipolar Disorder, a mental health condition distinguished by stark fluctuations in mood, transitioning between manic highs and depressive lows. Example: “Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without warning.”</p>
-
-<p><code class="language-plaintext highlighter-rouge">Anxiety Disorder</code>: Textual mentions signifying Anxiety Disorder, which involves persistent, excessive worry, nervousness, and physiological effects, are classified under this label. Example: “My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical scenarios.”</p>
+<p>This model is a <code class="language-plaintext highlighter-rouge">ContextualParserModel</code> that can extract date-of-death (DOD) entities in clinical texts.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">Anxiety Disorder</code>, <code class="language-plaintext highlighter-rouge">Bipolar disorder</code>, <code class="language-plaintext highlighter-rouge">No</code>, <code class="language-plaintext highlighter-rouge">Schizophrenia</code>, <code class="language-plaintext highlighter-rouge">Depression</code>, <code class="language-plaintext highlighter-rouge">Other/Unknown</code></p>
+<p><code class="language-plaintext highlighter-rouge">DOD</code></p>
 
-<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/" class="button button-orange">Live Demo</a>
-<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MENTAL_HEALTH.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_mental_disorder_en_5.1.1_3.0_1697441541490.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_mental_disorder_en_5.1.1_3.0_1697441541490.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
+<button class="button button-orange" disabled="">Open in Colab</button>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/date_of_death_parser_en_5.1.2_3.0_1699192712408.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/date_of_death_parser_en_5.1.2_3.0_1699192712408.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1. Document assembler
-</span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"word_embeddings"</span><span class="p">)</span>
+<span class="n">dod_contextual_parser</span> <span class="o">=</span> <span class="n">ContextualParserModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"date_of_death_parser"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk_dod"</span><span class="p">)</span> 
 
-<span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="n">SentenceEmbeddings</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"word_embeddings"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence_embeddings"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setPoolingStrategy</span><span class="p">(</span><span class="s">"AVERAGE"</span><span class="p">)</span>
+<span class="n">chunk_converter</span> <span class="o">=</span> <span class="n">ChunkConverter</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"chunk_dod"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-<span class="c1"># 3. Mental Disorder MultiClassifier (Using the provided model name)
-</span><span class="n">multilabel_classifier</span> <span class="o">=</span> <span class="n">MultiClassifierDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"multiclassifierdl_mental_disorder"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setThreshold</span><span class="p">(</span><span class="mf">0.999</span><span class="p">)</span>
+<span class="n">parserPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">dod_contextual_parser</span><span class="p">,</span>
+        <span class="n">chunk_converter</span>
+        <span class="p">])</span>
 
-<span class="c1"># Creating the pipeline
-</span><span class="n">clf_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">word_embeddings</span><span class="p">,</span>
-    <span class="n">sentence_embeddings</span><span class="p">,</span>
-    <span class="n">multilabel_classifier</span>
-<span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">parserPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
 
-<span class="c1"># Sample text list
-</span><span class="n">text_list</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">"""The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression."""</span><span class="p">,</span>
-    <span class="s">"""Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder."""</span><span class="p">,</span>
-    <span class="s">"""Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder."""</span><span class="p">,</span>
-    <span class="s">"""Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines."""</span><span class="p">,</span>
-    <span class="s">"""With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""</span>
-<span class="p">]</span>
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""
+Record date : 2081-01-04
+DB : 11.04.1962
+DT : 12-03-1978
+DOD : 10.25.23
 
-<span class="c1"># Creating a DataFrame
-</span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">text_list</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+SOCIAL HISTORY:
+Jane Doe was born on November 4, 1962, in London, and she got married on April 5, 1979.
+When she got pregnant on May 15, 1979, the doctor wanted to verify her date of birth, which was confirmed to be November 4, 1962.
+Jane was 45 years old when she sadly passed away on September 25, 2007.
 
+PROCEDURES:
+Patient Jane Doe was evaluated on March 15, 1988, for allergies. She was seen by the endocrinology service and was discharged on September 23, 1988.
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">clf_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+MEDICATIONS:
+1. Coumadin 1 mg daily. Jane's last INR was measured on August 14, 2007, and it was 2.3."""</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">sample_text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
+
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span> 
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">wordEmbeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">dod_contextual_parser</span> <span class="k">=</span> <span class="nv">ContextualParserModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"date_of_death_parser"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk_dod"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">sentence_embeddings</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceEmbeddings</span><span class="o">()\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span> <span class="o">\</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)</span> <span class="o">\</span>
-    <span class="o">.</span><span class="py">setPoolingStrategy</span><span class="o">(</span><span class="s">"AVERAGE"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">chunk_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ChunkConverter</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"chunk_dod"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">multiclassifierdl</span> <span class="k">=</span> <span class="nv">MultiClassifierDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"multiclassifierdl_mental_disorder"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"predicted_class"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">parserPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+        <span class="n">document_assembler</span><span class="o">,</span>
+        <span class="n">sentence_detector</span><span class="o">,</span>
+        <span class="n">tokenizer</span><span class="o">,</span>
+        <span class="n">dod_contextual_parser</span><span class="o">,</span>
+        <span class="n">chunk_converter</span>
+        <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">clf_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">documentAssembler</span><span class="o">,</span>
-    <span class="n">tokenizer</span><span class="o">,</span>
-    <span class="n">wordEmbeddings</span><span class="o">,</span>
-    <span class="n">sentence_embeddings</span><span class="o">,</span>
-    <span class="n">multiclassifierdl</span>
-<span class="o">))</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"""
+Record date : 2081-01-04
+DB : 11.04.1962
+DT : 12-03-1978
+DOD : 10.25.23
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="s">"""The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression."""</span><span class="o">,</span>
-    <span class="s">"""Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder."""</span><span class="o">,</span>
-    <span class="s">"""Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder."""</span><span class="o">,</span>
-    <span class="s">"""Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines."""</span><span class="o">,</span>
-    <span class="s">"""With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""</span><span class="o">,</span>
+SOCIAL HISTORY:
+Jane Doe was born on November 4, 1962, in London, and she got married on April 5, 1979.
+When she got pregnant on May 15, 1979, the doctor wanted to verify her date of birth, which was confirmed to be November 4, 1962.
+Jane was 45 years old when she sadly passed away on September 25, 2007.
+
+PROCEDURES:
+Patient Jane Doe was evaluated on March 15, 1988, for allergies. She was seen by the endocrinology service and was discharged on September 23, 1988.
+
+MEDICATIONS:
+1. Coumadin 1 mg daily. Jane's last INR was measured on August 14, 2007, and it was 2.3."""</span>
 <span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">clf_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">parserPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
-|                                                                                                                                                  text|            result|
-+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
-|         The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention <span class="k">for </span>severe depression.|      <span class="o">[</span>Depression]|
-|                  Monitoring the patient <span class="k">for </span>potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.|[Bipolar disorder]|
-|       Commenced CBT to equip the patient with coping strategies <span class="k">for </span>persistent irrational fears and nervousness stemming from their anxiety disorder.|[Anxiety disorder]|
-|                                                    Michael Anderson takes medications <span class="k">for </span>schizophrenia, hypertension, hyperlipidemia, and migraines.|   <span class="o">[</span>Schizophrenia]|
-|With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitat...|              <span class="o">[</span>No]|
-+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----------+------------------+-----+---+---------+
+|sentence_id|chunk             |begin|end|ner_label|
++-----------+------------------+-----+---+---------+
+|3          |10.25.23          |64   |71 |DOD      |
+|5          |September 25, 2007|360  |377|DOD      |
++-----------+------------------+-----+---+---------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -553,11 +550,11 @@
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>multiclassifierdl_mental_disorder</td>
+      <td>date_of_death_parser</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.1.1+</td>
+      <td>Healthcare NLP 5.1.2+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -569,11 +566,11 @@
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[sentence_embeddings]</td>
+      <td>[sentence, token]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[class]</td>
+      <td>[chunk_dod]</td>
     </tr>
     <tr>
       <td>Language:</td>
@@ -581,51 +578,15 @@
     </tr>
     <tr>
       <td>Size:</td>
-      <td>87.8 MB</td>
+      <td>5.0 KB</td>
     </tr>
     <tr>
-      <td>Dependencies:</td>
-      <td><code class="language-plaintext highlighter-rouge">embeding_clinical</code></td>
+      <td>Case sensitive:</td>
+      <td>false</td>
     </tr>
   </tbody>
 </table>
-
-<h2 id="references">References</h2>
-
-<p>Trained with the in-house dataset</p>
-
-<h2 id="sample-text-from-the-training-dataset">Sample text from the training dataset</h2>
-
-<p>Schizophrenia:
-The patient was diagnosed with schizophrenia at the age of 22 after a series of intense psychotic episodes.
-The patient often describes hearing voices that others don’t hear and harbors a persistent belief in unfounded conspiracies, indicative of schizophrenia.
-The patient has been prescribed second-generation antipsychotics and will be undergoing cognitive behavioral therapy to help manage the symptoms of schizophrenia.
-Depression:
-Mrs. Thompson first sought treatment for depression during her late 20s, shortly after a series of personal losses.
-She often expresses feelings of hopelessness, has a persistent low mood, and lacks interest in activities she once enjoyed, classic signs of depression.
-Mrs. Thompson will continue her selective serotonin reuptake inhibitor (SSRI) medication and engage in weekly psychotherapy sessions to address her depressive symptoms.
-Bipolar Disorder:
-Mr. Gray was diagnosed with bipolar disorder at the age of 27 following an episode of mania that was preceded by a deep depressive phase.
-He cycles between periods of elevated mood, increased energy, and impulsiveness, and phases of intense sadness and lethargy, consistent with bipolar disorder.
-The management approach for Mr. Gray includes mood stabilizers like lithium, coupled with cognitive-behavioral therapy to monitor and address the mood swings of bipolar disorder.
-Anxiety Disorder:
-The patient has been experiencing generalized anxiety disorder symptoms for the past six years, often linked to work-related stress.
-The patient describes persistent feelings of restlessness, muscle tension, and overwhelming worry about everyday events and activities, common to those with an anxiety disorder.
-A combination of cognitive behavioral therapy and an anxiolytic medication has been advised to alleviate the distressing symptoms of the anxiety disorder.</p>
-
-<h2 id="benchmarking">Benchmarking</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>label              tp   fp      fn    prec          rec         f1
-Other/Unknown      39   10      22    0.79591835   0.6393443    0.7090909
-Depression         120  18      19    0.8695652    0.8633093    0.866426
-No                 28   21      27    0.93203884   0.9142857    0.9230769
-Anxiety_disorder   136  15      18    0.90066224   0.8831169    0.8918033
-Bipolar_disorder   101  5       10    0.9528302    0.9099099    0.9308756
-Schizophrenia      66   4       23    0.94285715   0.74157304   0.8301887
-Macro-average      750  73     119    0.89897865   0.8252565    0.8605415
-Micro-average      750  73     119    0.9113001    0.863061     0.886524
-</code></pre></div></div>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-10-16T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-11-05T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -790,7 +751,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/10/16/multiclassifierdl_heart_disease_en.html">Multilabel Text Classification for Heart Disease</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/10/16/ner_clinical_fi.html">Detect Problems, Tests and Treatments (ner_clinical) in Finnish</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/11/05/date_of_birth_parser_en.html">Date of Brith Contextual Parser Model</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/11/05/bert_sequence_classifier_sdoh_frailty_en.html">Social Determinants of Healthcare for Frailty Classifier</a></div></div></div>
 
 </div>
 </div>
