@@ -658,21 +658,21 @@
 
   <h4 id="new-social-determinants-of-healthcare-sdoh-model-for-frailty-classification">New Social Determinants of Healthcare (SDoH) Model for Frailty Classification</h4>
 
-  <p>Introducing a new frailty classification model trained on a diverse dataset and it provides accurate label assignments and confidence scores for its predictions. The primary goal of this model is to categorize text into two key labels: <code class="language-plaintext highlighter-rouge">High_or_Low_Frailty</code> and <code class="language-plaintext highlighter-rouge">No_Frailty_or_Unknown</code>.</p>
+  <p>Introducing a new frailty classification model trained on a diverse dataset and it provides accurate label assignments and confidence scores for its predictions. The primary goal of this model is to categorize text into two key labels: <code class="language-plaintext highlighter-rouge">Frail</code> and <code class="language-plaintext highlighter-rouge">Non_Frail</code>.</p>
 
   <p><em>Example</em>:</p>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sequenceClassifier</span> <span class="o">=</span> <span class="n">MedicalBertForSequenceClassification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_sequence_classifier_sdoh_frailty"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span><span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
 
 <span class="n">sample_texts</span><span class="o">=</span><span class="p">[</span>  
-  <span class="s">"Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatment plan that includes surgery, chemotherapy, and radiation therapy."</span><span class="p">,</span>
-  <span class="s">"Post-chemotherapy, the patient was under regular surveillance for osteosarcoma. Recent imaging showed no signs of local recurrence or distant metastasis. Whereas the recovery was challenging, current evaluation confirms patient is in remission."</span><span class="p">,</span>
-  <span class="s">"The patient was diagnosed with stage II colon cancer and will be undergoing a treatment regimen that includes both chemotherapy and radiation therapy."</span><span class="p">,</span>
-  <span class="s">"Thyroid nodules detected during routine examination; fine-needle aspiration was conducted. Cytology results indicated no malignancy, consistent with a benign thyroid adenoma. However, patient is advised for a follow-up ultrasound in 12 months to monitor nodule size."</span><span class="p">,</span>
-  <span class="s">"The patient's persistent lymphadenopathy led to further tests, which confirmed a diagnosis of AIDS."</span><span class="p">,</span>
-  <span class="s">"Female patient presented with pelvic discomfort. Ovarian cysts were found during ultrasound; however, CA-125 levels are within normal range, and repeat imaging has shown consistent cyst size. No features of ovarian cancer were present, and a follow-up is scheduled in six months."</span>
+  <span class="s">"Patient demonstrates a marked decrease in muscle strength and endurance, requiring assistance for basic activities."</span><span class="p">,</span>
+  <span class="s">"Clinical evaluation indicates robust health with no signs of physical debilitation."</span><span class="p">,</span>
+  <span class="s">"Noted significant weight loss and diminished muscle mass over the past several months."</span><span class="p">,</span>
+  <span class="s">"Follow-up examinations show complete remission of previous oncological concerns."</span><span class="p">,</span>
+  <span class="s">"The patient exhibits increased susceptibility to skin tears and bruising with minimal contact."</span><span class="p">,</span>
+  <span class="s">"Laboratory results reveal the patient's complete recovery from hepatitis, with normal liver function tests."</span>
 <span class="p">]</span>
 
 </code></pre></div>  </div>
@@ -688,28 +688,28 @@
     </thead>
     <tbody>
       <tr>
-        <td>Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatm…</td>
-        <td>High_or_Low_Frailty</td>
+        <td>Patient demonstrates a marked decrease in muscle strength and endurance, requiring assistance for…</td>
+        <td>Frail</td>
       </tr>
       <tr>
-        <td>Post-chemotherapy, the patient was under regular surveillance for osteosarcoma. Recent imaging sh…</td>
-        <td>No_Frailty_or_Unknown</td>
+        <td>Clinical evaluation indicates robust health with no signs of physical debilitation.</td>
+        <td>Non_Frail</td>
       </tr>
       <tr>
-        <td>The patient was diagnosed with stage II colon cancer and will be undergoing a treatment regimen t…</td>
-        <td>High_or_Low_Frailty</td>
+        <td>Noted significant weight loss and diminished muscle mass over the past several months.</td>
+        <td>Frail</td>
       </tr>
       <tr>
-        <td>Thyroid nodules detected during routine examination; fine-needle aspiration was conducted. Cytolo…</td>
-        <td>No_Frailty_or_Unknown</td>
+        <td>Follow-up examinations show complete remission of previous oncological concerns.</td>
+        <td>Non_Frail</td>
       </tr>
       <tr>
-        <td>The patient’s persistent lymphadenopathy led to further tests, which confirmed a diagnosis of AIDS.</td>
-        <td>High_or_Low_Frailty</td>
+        <td>The patient exhibits increased susceptibility to skin tears and bruising with minimal contact.</td>
+        <td>Frail</td>
       </tr>
       <tr>
-        <td>Female patient presented with pelvic discomfort. Ovarian cysts were found during ultrasound; howe…</td>
-        <td>No_Frailty_or_Unknown</td>
+        <td>Laboratory results reveal the patient’s complete recovery from hepatitis, with normal liver funct…</td>
+        <td>Non_Frail</td>
       </tr>
     </tbody>
   </table>
@@ -836,7 +836,7 @@ MEDICATIONS:
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"spark.jsl.settings.seed.numberGenerationAlgorithm"</span><span class="p">:</span> <span class="s">"SHA1PRNG"</span><span class="p">,}</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"spark.jsl.settings.seed.numberGenerationAlgorithm"</span><span class="p">:</span> <span class="s">"SHA1PRNG"</span><span class="p">}</span>
 
 <span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="n">license_keys</span><span class="p">[</span><span class="s">'SECRET'</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 </code></pre></div>  </div>
