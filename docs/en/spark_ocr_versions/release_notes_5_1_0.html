@@ -13,8 +13,8 @@
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/ocr_release_notes"> -->
-<link rel="canonical" href="/docs/en/spark_ocr_versions/ocr_release_notes"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_1_0"> -->
+<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_1_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -392,7 +392,7 @@
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Spark OCR</li><li class="toc-h2"><a href="/docs/en/ocr">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/ocr_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/version_compatibility">Version Compatibility</a></li><li class="toc-h2"><a href="/docs/en/ocr_pipeline_components">Pipeline components</a></li><li class="toc-h2"><a href="/docs/en/ocr_table_recognition">Table recognition</a></li><li class="toc-h2"><a href="/docs/en/ocr_visual_document_understanding">Visual document understanding</a></li><li class="toc-h2"><a href="/docs/en/ocr_object_detection">Object detection</a></li><li class="toc-h2"><a href="/docs/en/ocr_structures">Structures and helpers</a></li><li class="toc-h2 active"><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Spark OCR</li><li class="toc-h2"><a href="/docs/en/ocr">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/ocr_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/version_compatibility">Version Compatibility</a></li><li class="toc-h2"><a href="/docs/en/ocr_pipeline_components">Pipeline components</a></li><li class="toc-h2"><a href="/docs/en/ocr_table_recognition">Table recognition</a></li><li class="toc-h2"><a href="/docs/en/ocr_visual_document_understanding">Visual document understanding</a></li><li class="toc-h2"><a href="/docs/en/ocr_object_detection">Object detection</a></li><li class="toc-h2"><a href="/docs/en/ocr_structures">Structures and helpers</a></li><li class="toc-h2"><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -526,36 +526,87 @@
           <h1>Spark OCR release notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/ocr_release_notes.md">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_5_1_0.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark OCR release notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">5.0.2</h2>
+  <h2 id="section">5.1.0</h2>
 
-  <p>Release date: 16-10-2023</p>
+  <p>Release date: 17-11-2023</p>
 
-  <p><strong>We are glad to announce that Visual NLP 5.0.2 has been released! 🚀🚀🚀   New features, new models, bug fixes, and more!  📢📢📢</strong></p>
+  <p><strong>We are glad to announce that Visual NLP 5.1.0 has been released! This release comes with new models, annotators, bug fixes, and more!.📢📢📢</strong></p>
 
-  <p>This is a small compatibility release to ensure the product runs smoothly on Google Colab, and that it remains compatible with the latest versions of Spark NLP and Spark NLP for Healthcare.</p>
+  <p><strong>New Models &amp;  Annotators</strong></p>
+  <ul>
+    <li>VisualQuestionAnsweringPix2Struct: we are adding a new Visual Question Answering(VQA) checkpoint for Pix2Struct. Document VQA is the task of answering questions about documents, in which visual clues are important in the answer.
+The practical impact of this type of models is that you can create “data extractors” for your own particular use case without fine-tuning on your data. So you can ask questions about tables, or forms or other structures in which the visual information is relevant, in a zero-shot manner.</li>
+  </ul>
 
-  <p><strong>Changes :</strong> 📣</p>
+  <p>We started our journey with Donut-like models, which were great in many different tasks. Check <a href="https://nlp.johnsnowlabs.com/2023/01/17/docvqa_donut_base_en_3_2.html">this code and example</a>, and <a href="https://www.johnsnowlabs.com/watch-zero-shot-visual-question-answering/">this webinar</a>, in case you missed it.
+<img src="/assets/images/ocr/pix2struct_sample.png" alt="image" /></p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|[What's the estimated population in poverty of Lawrence? -&gt;  5,696, What's the population of Stoddard? -&gt;  26,000, What is the page number of the document? -&gt;  6, What is the date in the document? -&gt;  January, 1970]|
+
+</code></pre></div>  </div>
+
+  <p>Now, we’re taking one step further and integrating Pix2Struct which, when compared to Donut, scores 5 points higher in the ‘base’ version, and 9 points higher in the ‘large’ version, on DocVQA dataset.
+Check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualPix2Struct.ipynb">this notebook</a> with examples on how to use it.</p>
 
   <ul>
     <li>
-      <p>Google Colab installation issues have been solved.</p>
+      <p>ImageLayoutAnalyzerDit: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.
+<img src="/assets/images/ocr/image_text_detector_dit.png" alt="image" /></p>
+
+      <p>Identifying these sections is the first step that enables other downstream processing tasks like OCR or Table Extraction.
+Check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRDitLayoutAnalyze.ipynb">this notebook</a> for an example on how to apply this new model to sample documents.</p>
     </li>
-    <li>New setting for M1 compatibility in Spark-NLP dependency:
-      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>start<span class="o">(</span><span class="nv">m1</span><span class="o">=</span>True|False<span class="o">)</span>
-use <span class="nv">m1</span><span class="o">=</span>True 
-</code></pre></div>      </div>
-      <p>use m1=True enables the M1 compatible version of Spark-NLP.</p>
+    <li>
+      <p>DicomDeidentifier: new annotator that allows deidentification of Dicom Images using Dicom metadata contained in the same Dicom document. This is a rule-based annotator which leverages PHI collected from the metadata like patient names or test results to deidentify PHI contained on images in the Dicom file. It also supports a black list parameter to remove specific content present in the image text.
+This annotator can work either in isolation or combined with Spark NLP for Healthcare NER models. By using ChunkMergeApproach, NER models can be combined with DicomDeidentifier to deliver an ensemble of ML and Rule Based techniques to cover the most challenging de-identification scenarios.
+We encourage you to check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Dicom/SparkOcrDicomDeIdentificationV3.ipynb">an example</a>, and other Dicom related notebooks,
+<a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/jupyter/Dicom">jupyter/Dicom</a>.
+As well as related blogposts,</p>
+
+      <ul>
+        <li>
+          <p><a href="https://medium.com/john-snow-labs/dicom-de-identification-at-scale-in-visual-nlp-part-1-68784177f5f0">DICOM de-identification at scale in Visual NLP — Part 1.</a></p>
+        </li>
+        <li>
+          <p><a href="https://medium.com/john-snow-labs/dicom-de-identification-at-scale-in-visual-nlp-part-2-361af5e36412">DICOM de-identification at scale in Visual NLP — Part 2.</a></p>
+        </li>
+        <li>
+          <p><a href="https://medium.com/john-snow-labs/dicom-de-identification-at-scale-in-visual-nlp-part-3-ac750be386cb">DICOM de-identification at scale in Visual NLP — Part 3.</a></p>
+        </li>
+      </ul>
     </li>
-    <li><code class="language-plaintext highlighter-rouge"> New ImageToTextV3 annotator</code>  : this is a new version of the original LSTM based ImageToText annotator, with the difference that it accepts input regions in a similar fashion to ImageToTextV2. In the original ImageToText implementation all layout analysis happens implicitly within the annotator itself, without external help.</li>
   </ul>
 
-  <p>This release is compatible with <code class="language-plaintext highlighter-rouge">Spark NLP 5.1.1</code> and Spark NLP for<code class="language-plaintext highlighter-rouge">Healthcare 5.1.1</code></p>
+  <p><strong>Bug Fixes &amp; Changes</strong></p>
+
+  <ul>
+    <li>VisualQuestionAnswering is the new single entry point for downloading all Visual Question Answering models. You should use it like this,</li>
+  </ul>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VisualQuestionAnswering.pretrained("docvqa_donut_base")
+</code></pre></div>  </div>
+
+  <p>or</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VisualQuestionAnswering.pretrained("docvqa_pix2struct_base")	
+</code></pre></div>  </div>
+  <ul>
+    <li>VisualDocumentClassifierV3, fit() method now allows the initial checkpoint to be present in local storage, instead of being downloaded from JSL Models Hub. Simply pass the ‘base_model_path’ param like this,
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VisualDocumentClassifierV3.fit(base_model_path='path_to_local_chkpt')
+</code></pre></div>      </div>
+    </li>
+    <li>Some serialization problems affecting ONNX models running in a cluster have been resolved.</li>
+    <li>
+      <p>Transformer OCR pretrained pipelines have been updated to use faster components and to avoid some serialization issues under some Spark versions, check <a href="https://nlp.johnsnowlabs.com/models?edition=Visual+NLP&amp;type=pipeline">this query</a> on Models Hub.</p>
+    </li>
+    <li>This release is compatible with <code class="language-plaintext highlighter-rouge">Spark NLP 5.1.2</code> and Spark NLP for<code class="language-plaintext highlighter-rouge">Healthcare 5.1.2</code></li>
+  </ul>
 
 </div>
 <div class="prev_ver h3-box">
@@ -564,6 +615,7 @@ use <span class="nv">m1</span><span class="o">=</span>True
 
 </div>
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="release_notes_5_1_0">5.1.0</a></li>
     <li><a href="release_notes_5_0_2">5.0.2</a></li>
     <li><a href="release_notes_5_0_1">5.0.1</a></li>
     <li><a href="release_notes_5_0_0">5.0.0</a></li>
@@ -612,7 +664,7 @@ use <span class="nv">m1</span><span class="o">=</span>True
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-10-16T00:00:00+00:00">Oct 16, 2023</time>
+      <time itemprop="dateModified" datetime="2023-11-17T00:00:00+00:00">Nov 17, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -778,7 +830,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/ocr_structures">Structures and helpers</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></div></div></div>
 
 </div>
 </div>
