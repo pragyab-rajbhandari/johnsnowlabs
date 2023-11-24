@@ -7143,6 +7143,12 @@ Set the number of key phrases to extract</li>
 
     <p><code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> is an annotator to be used after <code class="language-plaintext highlighter-rouge">ChunkMapper</code> that allows to filter chunks based on the results of the mapping, whether it was successful or failed.</p>
 
+    <p>Parametres;</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ReturnCriteria</code> <em>(String)</em>: Has two possible values: “success” or “fail”. If “fail” (default), returns the chunks that are not in the label dependencies; if “success”, returns the labels that were successfully mapped by the <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> annotator.</li>
+    </ul>
+
     <p>Example usage and more details can be found on Spark NLP Workshop repository accessible in GitHub, for example the notebook <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb">Healthcare Chunk Mapping</a>.</p>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">CHUNK, LABEL_DEPENDENCY</code></p>
@@ -7173,113 +7179,70 @@ Set the number of key phrases to extract</li>
 
         <div class="tab-mfl-content">
 
-          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">().</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">sentence_detector</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">SentenceDetector</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">]).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">word_embeddings</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">ner_model</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_posology_greedy"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_posology_greedy"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">NerConverter</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
 
-<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"rxnorm_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"chunk"</span><span class="p">])</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"RxNorm_Mapper"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setRel</span><span class="p">(</span><span class="s">"rxnorm_code"</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"rxnorm_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"chunk"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"RxNorm_Mapper"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"rxnorm_code"</span><span class="p">])</span>
 
-<span class="n">cfModel</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">ChunkMapperFilterer</span><span class="p">()</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"chunk"</span><span class="p">,</span> <span class="s">"RxNorm_Mapper"</span><span class="p">])</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunks_fail"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setReturnCriteria</span><span class="p">(</span><span class="s">"fail"</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">chunk_mapper_filterer</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">ChunkMapperFilterer</span><span class="p">()</span> \
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"chunk"</span><span class="p">,</span> <span class="s">"RxNorm_Mapper"</span><span class="p">])</span> \
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunks_fail"</span><span class="p">)</span> \
+      <span class="p">.</span><span class="n">setReturnCriteria</span><span class="p">(</span><span class="s">"fail"</span><span class="p">)</span>
 
-<span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"chunks_fail"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"doc_chunk"</span><span class="p">)</span>
+<span class="n">mapper_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
+      <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+          <span class="n">document_assembler</span><span class="p">,</span>
+          <span class="n">sentence_detector</span><span class="p">,</span>
+          <span class="n">tokenizer</span><span class="p">,</span>
+          <span class="n">word_embeddings</span><span class="p">,</span>
+          <span class="n">ner_model</span><span class="p">,</span>
+          <span class="n">ner_converter</span><span class="p">,</span>
+          <span class="n">chunkerMapper</span><span class="p">,</span>
+          <span class="n">chunkerMapper</span><span class="p">,</span>
+          <span class="n">chunk_mapper_filterer</span>
+      <span class="p">])</span>
 
-<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span>
-        <span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span>
-    <span class="p">)</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"doc_chunk"</span><span class="p">])</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence_embeddings"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="p">[[</span><span class="s">"The patient was given Adapin 10 MG, coumadn 5 mg"</span><span class="p">],</span>
+           <span class="p">[</span><span class="s">"The patient was given Avandia 4 mg, Tegretol, zitiga"</span><span class="p">]</span> <span class="p">]</span>
+           
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">samples</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">resolver</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span>
-        <span class="s">"sbiobertresolve_rxnorm_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span>
-    <span class="p">)</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"chunks_fail"</span><span class="p">,</span> <span class="s">"sentence_embeddings"</span><span class="p">])</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"resolver_code"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-<span class="n">resolverMerger</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">ResolverMerger</span><span class="p">()</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"resolver_code"</span><span class="p">,</span> <span class="s">"RxNorm_Mapper"</span><span class="p">])</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"RxNorm"</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">result</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"chunk.result as chunk"</span><span class="p">,</span> 
+                  <span class="s">"RxNorm_Mapper.result as RxNorm_Mapper"</span><span class="p">,</span> 
+                  <span class="s">"chunks_fail.result as chunks_fail"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 
-<span class="n">mapper_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
-    <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">document_assembler</span><span class="p">,</span>
-        <span class="n">sentence_detector</span><span class="p">,</span>
-        <span class="n">tokenizer</span><span class="p">,</span>
-        <span class="n">word_embeddings</span><span class="p">,</span>
-        <span class="n">ner_model</span><span class="p">,</span>
-        <span class="n">ner_converter</span><span class="p">,</span>
-        <span class="n">chunkerMapper</span><span class="p">,</span>
-        <span class="n">chunkerMapper</span><span class="p">,</span>
-        <span class="n">cfModel</span><span class="p">,</span>
-        <span class="n">chunk2doc</span><span class="p">,</span>
-        <span class="n">sbert_embedder</span><span class="p">,</span>
-        <span class="n">resolver</span><span class="p">,</span>
-        <span class="n">resolverMerger</span><span class="p">,</span>
-    <span class="p">]</span>
-<span class="p">)</span>
-
-<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">mapper_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
-
-
-<span class="n">samples</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="s">"The patient was given Adapin 10 MG, coumadn 5 mg"</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"The patient was given Avandia 4 mg, Tegretol, zitiga"</span><span class="p">],</span>
-<span class="p">]</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">samples</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
-
-<span class="n">result</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span>
-    <span class="s">"chunk.result as chunk"</span><span class="p">,</span>
-    <span class="s">"RxNorm_Mapper.result as RxNorm_Mapper"</span><span class="p">,</span>
-    <span class="s">"chunks_fail.result as chunks_fail"</span><span class="p">,</span>
-    <span class="s">"resolver_code.result as resolver_code"</span><span class="p">,</span>
-    <span class="s">"RxNorm.result as RxNorm"</span><span class="p">,</span>
-<span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="o">+--------------------------------+----------------------+--------------+-------------+------------------------+</span>
-<span class="n">chunk</span>                           <span class="o">|</span><span class="n">RxNorm_Mapper</span>         <span class="o">|</span><span class="n">chunks_fail</span>   <span class="o">|</span><span class="n">resolver_code</span><span class="o">|</span><span class="n">RxNorm</span>                  <span class="o">|</span>
-<span class="o">+--------------------------------+----------------------+--------------+-------------+------------------------+</span>
-<span class="p">[</span><span class="n">Adapin</span> <span class="mi">10</span> <span class="n">MG</span><span class="p">,</span> <span class="n">coumadn</span> <span class="mi">5</span> <span class="n">mg</span><span class="p">]</span>    <span class="o">|</span><span class="p">[</span><span class="mi">1000049</span><span class="p">,</span> <span class="n">NONE</span><span class="p">]</span>       <span class="o">|</span><span class="p">[</span><span class="n">coumadn</span> <span class="mi">5</span> <span class="n">mg</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">200883</span><span class="p">]</span>     <span class="o">|</span><span class="p">[</span><span class="mi">1000049</span><span class="p">,</span> <span class="mi">200883</span><span class="p">]</span>       <span class="o">|</span>
-<span class="p">[</span><span class="n">Avandia</span> <span class="mi">4</span> <span class="n">mg</span><span class="p">,</span> <span class="n">Tegretol</span><span class="p">,</span> <span class="n">zitiga</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">261242</span><span class="p">,</span> <span class="mi">203029</span><span class="p">,</span> <span class="n">NONE</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="n">zitiga</span><span class="p">]</span>      <span class="o">|</span><span class="p">[</span><span class="mi">220989</span><span class="p">]</span>     <span class="o">|</span><span class="p">[</span><span class="mi">261242</span><span class="p">,</span> <span class="mi">203029</span><span class="p">,</span> <span class="mi">220989</span><span class="p">]</span><span class="o">|</span>
-<span class="o">+--------------------------------+----------------------+--------------+-------------+------------------------+</span>
+<span class="o">+--------------------------------+----------------------+--------------+</span>
+<span class="o">|</span><span class="n">chunk</span>                           <span class="o">|</span><span class="n">RxNorm_Mapper</span>         <span class="o">|</span><span class="n">chunks_fail</span>   <span class="o">|</span>
+<span class="o">+--------------------------------+----------------------+--------------+</span>
+<span class="o">|</span><span class="p">[</span><span class="n">Adapin</span> <span class="mi">10</span> <span class="n">MG</span><span class="p">,</span> <span class="n">coumadn</span> <span class="mi">5</span> <span class="n">mg</span><span class="p">]</span>    <span class="o">|</span><span class="p">[</span><span class="mi">1000049</span><span class="p">,</span> <span class="n">NONE</span><span class="p">]</span>       <span class="o">|</span><span class="p">[</span><span class="n">coumadn</span> <span class="mi">5</span> <span class="n">mg</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span><span class="p">[</span><span class="n">Avandia</span> <span class="mi">4</span> <span class="n">mg</span><span class="p">,</span> <span class="n">Tegretol</span><span class="p">,</span> <span class="n">zitiga</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">261242</span><span class="p">,</span> <span class="mi">203029</span><span class="p">,</span> <span class="n">NONE</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="n">zitiga</span><span class="p">]</span>      <span class="o">|</span>
+<span class="o">+--------------------------------+----------------------+--------------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -7290,6 +7253,74 @@ Set the number of key phrases to extract</li>
 <div class="tabs-mfl-box">
 
         <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+ 
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_posology_greedy"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"rxnorm_mapper"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"RxNorm_Mapper"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRels</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"rxnorm_code"</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">chunk_mapper_filterer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ChunkMapperFilterer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">,</span> <span class="s">"RxNorm_Mapper"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunks_fail"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setReturnCriteria</span><span class="o">(</span><span class="s">"fail"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">mapper_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span>
+    <span class="n">sentence_detector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">word_embeddings</span><span class="o">,</span>
+    <span class="n">ner_model</span><span class="o">,</span>
+    <span class="n">ner_converter</span><span class="o">,</span>
+    <span class="n">chunkerMapper</span><span class="o">,</span>
+    <span class="n">chunk_mapper_filterer</span>
+    <span class="o">))</span>
+
+<span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"The patient was given Adapin 10 MG, coumadn 5 mg"</span><span class="o">,</span>
+<span class="s">"The patient was given Avandia 4 mg, Tegretol, zitiga"</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="nv">result</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"chunk.result as chunk"</span><span class="o">,</span> 
+                  <span class="s">"RxNorm_Mapper.result as RxNorm_Mapper"</span><span class="o">,</span> 
+                  <span class="s">"chunks_fail.result as chunks_fail"</span><span class="o">).</span><span class="py">show</span><span class="o">(</span><span class="n">truncate</span> <span class="k">=</span> <span class="nc">False</span><span class="o">)</span>
+
+<span class="o">+--------------------------------+----------------------+--------------+</span>
+<span class="o">|</span><span class="n">chunk</span>                           <span class="o">|</span><span class="nc">RxNorm_Mapper</span>         <span class="o">|</span><span class="n">chunks_fail</span>   <span class="o">|</span>
+<span class="o">+--------------------------------+----------------------+--------------+</span>
+<span class="o">|[</span><span class="kt">Adapin</span> <span class="err">10</span> <span class="kt">MG</span>, <span class="kt">coumadn</span> <span class="err">5</span> <span class="kt">mg</span><span class="o">]</span>    <span class="o">|[</span><span class="err">1000049</span>, <span class="kt">NONE</span><span class="o">]</span>       <span class="o">|[</span><span class="kt">coumadn</span> <span class="err">5</span> <span class="kt">mg</span><span class="o">]|</span>
+<span class="o">|[</span><span class="kt">Avandia</span> <span class="err">4</span> <span class="kt">mg</span>, <span class="kt">Tegretol</span>, <span class="kt">zitiga</span><span class="o">]|[</span><span class="err">261242</span>, <span class="err">203029</span>, <span class="kt">NONE</span><span class="o">]|[</span><span class="kt">zitiga</span><span class="o">]</span>      <span class="o">|</span>
+<span class="o">+--------------------------------+----------------------+--------------+</span>
+</code></pre></div>          </div>
 
         </div>
 
@@ -7916,6 +7947,20 @@ She was on metformin , glipizide , and dapagliflozin for T2DM and atorvastatin a
 
     <p><code class="language-plaintext highlighter-rouge">ChunkSentenceSplitter</code> annotator can split the documents into chunks according to separators given as <code class="language-plaintext highlighter-rouge">CHUNK</code> columns. It is useful when you need to perform different models or analysis in different sections of your document (for example, for different headers, clauses, items, etc.). The given separator chunk can be the output from, for example, <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#regexmatcher">RegexMatcher</a> or <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#nermodel">NerModel</a>.</p>
 
+    <p>Parametres;</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">GroupBySentences</code>: (boolean) Sets the groupBySentences that allow split the paragraphs grouping the chunks by sentences.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">InsertChunk</code>: (boolean) Whether to insert the chunk in the paragraph or not.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">DefaultEntity</code>: (str) Sets the key in the metadata dictionary that you want to filter (by default “entity”)</p>
+      </li>
+    </ul>
+
     <p>For detailed usage of this annotator, visit <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/18.Chunk_Sentence_Splitter.ipynb">this notebook</a> from our <code class="language-plaintext highlighter-rouge">Spark NLP Workshop</code>.</p>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK</code></p>
@@ -7927,6 +7972,7 @@ She was on metformin , glipizide , and dapagliflozin for T2DM and atorvastatin a
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunk_sentence_splitter/index.html#sparknlp_jsl.annotator.chunker.chunk_sentence_splitter.ChunkSentenceSplitter">ChunkSentenceSplitter</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/chunker/ChunkSentenceSplitter.html">ChunkSentenceSplitter</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkSentenceSplitter.ipynb">ChunkSentenceSplitter</a></td>
         </tr>
       </tbody>
     </table>
@@ -7941,74 +7987,228 @@ She was on metformin , glipizide , and dapagliflozin for T2DM and atorvastatin a
 <div class="tabs-mfl-box">
 
         <div class="tabs-mfl-head">
-          <p><button class="tab-mfl-li">Medical</button></p>
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
         </div>
 
         <div class="tab-mfl-content">
 
           <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Defining the pipeline
-</span>
-<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">().</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+</span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">]).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">tokenClassifier</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">MedicalBertForTokenClassifier</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span>
-        <span class="s">"bert_token_classifier_ner_jsl_slim"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span>
-    <span class="p">)</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span> <span class="s">"document"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
 
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">NerConverter</span><span class="p">()</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"Header"</span><span class="p">])</span>
-<span class="p">)</span>
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">chunkSentenceSplitter</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">ChunkSentenceSplitter</span><span class="p">()</span>
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"paragraphs"</span><span class="p">)</span>
+<span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl_slim"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span> \
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"Header"</span><span class="p">])</span>
+
+<span class="c1">#applying ChunkSentenceSplitter
+</span><span class="n">chunkSentenceSplitter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">ChunkSentenceSplitter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"paragraphs"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setGroupBySentences</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-<span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
-    <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+<span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">documentAssembler</span><span class="p">,</span>
+        <span class="n">sentenceDetector</span><span class="p">,</span>
         <span class="n">tokenizer</span><span class="p">,</span>
-        <span class="n">tokenClassifier</span><span class="p">,</span>
+        <span class="n">word_embeddings</span><span class="p">,</span>
+        <span class="n">clinical_ner</span><span class="p">,</span>
         <span class="n">ner_converter</span><span class="p">,</span>
-        <span class="n">chunkSentenceSplitter</span><span class="p">,</span>
-    <span class="p">]</span>
-<span class="p">)</span>
+        <span class="n">chunkSentenceSplitter</span>
+    <span class="p">])</span>
 
-<span class="n">empty_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_df</span><span class="p">)</span>
 
-<span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span>
-        <span class="s">"""ADMISSION DIAGNOSIS Right pleural effusion and suspected malignant mesothelioma.
-        PRINCIPAL DIAGNOSIS Right pleural effusion, suspected malignant mesothelioma.
-        REVIEW OF SYSTEMS Right pleural effusion, firm nodules, diffuse scattered throughout the right pleura and diaphragmatic surface.
-    """</span>
-    <span class="p">]</span>
-<span class="p">]</span>
+<span class="n">sentences</span> <span class="o">=</span> <span class="p">[[</span><span class="s">"""Sample Name: Mesothelioma - Pleural Biopsy
+Description: Right pleural effusion and suspected malignant mesothelioma. (Medical Transcription Sample Report)
+PREOPERATIVE DIAGNOSIS:  Right pleural effusion and suspected malignant mesothelioma.
+POSTOPERATIVE DIAGNOSIS: Right pleural effusion, suspected malignant mesothelioma.
+ANESTHESIA: General double-lumen endotracheal.
+DESCRIPTION OF FINDINGS:  Right pleural effusion, firm nodules, diffuse scattered throughout the right pleura and diaphragmatic surface.
+SPECIMEN:  Pleural biopsies for pathology and microbiology.
+INDICATIONS:  Briefly, this is a 66-year-old gentleman who has been transferred from an outside hospital after a pleural effusion had been drained and biopsies taken from the right chest that were thought to be consistent with mesothelioma. Upon transfer, he had a right pleural effusion demonstrated on x-ray as well as some shortness of breath and dyspnea on exertion. The risks, benefits, and alternatives to right VATS pleurodesis and pleural biopsy were discussed with the patient and his family and they wished to proceed.
+Dr. X was present for the entire procedure which was right VATS pleurodesis and pleural biopsies.The counts were correct x2 at the end of the case."""</span><span class="p">]]</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sentences</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">paragraphs</span> <span class="o">=</span> <span class="n">pipeline_model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-<span class="n">paragraphs</span> <span class="o">=</span> <span class="n">pipeline_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
- <span class="n">paragraphs</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"explode(paragraphs) as result"</span><span class="p">).</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"result.result"</span><span class="p">,</span><span class="s">"result.metadata.entity"</span><span class="p">,</span> <span class="s">"result.metadata.splitter_chunk"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
-<span class="o">+--------------------------------------------------------------------------------+------+-------------------+</span>
-<span class="o">|</span>                                                                          <span class="n">result</span><span class="o">|</span><span class="n">entity</span><span class="o">|</span>     <span class="n">splitter_chunk</span><span class="o">|</span>
-<span class="o">+--------------------------------------------------------------------------------+------+-------------------+</span>
-<span class="o">|</span><span class="n">ADMISSION</span> <span class="n">DIAGNOSIS</span> <span class="n">Right</span> <span class="n">pleural</span> <span class="n">effusion</span> <span class="ow">and</span> <span class="n">suspected</span> <span class="n">malignant</span> <span class="n">mesothelio</span><span class="p">...</span><span class="o">|</span><span class="n">Header</span><span class="o">|</span><span class="n">ADMISSION</span> <span class="n">DIAGNOSIS</span><span class="o">|</span>
-<span class="o">|</span><span class="n">PRINCIPAL</span> <span class="n">DIAGNOSIS</span> <span class="n">Right</span> <span class="n">pleural</span> <span class="n">effusion</span><span class="p">,</span> <span class="n">suspected</span> <span class="n">malignant</span> <span class="n">mesothelioma</span><span class="p">....</span><span class="o">|</span><span class="n">Header</span><span class="o">|</span><span class="n">PRINCIPAL</span> <span class="n">DIAGNOSIS</span><span class="o">|</span>
-<span class="o">|</span><span class="n">REVIEW</span> <span class="n">OF</span> <span class="n">SYSTEMS</span> <span class="n">Right</span> <span class="n">pleural</span> <span class="n">effusion</span><span class="p">,</span> <span class="n">firm</span> <span class="n">nodules</span><span class="p">,</span> <span class="n">diffuse</span> <span class="n">scattered</span> <span class="n">thr</span><span class="p">...</span><span class="o">|</span><span class="n">Header</span><span class="o">|</span>  <span class="n">REVIEW</span> <span class="n">OF</span> <span class="n">SYSTEMS</span><span class="o">|</span>
-<span class="o">+--------------------------------------------------------------------------------+------+-------------------+</span>
+<span class="n">paragraphs</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"explode(paragraphs) as result"</span><span class="p">)</span>\
+          <span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"result.result"</span><span class="p">,</span><span class="s">"result.metadata.entity"</span><span class="p">,</span> <span class="s">"result.metadata.splitter_chunk"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="o">+--------------------------------------------------------------------------------+------------+------------------------+</span>
+<span class="o">|</span>                                                                          <span class="n">result</span><span class="o">|</span>      <span class="n">entity</span><span class="o">|</span>          <span class="n">splitter_chunk</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------------------------------------+------------+------------------------+</span>
+<span class="o">|</span>                                     <span class="n">Sample</span> <span class="n">Name</span><span class="p">:</span> <span class="n">Mesothelioma</span> <span class="o">-</span> <span class="n">Pleural</span> <span class="n">Biopsy</span> <span class="o">|</span><span class="n">introduction</span><span class="o">|</span>                     <span class="n">UNK</span><span class="o">|</span>
+<span class="o">|</span><span class="n">Description</span><span class="p">:</span> <span class="n">Right</span> <span class="n">pleural</span> <span class="n">effusion</span> <span class="ow">and</span> <span class="n">suspected</span> <span class="n">malignant</span> <span class="n">mesothelioma</span><span class="p">.</span> <span class="p">(</span><span class="n">Me</span><span class="p">...</span><span class="o">|</span>      <span class="n">Header</span><span class="o">|</span>            <span class="n">Description</span><span class="p">:</span><span class="o">|</span>
+<span class="o">|</span><span class="n">PREOPERATIVE</span> <span class="n">DIAGNOSIS</span><span class="p">:</span>  <span class="n">Right</span> <span class="n">pleural</span> <span class="n">effusion</span> <span class="ow">and</span> <span class="n">suspected</span> <span class="n">malignant</span> <span class="n">mesot</span><span class="p">...</span><span class="o">|</span>      <span class="n">Header</span><span class="o">|</span> <span class="n">PREOPERATIVE</span> <span class="n">DIAGNOSIS</span><span class="p">:</span><span class="o">|</span>
+<span class="o">|</span><span class="n">POSTOPERATIVE</span> <span class="n">DIAGNOSIS</span><span class="p">:</span> <span class="n">Right</span> <span class="n">pleural</span> <span class="n">effusion</span><span class="p">,</span> <span class="n">suspected</span> <span class="n">malignant</span> <span class="n">mesothel</span><span class="p">...</span><span class="o">|</span>      <span class="n">Header</span><span class="o">|</span><span class="n">POSTOPERATIVE</span> <span class="n">DIAGNOSIS</span><span class="p">:</span><span class="o">|</span>
+<span class="o">|</span>                                 <span class="n">ANESTHESIA</span><span class="p">:</span> <span class="n">General</span> <span class="n">double</span><span class="o">-</span><span class="n">lumen</span> <span class="n">endotracheal</span><span class="p">.</span> <span class="o">|</span>      <span class="n">Header</span><span class="o">|</span>             <span class="n">ANESTHESIA</span><span class="p">:</span><span class="o">|</span>
+<span class="o">|</span><span class="n">DESCRIPTION</span> <span class="n">OF</span> <span class="n">FINDINGS</span><span class="p">:</span>  <span class="n">Right</span> <span class="n">pleural</span> <span class="n">effusion</span><span class="p">,</span> <span class="n">firm</span> <span class="n">nodules</span><span class="p">,</span> <span class="n">diffuse</span> <span class="n">scatt</span><span class="p">...</span><span class="o">|</span>      <span class="n">Header</span><span class="o">|</span><span class="n">DESCRIPTION</span> <span class="n">OF</span> <span class="n">FINDINGS</span><span class="p">:</span><span class="o">|</span>
+<span class="o">|</span>                    <span class="n">SPECIMEN</span><span class="p">:</span>  <span class="n">Pleural</span> <span class="n">biopsies</span> <span class="k">for</span> <span class="n">pathology</span> <span class="ow">and</span> <span class="n">microbiology</span><span class="p">.</span> <span class="o">|</span>      <span class="n">Header</span><span class="o">|</span>               <span class="n">SPECIMEN</span><span class="p">:</span><span class="o">|</span>
+<span class="o">|</span><span class="n">INDICATIONS</span><span class="p">:</span>  <span class="n">Briefly</span><span class="p">,</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">a</span> <span class="mi">66</span><span class="o">-</span><span class="n">year</span><span class="o">-</span><span class="n">old</span> <span class="n">gentleman</span> <span class="n">who</span> <span class="n">has</span> <span class="n">been</span> <span class="n">transferr</span><span class="p">...</span><span class="o">|</span>      <span class="n">Header</span><span class="o">|</span>            <span class="n">INDICATIONS</span><span class="p">:</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------------------------------------+------------+------------------------+</span>
 </code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span><span class="s">"xx"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"finner_headers"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"finance/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">chunkSentenceSplitter</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">ChunkSentenceSplitter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"paragraphs"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGroupBySentences</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">nlp_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">sentenceDetector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">ner_model</span><span class="p">,</span>
+    <span class="n">ner_converter</span><span class="p">,</span>
+    <span class="n">chunkSentenceSplitter</span><span class="p">])</span>
+
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""2. DEFINITION. 
+
+For purposes of this Agreement, the following terms have the meanings ascribed thereto in this Section 1 and 2 Appointment as Reseller.
+
+2.1 Appointment. 
+
+The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+
+2.2 Customer Agreements."""</span>
+
+<span class="n">sdf</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">paragraphs</span> <span class="o">=</span> <span class="n">nlp_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sdf</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">sdf</span><span class="p">)</span>
+
+<span class="n">paragraphs</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"explode(paragraphs) as result"</span><span class="p">)</span>\
+          <span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"result.result"</span><span class="p">,</span><span class="s">"result.metadata.entity"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span>                                                                                              <span class="n">result</span><span class="o">|</span>   <span class="n">entity</span><span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span>                                                                                                 <span class="mf">2.</span> <span class="o">|</span>   <span class="n">HEADER</span><span class="o">|</span>
+<span class="o">|</span><span class="n">DEFINITION</span><span class="p">.</span>   <span class="n">For</span> <span class="n">purposes</span> <span class="n">of</span> <span class="n">this</span> <span class="n">Agreement</span><span class="p">,</span> <span class="n">the</span> <span class="n">following</span> <span class="n">terms</span> <span class="n">have</span> <span class="n">the</span> <span class="n">meanings</span> <span class="n">ascribed</span> <span class="n">ther</span><span class="p">...</span><span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span>                                                                                 <span class="mf">2.1</span> <span class="n">Appointment</span><span class="p">.</span>   <span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span><span class="n">The</span> <span class="n">Company</span> <span class="n">hereby</span> <span class="p">[</span><span class="o">***</span><span class="p">].</span> <span class="n">Allscripts</span> <span class="n">may</span> <span class="n">also</span> <span class="n">disclose</span> <span class="n">Company</span><span class="s">"s pricing information relating to ...|SUBHEADER|
+|                                                                          6  2.2 Customer Agreements|   HEADER|
++----------------------------------------------------------------------------------------------------+---------+
+</span></code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+        
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span><span class="s">"xx"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legner_headers"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">NerConverter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">chunkSentenceSplitter</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">ChunkSentenceSplitter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"paragraphs"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGroupBySentences</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+    
+<span class="n">nlp_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">sentenceDetector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">ner_model</span><span class="p">,</span>
+    <span class="n">ner_converter</span><span class="p">,</span>
+    <span class="n">chunkSentenceSplitter</span><span class="p">])</span>
+
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""AGREEMENT
+
+NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutual covenants and conditions herein contained, the Parties agree as follows:
+
+2. Definitions. For purposes of this Agreement, the following terms have the meanings ascribed thereto in this Section 1. 2. Appointment as Reseller.
+
+2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+
+2.2 Customer Agreements.
+
+a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one year and no greater than four (4) years on a subscription basis to Persons who subsequently execute a Customer Agreement, provided that Allscripts may enter into Customer Agreements with terms longer than four (4) years with large organizations, provided that Phreesia consents in each instance in writing in advance, which consent will not be unreasonably withheld."""</span>
+
+<span class="n">sdf</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">paragraphs</span> <span class="o">=</span> <span class="n">nlp_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sdf</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">sdf</span><span class="p">)</span>
+
+<span class="n">paragraphs</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"explode(paragraphs) as result"</span><span class="p">)</span>\
+          <span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"result.result"</span><span class="p">,</span><span class="s">"result.metadata.entity"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span>                                                                                              <span class="n">result</span><span class="o">|</span>   <span class="n">entity</span><span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span><span class="n">AGREEMENT</span>  <span class="n">NOW</span><span class="p">,</span> <span class="n">THEREFORE</span><span class="p">,</span> <span class="k">for</span> <span class="n">good</span> <span class="ow">and</span> <span class="n">valuable</span> <span class="n">consideration</span><span class="p">,</span> <span class="ow">and</span> <span class="ow">in</span> <span class="n">consideration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">mutua</span><span class="p">...</span><span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span>                                                                          <span class="n">Appointment</span> <span class="k">as</span> <span class="n">Reseller</span><span class="p">.</span>  <span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span>                                                                                   <span class="mf">2.1</span> <span class="n">Appointment</span><span class="p">.</span> <span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span><span class="n">The</span> <span class="n">Company</span> <span class="n">hereby</span> <span class="p">[</span><span class="o">***</span><span class="p">].</span> <span class="n">Allscripts</span> <span class="n">may</span> <span class="n">also</span> <span class="n">disclose</span> <span class="n">Company</span><span class="s">"s pricing information relating to ...|SUBHEADER|
+|                                                                       6 2.2 Customer Agreements.   |   HEADER|
+|a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one...|SUBHEADER|
++----------------------------------------------------------------------------------------------------+---------+
+</span></code></pre></div>          </div>
 
         </div>
 
@@ -8018,18 +8218,203 @@ She was on metformin , glipizide , and dapagliflozin for T2DM and atorvastatin a
 <div class="tabs-mfl-box">
 
         <div class="tabs-mfl-head">
-          <p><button class="tab-mfl-li">Medical</button></p>
+          <p><button class="tab-mfl-li">Medical</button><button class="tab-mfl-li">Finance</button><button class="tab-mfl-li">Legal</button></p>
         </div>
 
         <div class="tab-mfl-content">
 
-          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">,</span><span class="n">text</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">().</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"doc"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">regexMatcher</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">RegexMatcher</span><span class="o">().</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"doc"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunks"</span><span class="o">).</span><span class="py">setExternalRules</span><span class="o">(</span><span class="s">"src/test/resources/chunker/title_regex.txt"</span><span class="o">,</span><span class="s">","</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">chunkSentenceSplitter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ChunkSentenceSplitter</span><span class="o">().</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"chunks"</span><span class="o">,</span><span class="s">"doc"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"paragraphs"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span>  <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">documentAssembler</span><span class="o">,</span><span class="n">regexMatcher</span><span class="o">,</span><span class="n">chunkSentenceSplitter</span><span class="o">))</span>
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">select</span><span class="o">(</span><span class="s">"paragraphs"</span><span class="o">)</span>
-<span class="nv">result</span><span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="n">truncate</span> <span class="k">=</span> <span class="kc">false</span><span class="o">)</span>
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">clinical_ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_jsl_slim"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> <span class="o">\</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Header"</span><span class="o">))</span>
+
+<span class="c1">//applying ChunkSentenceSplitter</span>
+<span class="k">val</span> <span class="nv">chunkSentenceSplitter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ChunkSentenceSplitter</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"paragraphs"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setGroupBySentences</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline_model</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">documentAssembler</span><span class="o">,</span>
+    <span class="n">sentenceDetector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">word_embeddings</span><span class="o">,</span>
+    <span class="n">clinical_ner</span><span class="o">,</span>
+    <span class="n">ner_converter</span><span class="o">,</span>
+    <span class="n">chunkSentenceSplitter</span>
+<span class="o">))</span>
+
+
+<span class="k">val</span> <span class="nv">sentences</span> <span class="k">=</span> <span class="o">(</span><span class="s">"""Sample Name: Mesothelioma - Pleural Biopsy
+Description: Right pleural effusion and suspected malignant mesothelioma. (Medical Transcription Sample Report)
+PREOPERATIVE DIAGNOSIS:  Right pleural effusion and suspected malignant mesothelioma.
+POSTOPERATIVE DIAGNOSIS: Right pleural effusion, suspected malignant mesothelioma.
+ANESTHESIA: General double-lumen endotracheal.
+DESCRIPTION OF FINDINGS:  Right pleural effusion, firm nodules, diffuse scattered throughout the right pleura and diaphragmatic surface.
+SPECIMEN:  Pleural biopsies for pathology and microbiology.
+INDICATIONS:  Briefly, this is a 66-year-old gentleman who has been transferred from an outside hospital after a pleural effusion had been drained and biopsies taken from the right chest that were thought to be consistent with mesothelioma. Upon transfer, he had a right pleural effusion demonstrated on x-ray as well as some shortness of breath and dyspnea on exertion. The risks, benefits, and alternatives to right VATS pleurodesis and pleural biopsy were discussed with the patient and his family and they wished to proceed.
+Dr. X was present for the entire procedure which was right VATS pleurodesis and pleural biopsies.The counts were correct x2 at the end of the case."""</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">sentences</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">paragraphs</span> <span class="k">=</span> <span class="nv">pipeline_model</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">df</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
+
+<span class="nv">paragraphs</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"explode(paragraphs) as result"</span><span class="o">)</span>
+          <span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"result.result"</span><span class="o">,</span><span class="s">"result.metadata.entity"</span><span class="o">,</span> <span class="s">"result.metadata.splitter_chunk"</span><span class="o">).</span><span class="py">show</span><span class="o">(</span><span class="n">truncate</span><span class="k">=</span><span class="mi">80</span><span class="o">)</span>
+
+<span class="o">+--------------------------------------------------------------------------------+------------+------------------------+</span>
+<span class="o">|</span>                                                                          <span class="n">result</span><span class="o">|</span>      <span class="n">entity</span><span class="o">|</span>          <span class="n">splitter_chunk</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------------------------------------+------------+------------------------+</span>
+<span class="o">|</span>                                     <span class="nc">Sample</span> <span class="nc">Name</span><span class="k">:</span> <span class="kt">Mesothelioma</span> <span class="kt">-</span> <span class="kt">Pleural</span> <span class="kt">Biopsy</span> <span class="kt">|introduction|</span>                     <span class="kt">UNK|</span>
+<span class="kt">|Description:</span> <span class="kt">Right</span> <span class="kt">pleural</span> <span class="kt">effusion</span> <span class="kt">and</span> <span class="kt">suspected</span> <span class="kt">malignant</span> <span class="kt">mesothelioma.</span> <span class="o">(</span><span class="kt">Me...|</span>      <span class="kt">Header|</span>            <span class="kt">Description:|</span>
+<span class="kt">|PREOPERATIVE</span> <span class="kt">DIAGNOSIS:</span>  <span class="kt">Right</span> <span class="kt">pleural</span> <span class="kt">effusion</span> <span class="kt">and</span> <span class="kt">suspected</span> <span class="kt">malignant</span> <span class="kt">mesot...|</span>      <span class="kt">Header|</span> <span class="kt">PREOPERATIVE</span> <span class="kt">DIAGNOSIS:|</span>
+<span class="kt">|POSTOPERATIVE</span> <span class="kt">DIAGNOSIS:</span> <span class="kt">Right</span> <span class="kt">pleural</span> <span class="kt">effusion</span><span class="o">,</span> <span class="kt">suspected</span> <span class="kt">malignant</span> <span class="kt">mesothel...|</span>      <span class="kt">Header|POSTOPERATIVE</span> <span class="kt">DIAGNOSIS:|</span>
+<span class="kt">|</span>                                 <span class="kt">ANESTHESIA:</span> <span class="kt">General</span> <span class="kt">double-lumen</span> <span class="kt">endotracheal.</span> <span class="kt">|</span>      <span class="kt">Header|</span>             <span class="kt">ANESTHESIA:|</span>
+<span class="kt">|DESCRIPTION</span> <span class="kt">OF</span> <span class="kt">FINDINGS:</span>  <span class="kt">Right</span> <span class="kt">pleural</span> <span class="kt">effusion</span><span class="o">,</span> <span class="n">firm</span> <span class="n">nodules</span><span class="o">,</span> <span class="n">diffuse</span> <span class="n">scatt</span><span class="o">...|</span>      <span class="nc">Header</span><span class="o">|</span><span class="nc">DESCRIPTION</span> <span class="nc">OF</span> <span class="nc">FINDINGS</span><span class="o">:|</span>
+<span class="o">|</span>                    <span class="nc">SPECIMEN</span><span class="k">:</span>  <span class="kt">Pleural</span> <span class="kt">biopsies</span> <span class="kt">for</span> <span class="kt">pathology</span> <span class="kt">and</span> <span class="kt">microbiology.</span> <span class="kt">|</span>      <span class="kt">Header|</span>               <span class="kt">SPECIMEN:|</span>
+<span class="kt">|INDICATIONS:</span>  <span class="kt">Briefly</span><span class="o">,</span> <span class="k">this</span> <span class="n">is</span> <span class="n">a</span> <span class="mi">66</span><span class="o">-</span><span class="n">year</span><span class="o">-</span><span class="n">old</span> <span class="n">gentleman</span> <span class="n">who</span> <span class="n">has</span> <span class="n">been</span> <span class="n">transferr</span><span class="o">...|</span>      <span class="nc">Header</span><span class="o">|</span>            <span class="nc">INDICATIONS</span><span class="o">:|</span>
+<span class="o">+--------------------------------------------------------------------------------+------------+------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span> 
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span> 
+
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">BertEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span> 
+
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">FinanceNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"finner_ticker"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"finance/models"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span> 
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span> 
+
+<span class="k">val</span> <span class="nv">CM</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"finmapper_nasdaq_ticker_stock_screener"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"finance/models"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span> 
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span> 
+  <span class="n">document_assembler</span><span class="o">,</span> 
+  <span class="n">tokenizer</span><span class="o">,</span> 
+  <span class="n">embeddings</span><span class="o">,</span> 
+  <span class="n">ner_model</span><span class="o">,</span> 
+  <span class="n">ner_converter</span><span class="o">,</span> 
+  <span class="nc">CM</span><span class="o">)</span> <span class="o">)</span> 
+ 
+<span class="k">val</span> <span class="nv">text</span> <span class="o">=</span><span class="s">"""There are some serious purchases and sales of AMZN stock today."""</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span> 
+
+<span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"ner_chunk.result"</span><span class="o">,</span><span class="s">"mappings.result"</span><span class="o">)</span> <span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="n">truncate</span><span class="k">=</span><span class="kc">false</span><span class="o">)</span> 
+
+<span class="o">+------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="o">|</span><span class="n">result</span><span class="o">|</span><span class="n">result</span>                                                                                                                                                             <span class="o">|</span>
+<span class="o">+------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="o">|[</span><span class="kt">AMZN</span><span class="o">]|[</span><span class="kt">AMZN</span>, <span class="kt">Amazon.com</span> <span class="kt">Inc.</span> <span class="kt">Common</span> <span class="kt">Stock</span>, <span class="kt">$98.</span><span class="err">12</span>, <span class="err">2</span><span class="kt">.</span><span class="err">85</span>, <span class="err">2</span><span class="kt">.</span><span class="err">991</span><span class="kt">%</span>, <span class="err">9</span><span class="kt">.</span><span class="err">98556270184</span><span class="kt">E11</span>, <span class="kt">United</span> <span class="kt">States</span>, <span class="err">1997</span>, <span class="err">85412563</span>, <span class="kt">Consumer</span> <span class="kt">Discretionary</span>, <span class="kt">Catalog/Specialty</span> <span class="kt">Distribution</span><span class="o">]|</span>
+<span class="o">+------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+        
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl"</span><span class="o">,</span><span class="s">"xx"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">BertEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">FinanceNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"finner_headers"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"finance/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">chunkSentenceSplitter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ChunkSentenceSplitter</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"paragraphs"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setGroupBySentences</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nlp_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">documentAssembler</span><span class="o">,</span>
+    <span class="n">sentenceDetector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">embeddings</span><span class="o">,</span>
+    <span class="n">ner_model</span><span class="o">,</span>
+    <span class="n">ner_converter</span><span class="o">,</span>
+    <span class="n">chunkSentenceSplitter</span><span class="o">))</span>
+
+
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""2. DEFINITION. 
+
+For purposes of this Agreement, the following terms have the meanings ascribed thereto in this Section 1 and 2 Appointment as Reseller.
+
+2.1 Appointment. 
+
+The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+
+2.2 Customer Agreements."""</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">paragraphs</span> <span class="k">=</span> <span class="nv">nlp_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="nv">paragraphs</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"explode(paragraphs) as result"</span><span class="o">)</span>
+          <span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"result.result"</span><span class="o">,</span><span class="s">"result.metadata.entity"</span><span class="o">).</span><span class="py">show</span><span class="o">(</span><span class="n">truncate</span><span class="k">=</span><span class="mi">50</span><span class="o">)</span>
+
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span>                                                                                              <span class="n">result</span><span class="o">|</span>   <span class="n">entity</span><span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span>                                                                                                 <span class="mf">2.</span> <span class="o">|</span>   <span class="nc">HEADER</span><span class="o">|</span>
+<span class="o">|</span><span class="nc">DEFINITION</span><span class="o">.</span>   <span class="nc">For</span> <span class="n">purposes</span> <span class="n">of</span> <span class="k">this</span> <span class="nc">Agreement</span><span class="o">,</span> <span class="n">the</span> <span class="n">following</span> <span class="n">terms</span> <span class="n">have</span> <span class="n">the</span> <span class="n">meanings</span> <span class="n">ascribed</span> <span class="n">ther</span><span class="o">...|</span><span class="nc">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span>                                                                                 <span class="mf">2.1</span> <span class="nc">Appointment</span><span class="o">.</span>   <span class="o">|</span><span class="nc">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span><span class="nc">The</span> <span class="nc">Company</span> <span class="n">hereby</span> <span class="o">[</span><span class="kt">***</span><span class="o">].</span> <span class="nc">Allscripts</span> <span class="n">may</span> <span class="n">also</span> <span class="n">disclose</span> <span class="nc">Company</span><span class="err">"</span><span class="n">s</span> <span class="n">pricing</span> <span class="n">information</span> <span class="n">relating</span> <span class="n">to</span> <span class="o">...|</span><span class="nc">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span>                                                                          <span class="mi">6</span>  <span class="mf">2.2</span> <span class="nc">Customer</span> <span class="nc">Agreements</span><span class="o">|</span>   <span class="nc">HEADER</span><span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -8891,103 +9276,145 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
 
         <div class="tab-mfl-content">
 
-          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">'text'</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'document'</span><span class="p">)</span>
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span><span class="s">"xx"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
 <span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">ner_model</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"finner_ticker"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"finance/models"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"finner_headers"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"finance/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">NerConverter</span><span class="p">()</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-<span class="n">CM</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'finmapper_nasdaq_ticker_stock_screener'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'finance/models'</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
+<span class="n">chunkSentenceSplitter</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">ChunkSentenceSplitter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"paragraphs"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGroupBySentences</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
-  <span class="n">document_assembler</span><span class="p">,</span>
-  <span class="n">tokenizer</span><span class="p">,</span> 
-  <span class="n">embeddings</span><span class="p">,</span>
-  <span class="n">ner_model</span><span class="p">,</span> 
-  <span class="n">ner_converter</span><span class="p">,</span> 
-  <span class="n">CM</span><span class="p">])</span>
-                                 
-<span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s">"""There are some serious purchases and sales of AMZN stock today."""</span><span class="p">]</span>
+<span class="n">nlp_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">sentenceDetector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">ner_model</span><span class="p">,</span>
+    <span class="n">ner_converter</span><span class="p">,</span>
+    <span class="n">chunkSentenceSplitter</span><span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="n">text</span><span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""2. DEFINITION. 
 
-<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'ner_chunk.result'</span><span class="p">,</span> <span class="s">'mappings.result'</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+For purposes of this Agreement, the following terms have the meanings ascribed thereto in this Section 1 and 2 Appointment as Reseller.
 
-<span class="o">+------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="o">|</span><span class="n">result</span><span class="o">|</span><span class="n">result</span>                                                                                                                                                             <span class="o">|</span>
-<span class="o">+------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="o">|</span><span class="p">[</span><span class="n">AMZN</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="n">AMZN</span><span class="p">,</span> <span class="n">Amazon</span><span class="p">.</span><span class="n">com</span> <span class="n">Inc</span><span class="p">.</span> <span class="n">Common</span> <span class="n">Stock</span><span class="p">,</span> <span class="err">$</span><span class="mf">98.12</span><span class="p">,</span> <span class="mf">2.85</span><span class="p">,</span> <span class="mf">2.991</span><span class="o">%</span><span class="p">,</span> <span class="mf">9.98556270184E11</span><span class="p">,</span> <span class="n">United</span> <span class="n">States</span><span class="p">,</span> <span class="mi">1997</span><span class="p">,</span> <span class="mi">85412563</span><span class="p">,</span> <span class="n">Consumer</span> <span class="n">Discretionary</span><span class="p">,</span> <span class="n">Catalog</span><span class="o">/</span><span class="n">Specialty</span> <span class="n">Distribution</span><span class="p">]</span><span class="o">|</span>
-<span class="o">+------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-</code></pre></div>          </div>
+2.1 Appointment. 
+
+The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+
+2.2 Customer Agreements."""</span>
+
+<span class="n">sdf</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">paragraphs</span> <span class="o">=</span> <span class="n">nlp_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sdf</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">sdf</span><span class="p">)</span>
+
+<span class="n">paragraphs</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"explode(paragraphs) as result"</span><span class="p">)</span>\
+          <span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"result.result"</span><span class="p">,</span><span class="s">"result.metadata.entity"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span>                                                                                              <span class="n">result</span><span class="o">|</span>   <span class="n">entity</span><span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span>                                                                                                 <span class="mf">2.</span> <span class="o">|</span>   <span class="n">HEADER</span><span class="o">|</span>
+<span class="o">|</span><span class="n">DEFINITION</span><span class="p">.</span>   <span class="n">For</span> <span class="n">purposes</span> <span class="n">of</span> <span class="n">this</span> <span class="n">Agreement</span><span class="p">,</span> <span class="n">the</span> <span class="n">following</span> <span class="n">terms</span> <span class="n">have</span> <span class="n">the</span> <span class="n">meanings</span> <span class="n">ascribed</span> <span class="n">ther</span><span class="p">...</span><span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span>                                                                                 <span class="mf">2.1</span> <span class="n">Appointment</span><span class="p">.</span>   <span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span><span class="n">The</span> <span class="n">Company</span> <span class="n">hereby</span> <span class="p">[</span><span class="o">***</span><span class="p">].</span> <span class="n">Allscripts</span> <span class="n">may</span> <span class="n">also</span> <span class="n">disclose</span> <span class="n">Company</span><span class="s">"s pricing information relating to ...|SUBHEADER|
+|                                                                          6  2.2 Customer Agreements|   HEADER|
++----------------------------------------------------------------------------------------------------+---------+
+</span></code></pre></div>          </div>
 
         </div>
 
         <div class="tab-mfl-content">
 
-          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">'text'</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'document'</span><span class="p">)</span>
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+        
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span><span class="s">"xx"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'glove_100d'</span><span class="p">)</span> \
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'document'</span><span class="p">,</span> <span class="s">'token'</span><span class="p">])</span> \
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'embeddings'</span><span class="p">)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">ner_model</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">NerDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"onto_100"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">)</span> \
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
- 
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legner_headers"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
 <span class="n">ner_converter</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">NerConverter</span><span class="p">()</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"CARDINAL"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-<span class="n">CM</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">ChunkMapperModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legmapper_edgar_irs"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
+<span class="n">chunkSentenceSplitter</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">ChunkSentenceSplitter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"paragraphs"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGroupBySentences</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
-  <span class="n">document_assembler</span><span class="p">,</span>
-  <span class="n">tokenizer</span><span class="p">,</span> 
-  <span class="n">embeddings</span><span class="p">,</span>
-  <span class="n">ner_model</span><span class="p">,</span> 
-  <span class="n">ner_converter</span><span class="p">,</span> 
-  <span class="n">CM</span><span class="p">])</span>
+    
+<span class="n">nlp_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">sentenceDetector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">ner_model</span><span class="p">,</span>
+    <span class="n">ner_converter</span><span class="p">,</span>
+    <span class="n">chunkSentenceSplitter</span><span class="p">])</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s">"""873474341 is an American multinational corporation that is engaged in the design, development, manufacturing, and worldwide marketing and sales of footwear, apparel, equipment, accessories, and services"""</span><span class="p">]</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="n">text</span><span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""AGREEMENT
 
-<span class="n">result</span><span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'ner_chunk.result'</span><span class="p">,</span> <span class="s">'mappings.result'</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutual covenants and conditions herein contained, the Parties agree as follows:
 
-<span class="o">+-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="o">|</span><span class="n">result</span>     <span class="o">|</span><span class="n">result</span>                                                                                                                                                               <span class="o">|</span>
-<span class="o">+-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="o">|</span><span class="p">[</span><span class="mi">873474341</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="n">Masterworks</span> <span class="mi">096</span><span class="p">,</span> <span class="n">LLC</span><span class="p">,</span> <span class="n">RETAIL</span><span class="o">-</span><span class="n">RETAIL</span> <span class="n">STORES</span><span class="p">,</span> <span class="n">NEC</span> <span class="p">[</span><span class="mi">5990</span><span class="p">],</span> <span class="mi">5990</span><span class="p">,</span> <span class="mi">873474341</span><span class="p">,</span> <span class="mi">1231</span><span class="p">,</span> <span class="n">NY</span><span class="p">,</span> <span class="n">DE</span><span class="p">,</span> <span class="mi">225</span> <span class="n">LIBERTY</span> <span class="n">STREET</span><span class="p">,</span> <span class="n">NEW</span> <span class="n">YORK</span><span class="p">,</span> <span class="n">NY</span><span class="p">,</span> <span class="mi">10281</span><span class="p">,</span> <span class="mi">2035185172</span><span class="p">,</span> <span class="p">,</span> <span class="p">,</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1894064</span><span class="p">]</span><span class="o">|</span>
-<span class="o">+-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-</code></pre></div>          </div>
+2. Definitions. For purposes of this Agreement, the following terms have the meanings ascribed thereto in this Section 1. 2. Appointment as Reseller.
+
+2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+
+2.2 Customer Agreements.
+
+a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one year and no greater than four (4) years on a subscription basis to Persons who subsequently execute a Customer Agreement, provided that Allscripts may enter into Customer Agreements with terms longer than four (4) years with large organizations, provided that Phreesia consents in each instance in writing in advance, which consent will not be unreasonably withheld."""</span>
+
+<span class="n">sdf</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">paragraphs</span> <span class="o">=</span> <span class="n">nlp_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sdf</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">sdf</span><span class="p">)</span>
+
+<span class="n">paragraphs</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"explode(paragraphs) as result"</span><span class="p">)</span>\
+          <span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"result.result"</span><span class="p">,</span><span class="s">"result.metadata.entity"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span>                                                                                              <span class="n">result</span><span class="o">|</span>   <span class="n">entity</span><span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+---------+</span>
+<span class="o">|</span><span class="n">AGREEMENT</span>  <span class="n">NOW</span><span class="p">,</span> <span class="n">THEREFORE</span><span class="p">,</span> <span class="k">for</span> <span class="n">good</span> <span class="ow">and</span> <span class="n">valuable</span> <span class="n">consideration</span><span class="p">,</span> <span class="ow">and</span> <span class="ow">in</span> <span class="n">consideration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">mutua</span><span class="p">...</span><span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span>                                                                          <span class="n">Appointment</span> <span class="k">as</span> <span class="n">Reseller</span><span class="p">.</span>  <span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span>                                                                                   <span class="mf">2.1</span> <span class="n">Appointment</span><span class="p">.</span> <span class="o">|</span><span class="n">SUBHEADER</span><span class="o">|</span>
+<span class="o">|</span><span class="n">The</span> <span class="n">Company</span> <span class="n">hereby</span> <span class="p">[</span><span class="o">***</span><span class="p">].</span> <span class="n">Allscripts</span> <span class="n">may</span> <span class="n">also</span> <span class="n">disclose</span> <span class="n">Company</span><span class="s">"s pricing information relating to ...|SUBHEADER|
+|                                                                       6 2.2 Customer Agreements.   |   HEADER|
+|a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one...|SUBHEADER|
++----------------------------------------------------------------------------------------------------+---------+
+</span></code></pre></div>          </div>
 
         </div>
 
