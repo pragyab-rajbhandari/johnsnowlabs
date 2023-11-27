@@ -565,16 +565,16 @@ The practical impact of this type of models is that you can create “data extra
 
 </code></pre></div>  </div>
 
-  <p>Now, we’re taking one step further and integrating Pix2Struct which, when compared to Donut, scores 5 points higher in the ‘base’ version, and 9 points higher in the ‘large’ version, on DocVQA dataset.
+  <p>Now, we’re taking one step further and integrating Pix2Struct which, when compared to Donut, scores 5 points higher in the ‘base’ version, and 9 points higher in the ‘large’ version, on DocVQA dataset. This is an optimized and in house fine tuned checkpoint.
 Check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualPix2Struct.ipynb">this notebook</a> with examples on how to use it.</p>
 
   <ul>
     <li>
-      <p>ImageLayoutAnalyzerDit: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.
+      <p>DocumentLayoutAnalyzer: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.
 <img src="/assets/images/ocr/dit-layout-sample.png" alt="image" /></p>
 
       <p>Identifying these sections is the first step that enables other downstream processing tasks like OCR or Table Extraction.
-Check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRDitLayoutAnalyze.ipynb">this notebook</a> for an example on how to apply this new model to sample documents.</p>
+Check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRDocumentLayoutAnalyzer.ipynb">this notebook</a> for an example on how to apply this new model to sample documents.</p>
     </li>
     <li>
       <p>DicomDeidentifier: new annotator that allows deidentification of Dicom Images using Dicom metadata contained in the same Dicom document. This is a rule-based annotator which leverages PHI collected from the metadata like patient names or test results to deidentify PHI contained on images in the Dicom file. It also supports a black list parameter to remove specific content present in the image text.
@@ -608,7 +608,7 @@ As well as related blogposts,</p>
 
   <p>or</p>
 
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VisualQuestionAnswering.pretrained("docvqa_pix2struct_base")	
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VisualQuestionAnswering.pretrained("docvqa_pix2struct_jsl")	
 </code></pre></div>  </div>
   <ul>
     <li>VisualDocumentClassifierV3, fit() method now allows the initial checkpoint to be present in local storage, instead of being downloaded from JSL Models Hub. Simply pass the ‘base_model_path’ param like this,
