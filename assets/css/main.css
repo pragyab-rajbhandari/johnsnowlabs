@@ -5265,11 +5265,15 @@ header.header {
       font-family: 'Montserrat', sans-serif; }
       header.header nav.top_navigation ul li a:hover {
         color: #1E77B7 !important; }
+        header.header nav.top_navigation ul li a:hover i:before {
+          color: #1E77B7 !important; }
     header.header nav.top_navigation ul li:after {
       display: none !important; }
     header.header nav.top_navigation ul li.navigation__item--active a {
       color: #1E77B7;
       font-weight: bold; }
+      header.header nav.top_navigation ul li.navigation__item--active a i:before {
+        color: #1E77B7 !important; }
     header.header nav.top_navigation ul li .search-button {
       background: none !important;
       border: none !important;
@@ -6431,9 +6435,10 @@ code.language-plaintext {
 
 .search-wrapper {
   position: relative;
-  width: 415px;
-  margin: 0 auto 50px;
   z-index: 8; }
+  .search-wrapper .search-input-wrapper {
+    width: 415px;
+    margin: 0 auto 50px; }
   .search-wrapper button {
     position: absolute;
     right: 0;
@@ -6457,53 +6462,55 @@ code.language-plaintext {
 
 .results-container {
   list-style-type: none;
-  max-height: 500px;
   overflow: hidden;
   overflow-y: auto;
-  position: absolute;
-  left: 0;
-  top: 51px;
+  display: none;
+  border-bottom: 1px solid #f4f5f6;
   width: 100%; }
   .results-container em {
     display: block;
     font-style: normal;
-    border: 1px solid #1E77B7;
-    font-weight: bold;
-    padding: 10px; }
+    font-weight: 400;
+    padding-top: 10px;
+    font-size: 14px;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; }
   .results-container li {
     list-style-type: none;
-    padding: 5px 10px;
+    padding: 25px 10px;
     border-top: 1px solid #f4f5f6; }
-    .results-container li:first-child {
-      padding-top: 15px; }
     .results-container li:last-child {
       padding-bottom: 15px; }
-    .results-container li span {
+    .results-container li .sr_seotitle {
       display: block;
-      font-size: 12px;
+      font-size: 14px;
       color: #536B76 !important;
-      font-weight: 200;
-      line-height: 18px; }
+      font-weight: 500;
+      line-height: 24px; }
     .results-container li i {
       font-style: normal;
-      text-align: right;
       font-size: 12px;
       line-height: 12px;
       color: #ff882f;
       display: block;
+      font-weight: 400;
       margin-bottom: 4px; }
+    .results-container li .hightitle {
+      color: #ff882f !important; }
     .results-container li a {
       color: #1E77B7 !important;
-      display: block;
-      padding: 10px;
-      position: relative;
+      font-size: 18px;
+      line-height: 28px;
       text-align: left;
       transition: all 300ms ease;
       border-radius: 3px; }
       .results-container li a:hover {
         text-decoration: none !important;
-        color: #1E77B7 !important;
-        background: #ecf9ff; }
+        color: #ff882f !important; }
 
 .article-inner {
   display: block;
@@ -6729,7 +6736,7 @@ h2.h2_title.cat_h2 {
       content: '';
       background: #c5c5c5;
       position: absolute;
-      bottom: 0;
+      bottom: -1px;
       left: -29px;
       width: calc(100% + 30px);
       height: 1px; }
@@ -7652,6 +7659,19 @@ code {
     .pagination li:before {
       display: none !important; }
 
+.search-wrapper h2,
+.docs-wrapper h2 {
+  text-align: center;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 36px;
+  margin: 60px 0 35px;
+  color: #1E77B7;
+  border: none; }
+
+.search-wrapper h2 {
+  margin: 0 0 35px; }
+
 .docs-wrapper {
   margin: 0 auto;
   width: 910px;
@@ -7718,8 +7738,7 @@ code {
             border: none; }
   .docs-wrapper h4,
   .docs-wrapper h3,
-  .docs-wrapper h5,
-  .docs-wrapper h2 {
+  .docs-wrapper h5 {
     text-align: center;
     font-weight: 800;
     font-size: 30px;
@@ -8480,8 +8499,11 @@ code {
   .learn-hub .grid > .cell--sm-4 {
     width: 50%; } }
 @media (max-width: 767px) {
-  .search-wrapper {
+  .search-wrapper .search-input-wrapper {
     width: 100%; }
+
+  .search-results-wrapper {
+    padding: 0; }
 
   .header__title {
     width: 100%;
