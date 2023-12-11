@@ -12975,6 +12975,420 @@ Please see the Parameters section for required training parameters.</p>
 
 <div class="tabs-model-aproach">
 
+  <h2 id="genericsvmclassifier">GenericSVMClassifier</h2>
+
+  <div class="tabs-model-aproach-head tac"><button class="tab-li-model-aproach">Model</button><button class="tab-li-model-aproach tabheader_active">Approach</button></div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>Creates a generic single-label classifier which uses pre-generated Tensorflow graphs. The model operates on FEATURE_VECTOR annotations which can be produced using FeatureAssembler. Requires the FeaturesAssembler to create the input.</p>
+
+    <h2 id="parameters"><strong>🔎 Parameters</strong></h2>
+
+    <p>featureScaling: Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling) (default:’’)</p>
+
+    <p>multiClass: Whether to return only the label with the highest confidence score or all labels (default: False)</p>
+
+    <p>inputCols: previous annotations columns, if renamed (default: [‘features’])</p>
+
+    <p>outputCol: output annotation column. can be left default. (default: class)</p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">FEATURE_VECTOR</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/generic_svm_classifier/index.html#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel">GenericSVMClassifier</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierModel.html">GenericClassifierModel</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span><span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"word_embeddings"</span><span class="p">)</span>
+
+<span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceEmbeddings</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"word_embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence_embeddings"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPoolingStrategy</span><span class="p">(</span><span class="s">"AVERAGE"</span><span class="p">)</span>
+
+<span class="n">features_asm</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">FeaturesAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"features"</span><span class="p">)</span>
+
+<span class="n">generic_classifier</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">GenericSVMClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"generic_svm_classifier_ade"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"class"</span><span class="p">)</span>
+
+<span class="n">clf_Pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">sentence_embeddings</span><span class="p">,</span>
+    <span class="n">features_asm</span><span class="p">,</span>
+    <span class="n">generic_classifier</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""None of the patients required treatment for the overdose."""</span><span class="p">],</span> 
+ <span class="p">[</span><span class="s">"""I feel a bit drowsy &amp; have a little blurred vision after taking an insulin"""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">clf_Pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># sample df
+</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+-------+</span>
+<span class="o">|</span>                                                                                                <span class="n">text</span><span class="o">|</span> <span class="n">result</span><span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+-------+</span>
+<span class="o">|</span>                       <span class="n">Multicentric</span> <span class="n">canine</span> <span class="n">lymphoma</span> <span class="ow">in</span> <span class="n">a</span> <span class="mi">12</span><span class="o">-</span><span class="n">year</span><span class="o">-</span><span class="n">old</span> <span class="n">keeshond</span><span class="p">:</span> <span class="n">chemotherapy</span> <span class="n">options</span><span class="p">.</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>                             <span class="n">Pyomyositis</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">rare</span> <span class="n">disease</span><span class="p">,</span> <span class="n">encountered</span> <span class="n">mainly</span> <span class="ow">in</span> <span class="n">tropical</span> <span class="n">climates</span><span class="p">.</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">Both</span> <span class="n">patients</span> <span class="n">subsequently</span> <span class="n">developed</span> <span class="n">markedly</span> <span class="n">elevated</span> <span class="n">EBV</span><span class="o">-</span><span class="n">DNA</span> <span class="n">titers</span> <span class="ow">in</span> <span class="n">association</span> <span class="k">with</span> <span class="n">monocl</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span><span class="n">Bortezomib</span><span class="o">-</span><span class="n">induced</span> <span class="n">paralytic</span> <span class="n">ileus</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">potential</span> <span class="n">gastrointestinal</span> <span class="n">side</span> <span class="n">effect</span> <span class="n">of</span> <span class="n">this</span> <span class="n">first</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">c</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span><span class="n">However</span><span class="p">,</span> <span class="n">given</span> <span class="n">the</span> <span class="n">clinically</span> <span class="n">significant</span> <span class="n">result</span> <span class="n">to</span> <span class="n">the</span> <span class="n">interaction</span> <span class="n">between</span> <span class="n">tolazoline</span> <span class="ow">and</span> <span class="n">cimeti</span><span class="p">...</span><span class="o">|</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>                                              <span class="n">How</span> <span class="n">much</span> <span class="n">do</span> <span class="n">novel</span> <span class="n">antipsychotics</span> <span class="n">benefit</span> <span class="n">the</span> <span class="n">patients</span><span class="err">?</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">We</span> <span class="n">hypothesize</span> <span class="n">that</span> <span class="n">during</span> <span class="n">interferon</span> <span class="n">therapy</span><span class="p">,</span> <span class="n">melanocytes</span> <span class="n">may</span> <span class="n">produce</span> <span class="n">more</span> <span class="n">melanin</span> <span class="n">pigment</span> <span class="ow">in</span> <span class="n">t</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span><span class="n">They</span> <span class="n">seemed</span> <span class="n">to</span> <span class="n">involve</span> <span class="n">multiple</span> <span class="n">aetiological</span> <span class="n">factors</span><span class="p">,</span> <span class="n">such</span> <span class="k">as</span> <span class="n">autoimmune</span> <span class="n">thyroid</span> <span class="n">disease</span><span class="p">,</span> <span class="n">the</span> <span class="n">tox</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>               <span class="n">Two</span> <span class="n">days</span> <span class="n">after</span> <span class="n">completing</span> <span class="n">this</span> <span class="n">regimen</span><span class="p">,</span> <span class="n">the</span> <span class="n">patient</span> <span class="n">developed</span> <span class="n">a</span> <span class="n">rash</span> <span class="k">with</span> <span class="n">blistering</span><span class="p">.</span><span class="o">|</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span><span class="n">A</span> <span class="n">diagnosis</span> <span class="n">of</span> <span class="n">masked</span> <span class="n">theophylline</span> <span class="n">poisoning</span> <span class="n">should</span> <span class="n">be</span> <span class="n">considered</span> <span class="ow">in</span> <span class="n">similar</span> <span class="n">situations</span> <span class="n">involving</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">The</span> <span class="n">overall</span> <span class="n">response</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">these</span> <span class="mi">24</span> <span class="n">refractory</span> <span class="n">lymphomas</span> <span class="n">to</span> <span class="n">gemcitabine</span><span class="o">-</span><span class="n">containing</span> <span class="n">regimens</span> <span class="n">wa</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span><span class="n">Development</span> <span class="n">of</span> <span class="n">sarcoidosis</span> <span class="n">during</span> <span class="n">interferon</span> <span class="n">alpha</span> <span class="mi">2</span><span class="n">b</span> <span class="ow">and</span> <span class="n">ribavirin</span> <span class="n">combination</span> <span class="n">therapy</span> <span class="k">for</span> <span class="n">chron</span><span class="p">...</span><span class="o">|</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span><span class="n">A</span> <span class="n">patient</span> <span class="k">with</span> <span class="n">coccidioidal</span> <span class="n">meningitis</span> <span class="n">was</span> <span class="n">treated</span> <span class="k">with</span> <span class="n">intrathecally</span> <span class="n">administered</span> <span class="n">amphotericin</span> <span class="n">B</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>                                                <span class="n">Renal</span> <span class="n">failure</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">the</span> <span class="n">use</span> <span class="n">of</span> <span class="n">dextran</span><span class="o">-</span><span class="mf">40.</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">However</span><span class="p">,</span> <span class="k">with</span> <span class="n">increased</span> <span class="n">experience</span> <span class="ow">in</span> <span class="n">applying</span> <span class="n">BCG</span><span class="p">,</span> <span class="n">the</span> <span class="n">side</span> <span class="n">effects</span> <span class="n">now</span> <span class="n">appear</span> <span class="n">to</span> <span class="n">be</span> <span class="n">less</span> <span class="n">promi</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>                        <span class="n">Hepatotoxicity</span> <span class="n">after</span> <span class="n">high</span><span class="o">-</span><span class="n">dose</span> <span class="n">methylprednisolone</span> <span class="k">for</span> <span class="n">demyelinating</span> <span class="n">disease</span><span class="p">.</span><span class="o">|</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">Histopathological</span> <span class="n">findings</span> <span class="n">included</span> <span class="n">signs</span> <span class="n">of</span> <span class="n">orthokeratotic</span> <span class="n">hyperkeratosis</span><span class="p">,</span> <span class="n">moderate</span> <span class="n">follicular</span> <span class="p">...</span><span class="o">|</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">Acute</span> <span class="n">spontaneous</span> <span class="n">TLS</span> <span class="ow">is</span> <span class="n">rare</span><span class="p">,</span> <span class="ow">and</span> <span class="n">it</span> <span class="n">has</span> <span class="n">been</span> <span class="n">described</span> <span class="ow">in</span> <span class="n">leukemia</span> <span class="ow">and</span> <span class="n">lymphoma</span> <span class="ow">and</span> <span class="ow">in</span> <span class="n">some</span> <span class="n">pa</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span><span class="n">We</span> <span class="n">present</span> <span class="n">a</span> <span class="n">fatal</span> <span class="n">case</span> <span class="n">of</span> <span class="n">subacute</span> <span class="n">methanol</span> <span class="n">toxicity</span> <span class="k">with</span> <span class="n">associated</span> <span class="n">diffuse</span> <span class="n">brain</span> <span class="n">involvement</span><span class="p">,</span> <span class="p">...</span><span class="o">|</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">The</span> <span class="n">reaction</span> <span class="n">was</span> <span class="n">thought</span> <span class="n">to</span> <span class="n">be</span> <span class="n">triggered</span> <span class="n">by</span> <span class="n">the</span> <span class="n">combination</span> <span class="n">of</span> <span class="n">radiation</span> <span class="ow">and</span> <span class="n">epidermal</span> <span class="n">growth</span> <span class="n">fa</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="bp">False</span><span class="p">]</span><span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+-------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">wordEmbeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"word_embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceEmbeddings</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceEmbeddings</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"word_embeddings"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setPoolingStrategy</span><span class="o">(</span><span class="s">"AVERAGE"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">featuresAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FeaturesAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"features"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">genericClassifier</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"generic_svm_classifier_ade"</span><span class="o">,</span> <span class="n">lang</span> <span class="k">=</span> <span class="s">"en"</span><span class="o">,</span> <span class="n">remoteLoc</span> <span class="k">=</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"features"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"class"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">documentAssembler</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">wordEmbeddings</span><span class="o">,</span>
+    <span class="n">sentenceEmbeddings</span><span class="o">,</span>
+    <span class="n">featuresAssembler</span><span class="o">,</span>
+    <span class="n">genericClassifier</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+  <span class="o">(</span><span class="s">"""None of the patients required treatment for the overdose."""</span><span class="o">),</span>
+  <span class="o">(</span><span class="s">"""I feel a bit drowsy &amp; have a little blurred vision after taking an insulin"""</span><span class="o">)</span>
+<span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">df</span> <span class="k">=</span> <span class="nv">data</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">df</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
+
+
+<span class="o">+----------------------------------------------------------------------------------------------------+-------+</span>
+<span class="o">|</span>                                                                                                <span class="n">text</span><span class="o">|</span> <span class="n">result</span><span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+-------+</span>
+<span class="o">|</span>                       <span class="nc">Multicentric</span> <span class="n">canine</span> <span class="n">lymphoma</span> <span class="n">in</span> <span class="n">a</span> <span class="mi">12</span><span class="o">-</span><span class="n">year</span><span class="o">-</span><span class="n">old</span> <span class="n">keeshond</span><span class="k">:</span> <span class="kt">chemotherapy</span> <span class="kt">options.|</span><span class="err">[</span><span class="kt">False</span><span class="err">]</span><span class="kt">|</span>
+<span class="kt">|</span>                             <span class="kt">Pyomyositis</span> <span class="kt">is</span> <span class="kt">a</span> <span class="kt">rare</span> <span class="kt">disease</span><span class="o">,</span> <span class="n">encountered</span> <span class="n">mainly</span> <span class="n">in</span> <span class="n">tropical</span> <span class="n">climates</span><span class="o">.|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span> <span class="nc">Both</span> <span class="n">patients</span> <span class="n">subsequently</span> <span class="n">developed</span> <span class="n">markedly</span> <span class="n">elevated</span> <span class="nc">EBV</span><span class="o">-</span><span class="nc">DNA</span> <span class="n">titers</span> <span class="n">in</span> <span class="n">association</span> <span class="k">with</span> <span class="n">monocl</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span><span class="nc">Bortezomib</span><span class="o">-</span><span class="n">induced</span> <span class="n">paralytic</span> <span class="n">ileus</span> <span class="n">is</span> <span class="n">a</span> <span class="n">potential</span> <span class="n">gastrointestinal</span> <span class="n">side</span> <span class="n">effect</span> <span class="n">of</span> <span class="k">this</span> <span class="n">first</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">c</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span><span class="nc">However</span><span class="o">,</span> <span class="n">given</span> <span class="n">the</span> <span class="n">clinically</span> <span class="n">significant</span> <span class="n">result</span> <span class="n">to</span> <span class="n">the</span> <span class="n">interaction</span> <span class="n">between</span> <span class="n">tolazoline</span> <span class="n">and</span> <span class="n">cimeti</span><span class="o">...|</span> <span class="o">[</span><span class="kt">True</span><span class="o">]|</span>
+<span class="o">|</span>                                              <span class="nc">How</span> <span class="n">much</span> <span class="k">do</span> <span class="n">novel</span> <span class="n">antipsychotics</span> <span class="n">benefit</span> <span class="n">the</span> <span class="n">patients</span><span class="o">?|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span> <span class="nc">We</span> <span class="n">hypothesize</span> <span class="n">that</span> <span class="n">during</span> <span class="n">interferon</span> <span class="n">therapy</span><span class="o">,</span> <span class="n">melanocytes</span> <span class="n">may</span> <span class="n">produce</span> <span class="n">more</span> <span class="n">melanin</span> <span class="n">pigment</span> <span class="n">in</span> <span class="n">t</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span><span class="nc">They</span> <span class="n">seemed</span> <span class="n">to</span> <span class="n">involve</span> <span class="n">multiple</span> <span class="n">aetiological</span> <span class="n">factors</span><span class="o">,</span> <span class="n">such</span> <span class="n">as</span> <span class="n">autoimmune</span> <span class="n">thyroid</span> <span class="n">disease</span><span class="o">,</span> <span class="n">the</span> <span class="n">tox</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span>               <span class="nc">Two</span> <span class="n">days</span> <span class="n">after</span> <span class="n">completing</span> <span class="k">this</span> <span class="n">regimen</span><span class="o">,</span> <span class="n">the</span> <span class="n">patient</span> <span class="n">developed</span> <span class="n">a</span> <span class="n">rash</span> <span class="k">with</span> <span class="n">blistering</span><span class="o">.|</span> <span class="o">[</span><span class="kt">True</span><span class="o">]|</span>
+<span class="o">|</span><span class="n">A</span> <span class="n">diagnosis</span> <span class="n">of</span> <span class="n">masked</span> <span class="n">theophylline</span> <span class="n">poisoning</span> <span class="n">should</span> <span class="n">be</span> <span class="n">considered</span> <span class="n">in</span> <span class="n">similar</span> <span class="n">situations</span> <span class="n">involving</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span> <span class="nc">The</span> <span class="n">overall</span> <span class="n">response</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">these</span> <span class="mi">24</span> <span class="n">refractory</span> <span class="n">lymphomas</span> <span class="n">to</span> <span class="n">gemcitabine</span><span class="o">-</span><span class="n">containing</span> <span class="n">regimens</span> <span class="n">wa</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span><span class="nc">Development</span> <span class="n">of</span> <span class="n">sarcoidosis</span> <span class="n">during</span> <span class="n">interferon</span> <span class="n">alpha</span> <span class="mi">2</span><span class="n">b</span> <span class="n">and</span> <span class="n">ribavirin</span> <span class="n">combination</span> <span class="n">therapy</span> <span class="k">for</span> <span class="n">chron</span><span class="o">...|</span> <span class="o">[</span><span class="kt">True</span><span class="o">]|</span>
+<span class="o">|</span><span class="n">A</span> <span class="n">patient</span> <span class="k">with</span> <span class="n">coccidioidal</span> <span class="n">meningitis</span> <span class="n">was</span> <span class="n">treated</span> <span class="k">with</span> <span class="n">intrathecally</span> <span class="n">administered</span> <span class="n">amphotericin</span> <span class="n">B</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span>                                                <span class="nc">Renal</span> <span class="n">failure</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">the</span> <span class="n">use</span> <span class="n">of</span> <span class="n">dextran</span><span class="o">-</span><span class="mf">40.</span><span class="o">|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span> <span class="nc">However</span><span class="o">,</span> <span class="k">with</span> <span class="n">increased</span> <span class="n">experience</span> <span class="n">in</span> <span class="n">applying</span> <span class="nc">BCG</span><span class="o">,</span> <span class="n">the</span> <span class="n">side</span> <span class="n">effects</span> <span class="n">now</span> <span class="n">appear</span> <span class="n">to</span> <span class="n">be</span> <span class="n">less</span> <span class="n">promi</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span>                        <span class="nc">Hepatotoxicity</span> <span class="n">after</span> <span class="n">high</span><span class="o">-</span><span class="n">dose</span> <span class="n">methylprednisolone</span> <span class="k">for</span> <span class="n">demyelinating</span> <span class="n">disease</span><span class="o">.|</span> <span class="o">[</span><span class="kt">True</span><span class="o">]|</span>
+<span class="o">|</span> <span class="nc">Histopathological</span> <span class="n">findings</span> <span class="n">included</span> <span class="n">signs</span> <span class="n">of</span> <span class="n">orthokeratotic</span> <span class="n">hyperkeratosis</span><span class="o">,</span> <span class="n">moderate</span> <span class="n">follicular</span> <span class="o">...|</span> <span class="o">[</span><span class="kt">True</span><span class="o">]|</span>
+<span class="o">|</span> <span class="nc">Acute</span> <span class="n">spontaneous</span> <span class="nc">TLS</span> <span class="n">is</span> <span class="n">rare</span><span class="o">,</span> <span class="n">and</span> <span class="n">it</span> <span class="n">has</span> <span class="n">been</span> <span class="n">described</span> <span class="n">in</span> <span class="n">leukemia</span> <span class="n">and</span> <span class="n">lymphoma</span> <span class="n">and</span> <span class="n">in</span> <span class="n">some</span> <span class="n">pa</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">|</span><span class="nc">We</span> <span class="n">present</span> <span class="n">a</span> <span class="n">fatal</span> <span class="k">case</span> <span class="n">of</span> <span class="n">subacute</span> <span class="n">methanol</span> <span class="n">toxicity</span> <span class="k">with</span> <span class="n">associated</span> <span class="n">diffuse</span> <span class="n">brain</span> <span class="n">involvement</span><span class="o">,</span> <span class="o">...|</span> <span class="o">[</span><span class="kt">True</span><span class="o">]|</span>
+<span class="o">|</span> <span class="nc">The</span> <span class="n">reaction</span> <span class="n">was</span> <span class="n">thought</span> <span class="n">to</span> <span class="n">be</span> <span class="n">triggered</span> <span class="n">by</span> <span class="n">the</span> <span class="n">combination</span> <span class="n">of</span> <span class="n">radiation</span> <span class="n">and</span> <span class="n">epidermal</span> <span class="n">growth</span> <span class="n">fa</span><span class="o">...|[</span><span class="kt">False</span><span class="o">]|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+-------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+  <!--Aproach-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p><code class="language-plaintext highlighter-rouge">GenericSVMClassifier</code> is a derivative of GenericClassifier which implements SVM (Support Vector Machine) classification. The input to the model is FeatureVector and the output is category annotations with labels and corresponding confidence scores. The scores are standardized using the logistic function so that they vary between 0 and 1.</p>
+
+    <h2 id="parameters-1"><strong>🔎 Parameters</strong></h2>
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">batchSize</code>: (int) Batch size</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">dropout</code>: (float) Dropout coefficient</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">epochsNumber</code>: (int) Maximum number of epochs to train</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">featureScaling</code>: (str) Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling)</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">fixImbalance</code>: (boolean) Fix the imbalance in the training set by replicating examples of under represented categories</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">labelColumn</code>: (str) Column with label per each document</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">learningRate</code>: (float) Learning Rate</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">modelFile</code>: (str) Location of file of the model used for classification</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">multiClass</code>: (boolean) If multiClass is set, the model will return all the labels with corresponding scores. By default, multiClass is false.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">outputLogsPath</code>: (str) Folder path to save training logs. If no path is specified, the logs won’t be stored in disk. The path can be a local file path, a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">validationSplit</code>: (float) The proportion of training dataset to be used as validation set.The model will be validated against this dataset on each Epoch and will not be used for training. The value should be between 0.0 and 1.0.</p>
+      </li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">FEATURE_VECTOR</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/generic_svm_classifier/index.html#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach">GenericSVMClassifier</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/GenericLogRegClassifierApproach.html">GenericLogRegClassifierApproach</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">jojnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+        <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
+            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
+            <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_healthcare_100d"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span><span class="s">"token"</span><span class="p">])</span>\
+        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"word_embeddings"</span><span class="p">)</span>
+
+<span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceEmbeddings</span><span class="p">()</span> \
+        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"word_embeddings"</span><span class="p">])</span> \
+        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence_embeddings"</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">setPoolingStrategy</span><span class="p">(</span><span class="s">"AVERAGE"</span><span class="p">)</span>
+
+<span class="n">embeddings_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">word_embeddings</span><span class="p">,</span>
+        <span class="n">sentence_embeddings</span><span class="p">,</span>
+
+    <span class="p">])</span>
+
+<span class="n">trainingData_with_embeddings</span> <span class="o">=</span> <span class="n">embeddings_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainingData</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">trainingData</span><span class="p">)</span>
+<span class="n">trainingData_with_embeddings</span> <span class="o">=</span> <span class="n">trainingData_with_embeddings</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span><span class="s">"category"</span><span class="p">,</span><span class="s">"sentence_embeddings"</span><span class="p">)</span>
+
+<span class="n">graph_folder</span> <span class="o">=</span> <span class="s">"graph_folder"</span>
+
+<span class="n">gc_svm_graph_builder</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">TFGraphBuilder</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setModelName</span><span class="p">(</span><span class="s">"svm_classifier"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"feature_vector"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s">"category"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGraphFolder</span><span class="p">(</span><span class="n">graph_folder</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGraphFile</span><span class="p">(</span><span class="s">"svm_graph.pb"</span><span class="p">)</span>
+
+<span class="n">features_asm</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">FeaturesAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"feature_vector"</span><span class="p">)</span>
+
+<span class="n">gen_clf</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">GenericSVMClassifierApproach</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s">"category"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"feature_vector"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setModelFile</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">graph_folder</span><span class="si">}</span><span class="s">/svm_graph.pb"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEpochsNumber</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setLearningRate</span><span class="p">(</span><span class="mf">0.015</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputLogsPath</span><span class="p">(</span><span class="n">log_folder</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setFixImbalance</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="c1"># .setValidationSplit(0.1)
+</span>
+<span class="n">clf_Pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">features_asm</span><span class="p">,</span>
+    <span class="n">gc_svm_graph_builder</span><span class="p">,</span>
+    <span class="n">gen_clf</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">clf_Pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainingData_with_embeddings</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">stages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">write</span><span class="p">().</span><span class="n">overwrite</span><span class="p">().</span><span class="n">save</span><span class="p">(</span><span class="s">'/model_path/model_name'</span><span class="p">)</span>
+
+<span class="c1">#sample training data
+</span>    <span class="n">text</span>	                                            <span class="n">category</span>
+<span class="mi">0</span>	<span class="n">Clioquinol</span> <span class="n">intoxication</span> <span class="n">occurring</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">trea</span><span class="p">...</span>	<span class="n">neg</span>
+<span class="mi">1</span>	<span class="s">"Retinoic acid syndrome"</span> <span class="n">was</span> <span class="n">prevented</span> <span class="k">with</span> <span class="n">s</span><span class="p">...</span>	<span class="n">neg</span>
+<span class="mi">2</span>	<span class="n">BACKGROUND</span><span class="p">:</span> <span class="n">External</span> <span class="n">beam</span> <span class="n">radiation</span> <span class="n">therapy</span> <span class="n">o</span><span class="p">...</span>	<span class="n">neg</span>
+<span class="mi">3</span>	<span class="n">Although</span> <span class="n">the</span> <span class="n">enuresis</span> <span class="n">ceased</span><span class="p">,</span> <span class="n">she</span> <span class="n">developed</span> <span class="n">t</span><span class="p">...</span>	<span class="n">neg</span>
+<span class="mi">4</span>	<span class="n">A</span> <span class="mi">42</span><span class="o">-</span><span class="n">year</span><span class="o">-</span><span class="n">old</span> <span class="n">woman</span> <span class="n">had</span> <span class="n">uneventful</span> <span class="n">bilateral</span> <span class="p">...</span>	<span class="n">neg</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  
+<span class="k">val</span> <span class="nv">sentenceEmbeddings</span> <span class="k">=</span> <span class="nc">BertSentenceEmbeddings</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence_embedding"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">featuresAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FeaturesAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence_embedding"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"feature_vector"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">svmClassifier</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">GenericSVMClassifierApproach</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"feature_vector"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"prediction"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setLabelColumn</span><span class="o">(</span><span class="s">"label"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setModelFile</span><span class="o">(</span><span class="s">"src/test/resources/classification/svm_graph.pb"</span><span class="o">)</span> 
+  <span class="o">.</span><span class="py">setEpochsNumber</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setBatchSize</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setMultiClass</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setlearningRate</span><span class="o">(</span><span class="mf">0.01f</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+  <span class="n">documentAssembler</span><span class="o">,</span>
+  <span class="n">sentenceEmbeddings</span><span class="o">,</span>
+  <span class="n">featuresAssembler</span><span class="o">,</span>
+  <span class="n">svmClassifier</span><span class="o">,</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">trainingData</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala-->
+
+</details>
+
+  </div>
+  <!--END Aproach-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
   <h2 id="iobtagger">IOBTagger</h2>
 
   <div class="annotator_type tac mont">Model</div>
@@ -13524,7 +13938,7 @@ patternsAreRegex. Whether to interpret the split patterns as regular expressions
 Pretrained models can be loaded with pretrained() of the companion object.
 The default model is “bert_token_classifier_ner_bionlp”, if no name is provided.
 For available pretrained models please see the <a href="https://nlp.johnsnowlabs.com/models">Models Hub</a>.</p>
-    <h3 id="parameters">Parameters:</h3>
+    <h3 id="parameters-2">Parameters:</h3>
     <ul>
       <li>
         <p><code class="language-plaintext highlighter-rouge">configProtoBytes</code>: ConfigProto from tensorflow, serialized into byte array.</p>
