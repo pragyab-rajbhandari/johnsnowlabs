@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Extract Anatomical Entities from Voice of the Patient Documents (embeddings_clinical_medium) | ner_vop_anatomy_emb_clinical_medium | Healthcare NLP 4.4.3</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model extracts anatomical terms from the documents transferred from the patient’s own sentences.Predicted EntitiesBodyPart, LateralityLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  document_assembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("document")...">
+<meta name="description" content="DescriptionThis model extracts anatomical terms from the documents transferred from the patient’s own sentences.Predicted EntitiesBodyPart, LateralityLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  document_assembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("document")sen...">
 <!-- <link rel="canonical" href="/2023/06/07/ner_vop_anatomy_emb_clinical_medium_en.html"> -->
 <link rel="canonical" href="/2023/06/07/ner_vop_anatomy_emb_clinical_medium_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -522,7 +522,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
@@ -680,66 +680,22 @@ function tabs({tabsWrapperSelector, tabsParentSelector, tabsSelector, tabsConten
 
     const tabsWrapper = document.querySelectorAll(tabsWrapperSelector);
 
-   
-
-    
     //Detecting all tabs
     tabsWrapper.forEach(tab => {
         const tabsParent = tab.querySelector(tabsParentSelector),
                 tabsLi = tab.querySelectorAll(tabsSelector),
                 tabsContent = tab.querySelectorAll(tabsContentSelector);
 
-        let jslFlag = false,
-            nluFlag = false;
-
-
-        tabsContent.forEach(item => {
-            if(item.classList.contains('jsl-block')) {
-                jslFlag = true;
-                return;
-            }
-        })
-
-        tabsContent.forEach(item => {
-            if(item.classList.contains('nlu-block')) {
-                nluFlag = true;
-                return;
-            }
-        })
-
-        if(!nluFlag) {
-            tabsLi.forEach(item => {
-                if(item.classList.contains('tab-li-nlu')) {
-                    item.remove();
-                    return;
-                }
-            })
-        }
-        
-
-        if(!jslFlag) {
-            tabsLi.forEach(item => {
-                if(item.classList.contains('tab-li-jsl')) {
-                    item.remove();
-                    return;
-                }
-            })
-        }
-
-        const   tabsLiAfter = tab.querySelectorAll(tabsSelector),
-                tabsContentAfter = tab.querySelectorAll(tabsContentSelector);
-                
-
         //Hiding all tabs
         function hideTabsContent() {
-            if(Array.from(tabsLiAfter).length != 0) {
-                tabsContentAfter.forEach(item => {
-                    item.style.display = 'none';                    
+            if(Array.from(tabsLi).length != 0) {
+                tabsContent.forEach(item => {
+                    item.style.display = 'none';
                 }); 
             }
             
-            if(Array.from(tabsLiAfter).length != 0) {
-                tabsLiAfter.forEach(item => {
+            if(Array.from(tabsLi).length != 0) {
+                tabsLi.forEach(item => {
                     item.classList.remove(activeClass);
                 }); 
             }
@@ -747,11 +703,11 @@ function tabs({tabsWrapperSelector, tabsParentSelector, tabsSelector, tabsConten
 
         //Show active tabs
         function showTabContent(i = 0) {
-            if(Array.from(tabsContentAfter).length != 0) {
-                tabsContentAfter[i].style.display = "block";
+            if(Array.from(tabsContent).length != 0) {
+                tabsContent[i].style.display = "block";
             }
-            if(Array.from(tabsLiAfter).length != 0) {
-                tabsLiAfter[i].classList.add(activeClass);            
+            if(Array.from(tabsLi).length != 0) {
+                tabsLi[i].classList.add(activeClass);            
             }
         }
 
@@ -761,7 +717,7 @@ function tabs({tabsWrapperSelector, tabsParentSelector, tabsSelector, tabsConten
                 const target = event.target;
     
                 if(target && target.classList.contains(tabsSelector.slice(1))) {
-                    tabsLiAfter.forEach((item, i) => {
+                    tabsLi.forEach((item, i) => {
                         if(target == item) {
                             hideTabsContent();
                             try{showTabContent(i);}catch(e){}
@@ -797,7 +753,20 @@ tabs({
     tabsContentSelector: '.tab-mfl-content', 
     activeClass: 'tabheader_active'
 });
-
+tabs({
+    tabsWrapperSelector: '.tabs-box', 
+    tabsParentSelector: '.tabs-python-scala-head', 
+    tabsSelector: '.tab-python-scala-li', 
+    tabsContentSelector: '.tabs-box .highlighter-rouge', 
+    activeClass: 'tabheader_active'
+});
+tabs({
+    tabsWrapperSelector: '.tabs-box', 
+    tabsParentSelector: '.tabs-model-aproach-head', 
+    tabsSelector: '.tab-li-model-aproach', 
+    tabsContentSelector: '.tabs-python-scala-box', 
+    activeClass: 'tabheader_active'
+});
 tabs({
     tabsWrapperSelector: '.tabs-box', 
     tabsParentSelector: '.tabs-model-aproach-head', 
@@ -805,7 +774,6 @@ tabs({
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
     activeClass: 'tabheader_active'
 });
-
 tabs({
     tabsWrapperSelector: '.tabs-wrapper', 
     tabsParentSelector: '.tabs-python-scala-head', 
