@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pipeline to Summarize Clinical Question Notes | summarizer_clinical_questions_pipeline | Healthcare NLP 4.4.2</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of summarizer_clinical_questions model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("summarizer_clinical_questions_pipeline", "en", "clinical/models")text = ...">
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of summarizer_clinical_questions model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("summarizer_clinical_questions_pipeline", "en", "clinical/models")text...">
 <!-- <link rel="canonical" href="/2023/05/29/summarizer_clinical_questions_pipeline_en.html"> -->
 <link rel="canonical" href="/2023/05/29/summarizer_clinical_questions_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -518,7 +518,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach">NLU</button></div>
+  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"summarizer_clinical_questions_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
@@ -602,22 +602,49 @@ function tabs({tabsWrapperSelector, tabsParentSelector, tabsSelector, tabsConten
 
     const tabsWrapper = document.querySelectorAll(tabsWrapperSelector);
 
+   
+
+    
     //Detecting all tabs
     tabsWrapper.forEach(tab => {
         const tabsParent = tab.querySelector(tabsParentSelector),
                 tabsLi = tab.querySelectorAll(tabsSelector),
                 tabsContent = tab.querySelectorAll(tabsContentSelector);
 
+        let jslFlag = false;
+
+
+        tabsContent.forEach(item => {
+            if(item.classList.contains('jsl-block')) {
+                jslFlag = true;
+                return;
+            }
+        })
+        
+
+        if(!jslFlag) {
+            tabsLi.forEach(item => {
+                if(item.classList.contains('tab-li-jsl')) {
+                    item.remove();
+                    return;
+                }
+            })
+        }
+
+        const   tabsLiAfter = tab.querySelectorAll(tabsSelector),
+                tabsContentAfter = tab.querySelectorAll(tabsContentSelector);
+                
+
         //Hiding all tabs
         function hideTabsContent() {
-            if(Array.from(tabsLi).length != 0) {
-                tabsContent.forEach(item => {
-                    item.style.display = 'none';
+            if(Array.from(tabsLiAfter).length != 0) {
+                tabsContentAfter.forEach(item => {
+                    item.style.display = 'none';                    
                 }); 
             }
             
-            if(Array.from(tabsLi).length != 0) {
-                tabsLi.forEach(item => {
+            if(Array.from(tabsLiAfter).length != 0) {
+                tabsLiAfter.forEach(item => {
                     item.classList.remove(activeClass);
                 }); 
             }
@@ -625,11 +652,11 @@ function tabs({tabsWrapperSelector, tabsParentSelector, tabsSelector, tabsConten
 
         //Show active tabs
         function showTabContent(i = 0) {
-            if(Array.from(tabsContent).length != 0) {
-                tabsContent[i].style.display = "block";
+            if(Array.from(tabsContentAfter).length != 0) {
+                tabsContentAfter[i].style.display = "block";
             }
-            if(Array.from(tabsLi).length != 0) {
-                tabsLi[i].classList.add(activeClass);            
+            if(Array.from(tabsLiAfter).length != 0) {
+                tabsLiAfter[i].classList.add(activeClass);            
             }
         }
 
@@ -639,7 +666,7 @@ function tabs({tabsWrapperSelector, tabsParentSelector, tabsSelector, tabsConten
                 const target = event.target;
     
                 if(target && target.classList.contains(tabsSelector.slice(1))) {
-                    tabsLi.forEach((item, i) => {
+                    tabsLiAfter.forEach((item, i) => {
                         if(target == item) {
                             hideTabsContent();
                             try{showTabContent(i);}catch(e){}
@@ -676,19 +703,30 @@ tabs({
     activeClass: 'tabheader_active'
 });
 tabs({
+    tabsWrapperSelector: '.tabs-wrapper', 
+    tabsParentSelector: '.tabs-python-scala-head', 
+    tabsSelector: '.tab-python-scala-li', 
+    tabsContentSelector: '.tabs-item', 
+    activeClass: 'tabheader_active'
+});
+
+
+
+
+/* tabs({
     tabsWrapperSelector: '.tabs-box', 
     tabsParentSelector: '.tabs-python-scala-head', 
     tabsSelector: '.tab-python-scala-li', 
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
     activeClass: 'tabheader_active'
-});
-tabs({
+}); */
+/* tabs({
     tabsWrapperSelector: '.tabs-box', 
     tabsParentSelector: '.tabs-model-aproach-head', 
     tabsSelector: '.tab-li-model-aproach', 
     tabsContentSelector: '.tabs-python-scala-box', 
     activeClass: 'tabheader_active'
-});
+}); */
 tabs({
     tabsWrapperSelector: '.tabs-box', 
     tabsParentSelector: '.tabs-model-aproach-head', 
@@ -696,11 +734,12 @@ tabs({
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
     activeClass: 'tabheader_active'
 });
+
 tabs({
-    tabsWrapperSelector: '.tabs-wrapper', 
+    tabsWrapperSelector: '.tabs-new', 
     tabsParentSelector: '.tabs-python-scala-head', 
     tabsSelector: '.tab-python-scala-li', 
-    tabsContentSelector: '.tabs-item', 
+    tabsContentSelector: '.tabs-new .highlighter-rouge', 
     activeClass: 'tabheader_active'
 });
 

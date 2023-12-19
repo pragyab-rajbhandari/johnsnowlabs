@@ -677,7 +677,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>The following code example creates an OCR Pipeline for processing image(s). The image file(s) can contain complex layout like columns, tables, images inside.</p>
 
-  <div class="tabs-box tabs-new">
+  <div class="tabs-new">
 
     <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
@@ -756,7 +756,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Next sample provides an example of OCR Pipeline for processing PDF files containing image data. In this case, the <a href="ocr_pipeline_components#pdftoimage">PdfToImage</a> transformer is used to convert PDF file to a set of images.</p>
 
-  <div class="tabs-box tabs-new">
+  <div class="tabs-new">
 
     <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
@@ -847,7 +847,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </li>
   </ul>
 
-  <div class="tabs-box tabs-new">
+  <div class="tabs-new">
 
     <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
@@ -947,7 +947,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Next code segments provide an example of streaming OCR pipeline. It processes images and stores results to memory table.</p>
 
-  <div class="tabs-box tabs-new">
+  <div class="tabs-new">
 
     <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
@@ -1011,7 +1011,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>For getting results from memory table following code could be used:</p>
 
-  <div class="tabs-box tabs-new">
+  <div class="tabs-new">
 
     <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
@@ -1046,7 +1046,7 @@ while processing some records.</p>
 
   <p>Here is an output with exception when try to process js file using OCR pipeline:</p>
 
-  <div class="tabs-box tabs-new">
+  <div class="tabs-new">
 
     <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
@@ -1088,22 +1088,49 @@ function tabs({tabsWrapperSelector, tabsParentSelector, tabsSelector, tabsConten
 
     const tabsWrapper = document.querySelectorAll(tabsWrapperSelector);
 
+   
+
+    
     //Detecting all tabs
     tabsWrapper.forEach(tab => {
         const tabsParent = tab.querySelector(tabsParentSelector),
                 tabsLi = tab.querySelectorAll(tabsSelector),
                 tabsContent = tab.querySelectorAll(tabsContentSelector);
 
+        let jslFlag = false;
+
+
+        tabsContent.forEach(item => {
+            if(item.classList.contains('jsl-block')) {
+                jslFlag = true;
+                return;
+            }
+        })
+        
+
+        if(!jslFlag) {
+            tabsLi.forEach(item => {
+                if(item.classList.contains('tab-li-jsl')) {
+                    item.remove();
+                    return;
+                }
+            })
+        }
+
+        const   tabsLiAfter = tab.querySelectorAll(tabsSelector),
+                tabsContentAfter = tab.querySelectorAll(tabsContentSelector);
+                
+
         //Hiding all tabs
         function hideTabsContent() {
-            if(Array.from(tabsLi).length != 0) {
-                tabsContent.forEach(item => {
-                    item.style.display = 'none';
+            if(Array.from(tabsLiAfter).length != 0) {
+                tabsContentAfter.forEach(item => {
+                    item.style.display = 'none';                    
                 }); 
             }
             
-            if(Array.from(tabsLi).length != 0) {
-                tabsLi.forEach(item => {
+            if(Array.from(tabsLiAfter).length != 0) {
+                tabsLiAfter.forEach(item => {
                     item.classList.remove(activeClass);
                 }); 
             }
@@ -1111,11 +1138,11 @@ function tabs({tabsWrapperSelector, tabsParentSelector, tabsSelector, tabsConten
 
         //Show active tabs
         function showTabContent(i = 0) {
-            if(Array.from(tabsContent).length != 0) {
-                tabsContent[i].style.display = "block";
+            if(Array.from(tabsContentAfter).length != 0) {
+                tabsContentAfter[i].style.display = "block";
             }
-            if(Array.from(tabsLi).length != 0) {
-                tabsLi[i].classList.add(activeClass);            
+            if(Array.from(tabsLiAfter).length != 0) {
+                tabsLiAfter[i].classList.add(activeClass);            
             }
         }
 
@@ -1125,7 +1152,7 @@ function tabs({tabsWrapperSelector, tabsParentSelector, tabsSelector, tabsConten
                 const target = event.target;
     
                 if(target && target.classList.contains(tabsSelector.slice(1))) {
-                    tabsLi.forEach((item, i) => {
+                    tabsLiAfter.forEach((item, i) => {
                         if(target == item) {
                             hideTabsContent();
                             try{showTabContent(i);}catch(e){}
@@ -1162,19 +1189,30 @@ tabs({
     activeClass: 'tabheader_active'
 });
 tabs({
+    tabsWrapperSelector: '.tabs-wrapper', 
+    tabsParentSelector: '.tabs-python-scala-head', 
+    tabsSelector: '.tab-python-scala-li', 
+    tabsContentSelector: '.tabs-item', 
+    activeClass: 'tabheader_active'
+});
+
+
+
+
+/* tabs({
     tabsWrapperSelector: '.tabs-box', 
     tabsParentSelector: '.tabs-python-scala-head', 
     tabsSelector: '.tab-python-scala-li', 
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
     activeClass: 'tabheader_active'
-});
-tabs({
+}); */
+/* tabs({
     tabsWrapperSelector: '.tabs-box', 
     tabsParentSelector: '.tabs-model-aproach-head', 
     tabsSelector: '.tab-li-model-aproach', 
     tabsContentSelector: '.tabs-python-scala-box', 
     activeClass: 'tabheader_active'
-});
+}); */
 tabs({
     tabsWrapperSelector: '.tabs-box', 
     tabsParentSelector: '.tabs-model-aproach-head', 
@@ -1182,11 +1220,12 @@ tabs({
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
     activeClass: 'tabheader_active'
 });
+
 tabs({
-    tabsWrapperSelector: '.tabs-wrapper', 
+    tabsWrapperSelector: '.tabs-new', 
     tabsParentSelector: '.tabs-python-scala-head', 
     tabsSelector: '.tab-python-scala-li', 
-    tabsContentSelector: '.tabs-item', 
+    tabsContentSelector: '.tabs-new .highlighter-rouge', 
     activeClass: 'tabheader_active'
 });
 
