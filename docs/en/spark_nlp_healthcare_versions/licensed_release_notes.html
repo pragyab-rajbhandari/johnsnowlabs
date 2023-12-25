@@ -622,78 +622,306 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">5.1.4</h2>
+  <h2 id="section">5.2.0</h2>
 
   <h4 id="highlights">Highlights</h4>
 
-  <p>We are delighted to announce a suite of remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. <strong>This release comes with the advanced Document Splitter annotator specifically designed for medical context and more flexibility in Deidentification as well as robust exception handling in <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> for corrupted inputs</strong>.</p>
+  <p>We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. <strong>This release comes with the first DocumentFiltererByClassifier annotator, RAG with SparkNLP tutorials and well as 5 new clinical pretrained models and pipelines</strong>. Here are the newies in this release:</p>
 
   <ul>
-    <li>Introducing the Advanced <code class="language-plaintext highlighter-rouge">Medical Document Splitter</code> annotator with more flexibility and customization for RAG pipelines</li>
-    <li>Enhancing <code class="language-plaintext highlighter-rouge">ChunkFiltererApproach</code> by introducing json-based entity confidence configuration</li>
-    <li>Advanced data privacy with <code class="language-plaintext highlighter-rouge">DeIdentification</code> unleashing custom regex patterns</li>
-    <li>Robust exception handling in <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> for corrupted inputs</li>
-    <li>Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
+    <li>A tutorial to build a Retrieval Augmented Generation (RAG) based clinical chatbot using LLMs with John Snow Labs in Databricks.</li>
+    <li>Clinical document section classifier models to classify the sections within clinical documents.</li>
+    <li>Introducing <code class="language-plaintext highlighter-rouge">DocumentFiltererByClassifier</code> to filter the documents or document sections using classifier outcomes.</li>
+    <li>New Social Determinants of Health (SDOH) models that are categorizing text, identifying health risks, and recognizing mental health concerns in clinical documents.</li>
+    <li>Robust exception handling to allow skipping the corrupted records processed via <code class="language-plaintext highlighter-rouge">NERConverter</code>, <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code>, <code class="language-plaintext highlighter-rouge">DocMapperModel</code>, <code class="language-plaintext highlighter-rouge">SentenceEntityResolverModel</code>, <code class="language-plaintext highlighter-rouge">RelationExtractonModel</code>, <code class="language-plaintext highlighter-rouge">RelationExtractonDLModel</code> and <code class="language-plaintext highlighter-rouge">AssertionDLModel</code> annotators.</li>
+    <li>Exploring generative AI applications: RAG-based medical chatbot notebooks in Spark NLP workshop repository.</li>
+    <li>Introducing the <code class="language-plaintext highlighter-rouge">enableSentenceIncrement</code> parameter in <code class="language-plaintext highlighter-rouge">InternalDocumentSplitter</code>, offering precise sentence indexing control for streamlined text processing with annotators like sentenceDetector.</li>
+    <li>Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare:
       <ul>
-        <li>Enhanced the <code class="language-plaintext highlighter-rouge">ChunkSentenceSplitter</code> annotator and revised documentation</li>
-        <li>Updated the <code class="language-plaintext highlighter-rouge">training_log_parser</code> and its utility script to align with the latest NumPy version</li>
-        <li>Transitioned the SecureRandom algorithm from Spark configuration to the system environment. Please check the previous <a href="https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/release_notes_5_1_3">Random Seed Algorithm</a> implementation for details.</li>
-        <li>Revised some imports for improved functionality in Deidentification</li>
+        <li><code class="language-plaintext highlighter-rouge">enableSentenceIncrement</code> parameter in <code class="language-plaintext highlighter-rouge">InternalDocumentSplitter</code>, offering precise sentence indexing control for streamlined text processing with annotators like SentenceDetector.</li>
+        <li>Enabling <code class="language-plaintext highlighter-rouge">targetEntities</code> and <code class="language-plaintext highlighter-rouge">entityWeights</code> parameters in <code class="language-plaintext highlighter-rouge">ChunkEntityEmbeddings</code>.</li>
+        <li>Refactored <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code> rules instances for proper integration into LightPipelines.</li>
+        <li>Fixed assertion pre-annotations issue in the NLP Lab module.</li>
+        <li>Deprecated messages deleted: Removed deprecation warning for <code class="language-plaintext highlighter-rouge">confidenceValue</code> metadata in <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code> and “deprecation_notice” message in <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code>.</li>
       </ul>
     </li>
-    <li>New and updated demos
-      <ul>
-        <li>New <a href="https://demo.johnsnowlabs.com/healthcare/ER_DRUG/">Drug Resolver Demo</a></li>
-        <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/">Multi Language Clinical NER Demo</a></li>
-        <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb">Medical Document Splitter Notebook</a></li>
-        <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb">Clinical Named Entity Recognition Notebook</a> with <code class="language-plaintext highlighter-rouge">setDoExceptionHandling</code> information</li>
-        <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">Clinical DeIdentification Notebook</a> with <code class="language-plaintext highlighter-rouge">setRegexPatternsDictionaryAsJsonString</code> and <code class="language-plaintext highlighter-rouge">setCombineRegexPatterns</code> examples</li>
-        <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb">Calculate Medicare Risk Adjustment Score Notebook</a> with the latest improvement</li>
-      </ul>
-    </li>
+    <li>Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand</li>
+    <li>The additions and updates of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
   </ul>
 
-  <p>These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined healthcare-related natural language data analysis.</p>
+  <p>These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="introducing-the-advanced-medical-document-splitter-annotator-with-more-flexibility-and-customization-for-rag-pipelines">Introducing the Advanced <code class="language-plaintext highlighter-rouge">Medical Document Splitter</code> Annotator with More Flexibility and Customization for RAG Pipelines</h4>
+  <h4 id="a-tutorial-to-build-a-retrieval-augmented-generation-rag-based-clinical-catbot-using-llms-with-john-snow-labs-in-databricks">A tutorial to Build a Retrieval Augmented Generation (RAG) Based Clinical Catbot Using LLMs with John Snow Labs in Databricks</h4>
 
-  <p>Discover our cutting-edge Internal Document Splitter—an innovative annotator designed to effortlessly break down extensive documents into manageable segments. Empowering users with the ability to define custom separators, this tool seamlessly divides texts, ensuring each chunk adheres to specified length criteria.</p>
+  <p>In an era witnessing rapid advancements in Large Language Models (LLMs) and chatbot technologies, this informative session emphasizes the benefits of employing LLM systems based on RAG (Retrieval Augmented Generation). Particularly valuable in scenarios where precision in responses holds significance—such as addressing queries concerning medical patients or clinical protocols—RAG LLMs excel by providing accurate answers while minimizing imaginative outputs. They achieve this by explaining the source of each fact, mitigating errors, and utilizing private documents for information retrieval. Additionally, these systems facilitate near-real-time data updates without necessitating LLM reconfiguration.</p>
 
-  <p>InternalDocumentSplitter has a setSplitMode method to decide how to split documents. Default: ‘regex’. It should be one of the following values:</p>
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">char</code>: Split text based on individual characters.</li>
-    <li><code class="language-plaintext highlighter-rouge">token</code>: Split text based on tokens. You should supply tokens from inputCols.</li>
-    <li><code class="language-plaintext highlighter-rouge">sentence</code>: Split text based on sentences. You should supply sentences from inputCols.</li>
-    <li><code class="language-plaintext highlighter-rouge">recursive</code>: Split text recursively using a specific algorithm.</li>
-    <li><code class="language-plaintext highlighter-rouge">regex</code>: Split text based on a regular expression pattern.</li>
-  </ul>
+  <p>This tutorial guides participants through the creation of a RAG Large Language Model (LLM) clinical chatbot system. Leveraging John Snow Labs’ specialized healthcare-oriented LLM and NLP models integrated into the Databricks platform, the system employs LLMs to query a knowledge base via a vector database populated by Healthcare NLP at scale within a Databricks notebook. Utilizing a user-friendly graphical interface, users can engage in productive conversations with the system, thereby enhancing the efficiency and efficacy of healthcare workflows.</p>
+
+  <p>Of paramount importance, the system is developed with a focus on data privacy, security, and compliance. It operates entirely within customers’ cloud infrastructure, ensuring zero data sharing and eliminating external API calls, thereby safeguarding sensitive healthcare information.</p>
+
+  <p><a href="https://d5ln38p3754yc.cloudfront.net/content_object_shared_files/79064165adfc3626e2872ebb19ab5ed32f1bce8e/Webinar-JSL-Databricks-LangChain_122023.pdf?1702403478">Webinar Slides</a></p>
+
+  <p><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/tutorials/healthcare_case_studies/Medical_Chatbot_RAG_JohnSnowLabs_Databricks.ipynb">Medical Chatbot RAG JohnSnowLabs Databricks notebook link</a></p>
+
+  <p><a href="https://www.youtube.com/watch?v=Q35kk-9opcw" title="Click and go to the video"><img src="https://i.ytimg.com/vi/Q35kk-9opcw/hqdefault.jpg?sqp=-oaymwE2CPYBEIoBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhFIFQoZTAP&amp;rs=AOn4CLAXb9RdAEEa-NJqEw2KeQiFHKngvQ" alt="Building a RAG LLM Clinical Chatbot with John Snow Labs in Databricks" /></a></p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="clinical-document-section-classifier-models-to-classify-the-sections-within-clinical-documents">Clinical Document Section Classifier Models to Classify the Sections within Clinical Documents</h4>
+
+  <p>The latest development introduces two new Section Header Classifier models aimed at leveraging Bert models for the classification of text within clinical documents, focusing on specific sections within the document structure. These models facilitate the categorization of text into distinct sections according to a defined taxonomy, including sections such as <strong>Complications and Risk Factors, Consultation and Referral, Diagnostic and Laboratory Data, Discharge Information, Habits, History, Patient Information, Procedures, Impression, and Others</strong>.</p>
+
+  <p>The classifier model has a <code class="language-plaintext highlighter-rouge">headless</code> version too to cover the use cases in which there is no specific section header included in the section text. This allows classifying the sections even without a major clue (e.g. header, title, etc.) to indicate the section by itself.</p>
+
+  <p>These models offer enhanced capabilities to precisely classify clinical document text content into specific sections, aiding in structured information extraction and facilitating streamlined analysis within healthcare and clinical research domains.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Predicted Classes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/12/21/bert_sequence_classifier_clinical_sections_en.html"><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_clinical_sections</code></a></td>
+        <td><code class="language-plaintext highlighter-rouge">Complications and Risk Factors</code>, <code class="language-plaintext highlighter-rouge">Consultation and Referral</code>, <code class="language-plaintext highlighter-rouge">Diagnostic and Laboratory Data</code>, <code class="language-plaintext highlighter-rouge">Discharge Information</code>, <code class="language-plaintext highlighter-rouge">Habits</code>, <code class="language-plaintext highlighter-rouge">History</code>, <code class="language-plaintext highlighter-rouge">Patient Information</code>, <code class="language-plaintext highlighter-rouge">Procedures</code>, <code class="language-plaintext highlighter-rouge">Impression</code>, <code class="language-plaintext highlighter-rouge">Other</code></td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/12/21/bert_sequence_classifier_clinical_sections_headless_en.html"><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_clinical_sections_headless</code></a></td>
+        <td><code class="language-plaintext highlighter-rouge">Consultation and Referral</code>, <code class="language-plaintext highlighter-rouge">Habits</code>, <code class="language-plaintext highlighter-rouge">Complications and Risk Factors</code>, <code class="language-plaintext highlighter-rouge">Diagnostic and Laboratory Data</code>, <code class="language-plaintext highlighter-rouge">Discharge Information</code>, <code class="language-plaintext highlighter-rouge">History</code>, <code class="language-plaintext highlighter-rouge">Impression</code>, <code class="language-plaintext highlighter-rouge">Patient Information</code>, <code class="language-plaintext highlighter-rouge">Procedures</code>, <code class="language-plaintext highlighter-rouge">Other</code></td>
+      </tr>
+    </tbody>
+  </table>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_splitter</span> <span class="o">=</span> <span class="n">InternalDocumentSplitter</span><span class="p">()</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sequenceClassifier</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">BertForSequenceClassification</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_sequence_classifier_clinical_sections"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""
+Medical Specialty: Cardiovascular / Pulmonary Sample Name: Aortic Valve Replacement
+
+Description: Aortic valve replacement using a mechanical valve and two-vessel coronary artery bypass grafting procedure using saphenous vein graft to the first obtuse marginal artery and left radial artery graft to the left anterior descending artery. (Medical Transcription Sample Report)
+
+DIAGNOSIS: Aortic valve stenosis with coronary artery disease associated with congestive heart failure. The patient has diabetes and is morbidly obese.
+
+PROCEDURES: Aortic valve replacement using a mechanical valve and two-vessel coronary artery bypass grafting procedure using saphenous vein graft to the first obtuse marginal artery and left radial artery graft to the left anterior descending artery.
+""""
+</span></code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left">text</th>
+        <th style="text-align: left">Classes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Medical Specialty:\nCardiovascular / Pulmonary\n\nSample Name: Aortic Valve Replacement\n\n</td>
+        <td style="text-align: left">History</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Description: Aortic valve replacement using a mechanical valve and two-vessel coronary artery bypass grafting procedure using saphenous vein graft to the first obtuse marginal artery and left radial artery graft to the left anterior descending artery. (Medical Transcription Sample Report)</td>
+        <td style="text-align: left">Complications and Risk Factors</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">DIAGNOSIS: Aortic valve stenosis with coronary artery disease associated with congestive heart failure. The patient has diabetes and is morbidly obese.</td>
+        <td style="text-align: left">Diagnostic and Laboratory Data</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PROCEDURES: Aortic valve replacement using a mechanical valve and two-vessel coronary artery bypass grafting procedure using saphenous vein graft to the first obtuse marginal artery and left radial artery graft to the left anterior descending artery.</td>
+        <td style="text-align: left">Procedures</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Please check <a href="https://demo.johnsnowlabs.com/healthcare/SECTION_HEADER/">Section Header Splitter Demo</a>  and <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/18.1.Section_Header_Splitting_and_Classification.ipynb">Section Header Splitting and Classification Notebook</a></p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="introducing-documentfiltererbyclassifier-to-filter-the-documents-or-document-sections-using-classifier-outcomes">Introducing <code class="language-plaintext highlighter-rouge">DocumentFiltererByClassifier</code> to Filter the Documents or Document Sections Using Classifier Outcomes</h4>
+
+  <p>The <code class="language-plaintext highlighter-rouge">DocumentFiltererByClassifier</code> function is designed to filter documents based on the outcomes generated by classifier annotators. It operates using a white list and a black list. The white list comprises classifier results that meet the criteria to pass through the filter, while the black list includes results that are prohibited from passing through. This filtering process is sensitive to cases by default. However, by setting <code class="language-plaintext highlighter-rouge">caseSensitive</code> to <code class="language-plaintext highlighter-rouge">False</code>, the filter becomes case-insensitive, allowing for a broader range of matches based on the specified criteria. This function serves as an effective tool for systematically sorting and managing documents based on specific classifier outcomes, facilitating streamlined document handling and organization. Here is an example on how to use this module with <code class="language-plaintext highlighter-rouge">DocumentSplitter</code> to filter out a specific section/ split based on a classifier.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_splitter</span> <span class="o">=</span> <span class="n">InternalDocumentSplitter</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"splits"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setSplitMode</span><span class="p">(</span><span class="s">"recursive"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setChunkSize</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setChunkOverlap</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setExplodeSplits</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setPatternsAreRegex</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setSplitPatterns</span><span class="p">([</span><span class="s">"</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">" "</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setKeepSeparators</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setTrimWhitespace</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setSplitPatterns</span><span class="p">([</span><span class="s">"</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">])</span>\
 
-<span class="n">text</span> <span class="o">=</span> <span class="p">[(</span> 
-    <span class="s">"The patient is a 28-year-old, who is status post gastric bypass surgery"</span>
-    <span class="s">" nearly one year ago. </span><span class="se">\n</span><span class="s">He has lost about 200 pounds and was otherwise doing well"</span>
-    <span class="s">" until yesterday evening around 7:00-8:00 when he developed nausea and right upper quadrant pain,"</span> 
-    <span class="s">" which apparently wrapped around toward his right side and back. He feels like he was on it"</span>
-    <span class="s">" but has not done so. He has overall malaise and a low-grade temperature of 100.3."</span> 
-    <span class="s">" </span><span class="se">\n\n</span><span class="s">He denies any prior similar or lesser symptoms. His last normal bowel movement was yesterday."</span> 
-    <span class="s">" He denies any outright chills or blood per rectum."</span> 
-<span class="p">)]</span>
+<span class="n">sequenceClassifier</span> <span class="o">=</span> <span class="n">MedicalBertForSequenceClassification</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'bert_sequence_classifier_clinical_sections'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"splits"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">document_filterer</span> <span class="o">=</span> <span class="n">DocumentFiltererByClassifier</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"splits"</span><span class="p">,</span> <span class="s">"prediction"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"filteredDocuments"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"Diagnostic and Laboratory Data"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><em>Results before filtering</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>splits</th>
+        <th>classes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Medical Specialty:\nCardiovascular / Pulmonary\n\nSample Name: Aortic Valve R…</td>
+        <td>History</td>
+      </tr>
+      <tr>
+        <td>Description: Aortic valve replacement using a mechanical valve and two-vessel…</td>
+        <td>Complications and Risk Factors</td>
+      </tr>
+      <tr>
+        <td>(Medical Transcription Sample Report)</td>
+        <td>Complications and Risk Factors</td>
+      </tr>
+      <tr>
+        <td>DIAGNOSIS: Aortic valve stenosis with coronary artery disease associated with…</td>
+        <td>Diagnostic and Laboratory Data</td>
+      </tr>
+      <tr>
+        <td>PROCEDURES: Aortic valve replacement using a mechanical valve and two-vessel …</td>
+        <td>Procedures</td>
+      </tr>
+      <tr>
+        <td>ANESTHESIA: General endotracheal\n\nINCISION: Median sternotomy</td>
+        <td>Procedures</td>
+      </tr>
+      <tr>
+        <td>INDICATIONS: The patient presented with severe congestive heart failure assoc…</td>
+        <td>Consultation and Referral</td>
+      </tr>
+      <tr>
+        <td>FINDINGS: The left ventricle is certainly hypertrophied· The aortic valve lea…</td>
+        <td>Diagnostic and Laboratory Data</td>
+      </tr>
+      <tr>
+        <td>The radial artery was used for the left anterior descending artery. Flow was …</td>
+        <td>Diagnostic and Laboratory Data</td>
+      </tr>
+      <tr>
+        <td>PROCEDURE: The patient was brought to the operating room and placed in supine…</td>
+        <td>Procedures</td>
+      </tr>
+      <tr>
+        <td>The patient went on cardiopulmonary bypass and the aortic cross-clamp was app…</td>
+        <td>Procedures</td>
+      </tr>
+      <tr>
+        <td>The first obtuse marginal artery was a very large target and the vein graft t…</td>
+        <td>Diagnostic and Laboratory Data</td>
+      </tr>
+      <tr>
+        <td>The patient came off cardiopulmonary bypass after aortic cross-clamp was rele…</td>
+        <td>Procedures</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Results after filtering</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>splits</th>
+        <th>classes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>DIAGNOSIS: Aortic valve stenosis with coronary artery disease associated with…</td>
+        <td>Diagnostic and Laboratory Data</td>
+      </tr>
+      <tr>
+        <td>FINDINGS: The left ventricle is certainly hypertrophied· The aortic valve lea…</td>
+        <td>Diagnostic and Laboratory Data</td>
+      </tr>
+      <tr>
+        <td>The radial artery was used for the left anterior descending artery. Flow was …</td>
+        <td>Diagnostic and Laboratory Data</td>
+      </tr>
+      <tr>
+        <td>The first obtuse marginal artery was a very large target and the vein graft t…</td>
+        <td>Diagnostic and Laboratory Data</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Please check: <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/18.1.Section_Header_Splitting_and_Classification.ipynb">Section_Header_Splitting_and_Classification Notebook</a> for more information</p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="new-social-determinants-of-health-sdoh-models-that-are-categorizing-text-identifying-health-risks-and-recognizing-mental-health-concerns-in-clinical-documents">New Social Determinants Of Health (SDOH) Models That Are Categorizing Text, Identifying Health Risks And Recognizing Mental Health Concerns In Clinical Documents</h4>
+
+  <p>These new SDoH models bring in advanced categorization capabilities to assess critical factors affecting individual health.</p>
+
+  <p>The models adeptly categorize text, assisting in identifying susceptibility to health risks related to frailty and recognizing mental health concerns within analyzed text data. Consequently, they contribute significantly to a more intricate understanding of how violence and abuse factors influence healthcare outcomes.</p>
+
+  <p>These innovative models signify a substantial leap forward in identifying and addressing key social determinants impacting overall health and well-being.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Predicted Classes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/12/20/bert_sequence_classifier_sdoh_violence_abuse_en.html"><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_violence_abuse</code></a></td>
+        <td><code class="language-plaintext highlighter-rouge">Domestic_Violence_Abuse</code>, <code class="language-plaintext highlighter-rouge">Personal_Violence_Abuse</code>, <code class="language-plaintext highlighter-rouge">No_Violence_Abuse</code>, <code class="language-plaintext highlighter-rouge">Unknown</code></td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/12/20/bert_sequence_classifier_sdoh_mental_health_en.html"><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_mental_health</code></a></td>
+        <td><code class="language-plaintext highlighter-rouge">Mental_Disorder</code>, <code class="language-plaintext highlighter-rouge">No_Or_Not_Mentioned</code></td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/12/20/bert_sequence_classifier_sdoh_frailty_vulnerability_en.html"><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_frailty_vulnerability</code></a></td>
+        <td><code class="language-plaintext highlighter-rouge">Frailty_Vulnerability</code>, <code class="language-plaintext highlighter-rouge">No_Or_Unknown</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sequenceClassifier</span> <span class="o">=</span> <span class="n">MedicalBertForSequenceClassification</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_sequence_classifier_sdoh_violence_abuse"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
+
+<span class="n">sample_texts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">"Repeated visits for fractures, with vague explanations suggesting potential family-related trauma."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Patient presents with multiple bruises in various stages of healing, suggestive of repeated physical abuse."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"There are no reported instances or documented episodes indicating the patient poses a risk of violence."</span><span class="p">]</span> <span class="p">,</span>
+    <span class="p">[</span><span class="s">"Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatment plan that includes surgery, chemotherapy, and radiation therapy."</span><span class="p">]</span>
+<span class="p">]</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
@@ -701,250 +929,38 @@ function wrapWordInSpan(data, wordToWrap) {
   <table>
     <thead>
       <tr>
-        <th>sentence</th>
-        <th>doc_id</th>
+        <th>text</th>
+        <th>result</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>The patient is a 28-year-old, who is status post gastric bypass surgery nearly one year ago.</td>
-        <td>0</td>
+        <td>Repeated visits for fractures, with vague explanations suggesting potential family-related trauma.</td>
+        <td>Domestic_Violence_Abuse</td>
       </tr>
       <tr>
-        <td>He has lost about 200 pounds and was otherwise doing well until yesterday evening around 7:00-8:00</td>
-        <td>1</td>
+        <td>Patient presents with multiple bruises in various stages of healing, suggestive of repeated physi…</td>
+        <td>Personal_Violence_Abuse</td>
       </tr>
       <tr>
-        <td>when he developed nausea and right upper quadrant pain, which apparently wrapped around toward his</td>
-        <td>2</td>
+        <td>There are no reported instances or documented episodes indicating the patient poses a risk of vio…</td>
+        <td>No_Violence_Abuse</td>
       </tr>
       <tr>
-        <td>his right side and back. He feels like he was on it but has not done so. He has overall malaise and</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>and a low-grade temperature of 100.3.</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td>He denies any prior similar or lesser symptoms. His last normal bowel movement was yesterday. He</td>
-        <td>5</td>
-      </tr>
-      <tr>
-        <td>He denies any outright chills or blood per rectum.</td>
-        <td>6</td>
+        <td>Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatm…</td>
+        <td>Unknown</td>
       </tr>
     </tbody>
   </table>
 
-  <p>Please check <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb#scrollTo=RXIkmcBVbAZQ">Medical Document Splitter Notebook</a> for more information</p>
+  <p>Please check <a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_SEQUENCE_CLASSIFICATION/">SOCIAL DETERMINANT CLASSIFICATION Demo</a></p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="enhancing-chunkfiltererapproach-by-introducing-json-based-entity-confidence-configuration">Enhancing <code class="language-plaintext highlighter-rouge">ChunkFiltererApproach</code> by Introducing JSON-Based Entity Confidence Configuration</h4>
+  <h4 id="robust-exception-handling-to-allow-skipping-the-corrupted-records-processed-via-nerconverter-chunkmappermodel-docmappermodel-sentenceentityresolvermodel-relationextractonmodel-relationextractondlmodel-and-assertiondlmodel-annotators">Robust Exception Handling To Allow Skipping The Corrupted Records Processed Via <code class="language-plaintext highlighter-rouge">NERConverter</code>, <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code>, <code class="language-plaintext highlighter-rouge">DocMapperModel</code>, <code class="language-plaintext highlighter-rouge">SentenceEntityResolverModel</code>, <code class="language-plaintext highlighter-rouge">RelationExtractonModel</code>, <code class="language-plaintext highlighter-rouge">RelationExtractonDLModel</code> and <code class="language-plaintext highlighter-rouge">AssertionDLModel</code> Annotators</h4>
 
-  <p>The new <code class="language-plaintext highlighter-rouge">setEntitiesConfidenceResourceAsJsonString</code> method allows users to finely tune entity confidence levels using a JSON configuration.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chunk_filterer</span> <span class="o">=</span> <span class="n">ChunkFiltererApproach</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk_filtered"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setFilterEntity</span><span class="p">(</span><span class="s">"entity"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setEntitiesConfidenceResourceAsJsonString</span><span class="p">(</span><span class="s">"""{'DURATION':'0.9',
-                                                  'DOSAGE':'0.9',
-                                                  'FREQUENCY':'0.9',
-                                                  'STRENGTH':'0.9',
-                                                  'DRUG':'0.9'}"""</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span><span class="s">'The patient was prescribed 1 capsule of Advil for 5 days . He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night , 12 units of insulin lispro with meals , metformin 1000 mg two times a day . It was determined that all SGLT2 inhibitors should be discontinued indefinitely fro 3 months .'</span>
-</code></pre></div>  </div>
-
-  <p><em>Without Filtering Results</em>:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="text-align: left">chunks</th>
-        <th style="text-align: right">begin</th>
-        <th style="text-align: right">end</th>
-        <th style="text-align: right">sentence_id</th>
-        <th style="text-align: left">entities</th>
-        <th style="text-align: right">confidence</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: left">1 capsule of Advil</td>
-        <td style="text-align: right">27</td>
-        <td style="text-align: right">44</td>
-        <td style="text-align: right">0</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.64</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">for 5 days</td>
-        <td style="text-align: right">46</td>
-        <td style="text-align: right">55</td>
-        <td style="text-align: right">0</td>
-        <td style="text-align: left">DURATION</td>
-        <td style="text-align: right">0.55</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">40 units of insulin glargine</td>
-        <td style="text-align: right">126</td>
-        <td style="text-align: right">153</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.62</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">at night</td>
-        <td style="text-align: right">155</td>
-        <td style="text-align: right">162</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.74</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">12 units of insulin lispro</td>
-        <td style="text-align: right">166</td>
-        <td style="text-align: right">191</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.67</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">with meals</td>
-        <td style="text-align: right">193</td>
-        <td style="text-align: right">202</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.72</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">metformin 1000 mg</td>
-        <td style="text-align: right">206</td>
-        <td style="text-align: right">222</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.70</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">two times a day</td>
-        <td style="text-align: right">224</td>
-        <td style="text-align: right">238</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.67</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">SGLT2 inhibitors</td>
-        <td style="text-align: right">269</td>
-        <td style="text-align: right">284</td>
-        <td style="text-align: right">2</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.89</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><em>Filtered Results</em>:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="text-align: left">chunks</th>
-        <th style="text-align: right">begin</th>
-        <th style="text-align: right">end</th>
-        <th style="text-align: right">sentence_id</th>
-        <th style="text-align: left">entities</th>
-        <th style="text-align: right">confidence</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: left">at night</td>
-        <td style="text-align: right">155</td>
-        <td style="text-align: right">162</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.74</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">with meals</td>
-        <td style="text-align: right">193</td>
-        <td style="text-align: right">202</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.72</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">SGLT2 inhibitors</td>
-        <td style="text-align: right">269</td>
-        <td style="text-align: right">284</td>
-        <td style="text-align: right">2</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.89</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="advanced-data-privacy-with-deidentification-unleashing-regex-patterns-unleashed">Advanced Data Privacy with DeIdentification Unleashing Regex Patterns Unleashed</h4>
-
-  <p>The latest update in the DeIdentification library brings advanced data privacy with the introduction of the setRegexPatternsDictionaryAsJsonString method. This powerful feature empowers users to create custom regular expression patterns for masking specific protected entities.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setRegexPatternsDictionaryAsJsonString</span><span class="p">(</span><span class="s">"{'NUMBER':'\d+'},"</span><span class="o">+</span>
-                                            <span class="s">"{'NUMBER':'(\d+.?\d+.?\d+)'}"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRegexOverride</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># Prioritizing regex rules
-</span>
-<span class="n">text</span> <span class="o">=</span><span class="s">'''
-Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , Keats Street , ZIP 45662, Phone 55-555-5555 .
-'''</span>
-</code></pre></div>  </div>
-
-  <p><em>Without RegexOverride Results (default regex)</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Record <span class="nb">date</span> : &lt;DATE&gt; , David Hale , M.D ., , Name : Hendrickson Ora ,  Date : &lt;DATE&gt; ., PCP : Oliveira , 25 years-old , Record <span class="nb">date</span> : &lt;DATE&gt; ., Cocke County Baptist Hospital , Keats Street , ZIP 45662, Phone &lt;PHONE&gt; .]
-</code></pre></div>  </div>
-
-  <p><em>With RegexOverride Results (custom regex)</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Record <span class="nb">date</span> : &lt;NUMBER&gt; , David Hale , M.D ., , Name : Hendrickson Ora ,  Date : &lt;NUMBER&gt; ., PCP : Oliveira , &lt;NUMBER&gt; years-old , Record <span class="nb">date</span> : &lt;NUMBER&gt; ., Cocke County Baptist Hospital , Keats Street , ZIP &lt;NUMBER&gt;, Phone &lt;NUMBER&gt; .]
-</code></pre></div>  </div>
-
-  <ul>
-    <li>Merging default regex rules and custom user-defined regex with <code class="language-plaintext highlighter-rouge">setCombineRegexPatterns</code></li>
-  </ul>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setCombineRegexPatterns</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRegexPatternsDictionary</span><span class="p">(</span><span class="s">"./custom_regex.txt"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p>Please check: <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">Clinical DeIdentification Notebook</a> for more information</p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="robust-exception-handling-in-medicalnermodel-for-corrupted-inputs">Robust Exception Handling in <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> for Corrupted Inputs</h4>
-
-  <p>Enhance the resilience of your Medical Named Entity Recognition (NER) model with the ExceptionHandling feature. When the <code class="language-plaintext highlighter-rouge">setDoExceptionHandling</code> is set to true, the model attempts to compute batch-wise as usual. In the event of an exception within a batch, the system switches to row-wise processing. Any exception during row processing results in the emission of an Error Annotation, ensuring that only the problematic rows are lost rather than the entire batch.</p>
+  <p>We added <code class="language-plaintext highlighter-rouge">doExceptionHandling</code> parameter into <code class="language-plaintext highlighter-rouge">NERConverterInternal</code>, <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code>, <code class="language-plaintext highlighter-rouge">DocMapperModel</code>, <code class="language-plaintext highlighter-rouge">SentenceEntityResolverModel</code>, <code class="language-plaintext highlighter-rouge">RelationExtractonModel</code>, <code class="language-plaintext highlighter-rouge">RelationExtractonDLModel</code> and  <code class="language-plaintext highlighter-rouge">AssertionDLModel</code> annotators for a robust exception handling if the process is broken down due to corrupted inputs. If it is set as <code class="language-plaintext highlighter-rouge">True</code>, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message. <strong>Processing continues with the next one</strong> while the rest of the drecords within the same batch is parsed without interruption. The default behavious is <code class="language-plaintext highlighter-rouge">False</code> and will throw exception and break the process to inform users.</p>
 
   <p><em>Example</em>:</p>
 
@@ -954,7 +970,87 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
     <span class="p">.</span><span class="n">setDoExceptionHandling</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <p>Please check: <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb">Clinical Named Entity Recognition Notebook</a> for more information</p>
+</div>
+<div class="h3-box">
+
+  <h4 id="exploring-generative-ai-applications-rag-based-medical-chatbot-notebooks-in-spark-nlp-workshop-repository">Exploring Generative AI Applications: RAG-Based Medical Chatbot Notebooks in Spark NLP Workshop Repository</h4>
+
+  <p>Within the workshop repository of Spark NLP, a new dedicated folder for generative AI notebook examples has been introduced at <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/generative-ai">generative-ai</a>. This repository section hosts two notable notebooks:</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/generative-ai/Medical_Chatbot_RAG_JohnSnowLabs_LangChain.ipynb">Medical Chatbot RAG JohnSnowLabs LangChain Notebook</a>: This notebook delves into the application of Retrieval Augmented Generation (RAG) in developing a medical chatbot. Leveraging John Snow Labs’ LangChain, this notebook explores the implementation and functionalities of RAG technology in healthcare contexts.</p>
+    </li>
+    <li>
+      <p><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/generative-ai/Medical_Chatbot_RAG_JohnSnowLabs_Haystack.ipynb">Medical Chatbot RAG JohnSnowLabs Haystack Notebook</a>: Another notebook dedicated to RAG-based medical chatbot development within the John Snow Labs ecosystem, this time utilizing Haystack. The notebook likely offers unique insights and approaches to creating medical chatbots using RAG within the John Snow Labs’ framework.</p>
+    </li>
+  </ul>
+
+  <p>These notebooks provide valuable resources for individuals interested in understanding and implementing RAG-based generative AI specifically tailored for medical chatbot applications.</p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="introducing-the-enablesentenceincrement-parameter-in-internaldocumentsplitter-offering-precise-sentence-indexing-control-for-streamlined-text-processing-with-annotators-like-sentencedetector">Introducing The <code class="language-plaintext highlighter-rouge">enableSentenceIncrement</code> Parameter In <code class="language-plaintext highlighter-rouge">InternalDocumentSplitter</code>, Offering Precise Sentence Indexing Control For Streamlined Text Processing With Annotators Like <code class="language-plaintext highlighter-rouge">SentenceDetector</code></h4>
+
+  <p>The <code class="language-plaintext highlighter-rouge">enableSentenceIncrement</code> parameter holds significance as it directly influences the management of sentence indexing within the document splitting process. By regulating this feature, users gain more precise control over sentence index increments in metadata. This functionality is particularly valuable when employing split documents in subsequent annotators, such as the <code class="language-plaintext highlighter-rouge">SentenceDetector</code>, ensuring accurate and streamlined processing of text data.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_splitter</span> <span class="o">=</span> <span class="n">InternalDocumentSplitter</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"splits"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setSplitMode</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setMaxLength</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setExplodeSplits</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEnableSentenceIncrement</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""Sample Name: Aortic Valve Replacement
+Description: Aortic valve replacement using a mechanical valve and two-vessel coronary artery bypass grafting procedure using saphenous vein graft to the first obtuse marginal artery and left radial artery graft to the left anterior descending artery.
+(Medical Transcription Sample Report)
+DIAGNOSIS: Aortic valve stenosis with coronary artery disease associated with congestive heart failure. The patient has diabetes and is morbidly obese.
+PROCEDURES: Aortic valve replacement using a mechanical valve and two-vessel coronary artery bypass grafting procedure using saphenous vein graft to the first obtuse marginal artery and left radial artery graft to the left anterior descending artery.
+"""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left">metadata</th>
+        <th style="text-align: left">result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">{id -&gt; 0, sentence -&gt; 0, document -&gt; 0}</td>
+        <td style="text-align: left">Description: Aortic valve replacement using a mechanical valve and two-vessel coronary artery byp…</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">{id -&gt; 0, sentence -&gt; 1, document -&gt; 1}</td>
+        <td style="text-align: left">The patient has diabetes and is morbidly obese.\nANESTHESIA: General endotracheal\nINCISION: Medi…</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">{id -&gt; 0, sentence -&gt; 2, document -&gt; 2}</td>
+        <td style="text-align: left">INDICATIONS: The patient presented with severe congestive heart failure associated with the patie…</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">{id -&gt; 0, sentence -&gt; 3, document -&gt; 3}</td>
+        <td style="text-align: left">In addition, The patient had significant coronary artery disease consisting of a chronically occl…</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">{id -&gt; 0, sentence -&gt; 4, document -&gt; 4}</td>
+        <td style="text-align: left">It was decided to perform a valve replacement as well as coronary artery bypass grafting procedur…</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">{id -&gt; 0, sentence -&gt; 5, document -&gt; 5}</td>
+        <td style="text-align: left">It is a tricuspid type of valve. The coronary artery consists of a large left anterior descending…</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Please check: <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb">Internal Document Splitter Notebook</a> for more information</p>
 
 </div>
 <div class="h3-box">
@@ -962,10 +1058,10 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
   <h4 id="various-core-improvements-bug-fixes-enhanced-overall-robustness-and-reliability-of-spark-nlp-for-healthcare">Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, And Reliability Of Spark NLP For Healthcare</h4>
 
   <ul>
-    <li>Enhanced the <code class="language-plaintext highlighter-rouge">ChunkSentenceSplitter</code> annotator and revised documentation</li>
-    <li>Updated the <code class="language-plaintext highlighter-rouge">training_log_parser</code> and its utility script to align with the latest NumPy version</li>
-    <li>Transitioned the SecureRandom algorithm from Spark configuration to the system environment. Please check the previous <a href="https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/release_notes_5_1_3">Random Seed Algorithm</a> implementation for details.</li>
-    <li>Revised some imports for improved functionality in Deidentification</li>
+    <li>Enabling <code class="language-plaintext highlighter-rouge">targetEntities</code> and <code class="language-plaintext highlighter-rouge">entityWeights</code> parameters in <code class="language-plaintext highlighter-rouge">ChunkEntityEmbeddings</code></li>
+    <li>Refactored <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code> rules instances for proper integration into LightPipelines</li>
+    <li>Fixed assertion pre-annotations issue in the ALAB module</li>
+    <li>Deprecated Messages Deletion: Removed deprecation warning for confidenceValue metadata in <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code> and “deprecation_notice” message in <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code></li>
   </ul>
 
 </div>
@@ -974,12 +1070,25 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
   <h4 id="updated-notebooks-and-demonstrations-for-making-spark-nlp-for-healthcare-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand</h4>
 
   <ul>
-    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/ER_DRUG/">Drug Resolver Demo</a></li>
-    <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/">Multi Language Clinical NER Demo</a></li>
-    <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb">Medical Document Splitter Notebook</a></li>
-    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb">Clinical Named Entity Recognition Notebook</a> with <code class="language-plaintext highlighter-rouge">setDoExceptionHandling</code> information</li>
-    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">Clinical DeIdentification Notebook</a> with <code class="language-plaintext highlighter-rouge">setRegexPatternsDictionaryAsJsonString</code> and <code class="language-plaintext highlighter-rouge">setCombineRegexPatterns</code> examples</li>
-    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb">Calculate Medicare Risk Adjustment Score Notebook</a> with the latest improvement</li>
+    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/generative-ai/Medical_Chatbot_RAG_JohnSnowLabs_LangChain.ipynb">Medical Chatbot RAG JohnSnowLabs LangChain Notebook</a></li>
+    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/generative-ai/Medical_Chatbot_RAG_JohnSnowLabs_Haystack.ipynb">Medical Chatbot RAG JohnSnowLabs Haystack Notebook</a></li>
+    <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/18.1.Section_Header_Splitting_and_Classification.ipynb">Section Header Splitting and Classification Notebook</a></li>
+    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb">Clinical Entity Resolvers Notebook</a> with new examples</li>
+    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/SECTION_HEADER/">Section Header Splitter Demo</a></li>
+    <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_SEQUENCE_CLASSIFICATION/">Social Determinant Classification Demo</a></li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_violence_abuse</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_mental_health</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_frailty_vulnerability</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_clinical_sections</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_clinical_sections_headless</code></li>
   </ul>
 
 </div>
@@ -1005,6 +1114,7 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
     </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="release_notes_5_2_0">5.2.0</a></li>
     <li><a href="release_notes_5_1_4">5.1.4</a></li>
     <li><a href="release_notes_5_1_3">5.1.3</a></li>
     <li><a href="release_notes_5_1_2">5.1.2</a></li>
@@ -1073,7 +1183,7 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-11-10T00:00:00+00:00">Nov 10, 2023</time>
+      <time itemprop="dateModified" datetime="2023-12-25T00:00:00+00:00">Dec 25, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
