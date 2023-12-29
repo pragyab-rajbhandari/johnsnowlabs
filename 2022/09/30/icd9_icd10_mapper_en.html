@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Mapping ICD-9-CM Codes with Their Corresponding ICD-10-CM Codes | icd9_icd10_mapper | Healthcare NLP 4.1.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps ICD-9-CM codes to corresponding ICD-10-CM codesPredicted Entitiesicd10_codeLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  document_assembler = DocumentAssembler()\      .setInputCol("text")\      .setOutputCol("doc")chunk_assembler = Doc2Chunk()\      .s...">
+<meta name="description" content="DescriptionThis pretrained model maps ICD-9-CM codes to corresponding ICD-10-CM codes.Important Note: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outp...">
 <!-- <link rel="canonical" href="/2022/09/30/icd9_icd10_mapper_en.html"> -->
 <link rel="canonical" href="/2022/09/30/icd9_icd10_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -508,7 +508,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained model maps ICD-9-CM codes to corresponding ICD-10-CM codes</p>
+<p>This pretrained model maps ICD-9-CM codes to corresponding ICD-10-CM codes.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Important Note</code>: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of EntityResolvers, as input. When creating a pipeline that contains ‘Mapper’, it is necessary to use the ChunkMapperModel after an EntityResolverModel.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 

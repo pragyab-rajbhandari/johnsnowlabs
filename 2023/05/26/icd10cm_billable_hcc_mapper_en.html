@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Mapping ICD-10-CM Codes with Corresponding Billable and Hierarchical Condition Category (HCC) Scores | icd10cm_billable_hcc_mapper | Healthcare NLP 4.4.2</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps ICD-10-CM codes with their corresponding billable and HCC scores. If there is no HCC score for the corresponding ICD-10-CM code, result will be returned as 0.Predicted Entitiesbillable, hcc_scoreLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  document_ass...">
+<meta name="description" content="DescriptionThis pretrained model maps ICD-10-CM codes with their corresponding billable and HCC scores. If there is no HCC score for the corresponding ICD-10-CM code, result will be returned as 0.Important Note: Mappers extract additional information such as extended descriptions and categories related to Concept co...">
 <!-- <link rel="canonical" href="/2023/05/26/icd10cm_billable_hcc_mapper_en.html"> -->
 <link rel="canonical" href="/2023/05/26/icd10cm_billable_hcc_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -509,6 +509,8 @@ function wrapWordInSpan(data, wordToWrap) {
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
 <p>This pretrained model maps ICD-10-CM codes with their corresponding billable and HCC scores. If there is no HCC score for the corresponding ICD-10-CM code, result will be returned as 0.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Important Note</code>: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of EntityResolvers, as input. When creating a pipeline that contains ‘Mapper’, it is necessary to use the ChunkMapperModel after an EntityResolverModel.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
