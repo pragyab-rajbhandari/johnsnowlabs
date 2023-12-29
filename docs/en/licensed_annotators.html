@@ -2659,6 +2659,7 @@ For pretrained models please use AssertionDLModel and see the
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/assertionDL/index.html#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach">AssertionDLApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLApproach.html">AssertionDLApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionDLApproach.ipynb">AssertionDLApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -3641,6 +3642,7 @@ Contains all the methods for training a AssertionLogRegModel, together with trai
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/assertion_dl_reg/index.html#sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegApproach">AssertionLogRegApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/logreg/AssertionLogRegApproach.html">AssertionLogRegApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionLogRegApproach.ipynb">AssertionLogRegApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -7130,9 +7132,6 @@ The input to the model consists of chunk annotations and sentence or document an
       <li>
         <p><code class="language-plaintext highlighter-rouge">setMultivaluesRelations</code> <em>(Boolean)</em>:  Whether to decide to return all values in a relation together or separately (Default: False)</p>
       </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">setDoExceptionHandling</code>: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.</p>
-      </li>
     </ul>
 
     <p>Example usage and more details can be found on Spark NLP Workshop repository accessible in GitHub, for example the notebook <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb">Healthcare Chunk Mapping</a>.</p>
@@ -7571,26 +7570,6 @@ The input to the model consists of chunk annotations and sentence or document an
 
     <p>Example usage and more details can be found on Spark NLP Workshop repository accessible in GitHub, for example the notebook <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb">Healthcare Chunk Mapping</a>.</p>
 
-    <p>Parameters:</p>
-
-    <ul>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">Dictionary</code> <em>(Str)</em>: Dictionary path where is the JsonDictionary that contains the mappinmgs columns</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">Rels</code> <em>(Boolean)</em>: Relations that we are going to use to map the chunk</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">LowerCase</code> <em>(Boolean)</em>: Set if we want to map the chunks in lower case or not (Default: True)</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">AllowMultiTokenChunk</code> <em>(Boolean)</em>: Whether to skip relations with multitokens (Default: True)</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">MultivaluesRelations</code> <em>(Boolean)</em>:  Whether to decide to return all values in a relation together or separately (Default: False)</p>
-      </li>
-    </ul>
-
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
 
     <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">LABEL_DEPENDENCY</code></p>
@@ -7600,6 +7579,7 @@ The input to the model consists of chunk annotations and sentence or document an
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunkmapper/index.html#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperApproach">ChunkMapperApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/finance/chunk_classification/resolution/ChunkMapperApproach.html">ChunkMapperApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperApproach.ipynb">ChunkMapperApproachModel</a></td>
         </tr>
       </tbody>
     </table>
@@ -7847,57 +7827,7 @@ The input to the model consists of chunk annotations and sentence or document an
 
         <div class="tab-mfl-content">
 
-          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
-<span class="c1">// Training a SNOMED model</span>
-<span class="c1">// Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data and their labels.</span>
-<span class="k">val</span> <span class="nv">document</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"normalized_text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">chunk</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Doc2Chunk</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">token</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span><span class="o">\</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_healthcare_100d"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">chunkEmb</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ChunkEmbeddings</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk_embeddings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">snomedTrainingPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">document</span><span class="o">,</span>
-    <span class="n">chunk</span><span class="o">,</span>
-    <span class="n">token</span><span class="o">,</span>
-    <span class="n">embeddings</span><span class="o">,</span>
-    <span class="n">chunkEmb</span>
-<span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">snomedTrainingModel</span> <span class="k">=</span> <span class="nv">snomedTrainingPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">snomedData</span> <span class="k">=</span> <span class="nv">snomedTrainingModel</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
-
-<span class="c1">// Then the Resolver can be trained with</span>
-<span class="k">val</span> <span class="nv">snomedExtractor</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ChunkEntityResolverApproach</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"token"</span><span class="o">,</span> <span class="s">"chunk_embeddings"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"recognized"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setNeighbours</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setAlternatives</span><span class="o">(</span><span class="mi">25</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setNormalizedCol</span><span class="o">(</span><span class="s">"normalized_text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setLabelCol</span><span class="o">(</span><span class="s">"label"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setEnableWmd</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="py">setEnableTfidf</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="py">setEnableJaccard</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setEnableSorensenDice</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="py">setEnableJaroWinkler</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="py">setEnableLevenshtein</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setDistanceWeights</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setAllDistancesMetadata</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setPoolingStrategy</span><span class="o">(</span><span class="s">"MAX"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setThreshold</span><span class="o">(</span><span class="mi">1</span><span class="n">e32</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">snomedExtractor</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">snomedData</span><span class="o">)</span>
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 </code></pre></div>          </div>
 
         </div>
@@ -9378,6 +9308,7 @@ columns the possible matches.</p>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/contextual_parser/index.html#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserApproach">ContextualParserApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/context/ContextualParserApproach.html">ContextualParserApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualParserApproach.ipynb">ContextualParserApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -11993,6 +11924,7 @@ Mufi HIGGS#NAME"""</span>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/docmapper/index.html#sparknlp_jsl.annotator.chunker.docmapper.DocMapperApproach.name">DocMapperApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/chunker/DocMapperApproach.html">DocMapperApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocMapperApproach.ipynb">DocMapperApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -13585,6 +13517,7 @@ text and their label. The result is a trained DocumentLogRegClassifierModel.</p>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/document_ml_classifier/index.html#sparknlp_jsl.annotator.classification.document_ml_classifier.DocumentMLClassifierApproach">DocumentMLClassifierApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/DocumentMLClassifierApproach.html">DocumentMLClassifierApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentMLClassifierApproach_DocumentMLClassifierModel.ipynb">DocumentMLClassifierApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -14940,6 +14873,7 @@ Please see the Parameters section for required training parameters.</p>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/generic_classifier/generic_classifier/index.html#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html">GenericClassifierApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierApproach.ipynb">GenericClassifierApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -15214,6 +15148,7 @@ Please see the Parameters section for required training parameters.</p>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/generic_log_reg_classifier/index.html#sparknlp_jsl.annotator.classification.generic_log_reg_classifier.GenericLogRegClassifierApproach">GenericLogRegClassifierApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/GenericLogRegClassifierApproach.html">GenericLogRegClassifierApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericLogRegClassifierModel.ipynb">GenericLogRegClassifierApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -15583,6 +15518,7 @@ Please see the Parameters section for required training parameters.</p>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/generic_svm_classifier/index.html#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach">GenericSVMClassifier</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/GenericSVMClassifierApproach.html">GenericSVMClassifier</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericSVMClassifierApproach.ipynb">GenericSVMClassifierNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -16914,6 +16850,7 @@ Record date : 2093-01-13 , David Hale , M.D . , Patient name : Michael  , MR # 7
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach">NameChunkObfuscatorApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/NameChunkObfuscatorApproach.html">NameChunkObfuscatorApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NameChunkObfuscatorApproach.ipynb">NameChunkObfuscatorApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -18846,6 +18783,7 @@ Excluding the label, this can be done with for example</p>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach">MedicalNerApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/MedicalNerApproach.html">MedicalNerApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/MedicalNerApproach.ipynb">MedicalNerApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -21454,6 +21392,7 @@ He was seen by the endocrinology service and she was discharged on 40 units of i
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach">RelationExtractionApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html">RelationExtractionApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RelationExtractionApproach.ipynb">RelationExtractionApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -23741,6 +23680,7 @@ At this time, chest tube placement for drainage of the fluid occurred and thorac
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/resolution/sentence_entity_resolver/index.html#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverApproach">SentenceEntityResolverApproach</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/SentenceEntityResolverApproach.html">SentenceEntityResolverApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/SentenceEntityResolverApproach_SentenceEntityResolverModel.ipynb">SentenceEntityResolverApproachNotebook</a></td>
         </tr>
       </tbody>
     </table>
