@@ -620,87 +620,98 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Table recognition"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="imagetabledetector">ImageTableDetector</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p><code class="language-plaintext highlighter-rouge">ImageTableDetector</code> is a DL model for detecting tables on the image.
+  <h2 id="imagetabledetector">ImageTableDetector</h2>
+
+  <p><code class="language-plaintext highlighter-rouge">ImageTableDetector</code> is a DL model for detecting tables on the image.
 It’s based on CascadeTabNet which used Cascade mask Region-based CNN High-Resolution Network (Cascade mask R-CNN HRNet).</p>
 
-<h4 id="input-columns">Input Columns</h4>
+</div>
+<div class="h3-box">
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCol</td>
-      <td>string</td>
-      <td>image</td>
-      <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
-    </tr>
-  </tbody>
-</table>
+  <h4 id="input-columns">Input Columns</h4>
 
-<h4 id="parameters">Parameters</h4>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>image</td>
+        <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>scoreThreshold</td>
-      <td>float</td>
-      <td>0.9</td>
-      <td>Score threshold for output regions.</td>
-    </tr>
-    <tr>
-      <td>applyCorrection</td>
-      <td>boolean</td>
-      <td>false</td>
-      <td>Enable correction of results.</td>
-    </tr>
-  </tbody>
-</table>
+</div>
+<div class="h3-box">
 
-<h4 id="output-columns">Output Columns</h4>
+  <h4 id="parameters">Parameters</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>outputCol</td>
-      <td>string</td>
-      <td>table_regions</td>
-      <td>array of [Coordinaties]ocr_structures#coordinate-schema)</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>scoreThreshold</td>
+        <td>float</td>
+        <td>0.9</td>
+        <td>Score threshold for output regions.</td>
+      </tr>
+      <tr>
+        <td>applyCorrection</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Enable correction of results.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<p><strong>Example:</strong></p>
+</div>
+<div class="h3-box">
 
-<div class="tabs-new pt0">
+  <h4 id="output-columns">Output Columns</h4>
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>table_regions</td>
+        <td>array of [Coordinaties]ocr_structures#coordinate-schema)</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
@@ -732,9 +743,9 @@ It’s based on CascadeTabNet which used Cascade mask Region-based CNN High-Reso
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
 
 <span class="nv">data</span><span class="o">.</span><span class="py">storeImage</span><span class="o">(</span><span class="s">"image_with_regions"</span><span class="o">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">imagePath</span> <span class="o">=</span> <span class="s">"path to image"</span>
@@ -769,119 +780,122 @@ It’s based on CascadeTabNet which used Cascade mask Region-based CNN High-Reso
 <span class="n">data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
 <span class="n">display_images</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s">"image_with_regions"</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-</div>
+  </div>
 
-<p><strong>Output:</strong></p>
+  <p><strong>Output:</strong></p>
 
-<p><img src="/assets/images/ocr/table_regions1.png" alt="image" /></p>
+  <p><img src="/assets/images/ocr/table_regions1.png" alt="image" /></p>
 
-<h2 id="imagetablecelldetector">ImageTableCellDetector</h2>
+  <h2 id="imagetablecelldetector">ImageTableCellDetector</h2>
 
-<p><code class="language-plaintext highlighter-rouge">ImageTableCellDetector</code> detect cells in a table image. It’s based on an
+  <p><code class="language-plaintext highlighter-rouge">ImageTableCellDetector</code> detect cells in a table image. It’s based on an
 image processing algorithm that detects horizontal and vertical lines.</p>
 
-<p>Current implementation support few algorithm for extract cells:</p>
-<ul>
-  <li><strong><em>CellDetectionAlgos.CONTOURS</em></strong> works only for bordered tables.</li>
-  <li><strong><em>CellDetectionAlgos.MORPHOPS</em></strong> works for bordered, borderless and combined tables.</li>
-</ul>
+  <p>Current implementation support few algorithm for extract cells:</p>
+  <ul>
+    <li><strong><em>CellDetectionAlgos.CONTOURS</em></strong> works only for bordered tables.</li>
+    <li><strong><em>CellDetectionAlgos.MORPHOPS</em></strong> works for bordered, borderless and combined tables.</li>
+  </ul>
 
-<h4 id="input-columns-1">Input Columns</h4>
+</div>
+<div class="h3-box">
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCol</td>
-      <td>string</td>
-      <td>image</td>
-      <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
-    </tr>
-  </tbody>
-</table>
+  <h4 id="input-columns-1">Input Columns</h4>
 
-<h4 id="parameters-1">Parameters</h4>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>image</td>
+        <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>algoType</td>
-      <td><a href="ocr_structures#celldetectionalgos">CellDetectionAlgos</a></td>
-      <td>CellDetectionAlgos.CONTOURS</td>
-      <td>Algorithm for detect cells.</td>
-    </tr>
-    <tr>
-      <td>algoParams</td>
-      <td>string</td>
-      <td>row_treshold=0.05,row_treshold_wide=1.0, row_min_wide=5,column_treshold=0.05, column_treshold_wide=5,column_min_wide=5</td>
-      <td>Parameters of ‘MORPHOPS’ cells detection algorithm</td>
-    </tr>
-    <tr>
-      <td>drawDetectedLines</td>
-      <td>boolean</td>
-      <td>false</td>
-      <td>Enable to draw detected lines to the output image</td>
-    </tr>
-    <tr>
-      <td>keepOriginalLines</td>
-      <td>boolean</td>
-      <td>false</td>
-      <td>Keep original images on the output image</td>
-    </tr>
-  </tbody>
-</table>
+  <h4 id="parameters-1">Parameters</h4>
 
-<h4 id="output-columns-1">Output Columns</h4>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>algoType</td>
+        <td><a href="ocr_structures#celldetectionalgos">CellDetectionAlgos</a></td>
+        <td>CellDetectionAlgos.CONTOURS</td>
+        <td>Algorithm for detect cells.</td>
+      </tr>
+      <tr>
+        <td>algoParams</td>
+        <td>string</td>
+        <td>row_treshold=0.05,row_treshold_wide=1.0, row_min_wide=5,column_treshold=0.05, column_treshold_wide=5,column_min_wide=5</td>
+        <td>Parameters of ‘MORPHOPS’ cells detection algorithm</td>
+      </tr>
+      <tr>
+        <td>drawDetectedLines</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Enable to draw detected lines to the output image</td>
+      </tr>
+      <tr>
+        <td>keepOriginalLines</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Keep original images on the output image</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>outputCol</td>
-      <td>string</td>
-      <td>cells</td>
-      <td>array of coordinates of cells</td>
-    </tr>
-    <tr>
-      <td>outputImageCol</td>
-      <td>string</td>
-      <td>output_image</td>
-      <td>output image</td>
-    </tr>
-  </tbody>
-</table>
+  <h4 id="output-columns-1">Output Columns</h4>
 
-<p><strong>Example:</strong></p>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>cells</td>
+        <td>array of coordinates of cells</td>
+      </tr>
+      <tr>
+        <td>outputImageCol</td>
+        <td>string</td>
+        <td>output_image</td>
+        <td>output image</td>
+      </tr>
+    </tbody>
+  </table>
 
-<div class="tabs-new pt0">
+  <p><strong>Example:</strong></p>
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+  <div class="tabs-new pt0">
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
@@ -900,9 +914,9 @@ image processing algorithm that detects horizontal and vertical lines.</p>
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nv">transformer</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
 
 <span class="nv">data</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"cells"</span><span class="o">).</span><span class="py">show</span><span class="o">()</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">imagePath</span> <span class="o">=</span> <span class="s">"path to image"</span>
@@ -929,166 +943,169 @@ image processing algorithm that detects horizontal and vertical lines.</p>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">data</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"cells"</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-</div>
+  </div>
 
-<p><strong>Image:</strong></p>
+  <p><strong>Image:</strong></p>
 
-<p><img src="/assets/images/ocr/table0.png" alt="image" /></p>
+  <p><img src="/assets/images/ocr/table0.png" alt="image" /></p>
 
-<p><strong>Output:</strong>*</p>
+  <p><strong>Output:</strong>*</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------+
 | cells                                                    |
 +----------------------------------------------------------+
 ||[[[[15, 17, 224, 53]], [[241, 17, 179, 53]], [[423, 17,  |
 | 194, 53]], [[619, 17, 164, 53]] ....                     |
 +----------------------------------------------------------+
 
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<h2 id="imagecellstotexttable">ImageCellsToTextTable</h2>
+</div>
+<div class="h3-box">
 
-<p><code class="language-plaintext highlighter-rouge">ImageCellsToTextTable</code> runs OCR for cells regions on image, return recognized text
+  <h2 id="imagecellstotexttable">ImageCellsToTextTable</h2>
+
+  <p><code class="language-plaintext highlighter-rouge">ImageCellsToTextTable</code> runs OCR for cells regions on image, return recognized text
 to <em>outputCol</em> as TableContainer structure.</p>
 
-<h4 id="input-columns-2">Input Columns</h4>
+  <h4 id="input-columns-2">Input Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCol</td>
-      <td>string</td>
-      <td>image</td>
-      <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
-    </tr>
-    <tr>
-      <td>cellsCol</td>
-      <td>string</td>
-      <td>celss</td>
-      <td>Array of cells</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>image</td>
+        <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
+      </tr>
+      <tr>
+        <td>cellsCol</td>
+        <td>string</td>
+        <td>celss</td>
+        <td>Array of cells</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="parameters-2">Parameters</h4>
+  <h4 id="parameters-2">Parameters</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>strip</td>
-      <td>bool</td>
-      <td>true</td>
-      <td>Strip output text.</td>
-    </tr>
-    <tr>
-      <td>margin</td>
-      <td>bool</td>
-      <td>1</td>
-      <td>Margin of cells in pixelx.</td>
-    </tr>
-    <tr>
-      <td>pageSegMode</td>
-      <td><a href="ocr_structures#pagesegmentationmode">PageSegmentationMode</a></td>
-      <td>AUTO</td>
-      <td>page segmentation mode</td>
-    </tr>
-    <tr>
-      <td>ocrEngineMode</td>
-      <td><a href="ocr_structures#enginemode">EngineMode</a></td>
-      <td>LSTM_ONLY</td>
-      <td>OCR engine mode</td>
-    </tr>
-    <tr>
-      <td>language</td>
-      <td><a href="ocr_structures#language">Language</a></td>
-      <td>Language.ENG</td>
-      <td>language</td>
-    </tr>
-    <tr>
-      <td>ocrParams</td>
-      <td>array of strings</td>
-      <td>[]</td>
-      <td>Array of Ocr params in key=value format.</td>
-    </tr>
-    <tr>
-      <td>pdfCoordinates</td>
-      <td>bool</td>
-      <td>false</td>
-      <td>Transform coordinates in positions to PDF points.</td>
-    </tr>
-    <tr>
-      <td>modelData</td>
-      <td>string</td>
-      <td> </td>
-      <td>Path to the local model data.</td>
-    </tr>
-    <tr>
-      <td>modelType</td>
-      <td><a href="ocr_structures#modeltype">ModelType</a></td>
-      <td>ModelType.BASE</td>
-      <td>Model type</td>
-    </tr>
-    <tr>
-      <td>downloadModelData</td>
-      <td>bool</td>
-      <td>false</td>
-      <td>Download model data from JSL S3</td>
-    </tr>
-    <tr>
-      <td>outputFormat</td>
-      <td><a href="ocr_structures#tableoutputformat">TableOutputFormat</a></td>
-      <td>TableOutputFormat.TABLE</td>
-      <td>Output format</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>strip</td>
+        <td>bool</td>
+        <td>true</td>
+        <td>Strip output text.</td>
+      </tr>
+      <tr>
+        <td>margin</td>
+        <td>bool</td>
+        <td>1</td>
+        <td>Margin of cells in pixelx.</td>
+      </tr>
+      <tr>
+        <td>pageSegMode</td>
+        <td><a href="ocr_structures#pagesegmentationmode">PageSegmentationMode</a></td>
+        <td>AUTO</td>
+        <td>page segmentation mode</td>
+      </tr>
+      <tr>
+        <td>ocrEngineMode</td>
+        <td><a href="ocr_structures#enginemode">EngineMode</a></td>
+        <td>LSTM_ONLY</td>
+        <td>OCR engine mode</td>
+      </tr>
+      <tr>
+        <td>language</td>
+        <td><a href="ocr_structures#language">Language</a></td>
+        <td>Language.ENG</td>
+        <td>language</td>
+      </tr>
+      <tr>
+        <td>ocrParams</td>
+        <td>array of strings</td>
+        <td>[]</td>
+        <td>Array of Ocr params in key=value format.</td>
+      </tr>
+      <tr>
+        <td>pdfCoordinates</td>
+        <td>bool</td>
+        <td>false</td>
+        <td>Transform coordinates in positions to PDF points.</td>
+      </tr>
+      <tr>
+        <td>modelData</td>
+        <td>string</td>
+        <td> </td>
+        <td>Path to the local model data.</td>
+      </tr>
+      <tr>
+        <td>modelType</td>
+        <td><a href="ocr_structures#modeltype">ModelType</a></td>
+        <td>ModelType.BASE</td>
+        <td>Model type</td>
+      </tr>
+      <tr>
+        <td>downloadModelData</td>
+        <td>bool</td>
+        <td>false</td>
+        <td>Download model data from JSL S3</td>
+      </tr>
+      <tr>
+        <td>outputFormat</td>
+        <td><a href="ocr_structures#tableoutputformat">TableOutputFormat</a></td>
+        <td>TableOutputFormat.TABLE</td>
+        <td>Output format</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="output-columns-2">Output Columns</h4>
+  <h4 id="output-columns-2">Output Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>outputCol</td>
-      <td>string</td>
-      <td>table</td>
-      <td>Recognized text as TableContainer</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>table</td>
+        <td>Recognized text as TableContainer</td>
+      </tr>
+    </tbody>
+  </table>
 
-<p><strong>Example:</strong></p>
+  <p><strong>Example:</strong></p>
 
-<div class="tabs-new pt0">
+  <div class="tabs-new pt0">
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">org.apache.spark.ml.Pipeline</span>
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">org.apache.spark.ml.Pipeline</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
@@ -1126,9 +1143,9 @@ to <em>outputCol</em> as TableContainer structure.</p>
   <span class="o">.</span><span class="py">select</span><span class="o">((</span><span class="mi">0</span> <span class="n">until</span> <span class="mi">7</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="n">i</span> <span class="k">=&gt;</span> <span class="nf">col</span><span class="o">(</span><span class="s">"cells"</span><span class="o">)(</span><span class="n">i</span><span class="o">).</span><span class="py">getField</span><span class="o">(</span><span class="s">"chunkText"</span><span class="o">).</span><span class="py">alias</span><span class="o">(</span><span class="n">s</span><span class="s">"col$i"</span><span class="o">))</span><span class="k">:</span> <span class="k">_</span><span class="kt">*</span><span class="o">)</span>
   <span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="n">f</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -1168,17 +1185,17 @@ to <em>outputCol</em> as TableContainer structure.</p>
     <span class="p">.</span><span class="n">select</span><span class="p">([</span><span class="n">f</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="s">"cells"</span><span class="p">)[</span><span class="n">i</span><span class="p">].</span><span class="n">getField</span><span class="p">(</span><span class="s">"chunkText"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="sa">f</span><span class="s">"col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s">"</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
              <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span> \
     <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-</div>
+  </div>
 
-<p><strong>Image:</strong></p>
+  <p><strong>Image:</strong></p>
 
-<p><img src="/assets/images/ocr/table0.png" alt="image" /></p>
+  <p><img src="/assets/images/ocr/table0.png" alt="image" /></p>
 
-<p><strong>Output:</strong></p>
+  <p><strong>Output:</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------+-------+--------+------+-----+---------+-------+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------+-------+--------+------+-----+---------+-------+
 |col0      |col1   |col2    |col3  |col4 |col5     |col6   |
 +----------+-------+--------+------+-----+---------+-------+
 |Order Date|Region |Rep     |Item  |Units|Unit Cost|Total  |
@@ -1191,7 +1208,9 @@ to <em>outputCol</em> as TableContainer structure.</p>
 |5/5/10    |Ontario|Jardine |Pencil|90   |$4.99    |$449.10|
 |5/22/10   |Alberta|Thompson|Pencil|32   |$1.99    |$63.68 |
 +----------+-------+--------+------+-----+---------+-------+
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-04-08T00:00:00+00:00">Apr 08, 2020</time>
     </span><!-- start custom article footer snippet -->

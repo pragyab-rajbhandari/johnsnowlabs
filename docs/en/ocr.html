@@ -620,57 +620,63 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Visual NLP (Spark OCR)"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>Spark OCR is another commercial extension of Spark NLP for optical character recognition from images, scanned PDF documents, Microsoft DOCX and DICOM files. If you want to try it out on your own documents click on the below button:</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p class="btn-block"><a href="https://www.johnsnowlabs.com/spark-nlp-try-free/" class="button button--primary button--rounded button--lg">Try Free</a></p>
+  <p>Spark OCR is another commercial extension of Spark NLP for optical character recognition from images, scanned PDF documents, Microsoft DOCX and DICOM files. If you want to try it out on your own documents click on the below button:</p>
 
-<p>Spark OCR is built on top of <code class="language-plaintext highlighter-rouge">Apache Spark</code> and offers the following capabilities:</p>
-<ul>
-  <li>Image pre-processing algorithms to improve text recognition results:</li>
-  <li>Adaptive thresholding &amp; denoising</li>
-  <li>Skew detection &amp; correction</li>
-  <li>Adaptive scaling</li>
-  <li>Layout Analysis &amp; region detection</li>
-  <li>Image cropping</li>
-  <li>Removing background objects</li>
-  <li>Text recognition, by combining NLP and OCR pipelines:
-    <ul>
-      <li>Extracting text from images (optical character recognition)</li>
-      <li>Support English, German, French, Spanish, Russian, Vietnamese and Arabic languages</li>
-      <li>Extracting data from tables</li>
-      <li>Recognizing and highlighting named entities in PDF documents</li>
-      <li>Masking sensitive text in order to de-identify images</li>
-    </ul>
-  </li>
-  <li>Table detection and recognition from images</li>
-  <li>Signature detection</li>
-  <li>Visual document understanding
-    <ul>
-      <li>Document classification</li>
-      <li>Visual NER</li>
-    </ul>
-  </li>
-  <li>Output generation in different formats:
-    <ul>
-      <li>PDF, images, or DICOM files with annotated or masked entities</li>
-      <li>Digital text for downstream processing in Spark NLP or other libraries</li>
-      <li>Structured data formats (JSON and CSV), as files or Spark data frames</li>
-    </ul>
-  </li>
-  <li>Scale out: distribute the OCR jobs across multiple nodes in a Spark cluster.</li>
-  <li>Frictionless unification of OCR, NLP, ML &amp; DL pipelines.</li>
-</ul>
+  <p class="btn-block"><a href="https://www.johnsnowlabs.com/spark-nlp-try-free/" class="button button--primary button--rounded button--lg">Try Free</a></p>
 
-<h2 id="spark-ocr-workshop">Spark OCR Workshop</h2>
+  <p>Spark OCR is built on top of <code class="language-plaintext highlighter-rouge">Apache Spark</code> and offers the following capabilities:</p>
+  <ul>
+    <li>Image pre-processing algorithms to improve text recognition results:</li>
+    <li>Adaptive thresholding &amp; denoising</li>
+    <li>Skew detection &amp; correction</li>
+    <li>Adaptive scaling</li>
+    <li>Layout Analysis &amp; region detection</li>
+    <li>Image cropping</li>
+    <li>Removing background objects</li>
+    <li>Text recognition, by combining NLP and OCR pipelines:
+      <ul>
+        <li>Extracting text from images (optical character recognition)</li>
+        <li>Support English, German, French, Spanish, Russian, Vietnamese and Arabic languages</li>
+        <li>Extracting data from tables</li>
+        <li>Recognizing and highlighting named entities in PDF documents</li>
+        <li>Masking sensitive text in order to de-identify images</li>
+      </ul>
+    </li>
+    <li>Table detection and recognition from images</li>
+    <li>Signature detection</li>
+    <li>Visual document understanding
+      <ul>
+        <li>Document classification</li>
+        <li>Visual NER</li>
+      </ul>
+    </li>
+    <li>Output generation in different formats:
+      <ul>
+        <li>PDF, images, or DICOM files with annotated or masked entities</li>
+        <li>Digital text for downstream processing in Spark NLP or other libraries</li>
+        <li>Structured data formats (JSON and CSV), as files or Spark data frames</li>
+      </ul>
+    </li>
+    <li>Scale out: distribute the OCR jobs across multiple nodes in a Spark cluster.</li>
+    <li>Frictionless unification of OCR, NLP, ML &amp; DL pipelines.</li>
+  </ul>
 
-<p>If you prefer learning by example, click the button below to checkout the workshop repository full of fresh examples.</p>
+</div>
+<div class="h3-box">
 
-<p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop" class="button button--primary button--rounded button--md">Spark OCR Workshop</a></p>
+  <h2 id="spark-ocr-workshop">Spark OCR Workshop</h2>
 
-<p>Below, you can follow a more theoretical and thorough quick start guide.</p>
+  <p>If you prefer learning by example, click the button below to checkout the workshop repository full of fresh examples.</p>
 
-<h2 id="quickstart-examples">Quickstart Examples</h2>
+  <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop" class="button button--primary button--rounded button--md">Spark OCR Workshop</a></p>
 
+  <p>Below, you can follow a more theoretical and thorough quick start guide.</p>
+
+  <h2 id="quickstart-examples">Quickstart Examples</h2>
+
+</div>
 <div class="h3-box">
 
   <h3 id="images">Images</h3>
@@ -1067,12 +1073,15 @@ while processing some records.</p>
 </code></pre></div>  </div>
 
 </div>
+<div class="h3-box">
 
-<h3 id="performance">Performance</h3>
+  <h3 id="performance">Performance</h3>
 
-<p>In case of big count of text PDF’s in dataset
+  <p>In case of big count of text PDF’s in dataset
 need have manual partitioning for avoid skew in partitions and effective utilize resources. 
 For example the randomization could be used.</p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-04-08T00:00:00+00:00">Apr 08, 2020</time>
     </span><!-- start custom article footer snippet -->

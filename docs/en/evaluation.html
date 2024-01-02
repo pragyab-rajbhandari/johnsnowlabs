@@ -929,40 +929,42 @@ to display accuracy for entity I-PER and B-PER set “IOB” whereas just for en
 
   </div>
 </div>
+<div class="h3-box">
 
-<h3 id="evaluating-pos-tagger">Evaluating POS Tagger</h3>
+  <h3 id="evaluating-pos-tagger">Evaluating POS Tagger</h3>
 
-<p>You can evaluate POS either by training an annotator or by using a pretrained model.</p>
+  <p>You can evaluate POS either by training an annotator or by using a pretrained model.</p>
 
-<ul>
-  <li>spark: Spark session.</li>
-  <li>trainFile: A labeled POS file see and example <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#pos-dataset">here</a>.</li>
-  <li>testFile: A CoNLL-U format file.</li>
-</ul>
+  <ul>
+    <li>spark: Spark session.</li>
+    <li>trainFile: A labeled POS file see and example <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#pos-dataset">here</a>.</li>
+    <li>testFile: A CoNLL-U format file.</li>
+  </ul>
 
-<p><strong>Example for annotator:</strong></p>
+  <p><strong>Example for annotator:</strong></p>
 
-<div class="tabs-new pt0">
+  <div class="tabs-new pt0">
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pos_tagger</span> <span class="o">=</span> <span class="n">PerceptronApproach</span><span class="p">()</span> \
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pos_tagger</span> <span class="o">=</span> <span class="n">PerceptronApproach</span><span class="p">()</span> \
              <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
              <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"pos"</span><span class="p">)</span> \
              <span class="p">.</span><span class="n">setNIterations</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">posEvaluation</span> <span class="o">=</span> <span class="n">POSEvaluation</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">test_file</span><span class="p">)</span>
 <span class="n">posEvaluation</span><span class="p">.</span><span class="n">computeAccuracyAnnotator</span><span class="p">(</span><span class="n">train_file</span><span class="p">,</span> <span class="n">pos_tagger</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">posTagger</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PerceptronApproach</span><span class="o">()</span>
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">posTagger</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PerceptronApproach</span><span class="o">()</span>
       <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
       <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"pos"</span><span class="o">)</span>
       <span class="o">.</span><span class="py">setNIterations</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">posEvaluation</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">POSEvaluation</span><span class="o">(</span><span class="n">spark</span><span class="o">,</span> <span class="n">testFile</span><span class="o">)</span>
 <span class="nv">posEvaluation</span><span class="o">.</span><span class="py">computeAccuracyAnnotator</span><span class="o">(</span><span class="n">trainFile</span><span class="o">,</span> <span class="n">posTagger</span><span class="o">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
+  </div>
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-06-05T00:00:00+00:00">Jun 05, 2020</time>

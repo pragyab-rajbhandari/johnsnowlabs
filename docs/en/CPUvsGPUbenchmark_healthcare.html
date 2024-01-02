@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Spark OCR 2.3.x (Licensed)</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>GPU vs CPU benchmark</title><meta property="og:title" content=""/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/ocr_old"> -->
-<link rel="canonical" href="/docs/en/ocr_old"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/CPUvsGPUbenchmark_healthcare"> -->
+<link rel="canonical" href="/docs/en/CPUvsGPUbenchmark_healthcare"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -392,7 +392,7 @@
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Spark OCR</li><li class="toc-h2"><a href="/docs/en/ocr">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/ocr_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/version_compatibility">Version Compatibility</a></li><li class="toc-h2"><a href="/docs/en/ocr_pipeline_components">Pipeline components</a></li><li class="toc-h2"><a href="/docs/en/ocr_table_recognition">Table recognition</a></li><li class="toc-h2"><a href="/docs/en/ocr_visual_document_understanding">Visual document understanding</a></li><li class="toc-h2"><a href="/docs/en/ocr_object_detection">Object detection</a></li><li class="toc-h2"><a href="/docs/en/ocr_structures">Structures and helpers</a></li><li class="toc-h2"><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">All Enterprise libraries</li><li class="toc-h2"><a href="/docs/en/license_getting_started">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/licensed_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/licensed_annotators">Annotators</a></li><li class="toc-h2"><a href="/docs/en/licensed_training">Training</a></li><li class="toc-h2"><a href="/docs/en/evaluation">Evaluation</a></li><li class="toc-h2"><a href="/docs/en/healthcare_risk_adjustments_score_calculation">Risk Adjustments Score Calculation</a></li><li class="toc-h2"><a href="/docs/en/utility_helper_modules">Utility & Helper Modules</a></li><li class="toc-h2"><a href="/docs/en/licensed_serving_spark_nlp_via_api_synapseml">Serving Spark NLP&#58 SynapseML</a></li><li class="toc-h2"><a href="/docs/en/licensed_serving_spark_nlp_via_api_fastapi">Serving Spark NLP&#58 FastAPI</a></li><li class="toc-h2"><a href="/licensed/api/">Scala API (Scaladoc)</a></li><li class="toc-h2"><a href="/licensed/api/python">Python API (Sphinx)</a></li><li class="toc-h2"><a href="/docs/en/wiki">Wiki</a></li><li class="toc-h2"><a href="/docs/en/benchmark">Speed Benchmarks</a></li><li class="toc-h2"><a href="/docs/en/best_practices_pretrained_models">Best Practices Using Pretrained Models Together</a></li><li class="toc-h1">Healthcare NLP</li><li class="toc-h2"><a href="/docs/en/spark_nlp_healthcare_versions/licensed_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Healthcare">Healthcare Models</a></li><li class="toc-h2"><a href="/docs/en/licensed_version_compatibility">Version Compatibility</a></li><li class="toc-h1">Finance NLP</li><li class="toc-h2"><a href="/docs/en/financial_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Finance">Financial Models</a></li><li class="toc-h2"><a href="/docs/en/financial_version_compatibility">Version Compatibility</a></li><li class="toc-h1">Legal NLP</li><li class="toc-h2"><a href="/docs/en/legal_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Legal">Legal Models</a></li><li class="toc-h2"><a href="/docs/en/legal_version_compatibility">Version Compatibility</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -610,184 +610,240 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Spark OCR 2.3.x (Licensed)</li>
+    <li>GPU vs CPU benchmark</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Spark OCR 2.3.x (Licensed)</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>GPU vs CPU benchmark</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/ocr_old.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark OCR 2.3.x (Licensed)"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/CPUvsGPUbenchmark_healthcare.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="GPU vs CPU benchmark"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>Spark NLP comes with an OCR module that can read both PDF files and scanned images (requires <code class="language-plaintext highlighter-rouge">Tesseract 4.x+</code>).</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<h2 id="installation">Installation</h2>
+  <p>This section includes a benchmark for MedicalNerApproach(), comparing its performance when running in <code class="language-plaintext highlighter-rouge">m5.8xlarge</code> CPU vs a <code class="language-plaintext highlighter-rouge">Tesla V100 SXM2</code> GPU, as described in the <code class="language-plaintext highlighter-rouge">Machine Specs</code> section below.</p>
 
-<h3 id="installing-tesseract">Installing Tesseract</h3>
+  <p>Big improvements have been carried out from version 3.3.4, so please, make sure you use at least that version to fully levearge Spark NLP capabilities on GPU.</p>
 
-<p>As mentioned above, if you are dealing with scanned images instead of test-selectable PDF files you need to install <code class="language-plaintext highlighter-rouge">tesseract 4.x+</code> on all the nodes in your cluster. Here how you can install it on Ubuntu/Debian:</p>
+</div>
+<div class="h3-box">
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>tesseract-ocr
-</code></pre></div></div>
+  <h3 id="machine-specs">Machine specs</h3>
 
-<p>In <code class="language-plaintext highlighter-rouge">Databricks</code> this command may result in installing <code class="language-plaintext highlighter-rouge">tesseract 3.x</code> instead of version <code class="language-plaintext highlighter-rouge">4.x</code>.</p>
+  <h4 id="cpu">CPU</h4>
+  <p>An AWS <code class="language-plaintext highlighter-rouge">m5.8xlarge</code> machine was used for the CPU benchmarking. This machine consists of <code class="language-plaintext highlighter-rouge">32 vCPUs</code> and <code class="language-plaintext highlighter-rouge">128 GB of RAM</code>, as you can check in the official specification webpage available <a href="https://aws.amazon.com/ec2/instance-types/m5/">here</a></p>
 
-<p>You can simply run this <code class="language-plaintext highlighter-rouge">init script</code> to install <code class="language-plaintext highlighter-rouge">tesseract 4.x</code> in your Databricks cluster:</p>
+</div>
+<div class="h3-box">
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> g++ <span class="c"># or clang++ (presumably)</span>
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> autoconf automake libtool
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> pkg-config
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> libpng-dev
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> libjpeg8-dev
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> libtiff5-dev
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> zlib1g-dev
-​
-wget https://www.leptonica.org/source/leptonica-1.74.4.tar.gz
-<span class="nb">tar </span>xvf leptonica-1.74.4.tar.gz
-<span class="nb">cd </span>leptonica-1.74.4
-./configure
-make
-<span class="nb">sudo </span>make <span class="nb">install</span>
-​
-git clone <span class="nt">--single-branch</span> <span class="nt">--branch</span> 4.1 https://github.com/tesseract-ocr/tesseract.git
-<span class="nb">cd </span>tesseract
-./autogen.sh
-./configure
-make
-<span class="nb">sudo </span>make <span class="nb">install
-sudo </span>ldconfig
-​
-tesseract <span class="nt">-v</span>
-</code></pre></div></div>
+  <h4 id="gpu">GPU</h4>
+  <p>A <code class="language-plaintext highlighter-rouge">Tesla V100 SXM2</code> GPU with <code class="language-plaintext highlighter-rouge">32GB</code> of memory was used to calculate the GPU benchmarking.</p>
 
-<h2 id="quick-start">Quick start</h2>
+</div>
+<div class="h3-box">
 
-<p>Let’s read a PDF file:</p>
+  <h3 id="versions">Versions</h3>
+  <p>The benchmarking was carried out with the following Spark NLP versions:</p>
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp._</span>
-<span class="k">val</span> <span class="nv">ocrHelper</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">OcrHelper</span><span class="o">()</span>
+  <p>Spark version: <code class="language-plaintext highlighter-rouge">3.0.2</code></p>
 
-<span class="c1">//If you do this locally you can use file:/// or hdfs:/// if the files are hosted in Hadoop</span>
-<span class="k">val</span> <span class="nv">dataset</span> <span class="k">=</span> <span class="nv">ocrHelper</span><span class="o">.</span><span class="py">createDataset</span><span class="o">(</span><span class="n">spark</span><span class="o">,</span> <span class="s">"/tmp/sample_article.pdf"</span><span class="o">)</span>
+  <p>Hadoop version: <code class="language-plaintext highlighter-rouge">3.2.0</code></p>
 
-</code></pre></div></div>
+  <p>SparkNLP version: <code class="language-plaintext highlighter-rouge">3.3.4</code></p>
 
-<p>If you are trying to extract text from scanned images in the format of PDF, please keep in mind to use these configs:</p>
+  <p>SparkNLP for Healthcare version: <code class="language-plaintext highlighter-rouge">3.3.4</code></p>
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">ocrHelper</span><span class="o">.</span><span class="py">setPreferredMethod</span><span class="o">(</span><span class="s">"image"</span><span class="o">)</span>
-<span class="nv">ocrHelper</span><span class="o">.</span><span class="py">setFallbackMethod</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-<span class="nv">ocrHelper</span><span class="o">.</span><span class="py">setMinSizeBeforeFallback</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
-</code></pre></div></div>
+  <p>Spark nodes: 1</p>
 
-<h2 id="configuration">Configuration</h2>
+</div>
+<div class="h3-box">
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">setPreferredMethod(text/image = text)</code> either <code class="language-plaintext highlighter-rouge">text</code> or <code class="language-plaintext highlighter-rouge">image</code> will work. Defaults to <code class="language-plaintext highlighter-rouge">text</code>. Text mode works better and faster for digital or text scanned PDFs</li>
-  <li><code class="language-plaintext highlighter-rouge">setFallbackMethod(boolean)</code> on true, when <code class="language-plaintext highlighter-rouge">text</code> or <code class="language-plaintext highlighter-rouge">image</code> fail, it will fallback to the alternate method</li>
-  <li><code class="language-plaintext highlighter-rouge">setMinSizeBeforeFallback(int = 1)</code> number of characters to have at a minimum, before falling back.</li>
-  <li><code class="language-plaintext highlighter-rouge">setPageSegMode(int = 3)</code> image mode page segmentation mode</li>
-  <li><code class="language-plaintext highlighter-rouge">setEngineMode(int = 1)</code> image mode engine mode</li>
-  <li><code class="language-plaintext highlighter-rouge">setPageIteratorLevel(int = 0)</code> image mode page iteratior level</li>
-  <li><code class="language-plaintext highlighter-rouge">setScalingFactor(float)</code> Specifies the scaling factor to apply to images, in both axes, before OCR. It can scale up the image(factor &gt; 1.0) or scale it down(factor &lt; 1.0)</li>
-  <li><code class="language-plaintext highlighter-rouge">setSplitPages(boolean = true)</code> Whether to split pages into different rows and documents</li>
-  <li><code class="language-plaintext highlighter-rouge">setSplitRegions(boolean = true)</code> Whether to split by document regions. Works only in image mode. Enables split pages as well.</li>
-  <li><code class="language-plaintext highlighter-rouge">setIncludeConfidence(boolean = false)</code></li>
-  <li><code class="language-plaintext highlighter-rouge">setAutomaticSkewCorrection(use: boolean, half_angle: double = 5.0, resolution: double = 1.0)</code></li>
-  <li><code class="language-plaintext highlighter-rouge">setAutomaticSizeCorrection(use: boolean, desired_size: int = 34)</code></li>
-  <li><code class="language-plaintext highlighter-rouge">setEstimateNoise(string)</code> image mode estimator noise level</li>
-  <li><code class="language-plaintext highlighter-rouge">useErosion(use: boolean, kernel_size: int = 2, kernel_shape: Int = 0)</code> image mode erosion</li>
-</ul>
+  <h3 id="benchmark-on-medicalnerdlapproach">Benchmark on MedicalNerDLApproach()</h3>
 
-<h2 id="utilizing-spark-nlp-ocr-module">Utilizing Spark NLP OCR Module</h2>
+  <p>This experiment consisted of training a Name Entity Recognition model (token-level), using our class NerDLApproach(), using Bert Word Embeddings and a Char-CNN-BiLSTM Neural Network. Only 1 Spark node was used for the training.</p>
 
-<p>Spark NLP OCR Module is not included within Spark NLP. It is not an
-annotator and not an extension to Spark ML.</p>
+  <p>We used the Spark NLP class <code class="language-plaintext highlighter-rouge">MedicalNer</code> and it’s method <code class="language-plaintext highlighter-rouge">Approach()</code> as described in the <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#medicalner">documentation</a>.</p>
 
-<p>You can use OcrHelper to directly create spark dataframes from PDF.
-This will hold entire documents in single rows, meant to be later
-processed by a SentenceDetector. This way, you won’t be breaking the
-content in rows as if you were reading a standard document. Metadata
-columns are added automatically and will include page numbers, file
-name and other useful information per row.</p>
+  <p>The pipeline looks as follows:
+<img src="/assets/images/CPUvsGPUbenchmarkpic4.png" alt="" /></p>
 
-<p><strong><em>Python code</em></strong></p>
+</div>
+<div class="h3-box">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
-<span class="kn">from</span> <span class="nn">sparknlp.ocr</span> <span class="kn">import</span> <span class="n">OcrHelper</span>
-<span class="kn">from</span> <span class="nn">sparknlp</span> <span class="kn">import</span> <span class="n">DocumentAssembler</span>
+  <h4 id="dataset">Dataset</h4>
+  <p>The size of the dataset was small (17K), consisting of:</p>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">OcrHelper</span><span class="p">().</span><span class="n">createDataset</span><span class="p">(</span><span class="n">spark</span> <span class="o">=</span> <span class="n">spark</span><span class="p">,</span> <span class="n">input_path</span> <span class="o">=</span> <span class="s">"/your/example.pdf"</span> <span class="p">)</span>
-<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">().</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">annotations</span> <span class="o">=</span> <span class="n">documentAssembler</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">annotations</span><span class="p">.</span><span class="n">columns</span>
-</code></pre></div></div>
+  <p>Training (rows): <code class="language-plaintext highlighter-rouge">14041</code></p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="s1">'text'</span>, <span class="s1">'pagenum'</span>, <span class="s1">'method'</span>, <span class="s1">'noiselevel'</span>, <span class="s1">'confidence'</span>, <span class="s1">'positions'</span>,
- <span class="s1">'filename'</span>, <span class="s1">'document'</span><span class="o">]</span>
-</code></pre></div></div>
+  <p>Test (rows): <code class="language-plaintext highlighter-rouge">3250</code></p>
 
-<p><strong><em>Scala code</em></strong></p>
+</div>
+<div class="h3-box">
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.util.io.OcrHelper</span>
-<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.DocumentAssembler</span>
+  <h4 id="training-params">Training params</h4>
+  <p>Different batch sizes were tested to demonstrate how GPU performance improves with bigger batches compared to CPU, for a constant number of epochs and learning rate.</p>
 
-<span class="k">val</span> <span class="nv">myOcrHelper</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">OcrHelper</span>
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nv">myOcrHelper</span><span class="o">.</span><span class="py">createDataset</span><span class="o">(</span><span class="n">spark</span><span class="o">,</span> <span class="s">"/your/example.pdf"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">().</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">annotations</span> <span class="k">=</span> <span class="nv">documentAssembler</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="nv">annotations</span><span class="o">.</span><span class="py">columns</span>
-</code></pre></div></div>
+  <p>Epochs: <code class="language-plaintext highlighter-rouge">10</code></p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Array[String] <span class="o">=</span> Array<span class="o">(</span>text, pagenum, method, noiselevel, confidence, positions, filename, document<span class="o">)</span>
-</code></pre></div></div>
+  <p>Learning rate:  <code class="language-plaintext highlighter-rouge">0.003</code></p>
 
-<p>… where the text column of the annotations spark dataframe includes the text content of the PDF, pagenum the page number, etc…</p>
+  <p>Batch sizes: <code class="language-plaintext highlighter-rouge">32</code>, <code class="language-plaintext highlighter-rouge">64</code>, <code class="language-plaintext highlighter-rouge">256</code>,  <code class="language-plaintext highlighter-rouge">512</code>, <code class="language-plaintext highlighter-rouge">1024</code>, <code class="language-plaintext highlighter-rouge">2048</code></p>
 
-<h3 id="creating-an-array-of-strings-from-pdf-for-lightpipeline">Creating an Array of Strings from PDF (For LightPipeline)</h3>
+</div>
+<div class="h3-box">
 
-<p>Another way, would be to simply create an array of strings. This is
-useful for example if you are parsing a small amount of pdf files and
-would like to use LightPipelines instead. See an example below.</p>
+  <h4 id="results">Results</h4>
+  <p>Even for this small dataset, we can observe that GPU is able to beat the CPU machine by a <code class="language-plaintext highlighter-rouge">62%</code> in <code class="language-plaintext highlighter-rouge">training</code> time and a <code class="language-plaintext highlighter-rouge">68%</code> in <code class="language-plaintext highlighter-rouge">inference</code> times. It’s important to mention that the batch size is very relevant when using GPU, since CPU scales much worse with bigger batch sizes than GPU.</p>
 
-<p><strong><em>Scala code</em></strong></p>
+</div>
+<div class="h3-box">
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.util.io.OcrHelper</span>
-<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.</span><span class="o">{</span><span class="nc">DocumentAssembler</span><span class="o">,</span><span class="nc">LightPipeline</span><span class="o">}</span>
-<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotator.SentenceDetector</span>
-<span class="k">import</span> <span class="nn">org.apache.spark.ml.Pipeline</span>
+  <h4 id="training-times-depending-on-batch-in-minutes">Training times depending on batch (in minutes)</h4>
 
-<span class="k">val</span> <span class="nv">myOcrHelper</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">OcrHelper</span>
-<span class="k">val</span> <span class="nv">raw</span> <span class="k">=</span> <span class="nv">myOcrHelper</span><span class="o">.</span><span class="py">createMap</span><span class="o">(</span><span class="s">"/pdfs/"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">().</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">().</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">lightPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">LightPipeline</span><span class="o">(</span><span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">documentAssembler</span><span class="o">,</span> <span class="n">sentenceDetector</span><span class="o">)).</span><span class="py">fit</span><span class="o">(</span><span class="nv">Seq</span><span class="o">.</span><span class="py">empty</span><span class="o">[</span><span class="kt">String</span><span class="o">].</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)))</span>
-<span class="k">val</span> <span class="nv">annotations</span> <span class="k">=</span> <span class="nv">ligthPipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="nv">raw</span><span class="o">.</span><span class="py">values</span><span class="o">.</span><span class="py">toArray</span><span class="o">)</span>
-</code></pre></div></div>
+  <p><img src="/assets/images/CPUvsGPUbenchmarkpic6.png" alt="" /></p>
 
-<p>Now to get the whole first PDF content in your <strong>/pdfs/</strong> folder you can
-use:</p>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: center">Batch size</th>
+        <th style="text-align: center">CPU</th>
+        <th style="text-align: center">GPU</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center">32</td>
+        <td style="text-align: center">9.5</td>
+        <td style="text-align: center">10</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">64</td>
+        <td style="text-align: center">8.1</td>
+        <td style="text-align: center">6.5</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">256</td>
+        <td style="text-align: center">6.9</td>
+        <td style="text-align: center">3.5</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">512</td>
+        <td style="text-align: center">6.7</td>
+        <td style="text-align: center">3</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">1024</td>
+        <td style="text-align: center">6.5</td>
+        <td style="text-align: center">2.5</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">2048</td>
+        <td style="text-align: center">6.5</td>
+        <td style="text-align: center">2.5</td>
+      </tr>
+    </tbody>
+  </table>
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">annotations</span><span class="o">(</span><span class="mi">0</span><span class="o">)(</span><span class="s">"document"</span><span class="o">)(</span><span class="mi">0</span><span class="o">)</span>
-</code></pre></div></div>
+</div>
+<div class="h3-box">
 
-<p>and to get the third sentence found in that first pdf:</p>
+  <h4 id="inference-times-in-minutes">Inference times (in minutes)</h4>
+  <p>Although CPU times in inference remain more or less constant regardless the batch sizes, GPU time experiment good improvements the bigger the batch size is.</p>
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">annotations</span><span class="o">(</span><span class="mi">0</span><span class="o">)(</span><span class="s">"sentence"</span><span class="o">)(</span><span class="mi">2</span><span class="o">)</span>
-</code></pre></div></div>
+  <p>CPU times: <code class="language-plaintext highlighter-rouge">~29 min</code></p>
 
-<p>To get from the fifth pdf the second sentence:</p>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: center">Batch size</th>
+        <th style="text-align: center">GPU</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center">32</td>
+        <td style="text-align: center">10</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">64</td>
+        <td style="text-align: center">6.5</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">256</td>
+        <td style="text-align: center">3.5</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">512</td>
+        <td style="text-align: center">3</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">1024</td>
+        <td style="text-align: center">2.5</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">2048</td>
+        <td style="text-align: center">2.5</td>
+      </tr>
+    </tbody>
+  </table>
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">annotations</span><span class="o">(</span><span class="mi">4</span><span class="o">)(</span><span class="s">"sentence"</span><span class="o">)(</span><span class="mi">1</span><span class="o">)</span>
-</code></pre></div></div>
+  <p><img src="/assets/images/CPUvsGPUbenchmarkpic7.png" alt="" /></p>
 
-<p>Similarly, the whole content of the fifth pdf can be retrieved by:</p>
+</div>
+<div class="h3-box">
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">annotations</span><span class="o">(</span><span class="mi">4</span><span class="o">)(</span><span class="s">"document"</span><span class="o">)(</span><span class="mi">0</span><span class="o">)</span>
-</code></pre></div></div>
+  <h4 id="performance-metrics">Performance metrics</h4>
+  <p>A macro F1-score of about <code class="language-plaintext highlighter-rouge">0.92</code> (<code class="language-plaintext highlighter-rouge">0.90</code> in micro) was achieved, with the following charts extracted from the <code class="language-plaintext highlighter-rouge">MedicalNerApproach()</code> logs:</p>
+
+  <p><img src="/assets/images/CPUvsGPUbenchmarkpic8.png" alt="" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="takeaways-how-to-get-the-best-of-the-gpu">Takeaways: How to get the best of the GPU</h3>
+  <p>You will experiment big GPU improvements in the following cases:</p>
+
+  <ol class="list1">
+    <li>Embeddings and Transformers are used in your pipeline. Take into consideration that GPU will performance very well in Embeddings / Transformer components, but other components of your pipeline may not leverage as well GPU capabilities;</li>
+    <li>Bigger batch sizes get the best of GPU, while CPU does not scale with bigger batch sizes;</li>
+    <li>Bigger dataset sizes get the best of GPU, while may be a bottleneck while running in CPU and lead to performance drops;</li>
+  </ol>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="multigpu-inference-on-databricks">MultiGPU Inference on Databricks</h3>
+  <p>In this part, we will give you an idea on how to choose appropriate hardware specifications for Databricks. Here is a few different hardwares, their prices, as well as their performance:
+<img src="https://user-images.githubusercontent.com/25952802/158796429-78ec52b1-c036-4a9c-89c2-d3d1f395f71d.png" alt="image" /></p>
+
+  <p>Apparently, GPU hardware is the cheapest among them although it performs the best. Let’s see how overall performance looks like:</p>
+
+  <p><img src="https://user-images.githubusercontent.com/25952802/158799106-8ee03a8b-8590-49ae-9657-b9663b915324.png" alt="image" /></p>
+
+  <p>Figure above clearly shows us that GPU should be the first option of ours.</p>
+
+  <p>In conclusion, please find the best specifications for your use case since these benchmarks might depend on dataset size, inference batch size, quickness, pricing and so on.</p>
+
+  <p>Please refer to this video for further info: https://events.johnsnowlabs.com/webinar-speed-optimization-benchmarks-in-spark-nlp-3-making-the-most-of-modern-hardware?hsCtaTracking=a9bb6358-92bd-4cf3-b97c-e76cb1dfb6ef%7C4edba435-1adb-49fc-83fd-891a7506a417</p>
+
+  <h3 id="multigpu-training">MultiGPU training</h3>
+  <p>Currently, we don’t support multiGPU training, meaning training 1 model in different GPUs in parallel. However, you can train different models in different GPUs.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="multigpu-inference">MultiGPU inference</h3>
+  <p>Spark NLP can carry out MultiGPU inference if GPUs are in different cluster nodes. For example, if you have a cluster with different GPUs, you can repartition your data to match the number of GPU nodes and then coalesce to retrieve the results back to the master node.</p>
+
+  <p>Currently, inference on multiple GPUs on the same machine is not supported.</p>
+
+  <h3 id="where-to-look-for-more-information-about-training">Where to look for more information about Training</h3>
+  <p>Please, take a look at the <a href="https://nlp.johnsnowlabs.com/docs/en/training">Spark NLP</a> and <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_training">Spark NLP for Healthcare</a> Training sections, and feel free to reach us out in case you want to maximize the performance on your GPU.</p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2020-02-04T00:00:00+00:00">Feb 04, 2020</time>
+      <time itemprop="dateModified" datetime="2021-08-31T00:00:00+00:00">Aug 31, 2021</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -973,7 +1029,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/legal_version_compatibility">Version Compatibility</a></div></div></div>
 
 </div>
 </div>

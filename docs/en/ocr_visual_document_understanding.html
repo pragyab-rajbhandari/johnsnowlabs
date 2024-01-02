@@ -620,106 +620,111 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Visual document understanding"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>NLP models are great at processing digital text, but many real-word applications use documents with more complex formats. For example, healthcare systems often include visual lab results, sequencing reports, clinical trial forms, and other scanned documents. When we only use an NLP approach for document understanding, we lose layout and style information - which can be vital for document image understanding. New advances in multi-modal learning allow models to learn from both the text in documents (via NLP) and visual layout (via computer vision).</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p>We provide multi-modal visual document understanding, built on Spark OCR based on the LayoutLM architecture. It achieves new state-of-the-art accuracy in several downstream tasks, including form understanding (from 70.7 to 79.3), receipt understanding (from 94.0 to 95.2) and document image classification (from 93.1 to 94.4).</p>
+  <p>NLP models are great at processing digital text, but many real-word applications use documents with more complex formats. For example, healthcare systems often include visual lab results, sequencing reports, clinical trial forms, and other scanned documents. When we only use an NLP approach for document understanding, we lose layout and style information - which can be vital for document image understanding. New advances in multi-modal learning allow models to learn from both the text in documents (via NLP) and visual layout (via computer vision).</p>
 
-<p>Please check also webinar: <a href="https://events.johnsnowlabs.com/webinars">Visual Document Understanding with Multi-Modal Image &amp; Text Mining in Spark OCR 3</a></p>
+  <p>We provide multi-modal visual document understanding, built on Spark OCR based on the LayoutLM architecture. It achieves new state-of-the-art accuracy in several downstream tasks, including form understanding (from 70.7 to 79.3), receipt understanding (from 94.0 to 95.2) and document image classification (from 93.1 to 94.4).</p>
 
-<h2 id="visualdocumentclassifier">VisualDocumentClassifier</h2>
+  <p>Please check also webinar: <a href="https://events.johnsnowlabs.com/webinars">Visual Document Understanding with Multi-Modal Image &amp; Text Mining in Spark OCR 3</a></p>
 
-<p><code class="language-plaintext highlighter-rouge">VisualDocumentClassifier</code> is a DL model for document classification using text and layout data.
+</div>
+<div class="h3-box">
+
+  <h2 id="visualdocumentclassifier">VisualDocumentClassifier</h2>
+
+  <p><code class="language-plaintext highlighter-rouge">VisualDocumentClassifier</code> is a DL model for document classification using text and layout data.
 Currently available pretrained model on the Tobacco3482 dataset, that contains 3482 images belonging 
 to 10 different classes (Resume, News, Note, Advertisement, Scientific, Report, Form, Letter, Email and Memo)</p>
 
-<h4 id="input-columns">Input Columns</h4>
+  <h4 id="input-columns">Input Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCol</td>
-      <td>string</td>
-      <td>hocr</td>
-      <td>Сolumn name with HOCR of the document</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>hocr</td>
+        <td>Сolumn name with HOCR of the document</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="parameters">Parameters</h4>
+  <h4 id="parameters">Parameters</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>maxSentenceLength</td>
-      <td>int</td>
-      <td>128</td>
-      <td>Maximum sentence length.</td>
-    </tr>
-    <tr>
-      <td>caseSensitive</td>
-      <td>boolean</td>
-      <td>false</td>
-      <td>Determines whether model is case sensitive.</td>
-    </tr>
-    <tr>
-      <td>confidenceThreshold</td>
-      <td>float</td>
-      <td>0f</td>
-      <td>Confidence threshold.</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>maxSentenceLength</td>
+        <td>int</td>
+        <td>128</td>
+        <td>Maximum sentence length.</td>
+      </tr>
+      <tr>
+        <td>caseSensitive</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Determines whether model is case sensitive.</td>
+      </tr>
+      <tr>
+        <td>confidenceThreshold</td>
+        <td>float</td>
+        <td>0f</td>
+        <td>Confidence threshold.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="output-columns">Output Columns</h4>
+  <h4 id="output-columns">Output Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>labelCol</td>
-      <td>string</td>
-      <td>label</td>
-      <td>Name of output column with the predicted label.</td>
-    </tr>
-    <tr>
-      <td>confidenceCol</td>
-      <td>string</td>
-      <td>confidence</td>
-      <td>Name of output column with confidence.</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>labelCol</td>
+        <td>string</td>
+        <td>label</td>
+        <td>Name of output column with the predicted label.</td>
+      </tr>
+      <tr>
+        <td>confidenceCol</td>
+        <td>string</td>
+        <td>confidence</td>
+        <td>Name of output column with confidence.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<p><strong>Example:</strong></p>
+  <p><strong>Example:</strong></p>
 
-<div class="tabs-new pt0">
+  <div class="tabs-new pt0">
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
@@ -751,9 +756,9 @@ to 10 different classes (Resume, News, Note, Advertisement, Scientific, Report, 
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span>  <span class="nv">modelPipeline</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
 <span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"label"</span><span class="o">).</span><span class="py">show</span><span class="o">()</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">imagePath</span> <span class="o">=</span> <span class="s">"path to image"</span>
@@ -788,108 +793,111 @@ to 10 different classes (Resume, News, Note, Advertisement, Scientific, Report, 
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"label"</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-</div>
+  </div>
 
-<p>Output:</p>
+  <p>Output:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+
 | label|
 +------+
 |Letter|
 +------+
 
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<h2 id="visualdocumentner">VisualDocumentNER</h2>
+</div>
+<div class="h3-box">
 
-<p><code class="language-plaintext highlighter-rouge">VisualDocumentNER</code> is a DL model for NER documents using text and layout data.
+  <h2 id="visualdocumentner">VisualDocumentNER</h2>
+
+  <p><code class="language-plaintext highlighter-rouge">VisualDocumentNER</code> is a DL model for NER documents using text and layout data.
 Currently available pre-trained model on the SROIE dataset. The dataset has 1000 whole 
 scanned receipt images.</p>
 
-<h4 id="input-columns-1">Input Columns</h4>
+  <h4 id="input-columns-1">Input Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCol</td>
-      <td>string</td>
-      <td>hocr</td>
-      <td>Сolumn name with HOCR of the document</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>hocr</td>
+        <td>Сolumn name with HOCR of the document</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="parameters-1">Parameters</h4>
+  <h4 id="parameters-1">Parameters</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>maxSentenceLength</td>
-      <td>int</td>
-      <td>512</td>
-      <td>Maximum sentence length.</td>
-    </tr>
-    <tr>
-      <td>caseSensitive</td>
-      <td>boolean</td>
-      <td>false</td>
-      <td>Determines whether model is case sensitive.</td>
-    </tr>
-    <tr>
-      <td>whiteList</td>
-      <td>Array[String]</td>
-      <td> </td>
-      <td>Whitelist of output labels</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>maxSentenceLength</td>
+        <td>int</td>
+        <td>512</td>
+        <td>Maximum sentence length.</td>
+      </tr>
+      <tr>
+        <td>caseSensitive</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Determines whether model is case sensitive.</td>
+      </tr>
+      <tr>
+        <td>whiteList</td>
+        <td>Array[String]</td>
+        <td> </td>
+        <td>Whitelist of output labels</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="output-columns-1">Output Columns</h4>
+  <h4 id="output-columns-1">Output Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>outputCol</td>
-      <td>string</td>
-      <td>entities</td>
-      <td>Name of output column with entities Annotation.</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>entities</td>
+        <td>Name of output column with entities Annotation.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<p><strong>Example:</strong></p>
+  <p><strong>Example:</strong></p>
 
-<div class="tabs-new pt0">
+  <div class="tabs-new pt0">
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
@@ -920,9 +928,9 @@ scanned receipt images.</p>
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span>  <span class="nv">modelPipeline</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
 
 <span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"entities"</span><span class="o">).</span><span class="py">show</span><span class="o">()</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">imagePath</span> <span class="o">=</span> <span class="s">"path to image"</span>
@@ -954,105 +962,108 @@ scanned receipt images.</p>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"entities"</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-</div>
+  </div>
 
-<p>Output:</p>
+  <p>Output:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------------------------------------------------------------+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------------------------------------------------------------+
 |entities                                                                 |
 +-------------------------------------------------------------------------+
 |[[entity, 0, 0, O, [word -&gt; 0£0, token -&gt; 0£0], []], [entity, 0, 0,      |
 | B-COMPANY, [word -&gt; AEON, token -&gt; aeon], []], [entity, 0, 0, B-COMPANY,|
 | [word -&gt; CO., token -&gt; co], ...                                         |
 +-------------------------------------------------------------------------+
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<h2 id="visualdocumentner-1">VisualDocumentNER</h2>
+</div>
+<div class="h3-box">
 
-<p><code class="language-plaintext highlighter-rouge">VisualDocumentNER</code> is the main entry point to transformer-based models for document NER. An example of a VisualDocumentNER task is the detection of keys and values like in the FUNSD dataset.
+  <h2 id="visualdocumentner-1">VisualDocumentNER</h2>
+
+  <p><code class="language-plaintext highlighter-rouge">VisualDocumentNER</code> is the main entry point to transformer-based models for document NER. An example of a VisualDocumentNER task is the detection of keys and values like in the FUNSD dataset.
 These keys and values represent the structure of a form, and are typically “connected” to each other by using a FormRelationExtractor model.
 Some other VisualDocumentNER models are trained without this post-processing stage in mind, and consider entities in isolation. Some sample entities would be names, places, or medications, where the goal is not to connect the entities to other entities, but to use those entities individually.
 VisualDocumentNER follows the same architecture as VisualDocumentClassifier receiving ‘visual tokens’, this is, tokens with coordinates in HOCR format, along with images to inform the model.
 Check the Models Hub for available models.</p>
 
-<h4 id="input-columns-2">Input Columns</h4>
+  <h4 id="input-columns-2">Input Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCols</td>
-      <td>Array[String]</td>
-      <td> </td>
-      <td>Сolumn names for tokens of the document and image</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCols</td>
+        <td>Array[String]</td>
+        <td> </td>
+        <td>Сolumn names for tokens of the document and image</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="parameters-2">Parameters</h4>
+  <h4 id="parameters-2">Parameters</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>maxSentenceLength</td>
-      <td>int</td>
-      <td>512</td>
-      <td>Maximum sentence length.</td>
-    </tr>
-    <tr>
-      <td>whiteList</td>
-      <td>Array[String]</td>
-      <td> </td>
-      <td>Whitelist of output labels</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>maxSentenceLength</td>
+        <td>int</td>
+        <td>512</td>
+        <td>Maximum sentence length.</td>
+      </tr>
+      <tr>
+        <td>whiteList</td>
+        <td>Array[String]</td>
+        <td> </td>
+        <td>Whitelist of output labels</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="output-columns-2">Output Columns</h4>
+  <h4 id="output-columns-2">Output Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>outputCol</td>
-      <td>string</td>
-      <td>entities</td>
-      <td>Name of output column with entities Annotation.</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>entities</td>
+        <td>Name of output column with entities Annotation.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<p><strong>Example:</strong></p>
+  <p><strong>Example:</strong></p>
 
-<div class="tabs-new pt0">
+  <div class="tabs-new pt0">
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
@@ -1091,9 +1102,9 @@ Check the Models Hub for available models.</p>
   <span class="o">.</span><span class="py">cache</span><span class="o">()</span>
 
 <span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"entities"</span><span class="o">).</span><span class="py">show</span><span class="o">()</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">imagePath</span> <span class="o">=</span> <span class="s">"path to image"</span>
@@ -1134,13 +1145,13 @@ Check the Models Hub for available models.</p>
     <span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"exploded_entities"</span><span class="p">,</span> <span class="n">f</span><span class="p">.</span><span class="n">explode</span><span class="p">(</span><span class="s">"entities"</span><span class="p">))</span> \
     <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"filename"</span><span class="p">,</span> <span class="s">"exploded_entities"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-</div>
+  </div>
 
-<p>Output sample:</p>
+  <p>Output sample:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+-------------------------------------------------------------------------------------------------------------------------+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+-------------------------------------------------------------------------------------------------------------------------+
 |filename |exploded_entities                                                                                                        |
 +---------+-------------------------------------------------------------------------------------------------------------------------+
 |form1.jpg|[entity, 0, 6, i-answer, [x -&gt; 1027, y -&gt; 89, height -&gt; 19, confidence -&gt; 96, word -&gt; Version:, width -&gt; 90], []]        |
@@ -1149,96 +1160,99 @@ Check the Models Hub for available models.</p>
 |form1.jpg|[entity, 42, 52, b-question, [x -&gt; 498, y -&gt; 276, height -&gt; 19, confidence -&gt; 96, word -&gt; Institution, width -&gt; 113], []]|
 |form1.jpg|[entity, 54, 60, i-question, [x -&gt; 618, y -&gt; 276, height -&gt; 19, confidence -&gt; 96, word -&gt; Address, width -&gt; 89], []]     |
 +---------+-------------------------------------------------------------------------------------------------------------------------+
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<h2 id="formrelationextractor">FormRelationExtractor</h2>
+</div>
+<div class="h3-box">
 
-<p><code class="language-plaintext highlighter-rouge">FormRelationExtractor</code> detect relation between keys and values detected by <code class="language-plaintext highlighter-rouge">VisualDocumentNER</code>.</p>
+  <h2 id="formrelationextractor">FormRelationExtractor</h2>
 
-<p>It can detect relations only for key/value in same line.</p>
+  <p><code class="language-plaintext highlighter-rouge">FormRelationExtractor</code> detect relation between keys and values detected by <code class="language-plaintext highlighter-rouge">VisualDocumentNER</code>.</p>
 
-<h4 id="input-columns-3">Input Columns</h4>
+  <p>It can detect relations only for key/value in same line.</p>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCol</td>
-      <td>String</td>
-      <td> </td>
-      <td>Column name for entities Annotation</td>
-    </tr>
-  </tbody>
-</table>
+  <h4 id="input-columns-3">Input Columns</h4>
 
-<h4 id="parameters-3">Parameters</h4>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>String</td>
+        <td> </td>
+        <td>Column name for entities Annotation</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>lineTolerance</td>
-      <td>int</td>
-      <td>15</td>
-      <td>Line tolerance in pixels. This is the space between lines that will be assumed. It is used for grouping text regions by lines.</td>
-    </tr>
-    <tr>
-      <td>keyPattern</td>
-      <td>String</td>
-      <td>question</td>
-      <td>Pattern of entity name for keys in form.</td>
-    </tr>
-    <tr>
-      <td>valuePattern</td>
-      <td>String</td>
-      <td>answer</td>
-      <td>Pattern of entity name for values in form.</td>
-    </tr>
-  </tbody>
-</table>
+  <h4 id="parameters-3">Parameters</h4>
 
-<h4 id="output-columns-3">Output Columns</h4>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>lineTolerance</td>
+        <td>int</td>
+        <td>15</td>
+        <td>Line tolerance in pixels. This is the space between lines that will be assumed. It is used for grouping text regions by lines.</td>
+      </tr>
+      <tr>
+        <td>keyPattern</td>
+        <td>String</td>
+        <td>question</td>
+        <td>Pattern of entity name for keys in form.</td>
+      </tr>
+      <tr>
+        <td>valuePattern</td>
+        <td>String</td>
+        <td>answer</td>
+        <td>Pattern of entity name for values in form.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>outputCol</td>
-      <td>string</td>
-      <td>relations</td>
-      <td>Name of output column with relation Annotations.</td>
-    </tr>
-  </tbody>
-</table>
+  <h4 id="output-columns-3">Output Columns</h4>
 
-<p><strong>Example:</strong></p>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>relations</td>
+        <td>Name of output column with relation Annotations.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<div class="tabs-new pt0">
+  <p><strong>Example:</strong></p>
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+  <div class="tabs-new pt0">
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
@@ -1282,9 +1296,9 @@ Check the Models Hub for available models.</p>
   <span class="o">.</span><span class="py">cache</span><span class="o">()</span>
 
 <span class="nv">results</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="nf">explode</span><span class="o">(</span><span class="s">"relations"</span><span class="o">)).</span><span class="py">show</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="nc">False</span><span class="o">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">imagePath</span> <span class="o">=</span> <span class="s">"path to image"</span>
@@ -1327,20 +1341,22 @@ Check the Models Hub for available models.</p>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">explode</span><span class="p">(</span><span class="s">"relations"</span><span class="p">)).</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-</div>
+  </div>
 
-<p>Output sample:</p>
+  <p>Output sample:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------------------------------------------------------------------+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------------------------------------------------------------------+
 |col                                                                  |
 +---------------------------------------------------------------------+
 |[relation, 112, 134, Name: Dribbler, bbb, [bbox1 -&gt; 58 478 69 19, ...|
 |[relation, 136, 161, Study Date: 12-09-2006, 6:34, [bbox1 -&gt; 431 ... |
 |[relation, 345, 361, BP: 120 80 mmHg, [bbox1 -&gt; 790 478 30 19, ...   |
 +---------------------------------------------------------------------+
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-04-08T00:00:00+00:00">Apr 08, 2020</time>
     </span><!-- start custom article footer snippet -->
