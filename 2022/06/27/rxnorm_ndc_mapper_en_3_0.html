@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Mapping RxNorm Codes with Corresponding National Drug Codes(NDC) | rxnorm_ndc_mapper | Healthcare NLP 3.5.3</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps RxNorm and RxNorm Extension codes with corresponding National Drug Codes (NDC).Important Note: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Co...">
+<meta name="description" content="DescriptionThis pretrained model maps RxNorm and RxNorm Extension codes with corresponding National Drug Codes (NDC).Predicted EntitiesProduct NDC, Package NDCLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\.setInputCol("text")\.setOutputCol("ner_chunk"...">
 <!-- <link rel="canonical" href="/2022/06/27/rxnorm_ndc_mapper_en_3_0.html"> -->
 <link rel="canonical" href="/2022/06/27/rxnorm_ndc_mapper_en_3_0.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -510,8 +510,6 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <p>This pretrained model maps RxNorm and RxNorm Extension codes with corresponding National Drug Codes (NDC).</p>
 
-<p><code class="language-plaintext highlighter-rouge">Important Note</code>: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of EntityResolvers, as input. When creating a pipeline that contains ‘Mapper’, it is necessary to use the ChunkMapperModel after an EntityResolverModel.</p>
-
 <h2 id="predicted-entities">Predicted Entities</h2>
 
 <p><code class="language-plaintext highlighter-rouge">Product NDC</code>, <code class="language-plaintext highlighter-rouge">Package NDC</code></p>
@@ -525,6 +523,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
 <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
 <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
