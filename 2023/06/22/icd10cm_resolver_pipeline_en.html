@@ -545,11 +545,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|chunk                        |ner_chunk|icd10cm_code|
-+-----------------------------+---------+------------+
-|gestational diabetes mellitus|PROBLEM  |O24.919     |
-|anisakiasis                  |PROBLEM  |B81.0       |
-|fetal and neonatal hemorrhage|PROBLEM  |P545        |
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|   |                        chunks | entities | icd10cm_code |
+|--:|------------------------------:|---------:|-------------:|
+| 0 | gestational diabetes mellitus |  PROBLEM |      O24.919 |
+| 1 |                   anisakiasis |  PROBLEM |        B81.0 |
+| 2 | fetal and neonatal hemorrhage |  PROBLEM |         P549 |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
