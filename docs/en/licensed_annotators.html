@@ -959,7 +959,7 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger">AnnotationMerger</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/annotator/AnnotationMerger.html">AnnotationMerger</a></td>
-          <td><strong>Notebook:</strong> <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/03.0.Clinical_Relation_Extraction.ipynb">AnnotationMerger</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AnnotationMerger.ipynb">AnnotationMerger</a></td>
         </tr>
       </tbody>
     </table>
@@ -16697,15 +16697,7 @@ patternsAreRegex. Whether to interpret the split patterns as regular expressions
         <p><code class="language-plaintext highlighter-rouge">seed</code>:  The seed to select the names on obfuscation. With the seed, you can reply an execution several times with the same output..</p>
       </li>
       <li>
-        <table>
-          <tbody>
-            <tr>
-              <td><code class="language-plaintext highlighter-rouge">obfuscateRefSource</code>: Sets mode for select obfuscate source [‘both’</td>
-              <td>’faker’</td>
-              <td>‘file’] Default: ‘both’.</td>
-            </tr>
-          </tbody>
-        </table>
+        <p><code class="language-plaintext highlighter-rouge">obfuscateRefSource</code>: Sets mode for select obfuscate source [‘both’, ’faker’, ‘file’] Default: ‘both’.</p>
       </li>
       <li>
         <p><code class="language-plaintext highlighter-rouge">language</code>: The language used to select some faker names. The values are the following: ‘en’(english),’de’(german), ‘es’(Spanish), ‘fr’(french) or ‘ro’(romanian) Default:’en’.</p>
@@ -16716,8 +16708,10 @@ patternsAreRegex. Whether to interpret the split patterns as regular expressions
       <li>
         <p><code class="language-plaintext highlighter-rouge">nameEntities</code>: The nameEntities used to select entities during obfuscation. The supported name entities are NAME, PATIENT, and DOCTOR. Default: ‘NAME’</p>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">genderAwareness</code>: Whether to use gender-aware names or not during obfuscation. This param effects only names.
-Default: False</li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">genderAwareness</code>: Whether to use gender-aware names or not during obfuscation. This param effects only names.
+Default: False</p>
+      </li>
     </ul>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
