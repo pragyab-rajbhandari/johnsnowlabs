@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Finance Embeddings BGE Base | finembeddings_bge_base | Finance NLP 1.0.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Sentence Entity Resolver for RxNorm (sbiobert_base_cased_mli embeddings) | sbiobertresolve_rxnorm_augmented | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model is a legal version of the BGE base model fine-tuned on in-house curated datasets. Reference: Xiao, S., Liu, Z., Zhang, P., &amp; Muennighof, N. (2023). C-pack: Packaged resources to advance general chinese embedding. arXiv preprint arXiv:2309.07597.Predicted EntitiesLive DemoOpen in ColabDownlo...">
-<!-- <link rel="canonical" href="/2023/12/07/finembeddings_bge_base_en.html"> -->
-<link rel="canonical" href="/2023/12/07/finembeddings_bge_base_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using sbiobert_base_cased_mli Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs...">
+<!-- <link rel="canonical" href="/2024/01/17/sbiobertresolve_rxnorm_augmented_en.html"> -->
+<link rel="canonical" href="/2024/01/17/sbiobertresolve_rxnorm_augmented_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,77 +497,88 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/dcecchini/2023-12-07-finembeddings_bge_base_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Ahmetemintek/2024-01-17-sbiobertresolve_rxnorm_augmented_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Dec 07, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-12-07T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Finance Embeddings BGE Base</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance Embeddings BGE Base"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>finance</li><li>en</li><li>licensed</li><li>bge</li><li>embeddings</li><li>onnx</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-12-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="finance,en,licensed,bge,embeddings,onnx"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 17, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-17T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Sentence Entity Resolver for RxNorm (sbiobert_base_cased_mli embeddings)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Sentence Entity Resolver for RxNorm (sbiobert_base_cased_mli embeddings)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>rxnorm</li><li>licensed</li><li>en</li><li>clinical</li><li>entity_resolution</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-17T00:00:00+00:00">
+    <meta itemprop="keywords" content="rxnorm,licensed,en,clinical,entity_resolution"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model is a legal version of the BGE base model fine-tuned on in-house curated datasets. Reference: Xiao, S., Liu, Z., Zhang, P., &amp; Muennighof, N. (2023). C-pack: Packaged resources to advance general chinese embedding. arXiv preprint arXiv:2309.07597.</p>
+<p>This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in <code class="language-plaintext highlighter-rouge">all_k_aux_labels</code> column.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
+<p><code class="language-plaintext highlighter-rouge">RxNorm Codes</code>, <code class="language-plaintext highlighter-rouge">Concept Classes</code></p>
+
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finembeddings_bge_base_en_1.0.0_3.0_1701948521741.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/finance/models/finembeddings_bge_base_en_1.0.0_3.0_1701948521741.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_rxnorm_augmented_en_5.2.1_3.0_1705502473156.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_rxnorm_augmented_en_5.2.1_3.0_1705502473156.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="n">bge</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"finembeddings_bge_base"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"finance/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"bge"</span><span class="p">)</span>
+<span class="n">rxnorm_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_rxnorm_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"rxnorm_code"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
-    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">documentAssembler</span><span class="p">,</span>
-        <span class="n">tokenizer</span><span class="p">,</span>
-        <span class="n">bge</span>
-  <span class="p">])</span>
+<span class="n">rxnorm_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="n">documentAssembler</span><span class="p">,</span>
+  <span class="n">sbert_embedder</span><span class="p">,</span>
+  <span class="n">rxnorm_resolver</span><span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">'
-    ''What is the best way to invest in the stock market?'''
-]]).toDF("text")
+<span class="n">model</span> <span class="o">=</span> <span class="n">rxnorm_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
 
-result = pipeline.fit(data).transform(data)
-.selectExpr("explode(bge.embeddings) as bge_embeddings").show(truncate=100)
-</span></code></pre></div>  </div>
+<span class="n">light_model</span> <span class="o">=</span> <span class="n">LightPipeline</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
+<span class="n">result</span> <span class="o">=</span> <span class="n">light_model</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">([</span><span class="s">"Coumadin 5 mg"</span><span class="p">,</span> <span class="s">"aspirin"</span><span class="p">,</span> <span class="s">"avandia 4 mg"</span><span class="p">])</span>
+</code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">rxnorm_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_rxnorm_augmented"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"rxnorm_code"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">rxnorm_pipelineModel</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">documentAssembler</span><span class="o">,</span> 
+                                                               <span class="n">sbert_embedder</span><span class="o">,</span> 
+                                                               <span class="n">rxnorm_resolver</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Coumadin 5 mg"</span><span class="o">,</span> <span class="s">"aspirin"</span><span class="o">,</span> <span class="s">"avandia 4 mg"</span><span class="o">)).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span><span class="k">=</span> <span class="nv">rxnorm_pipelineModel</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+
-|                                                                                      bge_embeddings|
-+----------------------------------------------------------------------------------------------------+
-|[0.70071065, 0.8154926, 0.3667199, 0.49541458, 0.5675478, 0.47981235, 0.09903594, 1.0118086, <span class="nt">-0</span>.3...|
-|[0.5844246, 0.897823, 0.36319774, 0.33672202, 0.6926622, 0.62645215, 0.21583402, 0.99781555, <span class="nt">-0</span>.0...|
-|[0.5678047, 0.9290247, 0.19549623, 0.29991657, 0.6558282, 0.60267514, 0.2365676, 0.87947553, <span class="nt">-0</span>.1...|
-|[0.31799358, 0.60279167, 0.7648379, 0.2832115, 0.45711696, 0.12192034, <span class="nt">-0</span>.10309678, 1.1410849, <span class="nt">-0</span>...|
-|[1.0170714, 1.1024956, 0.59346, 0.4784618, 0.81034416, 0.2503267, <span class="nt">-0</span>.02142908, 0.6190611, <span class="nt">-0</span>.1401...|
-|[0.8248961, 1.1220868, 0.27929437, 0.20173876, 0.6809691, 0.6311508, 0.15206291, 0.8089775, 0.317...|
-|[0.76785743, 0.9963818, 0.21050292, 0.2416854, 1.0152707, 0.18767616, 0.27576423, 0.85077125, 0.3...|
-|[0.654324, 1.1681782, 0.17568657, 0.23243408, 0.76372075, 0.6539263, 0.2841307, 1.224574, 0.21359...|
-|[0.5922923, 1.2471354, 0.090304464, 0.48645073, 0.59852546, 0.8716394, 0.34509993, 0.9442089, 0.1...|
-|[0.72195786, 0.9363174, 0.06630206, 0.27642763, 0.7145356, 0.23325293, 0.12738094, 1.0298125, <span class="nt">-0</span>....|
-|[0.45599157, 0.9871535, 0.15671916, 0.17181304, 0.93662477, 0.27518728, <span class="nt">-0</span>.18060194, 0.93082047, ...|
-|[0.6865296, 1.052128, 0.2681757, 0.32934788, 0.47195143, 0.81678694, 0.012849957, 1.0271766, <span class="nt">-0</span>.0...|
-+----------------------------------------------------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    |   RxNormCode | Resolution                               | all_k_results                     | all_k_distances                   | all_k_cosine_distances            | all_k_resolutions                                               | all_k_aux_labels                  |
+|---:|-------------:|:-----------------------------------------|:----------------------------------|:----------------------------------|:----------------------------------|:----------------------------------------------------------------|:----------------------------------|
+|  0 |       855333 | warfarin sodium 5 MG <span class="o">[</span>Coumadin]          | 855333:::432467:::438740:::103... | 3.0367:::4.7790:::4.7790:::5.3... | 0.0161:::0.0395:::0.0395:::0.0... | warfarin sodium 5 MG <span class="o">[</span>Coumadin]:::coumarin 5 MG Oral Tablet:... | Branded Drug Comp:::Clinical D... |
+|  1 |      1537020 | aspirin Effervescent Oral Tablet         | 1537020:::1191:::1295740:::405... | 0.0000:::0.0000:::4.1826:::5.7... | 0.0000:::0.0000:::0.0292:::0.0... | aspirin Effervescent Oral Tablet:::aspirin:::aspirin Oral Po... | Clinical Drug Form:::Ingredien... |
+|  2 |       261242 | rosiglitazone 4 MG Oral Tablet <span class="o">[</span>Avandia] | 261242:::810073:::153845:::109... | 0.0000:::4.7482:::5.0125:::5.2... | 0.0000:::0.0365:::0.0409:::0.0... | rosiglitazone 4 MG Oral Tablet <span class="o">[</span>Avandia]:::fesoterodine fuma... | Branded Drug:::Branded Drug Co... |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -576,11 +587,11 @@ result = pipeline.fit(data).transform(data)
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>finembeddings_bge_base</td>
+      <td>sbiobertresolve_rxnorm_augmented</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Finance NLP 1.0.0+</td>
+      <td>Healthcare NLP 5.2.1+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -592,11 +603,11 @@ result = pipeline.fit(data).transform(data)
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[sentence, token]</td>
+      <td>[sentence_embeddings]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[bge_embeddings]</td>
+      <td>[rxnorm_code]</td>
     </tr>
     <tr>
       <td>Language:</td>
@@ -604,7 +615,7 @@ result = pipeline.fit(data).transform(data)
     </tr>
     <tr>
       <td>Size:</td>
-      <td>397.2 MB</td>
+      <td>1.3 GB</td>
     </tr>
     <tr>
       <td>Case sensitive:</td>
@@ -615,8 +626,8 @@ result = pipeline.fit(data).transform(data)
 
 <h2 id="references">References</h2>
 
-<p>In-house curated financial datasets.</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-12-07T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>In this model, RxNorm  version 5.0 was used for the training.</p>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-17T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -801,7 +812,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/11/20/publaynet_dit_base_mrcnn_en_3_2.html">Document Layout Analysis optimized with DIT</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/12/20/bert_sequence_classifier_sdoh_frailty_vulnerability_en.html">Social Determinants of Healthcare for Frailty and Vulnerability Classifier</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/16/explain_clinical_doc_vop_en.html">Explain Clinical Document - Voice Of Patient (VOP)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/17/atc_resolver_pipeline_en.html">Pipeline for Anatomic Therapeutic Chemical (ATC) Sentence Entity Resolver</a></div></div></div>
 
 </div>
 </div>

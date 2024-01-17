@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Finance Embeddings BGE Base | finembeddings_bge_base | Finance NLP 1.0.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline for Snomed Concept, Body Structure Version | snomed_body_structure_resolver_pipeline | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model is a legal version of the BGE base model fine-tuned on in-house curated datasets. Reference: Xiao, S., Liu, Z., Zhang, P., &amp; Muennighof, N. (2023). C-pack: Packaged resources to advance general chinese embedding. arXiv preprint arXiv:2309.07597.Predicted EntitiesLive DemoOpen in ColabDownlo...">
-<!-- <link rel="canonical" href="/2023/12/07/finembeddings_bge_base_en.html"> -->
-<link rel="canonical" href="/2023/12/07/finembeddings_bge_base_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes using  sbiobert_base_cased_mli Sentence Bert Embeddings.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipeline...">
+<!-- <link rel="canonical" href="/2024/01/17/snomed_body_structure_resolver_pipeline_en.html"> -->
+<link rel="canonical" href="/2024/01/17/snomed_body_structure_resolver_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,77 +497,63 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/dcecchini/2023-12-07-finembeddings_bge_base_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-01-17-snomed_body_structure_resolver_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Dec 07, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-12-07T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Finance Embeddings BGE Base</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance Embeddings BGE Base"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>finance</li><li>en</li><li>licensed</li><li>bge</li><li>embeddings</li><li>onnx</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-12-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="finance,en,licensed,bge,embeddings,onnx"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 17, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-17T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline for Snomed Concept, Body Structure Version</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline for Snomed Concept, Body Structure Version"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>snomed</li><li>pipeline</li><li>resolver</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-17T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,snomed,pipeline,resolver"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model is a legal version of the BGE base model fine-tuned on in-house curated datasets. Reference: Xiao, S., Liu, Z., Zhang, P., &amp; Muennighof, N. (2023). C-pack: Packaged resources to advance general chinese embedding. arXiv preprint arXiv:2309.07597.</p>
-
-<h2 id="predicted-entities">Predicted Entities</h2>
+<p>This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes using  <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finembeddings_bge_base_en_1.0.0_3.0_1701948521741.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/finance/models/finembeddings_bge_base_en_1.0.0_3.0_1701948521741.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/snomed_body_structure_resolver_pipeline_en_5.2.1_3.0_1705492855502.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/snomed_body_structure_resolver_pipeline_en_5.2.1_3.0_1705492855502.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">bge</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"finembeddings_bge_base"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"finance/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"bge"</span><span class="p">)</span>
+<span class="n">snomed_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"snomed_body_structure_resolver_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
-    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">documentAssembler</span><span class="p">,</span>
-        <span class="n">tokenizer</span><span class="p">,</span>
-        <span class="n">bge</span>
-  <span class="p">])</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""The patient is a 30-year-old female with a long history of insulin-dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI."""</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">'
-    ''What is the best way to invest in the stock market?'''
-]]).toDF("text")
+<span class="n">result</span> <span class="o">=</span> <span class="n">snomed_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-result = pipeline.fit(data).transform(data)
-.selectExpr("explode(bge.embeddings) as bge_embeddings").show(truncate=100)
-</span></code></pre></div>  </div>
+</code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
+<span class="k">val</span> <span class="nv">snomed_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"snomed_body_structure_resolver_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""The patient is a 30-year-old female with a long history of insulin-dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI."""</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">snomed_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+
+</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+
-|                                                                                      bge_embeddings|
-+----------------------------------------------------------------------------------------------------+
-|[0.70071065, 0.8154926, 0.3667199, 0.49541458, 0.5675478, 0.47981235, 0.09903594, 1.0118086, <span class="nt">-0</span>.3...|
-|[0.5844246, 0.897823, 0.36319774, 0.33672202, 0.6926622, 0.62645215, 0.21583402, 0.99781555, <span class="nt">-0</span>.0...|
-|[0.5678047, 0.9290247, 0.19549623, 0.29991657, 0.6558282, 0.60267514, 0.2365676, 0.87947553, <span class="nt">-0</span>.1...|
-|[0.31799358, 0.60279167, 0.7648379, 0.2832115, 0.45711696, 0.12192034, <span class="nt">-0</span>.10309678, 1.1410849, <span class="nt">-0</span>...|
-|[1.0170714, 1.1024956, 0.59346, 0.4784618, 0.81034416, 0.2503267, <span class="nt">-0</span>.02142908, 0.6190611, <span class="nt">-0</span>.1401...|
-|[0.8248961, 1.1220868, 0.27929437, 0.20173876, 0.6809691, 0.6311508, 0.15206291, 0.8089775, 0.317...|
-|[0.76785743, 0.9963818, 0.21050292, 0.2416854, 1.0152707, 0.18767616, 0.27576423, 0.85077125, 0.3...|
-|[0.654324, 1.1681782, 0.17568657, 0.23243408, 0.76372075, 0.6539263, 0.2841307, 1.224574, 0.21359...|
-|[0.5922923, 1.2471354, 0.090304464, 0.48645073, 0.59852546, 0.8716394, 0.34509993, 0.9442089, 0.1...|
-|[0.72195786, 0.9363174, 0.06630206, 0.27642763, 0.7145356, 0.23325293, 0.12738094, 1.0298125, <span class="nt">-0</span>....|
-|[0.45599157, 0.9871535, 0.15671916, 0.17181304, 0.93662477, 0.27518728, <span class="nt">-0</span>.18060194, 0.93082047, ...|
-|[0.6865296, 1.052128, 0.2681757, 0.32934788, 0.47195143, 0.81678694, 0.012849957, 1.0271766, <span class="nt">-0</span>.0...|
-+----------------------------------------------------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
++-------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
+|             chunks|begin|end|     code|                                         all_codes|                                       resolutions|                                     all_distances|
++-------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
+|    coronary artery|   95|109|119204004|[119204004, 360487004, 41801008, 312553002, 181...|[Coronary artery part, Segment of coronary arte...|[0.0384, 0.0437, 0.0624, 0.0738, 0.0749, 0.0805...|
+|              renal|  128|132|243968009|[243968009, 84924000, 363530009, 119219003, 640...|[Renal area, Structure of renal segment, Struct...|[0.0594, 0.0790, 0.1002, 0.1007, 0.1013, 0.1052...|
+|peripheral vascular|  149|167| 51833009|[51833009, 361391003, 371671000000102, 36200600...|[Peripheral vascular system structure, Regional...|[0.0796, 0.0809, 0.0847, 0.0864, 0.0881, 0.0940...|
+|  lower extremities|  299|315|120575009|[120575009, 61685007, 69548008, 229757002, 1282...|[Lower extremity part, Lower limb structure, Lo...|[0.0313, 0.0385, 0.0454, 0.0462, 0.0500, 0.0546...|
++-------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -576,11 +562,15 @@ result = pipeline.fit(data).transform(data)
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>finembeddings_bge_base</td>
+      <td>snomed_body_structure_resolver_pipeline</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Finance NLP 1.0.0+</td>
+      <td>Healthcare NLP 5.2.1+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -591,32 +581,35 @@ result = pipeline.fit(data).transform(data)
       <td>Official</td>
     </tr>
     <tr>
-      <td>Input Labels:</td>
-      <td>[sentence, token]</td>
-    </tr>
-    <tr>
-      <td>Output Labels:</td>
-      <td>[bge_embeddings]</td>
-    </tr>
-    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>397.2 MB</td>
-    </tr>
-    <tr>
-      <td>Case sensitive:</td>
-      <td>false</td>
+      <td>2.3 GB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="included-models">Included Models</h2>
 
-<p>In-house curated financial datasets.</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-12-07T00:00:00+00:00"><!-- start custom article footer snippet -->
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>ChunkMergeModel</li>
+  <li>Chunk2Doc</li>
+  <li>BertSentenceEmbeddings</li>
+  <li>SentenceEntityResolverModel</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-17T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -801,7 +794,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/11/20/publaynet_dit_base_mrcnn_en_3_2.html">Document Layout Analysis optimized with DIT</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/12/20/bert_sequence_classifier_sdoh_frailty_vulnerability_en.html">Social Determinants of Healthcare for Frailty and Vulnerability Classifier</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/17/ner_deid_name_multilingual_xx.html">Detect Name for Deidentification (multilingual)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/17/snomed_findings_resolver_pipeline_en.html">Pipeline for Snomed Concept, Findings Version</a></div></div></div>
 
 </div>
 </div>

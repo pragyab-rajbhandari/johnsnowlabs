@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Finance Embeddings BGE Base | finembeddings_bge_base | Finance NLP 1.0.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>OPIOID | ner_opioid_small_wip | Healthcare NLP 5.2.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model is a legal version of the BGE base model fine-tuned on in-house curated datasets. Reference: Xiao, S., Liu, Z., Zhang, P., &amp; Muennighof, N. (2023). C-pack: Packaged resources to advance general chinese embedding. arXiv preprint arXiv:2309.07597.Predicted EntitiesLive DemoOpen in ColabDownlo...">
-<!-- <link rel="canonical" href="/2023/12/07/finembeddings_bge_base_en.html"> -->
-<link rel="canonical" href="/2023/12/07/finembeddings_bge_base_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model is designed to detect and label opioid related entities within text data. Opioids are a class of drugs that include the illegal drug heroin, synthetic opioids such as fentanyl, and pain relievers available legally by prescription. The model has been trained using advanced deep learning techniqu...">
+<!-- <link rel="canonical" href="/2024/01/11/ner_opioid_small_wip_en.html"> -->
+<link rel="canonical" href="/2024/01/11/ner_opioid_small_wip_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,78 +497,205 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/dcecchini/2023-12-07-finembeddings_bge_base_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Meryem1425/2024-01-11-ner_opioid_small_wip_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Dec 07, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-12-07T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Finance Embeddings BGE Base</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance Embeddings BGE Base"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>finance</li><li>en</li><li>licensed</li><li>bge</li><li>embeddings</li><li>onnx</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-12-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="finance,en,licensed,bge,embeddings,onnx"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 11, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-11T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>OPIOID</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="OPIOID"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>ner</li><li>clinical</li><li>opioid</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-11T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,ner,clinical,opioid"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model is a legal version of the BGE base model fine-tuned on in-house curated datasets. Reference: Xiao, S., Liu, Z., Zhang, P., &amp; Muennighof, N. (2023). C-pack: Packaged resources to advance general chinese embedding. arXiv preprint arXiv:2309.07597.</p>
+<p>This model is designed to detect and label opioid related entities within text data. Opioids are a class of drugs that include the illegal drug heroin, synthetic opioids such as fentanyl, and pain relievers available legally by prescription. The model has been trained using advanced deep learning techniques on a diverse range of text sources and can accurately recognize and classify a wide range of opioid-related entities.
+The model’s accuracy and precision have been carefully validated against expert-labeled data to ensure reliable and consistent results.</p>
+
+<p>Here are the labels of the OPIOID model with their descriptions:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">communicable_disease</code>: Communicable disease is a disease that people spread to one another through contact with contaminated surfaces, bodily fluids, blood products, insect bites, or through the air.</li>
+  <li><code class="language-plaintext highlighter-rouge">general_symptoms</code>: Include all the symptoms,vital findings and signs mentioned in the document, of the patient or someone else.</li>
+  <li><code class="language-plaintext highlighter-rouge">substance_use_disorder</code> : Mentions of substance use that include unspecific illicit drug abuse.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_duration</code>: The duration for which the drug was taken or prescribed.</li>
+  <li><code class="language-plaintext highlighter-rouge">psychiatric_issue</code>: Psychiatric disorders may also be referred to as mental health conditions is a behavioral or mental pattern that causes significant distress or impairment of personal functioning. A mental disorder is also characterized by a clinically significant disturbance in an individual’s cognition, emotional regulation, or behavior. It is usually associated with distress or impairment in important areas of functioning.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_strength</code>: The potency of one unit of drug (or a combination of drugs, generally speaking); the measurement units available are described by FDA.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_quantity</code>: The quantity associated with drug dosage.</li>
+  <li><code class="language-plaintext highlighter-rouge">other_drug</code>: Any generic or trade name of the drugs in the text other than the opioids.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_form</code>: The dosage forms available are described by FDA.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_frequency</code>: The frequency at which the drug doses are given or being used.</li>
+  <li><code class="language-plaintext highlighter-rouge">opioid_drug</code>: Any drug mentioned in the text that belongs to the opioid family either legally by prescription as pain relievers like fentanyl, oxycodone, hydrocodone, codeine, morphine, Oxymorphone, Hydromorphone, Methadone, Tramadol, Buprenorphine or illegal street drug like “heroin”.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_route</code>: The administration routes available are described by FDA.</li>
+</ul>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
+<p><code class="language-plaintext highlighter-rouge">communicable_disease</code>, <code class="language-plaintext highlighter-rouge">general_symptoms</code>, <code class="language-plaintext highlighter-rouge">substance_use_disorder</code>, <code class="language-plaintext highlighter-rouge">drug_duration</code>, <code class="language-plaintext highlighter-rouge">psychiatric_issue</code>, <code class="language-plaintext highlighter-rouge">drug_strength</code>, <code class="language-plaintext highlighter-rouge">drug_quantity</code>, <code class="language-plaintext highlighter-rouge">other_drug</code>, <code class="language-plaintext highlighter-rouge">drug_form</code>, <code class="language-plaintext highlighter-rouge">drug_frequency</code>, <code class="language-plaintext highlighter-rouge">opioid_drug</code>, <code class="language-plaintext highlighter-rouge">drug_route</code></p>
+
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finembeddings_bge_base_en_1.0.0_3.0_1701948521741.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/finance/models/finembeddings_bge_base_en_1.0.0_3.0_1701948521741.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_opioid_small_wip_en_5.2.0_3.0_1705003638665.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_opioid_small_wip_en_5.2.0_3.0_1705003638665.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span> \
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">bge</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"finembeddings_bge_base"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"finance/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"bge"</span><span class="p">)</span>
+<span class="n">clinical_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
-    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">documentAssembler</span><span class="p">,</span>
-        <span class="n">tokenizer</span><span class="p">,</span>
-        <span class="n">bge</span>
-  <span class="p">])</span>
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_opioid_small_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">'
-    ''What is the best way to invest in the stock market?'''
-]]).toDF("text")
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-result = pipeline.fit(data).transform(data)
-.selectExpr("explode(bge.embeddings) as bge_embeddings").show(truncate=100)
-</span></code></pre></div>  </div>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span> 
+    <span class="n">sentenceDetector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">clinical_embeddings</span><span class="p">,</span>
+    <span class="n">ner_model</span><span class="p">,</span>
+    <span class="n">ner_converter</span>   
+    <span class="p">])</span>
 
+<span class="n">sample_texts</span> <span class="o">=</span> <span class="p">[</span><span class="s">"""20 year old male transferred from [**Hospital1 112**] for liver transplant
+evaluation after percocet overdose. On Sunday [**3-27**] had a
+stressful day and pt took approximately 20 percocet (5/325)
+throughout the day after a series of family arguments. Denies
+trying to hurt himself. Parents confirm to suicidal attempts in
+the past. Pt felt that he had a hangover on Monday secondary to
+"percocet withdrawal" and took an additional 5 percocet.  Pt was
+admitted to the SICU and followed by Liver, Transplant,
+Toxicology, and [**Month/Year (2) **].  He was started on NAC q4hr with gradual
+decline in LFT's and INR.  His recovery was c/b hypertension,
+for which he was started on clonidine.  Pt was transferred to
+the floor on [**4-1**].
+ 
+Past Medical History:
+Bipolar D/o (s/p suicide attempts in the past)
+ADHD
+S/p head injury [**2160**]: s/p MVA with large L3 transverse process
+fx, small right frontal epidural hemorrhage-- with
+post-traumatic seizures (was previously on dilantin, now dc'd)
+ 
+Social History:
+Father is HCP, student in [**Name (NI) 108**], Biology major, parents and
+brother live in [**Name (NI) 86**], single without children, lived in a
+group home for 3 years as a teenager, drinks alcohol 1 night a
+week, denies illict drug use, pt in [**Location (un) 86**] for neuro eval
+"""</span><span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sample_texts</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">clinical_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_opioid_small_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span> 
+    <span class="n">sentenceDetector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">clinical_embeddings</span><span class="o">,</span>
+    <span class="n">ner_model</span><span class="o">,</span>
+    <span class="n">ner_converter</span>   
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">sample_texts</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""20 year old male transferred from [**Hospital1 112**] for liver transplant
+evaluation after percocet overdose. On Sunday [**3-27**] had a
+stressful day and pt took approximately 20 percocet (5/325)
+throughout the day after a series of family arguments. Denies
+trying to hurt himself. Parents confirm to suicidal attempts in
+the past. Pt felt that he had a hangover on Monday secondary to
+"percocet withdrawal" and took an additional 5 percocet.  Pt was
+admitted to the SICU and followed by Liver, Transplant,
+Toxicology, and [**Month/Year (2) **].  He was started on NAC q4hr with gradual
+decline in LFT's and INR.  His recovery was c/b hypertension,
+for which he was started on clonidine.  Pt was transferred to
+the floor on [**4-1**].
+ 
+Past Medical History:
+Bipolar D/o (s/p suicide attempts in the past)
+ADHD
+S/p head injury [**2160**]: s/p MVA with large L3 transverse process
+fx, small right frontal epidural hemorrhage-- with
+post-traumatic seizures (was previously on dilantin, now dc'd)
+ 
+Social History:
+Father is HCP, student in [**Name (NI) 108**], Biology major, parents and
+brother live in [**Name (NI) 86**], single without children, lived in a
+group home for 3 years as a teenager, drinks alcohol 1 night a
+week, denies illict drug use, pt in [**Location (un) 86**] for neuro eval
+"""</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">sample_texts</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">sample_texts</span><span class="o">)</span>
+</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+
-|                                                                                      bge_embeddings|
-+----------------------------------------------------------------------------------------------------+
-|[0.70071065, 0.8154926, 0.3667199, 0.49541458, 0.5675478, 0.47981235, 0.09903594, 1.0118086, <span class="nt">-0</span>.3...|
-|[0.5844246, 0.897823, 0.36319774, 0.33672202, 0.6926622, 0.62645215, 0.21583402, 0.99781555, <span class="nt">-0</span>.0...|
-|[0.5678047, 0.9290247, 0.19549623, 0.29991657, 0.6558282, 0.60267514, 0.2365676, 0.87947553, <span class="nt">-0</span>.1...|
-|[0.31799358, 0.60279167, 0.7648379, 0.2832115, 0.45711696, 0.12192034, <span class="nt">-0</span>.10309678, 1.1410849, <span class="nt">-0</span>...|
-|[1.0170714, 1.1024956, 0.59346, 0.4784618, 0.81034416, 0.2503267, <span class="nt">-0</span>.02142908, 0.6190611, <span class="nt">-0</span>.1401...|
-|[0.8248961, 1.1220868, 0.27929437, 0.20173876, 0.6809691, 0.6311508, 0.15206291, 0.8089775, 0.317...|
-|[0.76785743, 0.9963818, 0.21050292, 0.2416854, 1.0152707, 0.18767616, 0.27576423, 0.85077125, 0.3...|
-|[0.654324, 1.1681782, 0.17568657, 0.23243408, 0.76372075, 0.6539263, 0.2841307, 1.224574, 0.21359...|
-|[0.5922923, 1.2471354, 0.090304464, 0.48645073, 0.59852546, 0.8716394, 0.34509993, 0.9442089, 0.1...|
-|[0.72195786, 0.9363174, 0.06630206, 0.27642763, 0.7145356, 0.23325293, 0.12738094, 1.0298125, <span class="nt">-0</span>....|
-|[0.45599157, 0.9871535, 0.15671916, 0.17181304, 0.93662477, 0.27518728, <span class="nt">-0</span>.18060194, 0.93082047, ...|
-|[0.6865296, 1.052128, 0.2681757, 0.32934788, 0.47195143, 0.81678694, 0.012849957, 1.0271766, <span class="nt">-0</span>.0...|
-+----------------------------------------------------------------------------------------------------+
-</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----------------+-----+----+----------------------+
+|chunk            |begin|end |ner_label             |
++-----------------+-----+----+----------------------+
+|percocet         |92   |99  |opioid_drug           |
+|20               |178  |179 |drug_quantity         |
+|percocet         |181  |188 |opioid_drug           |
+|5/325            |191  |195 |drug_strength         |
+|suicidal attempts|303  |319 |psychiatric_issue     |
+|hangover         |356  |363 |general_symptoms      |
+|percocet         |389  |396 |opioid_drug           |
+|withdrawal       |398  |407 |general_symptoms      |
+|5                |433  |433 |drug_quantity         |
+|percocet         |435  |442 |opioid_drug           |
+|NAC              |567  |569 |other_drug            |
+|q4hr             |571  |574 |drug_frequency        |
+|decline <span class="k">in </span>LFT<span class="s1">'s |589  |604 |general_symptoms      |
+|clonidine        |679  |687 |other_drug            |
+|Bipolar          |761  |767 |psychiatric_issue     |
+|suicide attempts |778  |793 |psychiatric_issue     |
+|ADHD             |808  |811 |psychiatric_issue     |
+|dilantin         |976  |983 |other_drug            |
+|illict drug use  |1236 |1250|substance_use_disorder|
++-----------------+-----+----+----------------------+
+
+</span></code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
@@ -576,11 +703,11 @@ result = pipeline.fit(data).transform(data)
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>finembeddings_bge_base</td>
+      <td>ner_opioid_small_wip</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Finance NLP 1.0.0+</td>
+      <td>Healthcare NLP 5.2.0+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -592,11 +719,11 @@ result = pipeline.fit(data).transform(data)
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[sentence, token]</td>
+      <td>[sentence, token, embeddings]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[bge_embeddings]</td>
+      <td>[ner]</td>
     </tr>
     <tr>
       <td>Language:</td>
@@ -604,19 +731,31 @@ result = pipeline.fit(data).transform(data)
     </tr>
     <tr>
       <td>Size:</td>
-      <td>397.2 MB</td>
-    </tr>
-    <tr>
-      <td>Case sensitive:</td>
-      <td>false</td>
+      <td>4.9 MB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="benchmarking">Benchmarking</h2>
 
-<p>In-house curated financial datasets.</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-12-07T00:00:00+00:00"><!-- start custom article footer snippet -->
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                 label  precision    recall  f1-score   support
+  communicable_disease       0.97      0.70      0.81        47
+         drug_duration       0.96      0.90      0.93        84
+             drug_form       0.96      0.96      0.96       461
+        drug_frequency       0.98      0.98      0.98      1171
+         drug_quantity       0.96      0.97      0.97      1058
+            drug_route       0.99      0.97      0.98       499
+         drug_strength       0.97      0.93      0.95       414
+      general_symptoms       0.89      0.78      0.83       425
+           opioid_drug       0.99      0.97      0.98       229
+            other_drug       0.99      0.94      0.96       804
+     psychiatric_issue       0.97      0.94      0.96        34
+substance_use_disorder       0.96      0.86      0.91        29
+             micro-avg       0.97      0.94      0.96      5255
+             macro-avg       0.97      0.91      0.93      5255
+          weighted-avg       0.97      0.94      0.95      5255
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-11T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -801,7 +940,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/11/20/publaynet_dit_base_mrcnn_en_3_2.html">Document Layout Analysis optimized with DIT</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/12/20/bert_sequence_classifier_sdoh_frailty_vulnerability_en.html">Social Determinants of Healthcare for Frailty and Vulnerability Classifier</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/10/ner_vop_pipeline_en.html">NER Pipeline - Voice of the Patient</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/16/explain_clinical_doc_vop_en.html">Explain Clinical Document - Voice Of Patient (VOP)</a></div></div></div>
 
 </div>
 </div>

@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Finance Embeddings BGE Base | finembeddings_bge_base | Finance NLP 1.0.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline for Human Phenotype Ontology (HPO) Sentence Entity Resolver | hpo_resolver_pipeline | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model is a legal version of the BGE base model fine-tuned on in-house curated datasets. Reference: Xiao, S., Liu, Z., Zhang, P., &amp; Muennighof, N. (2023). C-pack: Packaged resources to advance general chinese embedding. arXiv preprint arXiv:2309.07597.Predicted EntitiesLive DemoOpen in ColabDownlo...">
-<!-- <link rel="canonical" href="/2023/12/07/finembeddings_bge_base_en.html"> -->
-<link rel="canonical" href="/2023/12/07/finembeddings_bge_base_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis advanced pipeline extracts human phenotype entities from clinical texts and utilizes the sbiobert_base_cased_mli Sentence Bert Embeddings to map these entities to their corresponding Human Phenotype Ontology (HPO) codes. It also returns associated codes from the following vocabularies for each HPO co...">
+<!-- <link rel="canonical" href="/2024/01/17/hpo_resolver_pipeline_en.html"> -->
+<link rel="canonical" href="/2024/01/17/hpo_resolver_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,77 +497,55 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/dcecchini/2023-12-07-finembeddings_bge_base_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-01-17-hpo_resolver_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Dec 07, 2023</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-12-07T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Finance Embeddings BGE Base</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Finance Embeddings BGE Base"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>finance</li><li>en</li><li>licensed</li><li>bge</li><li>embeddings</li><li>onnx</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2023-12-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="finance,en,licensed,bge,embeddings,onnx"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 17, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-17T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline for Human Phenotype Ontology (HPO) Sentence Entity Resolver</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline for Human Phenotype Ontology (HPO) Sentence Entity Resolver"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>entity_resolution</li><li>clinical</li><li>pipeline</li><li>hpo</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-17T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,entity_resolution,clinical,pipeline,hpo"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model is a legal version of the BGE base model fine-tuned on in-house curated datasets. Reference: Xiao, S., Liu, Z., Zhang, P., &amp; Muennighof, N. (2023). C-pack: Packaged resources to advance general chinese embedding. arXiv preprint arXiv:2309.07597.</p>
-
-<h2 id="predicted-entities">Predicted Entities</h2>
+<p>This advanced pipeline extracts human phenotype entities from clinical texts and utilizes the <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings to map these entities to their corresponding Human Phenotype Ontology (HPO) codes. It also returns associated codes from the following vocabularies for each HPO code: - MeSH (Medical Subject Headings)- SNOMED- UMLS (Unified Medical Language System ) - ORPHA (international reference resource for information on rare diseases and orphan drugs) - OMIM (Online Mendelian Inheritance in Man).</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finembeddings_bge_base_en_1.0.0_3.0_1701948521741.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/finance/models/finembeddings_bge_base_en_1.0.0_3.0_1701948521741.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/hpo_resolver_pipeline_en_5.2.1_3.0_1705513067470.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/hpo_resolver_pipeline_en_5.2.1_3.0_1705513067470.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"hpo_resolver_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">bge</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"finembeddings_bge_base"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"finance/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"bge"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy."""</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
-    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">documentAssembler</span><span class="p">,</span>
-        <span class="n">tokenizer</span><span class="p">,</span>
-        <span class="n">bge</span>
-  <span class="p">])</span>
+</code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">'
-    ''What is the best way to invest in the stock market?'''
-]]).toDF("text")
+<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"hpo_resolver_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-result = pipeline.fit(data).transform(data)
-.selectExpr("explode(bge.embeddings) as bge_embeddings").show(truncate=100)
-</span></code></pre></div>  </div>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy."""</span><span class="o">)</span>
 
+</code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+
-|                                                                                      bge_embeddings|
-+----------------------------------------------------------------------------------------------------+
-|[0.70071065, 0.8154926, 0.3667199, 0.49541458, 0.5675478, 0.47981235, 0.09903594, 1.0118086, <span class="nt">-0</span>.3...|
-|[0.5844246, 0.897823, 0.36319774, 0.33672202, 0.6926622, 0.62645215, 0.21583402, 0.99781555, <span class="nt">-0</span>.0...|
-|[0.5678047, 0.9290247, 0.19549623, 0.29991657, 0.6558282, 0.60267514, 0.2365676, 0.87947553, <span class="nt">-0</span>.1...|
-|[0.31799358, 0.60279167, 0.7648379, 0.2832115, 0.45711696, 0.12192034, <span class="nt">-0</span>.10309678, 1.1410849, <span class="nt">-0</span>...|
-|[1.0170714, 1.1024956, 0.59346, 0.4784618, 0.81034416, 0.2503267, <span class="nt">-0</span>.02142908, 0.6190611, <span class="nt">-0</span>.1401...|
-|[0.8248961, 1.1220868, 0.27929437, 0.20173876, 0.6809691, 0.6311508, 0.15206291, 0.8089775, 0.317...|
-|[0.76785743, 0.9963818, 0.21050292, 0.2416854, 1.0152707, 0.18767616, 0.27576423, 0.85077125, 0.3...|
-|[0.654324, 1.1681782, 0.17568657, 0.23243408, 0.76372075, 0.6539263, 0.2841307, 1.224574, 0.21359...|
-|[0.5922923, 1.2471354, 0.090304464, 0.48645073, 0.59852546, 0.8716394, 0.34509993, 0.9442089, 0.1...|
-|[0.72195786, 0.9363174, 0.06630206, 0.27642763, 0.7145356, 0.23325293, 0.12738094, 1.0298125, <span class="nt">-0</span>....|
-|[0.45599157, 0.9871535, 0.15671916, 0.17181304, 0.93662477, 0.27518728, <span class="nt">-0</span>.18060194, 0.93082047, ...|
-|[0.6865296, 1.052128, 0.2681757, 0.32934788, 0.47195143, 0.81678694, 0.012849957, 1.0271766, <span class="nt">-0</span>.0...|
-+----------------------------------------------------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunks                     |   begin |   end | entities   | resolutions   | description                | all_codes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|---:|:---------------------------|--------:|------:|:-----------|:--------------|:---------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|  0 | tricuspid regurgitation    |      67 |    89 | HP         | HP:0005180    | tricuspid regurgitation    | MSH:D014262||SNOMED:111287006||UMLS:C0040961||ORPHA:228410:::MSH:D014264||SNOMED:49915006||UMLS:C0040963||ORPHA:391641:::MSH:D014263||SNOMED:253383003||UMLS:C0040962||ORPHA:1101:::UMLS:C4025753||ORPHA:1759:::UMLS:C4255215||ORPHA:1724::::::MSH:D018785||SNOMED:253455004,63042009||UMLS:C0243002||ORPHA:391641::::::::::::UMLS:C4023292||ORPHA:1880:::MSH:D008944||SNOMED:48724000||UMLS:C0026266,C3551535||ORPHA:363700:::MSH:D004437||SNOMED:204357006||UMLS:C0013481||ORPHA:466791:::MSH:D001022||SNOMED:60234000||UMLS:C0003504||ORPHA:2181::::::MSH:C562388||SNOMED:72352009||UMLS:C0149630||ORPHA:1772:::UMLS:C4023294||ORPHA:2255                                                                                                                                                                                                                                                                                                              |
+|  1 | aortic stenosis            |     197 |   211 | HP         | HP:0001650    | aortic stenosis            | MSH:D001024||SNOMED:60573004||UMLS:C0003507||ORPHA:536471:::MSH:D001020||SNOMED:204368006||UMLS:C0340375||ORPHA:1052:::MSH:D021921||SNOMED:268185002||UMLS:C0003499||ORPHA:391665:::UMLS:C1848978||ORPHA:3191:::UMLS:C3887554||OMIM:229310:::MSH:D023921||SNOMED:233970002||UMLS:C0242231||ORPHA:75565:::SNOMED:218728005||UMLS:C0152419||ORPHA:2255:::SNOMED:68109007||UMLS:C0038449||ORPHA:565:::MSH:D001022||SNOMED:60234000||UMLS:C0003504||ORPHA:2181:::MSH:D016893||SNOMED:64586002||UMLS:C0007282||ORPHA:536532:::SNOMED:54160000||UMLS:C2239253||ORPHA:1054:::MSH:D001014||SNOMED:67362008||UMLS:C0003486||ORPHA:1777:::SNOMED:81817003||UMLS:C0155733||ORPHA:412:::MSH:D017545||SNOMED:433068007||UMLS:C0162872||ORPHA:536467:::MSH:C562942||SNOMED:250978003||UMLS:C0428791||ORPHA:2072:::SNOMED:251036003||UMLS:C0238669||ORPHA:231160:::                                                                                                      |
+|  2 | mitral valve regurgitation |     373 |   398 | HP         | HP:0001653    | mitral valve regurgitation | MSH:D008944||SNOMED:48724000||UMLS:C0026266,C3551535||ORPHA:363700:::MSH:D008946||SNOMED:79619009||UMLS:C0026269||ORPHA:2248:::UMLS:C4025759||ORPHA:1724:::MSH:D008945||SNOMED:409712001,8074002||UMLS:C0026267||ORPHA:536467:::::::::MSH:D001022||SNOMED:60234000||UMLS:C0003504||ORPHA:2181::::::MSH:D014262||SNOMED:111287006||UMLS:C0040961||ORPHA:228410:::SNOMED:473372009||UMLS:C0919718||ORPHA:363618::::::UMLS:C1835130||OMIM:154700:::SNOMED:23063005||UMLS:C0344760||ORPHA:2248::::::SNOMED:253402005||UMLS:C0344770:::UMLS:C4021142                                                                                                                                                                                                                                                                                                                                                                                                           |
+|  3 | hypertension               |     555 |   566 | HP         | HP:0000822    | hypertension               | MSH:D006973||SNOMED:24184005,38341003||UMLS:C0020538,C0497247||ORPHA:231160:::SNOMED:112222000||UMLS:C0234708||ORPHA:280921:::UMLS:C1857175||OMIM:171300:::SNOMED:706882009||UMLS:C0020546||ORPHA:94093:::MSH:D006975||SNOMED:34742003||UMLS:C0020541||ORPHA:228426:::MSH:D006976,D065627||SNOMED:11399002,697898008,70995007||UMLS:C0020542,C2973725,C3203102||ORPHA:79282:::MSH:D006978||SNOMED:123799005||UMLS:C0020545||ORPHA:3472:::MSH:D019586||SNOMED:271719001||UMLS:C0151740||ORPHA:247525:::MSH:D006983||SNOMED:271607001,29966009||UMLS:C0020555||ORPHA:79277:::SNOMED:288250001||UMLS:C0565599||ORPHA:439167:::UMLS:C3277940||ORPHA:93400:::MSH:D006937||SNOMED:13644009,166830008||UMLS:C0020443,C0595929||ORPHA:79237:::UMLS:C1846345,C3150267||ORPHA:89938:::UMLS:C1504382||OMIM:178600:::UMLS:C2265792||ORPHA:99736:::SNOMED:253920006||UMLS:C0431810||ORPHA:2346:::MSH:D058437||SNOMED:6962006||UMLS:C0152132||ORPHA:94080:::ORPHA:79259 |
+|  4 | bradycardia                |     655 |   665 | HP         | HP:0001662    | bradycardia                | MSH:D001919||SNOMED:48867003||UMLS:C0428977||ORPHA:330001:::SNOMED:49710005||UMLS:C0085610||ORPHA:439232:::MSH:D018476||SNOMED:399317006||UMLS:C0233565||ORPHA:33069::::::MSH:D007007||SNOMED:45004005||UMLS:C0020620||ORPHA:69085:::ORPHA:2388::::::::::::MSH:D007022||SNOMED:45007003||UMLS:C0020649||ORPHA:556030:::MSH:D012021||SNOMED:103254005||UMLS:C0151572||ORPHA:280071:::MSH:D007024||SNOMED:28651003||UMLS:C0020651||ORPHA:556030:::SNOMED:405946002||UMLS:C0700078||ORPHA:370079:::MSH:D018476||SNOMED:255385008,43994002||UMLS:C0086439||ORPHA:280071:::ORPHA:300373:::SNOMED:3006004||UMLS:C0234428||ORPHA:29822                                                                                                                                                                                                                                                                                                                           |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -576,11 +554,15 @@ result = pipeline.fit(data).transform(data)
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>finembeddings_bge_base</td>
+      <td>hpo_resolver_pipeline</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Finance NLP 1.0.0+</td>
+      <td>Healthcare NLP 5.2.1+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -591,32 +573,30 @@ result = pipeline.fit(data).transform(data)
       <td>Official</td>
     </tr>
     <tr>
-      <td>Input Labels:</td>
-      <td>[sentence, token]</td>
-    </tr>
-    <tr>
-      <td>Output Labels:</td>
-      <td>[bge_embeddings]</td>
-    </tr>
-    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>397.2 MB</td>
-    </tr>
-    <tr>
-      <td>Case sensitive:</td>
-      <td>false</td>
+      <td>2.2 GB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="included-models">Included Models</h2>
 
-<p>In-house curated financial datasets.</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-12-07T00:00:00+00:00"><!-- start custom article footer snippet -->
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>Chunk2Doc</li>
+  <li>BertSentenceEmbeddings</li>
+  <li>SentenceEntityResolverModel</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-17T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -801,7 +781,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2023/11/20/publaynet_dit_base_mrcnn_en_3_2.html">Document Layout Analysis optimized with DIT</a></div><div class="next nav_link"><span>NEXT</span><a href="/2023/12/20/bert_sequence_classifier_sdoh_frailty_vulnerability_en.html">Social Determinants of Healthcare for Frailty and Vulnerability Classifier</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/17/hcc_resolver_pipeline_en.html">Pipeline for Hierarchical Condition Categories (HCC) Sentence Entity Resolver</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/17/ner_deid_name_multilingual_xx.html">Detect Name for Deidentification (multilingual)</a></div></div></div>
 
 </div>
 </div>
