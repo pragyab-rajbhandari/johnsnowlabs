@@ -1581,6 +1581,493 @@ In this experiment, all reports went through the pipeline 10 times and repeated 
   <p>Results show that the different versions can have some variance in the execution time, but the difference is not too relevant.</p>
 
 </div>
+
+<div class="h3-box">
+
+  <h3 id="chunkmapper-and-sentence-entity-resolver-benchmark-experiment">ChunkMapper and Sentence Entity Resolver Benchmark Experiment</h3>
+
+  <ul>
+    <li>
+      <p><strong>Dataset:</strong> 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.</p>
+    </li>
+    <li><strong>Versions:</strong>
+      <ul>
+        <li><strong>Databricks Runtime Version:</strong> 12.2 LTS(Scala 2.12, Spark 3.3.2)</li>
+        <li><strong>spark-nlp Version:</strong> v5.2.0</li>
+        <li><strong>spark-nlp-jsl Version:</strong> v5.2.0</li>
+        <li><strong>Spark Version:</strong> v3.3.2</li>
+      </ul>
+    </li>
+    <li><strong>Spark NLP Pipelines:</strong></li>
+  </ul>
+
+  <p>ChunkMapper Pipeline:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    mapper_pipeline = Pipeline().setStages([
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_model,
+        ner_converter,
+        chunkerMapper])
+
+</code></pre></div>  </div>
+
+  <p>Sentence Entity Resolver Pipeline:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    resolver_pipeline = Pipeline(
+        stages = [
+            document_assembler,
+            sentenceDetectorDL,
+            tokenizer,
+            word_embeddings,
+            ner_model,
+            ner_converter,
+            c2doc,
+            sbert_embedder,
+            rxnorm_resolver
+      ])
+</code></pre></div>  </div>
+
+  <p>ChunkMapper and Sentence Entity Resolver Pipeline:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapper_resolver_pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_model,
+        ner_converter,
+        chunkerMapper,
+        cfModel,
+        chunk2doc,
+        sbert_embedder,
+        rxnorm_resolver,
+        resolverMerger
+])
+
+</code></pre></div>  </div>
+
+  <p><strong>NOTES:</strong></p>
+
+  <ul>
+    <li>
+      <p><strong>3 different pipelines:</strong>
+The first pipeline with ChunkMapper, the second with Sentence Entity Resolver, and the third pipeline with ChunkMapper and Sentence Entity Resolver together.</p>
+    </li>
+    <li>
+      <p><strong>4 different cluster configurations:</strong>
+Driver and worker types were kept the same in all cluster configurations. The number of workers were increased gradually and set as 2, 4, 8, 10.</p>
+    </li>
+    <li>
+      <p><strong>NER models were kept as same in all pipelines:</strong> Pretrained <code class="language-plaintext highlighter-rouge">ner_posology_greedy</code> NER model was used in each pipeline.</p>
+    </li>
+  </ul>
+
+  <h4 id="benchmark-tables">Benchmark Tables</h4>
+
+  <p>These  figures might differ based on the size of the mapper and resolver models. The larger the models, the higher the inference times.
+Depending on the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.</p>
+
+  <p>If the resolver-only timing is equal to or very close to the combined mapper and resolver timing, it means that the mapper is not capable of catching/ mapping any chunk.
+In that case, try playing with various parameters in the mapper or retrain/ augment the mapper.</p>
+
+  <ul>
+    <li>Driver Name: Standard_DS3_v2</li>
+    <li>Driver Memory: 14GB</li>
+    <li>Worker Name: Standard_DS3_v2</li>
+    <li>Worker Memory: 14GB</li>
+    <li>Worker Cores: 4</li>
+    <li>Action: write_parquet</li>
+    <li>Total Worker Numbers: 2</li>
+    <li>Total Cores: 8</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>partition</th>
+        <th>mapper timing</th>
+        <th>resolver timing</th>
+        <th>mapper and resolver timing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>4</td>
+        <td>23 sec</td>
+        <td>4.36 mins</td>
+        <td>2.40 mins</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>15 sec</td>
+        <td>3.21 mins</td>
+        <td>1.48 mins</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>18 sec</td>
+        <td>2.52 mins</td>
+        <td>2.04 mins</td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td>13 sec</td>
+        <td>2.22 mins</td>
+        <td>1.38 mins</td>
+      </tr>
+      <tr>
+        <td>64</td>
+        <td>14 sec</td>
+        <td>2.36 sec</td>
+        <td>1.50 mins</td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>14 sec</td>
+        <td>2.21 sec</td>
+        <td>1.36 mins</td>
+      </tr>
+      <tr>
+        <td>1000</td>
+        <td>21 sec</td>
+        <td>2.23 mins</td>
+        <td>1.43 mins</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li>Driver Name: Standard_DS3_v2</li>
+    <li>Driver Memory: 14GB</li>
+    <li>Worker Name: Standard_DS3_v2</li>
+    <li>Worker Memory: 14GB</li>
+    <li>Worker Cores: 4</li>
+    <li>Action: write_parquet</li>
+    <li>Total Worker Numbers: 4</li>
+    <li>Total Cores: 16</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>partition</th>
+        <th>mapper timing</th>
+        <th>resolver timing</th>
+        <th>mapper and resolver timing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>4</td>
+        <td>32.5 sec</td>
+        <td>4.19 mins</td>
+        <td>2.58 mins</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>15.1 sec</td>
+        <td>2.25 mins</td>
+        <td>1.38 mins</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>9.52 sec</td>
+        <td>1.50 mins</td>
+        <td>1.15 mins</td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td>9.16 sec</td>
+        <td>1.47 mins</td>
+        <td>1.09 mins</td>
+      </tr>
+      <tr>
+        <td>64</td>
+        <td>9.32 sec</td>
+        <td>1.36 mins</td>
+        <td>1.03 mins</td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>9.97 sec</td>
+        <td>1.48 mins</td>
+        <td>1.11 mins</td>
+      </tr>
+      <tr>
+        <td>1000</td>
+        <td>12.5 sec</td>
+        <td>1.31 mins</td>
+        <td>1.03 mins</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li>Driver Name: Standard_DS3_v2</li>
+    <li>Driver Memory: 14GB</li>
+    <li>Worker Name: Standard_DS3_v2</li>
+    <li>Worker Memory: 14GB</li>
+    <li>Worker Cores: 4</li>
+    <li>Action: write_parquet</li>
+    <li>Total Worker Numbers: 8</li>
+    <li>Total Cores: 32</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>partition</th>
+        <th>mapper timing</th>
+        <th>resolver timing</th>
+        <th>mapper and resolver timing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>4</td>
+        <td>37.3 sec</td>
+        <td>4.46 mins</td>
+        <td>2.52 mins</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>26.7 sec</td>
+        <td>2.46 mins</td>
+        <td>1.37 mins</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>8.85 sec</td>
+        <td>1.27 mins</td>
+        <td>1.06 mins</td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td>7.74 sec</td>
+        <td>1.38 mins</td>
+        <td>54.5 sec</td>
+      </tr>
+      <tr>
+        <td>64</td>
+        <td>7.22 sec</td>
+        <td>1.23 mins</td>
+        <td>55.6 sec</td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>6.32 sec</td>
+        <td>1.16 mins</td>
+        <td>50.9 sec</td>
+      </tr>
+      <tr>
+        <td>1000</td>
+        <td>8.37 sec</td>
+        <td>59.6 sec</td>
+        <td>49.3 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li>Driver Name: Standard_DS3_v2</li>
+    <li>Driver Memory: 14GB</li>
+    <li>Worker Name: Standard_DS3_v2</li>
+    <li>Worker Memory: 14GB</li>
+    <li>Worker Cores: 4</li>
+    <li>Action: write_parquet</li>
+    <li>Total Worker Numbers: 10</li>
+    <li>Total Cores: 40</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>partition</th>
+        <th>mapper timing</th>
+        <th>resolver timing</th>
+        <th>mapper and resolver timing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>4</td>
+        <td>40.8 sec</td>
+        <td>4.55 mins</td>
+        <td>3.20 mins</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>30.1 sec</td>
+        <td>3.34 mins</td>
+        <td>1.59 mins</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>11.6 sec</td>
+        <td>1.57 mins</td>
+        <td>1.12 mins</td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td>7.84 sec</td>
+        <td>1.33 mins</td>
+        <td>55.9 sec</td>
+      </tr>
+      <tr>
+        <td>64</td>
+        <td>7.25 sec</td>
+        <td>1.18 mins</td>
+        <td>56.1 sec</td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>7.45 sec</td>
+        <td>1.05 mins</td>
+        <td>47.5 sec</td>
+      </tr>
+      <tr>
+        <td>1000</td>
+        <td>8.87 sec</td>
+        <td>1.14 mins</td>
+        <td>47.9 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="h3-box">
+
+  <h3 id="deidentification-benchmark-experiment">Deidentification Benchmark Experiment</h3>
+
+  <ul>
+    <li>
+      <p><strong>Dataset:</strong> 10000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.</p>
+    </li>
+    <li><strong>Versions:</strong>
+      <ul>
+        <li><strong>spark-nlp Version:</strong> v5.2.0</li>
+        <li><strong>spark-nlp-jsl Version :</strong> v5.2.0</li>
+        <li><strong>Spark Version:</strong> v3.3.2</li>
+        <li><strong>DataBricks Config:</strong> 32 CPU Core, 128GiB RAM (8 worker)</li>
+        <li><strong>AWS Config:</strong> 32 CPU Cores, 58GiB RAM (c6a.8xlarge)</li>
+        <li><strong>Colab Config:</strong> 8 CPU Cores 52GiB RAM (Colab Pro - High RAM)</li>
+      </ul>
+    </li>
+    <li><strong>Spark NLP Pipelines:</strong></li>
+  </ul>
+
+  <p>Deidentification Pipeline:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deid_pipeline = Pipeline().setStages([
+      document_assembler,
+      sentence_detector,
+      tokenizer,
+      word_embeddings,
+      deid_ner,
+      ner_converter,
+      deid_ner_enriched,
+      ner_converter_enriched,
+      chunk_merge,
+      ssn_parser,
+      account_parser,
+      dln_parser,
+      plate_parser,
+      vin_parser,
+      license_parser,
+      country_parser,
+      age_parser,
+      date_parser,
+      phone_parser1,
+      phone_parser2,
+      ids_parser,
+      zip_parser,
+      med_parser,
+      email_parser,
+      chunk_merge1,
+      chunk_merge2,
+      deid_masked_rgx,
+      deid_masked_char,
+      deid_masked_fixed_char,
+      deid_obfuscated,
+      finisher])
+</code></pre></div>  </div>
+
+  <p><strong>Dataset:</strong> 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: right">partition</th>
+        <th style="text-align: right">AWS <br /> result timing</th>
+        <th style="text-align: right">DataBricks <br /> result timing</th>
+        <th style="text-align: right">Colab <br /> result timing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: right">1024</td>
+        <td style="text-align: right">1 min 3 sec</td>
+        <td style="text-align: right">1 min 55 sec</td>
+        <td style="text-align: right">5 min 45 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">512</td>
+        <td style="text-align: right">56 sec</td>
+        <td style="text-align: right">1 min 26 sec</td>
+        <td style="text-align: right">5 min 15 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">256</td>
+        <td style="text-align: right">50 sec</td>
+        <td style="text-align: right">1 min 20 sec</td>
+        <td style="text-align: right">5 min  4 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">128</td>
+        <td style="text-align: right">45 sec</td>
+        <td style="text-align: right">1 min 21 sec</td>
+        <td style="text-align: right">5 min 11 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">46 sec</td>
+        <td style="text-align: right">1 min 31 sec</td>
+        <td style="text-align: right">5 min 3 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">46 sec</td>
+        <td style="text-align: right">1 min 26 sec</td>
+        <td style="text-align: right">5 min 0 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">56 sec</td>
+        <td style="text-align: right">1 min 43 sec</td>
+        <td style="text-align: right">5 min 3 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">1 min 21 sec</td>
+        <td style="text-align: right">2 min 33 sec</td>
+        <td style="text-align: right">5 min 3 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">2 min 26 sec</td>
+        <td style="text-align: right">4 min 53 sec</td>
+        <td style="text-align: right">6 min 3 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
 <div class="h3-box">
 
   <h2 id="cpu-ner-benchmarks">CPU NER Benchmarks</h2>
@@ -1588,7 +2075,7 @@ In this experiment, all reports went through the pipeline 10 times and repeated 
   <h3 id="ner-bilstm-cnn-char-architecture-cpu-benchmark-experiment">NER (BiLSTM-CNN-Char Architecture) CPU Benchmark Experiment</h3>
 
   <ul>
-    <li><strong>Dataset :</strong> 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.</li>
+    <li><strong>Dataset:</strong> 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.</li>
     <li><strong>Versions :</strong>
       <ul>
         <li><strong>spark-nlp Version:</strong> v3.4.4</li>
@@ -1596,21 +2083,18 @@ In this experiment, all reports went through the pipeline 10 times and repeated 
         <li><strong>Spark Version :</strong> v3.1.2</li>
       </ul>
     </li>
-    <li>
-      <p><strong>Spark NLP Pipeline :</strong></p>
-
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-      <span class="n">documentAssembler</span><span class="p">,</span>
-      <span class="n">sentenceDetector</span><span class="p">,</span>
-      <span class="n">tokenizer</span><span class="p">,</span>  
-      <span class="n">embeddings_clinical</span><span class="p">,</span>  
-      <span class="n">clinical_ner</span><span class="p">,</span>  
-      <span class="n">ner_converter</span>
-      <span class="p">])</span>
-
-</code></pre></div>      </div>
-    </li>
+    <li><strong>Spark NLP Pipeline:</strong></li>
   </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">documentAssembler</span><span class="p">,</span>
+        <span class="n">sentenceDetector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>  
+        <span class="n">embeddings_clinical</span><span class="p">,</span>  
+        <span class="n">clinical_ner</span><span class="p">,</span>  
+        <span class="n">ner_converter</span>
+        <span class="p">])</span>
+</code></pre></div>  </div>
 
   <p><strong>NOTE:</strong></p>
 
