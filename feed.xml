@@ -1,5 +1,871 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-01-22T08:15:23+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Sentence Entity Resolver for RxNorm (sbiobert_base_cased_mli embeddings)</title><link href="/2024/01/17/sbiobertresolve_rxnorm_augmented_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for RxNorm (sbiobert_base_cased_mli embeddings)" /><published>2024-01-17T00:00:00+00:00</published><updated>2024-01-17T00:00:00+00:00</updated><id>/2024/01/17/sbiobertresolve_rxnorm_augmented_en</id><content type="html" xml:base="/2024/01/17/sbiobertresolve_rxnorm_augmented_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-01-22T10:49:38+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Explain Clinical Document - Oncology</title><link href="/2024/01/18/explain_clinical_doc_oncology_en.html" rel="alternate" type="text/html" title="Explain Clinical Document - Oncology" /><published>2024-01-18T00:00:00+00:00</published><updated>2024-01-18T00:00:00+00:00</updated><id>/2024/01/18/explain_clinical_doc_oncology_en</id><content type="html" xml:base="/2024/01/18/explain_clinical_doc_oncology_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This specialized oncology pipeline can;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;extract oncological entities,&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;assign assertion status to the extracted entities,&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;establish relations between the extracted entities from the clinical documents.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this pipeline, seven NER, one assertion and two relation extraction model were used to achieve those tasks.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clinical Entity Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Adenopathy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Age&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Biomarker&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Biomarker_Result&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cancer_Dx&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cancer_Score&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cancer_Surgery&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Chemotherapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cycle_Count&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cycle_Day&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cycle_Number&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Date&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Death_Entity&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Direction&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dosage&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Duration&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Frequency&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gender&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Grade&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Histological_Type&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hormonal_Therapy&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Imaging_Test&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Immunotherapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Invasion&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Line_Of_Therapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Metastasis&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Oncogene&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROBLEM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pathology_Result&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pathology_Test&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROBLEM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Performance_Status&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Race_Ethnicity&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Radiotherapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Response_To_Treatment&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Relative_Date&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Route&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Bone&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Brain&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Breast&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Liver&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Lung&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Lymph_Node&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Other_Body_Part&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Smoking_Status&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Staging&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Targeted_Therapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tumor_Finding&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tumor_Size&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Unspecific_Therapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Radiation_Dose&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Anatomical_Site&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cancer_Therapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Size_Trend&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lymph_Node&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tumor_Description&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lymph_Node_Modifier&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Posology_Information&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Oncological&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Weight&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Alcohol&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Communicable_Disease&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BMI&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Obesity&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Diabetes&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Assertion Status Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Present&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Absent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Possible&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Past&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Family&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hypotetical&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Relation Extraction Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_size_of&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_finding_of&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_date_of&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_location_of&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.2_1705570852519.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.2_1705570852519.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explain_clinical_doc_oncology&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explain_clinical_doc_oncology&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c&quot;&gt;# NER Result&lt;/span&gt;
+
+|    | sentence_id | chunks                                  | begin | end | entities             |
+|----|-------------|-----------------------------------------|-------|-----|----------------------|
+| 0  | 0           | computed tomography                     | 24    | 42  | Imaging_Test         |
+| 1  | 0           | CT                                      | 45    | 46  | Imaging_Test         |
+| 2  | 0           | abdomen                                 | 61    | 67  | Site_Other_Body_Part |
+| 3  | 0           | pelvis                                  | 73    | 78  | Site_Other_Body_Part |
+| 4  | 0           | ovarian                                 | 104   | 110 | Site_Other_Body_Part |
+| 5  | 0           | mass                                    | 112   | 115 | Tumor_Finding        |
+| 6  | 1           | Pap smear                               | 120   | 128 | Pathology_Test       |
+| 7  | 1           | one month later                         | 140   | 154 | Relative_Date        |
+| 8  | 1           | atypical glandular cells                | 173   | 196 | Pathology_Result     |
+| 9  | 1           | adenocarcinoma                          | 213   | 226 | Cancer_Dx            |
+| 10 | 2           | pathologic specimen                     | 233   | 251 | Pathology_Test       |
+| 11 | 2           | extension                               | 260   | 268 | Invasion             |
+| 12 | 2           | tumor                                   | 277   | 281 | Tumor_Finding        |
+| 13 | 2           | fallopian tubes                         | 298   | 312 | Site_Other_Body_Part |
+| 14 | 2           | appendix                                | 315   | 322 | Site_Other_Body_Part |
+| 15 | 2           | omentum                                 | 325   | 331 | Site_Other_Body_Part |
+| 16 | 2           | enlarged                                | 349   | 356 | Lymph_Node_Modifier  |
+| 17 | 2           | lymph nodes                             | 358   | 368 | Site_Lymph_Node      |
+| 18 | 3           | tumor                                   | 409   | 413 | Tumor_Finding        |
+| 19 | 3           | stage IIIC                              | 419   | 428 | Staging              |
+| 20 | 3           | papillary serous ovarian adenocarcinoma | 430   | 468 | Oncological          |
+| 21 | 4           | Two months later                        | 471   | 486 | Relative_Date        |
+| 22 | 4           | lung metastases                         | 520   | 534 | Oncological          |
+
+&lt;span class=&quot;c&quot;&gt;# Assertion Result&lt;/span&gt;
+
+|    | sentence_id | chunks                                  | begin | end | entities            | assertion |
+|----|-------------|-----------------------------------------|-------|-----|---------------------|-----------|
+| 0  | 0           | computed tomography                     | 24    | 42  | Imaging_Test        | Past      |
+| 1  | 0           | CT                                      | 45    | 46  | Imaging_Test        | Past      |
+| 2  | 0           | mass                                    | 112   | 115 | Tumor_Finding       | Present   |
+| 3  | 1           | Pap smear                               | 120   | 128 | Pathology_Test      | Past      |
+| 4  | 1           | atypical glandular cells                | 173   | 196 | Pathology_Result    | Present   |
+| 5  | 1           | adenocarcinoma                          | 213   | 226 | Cancer_Dx           | Possible  |
+| 6  | 2           | pathologic specimen                     | 233   | 251 | Pathology_Test      | Past      |
+| 7  | 2           | extension                               | 260   | 268 | Invasion            | Present   |
+| 8  | 2           | tumor                                   | 277   | 281 | Tumor_Finding       | Present   |
+| 9  | 2           | enlarged                                | 349   | 356 | Lymph_Node_Modifier | Present   |
+| 10 | 3           | tumor                                   | 409   | 413 | Tumor_Finding       | Present   |
+| 11 | 3           | papillary serous ovarian adenocarcinoma | 430   | 468 | Oncological         | Present   |
+| 12 | 4           | lung metastases                         | 520   | 534 | Oncological         | Present   |
+
+&lt;span class=&quot;c&quot;&gt;# Relation Extraction Result&lt;/span&gt;
+
+|    | sentence | entity1_begin | entity1_end | chunk1    | entity1              | entity2_begin | entity2_end | chunk2          | entity2              | relation       | confidence |
+|----|----------|---------------|-------------|-----------|----------------------|---------------|-------------|-----------------|----------------------|----------------|------------|
+| 1  | 0        | 104           | 110         | ovarian   | Site_Other_Body_Part | 112           | 115         | mass            | Tumor_Finding        | is_location_of | 0.922661   |
+| 2  | 1        | 120           | 128         | Pap smear | Pathology_Test       | 213           | 226         | adenocarcinoma  | Cancer_Dx            | is_finding_of  | 0.52542114 |
+| 3  | 2        | 277           | 281         | tumor     | Tumor_Finding        | 298           | 312         | fallopian tubes | Site_Other_Body_Part | is_location_of | 0.9026299  |
+| 4  | 2        | 277           | 281         | tumor     | Tumor_Finding        | 315           | 322         | appendix        | Site_Other_Body_Part | is_location_of | 0.6649267  |
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;explain_clinical_doc_oncology&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.2.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.9 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;AssertionDLModel&lt;/li&gt;
+  &lt;li&gt;PerceptronModel&lt;/li&gt;
+  &lt;li&gt;DependencyParserModel&lt;/li&gt;
+  &lt;li&gt;RelationExtractionModel&lt;/li&gt;
+  &lt;li&gt;RelationExtractionModel&lt;/li&gt;
+  &lt;li&gt;AnnotationMerger&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="pipeline" /><category term="ner" /><category term="assertion" /><category term="relation_extraction" /><summary type="html">Description This specialized oncology pipeline can; extract oncological entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, seven NER, one assertion and two relation extraction model were used to achieve those tasks. Clinical Entity Labels: Adenopathy, Age, Biomarker,Biomarker_Result, Cancer_Dx, Cancer_Score ,Cancer_Surgery, Chemotherapy, Cycle_Count ,Cycle_Day, Cycle_Number, Date ,Death_Entity, Direction, Dosage ,Duration, Frequency, Gender ,Grade, Histological_Type, Hormonal_Therapy ,Imaging_Test, Immunotherapy, Invasion ,Line_Of_Therapy, Metastasis, Oncogene ,PROBLEM, Pathology_Result, Pathology_Test ,PROBLEM, Performance_Status, Race_Ethnicity ,Radiotherapy, Response_To_Treatment, Relative_Date ,Route, Site_Bone, Site_Brain ,Site_Breast, Site_Liver, Site_Lung ,Site_Lymph_Node, Site_Other_Body_Part, Smoking_Status ,Staging, Targeted_Therapy, Tumor_Finding ,Tumor_Size, Unspecific_Therapy, Radiation_Dose ,Anatomical_Site, Cancer_Therapy, Size_Trend ,Lymph_Node, Tumor_Description,Lymph_Node_Modifier, Posology_Information, Oncological,Weight,Alcohol,Communicable_Disease,BMI,Obesity,Diabetes Assertion Status Labels: Present, Absent, Possible, Past, Family, Hypotetical Relation Extraction Labels: is_size_of, is_finding_of, is_date_of, is_location_of Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.&quot;&quot;&quot;) Results # NER Result | | sentence_id | chunks | begin | end | entities | |----|-------------|-----------------------------------------|-------|-----|----------------------| | 0 | 0 | computed tomography | 24 | 42 | Imaging_Test | | 1 | 0 | CT | 45 | 46 | Imaging_Test | | 2 | 0 | abdomen | 61 | 67 | Site_Other_Body_Part | | 3 | 0 | pelvis | 73 | 78 | Site_Other_Body_Part | | 4 | 0 | ovarian | 104 | 110 | Site_Other_Body_Part | | 5 | 0 | mass | 112 | 115 | Tumor_Finding | | 6 | 1 | Pap smear | 120 | 128 | Pathology_Test | | 7 | 1 | one month later | 140 | 154 | Relative_Date | | 8 | 1 | atypical glandular cells | 173 | 196 | Pathology_Result | | 9 | 1 | adenocarcinoma | 213 | 226 | Cancer_Dx | | 10 | 2 | pathologic specimen | 233 | 251 | Pathology_Test | | 11 | 2 | extension | 260 | 268 | Invasion | | 12 | 2 | tumor | 277 | 281 | Tumor_Finding | | 13 | 2 | fallopian tubes | 298 | 312 | Site_Other_Body_Part | | 14 | 2 | appendix | 315 | 322 | Site_Other_Body_Part | | 15 | 2 | omentum | 325 | 331 | Site_Other_Body_Part | | 16 | 2 | enlarged | 349 | 356 | Lymph_Node_Modifier | | 17 | 2 | lymph nodes | 358 | 368 | Site_Lymph_Node | | 18 | 3 | tumor | 409 | 413 | Tumor_Finding | | 19 | 3 | stage IIIC | 419 | 428 | Staging | | 20 | 3 | papillary serous ovarian adenocarcinoma | 430 | 468 | Oncological | | 21 | 4 | Two months later | 471 | 486 | Relative_Date | | 22 | 4 | lung metastases | 520 | 534 | Oncological | # Assertion Result | | sentence_id | chunks | begin | end | entities | assertion | |----|-------------|-----------------------------------------|-------|-----|---------------------|-----------| | 0 | 0 | computed tomography | 24 | 42 | Imaging_Test | Past | | 1 | 0 | CT | 45 | 46 | Imaging_Test | Past | | 2 | 0 | mass | 112 | 115 | Tumor_Finding | Present | | 3 | 1 | Pap smear | 120 | 128 | Pathology_Test | Past | | 4 | 1 | atypical glandular cells | 173 | 196 | Pathology_Result | Present | | 5 | 1 | adenocarcinoma | 213 | 226 | Cancer_Dx | Possible | | 6 | 2 | pathologic specimen | 233 | 251 | Pathology_Test | Past | | 7 | 2 | extension | 260 | 268 | Invasion | Present | | 8 | 2 | tumor | 277 | 281 | Tumor_Finding | Present | | 9 | 2 | enlarged | 349 | 356 | Lymph_Node_Modifier | Present | | 10 | 3 | tumor | 409 | 413 | Tumor_Finding | Present | | 11 | 3 | papillary serous ovarian adenocarcinoma | 430 | 468 | Oncological | Present | | 12 | 4 | lung metastases | 520 | 534 | Oncological | Present | # Relation Extraction Result | | sentence | entity1_begin | entity1_end | chunk1 | entity1 | entity2_begin | entity2_end | chunk2 | entity2 | relation | confidence | |----|----------|---------------|-------------|-----------|----------------------|---------------|-------------|-----------------|----------------------|----------------|------------| | 1 | 0 | 104 | 110 | ovarian | Site_Other_Body_Part | 112 | 115 | mass | Tumor_Finding | is_location_of | 0.922661 | | 2 | 1 | 120 | 128 | Pap smear | Pathology_Test | 213 | 226 | adenocarcinoma | Cancer_Dx | is_finding_of | 0.52542114 | | 3 | 2 | 277 | 281 | tumor | Tumor_Finding | 298 | 312 | fallopian tubes | Site_Other_Body_Part | is_location_of | 0.9026299 | | 4 | 2 | 277 | 281 | tumor | Tumor_Finding | 315 | 322 | appendix | Site_Other_Body_Part | is_location_of | 0.6649267 | Model Information Model Name: explain_clinical_doc_oncology Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 1.9 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel RelationExtractionModel AnnotationMerger</summary></entry><entry><title type="html">Explain Clinical Document - Radiology</title><link href="/2024/01/18/explain_clinical_doc_radiology_en.html" rel="alternate" type="text/html" title="Explain Clinical Document - Radiology" /><published>2024-01-18T00:00:00+00:00</published><updated>2024-01-18T00:00:00+00:00</updated><id>/2024/01/18/explain_clinical_doc_radiology_en</id><content type="html" xml:base="/2024/01/18/explain_clinical_doc_radiology_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This specialized radiology pipeline can;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;extract radiology related entities,&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;assign assertion status to the extracted entities,&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;establish relations between the extracted entities from the clinical documents.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this pipeline, five NER, one assertion and one relation extraction model were used to achive those tasks.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clinical Entity Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Imaging_Test&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Imaging_Technique&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImagingFindings&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OtherFindings&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BodyPart&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Direction&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Test&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Symptom&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Disease_Syndrome_Disorder&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Medical_Device&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Procedure&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Measurements&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Units&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gender&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Metastasis&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Invasion&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Route&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Treatment&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Drug&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Form&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Frequency&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dosage&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Date&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Test_Result&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Medical_Device&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Assertion Status Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Confirmed&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Suspected&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Negative&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Relation Extraction Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_related&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;not_related&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_radiology_en_5.2.1_3.2_1705569892913.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_radiology_en_5.2.1_3.2_1705569892913.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explain_clinical_doc_radiology&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explain_clinical_doc_radiology&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c&quot;&gt;# NER Result&lt;/span&gt;
+
+|    |   sentence_id | chunks                                   |   begin |   end | entities                  |
+|---:|--------------:|:-----------------------------------------|--------:|------:|:--------------------------|
+|  0 |             0 | Bilateral breast                         |       0 |    15 | BodyPart                  |
+|  1 |             0 | ultrasound                               |      17 |    26 | Imaging_Test              |
+|  2 |             0 | ovoid mass                               |      78 |    87 | ImagingFindings           |
+|  3 |             0 | 0.5 x 0.5 x 0.4 cm                       |     113 |   130 | Measurements              |
+|  4 |             0 | anteromedial aspect of the left shoulder |     163 |   202 | BodyPart                  |
+|  5 |             1 | mass                                     |     210 |   213 | ImagingFindings           |
+|  6 |             1 | isoechoic echotexture                    |     228 |   248 | ImagingFindings           |
+|  7 |             1 | adjacent muscle                          |     257 |   271 | BodyPart                  |
+|  8 |             1 | internal color flow                      |     294 |   312 | ImagingFindings           |
+|  9 |             2 | benign fibrous tissue                    |     334 |   354 | ImagingFindings           |
+| 10 |             2 | lipoma                                   |     361 |   366 | Disease_Syndrome_Disorder |
+
+&lt;span class=&quot;c&quot;&gt;# Assertion Result&lt;/span&gt;
+
+|    |   sentence_id | chunks                |   begin |   end | entities                  | assertion   |
+|---:|--------------:|:----------------------|--------:|------:|:--------------------------|:------------|
+|  0 |             0 | ovoid mass            |      78 |    87 | ImagingFindings           | Confirmed   |
+|  1 |             1 | mass                  |     210 |   213 | ImagingFindings           | Confirmed   |
+|  2 |             1 | isoechoic echotexture |     228 |   248 | ImagingFindings           | Confirmed   |
+|  3 |             1 | internal color flow   |     294 |   312 | ImagingFindings           | Negative    |
+|  4 |             2 | benign fibrous tissue |     334 |   354 | ImagingFindings           | Suspected   |
+|  5 |             2 | lipoma                |     361 |   366 | Disease_Syndrome_Disorder | Suspected   |
+
+&lt;span class=&quot;c&quot;&gt;# Relation Extraction Result&lt;/span&gt;
+
+|    |   sentence |   entity1_begin |   entity1_end | chunk1                | entity1         |   entity2_begin |   entity2_end | chunk2             | entity2         | relation   |   confidence |
+|---:|-----------:|----------------:|--------------:|:----------------------|:----------------|----------------:|--------------:|:-------------------|:----------------|:-----------|-------------:|
+|  0 |          0 |               0 |            15 | Bilateral breast      | BodyPart        |              17 |            26 | ultrasound         | Imaging_Test    | is_related |     1        |
+|  1 |          0 |               0 |            15 | Bilateral breast      | BodyPart        |              78 |            87 | ovoid mass         | ImagingFindings | is_related |     0.999997 |
+|  2 |          0 |              17 |            26 | ultrasound            | Imaging_Test    |              78 |            87 | ovoid mass         | ImagingFindings | is_related |     0.999569 |
+|  3 |          0 |              78 |            87 | ovoid mass            | ImagingFindings |             113 |           130 | 0.5 x 0.5 x 0.4 cm | Measurements    | is_related |     1        |
+|  4 |          1 |             210 |           213 | mass                  | ImagingFindings |             257 |           271 | adjacent muscle    | BodyPart        | is_related |     0.997639 |
+|  5 |          1 |             228 |           248 | isoechoic echotexture | ImagingFindings |             257 |           271 | adjacent muscle    | BodyPart        | is_related |     0.999999 |
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;explain_clinical_doc_radiology&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.2.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.8 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;AssertionDLModel&lt;/li&gt;
+  &lt;li&gt;PerceptronModel&lt;/li&gt;
+  &lt;li&gt;DependencyParserModel&lt;/li&gt;
+  &lt;li&gt;RelationExtractionModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="radiology" /><category term="pipeline" /><category term="ner" /><category term="assertion" /><category term="relation_extraction" /><summary type="html">Description This specialized radiology pipeline can; extract radiology related entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, five NER, one assertion and one relation extraction model were used to achive those tasks. Clinical Entity Labels: Imaging_Test, Imaging_Technique, ImagingFindings, OtherFindings ,BodyPart ,Direction ,Test ,Symptom ,Disease_Syndrome_Disorder ,Medical_Device ,Procedure ,Measurements ,Units ,Gender ,Metastasis ,Invasion ,Route ,Treatment ,Drug ,Form ,Frequency ,Dosage ,Date ,Test_Result ,Medical_Device Assertion Status Labels: Confirmed, Suspected, Negative Relation Extraction Labels: is_related,not_related Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.&quot;&quot;&quot;) Results # NER Result | | sentence_id | chunks | begin | end | entities | |---:|--------------:|:-----------------------------------------|--------:|------:|:--------------------------| | 0 | 0 | Bilateral breast | 0 | 15 | BodyPart | | 1 | 0 | ultrasound | 17 | 26 | Imaging_Test | | 2 | 0 | ovoid mass | 78 | 87 | ImagingFindings | | 3 | 0 | 0.5 x 0.5 x 0.4 cm | 113 | 130 | Measurements | | 4 | 0 | anteromedial aspect of the left shoulder | 163 | 202 | BodyPart | | 5 | 1 | mass | 210 | 213 | ImagingFindings | | 6 | 1 | isoechoic echotexture | 228 | 248 | ImagingFindings | | 7 | 1 | adjacent muscle | 257 | 271 | BodyPart | | 8 | 1 | internal color flow | 294 | 312 | ImagingFindings | | 9 | 2 | benign fibrous tissue | 334 | 354 | ImagingFindings | | 10 | 2 | lipoma | 361 | 366 | Disease_Syndrome_Disorder | # Assertion Result | | sentence_id | chunks | begin | end | entities | assertion | |---:|--------------:|:----------------------|--------:|------:|:--------------------------|:------------| | 0 | 0 | ovoid mass | 78 | 87 | ImagingFindings | Confirmed | | 1 | 1 | mass | 210 | 213 | ImagingFindings | Confirmed | | 2 | 1 | isoechoic echotexture | 228 | 248 | ImagingFindings | Confirmed | | 3 | 1 | internal color flow | 294 | 312 | ImagingFindings | Negative | | 4 | 2 | benign fibrous tissue | 334 | 354 | ImagingFindings | Suspected | | 5 | 2 | lipoma | 361 | 366 | Disease_Syndrome_Disorder | Suspected | # Relation Extraction Result | | sentence | entity1_begin | entity1_end | chunk1 | entity1 | entity2_begin | entity2_end | chunk2 | entity2 | relation | confidence | |---:|-----------:|----------------:|--------------:|:----------------------|:----------------|----------------:|--------------:|:-------------------|:----------------|:-----------|-------------:| | 0 | 0 | 0 | 15 | Bilateral breast | BodyPart | 17 | 26 | ultrasound | Imaging_Test | is_related | 1 | | 1 | 0 | 0 | 15 | Bilateral breast | BodyPart | 78 | 87 | ovoid mass | ImagingFindings | is_related | 0.999997 | | 2 | 0 | 17 | 26 | ultrasound | Imaging_Test | 78 | 87 | ovoid mass | ImagingFindings | is_related | 0.999569 | | 3 | 0 | 78 | 87 | ovoid mass | ImagingFindings | 113 | 130 | 0.5 x 0.5 x 0.4 cm | Measurements | is_related | 1 | | 4 | 1 | 210 | 213 | mass | ImagingFindings | 257 | 271 | adjacent muscle | BodyPart | is_related | 0.997639 | | 5 | 1 | 228 | 248 | isoechoic echotexture | ImagingFindings | 257 | 271 | adjacent muscle | BodyPart | is_related | 0.999999 | Model Information Model Name: explain_clinical_doc_radiology Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel</summary></entry><entry><title type="html">Pipeline for Human Phenotype Ontology (HPO) Sentence Entity Resolver</title><link href="/2024/01/18/hpo_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for Human Phenotype Ontology (HPO) Sentence Entity Resolver" /><published>2024-01-18T00:00:00+00:00</published><updated>2024-01-18T00:00:00+00:00</updated><id>/2024/01/18/hpo_resolver_pipeline_en</id><content type="html" xml:base="/2024/01/18/hpo_resolver_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This advanced pipeline extracts human phenotype entities from clinical texts and utilizes the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sbiobert_base_cased_mli&lt;/code&gt; Sentence Bert Embeddings to map these entities to their corresponding Human Phenotype Ontology (HPO) codes. It also returns associated codes from the following vocabularies for each HPO code: - MeSH (Medical Subject Headings)- SNOMED- UMLS (Unified Medical Language System ) - ORPHA (international reference resource for information on rare diseases and orphan drugs) - OMIM (Online Mendelian Inheritance in Man).&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/hpo_resolver_pipeline_en_5.2.1_3.2_1705566426908.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/hpo_resolver_pipeline_en_5.2.1_3.2_1705566426908.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hpo_resolver_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hpo_resolver_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+
+|                     chunk|begin|end|ner_label|resolution|               description|                                         all_codes|
++--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+
+|   tricuspid regurgitation|   67| 89|       HP|HP:0005180|   tricuspid regurgitation|MSH:D014262||SNOMED:111287006||UMLS:C0040961||O...|
+|           aortic stenosis|  197|211|       HP|HP:0001650|           aortic stenosis|MSH:D001024||SNOMED:60573004||UMLS:C0003507||OR...|
+|mitral valve regurgitation|  373|398|       HP|HP:0001653|mitral valve regurgitation|MSH:D008944||SNOMED:48724000||UMLS:C0026266,C35...|
+|              hypertension|  555|566|       HP|HP:0000822|              hypertension|MSH:D006973||SNOMED:24184005,38341003||UMLS:C00...|
+|               bradycardia|  655|665|       HP|HP:0001662|               bradycardia|MSH:D001919||SNOMED:48867003||UMLS:C0428977||OR...|
++--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;hpo_resolver_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.2.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;2.2 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;Chunk2Doc&lt;/li&gt;
+  &lt;li&gt;BertSentenceEmbeddings&lt;/li&gt;
+  &lt;li&gt;SentenceEntityResolverModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="entity_resolution" /><category term="clinical" /><category term="pipeline" /><category term="hpo" /><summary type="html">Description This advanced pipeline extracts human phenotype entities from clinical texts and utilizes the sbiobert_base_cased_mli Sentence Bert Embeddings to map these entities to their corresponding Human Phenotype Ontology (HPO) codes. It also returns associated codes from the following vocabularies for each HPO code: - MeSH (Medical Subject Headings)- SNOMED- UMLS (Unified Medical Language System ) - ORPHA (international reference resource for information on rare diseases and orphan drugs) - OMIM (Online Mendelian Inheritance in Man). Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;hpo_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;hpo_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy.&quot;&quot;&quot;) Results +--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+ | chunk|begin|end|ner_label|resolution| description| all_codes| +--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+ | tricuspid regurgitation| 67| 89| HP|HP:0005180| tricuspid regurgitation|MSH:D014262||SNOMED:111287006||UMLS:C0040961||O...| | aortic stenosis| 197|211| HP|HP:0001650| aortic stenosis|MSH:D001024||SNOMED:60573004||UMLS:C0003507||OR...| |mitral valve regurgitation| 373|398| HP|HP:0001653|mitral valve regurgitation|MSH:D008944||SNOMED:48724000||UMLS:C0026266,C35...| | hypertension| 555|566| HP|HP:0000822| hypertension|MSH:D006973||SNOMED:24184005,38341003||UMLS:C00...| | bradycardia| 655|665| HP|HP:0001662| bradycardia|MSH:D001919||SNOMED:48867003||UMLS:C0428977||OR...| +--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+ Model Information Model Name: hpo_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel</summary></entry><entry><title type="html">Explain Clinical Document - Oncology</title><link href="/2024/01/18/explain_clinical_doc_oncology_en.html" rel="alternate" type="text/html" title="Explain Clinical Document - Oncology" /><published>2024-01-18T00:00:00+00:00</published><updated>2024-01-18T00:00:00+00:00</updated><id>/2024/01/18/explain_clinical_doc_oncology_en</id><content type="html" xml:base="/2024/01/18/explain_clinical_doc_oncology_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This specialized oncology pipeline can;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;extract oncological entities,&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;assign assertion status to the extracted entities,&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;establish relations between the extracted entities from the clinical documents.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this pipeline, seven NER, one assertion and two relation extraction model were used to achieve those tasks.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clinical Entity Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Adenopathy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Age&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Biomarker&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Biomarker_Result&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cancer_Dx&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cancer_Score&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cancer_Surgery&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Chemotherapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cycle_Count&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cycle_Day&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cycle_Number&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Date&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Death_Entity&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Direction&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dosage&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Duration&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Frequency&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gender&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Grade&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Histological_Type&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hormonal_Therapy&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Imaging_Test&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Immunotherapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Invasion&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Line_Of_Therapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Metastasis&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Oncogene&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROBLEM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pathology_Result&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pathology_Test&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROBLEM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Performance_Status&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Race_Ethnicity&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Radiotherapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Response_To_Treatment&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Relative_Date&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Route&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Bone&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Brain&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Breast&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Liver&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Lung&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Lymph_Node&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site_Other_Body_Part&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Smoking_Status&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Staging&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Targeted_Therapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tumor_Finding&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tumor_Size&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Unspecific_Therapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Radiation_Dose&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Anatomical_Site&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cancer_Therapy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Size_Trend&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lymph_Node&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tumor_Description&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lymph_Node_Modifier&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Posology_Information&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Oncological&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Weight&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Alcohol&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Communicable_Disease&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BMI&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Obesity&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Diabetes&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Assertion Status Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Present&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Absent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Possible&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Past&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Family&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hypotetical&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Relation Extraction Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_size_of&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_finding_of&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_date_of&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_location_of&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.4_1705571132885.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.4_1705571132885.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explain_clinical_doc_oncology&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explain_clinical_doc_oncology&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c&quot;&gt;# NER Result&lt;/span&gt;
+
+|    | sentence_id | chunks                                  | begin | end | entities             |
+|----|-------------|-----------------------------------------|-------|-----|----------------------|
+| 0  | 0           | computed tomography                     | 24    | 42  | Imaging_Test         |
+| 1  | 0           | CT                                      | 45    | 46  | Imaging_Test         |
+| 2  | 0           | abdomen                                 | 61    | 67  | Site_Other_Body_Part |
+| 3  | 0           | pelvis                                  | 73    | 78  | Site_Other_Body_Part |
+| 4  | 0           | ovarian                                 | 104   | 110 | Site_Other_Body_Part |
+| 5  | 0           | mass                                    | 112   | 115 | Tumor_Finding        |
+| 6  | 1           | Pap smear                               | 120   | 128 | Pathology_Test       |
+| 7  | 1           | one month later                         | 140   | 154 | Relative_Date        |
+| 8  | 1           | atypical glandular cells                | 173   | 196 | Pathology_Result     |
+| 9  | 1           | adenocarcinoma                          | 213   | 226 | Cancer_Dx            |
+| 10 | 2           | pathologic specimen                     | 233   | 251 | Pathology_Test       |
+| 11 | 2           | extension                               | 260   | 268 | Invasion             |
+| 12 | 2           | tumor                                   | 277   | 281 | Tumor_Finding        |
+| 13 | 2           | fallopian tubes                         | 298   | 312 | Site_Other_Body_Part |
+| 14 | 2           | appendix                                | 315   | 322 | Site_Other_Body_Part |
+| 15 | 2           | omentum                                 | 325   | 331 | Site_Other_Body_Part |
+| 16 | 2           | enlarged                                | 349   | 356 | Lymph_Node_Modifier  |
+| 17 | 2           | lymph nodes                             | 358   | 368 | Site_Lymph_Node      |
+| 18 | 3           | tumor                                   | 409   | 413 | Tumor_Finding        |
+| 19 | 3           | stage IIIC                              | 419   | 428 | Staging              |
+| 20 | 3           | papillary serous ovarian adenocarcinoma | 430   | 468 | Oncological          |
+| 21 | 4           | Two months later                        | 471   | 486 | Relative_Date        |
+| 22 | 4           | lung metastases                         | 520   | 534 | Oncological          |
+
+&lt;span class=&quot;c&quot;&gt;# Assertion Result&lt;/span&gt;
+
+|    | sentence_id | chunks                                  | begin | end | entities            | assertion |
+|----|-------------|-----------------------------------------|-------|-----|---------------------|-----------|
+| 0  | 0           | computed tomography                     | 24    | 42  | Imaging_Test        | Past      |
+| 1  | 0           | CT                                      | 45    | 46  | Imaging_Test        | Past      |
+| 2  | 0           | mass                                    | 112   | 115 | Tumor_Finding       | Present   |
+| 3  | 1           | Pap smear                               | 120   | 128 | Pathology_Test      | Past      |
+| 4  | 1           | atypical glandular cells                | 173   | 196 | Pathology_Result    | Present   |
+| 5  | 1           | adenocarcinoma                          | 213   | 226 | Cancer_Dx           | Possible  |
+| 6  | 2           | pathologic specimen                     | 233   | 251 | Pathology_Test      | Past      |
+| 7  | 2           | extension                               | 260   | 268 | Invasion            | Present   |
+| 8  | 2           | tumor                                   | 277   | 281 | Tumor_Finding       | Present   |
+| 9  | 2           | enlarged                                | 349   | 356 | Lymph_Node_Modifier | Present   |
+| 10 | 3           | tumor                                   | 409   | 413 | Tumor_Finding       | Present   |
+| 11 | 3           | papillary serous ovarian adenocarcinoma | 430   | 468 | Oncological         | Present   |
+| 12 | 4           | lung metastases                         | 520   | 534 | Oncological         | Present   |
+
+
+&lt;span class=&quot;c&quot;&gt;# Relation Extraction Result&lt;/span&gt;
+
+|    | sentence | entity1_begin | entity1_end | chunk1    | entity1              | entity2_begin | entity2_end | chunk2          | entity2              | relation       | confidence |
+|----|----------|---------------|-------------|-----------|----------------------|---------------|-------------|-----------------|----------------------|----------------|------------|
+| 1  | 0        | 104           | 110         | ovarian   | Site_Other_Body_Part | 112           | 115         | mass            | Tumor_Finding        | is_location_of | 0.922661   |
+| 2  | 1        | 120           | 128         | Pap smear | Pathology_Test       | 213           | 226         | adenocarcinoma  | Cancer_Dx            | is_finding_of  | 0.52542114 |
+| 3  | 2        | 277           | 281         | tumor     | Tumor_Finding        | 298           | 312         | fallopian tubes | Site_Other_Body_Part | is_location_of | 0.9026299  |
+| 4  | 2        | 277           | 281         | tumor     | Tumor_Finding        | 315           | 322         | appendix        | Site_Other_Body_Part | is_location_of | 0.6649267  |
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;explain_clinical_doc_oncology&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.2.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.9 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;AssertionDLModel&lt;/li&gt;
+  &lt;li&gt;PerceptronModel&lt;/li&gt;
+  &lt;li&gt;DependencyParserModel&lt;/li&gt;
+  &lt;li&gt;RelationExtractionModel&lt;/li&gt;
+  &lt;li&gt;RelationExtractionModel&lt;/li&gt;
+  &lt;li&gt;AnnotationMerger&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="pipeline" /><category term="ner" /><category term="assertion" /><category term="relation_extraction" /><summary type="html">Description This specialized oncology pipeline can; extract oncological entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, seven NER, one assertion and two relation extraction model were used to achieve those tasks. Clinical Entity Labels: Adenopathy, Age, Biomarker,Biomarker_Result, Cancer_Dx, Cancer_Score ,Cancer_Surgery, Chemotherapy, Cycle_Count ,Cycle_Day, Cycle_Number, Date ,Death_Entity, Direction, Dosage ,Duration, Frequency, Gender ,Grade, Histological_Type, Hormonal_Therapy ,Imaging_Test, Immunotherapy, Invasion ,Line_Of_Therapy, Metastasis, Oncogene ,PROBLEM, Pathology_Result, Pathology_Test ,PROBLEM, Performance_Status, Race_Ethnicity ,Radiotherapy, Response_To_Treatment, Relative_Date ,Route, Site_Bone, Site_Brain ,Site_Breast, Site_Liver, Site_Lung ,Site_Lymph_Node, Site_Other_Body_Part, Smoking_Status ,Staging, Targeted_Therapy, Tumor_Finding ,Tumor_Size, Unspecific_Therapy, Radiation_Dose ,Anatomical_Site, Cancer_Therapy, Size_Trend ,Lymph_Node, Tumor_Description,Lymph_Node_Modifier, Posology_Information, Oncological,Weight,Alcohol,Communicable_Disease,BMI,Obesity,Diabetes Assertion Status Labels: Present, Absent, Possible, Past, Family, Hypotetical Relation Extraction Labels: is_size_of, is_finding_of, is_date_of, is_location_of Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.&quot;&quot;&quot;) Results # NER Result | | sentence_id | chunks | begin | end | entities | |----|-------------|-----------------------------------------|-------|-----|----------------------| | 0 | 0 | computed tomography | 24 | 42 | Imaging_Test | | 1 | 0 | CT | 45 | 46 | Imaging_Test | | 2 | 0 | abdomen | 61 | 67 | Site_Other_Body_Part | | 3 | 0 | pelvis | 73 | 78 | Site_Other_Body_Part | | 4 | 0 | ovarian | 104 | 110 | Site_Other_Body_Part | | 5 | 0 | mass | 112 | 115 | Tumor_Finding | | 6 | 1 | Pap smear | 120 | 128 | Pathology_Test | | 7 | 1 | one month later | 140 | 154 | Relative_Date | | 8 | 1 | atypical glandular cells | 173 | 196 | Pathology_Result | | 9 | 1 | adenocarcinoma | 213 | 226 | Cancer_Dx | | 10 | 2 | pathologic specimen | 233 | 251 | Pathology_Test | | 11 | 2 | extension | 260 | 268 | Invasion | | 12 | 2 | tumor | 277 | 281 | Tumor_Finding | | 13 | 2 | fallopian tubes | 298 | 312 | Site_Other_Body_Part | | 14 | 2 | appendix | 315 | 322 | Site_Other_Body_Part | | 15 | 2 | omentum | 325 | 331 | Site_Other_Body_Part | | 16 | 2 | enlarged | 349 | 356 | Lymph_Node_Modifier | | 17 | 2 | lymph nodes | 358 | 368 | Site_Lymph_Node | | 18 | 3 | tumor | 409 | 413 | Tumor_Finding | | 19 | 3 | stage IIIC | 419 | 428 | Staging | | 20 | 3 | papillary serous ovarian adenocarcinoma | 430 | 468 | Oncological | | 21 | 4 | Two months later | 471 | 486 | Relative_Date | | 22 | 4 | lung metastases | 520 | 534 | Oncological | # Assertion Result | | sentence_id | chunks | begin | end | entities | assertion | |----|-------------|-----------------------------------------|-------|-----|---------------------|-----------| | 0 | 0 | computed tomography | 24 | 42 | Imaging_Test | Past | | 1 | 0 | CT | 45 | 46 | Imaging_Test | Past | | 2 | 0 | mass | 112 | 115 | Tumor_Finding | Present | | 3 | 1 | Pap smear | 120 | 128 | Pathology_Test | Past | | 4 | 1 | atypical glandular cells | 173 | 196 | Pathology_Result | Present | | 5 | 1 | adenocarcinoma | 213 | 226 | Cancer_Dx | Possible | | 6 | 2 | pathologic specimen | 233 | 251 | Pathology_Test | Past | | 7 | 2 | extension | 260 | 268 | Invasion | Present | | 8 | 2 | tumor | 277 | 281 | Tumor_Finding | Present | | 9 | 2 | enlarged | 349 | 356 | Lymph_Node_Modifier | Present | | 10 | 3 | tumor | 409 | 413 | Tumor_Finding | Present | | 11 | 3 | papillary serous ovarian adenocarcinoma | 430 | 468 | Oncological | Present | | 12 | 4 | lung metastases | 520 | 534 | Oncological | Present | # Relation Extraction Result | | sentence | entity1_begin | entity1_end | chunk1 | entity1 | entity2_begin | entity2_end | chunk2 | entity2 | relation | confidence | |----|----------|---------------|-------------|-----------|----------------------|---------------|-------------|-----------------|----------------------|----------------|------------| | 1 | 0 | 104 | 110 | ovarian | Site_Other_Body_Part | 112 | 115 | mass | Tumor_Finding | is_location_of | 0.922661 | | 2 | 1 | 120 | 128 | Pap smear | Pathology_Test | 213 | 226 | adenocarcinoma | Cancer_Dx | is_finding_of | 0.52542114 | | 3 | 2 | 277 | 281 | tumor | Tumor_Finding | 298 | 312 | fallopian tubes | Site_Other_Body_Part | is_location_of | 0.9026299 | | 4 | 2 | 277 | 281 | tumor | Tumor_Finding | 315 | 322 | appendix | Site_Other_Body_Part | is_location_of | 0.6649267 | Model Information Model Name: explain_clinical_doc_oncology Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 1.9 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel RelationExtractionModel AnnotationMerger</summary></entry><entry><title type="html">Explain Clinical Document - Radiology</title><link href="/2024/01/18/explain_clinical_doc_radiology_en.html" rel="alternate" type="text/html" title="Explain Clinical Document - Radiology" /><published>2024-01-18T00:00:00+00:00</published><updated>2024-01-18T00:00:00+00:00</updated><id>/2024/01/18/explain_clinical_doc_radiology_en</id><content type="html" xml:base="/2024/01/18/explain_clinical_doc_radiology_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This specialized radiology pipeline can;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;extract radiology related entities,&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;assign assertion status to the extracted entities,&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;establish relations between the extracted entities from the clinical documents.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this pipeline, five NER, one assertion and one relation extraction model were used to achive those tasks.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clinical Entity Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Imaging_Test&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Imaging_Technique&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImagingFindings&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OtherFindings&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BodyPart&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Direction&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Test&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Symptom&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Disease_Syndrome_Disorder&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Medical_Device&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Procedure&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Measurements&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Units&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gender&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Metastasis&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Invasion&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Route&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Treatment&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Drug&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Form&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Frequency&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dosage&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Date&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Test_Result&lt;/code&gt; ,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Medical_Device&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Assertion Status Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Confirmed&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Suspected&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Negative&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Relation Extraction Labels: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_related&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;not_related&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_radiology_en_5.2.1_3.4_1705570419520.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_radiology_en_5.2.1_3.4_1705570419520.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explain_clinical_doc_radiology&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explain_clinical_doc_radiology&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+
+&lt;span class=&quot;c&quot;&gt;# NER Result&lt;/span&gt;
+
+|    |   sentence_id | chunks                                   |   begin |   end | entities                  |
+|---:|--------------:|:-----------------------------------------|--------:|------:|:--------------------------|
+|  0 |             0 | Bilateral breast                         |       0 |    15 | BodyPart                  |
+|  1 |             0 | ultrasound                               |      17 |    26 | Imaging_Test              |
+|  2 |             0 | ovoid mass                               |      78 |    87 | ImagingFindings           |
+|  3 |             0 | 0.5 x 0.5 x 0.4 cm                       |     113 |   130 | Measurements              |
+|  4 |             0 | anteromedial aspect of the left shoulder |     163 |   202 | BodyPart                  |
+|  5 |             1 | mass                                     |     210 |   213 | ImagingFindings           |
+|  6 |             1 | isoechoic echotexture                    |     228 |   248 | ImagingFindings           |
+|  7 |             1 | adjacent muscle                          |     257 |   271 | BodyPart                  |
+|  8 |             1 | internal color flow                      |     294 |   312 | ImagingFindings           |
+|  9 |             2 | benign fibrous tissue                    |     334 |   354 | ImagingFindings           |
+| 10 |             2 | lipoma                                   |     361 |   366 | Disease_Syndrome_Disorder |
+
+&lt;span class=&quot;c&quot;&gt;# Assertion Result&lt;/span&gt;
+
+|    |   sentence_id | chunks                |   begin |   end | entities                  | assertion   |
+|---:|--------------:|:----------------------|--------:|------:|:--------------------------|:------------|
+|  0 |             0 | ovoid mass            |      78 |    87 | ImagingFindings           | Confirmed   |
+|  1 |             1 | mass                  |     210 |   213 | ImagingFindings           | Confirmed   |
+|  2 |             1 | isoechoic echotexture |     228 |   248 | ImagingFindings           | Confirmed   |
+|  3 |             1 | internal color flow   |     294 |   312 | ImagingFindings           | Negative    |
+|  4 |             2 | benign fibrous tissue |     334 |   354 | ImagingFindings           | Suspected   |
+|  5 |             2 | lipoma                |     361 |   366 | Disease_Syndrome_Disorder | Suspected   |
+
+&lt;span class=&quot;c&quot;&gt;# Relation Extraction Result&lt;/span&gt;
+
+|    |   sentence |   entity1_begin |   entity1_end | chunk1                | entity1         |   entity2_begin |   entity2_end | chunk2             | entity2         | relation   |   confidence |
+|---:|-----------:|----------------:|--------------:|:----------------------|:----------------|----------------:|--------------:|:-------------------|:----------------|:-----------|-------------:|
+|  0 |          0 |               0 |            15 | Bilateral breast      | BodyPart        |              17 |            26 | ultrasound         | Imaging_Test    | is_related |     1        |
+|  1 |          0 |               0 |            15 | Bilateral breast      | BodyPart        |              78 |            87 | ovoid mass         | ImagingFindings | is_related |     0.999997 |
+|  2 |          0 |              17 |            26 | ultrasound            | Imaging_Test    |              78 |            87 | ovoid mass         | ImagingFindings | is_related |     0.999569 |
+|  3 |          0 |              78 |            87 | ovoid mass            | ImagingFindings |             113 |           130 | 0.5 x 0.5 x 0.4 cm | Measurements    | is_related |     1        |
+|  4 |          1 |             210 |           213 | mass                  | ImagingFindings |             257 |           271 | adjacent muscle    | BodyPart        | is_related |     0.997639 |
+|  5 |          1 |             228 |           248 | isoechoic echotexture | ImagingFindings |             257 |           271 | adjacent muscle    | BodyPart        | is_related |     0.999999 |
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;explain_clinical_doc_radiology&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.2.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.8 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;AssertionDLModel&lt;/li&gt;
+  &lt;li&gt;PerceptronModel&lt;/li&gt;
+  &lt;li&gt;DependencyParserModel&lt;/li&gt;
+  &lt;li&gt;RelationExtractionModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="radiology" /><category term="pipeline" /><category term="ner" /><category term="assertion" /><category term="relation_extraction" /><summary type="html">Description This specialized radiology pipeline can; extract radiology related entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, five NER, one assertion and one relation extraction model were used to achive those tasks. Clinical Entity Labels: Imaging_Test, Imaging_Technique, ImagingFindings, OtherFindings ,BodyPart ,Direction ,Test ,Symptom ,Disease_Syndrome_Disorder ,Medical_Device ,Procedure ,Measurements ,Units ,Gender ,Metastasis ,Invasion ,Route ,Treatment ,Drug ,Form ,Frequency ,Dosage ,Date ,Test_Result ,Medical_Device Assertion Status Labels: Confirmed, Suspected, Negative Relation Extraction Labels: is_related,not_related Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.&quot;&quot;&quot;) Results # NER Result | | sentence_id | chunks | begin | end | entities | |---:|--------------:|:-----------------------------------------|--------:|------:|:--------------------------| | 0 | 0 | Bilateral breast | 0 | 15 | BodyPart | | 1 | 0 | ultrasound | 17 | 26 | Imaging_Test | | 2 | 0 | ovoid mass | 78 | 87 | ImagingFindings | | 3 | 0 | 0.5 x 0.5 x 0.4 cm | 113 | 130 | Measurements | | 4 | 0 | anteromedial aspect of the left shoulder | 163 | 202 | BodyPart | | 5 | 1 | mass | 210 | 213 | ImagingFindings | | 6 | 1 | isoechoic echotexture | 228 | 248 | ImagingFindings | | 7 | 1 | adjacent muscle | 257 | 271 | BodyPart | | 8 | 1 | internal color flow | 294 | 312 | ImagingFindings | | 9 | 2 | benign fibrous tissue | 334 | 354 | ImagingFindings | | 10 | 2 | lipoma | 361 | 366 | Disease_Syndrome_Disorder | # Assertion Result | | sentence_id | chunks | begin | end | entities | assertion | |---:|--------------:|:----------------------|--------:|------:|:--------------------------|:------------| | 0 | 0 | ovoid mass | 78 | 87 | ImagingFindings | Confirmed | | 1 | 1 | mass | 210 | 213 | ImagingFindings | Confirmed | | 2 | 1 | isoechoic echotexture | 228 | 248 | ImagingFindings | Confirmed | | 3 | 1 | internal color flow | 294 | 312 | ImagingFindings | Negative | | 4 | 2 | benign fibrous tissue | 334 | 354 | ImagingFindings | Suspected | | 5 | 2 | lipoma | 361 | 366 | Disease_Syndrome_Disorder | Suspected | # Relation Extraction Result | | sentence | entity1_begin | entity1_end | chunk1 | entity1 | entity2_begin | entity2_end | chunk2 | entity2 | relation | confidence | |---:|-----------:|----------------:|--------------:|:----------------------|:----------------|----------------:|--------------:|:-------------------|:----------------|:-----------|-------------:| | 0 | 0 | 0 | 15 | Bilateral breast | BodyPart | 17 | 26 | ultrasound | Imaging_Test | is_related | 1 | | 1 | 0 | 0 | 15 | Bilateral breast | BodyPart | 78 | 87 | ovoid mass | ImagingFindings | is_related | 0.999997 | | 2 | 0 | 17 | 26 | ultrasound | Imaging_Test | 78 | 87 | ovoid mass | ImagingFindings | is_related | 0.999569 | | 3 | 0 | 78 | 87 | ovoid mass | ImagingFindings | 113 | 130 | 0.5 x 0.5 x 0.4 cm | Measurements | is_related | 1 | | 4 | 1 | 210 | 213 | mass | ImagingFindings | 257 | 271 | adjacent muscle | BodyPart | is_related | 0.997639 | | 5 | 1 | 228 | 248 | isoechoic echotexture | ImagingFindings | 257 | 271 | adjacent muscle | BodyPart | is_related | 0.999999 | Model Information Model Name: explain_clinical_doc_radiology Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel</summary></entry><entry><title type="html">Pipeline for Human Phenotype Ontology (HPO) Sentence Entity Resolver</title><link href="/2024/01/18/hpo_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for Human Phenotype Ontology (HPO) Sentence Entity Resolver" /><published>2024-01-18T00:00:00+00:00</published><updated>2024-01-18T00:00:00+00:00</updated><id>/2024/01/18/hpo_resolver_pipeline_en</id><content type="html" xml:base="/2024/01/18/hpo_resolver_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This advanced pipeline extracts human phenotype entities from clinical texts and utilizes the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sbiobert_base_cased_mli&lt;/code&gt; Sentence Bert Embeddings to map these entities to their corresponding Human Phenotype Ontology (HPO) codes. It also returns associated codes from the following vocabularies for each HPO code: - MeSH (Medical Subject Headings)- SNOMED- UMLS (Unified Medical Language System ) - ORPHA (international reference resource for information on rare diseases and orphan drugs) - OMIM (Online Mendelian Inheritance in Man).&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/hpo_resolver_pipeline_en_5.2.1_3.4_1705567225042.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/hpo_resolver_pipeline_en_5.2.1_3.4_1705567225042.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hpo_resolver_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hpo_resolver_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ner_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+
+|                     chunk|begin|end|ner_label|resolution|               description|                                         all_codes|
++--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+
+|   tricuspid regurgitation|   67| 89|       HP|HP:0005180|   tricuspid regurgitation|MSH:D014262||SNOMED:111287006||UMLS:C0040961||O...|
+|           aortic stenosis|  197|211|       HP|HP:0001650|           aortic stenosis|MSH:D001024||SNOMED:60573004||UMLS:C0003507||OR...|
+|mitral valve regurgitation|  373|398|       HP|HP:0001653|mitral valve regurgitation|MSH:D008944||SNOMED:48724000||UMLS:C0026266,C35...|
+|              hypertension|  555|566|       HP|HP:0000822|              hypertension|MSH:D006973||SNOMED:24184005,38341003||UMLS:C00...|
+|               bradycardia|  655|665|       HP|HP:0001662|               bradycardia|MSH:D001919||SNOMED:48867003||UMLS:C0428977||OR...|
++--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;hpo_resolver_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.2.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;2.2 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;Chunk2Doc&lt;/li&gt;
+  &lt;li&gt;BertSentenceEmbeddings&lt;/li&gt;
+  &lt;li&gt;SentenceEntityResolverModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="entity_resolution" /><category term="clinical" /><category term="pipeline" /><category term="hpo" /><summary type="html">Description This advanced pipeline extracts human phenotype entities from clinical texts and utilizes the sbiobert_base_cased_mli Sentence Bert Embeddings to map these entities to their corresponding Human Phenotype Ontology (HPO) codes. It also returns associated codes from the following vocabularies for each HPO code: - MeSH (Medical Subject Headings)- SNOMED- UMLS (Unified Medical Language System ) - ORPHA (international reference resource for information on rare diseases and orphan drugs) - OMIM (Online Mendelian Inheritance in Man). Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;hpo_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;hpo_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy.&quot;&quot;&quot;) Results +--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+ | chunk|begin|end|ner_label|resolution| description| all_codes| +--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+ | tricuspid regurgitation| 67| 89| HP|HP:0005180| tricuspid regurgitation|MSH:D014262||SNOMED:111287006||UMLS:C0040961||O...| | aortic stenosis| 197|211| HP|HP:0001650| aortic stenosis|MSH:D001024||SNOMED:60573004||UMLS:C0003507||OR...| |mitral valve regurgitation| 373|398| HP|HP:0001653|mitral valve regurgitation|MSH:D008944||SNOMED:48724000||UMLS:C0026266,C35...| | hypertension| 555|566| HP|HP:0000822| hypertension|MSH:D006973||SNOMED:24184005,38341003||UMLS:C00...| | bradycardia| 655|665| HP|HP:0001662| bradycardia|MSH:D001919||SNOMED:48867003||UMLS:C0428977||OR...| +--------------------------+-----+---+---------+----------+--------------------------+--------------------------------------------------+ Model Information Model Name: hpo_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel</summary></entry><entry><title type="html">Sentence Entity Resolver for RxNorm (sbiobert_base_cased_mli embeddings)</title><link href="/2024/01/17/sbiobertresolve_rxnorm_augmented_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for RxNorm (sbiobert_base_cased_mli embeddings)" /><published>2024-01-17T00:00:00+00:00</published><updated>2024-01-17T00:00:00+00:00</updated><id>/2024/01/17/sbiobertresolve_rxnorm_augmented_en</id><content type="html" xml:base="/2024/01/17/sbiobertresolve_rxnorm_augmented_en.html">## Description
 
 This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in `all_k_aux_labels` column.
 
@@ -350,474 +1216,4 @@ After CT, lung tumor located at the right lower lobe. Father with Alzheimer.&quo
 - AssertionDLModel
 - PerceptronModel
 - DependencyParserModel
-- RelationExtractionModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="clinical" /><category term="en" /><category term="doc" /><category term="pipeline" /><category term="ner" /><category term="assertion" /><category term="relation_extraction" /><category term="generic" /><summary type="html">Description This pipeline is designed to: extract clinical/medical entities assign assertion status to the extracted entities establish relations between the extracted entities from clinical texts. In this pipeline, 4 NER models, one assertion model, and one relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract. Clinical Entity Labels: PROBLEM, TEST, TREATMENT Assertion Status Labels: Present, Absent, Possible, Planned, Past, Family, Hypotetical, SomeoneElse Relation Extraction Labels: TrAP, TeRP, TrIP, TrWP, TrCP, TrAP, TrNAP, TeCP, PIP Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_generic&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain. He maintained on an epidural and PCA for pain control. After CT, lung tumor located at the right lower lobe. Father with Alzheimer.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_generic&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain. He maintained on an epidural and PCA for pain control. After CT, lung tumor located at the right lower lobe. Father with Alzheimer.&quot;&quot;&quot;) Results # NER and Assertion Result | | chunks | entities | assertion | |---:|:-------------|:-----------|:-------------| | 0 | severe fever | PROBLEM | Present | | 1 | sore throat | PROBLEM | Present | | 2 | stomach pain | PROBLEM | Absent | | 3 | an epidural | TREATMENT | Past | | 4 | PCA | TREATMENT | Past | | 5 | pain | PROBLEM | Hypothetical | | 6 | CT | TEST | Past | | 7 | lung tumor | PROBLEM | Present | | 8 | Alzheimer | PROBLEM | Family | # Relation Extraction Result | | sentence | entity1_begin | entity1_end | chunk1 | entity1 | entity2_begin | entity2_end | chunk2 | entity2 | relation | confidence | |---:|-----------:|----------------:|--------------:|:-------------|:----------|----------------:|--------------:|:------------|:----------|:-----------|-------------:| | 0 | 0 | 13 | 24 | severe fever | PROBLEM | 30 | 40 | sore throat | PROBLEM | PIP | 0.999998 | | 2 | 2 | 102 | 104 | PCA | TREATMENT | 110 | 113 | pain | PROBLEM | TrAP | 0.998956 | | 3 | 3 | 130 | 131 | CT | TEST | 134 | 143 | lung tumor | PROBLEM | TeRP | 1 | Model Information Model Name: explain_clinical_doc_generic Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel</summary></entry><entry><title type="html">Pipeline for Hierarchical Condition Categories (HCC) Sentence Entity Resolver</title><link href="/2024/01/17/hcc_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for Hierarchical Condition Categories (HCC) Sentence Entity Resolver" /><published>2024-01-17T00:00:00+00:00</published><updated>2024-01-17T00:00:00+00:00</updated><id>/2024/01/17/hcc_resolver_pipeline_en</id><content type="html" xml:base="/2024/01/17/hcc_resolver_pipeline_en.html">## Description
-
-This advanced pipeline extracts clinical conditions from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding Hierarchical Condition Categories (HCC) codes.
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/hcc_resolver_pipeline_en_5.2.1_3.2_1705487625394.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/hcc_resolver_pipeline_en_5.2.1_3.2_1705487625394.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-ner_pipeline = PretrainedPipeline(&quot;hcc_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-result = ner_pipeline.annotate(&quot;The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management.&quot;)
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val ner_pipeline = PretrainedPipeline(&quot;hcc_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val result = ner_pipeline.annotate(&quot;The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management.&quot;)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-|    | chunks                                |   begin |   end | entities   |   hcc_code | resolutions                                                                                                                                                                                                                                                                                                                                 | all_codes          |
-|---:|:--------------------------------------|--------:|------:|:-----------|-----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------|
-|  0 | Diabetes                              |      54 |    61 | PROBLEM    |         19 | diabetes monitored [type 2 diabetes mellitus without complications]:::anaemia of diabetes [anemia, unspecified]:::anemia of diabetes (disorder) [type 2 diabetes mellitus with other specified complication]                                                                                                                                | 19:::0:::18        |
-|  1 | Chronic Obstructive Pulmonary Disease |      67 |   103 | PROBLEM    |        111 | chronic obstructive pulmonary disease [chronic obstructive pulmonary disease, unspecified]:::chronic lung disease [pneumoconiosis due to other dust containing silica]:::chronic pulmonary heart disease [pulmonary heart disease, unspecified]:::other chronic obstructive pulmonary disease [other chronic obstructive pulmonary disease] | 111:::112:::85:::0 |
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|hcc_resolver_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|3.5 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="entity_resolution" /><category term="clinical" /><category term="pipeline" /><category term="hcc" /><summary type="html">Description This advanced pipeline extracts clinical conditions from clinical texts and utilizes the sbiobert_base_cased_mli Sentence Bert Embeddings to map these entities to their corresponding Hierarchical Condition Categories (HCC) codes. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;hcc_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management.&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;hcc_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management.&quot;) Results | | chunks | begin | end | entities | hcc_code | resolutions | all_codes | |---:|:--------------------------------------|--------:|------:|:-----------|-----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------| | 0 | Diabetes | 54 | 61 | PROBLEM | 19 | diabetes monitored [type 2 diabetes mellitus without complications]:::anaemia of diabetes [anemia, unspecified]:::anemia of diabetes (disorder) [type 2 diabetes mellitus with other specified complication] | 19:::0:::18 | | 1 | Chronic Obstructive Pulmonary Disease | 67 | 103 | PROBLEM | 111 | chronic obstructive pulmonary disease [chronic obstructive pulmonary disease, unspecified]:::chronic lung disease [pneumoconiosis due to other dust containing silica]:::chronic pulmonary heart disease [pulmonary heart disease, unspecified]:::other chronic obstructive pulmonary disease [other chronic obstructive pulmonary disease] | 111:::112:::85:::0 | Model Information Model Name: hcc_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 3.5 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel</summary></entry><entry><title type="html">Pipeline for Snomed Concept, Body Structure Version</title><link href="/2024/01/17/snomed_body_structure_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for Snomed Concept, Body Structure Version" /><published>2024-01-17T00:00:00+00:00</published><updated>2024-01-17T00:00:00+00:00</updated><id>/2024/01/17/snomed_body_structure_resolver_pipeline_en</id><content type="html" xml:base="/2024/01/17/snomed_body_structure_resolver_pipeline_en.html">## Description
-
-This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes using  `sbiobert_base_cased_mli` Sentence Bert Embeddings.
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/snomed_body_structure_resolver_pipeline_en_5.2.1_3.2_1705498980703.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/snomed_body_structure_resolver_pipeline_en_5.2.1_3.2_1705498980703.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-snomed_pipeline = PretrainedPipeline(&quot;snomed_body_structure_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;The patient is a 30-year-old female with a long history of insulin-dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI.&quot;&quot;&quot;
-
-result = snomed_pipeline.fullAnnotate(text)
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val snomed_pipeline = PretrainedPipeline(&quot;snomed_body_structure_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val text = &quot;&quot;&quot;The patient is a 30-year-old female with a long history of insulin-dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI.&quot;&quot;&quot;
-
-val result = snomed_pipeline.fullAnnotate(text)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-+-------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-|             chunks|begin|end|     code|                                         all_codes|                                       resolutions|                                     all_distances|
-+-------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-|    coronary artery|   95|109|119204004|[119204004, 360487004, 41801008, 312553002, 181...|[Coronary artery part, Segment of coronary arte...|[0.0384, 0.0437, 0.0624, 0.0738, 0.0749, 0.0805...|
-|              renal|  128|132|243968009|[243968009, 84924000, 363530009, 119219003, 640...|[Renal area, Structure of renal segment, Struct...|[0.0594, 0.0790, 0.1002, 0.1007, 0.1013, 0.1052...|
-|peripheral vascular|  149|167| 51833009|[51833009, 361391003, 371671000000102, 36200600...|[Peripheral vascular system structure, Regional...|[0.0796, 0.0809, 0.0847, 0.0864, 0.0881, 0.0940...|
-|  lower extremities|  299|315|120575009|[120575009, 61685007, 69548008, 229757002, 1282...|[Lower extremity part, Lower limb structure, Lo...|[0.0313, 0.0385, 0.0454, 0.0462, 0.0500, 0.0546...|
-+-------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|snomed_body_structure_resolver_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|2.3 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- ChunkMergeModel
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="snomed" /><category term="pipeline" /><category term="resolver" /><summary type="html">Description This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline snomed_pipeline = PretrainedPipeline(&quot;snomed_body_structure_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;The patient is a 30-year-old female with a long history of insulin-dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI.&quot;&quot;&quot; result = snomed_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val snomed_pipeline = PretrainedPipeline(&quot;snomed_body_structure_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;The patient is a 30-year-old female with a long history of insulin-dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI.&quot;&quot;&quot; val result = snomed_pipeline.fullAnnotate(text) Results +-------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+ | chunks|begin|end| code| all_codes| resolutions| all_distances| +-------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+ | coronary artery| 95|109|119204004|[119204004, 360487004, 41801008, 312553002, 181...|[Coronary artery part, Segment of coronary arte...|[0.0384, 0.0437, 0.0624, 0.0738, 0.0749, 0.0805...| | renal| 128|132|243968009|[243968009, 84924000, 363530009, 119219003, 640...|[Renal area, Structure of renal segment, Struct...|[0.0594, 0.0790, 0.1002, 0.1007, 0.1013, 0.1052...| |peripheral vascular| 149|167| 51833009|[51833009, 361391003, 371671000000102, 36200600...|[Peripheral vascular system structure, Regional...|[0.0796, 0.0809, 0.0847, 0.0864, 0.0881, 0.0940...| | lower extremities| 299|315|120575009|[120575009, 61685007, 69548008, 229757002, 1282...|[Lower extremity part, Lower limb structure, Lo...|[0.0313, 0.0385, 0.0454, 0.0462, 0.0500, 0.0546...| +-------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+ Model Information Model Name: snomed_body_structure_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 2.3 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel</summary></entry><entry><title type="html">Pipeline for Snomed Concept, Findings Version</title><link href="/2024/01/17/snomed_findings_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for Snomed Concept, Findings Version" /><published>2024-01-17T00:00:00+00:00</published><updated>2024-01-17T00:00:00+00:00</updated><id>/2024/01/17/snomed_findings_resolver_pipeline_en</id><content type="html" xml:base="/2024/01/17/snomed_findings_resolver_pipeline_en.html">## Description
-
-This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/snomed_findings_resolver_pipeline_en_5.2.1_3.2_1705500443233.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/snomed_findings_resolver_pipeline_en_5.2.1_3.2_1705500443233.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-snomed_pipeline = PretrainedPipeline(&quot;snomed_findings_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia.&quot;&quot;&quot;
-
-result = snomed_pipeline.fullAnnotate(text)
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val snomed_pipeline = PretrainedPipeline(&quot;snomed_findings_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val text = &quot;&quot;&quot;The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia.&quot;&quot;&quot;
-
-val result = snomed_pipeline.fullAnnotate(text)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-+--------------------------------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-|                                      chunks|begin|end|     code|                                         all_codes|                                       resolutions|                                     all_distances|
-+--------------------------------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-|recurrent upper respiratory tract infections|   22| 65|195708003|[195708003, 308130008, 195746005, 54150009, 783...|[recurrent upper respiratory tract infection, r...|[0.0073, 0.0664, 0.0664, 0.0694, 0.0712, 0.0737...|
-|                           subjective fevers|   68| 84|103001002|[103001002, 248425001, 186694006, 77957000, 271...|[feeling feverish (finding), feels feverish, sw...|[0.0494, 0.0514, 0.0535, 0.0552, 0.0661, 0.0674...|
-|                   unintentional weight loss|   87|111|448765001|[448765001, 422868009, 699205002, 416528001, 16...|[unintentional weight loss, unexplained weight ...|[0.0000, 0.0400, 0.0472, 0.0564, 0.0666, 0.0666...|
-|                     occasional night sweats|  118|140|161859009|[161859009, 42984000, 139115006, 423052008, 672...|[night sweats, night sweats, night sweats, freq...|[0.0480, 0.0480, 0.0480, 0.1043, 0.1100, 0.1256...|
-|                                   cachectic|  169|177|238108007|[238108007, 28928000, 74633007, 422003001, 2845...|[cachectic, cachexia, aids with cachexia, cache...|[0.0000, 0.0619, 0.0651, 0.0965, 0.0961, 0.0986...|
-|                                        pale|  183|186|274643008|[274643008, 139121005, 161865009, 398979000, 16...|[pale, pale color, pale color, pale complexion,...|[0.0000, 0.0733, 0.0733, 0.0812, 0.0812, 0.0892...|
-|                  notable hepatosplenomegaly|  194|219| 36760000|[36760000, 19058002, 80378000, 16294009, 469330...|[hepatosplenomegaly, congestive splenomegaly, n...|[0.0225, 0.0835, 0.0857, 0.0875, 0.0928, 0.0959...|
-|                                pancytopenia|  251|262|127034005|[127034005, 736024007, 191249008, 5876000, 1249...|[pancytopenia, drug induced pancytopenia, pancy...|[0.0000, 0.0407, 0.0425, 0.0425, 0.0493, 0.0495...|
-+--------------------------------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|snomed_findings_resolver_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|3.6 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- ChunkMergeModel
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="snomed" /><category term="pipeline" /><category term="resolver" /><summary type="html">Description This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline snomed_pipeline = PretrainedPipeline(&quot;snomed_findings_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia.&quot;&quot;&quot; result = snomed_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val snomed_pipeline = PretrainedPipeline(&quot;snomed_findings_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia.&quot;&quot;&quot; val result = snomed_pipeline.fullAnnotate(text) Results +--------------------------------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+ | chunks|begin|end| code| all_codes| resolutions| all_distances| +--------------------------------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+ |recurrent upper respiratory tract infections| 22| 65|195708003|[195708003, 308130008, 195746005, 54150009, 783...|[recurrent upper respiratory tract infection, r...|[0.0073, 0.0664, 0.0664, 0.0694, 0.0712, 0.0737...| | subjective fevers| 68| 84|103001002|[103001002, 248425001, 186694006, 77957000, 271...|[feeling feverish (finding), feels feverish, sw...|[0.0494, 0.0514, 0.0535, 0.0552, 0.0661, 0.0674...| | unintentional weight loss| 87|111|448765001|[448765001, 422868009, 699205002, 416528001, 16...|[unintentional weight loss, unexplained weight ...|[0.0000, 0.0400, 0.0472, 0.0564, 0.0666, 0.0666...| | occasional night sweats| 118|140|161859009|[161859009, 42984000, 139115006, 423052008, 672...|[night sweats, night sweats, night sweats, freq...|[0.0480, 0.0480, 0.0480, 0.1043, 0.1100, 0.1256...| | cachectic| 169|177|238108007|[238108007, 28928000, 74633007, 422003001, 2845...|[cachectic, cachexia, aids with cachexia, cache...|[0.0000, 0.0619, 0.0651, 0.0965, 0.0961, 0.0986...| | pale| 183|186|274643008|[274643008, 139121005, 161865009, 398979000, 16...|[pale, pale color, pale color, pale complexion,...|[0.0000, 0.0733, 0.0733, 0.0812, 0.0812, 0.0892...| | notable hepatosplenomegaly| 194|219| 36760000|[36760000, 19058002, 80378000, 16294009, 469330...|[hepatosplenomegaly, congestive splenomegaly, n...|[0.0225, 0.0835, 0.0857, 0.0875, 0.0928, 0.0959...| | pancytopenia| 251|262|127034005|[127034005, 736024007, 191249008, 5876000, 1249...|[pancytopenia, drug induced pancytopenia, pancy...|[0.0000, 0.0407, 0.0425, 0.0425, 0.0493, 0.0495...| +--------------------------------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+ Model Information Model Name: snomed_findings_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 3.6 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel</summary></entry><entry><title type="html">Pipeline for Snomed Codes - Procedure and Measurements Version</title><link href="/2024/01/17/snomed_procedures_measurements_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for Snomed Codes - Procedure and Measurements Version" /><published>2024-01-17T00:00:00+00:00</published><updated>2024-01-17T00:00:00+00:00</updated><id>/2024/01/17/snomed_procedures_measurements_resolver_pipeline_en</id><content type="html" xml:base="/2024/01/17/snomed_procedures_measurements_resolver_pipeline_en.html">## Description
-
-This pipeline extracts `Procedure` and `Measurements` entities and maps them to their corresponding SNOMED codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/snomed_procedures_measurements_resolver_pipeline_en_5.2.1_3.2_1705512168177.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/snomed_procedures_measurements_resolver_pipeline_en_5.2.1_3.2_1705512168177.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-snomed_pipeline = PretrainedPipeline(&quot;snomed_procedures_measurements_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma.&quot;&quot;&quot;
-
-result = snomed_pipeline.fullAnnotate(text)
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val snomed_pipeline = PretrainedPipeline(&quot;snomed_procedures_measurements_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma.&quot;&quot;&quot;
-
-val result = snomed_pipeline.fullAnnotate(text)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-+--------------------+-----+---+---------+-----------------------------------------------------------------+-----------------------------------------------------------------+-----------------------------------------------------------------+
-|              chunks|begin|end|     code|                                                        all_codes|                                                      resolutions|                                                    all_distances|
-+--------------------+-----+---+---------+-----------------------------------------------------------------+-----------------------------------------------------------------+-----------------------------------------------------------------+
-|      pericardectomy|  239|252| 34646007|[34646007, 13830001, 58380004, 67057001, 232191001, 50070009, ...|[Pericardiectomy, Incision of pericardium, Pericardiostomy, Ph...|[0.0000, 0.0703, 0.0763, 0.1048, 0.1031, 0.1148, 0.1167, 0.119...|
-|chest tube placement|  321|340|264957007|[264957007, 55628002, 290649006, 238327005, 297941000000109, 1...|[Insertion of pleural tube drain, Maintenance of thoracic drai...|[0.0331, 0.0768, 0.1047, 0.1082, 0.1126, 0.1143, 0.1245, 0.128...|
-|        thoracoscopy|  381|392| 14671001|[14671001, 430927004, 367408005, 229317003, 387640008, 1201600...|[Thoracoscopy, Thoracoscopic procedure, Incision of chest wall...|[0.0000, 0.0437, 0.0875, 0.0943, 0.1135, 0.1081, 0.1159, 0.123...|
-+--------------------+-----+---+---------+-----------------------------------------------------------------+-----------------------------------------------------------------+-----------------------------------------------------------------+
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|snomed_procedures_measurements_resolver_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|2.5 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- ChunkMergeModel
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="snomed" /><category term="pipeline" /><category term="resolver" /><category term="procedure" /><category term="measurements" /><summary type="html">Description This pipeline extracts Procedure and Measurements entities and maps them to their corresponding SNOMED codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline snomed_pipeline = PretrainedPipeline(&quot;snomed_procedures_measurements_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma.&quot;&quot;&quot; result = snomed_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val snomed_pipeline = PretrainedPipeline(&quot;snomed_procedures_measurements_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma.&quot;&quot;&quot; val result = snomed_pipeline.fullAnnotate(text) Results +--------------------+-----+---+---------+-----------------------------------------------------------------+-----------------------------------------------------------------+-----------------------------------------------------------------+ | chunks|begin|end| code| all_codes| resolutions| all_distances| +--------------------+-----+---+---------+-----------------------------------------------------------------+-----------------------------------------------------------------+-----------------------------------------------------------------+ | pericardectomy| 239|252| 34646007|[34646007, 13830001, 58380004, 67057001, 232191001, 50070009, ...|[Pericardiectomy, Incision of pericardium, Pericardiostomy, Ph...|[0.0000, 0.0703, 0.0763, 0.1048, 0.1031, 0.1148, 0.1167, 0.119...| |chest tube placement| 321|340|264957007|[264957007, 55628002, 290649006, 238327005, 297941000000109, 1...|[Insertion of pleural tube drain, Maintenance of thoracic drai...|[0.0331, 0.0768, 0.1047, 0.1082, 0.1126, 0.1143, 0.1245, 0.128...| | thoracoscopy| 381|392| 14671001|[14671001, 430927004, 367408005, 229317003, 387640008, 1201600...|[Thoracoscopy, Thoracoscopic procedure, Incision of chest wall...|[0.0000, 0.0437, 0.0875, 0.0943, 0.1135, 0.1081, 0.1159, 0.123...| +--------------------+-----+---+---------+-----------------------------------------------------------------+-----------------------------------------------------------------+-----------------------------------------------------------------+ Model Information Model Name: snomed_procedures_measurements_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 2.5 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel</summary></entry><entry><title type="html">Pipeline for Anatomic Therapeutic Chemical (ATC) Sentence Entity Resolver</title><link href="/2024/01/17/atc_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for Anatomic Therapeutic Chemical (ATC) Sentence Entity Resolver" /><published>2024-01-17T00:00:00+00:00</published><updated>2024-01-17T00:00:00+00:00</updated><id>/2024/01/17/atc_resolver_pipeline_en</id><content type="html" xml:base="/2024/01/17/atc_resolver_pipeline_en.html">## Description
-
-This advanced pipeline extracts `DRUG` entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding Anatomic Therapeutic Chemical (ATC) codes. 
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/atc_resolver_pipeline_en_5.2.1_3.4_1705491797364.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/atc_resolver_pipeline_en_5.2.1_3.4_1705491797364.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-ner_pipeline = PretrainedPipeline(&quot;atc_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-result = ner_pipeline.annotate(&quot;&quot;&quot;She was immediately given hydrogen peroxide 30 mg and amoxicillin twice daily for 10 days to treat the infection on her leg. She has a history of taking magnesium hydroxide.&quot;&quot;&quot;)
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val ner_pipeline = PretrainedPipeline(&quot;atc_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val result = ner_pipeline.annotate(&quot;&quot;&quot;She was immediately given hydrogen peroxide 30 mg and amoxicillin twice daily for 10 days to treat the infection on her leg. She has a history of taking magnesium hydroxide.&quot;&quot;&quot;)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-|    | chunks              |   begin |   end | entities   | atc_code   | resolutions         |
-|---:|:--------------------|--------:|------:|:-----------|:-----------|:--------------------|
-|  0 | hydrogen peroxide   |      26 |    42 | DRUG       | A01AB02    | hydrogen peroxide   |
-|  1 | amoxicillin         |      54 |    64 | DRUG       | J01CA04    | amoxicillin         |
-|  2 | magnesium hydroxide |     153 |   171 | DRUG       | A02AA04    | magnesium hydroxide |
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|atc_resolver_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|2.2 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="entity_resolution" /><category term="clinical" /><category term="pipeline" /><category term="atc" /><summary type="html">Description This advanced pipeline extracts DRUG entities from clinical texts and utilizes the sbiobert_base_cased_mli Sentence Bert Embeddings to map these entities to their corresponding Anatomic Therapeutic Chemical (ATC) codes. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;atc_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;She was immediately given hydrogen peroxide 30 mg and amoxicillin twice daily for 10 days to treat the infection on her leg. She has a history of taking magnesium hydroxide.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;atc_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;She was immediately given hydrogen peroxide 30 mg and amoxicillin twice daily for 10 days to treat the infection on her leg. She has a history of taking magnesium hydroxide.&quot;&quot;&quot;) Results | | chunks | begin | end | entities | atc_code | resolutions | |---:|:--------------------|--------:|------:|:-----------|:-----------|:--------------------| | 0 | hydrogen peroxide | 26 | 42 | DRUG | A01AB02 | hydrogen peroxide | | 1 | amoxicillin | 54 | 64 | DRUG | J01CA04 | amoxicillin | | 2 | magnesium hydroxide | 153 | 171 | DRUG | A02AA04 | magnesium hydroxide | Model Information Model Name: atc_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel</summary></entry><entry><title type="html">Pipeline for Current Procedural Terminology (CPT) Sentence Entity Resolver</title><link href="/2024/01/17/cpt_procedures_measurements_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for Current Procedural Terminology (CPT) Sentence Entity Resolver" /><published>2024-01-17T00:00:00+00:00</published><updated>2024-01-17T00:00:00+00:00</updated><id>/2024/01/17/cpt_procedures_measurements_resolver_pipeline_en</id><content type="html" xml:base="/2024/01/17/cpt_procedures_measurements_resolver_pipeline_en.html">## Description
-
-This pipeline extracts `Procedure` and `Measurement` entities and maps them to corresponding Current Procedural Terminology (CPT) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/cpt_procedures_measurements_resolver_pipeline_en_5.2.1_3.4_1705496174409.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/cpt_procedures_measurements_resolver_pipeline_en_5.2.1_3.4_1705496174409.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-ner_pipeline = PretrainedPipeline(&quot;cpt_procedures_measurements_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-result = ner_pipeline.annotate(&quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node.
-We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma.
-At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma.&quot;&quot;&quot;)
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val ner_pipeline = PretrainedPipeline(&quot;cpt_procedures_measurements_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val result = ner_pipeline.annotate(&quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node.
-We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma.
-At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma.&quot;&quot;&quot;)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+--------------------+-----+---+---------+--------+------------------------------------------------------------+------------------------------------------------------------+
-|               chunk|begin|end|ner_label|cpt_code|                                                 resolutions|                                                 all_k_codes|
-+--------------------+-----+---+---------+--------+------------------------------------------------------------+------------------------------------------------------------+
-|      pericardectomy|  239|252|Procedure|   33030|Pericardectomy [Pericardiectomy, subtotal or complete; wi...|33030:::33020:::64746:::49250:::27350:::68520:::32310:::2...|
-|chest tube placement|  321|340|Procedure|   39503|Insertion of chest tube [Repair, neonatal diaphragmatic h...|39503:::96440:::32553:::35820:::32100:::36226:::21899:::2...|
-|        thoracoscopy|  381|392|Procedure| 1020900|Thoracoscopy [Thoracoscopy]:::Thoracoscopy, surgical; wit...|1020900:::32654:::32668:::1006014:::35820:::32606:::32555...|
-+--------------------+-----+---+---------+--------+------------------------------------------------------------+------------------------------------------------------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|cpt_procedures_measurements_resolver_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|2.5 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- ChunkMergeModel
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="entity_resolution" /><category term="clinical" /><category term="pipeline" /><category term="cpt" /><summary type="html">Description This pipeline extracts Procedure and Measurement entities and maps them to corresponding Current Procedural Terminology (CPT) codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;cpt_procedures_measurements_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;cpt_procedures_measurements_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma.&quot;&quot;&quot;) Results +--------------------+-----+---+---------+--------+------------------------------------------------------------+------------------------------------------------------------+ | chunk|begin|end|ner_label|cpt_code| resolutions| all_k_codes| +--------------------+-----+---+---------+--------+------------------------------------------------------------+------------------------------------------------------------+ | pericardectomy| 239|252|Procedure| 33030|Pericardectomy [Pericardiectomy, subtotal or complete; wi...|33030:::33020:::64746:::49250:::27350:::68520:::32310:::2...| |chest tube placement| 321|340|Procedure| 39503|Insertion of chest tube [Repair, neonatal diaphragmatic h...|39503:::96440:::32553:::35820:::32100:::36226:::21899:::2...| | thoracoscopy| 381|392|Procedure| 1020900|Thoracoscopy [Thoracoscopy]:::Thoracoscopy, surgical; wit...|1020900:::32654:::32668:::1006014:::35820:::32606:::32555...| +--------------------+-----+---+---------+--------+------------------------------------------------------------+------------------------------------------------------------+ Model Information Model Name: cpt_procedures_measurements_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 2.5 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel</summary></entry></feed>
+- RelationExtractionModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="clinical" /><category term="en" /><category term="doc" /><category term="pipeline" /><category term="ner" /><category term="assertion" /><category term="relation_extraction" /><category term="generic" /><summary type="html">Description This pipeline is designed to: extract clinical/medical entities assign assertion status to the extracted entities establish relations between the extracted entities from clinical texts. In this pipeline, 4 NER models, one assertion model, and one relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract. Clinical Entity Labels: PROBLEM, TEST, TREATMENT Assertion Status Labels: Present, Absent, Possible, Planned, Past, Family, Hypotetical, SomeoneElse Relation Extraction Labels: TrAP, TeRP, TrIP, TrWP, TrCP, TrAP, TrNAP, TeCP, PIP Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_generic&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain. He maintained on an epidural and PCA for pain control. After CT, lung tumor located at the right lower lobe. Father with Alzheimer.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_generic&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain. He maintained on an epidural and PCA for pain control. After CT, lung tumor located at the right lower lobe. Father with Alzheimer.&quot;&quot;&quot;) Results # NER and Assertion Result | | chunks | entities | assertion | |---:|:-------------|:-----------|:-------------| | 0 | severe fever | PROBLEM | Present | | 1 | sore throat | PROBLEM | Present | | 2 | stomach pain | PROBLEM | Absent | | 3 | an epidural | TREATMENT | Past | | 4 | PCA | TREATMENT | Past | | 5 | pain | PROBLEM | Hypothetical | | 6 | CT | TEST | Past | | 7 | lung tumor | PROBLEM | Present | | 8 | Alzheimer | PROBLEM | Family | # Relation Extraction Result | | sentence | entity1_begin | entity1_end | chunk1 | entity1 | entity2_begin | entity2_end | chunk2 | entity2 | relation | confidence | |---:|-----------:|----------------:|--------------:|:-------------|:----------|----------------:|--------------:|:------------|:----------|:-----------|-------------:| | 0 | 0 | 13 | 24 | severe fever | PROBLEM | 30 | 40 | sore throat | PROBLEM | PIP | 0.999998 | | 2 | 2 | 102 | 104 | PCA | TREATMENT | 110 | 113 | pain | PROBLEM | TrAP | 0.998956 | | 3 | 3 | 130 | 131 | CT | TEST | 134 | 143 | lung tumor | PROBLEM | TeRP | 1 | Model Information Model Name: explain_clinical_doc_generic Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel</summary></entry></feed>
