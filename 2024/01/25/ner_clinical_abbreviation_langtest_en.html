@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Explain Clinical Document Generic | explain_clinical_doc_generic | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Extraction of Clinical Abbreviations and Acronyms (LangTest) | ner_clinical_abbreviation_langtest | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline is designed to:  extract clinical/medical entities  assign assertion status to the extracted entities  establish relations between the extracted entitiesfrom clinical texts. In this pipeline, 4 NER models, one assertion model, and one relation extraction model were used to achieve those task...">
-<!-- <link rel="canonical" href="/2024/01/17/explain_clinical_doc_generic_en.html"> -->
-<link rel="canonical" href="/2024/01/17/explain_clinical_doc_generic_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model is trained to extract clinical acronyms and acronyms from text. It is the version of ner_abbreviation_clinical model augmented with langtest library.            test_type      before fail_count      after fail_count      before pass_count      after pass_count      minimum pass_rate      before...">
+<!-- <link rel="canonical" href="/2024/01/25/ner_clinical_abbreviation_langtest_en.html"> -->
+<link rel="canonical" href="/2024/01/25/ner_clinical_abbreviation_langtest_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,92 +497,175 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-01-17-explain_clinical_doc_generic_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-01-25-ner_clinical_abbreviation_langtest_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 17, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-17T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Explain Clinical Document Generic</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Explain Clinical Document Generic"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>clinical</li><li>en</li><li>doc</li><li>pipeline</li><li>ner</li><li>assertion</li><li>relation_extraction</li><li>generic</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-17T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,clinical,en,doc,pipeline,ner,assertion,relation_extraction,generic"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 25, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-25T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Extraction of Clinical Abbreviations and Acronyms (LangTest)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Extraction of Clinical Abbreviations and Acronyms (LangTest)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>clinical</li><li>ner</li><li>licensed</li><li>abbreviation</li><li>langtest</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-25T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,clinical,ner,licensed,abbreviation,langtest"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline is designed to:</p>
+<p>This model is trained to extract clinical acronyms and acronyms from text. It is the version of <a href="https://nlp.johnsnowlabs.com/2021/12/30/ner_abbreviation_clinical_en.html">ner_abbreviation_clinical</a> model augmented with <code class="language-plaintext highlighter-rouge">langtest</code> library.</p>
 
-<ul>
-  <li>extract clinical/medical entities</li>
-  <li>assign assertion status to the extracted entities</li>
-  <li>establish relations between the extracted entities</li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th><strong>test_type</strong></th>
+      <th><strong>before fail_count</strong></th>
+      <th><strong>after fail_count</strong></th>
+      <th><strong>before pass_count</strong></th>
+      <th><strong>after pass_count</strong></th>
+      <th><strong>minimum pass_rate</strong></th>
+      <th><strong>before pass_rate</strong></th>
+      <th><strong>after pass_rate</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>lowercase</strong></td>
+      <td>351</td>
+      <td>78</td>
+      <td>223</td>
+      <td>496</td>
+      <td>90%</td>
+      <td>39%</td>
+      <td>86%</td>
+    </tr>
+    <tr>
+      <td><strong>titlecase</strong></td>
+      <td>325</td>
+      <td>73</td>
+      <td>248</td>
+      <td>500</td>
+      <td>85%</td>
+      <td>43%</td>
+      <td>87%</td>
+    </tr>
+    <tr>
+      <td><strong>uppercase</strong></td>
+      <td>117</td>
+      <td>47</td>
+      <td>382</td>
+      <td>452</td>
+      <td>90%</td>
+      <td>77%</td>
+      <td>91%</td>
+    </tr>
+    <tr>
+      <td><strong>weighted average</strong></td>
+      <td><strong>793</strong></td>
+      <td><strong>198</strong></td>
+      <td><strong>853</strong></td>
+      <td><strong>1448</strong></td>
+      <td><strong>88.33%</strong></td>
+      <td><strong>51.82%</strong></td>
+      <td><strong>87.97%</strong></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>from clinical texts. In this pipeline, 4 NER models, one assertion model, and one relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract.</p>
+<h2 id="predicted-entities">Predicted Entities</h2>
 
-<ul>
-  <li>
-    <p>Clinical Entity Labels: <code class="language-plaintext highlighter-rouge">PROBLEM</code>, <code class="language-plaintext highlighter-rouge">TEST</code>, <code class="language-plaintext highlighter-rouge">TREATMENT</code></p>
-  </li>
-  <li>
-    <p>Assertion Status Labels: <code class="language-plaintext highlighter-rouge">Present</code>, <code class="language-plaintext highlighter-rouge">Absent</code>, <code class="language-plaintext highlighter-rouge">Possible</code>, <code class="language-plaintext highlighter-rouge">Planned</code>, <code class="language-plaintext highlighter-rouge">Past</code>, <code class="language-plaintext highlighter-rouge">Family</code>, <code class="language-plaintext highlighter-rouge">Hypotetical</code>, <code class="language-plaintext highlighter-rouge">SomeoneElse</code></p>
-  </li>
-  <li>
-    <p>Relation Extraction Labels: <code class="language-plaintext highlighter-rouge">TrAP</code>, <code class="language-plaintext highlighter-rouge">TeRP</code>, <code class="language-plaintext highlighter-rouge">TrIP</code>, <code class="language-plaintext highlighter-rouge">TrWP</code>, <code class="language-plaintext highlighter-rouge">TrCP</code>, <code class="language-plaintext highlighter-rouge">TrAP</code>, <code class="language-plaintext highlighter-rouge">TrNAP</code>, <code class="language-plaintext highlighter-rouge">TeCP</code>, <code class="language-plaintext highlighter-rouge">PIP</code></p>
-  </li>
-</ul>
+<p><code class="language-plaintext highlighter-rouge">ABBR</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_generic_en_5.2.1_3.4_1705510891355.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_generic_en_5.2.1_3.4_1705510891355.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_clinical_abbreviation_langtest_en_5.2.1_3.0_1706208855884.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_clinical_abbreviation_langtest_en_5.2.1_3.0_1706208855884.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_generic"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""Patient with severe fever and sore throat.
-He shows no stomach pain. He maintained on an epidural and PCA for pain control.
-After CT, lung tumor located at the right lower lobe. Father with Alzheimer."""</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
+
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'embeddings_clinical'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'sentence'</span><span class="p">,</span> <span class="s">'token'</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'embeddings'</span><span class="p">)</span>
+
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'ner_clinical_abbreviation_langtest'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"abbr_ner"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+
+
+<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+        <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">embeddings</span><span class="p">,</span>
+        <span class="n">ner_model</span><span class="p">,</span>
+        <span class="n">ner_converter</span>
+<span class="p">])</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Gravid with an Estimated Fetal Weight of 6-6/12 Pounds. Lower Extremities: There are no signs of edema in the lower extremities. Laboratory Data: Laboratory tests revealed a normal cbc. Blood Type: The patient's blood type has been identified as AB Positive. Rubella Status: The patient has confirmed immunity to rub. VDRL Test: The vdrl test for syphilis is nonreactive. Hepatitis C Screening (anti-hcv): The screening for Hepatitis C surface antigen returned a negative result. Testing for hiv showed a negative outcome."""</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"explain_clinical_doc_generic"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""Patient with severe fever and sore throat.
-He shows no stomach pain. He maintained on an epidural and PCA for pain control.
-After CT, lung tumor located at the right lower lobe. Father with Alzheimer."""</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_clinical_abbreviation_langtest"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="nc">NerConverter</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">sentence_aetector</span><span class="o">,</span> <span class="n">tokenizer</span><span class="o">,</span> <span class="n">embeddings</span><span class="o">,</span> <span class="n">ner_model</span><span class="o">,</span> <span class="n">ner_converter</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"Gravid with an Estimated Fetal Weight of 6-6/12 Pounds. Lower Extremities: There are no signs of edema in the lower extremities. Laboratory Data: Laboratory tests revealed a normal cbc. Blood Type: The patient's blood type has been identified as AB Positive. Rubella Status: The patient has confirmed immunity to rub. VDRL Test: The vdrl test for syphilis is nonreactive. Hepatitis C Screening (anti-hcv): The screening for Hepatitis C surface antigen returned a negative result. Testing for hiv showed a negative outcome."</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># NER and Assertion Result</span>
-|    | chunks       | entities   | assertion    |
-|---:|:-------------|:-----------|:-------------|
-|  0 | severe fever | PROBLEM    | Present      |
-|  1 | sore throat  | PROBLEM    | Present      |
-|  2 | stomach pain | PROBLEM    | Absent       |
-|  3 | an epidural  | TREATMENT  | Past         |
-|  4 | PCA          | TREATMENT  | Past         |
-|  5 | pain         | PROBLEM    | Hypothetical |
-|  6 | CT           | TEST       | Past         |
-|  7 | lung tumor   | PROBLEM    | Present      |
-|  8 | Alzheimer    | PROBLEM    | Family       |
-
-<span class="c"># Relation Extraction Result</span>
-|    |   sentence |   entity1_begin |   entity1_end | chunk1       | entity1   |   entity2_begin |   entity2_end | chunk2      | entity2   | relation   |   confidence |
-|---:|-----------:|----------------:|--------------:|:-------------|:----------|----------------:|--------------:|:------------|:----------|:-----------|-------------:|
-|  0 |          0 |              13 |            24 | severe fever | PROBLEM   |              30 |            40 | sore throat | PROBLEM   | PIP        |     0.999998 |
-|  2 |          2 |             102 |           104 | PCA          | TREATMENT |             110 |           113 | pain        | PROBLEM   | TrAP       |     0.998956 |
-|  3 |          3 |             130 |           131 | CT           | TEST      |             134 |           143 | lung tumor  | PROBLEM   | TeRP       |     1        |
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------+---------+
+|chunk   |ner_label|
++--------+---------+
+|cbc     |ABBR     |
+|VDRL    |ABBR     |
+|vdrl    |ABBR     |
+|anti-hcv|ABBR     |
+|hiv     |ABBR     |
++--------+---------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -591,11 +674,7 @@ After CT, lung tumor located at the right lower lobe. Father with Alzheimer."""<
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>explain_clinical_doc_generic</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>ner_clinical_abbreviation_langtest</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -610,38 +689,37 @@ After CT, lung tumor located at the right lower lobe. Father with Alzheimer."""<
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[sentence, token, embeddings]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[ner]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.8 GB</td>
+      <td>14.7 MB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="included-models">Included Models</h2>
+<h2 id="sample-text-from-the-training-dataset">Sample text from the training dataset</h2>
 
-<ul>
-  <li>DocumentAssembler</li>
-  <li>SentenceDetectorDLModel</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>AssertionDLModel</li>
-  <li>PerceptronModel</li>
-  <li>DependencyParserModel</li>
-  <li>RelationExtractionModel</li>
-</ul>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-17T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>Trained on the in-house dataset.</p>
+
+<h2 id="benchmarking">Benchmarking</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>label         precision  recall  f1-score  support 
+ABBR          0.90       0.94    0.92      683     
+micro-avg     0.90       0.94    0.92      683     
+macro-avg     0.90       0.94    0.92      683     
+weighted-avg  0.90       0.94    0.92      683     
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-25T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -826,7 +904,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/17/cpt_procedures_measurements_resolver_pipeline_en.html">Pipeline for Current Procedural Terminology (CPT) Sentence Entity Resolver</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/17/hcc_resolver_pipeline_en.html">Pipeline for Hierarchical Condition Categories (HCC) Sentence Entity Resolver</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/25/ndc_resolver_pipeline_en.html">Pipeline for National Drug Codes (NDC) Sentence Entity Resolver</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/26/explain_clinical_doc_granular_en.html">Explain Clinical Document - Granular</a></div></div></div>
 
 </div>
 </div>

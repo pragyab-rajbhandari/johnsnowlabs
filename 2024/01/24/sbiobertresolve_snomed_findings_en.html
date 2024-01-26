@@ -578,6 +578,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="n">snomed_resolver</span>
 <span class="p">])</span>
 
+
 <span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">''</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
  
 <span class="n">model</span> <span class="o">=</span> <span class="n">snomed_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
@@ -636,7 +637,6 @@ function wrapWordInSpan(data, wordToWrap) {
                                     <span class="n">chunk2doc</span><span class="o">,</span>
                                     <span class="n">sbert_embedder</span><span class="o">,</span>
                                     <span class="n">snomed_resolver</span><span class="o">))</span>
-                                    
 
 <span class="k">val</span> <span class="nv">text</span><span class="k">=</span> <span class="s">"""The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""</span>
 
@@ -891,7 +891,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/22/sbiobert_base_cased_mli_onnx_en.html">Sentence Embeddings - Biobert cased (MedNLI, onnx)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/22/sbiobert_base_cased_mli_onnx_en.html">Sentence Embeddings - Biobert cased (MedNLI, onnx)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/25/mesh_resolver_pipeline_en.html">Pipeline for Medical Subject Heading (MeSH) Sentence Entity Resolver</a></div></div></div>
 
 </div>
 </div>
