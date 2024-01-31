@@ -525,6 +525,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
@@ -539,7 +540,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>                
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
 <span class="n">ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_oncology_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
@@ -548,7 +549,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
-          
+
 <span class="n">pos_tagger</span> <span class="o">=</span> <span class="n">PerceptronModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"pos_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"pos_tags"</span><span class="p">)</span>
@@ -557,10 +558,34 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"pos_tags"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dependencies"</span><span class="p">)</span>
 
-<span class="n">re_ner_chunk_filter</span> <span class="o">=</span> <span class="n">RENerChunksFilter</span><span class="p">()</span>  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"dependencies"</span><span class="p">])</span>  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"re_ner_chunk"</span><span class="p">)</span>  <span class="p">.</span><span class="n">setMaxSyntacticDistance</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="p">.</span><span class="n">setRelationPairs</span><span class="p">([</span><span class="s">"Tumor_Finding-Tumor_Size"</span><span class="p">,</span> <span class="s">"Tumor_Size-Tumor_Finding"</span><span class="p">,</span> <span class="s">"Cancer_Surgery-Relative_Date"</span><span class="p">,</span> <span class="s">"Relative_Date-Cancer_Surgery"</span><span class="p">])</span>
+<span class="n">re_ner_chunk_filter</span> <span class="o">=</span> <span class="n">RENerChunksFilter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"dependencies"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"re_ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxSyntacticDistance</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRelationPairs</span><span class="p">([</span><span class="s">'Date-Cancer_Dx'</span><span class="p">,</span>
+                       <span class="s">'Tumor_Finding-Site_Breast'</span><span class="p">,</span>
+                       <span class="s">'Tumor_Finding-Site_Bone'</span><span class="p">,</span>
+                       <span class="s">'Tumor_Finding-Site_Liver'</span><span class="p">,</span>
+                       <span class="s">'Tumor_Finding-Site_Lung'</span><span class="p">,</span>
+                       <span class="s">'Tumor_Finding-Site_Lymph_Node'</span><span class="p">,</span>
+                       <span class="s">'Tumor_Finding-Site_Other_Body_Part'</span><span class="p">,</span>
+                       <span class="s">'Tumor_Fiding-Relative_Date'</span><span class="p">,</span>
+                       <span class="s">'Tumor_Finding-Tumor_Size'</span><span class="p">,</span>
+                       <span class="s">'Biomarker-Biomarker_Result'</span><span class="p">,</span>
+                       <span class="s">'Pathology_Test-Cancer_Dx'</span><span class="p">,</span>
+                       <span class="s">'Biomarker_Result-Biomarker'</span><span class="p">,</span>
+                       <span class="s">'Imaging_Test-Tumor_Finding'</span><span class="p">,</span>
+                       <span class="s">'Pathology_Test-Relative_Date'</span><span class="p">,</span>
+                       <span class="s">'Pathology_Test-Pathology_Result'</span><span class="p">,</span>
+                       <span class="s">'Relative_Date-Metastasis'</span><span class="p">,</span>
+                       <span class="s">'Site-Lung-Metastasis'</span><span class="p">,</span>
+                       <span class="s">'Tumor_Finding-Tumor_Size'</span>
+                       <span class="p">])</span>
 
-<span class="n">re_model</span> <span class="o">=</span> <span class="n">RelationExtractionDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"redl_oncology_granular_biobert_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>   <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"re_ner_chunk"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span>   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relation_extraction"</span><span class="p">)</span>
-        
+<span class="n">re_model</span> <span class="o">=</span> <span class="n">RelationExtractionDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"redl_oncology_granular_biobert_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"re_ner_chunk"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relation_extraction"</span><span class="p">)</span>
+
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
                             <span class="n">sentence_detector</span><span class="p">,</span>
                             <span class="n">tokenizer</span><span class="p">,</span>
@@ -572,80 +597,107 @@ function wrapWordInSpan(data, wordToWrap) {
                             <span class="n">re_ner_chunk_filter</span><span class="p">,</span>
                             <span class="n">re_model</span><span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"A mastectomy was performed two months ago, and a 3 cm mass was extracted."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"The Patient underwent a computed tomography scan, which showed a complex ovarian mass, 2 cm insize . A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-    
+	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+	
 <span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-    
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+	
 <span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-    
-<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span><span class="o">().</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>                
-    
-<span class="k">val</span> <span class="nv">ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_oncology_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
-    
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span>
+	<span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_oncology_wip"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+	
 <span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pos_tagger</span> <span class="k">=</span> <span class="nv">PerceptronModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"pos_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"pos_tags"</span><span class="o">)</span>
-    
-<span class="k">val</span> <span class="nv">dependency_parser</span> <span class="k">=</span> <span class="nv">DependencyParserModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"dependency_conllu"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"pos_tags"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"dependencies"</span><span class="o">)</span>
-
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">pos_tagger</span> <span class="k">=</span> <span class="nv">PerceptronModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"pos_clinical"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"pos_tags"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">dependency_parser</span> <span class="k">=</span> <span class="nv">DependencyParserModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"dependency_conllu"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"pos_tags"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"dependencies"</span><span class="o">)</span>
+	
 <span class="k">val</span> <span class="nv">re_ner_chunk_filter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">RENerChunksFilter</span><span class="o">()</span>
-     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"dependencies"</span><span class="o">)</span>
-     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"re_ner_chunk"</span><span class="o">)</span>
-     <span class="o">.</span><span class="py">setMaxSyntacticDistance</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
-     <span class="o">.</span><span class="py">setRelationPairs</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Tumor_Finding-Tumor_Size"</span><span class="o">,</span> <span class="s">"Tumor_Size-Tumor_Finding"</span><span class="o">,</span> <span class="s">"Cancer_Surgery-Relative_Date"</span><span class="o">,</span> <span class="s">"Relative_Date-Cancer_Surgery"</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">re_model</span> <span class="k">=</span> <span class="nv">RelationExtractionDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"redl_oncology_granular_biobert_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setPredictionThreshold</span><span class="o">(</span><span class="mf">0.5f</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"re_ner_chunk"</span><span class="o">,</span> <span class="s">"sentence"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"relation_extraction"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span>
-                            <span class="n">sentence_detector</span><span class="o">,</span>
-                            <span class="n">tokenizer</span><span class="o">,</span>
-                            <span class="n">word_embeddings</span><span class="o">,</span>
-                            <span class="n">ner</span><span class="o">,</span>
-                            <span class="n">ner_converter</span><span class="o">,</span>
-                            <span class="n">pos_tagger</span><span class="o">,</span>
-                            <span class="n">dependency_parser</span><span class="o">,</span>
-                            <span class="n">re_ner_chunk_filter</span><span class="o">,</span>
-                            <span class="n">re_model</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"A mastectomy was performed two months ago."</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">,</span><span class="s">"dependencies"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"re_ner_chunk"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setMaxSyntacticDistance</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setRelationPairs</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+     <span class="s">"Date-Cancer_Dx"</span><span class="o">,</span>
+     <span class="s">"Tumor_Finding-Site_Breast"</span><span class="o">,</span> 
+     <span class="s">"Tumor_Finding-Site_Bone"</span><span class="o">,</span>
+     <span class="s">"Tumor_Finding-Site_Liver"</span><span class="o">,</span>
+     <span class="s">"Tumor_Finding-Site_Lung"</span><span class="o">,</span>
+     <span class="s">"Tumor_Finding-Site_Lymph_Node"</span><span class="o">,</span>
+     <span class="s">"Tumor_Finding-Site_Other_Body_Part"</span><span class="o">,</span>
+     <span class="s">"Tumor_Fiding-Relative_Date"</span><span class="o">,</span> 
+     <span class="s">"Tumor_Finding-Tumor_Size"</span><span class="o">,</span>
+     <span class="s">"Biomarker-Biomarker_Result"</span><span class="o">,</span>
+     <span class="s">"Pathology_Test-Cancer_Dx"</span><span class="o">,</span> 
+     <span class="s">"Biomarker_Result-Biomarker"</span><span class="o">,</span>
+     <span class="s">"Imaging_Test-Tumor_Finding"</span><span class="o">,</span>
+     <span class="s">"Pathology_Test-Relative_Date"</span><span class="o">,</span> 
+     <span class="s">"Pathology_Test-Pathology_Result"</span><span class="o">,</span>
+     <span class="s">"Relative_Date-Metastasis"</span><span class="o">,</span> 
+     <span class="s">"Site-Lung-Metastasis"</span><span class="o">,</span> 
+     <span class="s">"Tumor_Finding-Tumor_Size"</span> <span class="o">))</span>
+	
+<span class="k">val</span> <span class="nv">re_model</span> <span class="k">=</span> <span class="nv">RelationExtractionDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"redl_oncology_granular_biobert_wip"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"re_ner_chunk"</span><span class="o">,</span><span class="s">"sentence"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"relation_extraction"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span> 
+    <span class="n">sentence_detector</span><span class="o">,</span> 
+    <span class="n">tokenizer</span><span class="o">,</span> 
+    <span class="n">word_embeddings</span><span class="o">,</span>
+    <span class="n">ner</span><span class="o">,</span> 
+    <span class="n">ner_converter</span><span class="o">,</span> 
+    <span class="n">pos_tagger</span><span class="o">,</span> 
+    <span class="n">dependency_parser</span><span class="o">,</span> 
+    <span class="n">re_ner_chunk_filter</span><span class="o">,</span> 
+    <span class="n">re_model</span><span class="o">))</span>
+	
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"The Patient underwent a computed tomography scan, which showed a complex ovarian mass, 2 cm insize . A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes."</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 
   <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.relation.oncology_granular_biobert_wip"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""A mastectomy was performed two months ago, and a 3 cm mass was extracted."""</span><span class="p">)</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.relation.oncology_granular_biobert_wip"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""The Patient underwent a computed tomography scan, which showed a complex ovarian mass, 2 cm insize . A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes."""</span><span class="p">)</span>
 </code></pre></div>  </div>
 
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| chunk1     | entity1        | chunk2         | entity2       | relation   |   confidence |
-|:-----------|:---------------|:---------------|:--------------|:-----------|-------------:|
-| mastectomy | Cancer_Surgery | two months ago | Relative_Date | is_date_of |     0.965252 |
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|   |       relation |              entity1 | entity1_begin | entity1_end |                   chunk1 |              entity2 | entity2_begin | entity2_end |                   chunk2 | confidence |
+|--:|---------------:|---------------------:|--------------:|------------:|-------------------------:|---------------------:|--------------:|------------:|-------------------------:|-----------:|
+| 0 |  is_finding_of |         Imaging_Test |            24 |          47 | computed tomography scan |        Tumor_Finding |            81 |          84 |                     mass |   0.672964 |
+| 1 | is_location_of | Site_Other_Body_Part |            73 |          79 |                  ovarian |        Tumor_Finding |            81 |          84 |                     mass |   0.976508 |
+| 2 |     is_size_of |        Tumor_Finding |            81 |          84 |                     mass |           Tumor_Size |            87 |          90 |                     2 cm |   0.952546 |
+| 3 |     is_date_of |       Pathology_Test |           103 |         111 |                Pap smear |        Relative_Date |           123 |         137 |          one month later |   0.927102 |
+| 4 |  is_finding_of |       Pathology_Test |           103 |         111 |                Pap smear |     Pathology_Result |           156 |         179 | atypical glandular cells |   0.860861 |
+| 5 |  is_finding_of |       Pathology_Test |           103 |         111 |                Pap smear |            Cancer_Dx |           196 |         209 |           adenocarcinoma |   0.545740 |
+| 6 | is_location_of |        Tumor_Finding |           260 |         264 |                    tumor | Site_Other_Body_Part |           281 |         295 |          fallopian tubes |   0.875905 |
+| 7 | is_location_of |        Tumor_Finding |           260 |         264 |                    tumor | Site_Other_Body_Part |           298 |         305 |                 appendix |   0.774170 |
+| 8 | is_location_of |        Tumor_Finding |           260 |         264 |                    tumor | Site_Other_Body_Part |           308 |         314 |                  omentum |   0.906041 |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

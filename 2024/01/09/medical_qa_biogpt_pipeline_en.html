@@ -529,7 +529,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">question</span> <span class="o">=</span> <span class="s">"""Transgastric endoscopic splenectomy: is it possible?"""</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">qa_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">([</span><span class="n">question</span><span class="p">],</span> <span class="p">[</span><span class="n">context</span><span class="p">])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">qa_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">([</span><span class="n">question</span><span class="p">],</span> <span class="p">[</span><span class="n">context</span><span class="p">])</span>
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
@@ -541,8 +541,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="k">val</span> <span class="nv">question</span> <span class="k">=</span> <span class="s">"""Transgastric endoscopic splenectomy: is it possible?"""</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">qa_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">([</span><span class="kt">question</span><span class="o">],</span> <span class="o">[</span><span class="kt">context</span><span class="o">])</span>
-
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">qa_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">([</span><span class="kt">question</span><span class="o">],</span> <span class="o">[</span><span class="kt">context</span><span class="o">])</span>
 </code></pre></div>  </div>
 </div>
 

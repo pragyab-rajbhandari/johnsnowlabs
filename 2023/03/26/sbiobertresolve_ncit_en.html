@@ -523,6 +523,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
 		<span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
 		<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
@@ -534,108 +535,152 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
 		<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
 		<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
-	
+
 <span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
 		<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
 		<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_oncology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
 		<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
 		<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
 <span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setPreservePosition</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setPreservePosition</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setBlackList</span><span class="p">([</span><span class="s">"Age"</span><span class="p">,</span>
+                   <span class="s">"Date"</span><span class="p">,</span>
+                   <span class="s">"Death_Entity"</span><span class="p">,</span>
+                   <span class="s">"Gender"</span><span class="p">,</span>
+                   <span class="s">"Race_Ethnicity"</span><span class="p">,</span>
+                   <span class="s">"Relative_Date"</span><span class="p">,</span>
+                   <span class="s">"Smoking_Status"</span><span class="p">,</span>
+                   <span class="s">"Dosage"</span><span class="p">,</span>
+                   <span class="s">"Tumor_Size"</span>
+                   <span class="p">])</span>
 
 <span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
 
-<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span>\
-    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="n">resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span>\
-    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_ncit"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"sbert_embeddings"</span><span class="p">])</span> \
+<span class="n">resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_ncit"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"resolution"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
 
 
-<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> 
-                               <span class="n">sentence_detector</span><span class="p">,</span> 
-                               <span class="n">tokenizer</span><span class="p">,</span> 
-                               <span class="n">word_embeddings</span><span class="p">,</span> 
-                               <span class="n">ner_model</span><span class="p">,</span> 
-                               <span class="n">ner_converter</span><span class="p">,</span> 
-                               <span class="n">chunk2doc</span><span class="p">,</span> 
-                               <span class="n">sbert_embedder</span><span class="p">,</span> 
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+                               <span class="n">sentence_detector</span><span class="p">,</span>
+                               <span class="n">tokenizer</span><span class="p">,</span>
+                               <span class="n">word_embeddings</span><span class="p">,</span>
+                               <span class="n">ner_model</span><span class="p">,</span>
+                               <span class="n">ner_converter</span><span class="p">,</span>
+                               <span class="n">chunk2doc</span><span class="p">,</span>
+                               <span class="n">sbert_embedder</span><span class="p">,</span>
                                <span class="n">resolver</span><span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""45 years old patient had Percutaneous mitral valve repair. He had Pericardiectomy 2 years ago. He has left cardiac ventricular systolic dysfunction in his history."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"A 65-year-old woman had a history of debulking surgery, bilateral oophorectomy with omentectomy, total hysterectomy with radical pelvic lymph nodes dissection due to ovarian carcinoma (mucinous-type carcinoma, stage Ic) 1 year ago. Patient's medical compliance was poor and failed to complete her chemotherapy (cyclophosphamide 750 mg/m2, carboplatin 300 mg/m2). Recently, she noted a palpable right breast mass, 15 cm in size which nearly occupied the whole right breast in 2 months. Core needle biopsy revealed metaplastic carcinoma."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-
-
+	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+	
 <span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+	
 <span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-
-
-<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
-
-
-<span class="k">val</span> <span class="nv">clinical_ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
-
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_oncology"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setPreservePosition</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setBlackList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+     <span class="s">"Age"</span><span class="o">,</span> 
+     <span class="s">"Date"</span><span class="o">,</span> 
+     <span class="s">"Death_Entity"</span><span class="o">,</span> 
+     <span class="s">"Gender"</span><span class="o">,</span> 
+     <span class="s">"Race_Ethnicity"</span><span class="o">,</span> 
+     <span class="s">"Relative_Date"</span><span class="o">,</span> 
+     <span class="s">"Smoking_Status"</span><span class="o">,</span>
+     <span class="s">"Dosage"</span><span class="o">,</span>
+     <span class="s">"Tumor_Size"</span><span class="o">))</span>
+	
 <span class="k">val</span> <span class="nv">chunk2doc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Chunk2Doc</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nc">BertSentenceEmbeddings</span>
-  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">))</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">resolver</span> <span class="k">=</span> <span class="nc">SentenceEntityResolverModel</span>
-  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_ncit"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> 
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"sbert_embeddings"</span><span class="o">))</span> 
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"resolution"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">sentence_detector</span><span class="o">,</span> <span class="n">tokenizer</span><span class="o">,</span> <span class="n">word_embeddings</span><span class="o">,</span> <span class="n">clinical_ner</span><span class="o">,</span> <span class="n">ner_converter</span><span class="o">,</span> <span class="n">chunk2doc</span><span class="o">,</span> <span class="n">sbert_embedder</span><span class="o">,</span> <span class="n">resolver</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"45 years old patient had Percutaneous mitral valve repair. He had Pericardiectomy 2 years ago. He has left cardiac ventricular systolic dysfunction in his history."</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_ncit"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"resolution"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span> 
+    <span class="n">sentence_detector</span><span class="o">,</span> 
+    <span class="n">tokenizer</span><span class="o">,</span> 
+    <span class="n">word_embeddings</span><span class="o">,</span> 
+    <span class="n">ner_model</span><span class="o">,</span> 
+    <span class="n">ner_converter</span><span class="o">,</span>
+    <span class="n">chunk2doc</span><span class="o">,</span> 
+    <span class="n">sbert_embedder</span><span class="o">,</span> 
+    <span class="n">resolver</span><span class="o">))</span>
+	
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"A 65-year-old woman had a history of debulking surgery, bilateral oophorectomy with omentectomy, total hysterectomy with radical pelvic lymph nodes dissection due to ovarian carcinoma (mucinous-type carcinoma, stage Ic) 1 year ago. Patient's medical compliance was poor and failed to complete her chemotherapy (cyclophosphamide 750 mg/m2, carboplatin 300 mg/m2). Recently, she noted a palpable right breast mass, 15 cm in size which nearly occupied the whole right breast in 2 months. Core needle biopsy revealed metaplastic carcinoma."</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span> <span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|   sent_id | ner_chunk                                     | entity    | NCI-t Code   | all_codes                                          | resolutions                                                                                                                              |
-|----------:|:----------------------------------------------|:----------|:-------------|:---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|
-|         0 | Percutaneous mitral valve repair              | TREATMENT | C100003      | <span class="o">[</span><span class="s1">'C100003'</span>, <span class="s1">'C158019'</span>, <span class="s1">'C80449'</span>, <span class="s1">'C50818'</span>, <span class="s1">'C80448'</span>| <span class="o">[</span><span class="s1">'percutaneous mitral valve repair [percutaneous mitral valve repair]'</span>, <span class="s1">'transcatheter mitral valve repair [transcatheter mitral valve...|
-|         1 | Pericardiectomy                               | TREATMENT | C51643       | ['</span>C51643<span class="s1">', '</span>C51618<span class="s1">', '</span>C100004<span class="s1">', '</span>C62550<span class="s1">', '</span>C51791<span class="s1">' | ['</span>pericardiectomy <span class="o">[</span>pericardiectomy]<span class="s1">', '</span>pericardiostomy <span class="o">[</span>pericardiostomy]<span class="s1">', '</span>pericardial stripping <span class="o">[</span>pericardial stripping]<span class="s1">', '</span>pulpectom...|
-|         2 | left cardiac ventricular systolic dysfunction | PROBLEM   | C64251       | <span class="o">[</span><span class="s1">'C64251'</span>, <span class="s1">'C146719'</span>, <span class="s1">'C55062'</span>, <span class="s1">'C50629'</span>, <span class="s1">'C111655'</span>| <span class="o">[</span><span class="s1">'left cardiac ventricular systolic dysfunction [left cardiac ventricular systolic dysfunction]'</span>, <span class="s1">'left ventricular systolic dysfuncti...|
-</span></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------------------------+-----+---+-----------------+----------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                                chunk|begin|end|        ner_label|NCI-t Code|                                                 description|                                                 resolutions|                                                   all_codes|
++-------------------------------------+-----+---+-----------------+----------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                    debulking surgery|   37| 53|   Cancer_Surgery|    C15749|                       debulking surgery <span class="o">[</span>debulking surgery]|debulking surgery <span class="o">[</span>debulking surgery]:::primary debulking...|C15749:::C160865:::C160866:::C128096:::C146855:::C158758:...|
+|               bilateral oophorectomy|   56| 77|   Cancer_Surgery|    C51590|             bilateral oophorectomy <span class="o">[</span>bilateral oophorectomy]|bilateral oophorectomy <span class="o">[</span>bilateral oophorectomy]:::oophore...|C51590:::C15291:::C51601:::C51765:::C29893:::C15323:::C49...|
+|                          omentectomy|   84| 94|   Cancer_Surgery|    C51787|                                   omentectomy <span class="o">[</span>omentectomy]|omentectomy <span class="o">[</span>omentectomy]:::partial omentectomy <span class="o">[</span>partial ...|C51787:::C51788:::C51596:::C15277:::C51780:::C96171:::C94...|
+|                   total hysterectomy|   97|114|   Cancer_Surgery|    C15701|                     total hysterectomy <span class="o">[</span>total hysterectomy]|total hysterectomy <span class="o">[</span>total hysterectomy]:::total abdominal...|C15701:::C51695:::C40961:::C51941:::C51660:::C15256:::C15...|
+|radical pelvic lymph nodes dissection|  121|157|   Cancer_Surgery|    C48936|radical lymph node dissection <span class="o">[</span>radical lymph node dissect...|radical lymph node dissection <span class="o">[</span>radical lymph node dissect...|C48936:::C166163:::C51896:::C48184:::C167218:::C166225:::...|
+|                    ovarian carcinoma|  166|182|        Cancer_Dx|     C4908|                       ovarian carcinoma <span class="o">[</span>ovarian carcinoma]|ovarian carcinoma <span class="o">[</span>ovarian carcinoma]:::ovarian adenocarc...|C4908:::C7700:::C7550:::C4509:::C9192:::C5229:::C7832:::C...|
+|                        mucinous-type|  185|197|Histological_Type|    C38768|         mucinous differentiation <span class="o">[</span>mucinous differentiation]|mucinous differentiation <span class="o">[</span>mucinous differentiation]:::muc...|C38768:::C14163:::C246:::C16883:::C36119:::C13259:::C7472...|
+|                            carcinoma|  199|207|        Cancer_Dx|     C2916|                                       carcinoma <span class="o">[</span>carcinoma]|carcinoma <span class="o">[</span>carcinoma]:::carcinoma cell <span class="o">[</span>carcinoma cell]::...|C2916:::C36779:::C3693:::C165723:::C26712:::C2915:::C7629...|
+|                             stage Ic|  210|217|          Staging|    C27981|                                         stage ic <span class="o">[</span>stage ic]|stage ic <span class="o">[</span>stage ic]:::stage iv <span class="o">[</span>stage iv]:::stage i <span class="o">[</span>stag...|C27981:::C125478:::C112007:::C141199:::C28055:::C112012::...|
+|                         chemotherapy|  297|308|     Chemotherapy|    C15632|                                 chemotherapy <span class="o">[</span>chemotherapy]|chemotherapy <span class="o">[</span>chemotherapy]:::chemotherapy received <span class="o">[</span>chem...|C15632:::C160336:::C168835:::C274:::C15681:::C191:::C1588...|
+|                     cyclophosphamide|  311|326|     Chemotherapy|      C405|                         cyclophosphamide <span class="o">[</span>cyclophosphamide]|cyclophosphamide <span class="o">[</span>cyclophosphamide]:::cyclophosphamide re...|C405:::C160014:::C11393:::C9667:::C37699:::C9713:::C11510...|
+|                          carboplatin|  339|349|     Chemotherapy|     C1282|                                   carboplatin <span class="o">[</span>carboplatin]|carboplatin <span class="o">[</span>carboplatin]:::carboplatin regimen <span class="o">[</span>carbopla...|C1282:::C160006:::C11881:::C376:::C175820:::C156262:::C97...|
+|                                right|  394|398|        Direction|   C160199|                                               right <span class="o">[</span>right]|right <span class="o">[</span>right]:::correct <span class="o">[</span>correct]:::definite <span class="o">[</span>definite]::...|C160199:::C68815:::C190978:::C107561:::C137949:::C118396:...|
+|                               breast|  400|405|      Site_Breast|    C12971|                                             breast <span class="o">[</span>breast]|breast <span class="o">[</span>breast]:::breast part <span class="o">[</span>breast part]:::breast <span class="nb">ln</span> <span class="o">[</span>...|C12971:::C13020:::C27939:::C93291:::C141134:::C12370:::C9...|
+|                                 mass|  407|410|    Tumor_Finding|   C126027|                                                 mass <span class="o">[</span>mass]|mass <span class="o">[</span>mass]:::mass content <span class="o">[</span>mass content]:::mass density ...|C126027:::C191347:::C75762:::C179798:::C48528:::C179799::...|
+|                                right|  459|463|        Direction|   C160199|                                               right <span class="o">[</span>right]|right <span class="o">[</span>right]:::correct <span class="o">[</span>correct]:::definite <span class="o">[</span>definite]::...|C160199:::C68815:::C190978:::C107561:::C137949:::C118396:...|
+|                               breast|  465|470|      Site_Breast|    C12971|                                             breast <span class="o">[</span>breast]|breast <span class="o">[</span>breast]:::breast part <span class="o">[</span>breast part]:::breast <span class="nb">ln</span> <span class="o">[</span>...|C12971:::C13020:::C27939:::C93291:::C141134:::C12370:::C9...|
+|                   Core needle biopsy|  485|502|   Pathology_Test|    C15680|                     core needle biopsy <span class="o">[</span>core needle biopsy]|core needle biopsy <span class="o">[</span>core needle biopsy]:::needle biopsy <span class="o">[</span>...|C15680:::C15190:::C51763:::C91832:::C15361:::C137909:::C1...|
+|                          metaplastic|  513|523|Histological_Type|    C25566|                                   metaplastic <span class="o">[</span>metaplastic]|metaplastic <span class="o">[</span>metaplastic]:::metaplastic change <span class="o">[</span>metaplast...|C25566:::C3236:::C36786:::C177595:::C80354:::C29745:::C45...|
+|                            carcinoma|  525|533|        Cancer_Dx|     C2916|                                       carcinoma <span class="o">[</span>carcinoma]|carcinoma <span class="o">[</span>carcinoma]:::carcinoma cell <span class="o">[</span>carcinoma cell]::...|C2916:::C36779:::C3693:::C165723:::C26712:::C2915:::C7629...|
++-------------------------------------+-----+---+-----------------+----------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
