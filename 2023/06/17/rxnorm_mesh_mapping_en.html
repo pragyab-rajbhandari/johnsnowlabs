@@ -522,32 +522,37 @@ function wrapWordInSpan(data, wordToWrap) {
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span> 
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"rxnorm_mesh_mapping"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>
-<span class="n">pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"1191 6809 47613"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">([</span><span class="s">"1191"</span><span class="p">,</span> <span class="s">"6809"</span><span class="p">,</span> <span class="s">"47613"</span><span class="p">])</span>
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
+
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"rxnorm_mesh_mapping"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"1191 6809 47613"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">([</span><span class="err">"1191"</span>, <span class="err">"6809"</span>, <span class="err">"47613"</span><span class="o">])</span>
 </code></pre></div>  </div>
 
   <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.resolve.rxnorm.mesh"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""1191 6809 47613"""</span><span class="p">)</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.resolve.rxnorm.mesh"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Put your text here."""</span><span class="p">)</span>
 </code></pre></div>  </div>
 
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span><span class="s1">'rxnorm'</span>: <span class="o">[</span><span class="s1">'1191'</span>, <span class="s1">'6809'</span>, <span class="s1">'47613'</span><span class="o">]</span>,
-<span class="s1">'mesh'</span>: <span class="o">[</span><span class="s1">'D001241'</span>, <span class="s1">'D008687'</span>, <span class="s1">'D019355'</span><span class="o">]}</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|   | rxnorm | mesh_code |
+|--:|-------:|----------:|
+| 0 |   1191 |   D001241 |
+| 1 |   6809 |   D008687 |
+| 2 |  47613 |   D019355 |
 
 
 Note: 
 
 | RxNorm     | Details             | 
 | <span class="nt">----------</span> | <span class="nt">-------------------</span>:|
-| 1191       |  aspirin            |
+| 1191       | aspirin             |
 | 6809       | metformin           |
 | 47613      | calcium citrate     |
 

@@ -526,13 +526,13 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"snomed_icd10cm_mapping"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="mi">128041000119107</span> <span class="mi">292278006</span> <span class="mi">293072005</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">([</span><span class="s">"128041000119107"</span><span class="p">,</span> <span class="s">"292278006"</span><span class="p">,</span> <span class="s">"293072005"</span><span class="p">])</span>
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"snomed_icd10cm_mapping"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="mi">128041000119107</span> <span class="mi">292278006</span> <span class="mi">293072005</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">([</span><span class="err">"128041000119107"</span>, <span class="err">"292278006"</span>, <span class="err">"293072005"</span><span class="o">])</span>
 </code></pre></div>  </div>
 
   <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
@@ -543,9 +543,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | snomed_code                             | icd10cm_code               |
-|---:|:----------------------------------------|:---------------------------|
-|  0 | 128041000119107 | 292278006 | 293072005 | K22.70 | T43.595 | T37.1X5 |
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|   | icd10cm_code |     snomed_code |
+|--:|-------------:|----------------:|
+| 0 |       K22.70 | 128041000119107 |
+| 1 |      T43.595 |       292278006 |
+| 2 |      T37.1X5 |       293072005 |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
