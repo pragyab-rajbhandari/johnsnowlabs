@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Explain Clinical Document - Granular | explain_clinical_doc_granular | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Text Classification for Age | genericclassifier_age_e5 | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline is designed to:  extract clinical entities  assign assertion status to the extracted entities  establish relations between the extracted entitiesfrom clinical texts. In this pipeline, ner_jsl NER model, assertion_jsl assertion model, and re_test_result_date relation extraction model were use...">
-<!-- <link rel="canonical" href="/2024/01/26/explain_clinical_doc_granular_en.html"> -->
-<link rel="canonical" href="/2024/01/26/explain_clinical_doc_granular_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThe GenericClassifierModel is a sophisticated text classification tool tailored to identify and categorize text according to different age groups. This model distinguishes among ‘Old Adult’, ‘Adult’, and ‘Child and Teen’ contexts, providing valuable insights into textual data that references age-specific ...">
+<!-- <link rel="canonical" href="/2024/02/12/genericclassifier_age_e5_en.html"> -->
+<link rel="canonical" href="/2024/02/12/genericclassifier_age_e5_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,117 +497,126 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-01-26-explain_clinical_doc_granular_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-02-12-genericclassifier_age_e5_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 26, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-26T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Explain Clinical Document - Granular</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Explain Clinical Document - Granular"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>entity_resolution</li><li>relation_extraction</li><li>assertion_status</li><li>clinical</li><li>pipeline</li><li>granular</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,entity_resolution,relation_extraction,assertion_status,clinical,pipeline,granular"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Feb 12, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-02-12T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Text Classification for Age</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Text Classification for Age"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>classification</li><li>age</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-02-12T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,licensed,classification,age"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline is designed to:</p>
+<p>The GenericClassifierModel is a sophisticated text classification tool tailored to identify and categorize text according to different age groups. This model distinguishes among ‘Old Adult’, ‘Adult’, and ‘Child and Teen’ contexts, providing valuable insights into textual data that references age-specific scenarios or concerns. Detailed information about the classes is as follows:</p>
 
-<ul>
-  <li>extract clinical entities</li>
-  <li>assign assertion status to the extracted entities</li>
-  <li>establish relations between the extracted entities</li>
-</ul>
+<p><code class="language-plaintext highlighter-rouge">Old Adult</code>: This category includes texts that pertain to older adults, often addressing age-specific health issues, lifestyle considerations, or geriatric care. For instance, a text might discuss mobility challenges or medical conditions more prevalent in elderly populations.</p>
 
-<p>from clinical texts. In this pipeline, <a href="https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html">ner_jsl</a> NER model, <a href="https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_en.html">assertion_jsl</a> assertion model, and <a href="https://nlp.johnsnowlabs.com/2021/02/24/re_test_result_date_en.html">re_test_result_date</a> relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract.</p>
+<p><code class="language-plaintext highlighter-rouge">Adult</code>: Texts under this classification refer to the adult age group, encompassing a wide range of topics from general health care to workplace issues. These texts often deal with health, social, and economic aspects relevant to the adult population.</p>
 
-<ul>
-  <li>
-    <p>Clinical Entity Labels: <code class="language-plaintext highlighter-rouge">Admission_Discharge</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Alcohol</code>, <code class="language-plaintext highlighter-rouge">Allergen</code>, <code class="language-plaintext highlighter-rouge">BMI</code>, <code class="language-plaintext highlighter-rouge">Birth_Entity</code>, <code class="language-plaintext highlighter-rouge">Blood_Pressure</code>, <code class="language-plaintext highlighter-rouge">Cerebrovascular_Disease</code>, <code class="language-plaintext highlighter-rouge">Clinical_Dept</code>, <code class="language-plaintext highlighter-rouge">Communicable_Disease</code>, <code class="language-plaintext highlighter-rouge">Date</code>, <code class="language-plaintext highlighter-rouge">Death_Entity</code>, <code class="language-plaintext highlighter-rouge">Diabetes</code>, <code class="language-plaintext highlighter-rouge">Diet</code>, <code class="language-plaintext highlighter-rouge">Direction</code>, <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">Dosage</code>, <code class="language-plaintext highlighter-rouge">Drug_BrandName</code>, <code class="language-plaintext highlighter-rouge">Drug_Ingredient</code>, <code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">EKG_Findings</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">External_body_part_or_region</code>, <code class="language-plaintext highlighter-rouge">Family_History_Header</code>, <code class="language-plaintext highlighter-rouge">Fetus_NewBorn</code>, <code class="language-plaintext highlighter-rouge">Form</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">HDL</code>, <code class="language-plaintext highlighter-rouge">Heart_Disease</code>, <code class="language-plaintext highlighter-rouge">Height</code>, <code class="language-plaintext highlighter-rouge">Hyperlipidemia</code>, <code class="language-plaintext highlighter-rouge">Hypertension</code>, <code class="language-plaintext highlighter-rouge">ImagingFindings</code>, <code class="language-plaintext highlighter-rouge">Imaging_Technique</code>, <code class="language-plaintext highlighter-rouge">Injury_or_Poisoning</code>, <code class="language-plaintext highlighter-rouge">Internal_organ_or_component</code>, <code class="language-plaintext highlighter-rouge">Kidney_Disease</code>, <code class="language-plaintext highlighter-rouge">LDL</code>, <code class="language-plaintext highlighter-rouge">Labour_Delivery</code>, <code class="language-plaintext highlighter-rouge">Medical_Device</code>, <code class="language-plaintext highlighter-rouge">Medical_History_Header</code>, <code class="language-plaintext highlighter-rouge">Modifier</code>, <code class="language-plaintext highlighter-rouge">O2_Saturation</code>, <code class="language-plaintext highlighter-rouge">Obesity</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>, <code class="language-plaintext highlighter-rouge">Overweight</code>, <code class="language-plaintext highlighter-rouge">Oxygen_Therapy</code>, <code class="language-plaintext highlighter-rouge">Pregnancy</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">Psychological_Condition</code>, <code class="language-plaintext highlighter-rouge">Pulse</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>, <code class="language-plaintext highlighter-rouge">Relationship_Status</code>, <code class="language-plaintext highlighter-rouge">RelativeDate</code>, <code class="language-plaintext highlighter-rouge">RelativeTime</code>, <code class="language-plaintext highlighter-rouge">Respiration</code>, <code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">Section_Header</code>, <code class="language-plaintext highlighter-rouge">Sexually_Active_or_Sexual_Orientation</code>, <code class="language-plaintext highlighter-rouge">Smoking</code>, <code class="language-plaintext highlighter-rouge">Social_History_Header</code>, <code class="language-plaintext highlighter-rouge">Strength</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Temperature</code>, <code class="language-plaintext highlighter-rouge">Test</code>, <code class="language-plaintext highlighter-rouge">Test_Result</code>, <code class="language-plaintext highlighter-rouge">Time</code>, <code class="language-plaintext highlighter-rouge">Total_Cholesterol</code>, <code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Triglycerides</code>, <code class="language-plaintext highlighter-rouge">VS_Finding</code>, <code class="language-plaintext highlighter-rouge">Vaccine</code>, <code class="language-plaintext highlighter-rouge">Vaccine_Name</code>, <code class="language-plaintext highlighter-rouge">Vital_Signs_Header</code>, <code class="language-plaintext highlighter-rouge">Weight</code></p>
-  </li>
-  <li>
-    <p>Assertion Status Labels: <code class="language-plaintext highlighter-rouge">Hypothetical</code>, <code class="language-plaintext highlighter-rouge">Someoneelse</code>, <code class="language-plaintext highlighter-rouge">Past</code>, <code class="language-plaintext highlighter-rouge">Absent</code>, <code class="language-plaintext highlighter-rouge">Family</code>, <code class="language-plaintext highlighter-rouge">Planned</code>, <code class="language-plaintext highlighter-rouge">Possible</code>, <code class="language-plaintext highlighter-rouge">Present</code></p>
-  </li>
-  <li>
-    <p>Relation Extraction Labels: <code class="language-plaintext highlighter-rouge">is_finding_of</code>, <code class="language-plaintext highlighter-rouge">is_date_of</code>, <code class="language-plaintext highlighter-rouge">is_result_of</code>, <code class="language-plaintext highlighter-rouge">O</code></p>
-  </li>
-</ul>
+<p><code class="language-plaintext highlighter-rouge">Child and Teen</code>: This classification captures texts related to children and teenagers, focusing on pediatric health, developmental stages, educational concerns, and youth-related social issues.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Other/Unknown</code>: This category includes texts where the patient’s age is not specified or is irrelevant to the content. These texts may cover a wide range of topics applicable to all age groups or focus on general health and wellness issues that are not age-specific. For example, a text might discuss the importance of maintaining a balanced diet and regular exercise routine for overall health, without targeting a specific age group.</p>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Old Adult</code>, <code class="language-plaintext highlighter-rouge">Adult</code>, <code class="language-plaintext highlighter-rouge">Child and Teen</code>, <code class="language-plaintext highlighter-rouge">Other/Unknown</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_5.2.1_3.0_1706288377782.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_5.2.1_3.0_1706288377782.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/genericclassifier_age_e5_en_5.2.1_3.0_1707776992202.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/genericclassifier_age_e5_en_5.2.1_3.0_1707776992202.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+        
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">E5Embeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"e5_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMaxSentenceLength</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
 
-<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_granular"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">features_asm</span> <span class="o">=</span> <span class="n">FeaturesAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"features"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">"""The patient admitted for gastrointestinal pathology, under working treatment.
-History of prior heart murmur with echocardiogram findings as above on March 1998.
-According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
-Based on the above findings, we will treat her medically with ACE inhibitors and diuretics and see how she fares."""</span><span class="p">)</span>
+<span class="n">generic_classifier</span> <span class="o">=</span> <span class="n">GenericClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"genericclassifier_age_e5"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
 
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">features_asm</span><span class="p">,</span>
+    <span class="n">generic_classifier</span>    
+<span class="p">])</span>
+
+<span class="n">sample_texts</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s">"""The patient presents with conditions often associated with the stresses and lifestyle of early career and possibly higher education stages, including sleep irregularities and repetitive stress injuries. There's a notable emphasis on preventative care, with discussions around lifestyle choices that can impact long-term health, such as smoking cessation, regular exercise, and balanced nutrition. The patient is also counseled on mental health, particularly in managing stress and anxiety that may arise from personal and professional responsibilities and ambitions at this stage of life."""</span><span class="p">,</span>
+<span class="s">"""The patient, in the infancy stage, is experiencing typical developmental milestones such as teething and learning to crawl. Regular check-ups focus on monitoring growth patterns, ensuring proper nutrition, especially with the transition from milk to solid foods, and addressing common infant concerns like colic and sleep patterns. Immunizations are up-to-date, following the recommended schedule for this critical early life stage."""</span><span class="p">,</span>
+<span class="s">"""The toddler patient shows normal signs of curiosity and motor skill development for their age. Concerns include potential delays in speech development and the challenges of transitioning from crib to bed. Nutritional guidance is provided, focusing on balanced diets and managing the picky eating phase common in toddlers. Safety in the home environment is also discussed, given the patient's increased mobility and exploratory behavior."""</span><span class="p">,</span>
+<span class="s">"""The senior patient presents with age-related issues such as reduced hearing and vision, arthritis, and memory lapses. Emphasis is on managing chronic conditions, maintaining social engagement, and adapting lifestyle to changing physical abilities. Discussions include medication management, dietary adjustments to suit older digestion, and the importance of regular, low-impact exercise."""</span><span class="p">,</span>
+<span class="s">"""The late teenage patient is dealing with final growth spurts, the stress of impending adulthood, and decisions about higher education or career paths. Health discussions include maintaining a balanced diet, the importance of regular sleep patterns, and managing academic and social pressures. Mental health support is considered crucial at this stage, with a focus on building resilience and coping mechanisms."""</span><span class="p">,</span>
+<span class="s">"""The patient, faces adjustments to a new lifestyle with changes in daily routines and social interactions. Health concerns include managing the transition from an active work life to more leisure time, which may impact physical and mental health. Preventative health measures are emphasized, along with the importance of staying mentally and physically active and engaged in the community."""</span>
+<span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sample_texts</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+        
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">E5Embeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"e5_large"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">)\</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">document</span><span class="err">"</span><span class="o">])\</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)\</span>
+    <span class="o">.</span><span class="py">setMaxSentenceLength</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"explain_clinical_doc_granular"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">features_asm</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FeaturesAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"features"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="s">"""The patient admitted for gastrointestinal pathology, under working treatment.
-History of prior heart murmur with echocardiogram findings as above on March 1998.
-According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
-Based on the above findings, we will treat her medically with ACE inhibitors and diuretics and see how she fares."""</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">generic_classifier</span> <span class="k">=</span> <span class="nv">GenericClassifierModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"genericclassifier_age_e5"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"features"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"prediction"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span>
+    <span class="n">embeddings</span><span class="o">,</span>
+    <span class="n">features_asm</span><span class="o">,</span>
+    <span class="n">generic_classifier</span>    
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"""The patient presents with conditions often associated with the stresses and lifestyle of early career and possibly higher education stages, including sleep irregularities and repetitive stress injuries. There's a notable emphasis on preventative care, with discussions around lifestyle choices that can impact long-term health, such as smoking cessation, regular exercise, and balanced nutrition. The patient is also counseled on mental health, particularly in managing stress and anxiety that may arise from personal and professional responsibilities and ambitions at this stage of life."""</span><span class="o">,</span>
+<span class="s">"""The patient, in the infancy stage, is experiencing typical developmental milestones such as teething and learning to crawl. Regular check-ups focus on monitoring growth patterns, ensuring proper nutrition, especially with the transition from milk to solid foods, and addressing common infant concerns like colic and sleep patterns. Immunizations are up-to-date, following the recommended schedule for this critical early life stage."""</span><span class="o">,</span>
+<span class="s">"""The toddler patient shows normal signs of curiosity and motor skill development for their age. Concerns include potential delays in speech development and the challenges of transitioning from crib to bed. Nutritional guidance is provided, focusing on balanced diets and managing the picky eating phase common in toddlers. Safety in the home environment is also discussed, given the patient's increased mobility and exploratory behavior."""</span><span class="o">,</span>
+<span class="s">"""The senior patient presents with age-related issues such as reduced hearing and vision, arthritis, and memory lapses. Emphasis is on managing chronic conditions, maintaining social engagement, and adapting lifestyle to changing physical abilities. Discussions include medication management, dietary adjustments to suit older digestion, and the importance of regular, low-impact exercise."""</span><span class="o">,</span>
+<span class="s">"""The late teenage patient is dealing with final growth spurts, the stress of impending adulthood, and decisions about higher education or career paths. Health discussions include maintaining a balanced diet, the importance of regular sleep patterns, and managing academic and social pressures. Mental health support is considered crucial at this stage, with a focus on building resilience and coping mechanisms."""</span><span class="o">,</span>
+<span class="s">"""The patient, faces adjustments to a new lifestyle with changes in daily routines and social interactions. Health concerns include managing the transition from an active work life to more leisure time, which may impact physical and mental health. Preventative health measures are emphasized, along with the importance of staying mentally and physically active and engaged in the community."""</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ner</span>
-
-|    | chunks                     |   begin |   end | entities            |
-|---:|:---------------------------|--------:|------:|:--------------------|
-|  0 | admitted                   |      12 |    19 | Admission_Discharge |
-|  1 | gastrointestinal pathology |      25 |    50 | Clinical_Dept       |
-|  2 | heart murmur               |      95 |   106 | Heart_Disease       |
-|  3 | echocardiogram             |     113 |   126 | Test                |
-|  4 | March 1998                 |     149 |   158 | Date                |
-|  5 | echocardiogram             |     185 |   198 | Test                |
-|  6 | normal                     |     220 |   225 | Test_Result         |
-|  7 | left ventricular <span class="k">function</span>  |     227 |   251 | Test                |
-|  8 | left atrial enlargement    |     258 |   280 | Heart_Disease       |
-|  9 | her                        |     327 |   329 | Gender              |
-| 10 | ACE inhibitors             |     346 |   359 | Drug_Ingredient     |
-| 11 | diuretics                  |     365 |   373 | Drug_Ingredient     |
-| 12 | she                        |     387 |   389 | Gender              |
-
-<span class="c"># assertion</span>
-
-|sentence_id|begin|end|entity                   |label          |assertion_status|
-+-----------+-----+---+-------------------------+---------------+----------------+
-|1          |96   |107|heart murmur             |Heart_Disease  |Past            |
-|1          |114  |127|echocardiogram           |Test           |Past            |
-|2          |187  |200|echocardiogram           |Test           |Present         |
-|2          |222  |227|normal                   |Test_Result    |Present         |
-|2          |229  |253|left ventricular <span class="k">function</span>|Test           |Present         |
-|2          |260  |282|left atrial enlargement  |Heart_Disease  |Present         |
-|3          |348  |361|ACE inhibitors           |Drug_Ingredient|Planned         |
-|3          |367  |375|diuretics                |Drug_Ingredient|Planned         |
-
-
-<span class="c">#relation</span>
-
-|sentence_id|relations    |relations_entity1|relations_chunk1         |relations_entity2|relations_chunk2         |
-+-----------+-------------+-----------------+-------------------------+-----------------+-------------------------+
-|1          |is_finding_of|Heart_Disease    |heart murmur             |Test             |echocardiogram           |
-|1          |is_date_of   |Heart_Disease    |heart murmur             |Date             |March 1998               |
-|1          |is_date_of   |Test             |echocardiogram           |Date             |March 1998               |
-|2          |is_finding_of|Test             |echocardiogram           |Heart_Disease    |left atrial enlargement  |
-|2          |is_result_of |Test_Result      |normal                   |Test             |left ventricular <span class="k">function</span>|
-|2          |is_finding_of|Test             |left ventricular <span class="k">function</span>|Heart_Disease    |left atrial enlargement  |
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+----------------+
+|                                                                                                text|          result|
++----------------------------------------------------------------------------------------------------+----------------+
+|The patient presents with conditions often associated with the stresses and lifestyle of early ca...|         <span class="o">[</span>Adult]|
+|The patient, <span class="k">in </span>the infancy stage, is experiencing typical developmental milestones such as teeth...|[Child and Teen]|
+|The toddler patient shows normal signs of curiosity and motor skill development <span class="k">for </span>their age. Co...|[Child and Teen]|
+|The senior patient presents with age-related issues such as reduced hearing and vision, arthritis...|     <span class="o">[</span>Old Adult]|
+|The late teenage patient is dealing with final growth spurts, the stress of impending adulthood, ...|[Child and Teen]|
+|The patient, faces adjustments to a new lifestyle with changes <span class="k">in </span>daily routines and social inter...| <span class="o">[</span>Other/Unknown]|
++----------------------------------------------------------------------------------------------------+----------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -616,11 +625,7 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>explain_clinical_doc_granular</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>genericclassifier_age_e5</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -635,32 +640,40 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[features]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[prediction]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.7 GB</td>
+      <td>4.3 MB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="included-models">Included Models</h2>
+<h2 id="references">References</h2>
 
-<ul>
-  <li>DocumentAssembler</li>
-  <li>SentenceDetectorDLModel</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>AssertionDLModel</li>
-  <li>PerceptronModel</li>
-  <li>DependencyParserModel</li>
-  <li>RelationExtractionModel</li>
-</ul>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-26T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>In-house annotated datasets</p>
+
+<h2 id="benchmarking">Benchmarking</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>label           precision  recall  f1-score  support 
+Adult           0.82       0.80    0.81      367     
+Child and Teen  0.95       0.91    0.93      271     
+Old Adult       0.84       0.83    0.84      187     
+Other/Unknown   0.81       0.86    0.84      342     
+accuracy        -          -       0.85      1167    
+macro-avg       0.86       0.85    0.85      1167    
+weighted-avg    0.85       0.85    0.85      1167    
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-02-12T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -845,7 +858,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/26/sbiobertresolve_snomed_findings_en.html">Sentence Entity Resolver for Snomed Concepts, Findings version (sbiobert_base_cased_mli embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/29/explain_clinical_doc_oncology_en.html">Explain Clinical Document - Oncology</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/02/09/clinical_deidentification_obfuscation_small_en.html">Clinical Deidentification Pipeline - Obfuscation (Small)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/02/12/ner_deid_multilingual_xx.html">Detect PHI for Generic Deidentification(multilingual)</a></div></div></div>
 
 </div>
 </div>

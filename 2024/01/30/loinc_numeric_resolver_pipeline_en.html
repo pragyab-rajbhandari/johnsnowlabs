@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Explain Clinical Document - Granular | explain_clinical_doc_granular | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline for Logical Observation Identifiers Names and Codes (LOINC) | loinc_numeric_resolver_pipeline | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline is designed to:  extract clinical entities  assign assertion status to the extracted entities  establish relations between the extracted entitiesfrom clinical texts. In this pipeline, ner_jsl NER model, assertion_jsl assertion model, and re_test_result_date relation extraction model were use...">
-<!-- <link rel="canonical" href="/2024/01/26/explain_clinical_doc_granular_en.html"> -->
-<link rel="canonical" href="/2024/01/26/explain_clinical_doc_granular_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pipeline extracts TEST entities and maps them to their corresponding Logical Observation Identifiers Names and Codes(LOINC) codes using sbiobert_base_cased_mli sentence embeddings. It is trained with the numeric LOINC codes, without the inclusion of LOINC “Document Ontology” codes starting with the l...">
+<!-- <link rel="canonical" href="/2024/01/30/loinc_numeric_resolver_pipeline_en.html"> -->
+<link rel="canonical" href="/2024/01/30/loinc_numeric_resolver_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,43 +497,23 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-01-26-explain_clinical_doc_granular_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-01-30-loinc_numeric_resolver_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 26, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-26T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Explain Clinical Document - Granular</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Explain Clinical Document - Granular"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>entity_resolution</li><li>relation_extraction</li><li>assertion_status</li><li>clinical</li><li>pipeline</li><li>granular</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,entity_resolution,relation_extraction,assertion_status,clinical,pipeline,granular"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 30, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-30T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline for Logical Observation Identifiers Names and Codes (LOINC)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline for Logical Observation Identifiers Names and Codes (LOINC)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>clinical</li><li>loinc</li><li>pipeline</li><li>resolver</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-30T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,clinical,loinc,pipeline,resolver"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline is designed to:</p>
-
-<ul>
-  <li>extract clinical entities</li>
-  <li>assign assertion status to the extracted entities</li>
-  <li>establish relations between the extracted entities</li>
-</ul>
-
-<p>from clinical texts. In this pipeline, <a href="https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html">ner_jsl</a> NER model, <a href="https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_en.html">assertion_jsl</a> assertion model, and <a href="https://nlp.johnsnowlabs.com/2021/02/24/re_test_result_date_en.html">re_test_result_date</a> relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract.</p>
-
-<ul>
-  <li>
-    <p>Clinical Entity Labels: <code class="language-plaintext highlighter-rouge">Admission_Discharge</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Alcohol</code>, <code class="language-plaintext highlighter-rouge">Allergen</code>, <code class="language-plaintext highlighter-rouge">BMI</code>, <code class="language-plaintext highlighter-rouge">Birth_Entity</code>, <code class="language-plaintext highlighter-rouge">Blood_Pressure</code>, <code class="language-plaintext highlighter-rouge">Cerebrovascular_Disease</code>, <code class="language-plaintext highlighter-rouge">Clinical_Dept</code>, <code class="language-plaintext highlighter-rouge">Communicable_Disease</code>, <code class="language-plaintext highlighter-rouge">Date</code>, <code class="language-plaintext highlighter-rouge">Death_Entity</code>, <code class="language-plaintext highlighter-rouge">Diabetes</code>, <code class="language-plaintext highlighter-rouge">Diet</code>, <code class="language-plaintext highlighter-rouge">Direction</code>, <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">Dosage</code>, <code class="language-plaintext highlighter-rouge">Drug_BrandName</code>, <code class="language-plaintext highlighter-rouge">Drug_Ingredient</code>, <code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">EKG_Findings</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">External_body_part_or_region</code>, <code class="language-plaintext highlighter-rouge">Family_History_Header</code>, <code class="language-plaintext highlighter-rouge">Fetus_NewBorn</code>, <code class="language-plaintext highlighter-rouge">Form</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">HDL</code>, <code class="language-plaintext highlighter-rouge">Heart_Disease</code>, <code class="language-plaintext highlighter-rouge">Height</code>, <code class="language-plaintext highlighter-rouge">Hyperlipidemia</code>, <code class="language-plaintext highlighter-rouge">Hypertension</code>, <code class="language-plaintext highlighter-rouge">ImagingFindings</code>, <code class="language-plaintext highlighter-rouge">Imaging_Technique</code>, <code class="language-plaintext highlighter-rouge">Injury_or_Poisoning</code>, <code class="language-plaintext highlighter-rouge">Internal_organ_or_component</code>, <code class="language-plaintext highlighter-rouge">Kidney_Disease</code>, <code class="language-plaintext highlighter-rouge">LDL</code>, <code class="language-plaintext highlighter-rouge">Labour_Delivery</code>, <code class="language-plaintext highlighter-rouge">Medical_Device</code>, <code class="language-plaintext highlighter-rouge">Medical_History_Header</code>, <code class="language-plaintext highlighter-rouge">Modifier</code>, <code class="language-plaintext highlighter-rouge">O2_Saturation</code>, <code class="language-plaintext highlighter-rouge">Obesity</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>, <code class="language-plaintext highlighter-rouge">Overweight</code>, <code class="language-plaintext highlighter-rouge">Oxygen_Therapy</code>, <code class="language-plaintext highlighter-rouge">Pregnancy</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">Psychological_Condition</code>, <code class="language-plaintext highlighter-rouge">Pulse</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>, <code class="language-plaintext highlighter-rouge">Relationship_Status</code>, <code class="language-plaintext highlighter-rouge">RelativeDate</code>, <code class="language-plaintext highlighter-rouge">RelativeTime</code>, <code class="language-plaintext highlighter-rouge">Respiration</code>, <code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">Section_Header</code>, <code class="language-plaintext highlighter-rouge">Sexually_Active_or_Sexual_Orientation</code>, <code class="language-plaintext highlighter-rouge">Smoking</code>, <code class="language-plaintext highlighter-rouge">Social_History_Header</code>, <code class="language-plaintext highlighter-rouge">Strength</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Temperature</code>, <code class="language-plaintext highlighter-rouge">Test</code>, <code class="language-plaintext highlighter-rouge">Test_Result</code>, <code class="language-plaintext highlighter-rouge">Time</code>, <code class="language-plaintext highlighter-rouge">Total_Cholesterol</code>, <code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Triglycerides</code>, <code class="language-plaintext highlighter-rouge">VS_Finding</code>, <code class="language-plaintext highlighter-rouge">Vaccine</code>, <code class="language-plaintext highlighter-rouge">Vaccine_Name</code>, <code class="language-plaintext highlighter-rouge">Vital_Signs_Header</code>, <code class="language-plaintext highlighter-rouge">Weight</code></p>
-  </li>
-  <li>
-    <p>Assertion Status Labels: <code class="language-plaintext highlighter-rouge">Hypothetical</code>, <code class="language-plaintext highlighter-rouge">Someoneelse</code>, <code class="language-plaintext highlighter-rouge">Past</code>, <code class="language-plaintext highlighter-rouge">Absent</code>, <code class="language-plaintext highlighter-rouge">Family</code>, <code class="language-plaintext highlighter-rouge">Planned</code>, <code class="language-plaintext highlighter-rouge">Possible</code>, <code class="language-plaintext highlighter-rouge">Present</code></p>
-  </li>
-  <li>
-    <p>Relation Extraction Labels: <code class="language-plaintext highlighter-rouge">is_finding_of</code>, <code class="language-plaintext highlighter-rouge">is_date_of</code>, <code class="language-plaintext highlighter-rouge">is_result_of</code>, <code class="language-plaintext highlighter-rouge">O</code></p>
-  </li>
-</ul>
+<p>This pipeline extracts <code class="language-plaintext highlighter-rouge">TEST</code> entities and maps them to their corresponding Logical Observation Identifiers Names and Codes(LOINC) codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> sentence embeddings. It is trained with the numeric LOINC codes, without the inclusion of LOINC “Document Ontology” codes starting with the letter “L”. It also provides the official resolution of the codes within the brackets.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_5.2.1_3.0_1706288377782.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_5.2.1_3.0_1706288377782.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/loinc_numeric_resolver_pipeline_en_5.2.1_3.0_1706630342083.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/loinc_numeric_resolver_pipeline_en_5.2.1_3.0_1706630342083.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -543,71 +523,44 @@ function wrapWordInSpan(data, wordToWrap) {
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_granular"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">loinc_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"loinc_numeric_resolver_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">"""The patient admitted for gastrointestinal pathology, under working treatment.
-History of prior heart murmur with echocardiogram findings as above on March 1998.
-According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
-Based on the above findings, we will treat her medically with ACE inhibitors and diuretics and see how she fares."""</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""A 65-year-old woman presents to the office with generalized fatigue for the last 4 months. She used to walk 1 mile each evening but now gets tired after 1-2 blocks. She has a history of Crohn disease and hypertension for which she receives appropriate medications. She is married and lives with her husband. She eats a balanced diet that includes chicken, fish, pork, fruits, and vegetables. She rarely drinks alcohol and denies tobacco use.  A physical examination is unremarkable. Laboratory studies show the following:
+Hemoglobin: 9.8 g/dL
+Hematocrit: 32%
+Mean Corpuscular Volume: 110 μm3"""</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">loinc_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"explain_clinical_doc_granular"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">loinc_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"loinc_numeric_resolver_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="s">"""The patient admitted for gastrointestinal pathology, under working treatment.
-History of prior heart murmur with echocardiogram findings as above on March 1998.
-According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
-Based on the above findings, we will treat her medically with ACE inhibitors and diuretics and see how she fares."""</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""A 65-year-old woman presents to the office with generalized fatigue for the last 4 months. She used to walk 1 mile each evening but now gets tired after 1-2 blocks. She has a history of Crohn disease and hypertension for which she receives appropriate medications. She is married and lives with her husband. She eats a balanced diet that includes chicken, fish, pork, fruits, and vegetables. She rarely drinks alcohol and denies tobacco use.  A physical examination is unremarkable. Laboratory studies show the following:
+Hemoglobin: 9.8 g/dL
+Hematocrit: 32%
+Mean Corpuscular Volume: 110 μm3"""</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">loinc_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
 
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ner</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
++-----------------------+-----+---+-------+-----------------------------------------------------------------+-----------------------------------------------------------------+-----------------------------------------------------------------+
+|                 chunks|begin|end|   code|                                                        all_codes|                                                      resolutions|                                                    all_distances|
++-----------------------+-----+---+-------+-----------------------------------------------------------------+-----------------------------------------------------------------+-----------------------------------------------------------------+
+| A physical examination|  443|464|55286-9|[55286-9, 11384-5, 67668-4, 100223-7, 29545-1, 79897-5, 32427-...|[Physical examination by body areas <span class="o">[</span>Physical examination by b...|[0.0704, 0.0913, 0.0908, 0.0910, 0.0961, 0.1091, 0.1114, 0.111...|
+|     Laboratory studies|  483|500|26436-6|[26436-6, 52482-7, 11502-2, 34075-2, 68989-3, 89756-1, 89763-7...|[Laboratory studies <span class="o">[</span>Laboratory studies], Laboratory <span class="o">[</span>Laborato...|[0.0000, 0.0648, 0.0748, 0.1057, 0.1051, 0.1096, 0.1128, 0.120...|
+|             Hemoglobin|  522|531|14775-1|[14775-1, 34663-5, 18277-4, 10346-5, 53224-2, 40546-4, 4593-0,...|[Hemoglobin <span class="o">[</span>Hemoglobin], Hemoglobin S <span class="o">[</span>Hemoglobin S], Hemoglo...|[0.0000, 0.0199, 0.0234, 0.0242, 0.0304, 0.0338, 0.0373, 0.044...|
+|             Hematocrit|  543|552|11151-8|[11151-8, 16931-8, 32354-3, 20570-8, 11153-4, 39227-4, 42908-4...|[Hematocrit <span class="o">[</span>Hematocrit], Hematocrit/Hemoglobin <span class="o">[</span>Hematocrit/He...|[0.0000, 0.0506, 0.0590, 0.0625, 0.0675, 0.0740, 0.1035, 0.101...|
+|Mean Corpuscular Volume|  559|581|11272-2|[11272-2, 30386-7, 48706-6, 30899-9, 51641-9, 33878-0, 11666-5...|[Erythrocyte mean corpuscular volume <span class="o">[</span>Erythrocyte mean corpusc...|[0.0857, 0.1056, 0.1270, 0.1213, 0.1289, 0.1257, 0.1352, 0.142...|
++-----------------------+-----+---+-------+-----------------------------------------------------------------+-----------------------------------------------------------------+-----------------------------------------------------------------+
 
-|    | chunks                     |   begin |   end | entities            |
-|---:|:---------------------------|--------:|------:|:--------------------|
-|  0 | admitted                   |      12 |    19 | Admission_Discharge |
-|  1 | gastrointestinal pathology |      25 |    50 | Clinical_Dept       |
-|  2 | heart murmur               |      95 |   106 | Heart_Disease       |
-|  3 | echocardiogram             |     113 |   126 | Test                |
-|  4 | March 1998                 |     149 |   158 | Date                |
-|  5 | echocardiogram             |     185 |   198 | Test                |
-|  6 | normal                     |     220 |   225 | Test_Result         |
-|  7 | left ventricular <span class="k">function</span>  |     227 |   251 | Test                |
-|  8 | left atrial enlargement    |     258 |   280 | Heart_Disease       |
-|  9 | her                        |     327 |   329 | Gender              |
-| 10 | ACE inhibitors             |     346 |   359 | Drug_Ingredient     |
-| 11 | diuretics                  |     365 |   373 | Drug_Ingredient     |
-| 12 | she                        |     387 |   389 | Gender              |
-
-<span class="c"># assertion</span>
-
-|sentence_id|begin|end|entity                   |label          |assertion_status|
-+-----------+-----+---+-------------------------+---------------+----------------+
-|1          |96   |107|heart murmur             |Heart_Disease  |Past            |
-|1          |114  |127|echocardiogram           |Test           |Past            |
-|2          |187  |200|echocardiogram           |Test           |Present         |
-|2          |222  |227|normal                   |Test_Result    |Present         |
-|2          |229  |253|left ventricular <span class="k">function</span>|Test           |Present         |
-|2          |260  |282|left atrial enlargement  |Heart_Disease  |Present         |
-|3          |348  |361|ACE inhibitors           |Drug_Ingredient|Planned         |
-|3          |367  |375|diuretics                |Drug_Ingredient|Planned         |
-
-
-<span class="c">#relation</span>
-
-|sentence_id|relations    |relations_entity1|relations_chunk1         |relations_entity2|relations_chunk2         |
-+-----------+-------------+-----------------+-------------------------+-----------------+-------------------------+
-|1          |is_finding_of|Heart_Disease    |heart murmur             |Test             |echocardiogram           |
-|1          |is_date_of   |Heart_Disease    |heart murmur             |Date             |March 1998               |
-|1          |is_date_of   |Test             |echocardiogram           |Date             |March 1998               |
-|2          |is_finding_of|Test             |echocardiogram           |Heart_Disease    |left atrial enlargement  |
-|2          |is_result_of |Test_Result      |normal                   |Test             |left ventricular <span class="k">function</span>|
-|2          |is_finding_of|Test             |left ventricular <span class="k">function</span>|Heart_Disease    |left atrial enlargement  |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -616,7 +569,7 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>explain_clinical_doc_granular</td>
+      <td>loinc_numeric_resolver_pipeline</td>
     </tr>
     <tr>
       <td>Type:</td>
@@ -640,7 +593,7 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.7 GB</td>
+      <td>2.9 GB</td>
     </tr>
   </tbody>
 </table>
@@ -654,13 +607,14 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
   <li>WordEmbeddingsModel</li>
   <li>MedicalNerModel</li>
   <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
   <li>NerConverterInternalModel</li>
-  <li>AssertionDLModel</li>
-  <li>PerceptronModel</li>
-  <li>DependencyParserModel</li>
-  <li>RelationExtractionModel</li>
+  <li>ChunkMergeModel</li>
+  <li>Chunk2Doc</li>
+  <li>BertSentenceEmbeddings</li>
+  <li>SentenceEntityResolverModel</li>
 </ul>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-26T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-30T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -845,7 +799,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/26/sbiobertresolve_snomed_findings_en.html">Sentence Entity Resolver for Snomed Concepts, Findings version (sbiobert_base_cased_mli embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/29/explain_clinical_doc_oncology_en.html">Explain Clinical Document - Oncology</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/30/icd10cm_generalised_resolver_pipeline_en.html">Pipeline for ICD-10-CM (General 3-character Codes)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/31/snomed_procedures_measurements_resolver_pipeline_en.html">Pipeline for SNOMED Codes - Procedure and Measurement Version</a></div></div></div>
 
 </div>
 </div>

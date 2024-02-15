@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Explain Clinical Document - Granular | explain_clinical_doc_granular | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Explain Clinical Document - Oncology | explain_clinical_doc_oncology | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline is designed to:  extract clinical entities  assign assertion status to the extracted entities  establish relations between the extracted entitiesfrom clinical texts. In this pipeline, ner_jsl NER model, assertion_jsl assertion model, and re_test_result_date relation extraction model were use...">
-<!-- <link rel="canonical" href="/2024/01/26/explain_clinical_doc_granular_en.html"> -->
-<link rel="canonical" href="/2024/01/26/explain_clinical_doc_granular_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis specialized oncology pipeline can;      extract oncological entities,        assign assertion status to the extracted entities,        establish relations between the extracted entities from the clinical documents.  In this pipeline, seven NER, one assertion and two relation extraction model were use...">
+<!-- <link rel="canonical" href="/2024/01/29/explain_clinical_doc_oncology_en.html"> -->
+<link rel="canonical" href="/2024/01/29/explain_clinical_doc_oncology_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,43 +497,49 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-01-26-explain_clinical_doc_granular_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-01-29-explain_clinical_doc_oncology_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 26, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-26T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Explain Clinical Document - Granular</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Explain Clinical Document - Granular"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>entity_resolution</li><li>relation_extraction</li><li>assertion_status</li><li>clinical</li><li>pipeline</li><li>granular</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,entity_resolution,relation_extraction,assertion_status,clinical,pipeline,granular"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 29, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-29T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Explain Clinical Document - Oncology</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Explain Clinical Document - Oncology"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>oncology</li><li>pipeline</li><li>ner</li><li>assertion</li><li>relation_extraction</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-01-29T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,oncology,pipeline,ner,assertion,relation_extraction"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline is designed to:</p>
+<p>This specialized oncology pipeline can;</p>
 
 <ul>
-  <li>extract clinical entities</li>
-  <li>assign assertion status to the extracted entities</li>
-  <li>establish relations between the extracted entities</li>
+  <li>
+    <p>extract oncological entities,</p>
+  </li>
+  <li>
+    <p>assign assertion status to the extracted entities,</p>
+  </li>
+  <li>
+    <p>establish relations between the extracted entities from the clinical documents.</p>
+  </li>
 </ul>
 
-<p>from clinical texts. In this pipeline, <a href="https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html">ner_jsl</a> NER model, <a href="https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_en.html">assertion_jsl</a> assertion model, and <a href="https://nlp.johnsnowlabs.com/2021/02/24/re_test_result_date_en.html">re_test_result_date</a> relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract.</p>
+<p>In this pipeline, seven NER, one assertion and two relation extraction model were used to achieve those tasks.</p>
 
 <ul>
   <li>
-    <p>Clinical Entity Labels: <code class="language-plaintext highlighter-rouge">Admission_Discharge</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Alcohol</code>, <code class="language-plaintext highlighter-rouge">Allergen</code>, <code class="language-plaintext highlighter-rouge">BMI</code>, <code class="language-plaintext highlighter-rouge">Birth_Entity</code>, <code class="language-plaintext highlighter-rouge">Blood_Pressure</code>, <code class="language-plaintext highlighter-rouge">Cerebrovascular_Disease</code>, <code class="language-plaintext highlighter-rouge">Clinical_Dept</code>, <code class="language-plaintext highlighter-rouge">Communicable_Disease</code>, <code class="language-plaintext highlighter-rouge">Date</code>, <code class="language-plaintext highlighter-rouge">Death_Entity</code>, <code class="language-plaintext highlighter-rouge">Diabetes</code>, <code class="language-plaintext highlighter-rouge">Diet</code>, <code class="language-plaintext highlighter-rouge">Direction</code>, <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">Dosage</code>, <code class="language-plaintext highlighter-rouge">Drug_BrandName</code>, <code class="language-plaintext highlighter-rouge">Drug_Ingredient</code>, <code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">EKG_Findings</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">External_body_part_or_region</code>, <code class="language-plaintext highlighter-rouge">Family_History_Header</code>, <code class="language-plaintext highlighter-rouge">Fetus_NewBorn</code>, <code class="language-plaintext highlighter-rouge">Form</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">HDL</code>, <code class="language-plaintext highlighter-rouge">Heart_Disease</code>, <code class="language-plaintext highlighter-rouge">Height</code>, <code class="language-plaintext highlighter-rouge">Hyperlipidemia</code>, <code class="language-plaintext highlighter-rouge">Hypertension</code>, <code class="language-plaintext highlighter-rouge">ImagingFindings</code>, <code class="language-plaintext highlighter-rouge">Imaging_Technique</code>, <code class="language-plaintext highlighter-rouge">Injury_or_Poisoning</code>, <code class="language-plaintext highlighter-rouge">Internal_organ_or_component</code>, <code class="language-plaintext highlighter-rouge">Kidney_Disease</code>, <code class="language-plaintext highlighter-rouge">LDL</code>, <code class="language-plaintext highlighter-rouge">Labour_Delivery</code>, <code class="language-plaintext highlighter-rouge">Medical_Device</code>, <code class="language-plaintext highlighter-rouge">Medical_History_Header</code>, <code class="language-plaintext highlighter-rouge">Modifier</code>, <code class="language-plaintext highlighter-rouge">O2_Saturation</code>, <code class="language-plaintext highlighter-rouge">Obesity</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>, <code class="language-plaintext highlighter-rouge">Overweight</code>, <code class="language-plaintext highlighter-rouge">Oxygen_Therapy</code>, <code class="language-plaintext highlighter-rouge">Pregnancy</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">Psychological_Condition</code>, <code class="language-plaintext highlighter-rouge">Pulse</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>, <code class="language-plaintext highlighter-rouge">Relationship_Status</code>, <code class="language-plaintext highlighter-rouge">RelativeDate</code>, <code class="language-plaintext highlighter-rouge">RelativeTime</code>, <code class="language-plaintext highlighter-rouge">Respiration</code>, <code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">Section_Header</code>, <code class="language-plaintext highlighter-rouge">Sexually_Active_or_Sexual_Orientation</code>, <code class="language-plaintext highlighter-rouge">Smoking</code>, <code class="language-plaintext highlighter-rouge">Social_History_Header</code>, <code class="language-plaintext highlighter-rouge">Strength</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Temperature</code>, <code class="language-plaintext highlighter-rouge">Test</code>, <code class="language-plaintext highlighter-rouge">Test_Result</code>, <code class="language-plaintext highlighter-rouge">Time</code>, <code class="language-plaintext highlighter-rouge">Total_Cholesterol</code>, <code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Triglycerides</code>, <code class="language-plaintext highlighter-rouge">VS_Finding</code>, <code class="language-plaintext highlighter-rouge">Vaccine</code>, <code class="language-plaintext highlighter-rouge">Vaccine_Name</code>, <code class="language-plaintext highlighter-rouge">Vital_Signs_Header</code>, <code class="language-plaintext highlighter-rouge">Weight</code></p>
+    <p>Clinical Entity Labels: <code class="language-plaintext highlighter-rouge">Adenopathy</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Biomarker</code>,<code class="language-plaintext highlighter-rouge">Biomarker_Result</code>, <code class="language-plaintext highlighter-rouge">Cancer_Dx</code>, <code class="language-plaintext highlighter-rouge">Cancer_Score</code> ,<code class="language-plaintext highlighter-rouge">Cancer_Surgery</code>, <code class="language-plaintext highlighter-rouge">Chemotherapy</code>, <code class="language-plaintext highlighter-rouge">Cycle_Count</code> ,<code class="language-plaintext highlighter-rouge">Cycle_Day</code>, <code class="language-plaintext highlighter-rouge">Cycle_Number</code>, <code class="language-plaintext highlighter-rouge">Date</code> ,<code class="language-plaintext highlighter-rouge">Death_Entity</code>, <code class="language-plaintext highlighter-rouge">Direction</code>, <code class="language-plaintext highlighter-rouge">Dosage</code> ,<code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">Gender</code> ,<code class="language-plaintext highlighter-rouge">Grade</code>, <code class="language-plaintext highlighter-rouge">Histological_Type</code>, <code class="language-plaintext highlighter-rouge">Hormonal_Therapy</code> ,<code class="language-plaintext highlighter-rouge">Imaging_Test</code>, <code class="language-plaintext highlighter-rouge">Immunotherapy</code>, <code class="language-plaintext highlighter-rouge">Invasion</code> ,<code class="language-plaintext highlighter-rouge">Line_Of_Therapy</code>, <code class="language-plaintext highlighter-rouge">Metastasis</code>, <code class="language-plaintext highlighter-rouge">Oncogene</code> ,<code class="language-plaintext highlighter-rouge">PROBLEM</code>, <code class="language-plaintext highlighter-rouge">Pathology_Result</code>, <code class="language-plaintext highlighter-rouge">Pathology_Test</code> ,<code class="language-plaintext highlighter-rouge">PROBLEM</code>, <code class="language-plaintext highlighter-rouge">Performance_Status</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code> ,<code class="language-plaintext highlighter-rouge">Radiotherapy</code>, <code class="language-plaintext highlighter-rouge">Response_To_Treatment</code>, <code class="language-plaintext highlighter-rouge">Relative_Date</code> ,<code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">Site_Bone</code>, <code class="language-plaintext highlighter-rouge">Site_Brain</code> ,<code class="language-plaintext highlighter-rouge">Site_Breast</code>, <code class="language-plaintext highlighter-rouge">Site_Liver</code>, <code class="language-plaintext highlighter-rouge">Site_Lung</code> ,<code class="language-plaintext highlighter-rouge">Site_Lymph_Node</code>, <code class="language-plaintext highlighter-rouge">Site_Other_Body_Part</code>, <code class="language-plaintext highlighter-rouge">Smoking_Status</code> ,<code class="language-plaintext highlighter-rouge">Staging</code>, <code class="language-plaintext highlighter-rouge">Targeted_Therapy</code>, <code class="language-plaintext highlighter-rouge">Tumor_Finding</code> ,<code class="language-plaintext highlighter-rouge">Tumor_Size</code>, <code class="language-plaintext highlighter-rouge">Unspecific_Therapy</code>, <code class="language-plaintext highlighter-rouge">Radiation_Dose</code> ,<code class="language-plaintext highlighter-rouge">Anatomical_Site</code>, <code class="language-plaintext highlighter-rouge">Cancer_Therapy</code>, <code class="language-plaintext highlighter-rouge">Size_Trend</code> ,<code class="language-plaintext highlighter-rouge">Lymph_Node</code>, <code class="language-plaintext highlighter-rouge">Tumor_Description</code>,<code class="language-plaintext highlighter-rouge">Lymph_Node_Modifier</code>, <code class="language-plaintext highlighter-rouge">Posology_Information</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>,<code class="language-plaintext highlighter-rouge">Weight</code>,<code class="language-plaintext highlighter-rouge">Alcohol</code>,<code class="language-plaintext highlighter-rouge">Communicable_Disease</code>,<code class="language-plaintext highlighter-rouge">BMI</code>,<code class="language-plaintext highlighter-rouge">Obesity</code>,<code class="language-plaintext highlighter-rouge">Diabetes</code></p>
   </li>
   <li>
-    <p>Assertion Status Labels: <code class="language-plaintext highlighter-rouge">Hypothetical</code>, <code class="language-plaintext highlighter-rouge">Someoneelse</code>, <code class="language-plaintext highlighter-rouge">Past</code>, <code class="language-plaintext highlighter-rouge">Absent</code>, <code class="language-plaintext highlighter-rouge">Family</code>, <code class="language-plaintext highlighter-rouge">Planned</code>, <code class="language-plaintext highlighter-rouge">Possible</code>, <code class="language-plaintext highlighter-rouge">Present</code></p>
+    <p>Assertion Status Labels: <code class="language-plaintext highlighter-rouge">Present</code>, <code class="language-plaintext highlighter-rouge">Absent</code>, <code class="language-plaintext highlighter-rouge">Possible</code>, <code class="language-plaintext highlighter-rouge">Past</code>, <code class="language-plaintext highlighter-rouge">Family</code>, <code class="language-plaintext highlighter-rouge">Hypotetical</code></p>
   </li>
   <li>
-    <p>Relation Extraction Labels: <code class="language-plaintext highlighter-rouge">is_finding_of</code>, <code class="language-plaintext highlighter-rouge">is_date_of</code>, <code class="language-plaintext highlighter-rouge">is_result_of</code>, <code class="language-plaintext highlighter-rouge">O</code></p>
+    <p>Relation Extraction Labels: <code class="language-plaintext highlighter-rouge">is_size_of</code>, <code class="language-plaintext highlighter-rouge">is_finding_of</code>, <code class="language-plaintext highlighter-rouge">is_date_of</code>, <code class="language-plaintext highlighter-rouge">is_location_of</code></p>
   </li>
 </ul>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_5.2.1_3.0_1706288377782.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_5.2.1_3.0_1706288377782.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.0_1706556385966.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.0_1706556385966.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -543,71 +549,80 @@ function wrapWordInSpan(data, wordToWrap) {
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_granular"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_oncology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">"""The patient admitted for gastrointestinal pathology, under working treatment.
-History of prior heart murmur with echocardiogram findings as above on March 1998.
-According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
-Based on the above findings, we will treat her medically with ACE inhibitors and diuretics and see how she fares."""</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases."""</span><span class="p">)</span>
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"explain_clinical_doc_granular"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"explain_clinical_doc_oncology"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="s">"""The patient admitted for gastrointestinal pathology, under working treatment.
-History of prior heart murmur with echocardiogram findings as above on March 1998.
-According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
-Based on the above findings, we will treat her medically with ACE inhibitors and diuretics and see how she fares."""</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases."""</span><span class="o">)</span>
 
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ner</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c"># NER Result</span>
 
-|    | chunks                     |   begin |   end | entities            |
-|---:|:---------------------------|--------:|------:|:--------------------|
-|  0 | admitted                   |      12 |    19 | Admission_Discharge |
-|  1 | gastrointestinal pathology |      25 |    50 | Clinical_Dept       |
-|  2 | heart murmur               |      95 |   106 | Heart_Disease       |
-|  3 | echocardiogram             |     113 |   126 | Test                |
-|  4 | March 1998                 |     149 |   158 | Date                |
-|  5 | echocardiogram             |     185 |   198 | Test                |
-|  6 | normal                     |     220 |   225 | Test_Result         |
-|  7 | left ventricular <span class="k">function</span>  |     227 |   251 | Test                |
-|  8 | left atrial enlargement    |     258 |   280 | Heart_Disease       |
-|  9 | her                        |     327 |   329 | Gender              |
-| 10 | ACE inhibitors             |     346 |   359 | Drug_Ingredient     |
-| 11 | diuretics                  |     365 |   373 | Drug_Ingredient     |
-| 12 | she                        |     387 |   389 | Gender              |
+|    | sentence_id | chunks                                  | begin | end | entities             |
+|----|-------------|-----------------------------------------|-------|-----|----------------------|
+| 0  | 0           | computed tomography                     | 24    | 42  | Imaging_Test         |
+| 1  | 0           | CT                                      | 45    | 46  | Imaging_Test         |
+| 2  | 0           | abdomen                                 | 61    | 67  | Site_Other_Body_Part |
+| 3  | 0           | pelvis                                  | 73    | 78  | Site_Other_Body_Part |
+| 4  | 0           | ovarian                                 | 104   | 110 | Site_Other_Body_Part |
+| 5  | 0           | mass                                    | 112   | 115 | Tumor_Finding        |
+| 6  | 1           | Pap smear                               | 120   | 128 | Pathology_Test       |
+| 7  | 1           | one month later                         | 140   | 154 | Relative_Date        |
+| 8  | 1           | atypical glandular cells                | 173   | 196 | Pathology_Result     |
+| 9  | 1           | adenocarcinoma                          | 213   | 226 | Cancer_Dx            |
+| 10 | 2           | pathologic specimen                     | 233   | 251 | Pathology_Test       |
+| 11 | 2           | extension                               | 260   | 268 | Invasion             |
+| 12 | 2           | tumor                                   | 277   | 281 | Tumor_Finding        |
+| 13 | 2           | fallopian tubes                         | 298   | 312 | Site_Other_Body_Part |
+| 14 | 2           | appendix                                | 315   | 322 | Site_Other_Body_Part |
+| 15 | 2           | omentum                                 | 325   | 331 | Site_Other_Body_Part |
+| 16 | 2           | enlarged                                | 349   | 356 | Lymph_Node_Modifier  |
+| 17 | 2           | lymph nodes                             | 358   | 368 | Site_Lymph_Node      |
+| 18 | 3           | tumor                                   | 409   | 413 | Tumor_Finding        |
+| 19 | 3           | stage IIIC                              | 419   | 428 | Staging              |
+| 20 | 3           | papillary serous ovarian adenocarcinoma | 430   | 468 | Oncological          |
+| 21 | 4           | Two months later                        | 471   | 486 | Relative_Date        |
+| 22 | 4           | lung metastases                         | 520   | 534 | Oncological          |
 
-<span class="c"># assertion</span>
+<span class="c"># Assertion Result</span>
 
-|sentence_id|begin|end|entity                   |label          |assertion_status|
-+-----------+-----+---+-------------------------+---------------+----------------+
-|1          |96   |107|heart murmur             |Heart_Disease  |Past            |
-|1          |114  |127|echocardiogram           |Test           |Past            |
-|2          |187  |200|echocardiogram           |Test           |Present         |
-|2          |222  |227|normal                   |Test_Result    |Present         |
-|2          |229  |253|left ventricular <span class="k">function</span>|Test           |Present         |
-|2          |260  |282|left atrial enlargement  |Heart_Disease  |Present         |
-|3          |348  |361|ACE inhibitors           |Drug_Ingredient|Planned         |
-|3          |367  |375|diuretics                |Drug_Ingredient|Planned         |
+|    | sentence_id | chunks                                  | begin | end | entities            | assertion |
+|----|-------------|-----------------------------------------|-------|-----|---------------------|-----------|
+| 0  | 0           | computed tomography                     | 24    | 42  | Imaging_Test        | Past      |
+| 1  | 0           | CT                                      | 45    | 46  | Imaging_Test        | Past      |
+| 2  | 0           | mass                                    | 112   | 115 | Tumor_Finding       | Present   |
+| 3  | 1           | Pap smear                               | 120   | 128 | Pathology_Test      | Past      |
+| 4  | 1           | atypical glandular cells                | 173   | 196 | Pathology_Result    | Present   |
+| 5  | 1           | adenocarcinoma                          | 213   | 226 | Cancer_Dx           | Possible  |
+| 6  | 2           | pathologic specimen                     | 233   | 251 | Pathology_Test      | Past      |
+| 7  | 2           | extension                               | 260   | 268 | Invasion            | Present   |
+| 8  | 2           | tumor                                   | 277   | 281 | Tumor_Finding       | Present   |
+| 9  | 2           | enlarged                                | 349   | 356 | Lymph_Node_Modifier | Present   |
+| 10 | 3           | tumor                                   | 409   | 413 | Tumor_Finding       | Present   |
+| 11 | 3           | papillary serous ovarian adenocarcinoma | 430   | 468 | Oncological         | Present   |
+| 12 | 4           | lung metastases                         | 520   | 534 | Oncological         | Present   |
 
 
-<span class="c">#relation</span>
+<span class="c"># Relation Extraction Result</span>
 
-|sentence_id|relations    |relations_entity1|relations_chunk1         |relations_entity2|relations_chunk2         |
-+-----------+-------------+-----------------+-------------------------+-----------------+-------------------------+
-|1          |is_finding_of|Heart_Disease    |heart murmur             |Test             |echocardiogram           |
-|1          |is_date_of   |Heart_Disease    |heart murmur             |Date             |March 1998               |
-|1          |is_date_of   |Test             |echocardiogram           |Date             |March 1998               |
-|2          |is_finding_of|Test             |echocardiogram           |Heart_Disease    |left atrial enlargement  |
-|2          |is_result_of |Test_Result      |normal                   |Test             |left ventricular <span class="k">function</span>|
-|2          |is_finding_of|Test             |left ventricular <span class="k">function</span>|Heart_Disease    |left atrial enlargement  |
+|    | sentence | entity1_begin | entity1_end | chunk1    | entity1              | entity2_begin | entity2_end | chunk2          | entity2              | relation       | confidence |
+|----|----------|---------------|-------------|-----------|----------------------|---------------|-------------|-----------------|----------------------|----------------|------------|
+| 1  | 0        | 104           | 110         | ovarian   | Site_Other_Body_Part | 112           | 115         | mass            | Tumor_Finding        | is_location_of | 0.922661   |
+| 2  | 1        | 120           | 128         | Pap smear | Pathology_Test       | 213           | 226         | adenocarcinoma  | Cancer_Dx            | is_finding_of  | 0.52542114 |
+| 3  | 2        | 277           | 281         | tumor     | Tumor_Finding        | 298           | 312         | fallopian tubes | Site_Other_Body_Part | is_location_of | 0.9026299  |
+| 4  | 2        | 277           | 281         | tumor     | Tumor_Finding        | 315           | 322         | appendix        | Site_Other_Body_Part | is_location_of | 0.6649267  |
+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -616,7 +631,7 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>explain_clinical_doc_granular</td>
+      <td>explain_clinical_doc_oncology</td>
     </tr>
     <tr>
       <td>Type:</td>
@@ -640,7 +655,7 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.7 GB</td>
+      <td>1.9 GB</td>
     </tr>
   </tbody>
 </table>
@@ -654,13 +669,28 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
   <li>WordEmbeddingsModel</li>
   <li>MedicalNerModel</li>
   <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
   <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>ChunkMergeModel</li>
+  <li>ChunkMergeModel</li>
   <li>AssertionDLModel</li>
   <li>PerceptronModel</li>
   <li>DependencyParserModel</li>
   <li>RelationExtractionModel</li>
+  <li>RelationExtractionModel</li>
+  <li>AnnotationMerger</li>
 </ul>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-26T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-29T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -845,7 +875,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/26/sbiobertresolve_snomed_findings_en.html">Sentence Entity Resolver for Snomed Concepts, Findings version (sbiobert_base_cased_mli embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/29/explain_clinical_doc_oncology_en.html">Explain Clinical Document - Oncology</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/01/26/explain_clinical_doc_granular_en.html">Explain Clinical Document - Granular</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/01/30/hcpcs_resolver_pipeline_en.html">Pipeline for Healthcare Common Procedure Coding System (HCPCS)</a></div></div></div>
 
 </div>
 </div>
