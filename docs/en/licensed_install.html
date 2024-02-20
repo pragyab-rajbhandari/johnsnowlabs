@@ -1656,7 +1656,7 @@ os.environ.update(license_keys)
 </div>
 <div class="h3-box">
 
-  <h1 id="deploying-spark-nlp-healthcare-on-kubernetes">Deploying Spark NLP Healthcare on Kubernetes</h1>
+  <h2 id="deploying-spark-nlp-healthcare-on-kubernetes">Deploying Spark NLP Healthcare on Kubernetes</h2>
 
   <p>This guide will walk you through the deployment of a Spark NLP Healthcare application on a Kubernetes cluster using kind.</p>
 
@@ -1791,7 +1791,8 @@ if __name__ == "__main__":
   <h3 id="step-by-step-guide">Step-by-step Guide</h3>
   <h5 id="containerizing-the-spark-nlp-healthcare-application">1. Containerizing the Spark NLP Healthcare Application</h5>
 
-  <h5 id="dockerfile">Dockerfile:</h5>
+  <p>Dockerfile:</p>
+
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Use Ubuntu 20.04 as the base image
 FROM ubuntu:20.04
 
@@ -1944,7 +1945,7 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
 
   <p><strong>Step 1: Sign in to Azure portal</strong></p>
   <ul>
-    <li>Sign in to the Azure portal at https://portal.azure.com.</li>
+    <li>Sign in to the Azure portal at <a href="https://portal.azure.com">https://portal.azure.com</a>.</li>
   </ul>
 
   <p><strong>Step 2: Create a new Resource Group</strong></p>
@@ -2029,6 +2030,114 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/a8caf1fd-5c76-47ed-94fd-bf3237f7417d" alt="image" /></p>
 
   <p>Now, you can proceed to run your OCR models and notebooks.</p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="azure-ai-studio-instructions">Azure AI Studio instructions</h2>
+
+  <p>Go to <a href="https://ai.azure.com/">https://ai.azure.com/</a></p>
+
+  <p>To create a project in Azure AI Studio, adhere to the following structured approach:</p>
+
+  <ol>
+    <li>Navigate to the Build Tab
+      <ul>
+        <li>Access the Azure AI Studio webpage and locate the Build tab positioned at the top of the interface.</li>
+      </ul>
+    </li>
+    <li>Initiate New Project Creation
+      <ul>
+        <li>Click on the <strong>+ New project</strong> button to start the process of creating a new project.</li>
+      </ul>
+    </li>
+    <li>Specify Project Name
+      <ul>
+        <li>Enter a name for your project that reflects its purpose or content.</li>
+      </ul>
+    </li>
+    <li>Select an Azure AI Hub Resource
+      <ul>
+        <li>Choose an existing Azure AI hub resource from the dropdown list to associate with your project. If you do not possess an existing resource, select the option to create a new one.</li>
+      </ul>
+    </li>
+    <li>Permissions for New Azure AI Hub Resource
+      <ul>
+        <li>If opting to create a new Azure AI hub resource, ensure you have either Owner or Contributor permissions on the chosen resource group.</li>
+      </ul>
+    </li>
+    <li>Collaboration and Resource Sharing
+      <ul>
+        <li>For collaborative projects, it is beneficial to share an Azure AI hub resource with your team. This promotes shared configurations and centralized resource management.</li>
+      </ul>
+    </li>
+    <li>Naming the New Azure AI Hub Resource
+      <ul>
+        <li>Assign a name to the new Azure AI hub resource if you’re creating one.</li>
+      </ul>
+    </li>
+    <li>Select Azure Subscription
+      <ul>
+        <li>From the dropdown list, pick your Azure subscription to manage billing and access.</li>
+      </ul>
+    </li>
+    <li>Resource Group Decision
+      <ul>
+        <li>Decide whether to create a new Resource group or use an existing one for your project. Creating a new group can facilitate easier management of the project’s resources.</li>
+      </ul>
+    </li>
+    <li>Location Selection
+      <ul>
+        <li>Choose the Location for your Azure AI hub resource, which inherently decides your project’s geographical location. The choice of location is crucial as the availability of Azure AI services may differ across regions.</li>
+      </ul>
+    </li>
+    <li>Review AI Services Provider
+      <ul>
+        <li>On the Review and finish page, scrutinize the AI Services provider details to ensure access to Azure AI services like Azure OpenAI is correctly configured.</li>
+      </ul>
+    </li>
+    <li>Finalize Project Creation
+      <ul>
+        <li>After reviewing all the details for accuracy, click on <strong>Create a project</strong> to complete the setup process.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p><img src="/assets/images/azure/azure_1.png" alt="image" /></p>
+
+  <p>13 Then go to All Azure AI dropdown and choose <strong>Azure Machine Learning Studio</strong>.</p>
+
+  <p><img src="/assets/images/azure/azure_2.png" alt="image" /></p>
+
+  <p>14 Such a window will Appear. Go to Add compute.</p>
+
+  <p><img src="/assets/images/azure/azure_3.png" alt="image" /></p>
+
+  <p>15 Choose the compute type and enable auto-shutdown as well.</p>
+
+  <p><img src="/assets/images/azure/azure_10.png" alt="image" /></p>
+
+  <p><img src="/assets/images/azure/azure_8.png" alt="image" /></p>
+
+  <p><img src="/assets/images/azure/azure_9.png" alt="image" /></p>
+
+  <p>16 Then go to the Notebooks Section.</p>
+
+  <p><img src="/assets/images/azure/azure_4.png" alt="image" /></p>
+
+  <p>In NB section, you can create your own NB or load existing NBs.</p>
+
+  <p>17 Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.</p>
+
+  <p><img src="/assets/images/azure/azure_5.png" alt="image" /></p>
+
+  <p>18 Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using <code class="language-plaintext highlighter-rouge">nlp.install()</code> and <code class="language-plaintext highlighter-rouge">nlp.start()</code> you can install the required jars and wheels and start the spark session.</p>
+
+  <p><img src="/assets/images/azure/azure_6.png" alt="image" /></p>
+
+  <p>19 Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).</p>
+
+  <p><img src="/assets/images/azure/azure_7.png" alt="image" /></p>
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
