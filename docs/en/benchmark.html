@@ -1647,7 +1647,6 @@ In this experiment, all reports went through the pipeline 10 times and repeated 
         rxnorm_resolver,
         resolverMerger
 ])
-
 </code></pre></div>  </div>
 
   <p><strong>NOTES:</strong></p>
@@ -1942,6 +1941,139 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
 
 <div class="h3-box">
 
+  <h3 id="onnx-and-base-embeddings-in-resolver">ONNX and Base Embeddings in Resolver</h3>
+
+  <ul>
+    <li><strong>Dataset:</strong> 100 Custom Clinical Texts, approx. 595 tokens per text</li>
+    <li><strong>Versions:</strong>
+      <ul>
+        <li><strong>spark-nlp Version:</strong> v5.2.2</li>
+        <li><strong>spark-nlp-jsl Version :</strong> v5.2.1</li>
+        <li><strong>Spark Version :</strong> v3.2.1</li>
+      </ul>
+    </li>
+    <li><strong>Instance Type:</strong>
+      <ul>
+        <li>8 CPU Cores 52GiB RAM (Colab Pro - High RAM)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentenceDetectorDL</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">word_embeddings</span><span class="p">,</span>
+        <span class="n">clinical_ner</span><span class="p">,</span>
+        <span class="n">ner_converter</span><span class="p">,</span>
+  <span class="p">])</span>
+
+<span class="n">embedding_pipeline</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="p">(</span>
+    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">c2doc</span><span class="p">,</span>
+        <span class="n">sbiobert_embeddings</span> <span class="c1"># base or onnx version
+</span>  <span class="p">])</span>
+
+<span class="n">resolver_pipeline</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="p">(</span>
+    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">rxnorm_resolver</span>
+  <span class="p">])</span>
+</code></pre></div>  </div>
+
+  <p><strong><em>Results Table</em></strong></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: right">partition</th>
+        <th style="text-align: right">preprocessing</th>
+        <th style="text-align: right">embeddings</th>
+        <th style="text-align: right">resolver</th>
+        <th style="text-align: right">onnx_embeddings</th>
+        <th style="text-align: right">resolver_with_onnx_embeddings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">25 sec</td>
+        <td style="text-align: right">25 sec</td>
+        <td style="text-align: right">7 min 46 sec</td>
+        <td style="text-align: right">9 sec</td>
+        <td style="text-align: right">8 min 29 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">21 sec</td>
+        <td style="text-align: right">25 sec</td>
+        <td style="text-align: right">5 min 12 sec</td>
+        <td style="text-align: right">9 sec</td>
+        <td style="text-align: right">4 min 53 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">21 sec</td>
+        <td style="text-align: right">25 sec</td>
+        <td style="text-align: right">4 min 41 sec</td>
+        <td style="text-align: right">9 sec</td>
+        <td style="text-align: right">4 min 30 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">20 sec</td>
+        <td style="text-align: right">24 sec</td>
+        <td style="text-align: right">5 min 4 sec</td>
+        <td style="text-align: right">9 sec</td>
+        <td style="text-align: right">4 min 34 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">21 sec</td>
+        <td style="text-align: right">24 sec</td>
+        <td style="text-align: right">4 min 44 sec</td>
+        <td style="text-align: right">9 sec</td>
+        <td style="text-align: right">5 min 2 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">128</td>
+        <td style="text-align: right">20 sec</td>
+        <td style="text-align: right">25 sec</td>
+        <td style="text-align: right">5 min 4 sec</td>
+        <td style="text-align: right">10 sec</td>
+        <td style="text-align: right">4 min 51 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">256</td>
+        <td style="text-align: right">22 sec</td>
+        <td style="text-align: right">26 sec</td>
+        <td style="text-align: right">4 min 34 sec</td>
+        <td style="text-align: right">10 sec</td>
+        <td style="text-align: right">5 min 13 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">512</td>
+        <td style="text-align: right">24 sec</td>
+        <td style="text-align: right">27 sec</td>
+        <td style="text-align: right">4 min 46 sec</td>
+        <td style="text-align: right">12 sec</td>
+        <td style="text-align: right">4 min 22 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">1024</td>
+        <td style="text-align: right">29 sec</td>
+        <td style="text-align: right">30 sec</td>
+        <td style="text-align: right">4 min 24 sec</td>
+        <td style="text-align: right">14 sec</td>
+        <td style="text-align: right">4 min 29 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="h3-box">
+
   <h3 id="deidentification-benchmark-experiment">Deidentification Benchmark Experiment</h3>
 
   <ul>
@@ -2062,6 +2194,116 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
         <td style="text-align: right">2 min 26 sec</td>
         <td style="text-align: right">4 min 53 sec</td>
         <td style="text-align: right">6 min 3 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="h3-box">
+
+  <h2 id="aws-emr-cluster-benchmark">AWS EMR Cluster Benchmark</h2>
+
+  <ul>
+    <li><strong>Dataset:</strong> 340 Custom Clinical Texts, approx. 235 tokens per text</li>
+    <li><strong>Versions:</strong>
+      <ul>
+        <li><strong>EMR Version:</strong> ERM.6.15.0</li>
+        <li><strong>spark-nlp Version:</strong> v5.2.2</li>
+        <li><strong>spark-nlp-jsl Version :</strong> v5.2.1</li>
+        <li><strong>Spark Version :</strong> v3.4.1</li>
+      </ul>
+    </li>
+    <li><strong>Instance Type:</strong>
+      <ul>
+        <li><strong>Primary</strong>: m4.4xlarge, 16 vCore, 64 GiB memory</li>
+        <li><strong>Worker :</strong>  m4.4xlarge, 16 vCore, 64 GiB memory</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Spark NLP Pipeline:</strong></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">word_embeddings</span><span class="p">,</span>
+        <span class="n">ner_jsl</span><span class="p">,</span>
+        <span class="n">ner_jsl_converter</span><span class="p">])</span>
+
+<span class="n">resolver_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">word_embeddings</span><span class="p">,</span>
+        <span class="n">ner_jsl</span><span class="p">,</span>
+        <span class="n">ner_jsl_converter</span><span class="p">,</span>
+        <span class="n">chunk2doc</span><span class="p">,</span>
+        <span class="n">sbert_embeddings</span><span class="p">,</span>
+        <span class="n">snomed_resolver</span><span class="p">])</span> 
+</code></pre></div>  </div>
+
+  <p><strong>NOTES:</strong>
+<code class="language-plaintext highlighter-rouge">ner_jsl</code> model is used as ner model.The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results in <code class="language-plaintext highlighter-rouge">parquet</code> format.</p>
+
+  <p>The <code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code> model is used as the resolver model. The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results (snomed_code and snomed_code_definition) in <code class="language-plaintext highlighter-rouge">parquet</code> format and 722 entities saved.</p>
+
+  <p><strong><em>Results Table</em></strong></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: right">partition</th>
+        <th style="text-align: left">NER Timing</th>
+        <th style="text-align: left">NER and Resolver Timing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: right">4</td>
+        <td style="text-align: left">24.7 seconds</td>
+        <td style="text-align: left">1 minutes 8.5  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">8</td>
+        <td style="text-align: left">23.6 seconds</td>
+        <td style="text-align: left">1 minutes 7.4  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">16</td>
+        <td style="text-align: left">22.6 seconds</td>
+        <td style="text-align: left">1 minutes 6.9  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">32</td>
+        <td style="text-align: left">23.2 seconds</td>
+        <td style="text-align: left">1 minutes 5.7  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">64</td>
+        <td style="text-align: left">22.8 seconds</td>
+        <td style="text-align: left">1 minutes 6.7  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">128</td>
+        <td style="text-align: left">23.7 seconds</td>
+        <td style="text-align: left">1 minutes 7.4  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">256</td>
+        <td style="text-align: left">23.9 seconds</td>
+        <td style="text-align: left">1 minutes 6.1  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">512</td>
+        <td style="text-align: left">23.8 seconds</td>
+        <td style="text-align: left">1 minutes 8.4  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">1024</td>
+        <td style="text-align: left">25.9 seconds</td>
+        <td style="text-align: left">1 minutes 10.2 seconds</td>
       </tr>
     </tbody>
   </table>
@@ -2587,6 +2829,7 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
   <p><em>SpaCy with pandas UDFs</em>: Development might be more straightforward since you’re essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.</p>
 
 </div>
+
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2021-10-04T00:00:00+00:00">Oct 04, 2021</time>
     </span><!-- start custom article footer snippet -->
