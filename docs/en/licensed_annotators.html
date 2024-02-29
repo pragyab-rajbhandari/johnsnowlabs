@@ -773,12 +773,20 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
       <td>Entity Chunk Embeddings uses BERT Sentence embeddings to compute a weighted average vector represention of related entity chunks.</td>
     </tr>
     <tr>
+      <td><a href="#entityrulerinternal">EntityRulerInternal</a></td>
+      <td>This annotator match exact strings or regex patterns provided in a file against a Document and assigns them an named entity.</td>
+    </tr>
+    <tr>
       <td><a href="#featuresassembler">FeaturesAssembler</a></td>
       <td>Collects features from different columns.</td>
     </tr>
     <tr>
       <td><a href="#fewshotclassifier">FewShotClassifier</a></td>
       <td>This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data.</td>
+    </tr>
+    <tr>
+      <td><a href="#flattener">Flattener</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Flattener</code> annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation.</td>
     </tr>
     <tr>
       <td><a href="#genericclassifier">GenericClassifier</a></td>
@@ -829,6 +837,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
       <td>GPT-based model for answering questions given a context.</td>
     </tr>
     <tr>
+      <td><a href="#regexmatcherinternal">RegexMatcherInternal</a></td>
+      <td><code class="language-plaintext highlighter-rouge">RegexMatcherInternal</code> matches predefined regex patterns with entities in text, allowing for flexible entity recognition based on user-defined rules.</td>
+    </tr>
+    <tr>
       <td><a href="#reidentification">ReIdentification</a></td>
       <td>Reidentifies obfuscated entities by DeIdentification.</td>
     </tr>
@@ -871,6 +883,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
     <tr>
       <td><a href="#textgenerator">TextGenerator</a></td>
       <td>Uses the basic BioGPT model to perform various tasks related to medical text abstraction.</td>
+    </tr>
+    <tr>
+      <td><a href="#textmatcherinternal">TextMatcherInternal</a></td>
+      <td>This annotator match exact phrases provided in a file against a Document.</td>
     </tr>
     <tr>
       <td><a href="#tfgraphbuilder">TFGraphBuilder</a></td>
@@ -10259,14 +10275,7 @@ same_length_chars: Replace the obfuscated entity with a masking sequence compose
         <p><code class="language-plaintext highlighter-rouge">minYear</code>: (IntParam) Minimum year to use when converting date to year</p>
       </li>
       <li>
-        <table>
-          <tbody>
-            <tr>
-              <td><code class="language-plaintext highlighter-rouge">mode</code>: (Param[String]) Mode for Anonymizer [‘mask’</td>
-              <td>‘obfuscate’] Given the following text</td>
-            </tr>
-          </tbody>
-        </table>
+        <p><code class="language-plaintext highlighter-rouge">mode</code>: (Param[String]) Mode for Anonymizer [‘mask’, ‘obfuscate’] Given the following text</p>
       </li>
       <li>
         <p><code class="language-plaintext highlighter-rouge">obfuscateDate</code>: (BooleanParam) When mode==”obfuscate” whether to obfuscate dates or not.</p>
@@ -10313,7 +10322,13 @@ same_length_chars: Replace the obfuscated entity with a masking sequence compose
       <li>
         <p><code class="language-plaintext highlighter-rouge">unnormalizedDateMode</code>: (Param[String]) The mode to use if the date is not formatted.</p>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">zipCodeTag</code>: (Param[String]) Tag representing zip codes in the obfuscate reference file (default: ZIP).</li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">zipCodeTag</code>: (Param[String]) Tag representing zip codes in the obfuscate reference file (default: ZIP).</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">MetadataMaskingPolicy(str)</code>: (Param[String]) Options : ‘entity_labels’, ‘same_length_chars’, ‘fixed_length_chars’ 
+If set, metadata includes the masked form of the document.</p>
+      </li>
     </ul>
 
     <p>To create a configured DeIdentificationModel, please see the example of DeIdentification.</p>
@@ -14091,6 +14106,207 @@ Other available models can be found at <a href="https://nlp.johnsnowlabs.com/mod
 
 <div class="tabs-model-aproach">
 
+  <h2 id="entityrulerinternal">EntityRulerInternal</h2>
+
+  <div class="tabs-model-aproach-head tac"><button class="tab-li-model-aproach">Model</button><button class="tab-li-model-aproach tabheader_active">Approach</button></div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>This annotator match exact strings or regex patterns provided in a file against a Document and assigns them an named entity. The definitions can contain any number of named entities.</p>
+
+    <p>Parametres:</p>
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setPatternsResource</code> <em>(str)</em>: Sets Resource in JSON or CSV format to map entities to patterns.
+      path : str
+          Path to the resource
+      read_as : str, optional
+          How to interpret the resource, by default ReadAs.TEXT
+      options : dict, optional
+          Options for parsing the resource, by default {“format”: “JSON”}</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setSentenceMatch</code> <em>(Boolean)</em>: Whether to find match at sentence level. True: sentence level. False: token level.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setAlphabetResource</code> <em>(str)</em>: Alphabet Resource (a simple plain text with all language characters)</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setUseStorage</code> <em>(Boolean)</em>: Sets whether to use RocksDB storage to serialize patterns.</p>
+      </li>
+    </ul>
+
+    <p>See <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb">Spark NLP Workshop</a> for more examples of usage.</p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">entityRuler</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">EntityRulerInternalApproach</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"entities"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setPatternsResource</span><span class="p">(</span><span class="s">"entities.json"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">entityRuler</span>
+<span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">'''John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, amoxicillin for his tonsilitis, ibuprofen for his inflammation, and lansoprazole for his GORD on 2023-12-01.'''</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Result
+</span><span class="o">+---------------+-----+---+-------+</span>
+<span class="o">|</span>          <span class="n">chunk</span><span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span>  <span class="n">label</span><span class="o">|</span>
+<span class="o">+---------------+-----+---+-------+</span>
+<span class="o">|</span>        <span class="n">aspirin</span><span class="o">|</span>   <span class="mi">25</span><span class="o">|</span> <span class="mi">31</span><span class="o">|</span>   <span class="n">Drug</span><span class="o">|</span>
+<span class="o">|</span><span class="n">heart</span> <span class="n">condition</span><span class="o">|</span>   <span class="mi">41</span><span class="o">|</span> <span class="mi">55</span><span class="o">|</span><span class="n">Disease</span><span class="o">|</span>
+<span class="o">|</span>    <span class="n">paracetamol</span><span class="o">|</span>   <span class="mi">69</span><span class="o">|</span> <span class="mi">79</span><span class="o">|</span>   <span class="n">Drug</span><span class="o">|</span>
+<span class="o">|</span>          <span class="n">fever</span><span class="o">|</span>   <span class="mi">89</span><span class="o">|</span> <span class="mi">93</span><span class="o">|</span><span class="n">Symptom</span><span class="o">|</span>
+<span class="o">|</span>       <span class="n">headache</span><span class="o">|</span>   <span class="mi">99</span><span class="o">|</span><span class="mi">106</span><span class="o">|</span><span class="n">Symptom</span><span class="o">|</span>
+<span class="o">|</span>     <span class="n">tonsilitis</span><span class="o">|</span>  <span class="mi">129</span><span class="o">|</span><span class="mi">138</span><span class="o">|</span><span class="n">Disease</span><span class="o">|</span>
+<span class="o">|</span>      <span class="n">ibuprofen</span><span class="o">|</span>  <span class="mi">141</span><span class="o">|</span><span class="mi">149</span><span class="o">|</span>   <span class="n">Drug</span><span class="o">|</span>
+<span class="o">|</span>    <span class="n">lansoprazol</span><span class="o">|</span>  <span class="mi">177</span><span class="o">|</span><span class="mi">187</span><span class="o">|</span>   <span class="n">Drug</span><span class="o">|</span>
+<span class="o">|</span>           <span class="n">GORD</span><span class="o">|</span>  <span class="mi">198</span><span class="o">|</span><span class="mi">201</span><span class="o">|</span><span class="n">Disease</span><span class="o">|</span>
+<span class="o">+---------------+-----+---+-------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">entityRuler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">EntityRulerInternalApproach</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"entities"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setPatternsResource</span><span class="o">(</span><span class="s">"entities.json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+  <span class="n">documentAssembler</span><span class="o">,</span>
+  <span class="n">tokenizer</span><span class="o">,</span>
+  <span class="n">entityRuler</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+  <span class="o">(</span><span class="s">"""John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, amoxicillin for his tonsillitis, ibuprofen for his inflammation, and lansoprazole for his GORD on 2023-12-01."""</span><span class="o">)</span>
+<span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="k">#</span> <span class="nc">Result</span>
+<span class="o">+---------------+-----+---+-------+</span>
+<span class="o">|</span>          <span class="n">chunk</span><span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span>  <span class="n">label</span><span class="o">|</span>
+<span class="o">+---------------+-----+---+-------+</span>
+<span class="o">|</span>        <span class="n">aspirin</span><span class="o">|</span>   <span class="mi">25</span><span class="o">|</span> <span class="mi">31</span><span class="o">|</span>   <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">|</span><span class="n">heart</span> <span class="n">condition</span><span class="o">|</span>   <span class="mi">41</span><span class="o">|</span> <span class="mi">55</span><span class="o">|</span><span class="nc">Disease</span><span class="o">|</span>
+<span class="o">|</span>    <span class="n">paracetamol</span><span class="o">|</span>   <span class="mi">69</span><span class="o">|</span> <span class="mi">79</span><span class="o">|</span>   <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">|</span>          <span class="n">fever</span><span class="o">|</span>   <span class="mi">89</span><span class="o">|</span> <span class="mi">93</span><span class="o">|</span><span class="nc">Symptom</span><span class="o">|</span>
+<span class="o">|</span>       <span class="n">headache</span><span class="o">|</span>   <span class="mi">99</span><span class="o">|</span><span class="mi">106</span><span class="o">|</span><span class="nc">Symptom</span><span class="o">|</span>
+<span class="o">|</span>     <span class="n">tonsilitis</span><span class="o">|</span>  <span class="mi">129</span><span class="o">|</span><span class="mi">138</span><span class="o">|</span><span class="nc">Disease</span><span class="o">|</span>
+<span class="o">|</span>      <span class="n">ibuprofen</span><span class="o">|</span>  <span class="mi">141</span><span class="o">|</span><span class="mi">149</span><span class="o">|</span>   <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">|</span>    <span class="n">lansoprazol</span><span class="o">|</span>  <span class="mi">177</span><span class="o">|</span><span class="mi">187</span><span class="o">|</span>   <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">|</span>           <span class="nc">GORD</span><span class="o">|</span>  <span class="mi">198</span><span class="o">|</span><span class="mi">201</span><span class="o">|</span><span class="nc">Disease</span><span class="o">|</span>
+<span class="o">+---------------+-----+---+-------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+  <!--Aproach-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>EntityRulerInternal will handle the chunks output based on the patterns defined, as shown in the example below. We can define an id field to identify entities.</p>
+
+    <p>Parameters:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setPatternsResource</code> <em>(str)</em>: Sets Resource in JSON or CSV format to map entities to patterns.
+      path : str
+          Path to the resource
+      read_as : str, optional
+          How to interpret the resource, by default ReadAs.TEXT
+      options : dict, optional
+          Options for parsing the resource, by default {“format”: “JSON”}</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setSentenceMatch</code> <em>(Boolean)</em>: Whether to find match at sentence level. True: sentence level. False: token level.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setAlphabetResource</code> <em>(str)</em>: Alphabet Resource (a simple plain text with all language characters)</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setUseStorage</code> <em>(Boolean)</em>: Sets whether to use RocksDB storage to serialize patterns.</p>
+      </li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, TOKEN</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
+
+  </div>
+  <!--END Aproach-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
   <h2 id="featuresassembler">FeaturesAssembler</h2>
 
   <div class="annotator_type tac mont">Model</div>
@@ -14738,6 +14954,219 @@ SparkNLP annotations (if the annotation is an embedding, it takes the embedding,
 
   </div>
   <!--END Aproach-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="flattener">Flattener</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>The <code class="language-plaintext highlighter-rouge">Flattener</code> converts annotation results into a format that easier to use. This annotator produces a DataFrame with flattened and exploded columns containing annotation results, making it easier to interpret and analyze the information.
+It is particularly useful for extracting and organizing the results obtained from Spark NLP Pipelines.</p>
+
+    <p>Parametres:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">inputCols</code>: Input annotations.</li>
+      <li><code class="language-plaintext highlighter-rouge">cleanAnnotations</code>: Whether to remove annotation columns, by default <code class="language-plaintext highlighter-rouge">True</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">explodeSelectedFields</code>: Dict of input columns to their corresponding selected fields.</li>
+      <li><code class="language-plaintext highlighter-rouge">flattenExplodedColumns</code>: Whether to flatten exploded columns(default : <code class="language-plaintext highlighter-rouge">True</code>).</li>
+      <li><code class="language-plaintext highlighter-rouge">orderByColumn</code>: Specify the column by which the DataFrame should be ordered..</li>
+      <li><code class="language-plaintext highlighter-rouge">orderDescending</code>: specifying whether to order the DataFrame in descending order.(default : <code class="language-plaintext highlighter-rouge">True</code>).</li>
+    </ul>
+
+    <p>See <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/41.Flattener.ipynb">Spark NLP Workshop</a> for more examples of usage.</p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">ANY</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">NONE</code></p>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setLabelCasing</span><span class="p">(</span><span class="s">"upper"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverter</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"SYMPTOM"</span><span class="p">,</span><span class="s">"VS_FINDING"</span><span class="p">,</span><span class="s">"DISEASE_SYNDROME_DISORDER"</span><span class="p">,</span><span class="s">"ADMISSION_DISCHARGE"</span><span class="p">,</span><span class="s">"PROCEDURE"</span><span class="p">])</span>
+
+<span class="n">flattener</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">Flattener</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setExplodeSelectedFields</span><span class="p">({</span><span class="s">"ner_chunk"</span><span class="p">:</span> <span class="p">[</span><span class="s">"result as ner_chunks"</span><span class="p">,</span>
+                                             <span class="s">"begin as begins"</span><span class="p">,</span>
+                                             <span class="s">"end as ends"</span><span class="p">,</span>
+                                             <span class="s">"metadata.entity as entities"</span><span class="p">]})</span>
+
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">sentenceDetector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">clinical_ner</span><span class="p">,</span>
+    <span class="n">ner_converter</span><span class="p">,</span>
+    <span class="n">flattener</span>
+<span class="p">])</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""
+GENERAL: He is an elderly gentleman in no acute distress. He is sitting up in bed eating his breakfast. He is alert and oriented and answering questions appropriately.
+HEENT: Sclerae showed mild arcus senilis in the right. Left was clear. Pupils are equally round and reactive to light. Extraocular movements are intact. Oropharynx is clear.
+NECK: Supple. Trachea is midline. No jugular venous pressure distention is noted. No adenopathy in the cervical, supraclavicular, or axillary areas.
+ABDOMEN: Soft and not tender. There may be some fullness in the left upper quadrant, although I do not appreciate a true spleen with inspiration.
+EXTREMITIES: There is some edema, but no cyanosis and clubbing .
+"""</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># result
+</span><span class="o">+----------------------------------+------+----+-------------------------+</span>
+<span class="o">|</span><span class="n">ner_chunks</span>                        <span class="o">|</span><span class="n">begins</span><span class="o">|</span><span class="n">ends</span><span class="o">|</span><span class="n">entities</span>                 <span class="o">|</span>
+<span class="o">+----------------------------------+------+----+-------------------------+</span>
+<span class="o">|</span><span class="n">distress</span>                          <span class="o">|</span><span class="mi">49</span>    <span class="o">|</span><span class="mi">56</span>  <span class="o">|</span><span class="n">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">arcus</span> <span class="n">senilis</span>                     <span class="o">|</span><span class="mi">196</span>   <span class="o">|</span><span class="mi">208</span> <span class="o">|</span><span class="n">DISEASE_SYNDROME_DISORDER</span><span class="o">|</span>
+<span class="o">|</span><span class="n">jugular</span> <span class="n">venous</span> <span class="n">pressure</span> <span class="n">distention</span><span class="o">|</span><span class="mi">380</span>   <span class="o">|</span><span class="mi">413</span> <span class="o">|</span><span class="n">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">adenopathy</span>                        <span class="o">|</span><span class="mi">428</span>   <span class="o">|</span><span class="mi">437</span> <span class="o">|</span><span class="n">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">tender</span>                            <span class="o">|</span><span class="mi">514</span>   <span class="o">|</span><span class="mi">519</span> <span class="o">|</span><span class="n">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">fullness</span>                          <span class="o">|</span><span class="mi">540</span>   <span class="o">|</span><span class="mi">547</span> <span class="o">|</span><span class="n">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">edema</span>                             <span class="o">|</span><span class="mi">665</span>   <span class="o">|</span><span class="mi">669</span> <span class="o">|</span><span class="n">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">cyanosis</span>                          <span class="o">|</span><span class="mi">679</span>   <span class="o">|</span><span class="mi">686</span> <span class="o">|</span><span class="n">VS_FINDING</span>               <span class="o">|</span>
+<span class="o">|</span><span class="n">clubbing</span>                          <span class="o">|</span><span class="mi">692</span>   <span class="o">|</span><span class="mi">699</span> <span class="o">|</span><span class="n">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">+----------------------------------+------+----+-------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">wordEmbeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">clinicalNer</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setLabelCasing</span><span class="o">(</span><span class="s">"upper"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"SYMPTOM"</span><span class="o">,</span> <span class="s">"VS_FINDING"</span><span class="o">,</span> <span class="s">"DISEASE_SYNDROME_DISORDER"</span><span class="o">,</span> <span class="s">"ADMISSION_DISCHARGE"</span><span class="o">,</span> <span class="s">"PROCEDURE"</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">flattener</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Flattener</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setExplodeSelectedFields</span><span class="o">(</span><span class="nc">Map</span><span class="o">(</span><span class="s">"ner_chunk"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"result"</span><span class="o">,</span> <span class="s">"begin"</span><span class="o">,</span> <span class="s">"end"</span><span class="o">,</span> <span class="s">"metadata.entity"</span><span class="o">)))</span>
+
+<span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+  <span class="n">documentAssembler</span><span class="o">,</span>
+  <span class="n">sentenceDetector</span><span class="o">,</span>
+  <span class="n">tokenizer</span><span class="o">,</span>
+  <span class="n">wordEmbeddings</span><span class="o">,</span>
+  <span class="n">clinicalNer</span><span class="o">,</span>
+  <span class="n">nerConverter</span><span class="o">,</span>
+  <span class="n">flattener</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""
+GENERAL: He is an elderly gentleman in no acute distress. He is sitting up in bed eating his breakfast. He is alert and oriented and answering questions appropriately.
+HEENT: Sclerae showed mild arcus senilis in the right. Left was clear. Pupils are equally round and reactive to light. Extraocular movements are intact. Oropharynx is clear.
+NECK: Supple. Trachea is midline. No jugular venous pressure distention is noted. No adenopathy in the cervical, supraclavicular, or axillary areas.
+ABDOMEN: Soft and not tender. There may be some fullness in the left upper quadrant, although I do not appreciate a true spleen with inspiration.
+EXTREMITIES: There is some edema, but no cyanosis and clubbing .
+"""</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">nlpPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="k">#</span> <span class="n">result</span>
+<span class="o">+----------------------------------+------+----+-------------------------+</span>
+<span class="o">|</span><span class="n">ner_chunks</span>                        <span class="o">|</span><span class="n">begins</span><span class="o">|</span><span class="n">ends</span><span class="o">|</span><span class="n">entities</span>                 <span class="o">|</span>
+<span class="o">+----------------------------------+------+----+-------------------------+</span>
+<span class="o">|</span><span class="n">distress</span>                          <span class="o">|</span><span class="mi">49</span>    <span class="o">|</span><span class="mi">56</span>  <span class="o">|</span><span class="nc">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">arcus</span> <span class="n">senilis</span>                     <span class="o">|</span><span class="mi">196</span>   <span class="o">|</span><span class="mi">208</span> <span class="o">|</span><span class="nc">DISEASE_SYNDROME_DISORDER</span><span class="o">|</span>
+<span class="o">|</span><span class="n">jugular</span> <span class="n">venous</span> <span class="n">pressure</span> <span class="n">distention</span><span class="o">|</span><span class="mi">380</span>   <span class="o">|</span><span class="mi">413</span> <span class="o">|</span><span class="nc">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">adenopathy</span>                        <span class="o">|</span><span class="mi">428</span>   <span class="o">|</span><span class="mi">437</span> <span class="o">|</span><span class="nc">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">tender</span>                            <span class="o">|</span><span class="mi">514</span>   <span class="o">|</span><span class="mi">519</span> <span class="o">|</span><span class="nc">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">fullness</span>                          <span class="o">|</span><span class="mi">540</span>   <span class="o">|</span><span class="mi">547</span> <span class="o">|</span><span class="nc">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">edema</span>                             <span class="o">|</span><span class="mi">665</span>   <span class="o">|</span><span class="mi">669</span> <span class="o">|</span><span class="nc">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">|</span><span class="n">cyanosis</span>                          <span class="o">|</span><span class="mi">679</span>   <span class="o">|</span><span class="mi">686</span> <span class="o">|</span><span class="nc">VS_FINDING</span>               <span class="o">|</span>
+<span class="o">|</span><span class="n">clubbing</span>                          <span class="o">|</span><span class="mi">692</span>   <span class="o">|</span><span class="mi">699</span> <span class="o">|</span><span class="nc">SYMPTOM</span>                  <span class="o">|</span>
+<span class="o">+----------------------------------+------+----+-------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
 
 </div>
 
@@ -17680,11 +18109,7 @@ between entities.</p>
 by associating the tokens of recognized entities and their label.
 Chunks with no associated entity (tagged “O”) are filtered out.</p>
 
-    <p>This licensed annotator adds extra functionality to the open-source version by adding the following parameters: <code class="language-plaintext highlighter-rouge">blackList</code>, <code class="language-plaintext highlighter-rouge">greedyMode</code>,  <code class="language-plaintext highlighter-rouge">threshold</code>, and <code class="language-plaintext highlighter-rouge">ignoreStopWords</code> that are not available in the <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#nerconverter">NerConverter</a> annotator.</p>
-
-    <p>See also <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)">Inside–outside–beginning (tagging)</a> for more information.</p>
-
-    <p>Parameters:</p>
+    <p>Parametres;</p>
 
     <ul>
       <li>
@@ -17709,12 +18134,13 @@ Chunks with no associated entity (tagged “O”) are filtered out.</p>
         <p><code class="language-plaintext highlighter-rouge">setIgnoreStopWords</code>: If defined, list of stop words to ignore.</p>
       </li>
       <li>
-        <p><code class="language-plaintext highlighter-rouge">setGreedyMode</code>: (Boolean) Whether to ignore B tags for contiguous tokens of same entity same.</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">setDoExceptionHandling</code>: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.</p>
+        <p><code class="language-plaintext highlighter-rouge">setGreedyMode</code>: (Boolean) Whether to ignore B tags for contiguous tokens of same entity same .</p>
       </li>
     </ul>
+
+    <p>This licensed annotator adds extra functionality to the open-source version by adding the following parameters: <code class="language-plaintext highlighter-rouge">blackList</code>, <code class="language-plaintext highlighter-rouge">greedyMode</code>,  <code class="language-plaintext highlighter-rouge">threshold</code>, and <code class="language-plaintext highlighter-rouge">ignoreStopWords</code> that are not available in the <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#nerconverter">NerConverter</a> annotator.</p>
+
+    <p>See also <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)">Inside–outside–beginning (tagging)</a> for more information.</p>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, TOKEN, NAMED_ENTITY</code></p>
 
@@ -17725,7 +18151,7 @@ Chunks with no associated entity (tagged “O”) are filtered out.</p>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.NerConverterInternal">NerConverterInternal</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/NerConverterInternal.html">NerConverterInternal</a></td>
-          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerConverterInternal.ipynb">NerConverterInternalNotebook</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerConverterInternal.ipynb">Notebook</a></td>
         </tr>
       </tbody>
     </table>
@@ -17745,136 +18171,183 @@ Chunks with no associated entity (tagged “O”) are filtered out.</p>
 
         <div class="tab-mfl-content">
 
-          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span> 
-
-<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+<span class="c1"># Annotator that transforms a text column from dataframe into an Annotation ready for NLP
+</span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span> 
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+<span class="c1"># Tokenizer splits words in a relevant format for NLP
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+<span class="c1"># Clinical word embeddings trained on PubMED dataset
+</span><span class="n">embeddings</span>  <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">jsl_ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="c1"># NER model
+</span><span class="n">nerModel</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_posology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"jsl_ner"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
-<span class="n">jsl_ner_converter</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">NerConverter</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"jsl_ner"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"jsl_ner_chunk"</span><span class="p">)</span>
+<span class="c1"># NER Converter
+</span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span> \
+   <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-<span class="n">jsl_ner_converter_internal</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"jsl_ner"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"replaced_ner_chunk"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setReplaceDictResource</span><span class="p">(</span><span class="s">"replace_dict.csv"</span><span class="p">,</span><span class="s">"text"</span><span class="p">,</span> <span class="p">{</span><span class="s">"delimiter"</span><span class="p">:</span><span class="s">","</span><span class="p">})</span>
-      
-<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">documentAssembler</span><span class="p">,</span> 
-    <span class="n">sentenceDetector</span><span class="p">,</span>
-    <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">word_embeddings</span><span class="p">,</span>
-    <span class="n">jsl_ner</span><span class="p">,</span>
-    <span class="n">jsl_ner_converter</span><span class="p">,</span>
-    <span class="n">jsl_ner_converter_internal</span>
-    <span class="p">])</span>
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+                              <span class="n">sentence_detector</span><span class="p">,</span>
+                              <span class="n">tokenizer</span><span class="p">,</span>
+                              <span class="n">embeddings</span><span class="p">,</span>
+                              <span class="n">nerModel</span><span class="p">,</span>
+                              <span class="n">nerConverter</span>
+                              <span class="p">])</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""The patient was prescribed 1 capsule of Advil for 5 days.
+He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, metformin 1000 mg two times a day.
+"""</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">sample_text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'text'</span><span class="p">,</span> <span class="s">'ner.result'</span><span class="p">,</span> <span class="s">'ner_chunk.result'</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
+<span class="o">|</span>                                              <span class="n">text</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
+<span class="o">|</span><span class="n">The</span> <span class="n">patient</span> <span class="n">was</span> <span class="n">prescribed</span> <span class="mi">1</span> <span class="n">capsule</span> <span class="n">of</span> <span class="n">Advil</span> <span class="n">f</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">B</span><span class="o">-</span><span class="n">DOSAGE</span><span class="p">,</span> <span class="n">B</span><span class="o">-</span><span class="n">FORM</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">B</span><span class="o">-</span><span class="n">DRUG</span><span class="p">,</span> <span class="n">B</span><span class="o">-</span><span class="n">DUR</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">capsule</span><span class="p">,</span> <span class="n">Advil</span><span class="p">,</span> <span class="k">for</span> <span class="mi">5</span> <span class="n">days</span><span class="p">,</span> <span class="mi">40</span> <span class="n">units</span><span class="p">,</span> <span class="n">insul</span><span class="p">...</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
 
         <div class="tab-mfl-content">
 
-          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">finance</span>
-
-<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+<span class="c1"># Annotator that transforms a text column from dataframe into an Annotation ready for NLP
+</span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">sentenceDetector</span> <span class="o">=</span>  <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span><span class="s">"xx"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
-    <span class="c1">#.setCustomBounds(["\n\n"])
-</span>
-<span class="n">tokenizer</span> <span class="o">=</span>  <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">embeddings</span> <span class="o">=</span>  <span class="n">nlp</span><span class="p">.</span><span class="n">RoBertaEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"roberta_embeddings_legal_roberta_base"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
+<span class="c1"># Tokenizer splits words in a relevant format for NLP
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setContextChars</span><span class="p">([</span><span class="s">'.'</span><span class="p">,</span> <span class="s">','</span><span class="p">,</span> <span class="s">';'</span><span class="p">,</span> <span class="s">':'</span><span class="p">,</span> <span class="s">'!'</span><span class="p">,</span> <span class="s">'?'</span><span class="p">,</span> <span class="s">'*'</span><span class="p">,</span> <span class="s">'-'</span><span class="p">,</span> <span class="s">'('</span><span class="p">,</span> <span class="s">')'</span><span class="p">,</span> <span class="s">'"'</span><span class="p">,</span> <span class="s">"'"</span><span class="p">,</span> <span class="s">'%'</span><span class="p">,</span> <span class="s">'&amp;'</span><span class="p">])</span>
+
+<span class="n">embeddings</span>  <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">fin_ner</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"finner_deid"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"finance/models"</span><span class="p">)</span>\
+<span class="c1"># NER model
+</span><span class="n">nerModel</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"finner_responsibility_reports_md"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"finance/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span> 
-    <span class="c1">#.setLabelCasing("upper")
-</span>
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setReplaceLabels</span><span class="p">({</span><span class="s">"ORG"</span><span class="p">:</span> <span class="s">"PARTY"</span><span class="p">})</span> <span class="c1"># Replace "ORG" entity as "PARTY"
-</span>
-<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-      <span class="n">documentAssembler</span><span class="p">,</span> 
-      <span class="n">sentenceDetector</span><span class="p">,</span>
-      <span class="n">tokenizer</span><span class="p">,</span>
-      <span class="n">embeddings</span><span class="p">,</span>
-      <span class="n">fin_ner</span><span class="p">,</span>
-      <span class="n">ner_converter</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># NER Converter
+</span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">finance</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span> \
+   <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+                              <span class="n">sentence_detector</span><span class="p">,</span>
+                              <span class="n">tokenizer</span><span class="p">,</span>
+                              <span class="n">embeddings</span><span class="p">,</span>
+                              <span class="n">nerModel</span><span class="p">,</span>
+                              <span class="n">nerConverter</span>
+                              <span class="p">])</span>
+
+<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""The company has reduced its direct GHG emissions from 12,135 million tonnes of CO2e in 2017 to 4 million tonnes of CO2e in 2021. The indirect GHG emissions (scope 2) are mainly from imported energy, including electricity, heat, steam, and cooling, and the company has reduced its scope 2 emissions from 3 million tonnes of CO2e in 2017-2018 to 4 million tonnes of CO2e in 2020-2021. The scope 3 emissions are mainly from the use of sold products, and the emissions have increased from 377 million tonnes of CO2e in 2017 to 408 million tonnes of CO2e in 2021.
+"""</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">sample_text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'text'</span><span class="p">,</span> <span class="s">'ner.result'</span><span class="p">,</span> <span class="s">'ner_chunk.result'</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
+<span class="o">|</span>                                              <span class="n">text</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
+<span class="o">|</span><span class="n">The</span> <span class="n">company</span> <span class="n">has</span> <span class="n">reduced</span> <span class="n">its</span> <span class="n">direct</span> <span class="n">GHG</span> <span class="n">emission</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">B</span><span class="o">-</span><span class="n">ENVIRONMENTAL_KPI</span><span class="p">,</span> <span class="n">I</span><span class="o">-</span><span class="n">ENVIRONM</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="n">direct</span> <span class="n">GHG</span> <span class="n">emissions</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span><span class="mi">135</span> <span class="n">million</span><span class="p">,</span> <span class="n">tonnes</span> <span class="n">o</span><span class="p">...</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
 
         <div class="tab-mfl-content">
 
-          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">legal</span>
-
-<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span> 
+<span class="c1"># Annotator that transforms a text column from dataframe into an Annotation ready for NLP
+</span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span><span class="s">"xx"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
-    <span class="c1">#.setCustomBounds(["\n\n"])
-</span>
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+
+<span class="c1"># Tokenizer splits words in a relevant format for NLP
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">RoBertaEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"roberta_embeddings_legal_roberta_base"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
+<span class="n">embeddings</span>  <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">legal_ner</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legner_contract_doc_parties"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span>\
+<span class="c1"># NER model
+</span><span class="n">nerModel</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legner_org_per_role_date"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span> 
-    <span class="c1">#.setLabelCasing("upper")
-</span>
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setReplaceLabels</span><span class="p">({</span><span class="s">"ALIAS"</span><span class="p">:</span> <span class="s">"PARTY"</span><span class="p">})</span> <span class="c1"># "ALIAS" are secondary names of companies, so let's extract them also as PARTY
-</span>
-<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-      <span class="n">documentAssembler</span><span class="p">,</span> 
-      <span class="n">sentenceDetector</span><span class="p">,</span>
-      <span class="n">tokenizer</span><span class="p">,</span>
-      <span class="n">embeddings</span><span class="p">,</span>
-      <span class="n">legal_ner</span><span class="p">,</span>
-      <span class="n">ner_converter</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># NER Converter
+</span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span> \
+   <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+                              <span class="n">sentence_detector</span><span class="p">,</span>
+                              <span class="n">tokenizer</span><span class="p">,</span>
+                              <span class="n">embeddings</span><span class="p">,</span>
+                              <span class="n">nerModel</span><span class="p">,</span>
+                              <span class="n">nerConverter</span>
+                              <span class="p">])</span>
+
+<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""Jeffrey Preston Bezos is an American entrepreneur, founder and CEO of Amazon
+"""</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">sample_text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'text'</span><span class="p">,</span> <span class="s">'ner.result'</span><span class="p">,</span> <span class="s">'ner_chunk.result'</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="o">+--------------------------------------------------+--------------------------------------------------+---------------------------------------------+</span>
+<span class="o">|</span>                                              <span class="n">text</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>                                       <span class="n">result</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+---------------------------------------------+</span>
+<span class="o">|</span><span class="n">Jeffrey</span> <span class="n">Preston</span> <span class="n">Bezos</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">American</span> <span class="n">entreprene</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="n">B</span><span class="o">-</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">I</span><span class="o">-</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">I</span><span class="o">-</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">B</span><span class="p">...</span><span class="o">|</span><span class="p">[</span><span class="n">Jeffrey</span> <span class="n">Preston</span> <span class="n">Bezos</span><span class="p">,</span> <span class="n">founder</span><span class="p">,</span> <span class="n">CEO</span><span class="p">,</span> <span class="n">Amazon</span><span class="p">]</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+---------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -17892,50 +18365,56 @@ Chunks with no associated entity (tagged “O”) are filtered out.</p>
 
           <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
 
-<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+<span class="c1">// Annotator that transforms a text column from dataframe into an Annotation ready for NLP </span>
+<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nc">SentenceDetectorDLModel</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span> 
-
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span> 
+ 
+<span class="c1">// Tokenizer splits words in a relevant format for NLP </span>
 <span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span> 
+ 
+<span class="c1">// Clinical word embeddings trained on PubMED dataset </span>
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span> 
+ 
+<span class="c1">// NER model </span>
+<span class="k">val</span> <span class="nv">nerModel</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_posology"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span> 
+ 
+<span class="c1">// NER Converter </span>
+<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span>
-   <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span>
+    <span class="n">sentence_detector</span><span class="o">,</span> 
+    <span class="n">tokenizer</span><span class="o">,</span> 
+    <span class="n">embeddings</span><span class="o">,</span> 
+    <span class="n">nerModel</span><span class="o">,</span> 
+    <span class="n">nerConverter</span> <span class="o">))</span> 
 
-<span class="k">val</span> <span class="nv">jsl_ner</span> <span class="k">=</span> <span class="nc">MedicalNerModel</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"jsl_ner"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">empty_data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">""</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">nlpPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">empty_data</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">jsl_ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"jsl_ner"</span><span class="o">))</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"jsl_ner_chunk"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sample_text</span> <span class="k">=</span> <span class="s">"The patient was prescribed 1 capsule of Advil for 5 days.He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night,12 units of insulin lispro with meals,metformin 1000 mg two times a day."</span> 
 
-<span class="k">val</span> <span class="nv">jsl_ner_converter_internal</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"jsl_ner"</span><span class="o">))</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"replaced_ner_chunk"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setReplaceDictResource</span><span class="o">(</span><span class="s">"replace_dict.csv"</span><span class="o">,</span><span class="s">"text"</span><span class="o">,</span> <span class="o">{</span><span class="s">"delimiter"</span><span class="k">:</span><span class="err">"</span><span class="o">,</span><span class="err">"</span><span class="o">})</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">sample_text</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span> <span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span><span class="s">"ner.result"</span><span class="o">,</span><span class="s">"ner_chunk.result"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-  <span class="n">documentAssembler</span><span class="o">,</span>
-  <span class="n">sentenceDetector</span><span class="o">,</span>
-  <span class="n">tokenizer</span><span class="o">,</span>
-  <span class="n">word_embeddings</span><span class="o">,</span>
-  <span class="n">jsl_ner</span><span class="o">,</span>
-  <span class="n">jsl_ner_converter</span><span class="o">,</span>
-  <span class="n">jsl_ner_converter_internal</span>
-
-<span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
+<span class="o">|</span>                                              <span class="n">text</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
+<span class="o">|</span><span class="nc">The</span> <span class="n">patient</span> <span class="n">was</span> <span class="n">prescribed</span> <span class="mi">1</span> <span class="n">capsule</span> <span class="n">of</span> <span class="nc">Advil</span> <span class="n">f</span><span class="o">...|[</span><span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">B-DOSAGE</span>, <span class="kt">B-FORM</span>, <span class="kt">O</span>, <span class="kt">B-DRUG</span>, <span class="kt">B-DUR...|</span><span class="o">[</span><span class="err">1</span>, <span class="kt">capsule</span>, <span class="kt">Advil</span>, <span class="kt">for</span> <span class="err">5</span> <span class="kt">days</span>, <span class="err">40</span> <span class="kt">units</span>, <span class="kt">insul...|</span>
+<span class="kt">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -17944,44 +18423,56 @@ Chunks with no associated entity (tagged “O”) are filtered out.</p>
 
           <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
 
-<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+<span class="c1">// Annotator that transforms a text column from dataframe into an Annotation ready for NLP </span>
+<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nc">SentenceDetectorDLModel</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl"</span><span class="o">,</span><span class="s">"xx"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span> 
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span> 
 
+<span class="c1">// Tokenizer splits words in a relevant format for NLP </span>
 <span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span> 
+ <span class="o">.</span><span class="py">setContextChars</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"."</span><span class="o">,</span><span class="s">","</span><span class="o">,</span><span class="s">";"</span><span class="o">,</span><span class="s">":"</span><span class="o">,</span><span class="s">"!"</span><span class="o">,</span><span class="s">"?"</span><span class="o">,</span><span class="s">"*"</span><span class="o">,</span><span class="s">"-"</span><span class="o">,</span><span class="s">"("</span><span class="o">,</span><span class="s">") "</span><span class="o">,</span><span class="s">""","""</span><span class="o">,</span><span class="s">"%"</span><span class="o">,</span><span class="s">"&amp;"</span><span class="o">))</span> 
 
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nc">RoBertaEmbeddings</span>
-   <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"roberta_embeddings_legal_roberta_base"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">)</span>
-   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">BertEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">fin_ner</span> <span class="k">=</span> <span class="nc">FinanceNerModel</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"finner_deid"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"finance/models"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+<span class="c1">// NER model </span>
+<span class="k">val</span> <span class="nv">nerModel</span> <span class="k">=</span> <span class="nv">FinanceNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"finner_responsibility_reports_md"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"finance/models"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span> 
+ 
+<span class="c1">// NER Converter </span>
+<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setReplaceLabels</span><span class="o">({</span><span class="s">"ORG"</span><span class="k">:</span> <span class="err">"</span><span class="kt">PARTY</span><span class="err">"</span><span class="o">})</span> 
+<span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span>
+    <span class="n">sentence_detector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span> 
+    <span class="n">embeddings</span><span class="o">,</span>
+    <span class="n">nerModel</span><span class="o">,</span> 
+    <span class="n">nerConverter</span> <span class="o">))</span> 
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-  <span class="n">documentAssembler</span><span class="o">,</span>
-  <span class="n">sentenceDetector</span><span class="o">,</span>
-  <span class="n">tokenizer</span><span class="o">,</span>
-  <span class="n">embeddings</span><span class="o">,</span>
-  <span class="n">fin_ner</span><span class="o">,</span>
-  <span class="n">ner_converter</span>
-<span class="o">))</span>
+<span class="k">val</span> <span class="nv">empty_data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">""</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">nlpPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">empty_data</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sample_text</span> <span class="k">=</span> <span class="s">"The company has reduced its direct GHG emissions from 12,135 million tonnes of CO2e in 2017 to 4 million tonnes of CO2e in 2021. The indirect GHG emissions (scope 2) are mainly from imported energy,including electricity,heat,steam,and cooling,and the company has reduced its scope 2 emissions from 3 million tonnes of CO2e in 2017-2018 to 4 million tonnes of CO2e in 2020-2021. The scope 3 emissions are mainly from the use of sold products,and the emissions have increased from 377 million tonnes of CO2e in 2017 to 408 million tonnes of CO2e in 2021."</span> 
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">sample_text</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span> <span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span><span class="s">"ner.result"</span><span class="o">,</span><span class="s">"ner_chunk.result"</span><span class="o">)</span> 
+
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
+<span class="o">|</span>                                              <span class="n">text</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
+<span class="o">|</span><span class="nc">The</span> <span class="n">company</span> <span class="n">has</span> <span class="n">reduced</span> <span class="n">its</span> <span class="n">direct</span> <span class="nc">GHG</span> <span class="n">emission</span><span class="o">...|[</span><span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">B-ENVIRONMENTAL_KPI</span>, <span class="kt">I-ENVIRONM...|</span><span class="o">[</span><span class="kt">direct</span> <span class="kt">GHG</span> <span class="kt">emissions</span>, <span class="err">12</span>,<span class="err">135</span> <span class="kt">million</span>, <span class="kt">tonnes</span> <span class="kt">o...|</span>
+<span class="kt">+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -17990,44 +18481,55 @@ Chunks with no associated entity (tagged “O”) are filtered out.</p>
 
           <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
 
-<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+<span class="c1">// Annotator that transforms a text column from dataframe into an Annotation ready for NLP </span>
+<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nc">SentenceDetectorDLModel</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl"</span><span class="o">,</span><span class="s">"xx"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span> 
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span> 
 
+<span class="c1">// Tokenizer splits words in a relevant format for NLP </span>
 <span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nc">RoBertaEmbeddings</span>
-   <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"roberta_embeddings_legal_roberta_base"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">)</span>
-   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">BertEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bert_embeddings_sec_bert_base"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span> 
+ 
+<span class="c1">// NER model </span>
+<span class="k">val</span> <span class="nv">nerModel</span> <span class="k">=</span> <span class="nv">LegalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"legner_org_per_role_date"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"legal/models"</span><span class="o">)</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span> 
+ 
+<span class="c1">// NER Converter </span>
+<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+ <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span> 
+ <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">legal_ner</span> <span class="k">=</span> <span class="nc">LegalNerModel</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"legner_contract_doc_parties"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"legal/models"</span><span class="o">)</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span> 
+    <span class="n">sentence_detector</span><span class="o">,</span> 
+    <span class="n">tokenizer</span><span class="o">,</span> 
+    <span class="n">embeddings</span><span class="o">,</span> 
+    <span class="n">nerModel</span><span class="o">,</span> 
+    <span class="n">nerConverter</span> <span class="o">))</span> 
 
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span> 
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span> 
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setReplaceLabels</span><span class="o">({</span><span class="s">"ALIAS"</span><span class="k">:</span> <span class="err">"</span><span class="kt">PARTY</span><span class="err">"</span><span class="o">})</span>
+<span class="k">val</span> <span class="nv">empty_data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">""</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">nlpPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">empty_data</span><span class="o">)</span> 
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-  <span class="n">documentAssembler</span><span class="o">,</span>
-  <span class="n">sentenceDetector</span><span class="o">,</span>
-  <span class="n">tokenizer</span><span class="o">,</span>
-  <span class="n">embeddings</span><span class="o">,</span>
-  <span class="n">legal_ner</span><span class="o">,</span>
-  <span class="n">ner_converter</span>
-<span class="o">))</span>
+<span class="k">val</span> <span class="nv">sample_text</span> <span class="k">=</span> <span class="s">"Jeffrey Preston Bezos is an American entrepreneur,founder and CEO of Amazon"</span> 
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">sample_text</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> 
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span> <span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span><span class="s">"ner.result"</span><span class="o">,</span><span class="s">"ner_chunk.result"</span><span class="o">)</span> 
+
+<span class="o">+--------------------------------------------------+--------------------------------------------------+---------------------------------------------+</span>
+<span class="o">|</span>                                              <span class="n">text</span><span class="o">|</span>                                            <span class="n">result</span><span class="o">|</span>                                       <span class="n">result</span><span class="o">|</span>
+<span class="o">+--------------------------------------------------+--------------------------------------------------+---------------------------------------------+</span>
+<span class="o">|</span><span class="nc">Jeffrey</span> <span class="nc">Preston</span> <span class="nc">Bezos</span> <span class="n">is</span> <span class="n">an</span> <span class="nc">American</span> <span class="n">entreprene</span><span class="o">...|[</span><span class="kt">B-PERSON</span>, <span class="kt">I-PERSON</span>, <span class="kt">I-PERSON</span>, <span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">O</span>, <span class="kt">B...|</span><span class="o">[</span><span class="kt">Jeffrey</span> <span class="kt">Preston</span> <span class="kt">Bezos</span>, <span class="kt">founder</span>, <span class="kt">CEO</span>, <span class="kt">Amazon</span><span class="o">]</span><span class="kt">|</span>
+<span class="kt">+--------------------------------------------------+--------------------------------------------------+---------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -21106,6 +21608,168 @@ Securities registered pursuant to Section 12(g) of the Act:"</span>
 
 <div class="tabs-model-aproach">
 
+  <h2 id="regexmatcherinternal">RegexMatcherInternal</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>The <strong><code class="language-plaintext highlighter-rouge">RegexMatcherInternal</code></strong> class implements an internal annotator approach to match a set of regular expressions with a provided entity. This approach is utilized for associating specific patterns within text data with predetermined entities, such as dates, mentioned within the text.</p>
+
+    <p>The class allows users to define rules using regular expressions paired with entities, offering flexibility in customization. These rules can either be directly set using the <code class="language-plaintext highlighter-rouge">setRules</code> method, with a specified delimiter, or loaded from an external file using the <code class="language-plaintext highlighter-rouge">setExternalRules</code> method.</p>
+
+    <p>Additionally, users can specify parameters such as the matching strategy (<code class="language-plaintext highlighter-rouge">MATCH_FIRST</code>, <code class="language-plaintext highlighter-rouge">MATCH_ALL</code>, or <code class="language-plaintext highlighter-rouge">MATCH_COMPLETE</code>) to control how matches are handled. The output annotation type is <code class="language-plaintext highlighter-rouge">CHUNK</code>, with input annotation types supporting <code class="language-plaintext highlighter-rouge">DOCUMENT</code>. This class provides a versatile tool for implementing entity recognition based on user-defined patterns within text data.</p>
+
+    <p>A rule consists of a regex pattern and an identifier, delimited by a character of choice. An example could be <code class="language-plaintext highlighter-rouge">"\\d{4}\\/\\d\\d\\/\\d\\d,date"</code> which will match strings like <code class="language-plaintext highlighter-rouge">"1970/01/01"</code> to the identifier <code class="language-plaintext highlighter-rouge">"date"</code>.</p>
+
+    <p>Parametres:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">strategy</code>: Can be either <code class="language-plaintext highlighter-rouge">MATCH_FIRST</code>, <code class="language-plaintext highlighter-rouge">MATCH_ALL</code>, <code class="language-plaintext highlighter-rouge">MATCH_COMPLETE</code>, by default <code class="language-plaintext highlighter-rouge">MATCH_ALL</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">rules</code>: Regex rules to match the identifier with.</li>
+      <li><code class="language-plaintext highlighter-rouge">delimiter</code>: Delimiter for rules provided with setRules.</li>
+      <li><code class="language-plaintext highlighter-rouge">externalRules</code>: external resource to rules, needs <code class="language-plaintext highlighter-rouge">delimiter</code> in options.</li>
+    </ul>
+
+    <p>See <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb">Spark NLP Workshop</a> for more examples of usage.</p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">rules</span> <span class="o">=</span> <span class="s">'''
+(\d{1,3}\.){3}\d{1,3}~IPADDR
+\d{4}-\d{2}-\d{2}|\d{2}/\d{2}/\d{2}|\d{2}/\d{2}/\d{2}~DATE
+'''</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'./rules/regex_rules.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">rules</span><span class="p">)</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">regex_matcher_internal</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">RegexMatcherInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">'document'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setStrategy</span><span class="p">(</span><span class="s">"MATCH_ALL"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"regex_matches"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setExternalRules</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s">'./rules/regex_rules.txt'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">'~'</span><span class="p">)</span>
+
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">regex_matcher_internal</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># result
+</span><span class="o">+--------------+-----+---+---------+</span>
+<span class="o">|</span>  <span class="n">regex_result</span><span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span><span class="o">|</span>
+<span class="o">+--------------+-----+---+---------+</span>
+<span class="o">|</span>    <span class="mi">2093</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">13</span><span class="o">|</span>   <span class="mi">38</span><span class="o">|</span> <span class="mi">47</span><span class="o">|</span>     <span class="n">DATE</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">203.120</span><span class="p">.</span><span class="mf">223.13</span><span class="o">|</span>   <span class="mi">97</span><span class="o">|</span><span class="mi">110</span><span class="o">|</span>   <span class="n">IPADDR</span><span class="o">|</span>
+<span class="o">|</span>      <span class="mi">01</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">93</span><span class="o">|</span>  <span class="mi">188</span><span class="o">|</span><span class="mi">195</span><span class="o">|</span>     <span class="n">DATE</span><span class="o">|</span>
+<span class="o">+--------------+-----+---+---------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//rules = '''</span>
+<span class="c1">//(\d{1,3}\.){3}\d{1,3}~IPADDR</span>
+<span class="c1">//\d{4}-\d{2}-\d{2}|\d{2}/\d{2}/\d{2}|\d{2}/\d{2}/\d{2}~DATE</span>
+<span class="c1">//'''</span>
+<span class="c1">//</span>
+<span class="c1">//with open('./rules/regex_rules.txt', 'w') as f:</span>
+<span class="c1">//    f.write(rules)</span>
+
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
+  |Dr. John Green, ID: 1231511863, IP 203.120.223.13
+  |He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93
+  |Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
+  |Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""</span><span class="o">.</span><span class="py">stripMargin</span>
+
+<span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">regexMatcher</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">RegexMatcher</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setStrategy</span><span class="o">(</span><span class="s">"MATCH_ALL"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"regex_matches"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setExternalRulesPath</span><span class="o">(</span><span class="s">"./rules/regex_rules.txt"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setDelimiter</span><span class="o">(</span><span class="s">"~"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">documentAssembler</span><span class="o">,</span> <span class="n">regexMatcher</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">nlpPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="k">#</span> <span class="n">result</span>
+<span class="o">+--------------+-----+---+---------+</span>
+<span class="o">|</span>  <span class="n">regex_result</span><span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span><span class="o">|</span>
+<span class="o">+--------------+-----+---+---------+</span>
+<span class="o">|</span>    <span class="mi">2093</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">13</span><span class="o">|</span>   <span class="mi">38</span><span class="o">|</span> <span class="mi">47</span><span class="o">|</span>     <span class="nc">DATE</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">203.120</span><span class="o">.</span><span class="mf">223.13</span><span class="o">|</span>   <span class="mi">97</span><span class="o">|</span><span class="mi">110</span><span class="o">|</span>   <span class="nc">IPADDR</span><span class="o">|</span>
+<span class="o">|</span>      <span class="mi">01</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">93</span><span class="o">|</span>  <span class="mi">188</span><span class="o">|</span><span class="mi">195</span><span class="o">|</span>     <span class="nc">DATE</span><span class="o">|</span>
+<span class="o">+--------------+-----+---+---------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
   <h2 id="relationextraction">RelationExtraction</h2>
 
   <div class="tabs-model-aproach-head tac"><button class="tab-li-model-aproach">Model</button><button class="tab-li-model-aproach tabheader_active">Approach</button></div>
@@ -24128,12 +24792,7 @@ At this time, chest tube placement for drainage of the fluid occurred and thorac
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"summary"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setMaxTextLength</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDoSample</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRefineSummary</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRefineSummaryTargetLength</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRefineMaxAttempts</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRefineChunkSize</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setMaxNewTokens</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
     <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
@@ -24153,11 +24812,11 @@ DISPOSITION: Crutches and splint were administered here. I gave him a prescripti
 
 <span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"summary.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="o">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="o">|</span> <span class="n">result</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <span class="o">|</span>
-<span class="o">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="o">|</span> <span class="n">An</span> <span class="n">x</span><span class="o">-</span><span class="n">ray</span> <span class="n">showed</span> <span class="n">spondylolisis</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ankle</span> <span class="ow">in</span> <span class="n">a</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="ow">and</span> <span class="mi">17</span><span class="o">-</span><span class="n">months</span> <span class="n">old</span> <span class="n">man</span> <span class="n">who</span> <span class="n">was</span> <span class="n">playing</span> <span class="n">basketball</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">gym</span> <span class="n">after</span> <span class="n">slipping</span><span class="p">.</span> <span class="n">He</span> <span class="n">has</span> <span class="n">no</span> <span class="n">other</span> <span class="n">injury</span> <span class="n">notes</span><span class="p">,</span> <span class="n">but</span> <span class="n">an</span> <span class="n">x</span><span class="o">-</span><span class="n">ray</span> <span class="n">revealed</span> <span class="n">small</span> <span class="n">fracture</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ankle</span><span class="p">.</span> <span class="n">He</span> <span class="n">requested</span> <span class="n">Motrin</span> <span class="k">for</span> <span class="n">pain</span> <span class="ow">and</span> <span class="n">he</span> <span class="n">was</span> <span class="n">discharged</span> <span class="k">with</span> <span class="n">crutches</span> <span class="ow">and</span> <span class="n">Motrin</span><span class="p">.</span> <span class="n">The</span> <span class="n">physician</span> <span class="n">gave</span> <span class="n">his</span> <span class="n">sprates</span> <span class="o">&amp;</span> <span class="n">tuxet</span> <span class="k">for</span> <span class="n">resting</span><span class="p">.</span> <span class="n">He</span> <span class="n">also</span> <span class="n">gave</span> <span class="n">him</span> <span class="n">Motrin</span><span class="p">,</span> <span class="k">if</span> <span class="n">pain</span> <span class="n">worsens</span> <span class="ow">and</span> <span class="n">advised</span> <span class="n">him</span> <span class="n">on</span> <span class="n">returning</span> <span class="k">for</span> <span class="n">followup</span><span class="p">.</span> <span class="o">|</span>
-<span class="o">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="o">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="o">|</span><span class="n">result</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                 <span class="o">|</span>
+<span class="o">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="o">|</span><span class="p">[</span><span class="n">A</span> <span class="mi">17</span><span class="o">-</span><span class="n">year</span><span class="o">-</span><span class="n">old</span> <span class="n">man</span> <span class="n">fell</span> <span class="ow">and</span> <span class="n">twisted</span> <span class="n">his</span> <span class="n">right</span> <span class="n">ankle</span><span class="p">,</span> <span class="n">causing</span> <span class="n">pain</span> <span class="n">to</span> <span class="n">move</span> <span class="ow">or</span> <span class="n">bear</span> <span class="n">weight</span><span class="p">.</span> <span class="n">An</span> <span class="n">x</span><span class="o">-</span><span class="n">ray</span> <span class="n">showed</span> <span class="n">a</span> <span class="n">small</span> <span class="n">ossicle</span> <span class="ow">or</span> <span class="n">avulsion</span> <span class="n">fracture</span> <span class="n">of</span> <span class="n">the</span> <span class="n">talonavicular</span> <span class="n">joint</span> <span class="n">on</span> <span class="n">the</span> <span class="n">lateral</span> <span class="n">view</span><span class="p">,</span> <span class="n">which</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">fracture</span> <span class="n">based</span> <span class="n">upon</span> <span class="n">his</span> <span class="n">exam</span><span class="p">.</span> <span class="n">He</span> <span class="n">was</span> <span class="n">given</span> <span class="n">Motrin</span> <span class="ow">and</span> <span class="n">discharged</span> <span class="n">home</span> <span class="k">with</span> <span class="n">crutches</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">prescription</span> <span class="k">for</span> <span class="n">Motrin</span> <span class="ow">and</span> <span class="n">Darvocet</span><span class="p">.</span> <span class="n">He</span> <span class="n">was</span> <span class="n">advised</span> <span class="n">to</span> <span class="n">follow</span> <span class="n">up</span> <span class="k">with</span> <span class="n">his</span> <span class="n">doctor</span> <span class="k">if</span> <span class="n">pain</span> <span class="n">worsens</span> <span class="ow">and</span> <span class="k">return</span> <span class="k">if</span> <span class="nb">any</span> <span class="n">worsening</span> <span class="n">problems</span> <span class="n">worsen</span><span class="p">.]</span><span class="o">|</span>
+<span class="o">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -24259,11 +24918,7 @@ reference to or reliance on any of the Company’s Confidential Information."""<
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"summary"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setMaxTextLength</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setMaxNewTokens</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setDoSample</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setRefineSummary</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setRefineSummaryTargetLength</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setRefineMaxAttempts</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setRefineChunkSize</span><span class="o">(</span><span class="mi">512</span><span class="o">)</span>
+
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">documentAssembler</span><span class="o">,</span> <span class="n">summarizer</span><span class="o">))</span>
 
@@ -24747,6 +25402,196 @@ reference to or reliance on any of the Company’s Confidential Information."""<
 <span class="o">|</span> <span class="nc">This</span> <span class="n">exhibit</span> <span class="n">has</span> <span class="n">been</span> <span class="n">redacted</span> <span class="n">and</span> <span class="n">is</span> <span class="n">the</span> <span class="n">subject</span> <span class="n">of</span> <span class="n">a</span> <span class="n">confidential</span> <span class="n">treatment</span> <span class="n">request</span><span class="o">.</span> <span class="nc">Redacted</span> <span class="n">material</span> <span class="n">is</span> <span class="n">marked</span> <span class="k">with</span> <span class="o">[</span><span class="kt">*</span> <span class="kt">*</span> <span class="kt">*</span><span class="o">]</span> <span class="n">and</span> <span class="n">has</span> <span class="n">been</span> <span class="n">filed</span> <span class="n">separately</span> <span class="k">with</span> <span class="n">the</span> <span class="n">securities</span> <span class="n">and</span> <span class="n">exchange</span> <span class="n">commission</span><span class="o">.</span> <span class="nc">The</span> <span class="n">redacted</span> <span class="n">material</span> <span class="n">is</span> <span class="n">confidential</span> <span class="o">|</span>
 <span class="o">|</span> <span class="n">and</span> <span class="n">will</span> <span class="n">not</span> <span class="n">be</span> <span class="n">disclosed</span> <span class="n">to</span> <span class="n">any</span> <span class="n">third</span> <span class="n">party</span> <span class="n">without</span> <span class="n">the</span> <span class="n">prior</span> <span class="n">written</span> <span class="n">consent</span> <span class="n">of</span> <span class="n">the</span> <span class="n">parties</span><span class="o">.</span>                                                                                                                                                   <span class="o">|</span>
 <span class="o">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="textmatcherinternal">TextMatcherInternal</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>This annotator match exact phrases provided in a file against a Document.</p>
+
+    <p>Parametres:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">setEntities</code> <em>(str)</em>: Sets the external resource for the entities.
+      path : str
+          Path to the external resource
+      read_as : str, optional
+          How to read the resource, by default ReadAs.TEXT
+      options : dict, optional
+          Options for reading the resource, by default {“format”: “text”}</li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setCaseSensitive</code> <em>(Boolean)</em>: Sets whether to match regardless of case. (Default: True)</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setMergeOverlapping</code> <em>(Boolean)</em>: Sets whether to merge overlapping matched chunks. (Default: False)</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setEntityValue</code> <em>(str)</em>: Sets the value for the entity metadata field. If any entity value isn’t set in the file, we need to set it for the entity value.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setBuildFromTokens</code> <em>(Boolean)</em>: Sets whether the TextMatcherInternal should take the CHUNK from TOKEN.</p>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">setDelimiter</code> <em>(str)</em>: Sets value for the delimiter between Phrase, Entity.</li>
+    </ul>
+
+    <p>See <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb">Spark NLP Workshop</a> for more examples of usage.</p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, TOKEN</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">matcher_drug</span> <span class="o">=</span> <span class="s">"""
+Aspirin 100mg#Drug
+aspirin#Drug
+paracetamol#Drug
+amoxicillin#Drug
+ibuprofen#Drug
+lansoprazole#Drug
+"""</span>
+
+<span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="s">'matcher_drug.csv'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">matcher_drug</span><span class="p">)</span>
+
+<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">entityExtractor</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">TextMatcherInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setEntities</span><span class="p">(</span><span class="s">"matcher_drug.csv"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"matched_text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDelimiter</span><span class="p">(</span><span class="s">"#"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMergeOverlapping</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">mathcer_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+                  <span class="n">documentAssembler</span><span class="p">,</span>
+                  <span class="n">tokenizer</span><span class="p">,</span>
+                  <span class="n">entityExtractor</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"John's doctor prescribed aspirin 100mg for his heart condition, along with paracetamol for his fever, amoxicillin for his tonsilitis, ibuprofen for his inflammation, and lansoprazole for his GORD."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">matcher_model</span> <span class="o">=</span> <span class="n">mathcer_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">matcher_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># result
+</span><span class="o">+-------------+-----+---+-----+</span>
+<span class="o">|</span>        <span class="n">chunk</span><span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">label</span><span class="o">|</span>
+<span class="o">+-------------+-----+---+-----+</span>
+<span class="o">|</span>      <span class="n">aspirin</span><span class="o">|</span>   <span class="mi">25</span><span class="o">|</span> <span class="mi">31</span><span class="o">|</span> <span class="n">Drug</span><span class="o">|</span>
+<span class="o">|</span><span class="n">aspirin</span> <span class="mi">100</span><span class="n">mg</span><span class="o">|</span>   <span class="mi">25</span><span class="o">|</span> <span class="mi">37</span><span class="o">|</span> <span class="n">Drug</span><span class="o">|</span>
+<span class="o">|</span>  <span class="n">paracetamol</span><span class="o">|</span>   <span class="mi">75</span><span class="o">|</span> <span class="mi">85</span><span class="o">|</span> <span class="n">Drug</span><span class="o">|</span>
+<span class="o">|</span>  <span class="n">amoxicillin</span><span class="o">|</span>  <span class="mi">102</span><span class="o">|</span><span class="mi">112</span><span class="o">|</span> <span class="n">Drug</span><span class="o">|</span>
+<span class="o">|</span>    <span class="n">ibuprofen</span><span class="o">|</span>  <span class="mi">134</span><span class="o">|</span><span class="mi">142</span><span class="o">|</span> <span class="n">Drug</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">lansoprazole</span><span class="o">|</span>  <span class="mi">170</span><span class="o">|</span><span class="mi">181</span><span class="o">|</span> <span class="n">Drug</span><span class="o">|</span>
+<span class="o">+-------------+-----+---+-----+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="c1">//matcher_drug = """</span>
+<span class="c1">//Aspirin 100mg#Drug</span>
+<span class="c1">//aspirin#Drug</span>
+<span class="c1">//paracetamol#Drug</span>
+<span class="c1">//amoxicillin#Drug</span>
+<span class="c1">//ibuprofen#Drug</span>
+<span class="c1">//lansoprazole#Drug</span>
+<span class="c1">//"""</span>
+<span class="c1">//</span>
+<span class="c1">//with open ('matcher_drug.csv', 'w') as f:</span>
+<span class="c1">//  f.write(matcher_drug)</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">entityExtractor</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">EntityExtractor</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"matched_text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setEntities</span><span class="o">(</span><span class="s">"matcher_drug.csv"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setDelimiter</span><span class="o">(</span><span class="s">"#"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setMergeOverlapping</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">matcherPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">documentAssembler</span><span class="o">,</span> 
+                   <span class="n">tokenizer</span><span class="o">,</span> 
+                   <span class="n">entityExtractor</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"John's doctor prescribed aspirin 100mg for his heart condition, along with paracetamol for his fever, amoxicillin for his tonsilitis, ibuprofen for his inflammation, and lansoprazole for his GORD."</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">matcherModel</span> <span class="k">=</span> <span class="nv">matcherPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">matcherModel</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+
+<span class="k">#</span> <span class="n">result</span>
+<span class="o">+-------------+-----+---+-----+</span>
+<span class="o">|</span>        <span class="n">chunk</span><span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">label</span><span class="o">|</span>
+<span class="o">+-------------+-----+---+-----+</span>
+<span class="o">|</span>      <span class="n">aspirin</span><span class="o">|</span>   <span class="mi">25</span><span class="o">|</span> <span class="mi">31</span><span class="o">|</span> <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">|</span><span class="n">aspirin</span> <span class="mi">100</span><span class="n">mg</span><span class="o">|</span>   <span class="mi">25</span><span class="o">|</span> <span class="mi">37</span><span class="o">|</span> <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">|</span>  <span class="n">paracetamol</span><span class="o">|</span>   <span class="mi">75</span><span class="o">|</span> <span class="mi">85</span><span class="o">|</span> <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">|</span>  <span class="n">amoxicillin</span><span class="o">|</span>  <span class="mi">102</span><span class="o">|</span><span class="mi">112</span><span class="o">|</span> <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">|</span>    <span class="n">ibuprofen</span><span class="o">|</span>  <span class="mi">134</span><span class="o">|</span><span class="mi">142</span><span class="o">|</span> <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">lansoprazole</span><span class="o">|</span>  <span class="mi">170</span><span class="o">|</span><span class="mi">181</span><span class="o">|</span> <span class="nc">Drug</span><span class="o">|</span>
+<span class="o">+-------------+-----+---+-----+</span>
 </code></pre></div>          </div>
 
         </div>
